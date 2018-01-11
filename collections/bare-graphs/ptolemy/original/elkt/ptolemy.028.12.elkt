@@ -1,0 +1,269 @@
+graph G1
+node N1 {
+	nodeLabels.placement: "[H_LEFT, V_TOP, OUTSIDE]"
+	portConstraints: FREE
+	label L1: "TMCompositeFacade (FFT)" {
+		layout [ size: 159, 15 ]
+	}
+	port P1 {
+		layout [ size: 8, 8 ]
+	}
+	node N2 {
+		layout [ size: 66, 46 ]
+		nodeLabels.placement: "[H_LEFT, V_TOP, OUTSIDE]"
+		portConstraints: FIXED_ORDER
+		label L2: "FFT" {
+			layout [ size: 24, 15 ]
+		}
+		port P2 {
+			layout [ size: 8, 8 ]
+			index: 0
+			side: WEST
+		}
+		port P3 {
+			layout [ size: 8, 8 ]
+			index: 1
+			side: EAST
+		}
+	}
+	node N3 {
+		layout [ size: 66, 46 ]
+		nodeLabels.placement: "[H_LEFT, V_TOP, OUTSIDE]"
+		portConstraints: FIXED_ORDER
+		label L3: "AbsoluteValue" {
+			layout [ size: 84, 15 ]
+		}
+		port P4 {
+			layout [ size: 8, 8 ]
+			index: 0
+			side: WEST
+		}
+		port P5 {
+			layout [ size: 8, 8 ]
+			index: 1
+			side: EAST
+		}
+	}
+	node N4 {
+		layout [ size: 41, 41 ]
+		nodeLabels.placement: "[H_LEFT, V_TOP, OUTSIDE]"
+		portConstraints: FIXED_ORDER
+		label L4: "SequenceScope" {
+			layout [ size: 96, 15 ]
+		}
+		port P6 {
+			layout [ size: 8, 8 ]
+			index: 0
+			side: WEST
+		}
+	}
+	node N5 {
+		layout [ size: 41, 41 ]
+		nodeLabels.placement: "[H_LEFT, V_TOP, OUTSIDE]"
+		portConstraints: FIXED_ORDER
+		label L5: "MultiplyDivide" {
+			layout [ size: 80, 15 ]
+		}
+		port P7 {
+			layout [ size: 8, 8 ]
+			index: 0
+			side: WEST
+		}
+		port P8 {
+			layout [ size: 8, 8 ]
+			index: -1
+			side: WEST
+		}
+		port P9 {
+			layout [ size: 8, 8 ]
+			index: 2
+			side: EAST
+		}
+	}
+	node N6 {
+		layout [ size: 61, 41 ]
+		nodeLabels.placement: "[H_LEFT, V_TOP, OUTSIDE]"
+		portConstraints: FIXED_ORDER
+		label L6: "Pulse" {
+			layout [ size: 34, 15 ]
+		}
+		port P10 {
+			layout [ size: 8, 8 ]
+			index: 0
+			side: EAST
+		}
+		port P11 {
+			layout [ size: 8, 8 ]
+			index: -1
+			side: WEST
+		}
+	}
+	edge E5: P1 -> N5.P7
+	edge E6: N2.P3 -> N3.P4
+	edge E7: N3.P5 -> N4.P6
+	edge E8: N5.P9 -> N2.P2
+	edge E9: N6.P10 -> N5.P7
+}
+node N7 {
+	layout [ size: 41, 41 ]
+	nodeLabels.placement: "[H_LEFT, V_TOP, OUTSIDE]"
+	portConstraints: FIXED_ORDER
+	label L7: "Clock" {
+		layout [ size: 33, 15 ]
+	}
+	port P12 {
+		layout [ size: 8, 8 ]
+		index: 0
+		side: EAST
+	}
+	port P13 {
+		layout [ size: 8, 8 ]
+		index: -1
+		side: WEST
+	}
+	port P14 {
+		layout [ size: 8, 8 ]
+		index: -2
+		side: WEST
+	}
+}
+node N8 {
+	layout [ size: 41, 41 ]
+	nodeLabels.placement: "[H_LEFT, V_TOP, OUTSIDE]"
+	portConstraints: FIXED_ORDER
+	label L8: "TimedPlotter" {
+		layout [ size: 74, 15 ]
+	}
+	port P15 {
+		layout [ size: 8, 8 ]
+		index: 0
+		side: WEST
+	}
+}
+node N9 {
+	nodeLabels.placement: "[H_LEFT, V_TOP, OUTSIDE]"
+	portConstraints: FREE
+	label L9: "Atomic Composite Actor (Noisy Sine)" {
+		layout [ size: 217, 15 ]
+	}
+	port P16 {
+		layout [ size: 8, 8 ]
+	}
+	port P17 {
+		layout [ size: 8, 8 ]
+	}
+	node N10 {
+		layout [ size: 61, 41 ]
+		nodeLabels.placement: "[H_LEFT, V_TOP, OUTSIDE]"
+		portConstraints: FIXED_ORDER
+		label L10: "Ramp" {
+			layout [ size: 35, 15 ]
+		}
+		port P18 {
+			layout [ size: 8, 8 ]
+			index: 0
+			side: EAST
+		}
+		port P19 {
+			layout [ size: 8, 8 ]
+			index: -1
+			side: WEST
+		}
+		port P20 {
+			layout [ size: 8, 8 ]
+			index: -2
+			side: WEST
+		}
+	}
+	node N11 {
+		layout [ size: 28, 25 ]
+		nodeLabels.placement: "[H_LEFT, V_TOP, OUTSIDE]"
+		portConstraints: FIXED_ORDER
+		label L11: "TrigFunction" {
+			layout [ size: 72, 15 ]
+		}
+		port P21 {
+			layout [ size: 8, 8 ]
+			index: 0
+			side: WEST
+		}
+		port P22 {
+			layout [ size: 8, 8 ]
+			index: 1
+			side: EAST
+		}
+	}
+	node N12 {
+		layout [ size: 41, 41 ]
+		nodeLabels.placement: "[H_LEFT, V_TOP, OUTSIDE]"
+		portConstraints: FIXED_ORDER
+		label L12: "AddSubtract" {
+			layout [ size: 72, 15 ]
+		}
+		port P23 {
+			layout [ size: 8, 8 ]
+			index: 0
+			side: WEST
+		}
+		port P24 {
+			layout [ size: 8, 8 ]
+			index: -1
+			side: WEST
+		}
+		port P25 {
+			layout [ size: 8, 8 ]
+			index: 2
+			side: EAST
+		}
+	}
+	node N13 {
+		layout [ size: 66, 46 ]
+		nodeLabels.placement: "[H_LEFT, V_TOP, OUTSIDE]"
+		portConstraints: FIXED_ORDER
+		label L13: "Gaussian" {
+			layout [ size: 56, 15 ]
+		}
+		port P26 {
+			layout [ size: 8, 8 ]
+			index: 0
+			side: EAST
+		}
+		port P27 {
+			layout [ size: 8, 8 ]
+			index: -1
+			side: WEST
+		}
+		port P28 {
+			layout [ size: 8, 8 ]
+			index: -2
+			side: WEST
+		}
+		port P29 {
+			layout [ size: 8, 8 ]
+			index: -3
+			side: WEST
+		}
+	}
+	edge E10: P16 -> N10.P19
+	edge E11: N10.P18 -> N11.P21
+	edge E12: N11.P22 -> N12.P23
+	edge E13: N12.P25 -> P17
+	edge E14: N13.P26 -> N12.P23
+}
+node N14 {
+	layout [ size: 41, 41 ]
+	nodeLabels.placement: "[H_LEFT, V_TOP, OUTSIDE]"
+	portConstraints: FIXED_ORDER
+	label L14: "RealTimePlotter" {
+		layout [ size: 93, 15 ]
+	}
+	port P30 {
+		layout [ size: 8, 8 ]
+		index: 0
+		side: WEST
+	}
+}
+edge E1: N7.P12 -> N9.P16
+edge E2: N9.P17 -> N1.P1
+edge E3: N9.P17 -> N8.P15
+edge E4: N9.P17 -> N14.P30

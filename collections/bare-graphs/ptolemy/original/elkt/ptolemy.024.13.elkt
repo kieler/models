@@ -1,0 +1,229 @@
+graph G1
+node N1 {
+	nodeLabels.placement: "[H_LEFT, V_TOP, OUTSIDE]"
+	portConstraints: FREE
+	label L1: "Receiver" {
+		layout [ size: 50, 15 ]
+	}
+	port P1 {
+		layout [ size: 8, 8 ]
+	}
+	node N2 {
+		layout [ size: 41, 41 ]
+		nodeLabels.placement: "[H_LEFT, V_TOP, OUTSIDE]"
+		portConstraints: FIXED_ORDER
+		label L2: "Clock" {
+			layout [ size: 33, 15 ]
+		}
+		port P2 {
+			layout [ size: 8, 8 ]
+			index: 0
+			side: EAST
+		}
+		port P3 {
+			layout [ size: 8, 8 ]
+			index: -1
+			side: WEST
+		}
+		port P4 {
+			layout [ size: 8, 8 ]
+			index: -2
+			side: WEST
+		}
+	}
+	node N3 {
+		layout [ size: 116, 25 ]
+		nodeLabels.placement: "[H_LEFT, V_TOP, OUTSIDE]"
+		portConstraints: FIXED_ORDER
+		label L3: "Expression" {
+			layout [ size: 66, 15 ]
+		}
+		port P5 {
+			layout [ size: 8, 8 ]
+			index: 0
+			side: EAST
+		}
+		port P6 {
+			layout [ size: 8, 8 ]
+			index: -2
+			side: WEST
+		}
+	}
+	node N4 {
+		layout [ size: 61, 41 ]
+		nodeLabels.placement: "[H_LEFT, V_TOP, OUTSIDE]"
+		portConstraints: FIXED_ORDER
+		label L4: "SetVariable" {
+			layout [ size: 67, 15 ]
+		}
+		port P7 {
+			layout [ size: 8, 8 ]
+			index: 0
+			side: WEST
+		}
+		port P8 {
+			layout [ size: 8, 8 ]
+			index: 1
+			side: EAST
+		}
+	}
+	node N5 {
+		layout [ size: 66, 46 ]
+		nodeLabels.placement: "[H_LEFT, V_TOP, OUTSIDE]"
+		portConstraints: FIXED_ORDER
+		label L5: "Sinewave" {
+			layout [ size: 55, 15 ]
+		}
+		port P9 {
+			layout [ size: 8, 8 ]
+			index: 0
+			side: WEST
+		}
+		port P10 {
+			layout [ size: 8, 8 ]
+			index: -1
+			side: WEST
+		}
+		port P11 {
+			layout [ size: 8, 8 ]
+			index: 2
+			side: EAST
+		}
+	}
+	node N6 {
+		layout [ size: 41, 31 ]
+		nodeLabels.placement: "[H_LEFT, V_TOP, OUTSIDE]"
+		portConstraints: FIXED_ORDER
+		label L6: "Display" {
+			layout [ size: 43, 15 ]
+		}
+		port P12 {
+			layout [ size: 8, 8 ]
+			index: 0
+			side: WEST
+		}
+	}
+	edge E1: P1 -> N6.P12
+	edge E2: N2.P2 -> N5.P9
+	edge E3: N3.P5 -> N4.P7
+	edge E4: N5.P11 -> N3.P6
+}
+node N7 {
+	nodeLabels.placement: "[H_LEFT, V_TOP, OUTSIDE]"
+	portConstraints: FREE
+	label L7: "Transmitter" {
+		layout [ size: 66, 15 ]
+	}
+	port P13 {
+		layout [ size: 8, 8 ]
+	}
+	node N8 {
+		layout [ size: 41, 41 ]
+		nodeLabels.placement: "[H_LEFT, V_TOP, OUTSIDE]"
+		portConstraints: FIXED_ORDER
+		label L8: "Clock" {
+			layout [ size: 33, 15 ]
+		}
+		port P14 {
+			layout [ size: 8, 8 ]
+			index: 0
+			side: EAST
+		}
+		port P15 {
+			layout [ size: 8, 8 ]
+			index: -1
+			side: WEST
+		}
+		port P16 {
+			layout [ size: 8, 8 ]
+			index: -2
+			side: WEST
+		}
+	}
+	node N9 {
+		layout [ size: 61, 41 ]
+		nodeLabels.placement: "[H_LEFT, V_TOP, OUTSIDE]"
+		portConstraints: FIXED_ORDER
+		label L9: "Ramp" {
+			layout [ size: 35, 15 ]
+		}
+		port P17 {
+			layout [ size: 8, 8 ]
+			index: 0
+			side: EAST
+		}
+		port P18 {
+			layout [ size: 8, 8 ]
+			index: -1
+			side: WEST
+		}
+		port P19 {
+			layout [ size: 8, 8 ]
+			index: -2
+			side: WEST
+		}
+	}
+	node N10 {
+		layout [ size: 61, 41 ]
+		nodeLabels.placement: "[H_LEFT, V_TOP, OUTSIDE]"
+		portConstraints: FIXED_ORDER
+		label L10: "Ramp2" {
+			layout [ size: 42, 15 ]
+		}
+		port P20 {
+			layout [ size: 8, 8 ]
+			index: 0
+			side: EAST
+		}
+		port P21 {
+			layout [ size: 8, 8 ]
+			index: -1
+			side: WEST
+		}
+		port P22 {
+			layout [ size: 8, 8 ]
+			index: -2
+			side: WEST
+		}
+	}
+	node N11 {
+		layout [ size: 61, 41 ]
+		nodeLabels.placement: "[H_LEFT, V_TOP, OUTSIDE]"
+		portConstraints: FIXED_ORDER
+		label L11: "SetVariable2" {
+			layout [ size: 74, 15 ]
+		}
+		port P23 {
+			layout [ size: 8, 8 ]
+			index: 0
+			side: WEST
+		}
+		port P24 {
+			layout [ size: 8, 8 ]
+			index: 1
+			side: EAST
+		}
+	}
+	node N12 {
+		layout [ size: 41, 41 ]
+		nodeLabels.placement: "[H_LEFT, V_TOP, OUTSIDE]"
+		portConstraints: FIXED_ORDER
+		label L12: "PoissonClock" {
+			layout [ size: 80, 15 ]
+		}
+		port P25 {
+			layout [ size: 8, 8 ]
+			index: 0
+			side: EAST
+		}
+		port P26 {
+			layout [ size: 8, 8 ]
+			index: -1
+			side: WEST
+		}
+	}
+	edge E5: N8.P14 -> N9.P18
+	edge E6: N9.P17 -> P13
+	edge E7: N10.P20 -> N11.P23
+	edge E8: N12.P25 -> N10.P21
+}

@@ -1,0 +1,209 @@
+graph G1
+node N1 {
+	layout [ size: 60, 40 ]
+	nodeLabels.placement: "[H_LEFT, V_TOP, OUTSIDE]"
+	portConstraints: FIXED_ORDER
+	label L1: "VertxBusHandler" {
+		layout [ size: 98, 15 ]
+	}
+	port P1 {
+		layout [ size: 8, 8 ]
+		index: 0
+		side: WEST
+	}
+}
+node N2 {
+	layout [ size: 41, 31 ]
+	nodeLabels.placement: "[H_LEFT, V_TOP, OUTSIDE]"
+	portConstraints: FIXED_ORDER
+	label L2: "DisplayDate+10" {
+		layout [ size: 93, 15 ]
+	}
+	port P2 {
+		layout [ size: 8, 8 ]
+		index: 0
+		side: WEST
+	}
+}
+node N3 {
+	layout [ size: 60, 40 ]
+	nodeLabels.placement: "[H_LEFT, V_TOP, OUTSIDE]"
+	portConstraints: FIXED_ORDER
+	label L3: "VertxBusHandler2" {
+		layout [ size: 105, 15 ]
+	}
+	port P3 {
+		layout [ size: 8, 8 ]
+		index: 0
+		side: WEST
+	}
+	port P4 {
+		layout [ size: 8, 8 ]
+		index: 1
+		side: EAST
+	}
+}
+node N4 {
+	layout [ size: 60, 40 ]
+	nodeLabels.placement: "[H_LEFT, V_TOP, OUTSIDE]"
+	portConstraints: FIXED_ORDER
+	label L4: "TokenToJSON" {
+		layout [ size: 82, 15 ]
+	}
+	port P5 {
+		layout [ size: 8, 8 ]
+		index: 0
+		side: WEST
+	}
+	port P6 {
+		layout [ size: 8, 8 ]
+		index: 1
+		side: EAST
+	}
+}
+node N5 {
+	layout [ size: 41, 31 ]
+	nodeLabels.placement: "[H_LEFT, V_TOP, OUTSIDE]"
+	portConstraints: FIXED_ORDER
+	label L5: "DisplayDate+5" {
+		layout [ size: 86, 15 ]
+	}
+	port P7 {
+		layout [ size: 8, 8 ]
+		index: 0
+		side: WEST
+	}
+}
+node N6 {
+	layout [ size: 60, 40 ]
+	nodeLabels.placement: "[H_LEFT, V_TOP, OUTSIDE]"
+	portConstraints: FIXED_ORDER
+	label L6: "CurrentDate" {
+		layout [ size: 70, 15 ]
+	}
+	port P8 {
+		layout [ size: 8, 8 ]
+		index: 0
+		side: EAST
+	}
+	port P9 {
+		layout [ size: 8, 8 ]
+		index: -1
+		side: WEST
+	}
+}
+node N7 {
+	layout [ size: 60, 40 ]
+	nodeLabels.placement: "[H_LEFT, V_TOP, OUTSIDE]"
+	portConstraints: FIXED_ORDER
+	label L7: "ModifyDate" {
+		layout [ size: 66, 15 ]
+	}
+	port P10 {
+		layout [ size: 8, 8 ]
+		index: 0
+		side: WEST
+	}
+	port P11 {
+		layout [ size: 8, 8 ]
+		index: -1
+		side: WEST
+	}
+	port P12 {
+		layout [ size: 8, 8 ]
+		index: 2
+		side: EAST
+	}
+}
+node N8 {
+	layout [ size: 18, 25 ]
+	nodeLabels.placement: "[H_LEFT, V_TOP, OUTSIDE]"
+	portConstraints: FIXED_ORDER
+	label L8: "Const" {
+		layout [ size: 34, 15 ]
+	}
+	port P13 {
+		layout [ size: 8, 8 ]
+		index: 0
+		side: EAST
+	}
+	port P14 {
+		layout [ size: 8, 8 ]
+		index: -1
+		side: WEST
+	}
+}
+node N9 {
+	layout [ size: 41, 41 ]
+	nodeLabels.placement: "[H_LEFT, V_TOP, OUTSIDE]"
+	portConstraints: FIXED_ORDER
+	label L9: "DiscreteClock" {
+		layout [ size: 81, 15 ]
+	}
+	port P15 {
+		layout [ size: 8, 8 ]
+		index: 0
+		side: EAST
+	}
+	port P16 {
+		layout [ size: 8, 8 ]
+		index: -1
+		side: WEST
+	}
+	port P17 {
+		layout [ size: 8, 8 ]
+		index: -2
+		side: WEST
+	}
+	port P18 {
+		layout [ size: 8, 8 ]
+		index: -3
+		side: SOUTH
+	}
+	port P19 {
+		layout [ size: 8, 8 ]
+		index: -4
+		side: SOUTH
+	}
+}
+node N10 {
+	layout [ size: 41, 31 ]
+	nodeLabels.placement: "[H_LEFT, V_TOP, OUTSIDE]"
+	portConstraints: FIXED_ORDER
+	label L10: "DisplayDate" {
+		layout [ size: 71, 15 ]
+	}
+	port P20 {
+		layout [ size: 8, 8 ]
+		index: 0
+		side: WEST
+	}
+}
+node N11 {
+	layout [ size: 60, 40 ]
+	nodeLabels.placement: "[H_LEFT, V_TOP, OUTSIDE]"
+	portConstraints: FIXED_ORDER
+	label L11: "DateToEvent" {
+		layout [ size: 72, 15 ]
+	}
+	port P21 {
+		layout [ size: 8, 8 ]
+		index: 0
+		side: WEST
+	}
+	port P22 {
+		layout [ size: 8, 8 ]
+		index: 1
+		side: EAST
+	}
+}
+edge E1: N3.P4 -> N2.P2
+edge E2: N4.P6 -> N1.P1
+edge E3: N6.P8 -> N7.P10
+edge E4: N6.P8 -> N8.P14
+edge E5: N6.P8 -> N10.P20
+edge E6: N7.P12 -> N11.P21
+edge E7: N8.P13 -> N7.P11
+edge E8: N9.P15 -> N6.P9
+edge E9: N11.P22 -> N4.P5
+edge E10: N11.P22 -> N5.P7

@@ -1,0 +1,229 @@
+graph G1
+node N1 {
+	nodeLabels.placement: "[H_LEFT, V_TOP, OUTSIDE]"
+	portConstraints: FREE
+	label L1: "Intruder" {
+		layout [ size: 44, 15 ]
+	}
+	port P1 {
+		layout [ size: 8, 8 ]
+	}
+	node N2 {
+		nodeLabels.placement: "[H_LEFT, V_TOP, OUTSIDE]"
+		portConstraints: FREE
+		label L2: "Controller" {
+			layout [ size: 56, 15 ]
+		}
+		port P2 {
+			layout [ size: 8, 8 ]
+		}
+		port P3 {
+			layout [ size: 8, 8 ]
+		}
+		node N3 {
+			layout [ size: 67, 46 ]
+			nodeLabels.placement: "[H_LEFT, V_TOP, OUTSIDE]"
+			portConstraints: FIXED_ORDER
+			label L3: "Uniform" {
+				layout [ size: 44, 15 ]
+			}
+			port P4 {
+				layout [ size: 8, 8 ]
+				index: 0
+				side: EAST
+			}
+			port P5 {
+				layout [ size: 8, 8 ]
+				index: -1
+				side: WEST
+			}
+			port P6 {
+				layout [ size: 8, 8 ]
+				index: -2
+				side: WEST
+			}
+			port P7 {
+				layout [ size: 8, 8 ]
+				index: -3
+				side: WEST
+			}
+		}
+		node N4 {
+			layout [ size: 175, 25 ]
+			nodeLabels.placement: "[H_LEFT, V_TOP, OUTSIDE]"
+			portConstraints: FIXED_ORDER
+			label L4: "Expression" {
+				layout [ size: 66, 15 ]
+			}
+			port P8 {
+				layout [ size: 8, 8 ]
+				index: 0
+				side: EAST
+			}
+			port P9 {
+				layout [ size: 8, 8 ]
+				index: -1
+				side: WEST
+			}
+		}
+		edge E11: P3 -> N3.P5
+		edge E12: N3.P4 -> N4.P9
+		edge E13: N4.P8 -> P2
+	}
+	node N5 {
+		layout [ size: 66, 46 ]
+		nodeLabels.placement: "[H_LEFT, V_TOP, OUTSIDE]"
+		portConstraints: FIXED_ORDER
+		label L5: "SingleEvent" {
+			layout [ size: 68, 15 ]
+		}
+		port P10 {
+			layout [ size: 8, 8 ]
+			index: 0
+			side: EAST
+		}
+	}
+	node N6 {
+		layout [ size: 21, 41 ]
+		nodeLabels.placement: "[H_LEFT, V_TOP, OUTSIDE]"
+		portConstraints: FIXED_ORDER
+		label L6: "Merge" {
+			layout [ size: 37, 15 ]
+		}
+		port P11 {
+			layout [ size: 8, 8 ]
+			index: 0
+			side: WEST
+		}
+		port P12 {
+			layout [ size: 8, 8 ]
+			index: 1
+			side: EAST
+		}
+	}
+	node N7 {
+		layout [ size: 41, 41 ]
+		nodeLabels.placement: "[H_LEFT, V_TOP, OUTSIDE]"
+		portConstraints: FIXED_ORDER
+		label L7: "AddSubtract" {
+			layout [ size: 72, 15 ]
+		}
+		port P13 {
+			layout [ size: 8, 8 ]
+			index: 0
+			side: WEST
+		}
+		port P14 {
+			layout [ size: 8, 8 ]
+			index: -1
+			side: WEST
+		}
+		port P15 {
+			layout [ size: 8, 8 ]
+			index: 2
+			side: EAST
+		}
+	}
+	node N8 {
+		layout [ size: 66, 46 ]
+		nodeLabels.placement: "[H_LEFT, V_TOP, OUTSIDE]"
+		portConstraints: FIXED_ORDER
+		label L8: "TimeDelay" {
+			layout [ size: 61, 15 ]
+		}
+		port P16 {
+			layout [ size: 8, 8 ]
+			index: 0
+			side: WEST
+		}
+		port P17 {
+			layout [ size: 8, 8 ]
+			index: 1
+			side: EAST
+		}
+		port P18 {
+			layout [ size: 8, 8 ]
+			index: -2
+			side: SOUTH
+		}
+	}
+	edge E4: N2.P2 -> N7.P13
+	edge E5: N5.P10 -> N6.P11
+	edge E6: N6.P12 -> P1
+	edge E7: N6.P12 -> N2.P3
+	edge E8: N6.P12 -> N7.P13
+	edge E9: N7.P15 -> N8.P16
+	edge E10: N8.P17 -> N6.P11
+}
+node N9 {
+	layout [ size: 60, 40 ]
+	nodeLabels.placement: "[H_LEFT, V_TOP, OUTSIDE]"
+	portConstraints: FIXED_ORDER
+	label L9: "TokenToJSON" {
+		layout [ size: 82, 15 ]
+	}
+	port P19 {
+		layout [ size: 8, 8 ]
+		index: 0
+		side: WEST
+	}
+	port P20 {
+		layout [ size: 8, 8 ]
+		index: 1
+		side: EAST
+	}
+}
+node N10 {
+	layout [ size: 60, 40 ]
+	nodeLabels.placement: "[H_LEFT, V_TOP, OUTSIDE]"
+	portConstraints: FIXED_ORDER
+	label L10: "KeyValueStore2" {
+		layout [ size: 94, 15 ]
+	}
+	port P21 {
+		layout [ size: 8, 8 ]
+		index: 0
+		side: WEST
+	}
+	port P22 {
+		layout [ size: 8, 8 ]
+		index: -1
+		side: WEST
+	}
+	port P23 {
+		layout [ size: 8, 8 ]
+		index: -2
+		side: WEST
+	}
+	port P24 {
+		layout [ size: 8, 8 ]
+		index: -3
+		side: WEST
+	}
+	port P25 {
+		layout [ size: 8, 8 ]
+		index: 4
+		side: EAST
+	}
+	port P26 {
+		layout [ size: 8, 8 ]
+		index: 5
+		side: EAST
+	}
+}
+node N11 {
+	layout [ size: 41, 31 ]
+	nodeLabels.placement: "[H_LEFT, V_TOP, OUTSIDE]"
+	portConstraints: FIXED_ORDER
+	label L11: "Errors" {
+		layout [ size: 35, 15 ]
+	}
+	port P27 {
+		layout [ size: 8, 8 ]
+		index: 0
+		side: WEST
+	}
+}
+edge E1: N1.P1 -> N9.P19
+edge E2: N9.P20 -> N10.P24
+edge E3: N10.P26 -> N11.P27

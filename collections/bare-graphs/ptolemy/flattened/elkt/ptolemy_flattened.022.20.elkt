@@ -1,0 +1,223 @@
+graph G1
+node N1 {
+	layout [ size: 61, 41 ]
+	nodeLabels.placement: "[H_LEFT, V_TOP, OUTSIDE]"
+	portConstraints: FIXED_ORDER
+	label L1: "DatagramWriter" {
+		layout [ size: 92, 15 ]
+	}
+	port P1 {
+		layout [ size: 8, 8 ]
+		index: 0
+		side: WEST
+	}
+	port P2 {
+		layout [ size: 8, 8 ]
+		index: -1
+		side: WEST
+	}
+	port P3 {
+		layout [ size: 8, 8 ]
+		index: -2
+		side: WEST
+	}
+	port P4 {
+		layout [ size: 8, 8 ]
+		index: 3
+		side: EAST
+	}
+}
+node N2 {
+	layout [ size: 61, 41 ]
+	nodeLabels.placement: "[H_LEFT, V_TOP, OUTSIDE]"
+	portConstraints: FIXED_ORDER
+	label L2: "DatagramReader" {
+		layout [ size: 98, 15 ]
+	}
+	port P5 {
+		layout [ size: 8, 8 ]
+		index: 0
+		side: EAST
+	}
+	port P6 {
+		layout [ size: 8, 8 ]
+		index: 1
+		side: EAST
+	}
+	port P7 {
+		layout [ size: 8, 8 ]
+		index: 2
+		side: EAST
+	}
+	port P8 {
+		layout [ size: 8, 8 ]
+		index: -3
+		side: WEST
+	}
+}
+node N3 {
+	layout [ size: 41, 31 ]
+	nodeLabels.placement: "[H_LEFT, V_TOP, OUTSIDE]"
+	portConstraints: FIXED_ORDER
+	label L3: "Display" {
+		layout [ size: 43, 15 ]
+	}
+	port P9 {
+		layout [ size: 8, 8 ]
+		index: 0
+		side: WEST
+	}
+}
+node N4 {
+	layout [ size: 61, 41 ]
+	nodeLabels.placement: "[H_LEFT, V_TOP, OUTSIDE]"
+	portConstraints: FIXED_ORDER
+	label L4: "1:Encoder" {
+		layout [ size: 60, 15 ]
+	}
+	port P10 {
+		layout [ size: 8, 8 ]
+		index: 0
+		side: WEST
+	}
+	port P11 {
+		layout [ size: 8, 8 ]
+		index: 1
+		side: EAST
+	}
+}
+node N5 {
+	layout [ size: 61, 41 ]
+	nodeLabels.placement: "[H_LEFT, V_TOP, OUTSIDE]"
+	portConstraints: FIXED_ORDER
+	label L5: "1:Source" {
+		layout [ size: 53, 15 ]
+	}
+	port P12 {
+		layout [ size: 8, 8 ]
+		index: 0
+		side: EAST
+	}
+	port P13 {
+		layout [ size: 8, 8 ]
+		index: -1
+		side: WEST
+	}
+}
+node N6 {
+	layout [ size: 61, 41 ]
+	nodeLabels.placement: "[H_LEFT, V_TOP, OUTSIDE]"
+	portConstraints: FIXED_ORDER
+	label L6: "1:Partition Image" {
+		layout [ size: 99, 15 ]
+	}
+	port P14 {
+		layout [ size: 8, 8 ]
+		index: 0
+		side: WEST
+	}
+	port P15 {
+		layout [ size: 8, 8 ]
+		index: 1
+		side: EAST
+	}
+}
+node N7 {
+	layout [ size: 66, 46 ]
+	nodeLabels.placement: "[H_LEFT, V_TOP, OUTSIDE]"
+	portConstraints: FIXED_ORDER
+	label L7: "SequenceToArray" {
+		layout [ size: 102, 15 ]
+	}
+	port P16 {
+		layout [ size: 8, 8 ]
+		index: 0
+		side: WEST
+	}
+	port P17 {
+		layout [ size: 8, 8 ]
+		index: 1
+		side: EAST
+	}
+	port P18 {
+		layout [ size: 8, 8 ]
+		index: -2
+		side: WEST
+	}
+}
+node N8 {
+	layout [ size: 61, 41 ]
+	nodeLabels.placement: "[H_LEFT, V_TOP, OUTSIDE]"
+	portConstraints: FIXED_ORDER
+	label L8: "1:Unpartition" {
+		layout [ size: 74, 15 ]
+	}
+	port P19 {
+		layout [ size: 8, 8 ]
+		index: 0
+		side: WEST
+	}
+	port P20 {
+		layout [ size: 8, 8 ]
+		index: 1
+		side: EAST
+	}
+}
+node N9 {
+	layout [ size: 61, 41 ]
+	nodeLabels.placement: "[H_LEFT, V_TOP, OUTSIDE]"
+	portConstraints: FIXED_ORDER
+	label L9: "1:Compressed" {
+		layout [ size: 85, 15 ]
+	}
+	port P21 {
+		layout [ size: 8, 8 ]
+		index: 0
+		side: WEST
+	}
+}
+node N10 {
+	layout [ size: 61, 41 ]
+	nodeLabels.placement: "[H_LEFT, V_TOP, OUTSIDE]"
+	portConstraints: FIXED_ORDER
+	label L10: "1:Decoder" {
+		layout [ size: 60, 15 ]
+	}
+	port P22 {
+		layout [ size: 8, 8 ]
+		index: 0
+		side: WEST
+	}
+	port P23 {
+		layout [ size: 8, 8 ]
+		index: 1
+		side: EAST
+	}
+}
+node N11 {
+	layout [ size: 66, 46 ]
+	nodeLabels.placement: "[H_LEFT, V_TOP, OUTSIDE]"
+	portConstraints: FIXED_ORDER
+	label L11: "ArrayToSequence" {
+		layout [ size: 103, 15 ]
+	}
+	port P24 {
+		layout [ size: 8, 8 ]
+		index: 0
+		side: WEST
+	}
+	port P25 {
+		layout [ size: 8, 8 ]
+		index: 1
+		side: EAST
+	}
+}
+edge E1: N2.P7 -> N3.P9
+edge E2: N2.P7 -> N11.P24
+edge E3: N4.P11 -> N7.P16
+edge E4: N5.P12 -> N6.P14
+edge E5: N6.P15 -> N4.P10
+edge E6: N7.P17 -> N1.P3
+edge E7: N8.P20 -> N9.P21
+edge E8: N10.P23 -> N8.P19
+edge E9: N11.P25 -> N10.P22
