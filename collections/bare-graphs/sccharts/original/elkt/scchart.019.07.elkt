@@ -1,0 +1,125 @@
+graph G1
+node elevator {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node init {
+			layout [ size: 42, 34 ]
+		}
+		node Loop {
+			algorithm: org.eclipse.elk.box
+			node N2 {
+				node idle {
+					layout [ size: 46, 34 ]
+				}
+				node idleUp {
+					layout [ size: 67, 34 ]
+				}
+				node idleDown {
+					layout [ size: 87, 34 ]
+				}
+				node MovingDown {
+					algorithm: org.eclipse.elk.box
+					node N3 {
+						node H {
+							layout [ size: 34, 34 ]
+						}
+						edge H0: H -> H {
+							label L11: "/ Move(-1)" {
+								layout [ size: 71, 17 ]
+							}
+						}
+					}
+				}
+				node MovingUp {
+					algorithm: org.eclipse.elk.box
+					node N4 {
+						node J {
+							layout [ size: 34, 34 ]
+						}
+						edge J0: J -> J {
+							label L12: "/ Move(1)" {
+								layout [ size: 66, 17 ]
+							}
+						}
+					}
+				}
+				edge idleUp0: idle -> idleUp {
+					label L3: "1: IsUp" {
+						layout [ size: 49, 17 ]
+					}
+				}
+				edge idleDown0: idle -> idleDown {
+					label L4: "2: IsDown" {
+						layout [ size: 69, 17 ]
+					}
+				}
+				edge MovingDown0: idleUp -> MovingDown {
+					label L5: "1: ButtonDown" {
+						layout [ size: 105, 17 ]
+					}
+				}
+				edge idleUp0_g0106: idleUp -> idleUp {
+					label L6: "2: / Move(0)" {
+						layout [ size: 82, 17 ]
+					}
+				}
+				edge MovingUp0: idleDown -> MovingUp {
+					label L7: "1: ButtonUp" {
+						layout [ size: 85, 17 ]
+					}
+				}
+				edge idleDown0_g1779: idleDown -> idleDown {
+					label L8: "2: / Move(0)" {
+						layout [ size: 82, 17 ]
+					}
+				}
+				edge idleDown0_g4147: MovingDown -> idleDown {
+					label L9: "IsDown" {
+						layout [ size: 53, 17 ]
+					}
+				}
+				edge idleUp0_g2460: MovingUp -> idleUp {
+					label L10: "IsUp" {
+						layout [ size: 33, 17 ]
+					}
+				}
+			}
+		}
+		node Alarm {
+			algorithm: org.eclipse.elk.box
+			node N5 {
+				node waitSecond {
+					layout [ size: 103, 34 ]
+				}
+				node done {
+					layout [ size: 62, 40 ]
+				}
+				node S_1 {
+					layout [ size: 47, 34 ]
+				}
+				edge done0: waitSecond -> done {
+					label L13: "1: count > 4" {
+						layout [ size: 82, 17 ]
+					}
+				}
+				edge S_10: waitSecond -> S_1 {
+					label L14: "2: Second / count = count + 1; AlarmLamp(true)" {
+						layout [ size: 327, 17 ]
+					}
+				}
+				edge waitSecond0: S_1 -> waitSecond
+			}
+		}
+		edge Loop0: init -> Loop
+		edge Alarm0: Loop -> Alarm {
+			label L1: "ButtonAlarm / AlarmLamp(true)" {
+				layout [ size: 214, 17 ]
+			}
+		}
+		edge Loop0_g3061: Alarm -> Loop {
+			label L2: "/ AlarmLamp(false)" {
+				layout [ size: 128, 17 ]
+			}
+		}
+	}
+}

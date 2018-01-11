@@ -1,0 +1,139 @@
+graph G1
+node Backhoe {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node Start {
+			layout [ size: 54, 34 ]
+		}
+		node Extend {
+			algorithm: org.eclipse.elk.box
+			node E {
+				node DriveStick {
+					layout [ size: 95, 34 ]
+				}
+				node DriveBucket {
+					layout [ size: 109, 34 ]
+				}
+				node Done {
+					layout [ size: 64, 40 ]
+				}
+				edge DriveBucket0: DriveStick -> DriveBucket {
+					label L6: "STICK_OUT / BUCKET_PUSH = true; STICK_PUSH = false" {
+						layout [ size: 414, 17 ]
+					}
+				}
+				edge Done0: DriveBucket -> Done {
+					label L7: "BUCKET_OUT / DONE_LAMP = true; help = true" {
+						layout [ size: 341, 17 ]
+					}
+				}
+			}
+			node AlarmLamp {
+				node On {
+					layout [ size: 42, 34 ]
+				}
+				node Off {
+					layout [ size: 42, 34 ]
+				}
+				edge Off0: On -> Off {
+					label L8: "SECOND / ALARM_LAMP = false" {
+						layout [ size: 227, 17 ]
+					}
+				}
+				edge On0: Off -> On {
+					label L9: "SECOND / ALARM_LAMP = true" {
+						layout [ size: 222, 17 ]
+					}
+				}
+			}
+		}
+		node AllExtend {
+			layout [ size: 88, 34 ]
+		}
+		node Retract {
+			algorithm: org.eclipse.elk.box
+			node R {
+				node test {
+					algorithm: org.eclipse.elk.box
+					node HandleStick {
+						node w {
+							layout [ size: 34, 34 ]
+						}
+						node StickIn {
+							layout [ size: 75, 40 ]
+						}
+						edge StickIn0: w -> StickIn {
+							label L11: "STICK_IN" {
+								layout [ size: 69, 17 ]
+							}
+						}
+					}
+					node HandleBucket {
+						node wBucket {
+							layout [ size: 81, 34 ]
+						}
+						node BucketIn {
+							layout [ size: 90, 40 ]
+						}
+						edge BucketIn0: wBucket -> BucketIn {
+							label L12: "BUCKET_IN" {
+								layout [ size: 87, 17 ]
+							}
+						}
+					}
+				}
+				node Done_g0110 {
+					layout [ size: 64, 40 ]
+				}
+				edge Done0_g6040: test -> Done_g0110 {
+					label L10: "/ help = true" {
+						layout [ size: 85, 17 ]
+					}
+				}
+			}
+			node AlarmLamp_g4310 {
+				node On_g3471 {
+					layout [ size: 42, 34 ]
+				}
+				node Off_g1559 {
+					layout [ size: 42, 34 ]
+				}
+				edge Off0_g4565: On_g3471 -> Off_g1559 {
+					label L13: "SECOND / ALARM_LAMP = false" {
+						layout [ size: 227, 17 ]
+					}
+				}
+				edge On0_g1591: Off_g1559 -> On_g3471 {
+					label L14: "SECOND / ALARM_LAMP = true" {
+						layout [ size: 222, 17 ]
+					}
+				}
+			}
+		}
+		edge Extend0: Start -> Extend {
+			label L1: "EXTEND_BUTTON / STICK_PUSH = true; DONE_LAMP = false" {
+				layout [ size: 441, 17 ]
+			}
+		}
+		edge AllExtend0: Extend -> AllExtend {
+			label L2: "help / BUCKET_PUSH = false; DONE_LAMP = true; ALARM_LAMP = false; help = false" {
+				layout [ size: 603, 17 ]
+			}
+		}
+		edge Retract0: AllExtend -> Retract {
+			label L3: "1: RETRACT_BUTTON / BUCKET_PULL = true; STICK_PULL = true; DONE_LAMP = false" {
+				layout [ size: 629, 17 ]
+			}
+		}
+		edge AllExtend0_g9527: AllExtend -> AllExtend {
+			label L4: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge Start0: Retract -> Start {
+			label L5: "help / DONE_LAMP = true; STICK_PULL = false; BUCKET_PULL = false; help = false; ALARM_LAMP = false" {
+				layout [ size: 752, 17 ]
+			}
+		}
+	}
+}

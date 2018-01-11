@@ -1,0 +1,81 @@
+graph G1
+node aufg2 {
+	algorithm: org.eclipse.elk.box
+	node Main {
+		node security {
+			algorithm: org.eclipse.elk.box
+			node handle_seatbelt {
+				node nowarn {
+					layout [ size: 73, 34 ]
+				}
+				node warn {
+					layout [ size: 55, 34 ]
+				}
+				node warn_no_beep {
+					layout [ size: 125, 34 ]
+				}
+				edge warn0: nowarn -> warn {
+					label L1: "seatbelt_warning && engine_ignition / red_light = true; beeper = true" {
+						layout [ size: 487, 17 ]
+					}
+				}
+				edge nowarn0: warn -> nowarn {
+					label L2: "1: seatbelt_warning == false || engine_ignition == false / red_light = false; beeper = false" {
+						layout [ size: 619, 17 ]
+					}
+				}
+				edge warn_no_beep0: warn -> warn_no_beep {
+					label L3: "2: 3 second / red_light = true; beeper = false" {
+						layout [ size: 311, 17 ]
+					}
+				}
+				edge warn0_g9711: warn -> warn {
+					label L4: "3: / beeper = true" {
+						layout [ size: 121, 17 ]
+					}
+				}
+				edge nowarn0_g8118: warn_no_beep -> nowarn {
+					label L5: "seatbelt_warning == false || engine_ignition / red_light = false; beeper = false" {
+						layout [ size: 543, 17 ]
+					}
+				}
+			}
+			node handle_doors {
+				node door_closed {
+					layout [ size: 109, 34 ]
+				}
+				node door_open {
+					layout [ size: 98, 34 ]
+				}
+				node door_closed_light_on {
+					layout [ size: 174, 34 ]
+				}
+				edge door_open0: door_closed -> door_open {
+					label L6: "door / dome_light = true" {
+						layout [ size: 169, 17 ]
+					}
+				}
+				edge door_open0_g4036: door_open -> door_open {
+					label L7: "1: door / dome_light = true" {
+						layout [ size: 185, 17 ]
+					}
+				}
+				edge door_closed_light_on0: door_open -> door_closed_light_on {
+					label L8: "2: door == false / dome_light = true" {
+						layout [ size: 245, 17 ]
+					}
+				}
+				edge door_closed0: door_closed_light_on -> door_closed {
+					label L9: "1: 3 second / dome_light = false" {
+						layout [ size: 221, 17 ]
+					}
+				}
+				edge door_open0_g5322: door_closed_light_on -> door_open {
+					label L10: "2: door / dome_light = true" {
+						layout [ size: 185, 17 ]
+					}
+				}
+			}
+		}
+	}
+}

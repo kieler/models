@@ -1,0 +1,85 @@
+graph G1
+node Elevator {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node init {
+			layout [ size: 42, 34 ]
+		}
+		node alarm {
+			layout [ size: 60, 34 ]
+		}
+		node working {
+			algorithm: org.eclipse.elk.box
+			node N2 {
+				node init_g4874 {
+					layout [ size: 42, 34 ]
+				}
+				node idle {
+					layout [ size: 46, 34 ]
+				}
+				node upwards {
+					layout [ size: 267, 65 ]
+				}
+				node downwards {
+					layout [ size: 306, 65 ]
+				}
+				edge upwards0: init_g4874 -> upwards {
+					label L3: "1: BUTTON_UP && !BUTTON_DOWN || movingUp" {
+						layout [ size: 353, 17 ]
+					}
+				}
+				edge downwards0: init_g4874 -> downwards {
+					label L4: "2: BUTTON_DOWN && !BUTTON_UP || movingDown" {
+						layout [ size: 373, 17 ]
+					}
+				}
+				edge idle0: init_g4874 -> idle {
+					label L5: "3:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge upwards0_g7942: idle -> upwards {
+					label L6: "1: BUTTON_UP && !BUTTON_DOWN" {
+						layout [ size: 264, 17 ]
+					}
+				}
+				edge downwards0_g2081: idle -> downwards {
+					label L7: "2: BUTTON_DOWN && !BUTTON_UP" {
+						layout [ size: 265, 17 ]
+					}
+				}
+				edge idle0_g5939: upwards -> idle {
+					label L8: "1: IS_UP" {
+						layout [ size: 60, 17 ]
+					}
+				}
+				edge downwards0_g4835: upwards -> downwards {
+					label L9: "2: BUTTON_DOWN && !BUTTON_UP" {
+						layout [ size: 265, 17 ]
+					}
+				}
+				edge idle0_g4015: downwards -> idle {
+					label L10: "1: IS_DOWN" {
+						layout [ size: 85, 17 ]
+					}
+				}
+				edge upwards0_g3700: downwards -> upwards {
+					label L11: "2: BUTTON_UP && !BUTTON_DOWN" {
+						layout [ size: 264, 17 ]
+					}
+				}
+			}
+		}
+		edge working0: init -> working
+		edge working0_g1309: alarm -> working {
+			label L1: "5 SECOND" {
+				layout [ size: 77, 17 ]
+			}
+		}
+		edge alarm0: working -> alarm {
+			label L2: "BUTTON_ALARM" {
+				layout [ size: 124, 17 ]
+			}
+		}
+	}
+}

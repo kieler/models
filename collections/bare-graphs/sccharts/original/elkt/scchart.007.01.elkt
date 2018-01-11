@@ -1,0 +1,46 @@
+graph G1
+node Interpreter {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node Done {
+			layout [ size: 64, 40 ]
+		}
+		node Error {
+			layout [ size: 152, 50 ]
+		}
+		node Init {
+			layout [ size: 42, 34 ]
+		}
+		node ParityCalculated {
+			layout [ size: 136, 34 ]
+		}
+		node ValueCalculated {
+			layout [ size: 134, 34 ]
+		}
+		edge ParityCalculated0: Init -> ParityCalculated {
+			label L1: "/ parity = 9 - (digits[0] + digits[1] + digits[2]) % 10" {
+				layout [ size: 338, 17 ]
+			}
+		}
+		edge Error0: ParityCalculated -> Error {
+			label L2: "1: parity != digits[3]" {
+				layout [ size: 133, 17 ]
+			}
+		}
+		edge ValueCalculated0: ParityCalculated -> ValueCalculated {
+			label L3: "2: / value = digits[0] * 100 + digits[1] * 10 + digits[2] * 1" {
+				layout [ size: 376, 17 ]
+			}
+		}
+		edge Done0: ValueCalculated -> Done {
+			label L4: "1: value < 500" {
+				layout [ size: 97, 17 ]
+			}
+		}
+		edge Done1: ValueCalculated -> Done {
+			label L5: "2: / value = value - 1000" {
+				layout [ size: 165, 17 ]
+			}
+		}
+	}
+}

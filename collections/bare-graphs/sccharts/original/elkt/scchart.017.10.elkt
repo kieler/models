@@ -1,0 +1,117 @@
+graph G1
+node SCG {
+	algorithm: org.eclipse.elk.box
+	node all {
+		node Init {
+			layout [ size: 42, 34 ]
+		}
+		node Fork {
+			algorithm: org.eclipse.elk.box
+			node B {
+				node InitB {
+					layout [ size: 53, 34 ]
+				}
+				node B_g8844 {
+					layout [ size: 34, 34 ]
+				}
+				node BPause {
+					layout [ size: 75, 34 ]
+				}
+				edge B0: InitB -> B_g8844
+				edge BPause0: B_g8844 -> BPause {
+					label L1: "1: A / L = true" {
+						layout [ size: 90, 17 ]
+					}
+				}
+				edge BPause1: B_g8844 -> BPause {
+					label L2: "2: / L = false" {
+						layout [ size: 84, 17 ]
+					}
+				}
+				edge B0_g7356: BPause -> B_g8844
+			}
+			node ADelayed {
+				node InitA {
+					layout [ size: 53, 34 ]
+				}
+				node BeforeA1 {
+					layout [ size: 87, 34 ]
+				}
+				node A1 {
+					layout [ size: 38, 34 ]
+				}
+				node A1a {
+					layout [ size: 46, 34 ]
+				}
+				node BeforeA1b {
+					layout [ size: 96, 34 ]
+				}
+				node A1b {
+					layout [ size: 47, 34 ]
+				}
+				node A2 {
+					layout [ size: 38, 34 ]
+				}
+				node A3 {
+					layout [ size: 38, 34 ]
+				}
+				edge A1b0: InitA -> A1b {
+					label L3: "1:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge A30: InitA -> A3 {
+					label L4: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge A10: BeforeA1 -> A1 {
+					label L5: "/ O = O + 2" {
+						layout [ size: 75, 17 ]
+					}
+				}
+				edge A1a0: A1 -> A1a {
+					label L6: "L / O = O + 1" {
+						layout [ size: 88, 17 ]
+					}
+				}
+				edge BeforeA1b0: A1a -> BeforeA1b {
+					label L7: "1: R" {
+						layout [ size: 27, 17 ]
+					}
+				}
+				edge A20: A1a -> A2 {
+					label L8: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge A1b0_g0090: BeforeA1b -> A1b {
+					label L9: "/ O = 0" {
+						layout [ size: 46, 17 ]
+					}
+				}
+				edge BeforeA10: A1b -> BeforeA1 {
+					label L10: "1: L" {
+						layout [ size: 26, 17 ]
+					}
+				}
+				edge A30_g7408: A1b -> A3 {
+					label L11: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge BeforeA1b0_g5983: A2 -> BeforeA1b {
+					label L12: "R" {
+						layout [ size: 11, 17 ]
+					}
+				}
+				edge BeforeA10_g0453: A3 -> BeforeA1 {
+					label L13: "L" {
+						layout [ size: 10, 17 ]
+					}
+				}
+			}
+		}
+		edge Fork0: Init -> Fork
+	}
+}

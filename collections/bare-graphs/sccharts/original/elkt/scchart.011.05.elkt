@@ -1,0 +1,213 @@
+graph G1
+node Domelight {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node default {
+			layout [ size: 69, 34 ]
+		}
+		node openDoor {
+			layout [ size: 91, 34 ]
+		}
+		node closedDoor {
+			layout [ size: 102, 34 ]
+		}
+		node engineOpen {
+			layout [ size: 109, 34 ]
+		}
+		node engineClosed {
+			layout [ size: 120, 34 ]
+		}
+		node engine {
+			layout [ size: 69, 34 ]
+		}
+		node engineWarnOpen {
+			layout [ size: 144, 34 ]
+		}
+		node engineWarn {
+			layout [ size: 105, 34 ]
+		}
+		node engineWarnClosed {
+			layout [ size: 155, 34 ]
+		}
+		edge openDoor0: default -> openDoor {
+			label L1: "1: open & !engineStarted / light = true" {
+				layout [ size: 265, 17 ]
+			}
+		}
+		edge engine0: default -> engine {
+			label L2: "2: engineStarted & !open" {
+				layout [ size: 177, 17 ]
+			}
+		}
+		edge engineOpen0: default -> engineOpen {
+			label L3: "3: open & engineStarted / light = true" {
+				layout [ size: 261, 17 ]
+			}
+		}
+		edge closedDoor0: openDoor -> closedDoor {
+			label L4: "1: !open / seconds = 0" {
+				layout [ size: 154, 17 ]
+			}
+		}
+		edge engineOpen0_g9049: openDoor -> engineOpen {
+			label L5: "2: engineStarted" {
+				layout [ size: 118, 17 ]
+			}
+		}
+		edge closedDoor0_g5142: closedDoor -> closedDoor {
+			label L6: "1: second / seconds = seconds + 1" {
+				layout [ size: 243, 17 ]
+			}
+		}
+		edge openDoor0_g9818: closedDoor -> openDoor {
+			label L7: "2: open" {
+				layout [ size: 53, 17 ]
+			}
+		}
+		edge default0: closedDoor -> default {
+			label L8: "3: seconds >= 3 / light = false" {
+				layout [ size: 204, 17 ]
+			}
+		}
+		edge engineClosed0: closedDoor -> engineClosed {
+			label L9: "4: engineStarted" {
+				layout [ size: 118, 17 ]
+			}
+		}
+		edge engineClosed0_g6759: engineOpen -> engineClosed {
+			label L10: "1: engineStarted & !open / seconds = 0" {
+				layout [ size: 274, 17 ]
+			}
+		}
+		edge engineWarnOpen0: engineOpen -> engineWarnOpen {
+			label L11: "2: engineStarted & open & !seatbelt / warn = true; beeper = true" {
+				layout [ size: 449, 17 ]
+			}
+		}
+		edge openDoor0_g3608: engineOpen -> openDoor {
+			label L12: "3: !engineStarted" {
+				layout [ size: 122, 17 ]
+			}
+		}
+		edge engineClosed0_g9829: engineClosed -> engineClosed {
+			label L13: "1: engineStarted & second / seconds = seconds + 1" {
+				layout [ size: 363, 17 ]
+			}
+		}
+		edge closedDoor0_g1882: engineClosed -> closedDoor {
+			label L14: "2: !engineStarted" {
+				layout [ size: 122, 17 ]
+			}
+		}
+		edge engine0_g2356: engineClosed -> engine {
+			label L15: "3: seconds >= 3 / light = false" {
+				layout [ size: 204, 17 ]
+			}
+		}
+		edge engineWarn0: engine -> engineWarn {
+			label L16: "1: !seatbelt & !open / warn = true; beeper = true" {
+				layout [ size: 333, 17 ]
+			}
+		}
+		edge engine0_g8414: engine -> engine {
+			label L17: "2: seatbelt & !open / warn = false" {
+				layout [ size: 229, 17 ]
+			}
+		}
+		edge engineWarnOpen0_g7624: engine -> engineWarnOpen {
+			label L18: "3: !seatbelt & open / warn = true; beeper = true; light = true" {
+				layout [ size: 414, 17 ]
+			}
+		}
+		edge engineOpen0_g2225: engine -> engineOpen {
+			label L19: "4: seatbelt & open / light = true" {
+				layout [ size: 217, 17 ]
+			}
+		}
+		edge default0_g2939: engine -> default {
+			label L20: "5: !engineStarted & !open" {
+				layout [ size: 181, 17 ]
+			}
+		}
+		edge openDoor0_g1972: engine -> openDoor {
+			label L21: "6: !engineStarted & open" {
+				layout [ size: 177, 17 ]
+			}
+		}
+		edge engineWarnClosed0: engineWarnOpen -> engineWarnClosed {
+			label L22: "1: engineStarted & !seatbelt & !open" {
+				layout [ size: 257, 17 ]
+			}
+		}
+		edge engineOpen0_g1110: engineWarnOpen -> engineOpen {
+			label L23: "2: engineStarted & seatbelt & open / warn = false; beeper = false" {
+				layout [ size: 455, 17 ]
+			}
+		}
+		edge engineWarn0_g3104: engineWarnOpen -> engineWarn {
+			label L24: "3: engineStarted & seatbelt & !open / eseconds = 0" {
+				layout [ size: 359, 17 ]
+			}
+		}
+		edge openDoor0_g2316: engineWarnOpen -> openDoor {
+			label L25: "4: !engineStarted & open" {
+				layout [ size: 177, 17 ]
+			}
+		}
+		edge engineWarn0_g3802: engineWarn -> engineWarn {
+			label L26: "1: engineStarted & second / eseconds = eseconds + 1" {
+				layout [ size: 381, 17 ]
+			}
+		}
+		edge engine0_g0285: engineWarn -> engine {
+			label L27: "2: engineStarted & eseconds >= 3 / beeper = false" {
+				layout [ size: 353, 17 ]
+			}
+		}
+		edge engine1: engineWarn -> engine {
+			label L28: "3: engineStarted & seatbelt / warn = false; beeper = false" {
+				layout [ size: 400, 17 ]
+			}
+		}
+		edge engineWarnOpen0_g1273: engineWarn -> engineWarnOpen {
+			label L29: "4: engineStarted & !seatbelt & open" {
+				layout [ size: 253, 17 ]
+			}
+		}
+		edge engineOpen0_g2836: engineWarn -> engineOpen {
+			label L30: "5: engineStarted & seatbelt & open / beeper = false; warn = false; light = true" {
+				layout [ size: 540, 17 ]
+			}
+		}
+		edge default0_g9009: engineWarn -> default {
+			label L31: "6: !engineStarted & !open / beeper = false; warn = false" {
+				layout [ size: 387, 17 ]
+			}
+		}
+		edge openDoor0_g0045: engineWarn -> openDoor {
+			label L32: "7: !engineStarted & open / beeper = false; warn = false; light = true" {
+				layout [ size: 468, 17 ]
+			}
+		}
+		edge engineWarnClosed0_g9934: engineWarnClosed -> engineWarnClosed {
+			label L33: "1: second / seconds = seconds + 1" {
+				layout [ size: 243, 17 ]
+			}
+		}
+		edge engine0_g0621: engineWarnClosed -> engine {
+			label L34: "2: seconds >= 3 / beeper = false; light = false" {
+				layout [ size: 314, 17 ]
+			}
+		}
+		edge closedDoor0_g4319: engineWarnClosed -> closedDoor {
+			label L35: "3: !engineStarted" {
+				layout [ size: 122, 17 ]
+			}
+		}
+		edge engineClosed0_g8995: engineWarnClosed -> engineClosed {
+			label L36: "4: engineStarted & seatbelt" {
+				layout [ size: 193, 17 ]
+			}
+		}
+	}
+}

@@ -1,0 +1,72 @@
+graph G1
+node SCGTask {
+	algorithm: org.eclipse.elk.box
+	node Forking {
+		node Entry {
+			layout [ size: 59, 34 ]
+		}
+		node Mid {
+			algorithm: org.eclipse.elk.box
+			node A {
+				node EntryA {
+					layout [ size: 68, 34 ]
+				}
+				node ExitA {
+					layout [ size: 64, 40 ]
+				}
+				edge ExitA0: EntryA -> ExitA {
+					label L1: "/ I = true" {
+						layout [ size: 58, 17 ]
+					}
+				}
+			}
+			node B {
+				node EntryB {
+					layout [ size: 68, 34 ]
+				}
+				node Waiting {
+					layout [ size: 72, 34 ]
+				}
+				node ContinueB {
+					layout [ size: 96, 34 ]
+				}
+				node Continue2B {
+					layout [ size: 104, 34 ]
+				}
+				node Continue3B {
+					layout [ size: 104, 34 ]
+				}
+				node ExitB {
+					layout [ size: 64, 40 ]
+				}
+				edge Waiting0: EntryB -> Waiting
+				edge ContinueB0: Waiting -> ContinueB
+				edge Continue2B0: ContinueB -> Continue2B {
+					label L2: "1: I" {
+						layout [ size: 21, 17 ]
+					}
+				}
+				edge Waiting0_g7991: ContinueB -> Waiting {
+					label L3: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge Continue3B0: Continue2B -> Continue3B {
+					label L4: "/ O = true" {
+						layout [ size: 66, 17 ]
+					}
+				}
+				edge ExitB0: Continue3B -> ExitB {
+					label L5: "/ O = false" {
+						layout [ size: 71, 17 ]
+					}
+				}
+			}
+		}
+		node Exit {
+			layout [ size: 53, 40 ]
+		}
+		edge Mid0: Entry -> Mid
+		edge Exit0: Mid -> Exit
+	}
+}

@@ -1,0 +1,61 @@
+graph G1
+node BACKHOE {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node Stopped {
+			layout [ size: 81, 34 ]
+		}
+		node Extend {
+			layout [ size: 71, 34 ]
+		}
+		node Extended {
+			layout [ size: 89, 34 ]
+		}
+		node Retract {
+			layout [ size: 72, 34 ]
+		}
+		node Retracted {
+			layout [ size: 91, 34 ]
+		}
+		edge Extend0: Stopped -> Extend {
+			label L1: "1: EXTEND_BUTTON / LEGS_EXTEND = true; LEGS_STOP = false" {
+				layout [ size: 470, 17 ]
+			}
+		}
+		edge Retract0: Stopped -> Retract {
+			label L2: "2: RETRACT_BUTTON / LEGS_RETRACT = true; LEGS_STOP = false" {
+				layout [ size: 490, 17 ]
+			}
+		}
+		edge Extended0: Extend -> Extended {
+			label L3: "1: LEGS_OUT / LEGS_EXTEND = false; LEGS_STOP = true; DONE_LAMP = true" {
+				layout [ size: 564, 17 ]
+			}
+		}
+		edge Stopped0: Extend -> Stopped {
+			label L4: "2: STOP_BUTTON / LEGS_EXTEND = false; LEGS_STOP = true" {
+				layout [ size: 450, 17 ]
+			}
+		}
+		edge Retract0_g2965: Extended -> Retract {
+			label L5: "RETRACT_BUTTON / LEGS_RETRACT = true; LEGS_STOP = false; DONE_LAMP = false" {
+				layout [ size: 626, 17 ]
+			}
+		}
+		edge Retracted0: Retract -> Retracted {
+			label L6: "1: LEGS_IN / LEGS_RETRACT = false; LEGS_STOP = true" {
+				layout [ size: 409, 17 ]
+			}
+		}
+		edge Stopped0_g7397: Retract -> Stopped {
+			label L7: "2: STOP_BUTTON / LEGS_RETRACT = false; LEGS_STOP = true" {
+				layout [ size: 460, 17 ]
+			}
+		}
+		edge Extend0_g6452: Retracted -> Extend {
+			label L8: "EXTEND_BUTTON / LEGS_EXTEND = true; LEGS_STOP = false" {
+				layout [ size: 454, 17 ]
+			}
+		}
+	}
+}

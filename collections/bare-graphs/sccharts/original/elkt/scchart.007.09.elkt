@@ -1,0 +1,57 @@
+graph G1
+node legmode {
+	algorithm: org.eclipse.elk.box
+	node LegExtensionMaster2000 {
+		node init {
+			layout [ size: 42, 34 ]
+		}
+		node Waiting {
+			layout [ size: 72, 34 ]
+		}
+		node Extending {
+			layout [ size: 93, 34 ]
+		}
+		node Raising {
+			layout [ size: 74, 34 ]
+		}
+		node Done {
+			layout [ size: 64, 40 ]
+		}
+		edge Waiting0: init -> Waiting
+		edge Extending0: Waiting -> Extending {
+			label L1: "1: EXTEND_BUTTON == true / DONE_LAMP = false; LEGS_EXTEND = true; LEGS_STOP = false" {
+				layout [ size: 677, 17 ]
+			}
+		}
+		edge Raising0: Waiting -> Raising {
+			label L2: "2: RETRACT_BUTTON == true / DONE_LAMP = false; LEGS_RETRACT = true; LEGS_STOP = false" {
+				layout [ size: 697, 17 ]
+			}
+		}
+		edge Done0: Waiting -> Done {
+			label L3: "3: LEGS_OUT == true && EXTEND_BUTTON == true / DONE_LAMP = true; LEGS_STOP = true" {
+				layout [ size: 669, 17 ]
+			}
+		}
+		edge Waiting0_g7755: Extending -> Waiting {
+			label L4: "1: LEGS_OUT == true || STOP_BUTTON == true / LEGS_EXTEND = false; LEGS_STOP = true" {
+				layout [ size: 658, 17 ]
+			}
+		}
+		edge Raising0_g4701: Extending -> Raising {
+			label L5: "2: RETRACT_BUTTON == true / LEGS_EXTEND = false; LEGS_RETRACT = true" {
+				layout [ size: 565, 17 ]
+			}
+		}
+		edge Waiting0_g7732: Raising -> Waiting {
+			label L6: "1: LEGS_IN == true || STOP_BUTTON == true / LEGS_RETRACT = false; LEGS_STOP = true" {
+				layout [ size: 650, 17 ]
+			}
+		}
+		edge Extending0_g4142: Raising -> Extending {
+			label L7: "2: EXTEND_BUTTON == true / LEGS_RETRACT = false; LEGS_EXTEND = true" {
+				layout [ size: 555, 17 ]
+			}
+		}
+	}
+}

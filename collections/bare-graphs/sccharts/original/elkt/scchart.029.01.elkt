@@ -1,0 +1,241 @@
+graph G1
+node drive {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node setup {
+			layout [ size: 61, 34 ]
+		}
+		node drive_g6421 {
+			algorithm: org.eclipse.elk.box
+			node getRightToDark {
+				node touch {
+					layout [ size: 61, 34 ]
+				}
+				node findFirstDarkRight {
+					layout [ size: 150, 34 ]
+				}
+				node findLastRightToDark {
+					layout [ size: 167, 34 ]
+				}
+				edge findFirstDarkRight0: touch -> findFirstDarkRight {
+					label L2: "touchLeft / firstRightToDark = 0" {
+						layout [ size: 223, 17 ]
+					}
+				}
+				edge findLastRightToDark0: findFirstDarkRight -> findLastRightToDark {
+					label L3: "1: lightSensor <= notDark / firstRightToDark = `Motor.C.getTachoCount()`; lastRightToDark = firstRightToDark" {
+						layout [ size: 772, 17 ]
+					}
+				}
+				edge touch0: findFirstDarkRight -> touch {
+					label L4: "2: touchRight / rightToDark = 0" {
+						layout [ size: 216, 17 ]
+					}
+				}
+				edge findLastRightToDark0_g5319: findLastRightToDark -> findLastRightToDark {
+					label L5: "1: lightSensor <= notDark / lastRightToDark = `Motor.C.getTachoCount()`" {
+						layout [ size: 512, 17 ]
+					}
+				}
+				edge touch0_g2985: findLastRightToDark -> touch {
+					label L6: "2: touchRight / rightToDark = `Motor.C.getTachoCount()` - lastRightToDark" {
+						layout [ size: 524, 17 ]
+					}
+				}
+			}
+			node getLeftToDark {
+				node touch_g5539 {
+					layout [ size: 61, 34 ]
+				}
+				node findFirstDarkLeft {
+					layout [ size: 140, 34 ]
+				}
+				node findLastLeftToDark {
+					layout [ size: 157, 34 ]
+				}
+				edge findFirstDarkLeft0: touch_g5539 -> findFirstDarkLeft {
+					label L7: "touchRight / firstLeftToDark = 0" {
+						layout [ size: 223, 17 ]
+					}
+				}
+				edge findLastLeftToDark0: findFirstDarkLeft -> findLastLeftToDark {
+					label L8: "1: lightSensor <= notDark / firstLeftToDark = `Motor.C.getTachoCount()`; lastLeftToDark = firstLeftToDark" {
+						layout [ size: 742, 17 ]
+					}
+				}
+				edge touch0_g5623: findFirstDarkLeft -> touch_g5539 {
+					label L9: "2: touchLeft / leftToDark = 0" {
+						layout [ size: 196, 17 ]
+					}
+				}
+				edge findLastLeftToDark0_g2430: findLastLeftToDark -> findLastLeftToDark {
+					label L10: "1: lightSensor <= notDark / lastLeftToDark = `Motor.C.getTachoCount()`" {
+						layout [ size: 502, 17 ]
+					}
+				}
+				edge touch0_g9072: findLastLeftToDark -> touch_g5539 {
+					label L11: "2: touchLeft / leftToDark = `Motor.C.getTachoCount()` - lastLeftToDark" {
+						layout [ size: 494, 17 ]
+					}
+				}
+			}
+			node setMotor {
+				node setRight {
+					layout [ size: 80, 34 ]
+				}
+				node setLeft {
+					layout [ size: 70, 34 ]
+				}
+				edge setLeft0: setRight -> setLeft {
+					label L12: "1: rightToDark <= 65 / `Motor.B.setSpeed(25 + rightToDark * 5)`" {
+						layout [ size: 441, 17 ]
+					}
+				}
+				edge setLeft1: setRight -> setLeft {
+					label L13: "2: / `Motor.B.setSpeed(250)`" {
+						layout [ size: 196, 17 ]
+					}
+				}
+				edge setRight0: setLeft -> setRight {
+					label L14: "1: leftToDark <= 65 / `Motor.A.setSpeed(25 + leftToDark * 5)`" {
+						layout [ size: 419, 17 ]
+					}
+				}
+				edge setRight1: setLeft -> setRight {
+					label L15: "2: / `Motor.A.setSpeed(250)`" {
+						layout [ size: 194, 17 ]
+					}
+				}
+			}
+			node Right {
+				node forward {
+					layout [ size: 75, 34 ]
+				}
+				node stop {
+					layout [ size: 52, 34 ]
+				}
+				node backward {
+					layout [ size: 88, 34 ]
+				}
+				edge stop0: forward -> stop {
+					label L16: "touchRight && lightSensor <= notDark / `Motor.B.stop();`" {
+						layout [ size: 399, 17 ]
+					}
+				}
+				edge forward0: stop -> forward {
+					label L17: "1: touchLeft && lightSensor <= notDark / `Motor.B.forward();`" {
+						layout [ size: 428, 17 ]
+					}
+				}
+				edge backward0: stop -> backward {
+					label L18: "2: touchLeft && lightSensor >= notDark / `Motor.B.backward();`" {
+						layout [ size: 441, 17 ]
+					}
+				}
+				edge forward0_g4479: backward -> forward {
+					label L19: "touchRight && lightSensor >= notDark / `Motor.B.forward();`" {
+						layout [ size: 422, 17 ]
+					}
+				}
+			}
+			node Left {
+				node forward_g9924 {
+					layout [ size: 75, 34 ]
+				}
+				node stop_g7657 {
+					layout [ size: 52, 34 ]
+				}
+				node backward_g0082 {
+					layout [ size: 88, 34 ]
+				}
+				edge stop0_g8709: forward_g9924 -> stop_g7657 {
+					label L20: "touchLeft && lightSensor <= notDark / `Motor.A.stop();`" {
+						layout [ size: 387, 17 ]
+					}
+				}
+				edge forward0_g8610: stop_g7657 -> forward_g9924 {
+					label L21: "1: touchRight && lightSensor <= notDark / `Motor.A.forward();`" {
+						layout [ size: 436, 17 ]
+					}
+				}
+				edge backward0_g4261: stop_g7657 -> backward_g0082 {
+					label L22: "2: touchRight && lightSensor >= notDark / `Motor.A.backward();`" {
+						layout [ size: 449, 17 ]
+					}
+				}
+				edge forward0_g6250: backward_g0082 -> forward_g9924 {
+					label L23: "touchLeft && lightSensor >= notDark / `Motor.A.forward();`" {
+						layout [ size: 410, 17 ]
+					}
+				}
+			}
+			node light {
+				node ^start {
+					layout [ size: 52, 34 ]
+				}
+				node getDarkR {
+					layout [ size: 87, 34 ]
+				}
+				node getDarkL {
+					layout [ size: 86, 34 ]
+				}
+				node dead {
+					layout [ size: 56, 34 ]
+				}
+				node realyOk {
+					layout [ size: 75, 34 ]
+				}
+				edge getDarkR0: ^start -> getDarkR {
+					label L24: "1: touchRight" {
+						layout [ size: 94, 17 ]
+					}
+				}
+				edge getDarkL0: ^start -> getDarkL {
+					label L25: "2: touchLeft" {
+						layout [ size: 84, 17 ]
+					}
+				}
+				edge start0: getDarkR -> ^start {
+					label L26: "1: lightSensor <= notDark" {
+						layout [ size: 181, 17 ]
+					}
+				}
+				edge dead0: getDarkR -> dead {
+					label L27: "2: touchLeft / notDark = dark + 12; counter = 0; `System.out.println(\"Set\")`" {
+						layout [ size: 515, 17 ]
+					}
+				}
+				edge start0_g0375: getDarkL -> ^start {
+					label L28: "1: lightSensor <= notDark" {
+						layout [ size: 181, 17 ]
+					}
+				}
+				edge dead0_g9512: getDarkL -> dead {
+					label L29: "2: touchRight / notDark = dark + 12; counter = 0; `System.out.println(\"Set\")`" {
+						layout [ size: 525, 17 ]
+					}
+				}
+				edge realyOk0: dead -> realyOk {
+					label L30: "1: counter >= 10000" {
+						layout [ size: 138, 17 ]
+					}
+				}
+				edge dead0_g8163: dead -> dead {
+					label L31: "2: / counter = counter + 1" {
+						layout [ size: 177, 17 ]
+					}
+				}
+				edge start0_g1240: realyOk -> ^start {
+					label L32: "lightSensor + 5 <= notDark / notDark = dark + 8; `System.out.println(\"SetBack\")`" {
+						layout [ size: 559, 17 ]
+					}
+				}
+			}
+		}
+		edge drive0: setup -> drive_g6421 {
+			label L1: "/ dark = lightSensor; notDark = dark + 7; `System.out.println(\"Dark: \" + dark);Motor.A.setSpeed(50); Motor.B.setSpeed(50); Motor.C.setSpeed(600); Motor.A.forward(); Motor.B.forward(); Motor.C.forward();`" {
+				layout [ size: 1420, 17 ]
+			}
+		}
+	}
+}

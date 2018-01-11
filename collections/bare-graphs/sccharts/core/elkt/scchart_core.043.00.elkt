@@ -1,0 +1,343 @@
+graph G1
+node CarController {
+	algorithm: org.eclipse.elk.box
+	node Main {
+		node Init {
+			algorithm: org.eclipse.elk.box
+			node HandleDoors {
+				node __te_S {
+					layout [ size: 69, 34 ]
+				}
+				node __te_S1 {
+					layout [ size: 77, 34 ]
+				}
+				node __te_S2 {
+					layout [ size: 77, 34 ]
+				}
+				node __te_S3 {
+					layout [ size: 77, 34 ]
+				}
+				node __te_S4 {
+					layout [ size: 77, 34 ]
+				}
+				node ClosedDoors {
+					layout [ size: 114, 34 ]
+				}
+				node __sd_Depth {
+					layout [ size: 105, 34 ]
+				}
+				node OpenDoor {
+					layout [ size: 94, 34 ]
+				}
+				node __sd_Depth1 {
+					layout [ size: 113, 34 ]
+				}
+				node Waiting {
+					layout [ size: 72, 34 ]
+				}
+				node __sd_Depth2 {
+					layout [ size: 113, 34 ]
+				}
+				node __sd_S3 {
+					layout [ size: 80, 34 ]
+				}
+				node __sd_S4 {
+					layout [ size: 80, 34 ]
+				}
+				edge OpenDoor0: __te_S -> OpenDoor {
+					label L10: "/ domeLight = true" {
+						layout [ size: 129, 17 ]
+					}
+				}
+				edge Waiting0: __te_S1 -> Waiting {
+					label L11: "/ counter1 = 4" {
+						layout [ size: 97, 17 ]
+					}
+				}
+				edge OpenDoor0_g1279: __te_S2 -> OpenDoor {
+					label L12: "/ domeLight = true" {
+						layout [ size: 129, 17 ]
+					}
+				}
+				edge ClosedDoors0: __te_S3 -> ClosedDoors {
+					label L13: "/ domeLight = false" {
+						layout [ size: 134, 17 ]
+					}
+				}
+				edge Waiting0_g5503: __te_S4 -> Waiting {
+					label L14: "/ counter1 = counter1 - 1" {
+						layout [ size: 173, 17 ]
+					}
+				}
+				edge __sd_Depth0: ClosedDoors -> __sd_Depth
+				edge __te_S0: __sd_Depth -> __te_S {
+					label L15: "1: doorOpen" {
+						layout [ size: 89, 17 ]
+					}
+				}
+				edge ClosedDoors0_g7526: __sd_Depth -> ClosedDoors {
+					label L16: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __sd_Depth10: OpenDoor -> __sd_Depth1
+				edge __te_S10: __sd_Depth1 -> __te_S1 {
+					label L17: "1: !doorOpen" {
+						layout [ size: 93, 17 ]
+					}
+				}
+				edge OpenDoor0_g1784: __sd_Depth1 -> OpenDoor {
+					label L18: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __sd_Depth20: Waiting -> __sd_Depth2
+				edge __te_S20: __sd_Depth2 -> __te_S2 {
+					label L19: "1: doorOpen && counter1 > 0" {
+						layout [ size: 207, 17 ]
+					}
+				}
+				edge __sd_S30: __sd_Depth2 -> __sd_S3 {
+					label L20: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __te_S30: __sd_S3 -> __te_S3 {
+					label L21: "1: counter1 == 0 && !doorOpen" {
+						layout [ size: 220, 17 ]
+					}
+				}
+				edge __sd_S40: __sd_S3 -> __sd_S4 {
+					label L22: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __te_S40: __sd_S4 -> __te_S4 {
+					label L23: "1: second && counter1 > 0 && !doorOpen" {
+						layout [ size: 293, 17 ]
+					}
+				}
+				edge Waiting0_g3719: __sd_S4 -> Waiting {
+					label L24: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+			}
+			node HandleSeatBelts {
+				node __te_S5 {
+					layout [ size: 77, 34 ]
+				}
+				node __te_S6 {
+					layout [ size: 77, 34 ]
+				}
+				node __te_S7 {
+					layout [ size: 77, 34 ]
+				}
+				node __te_S8 {
+					layout [ size: 77, 34 ]
+				}
+				node __te_S9 {
+					layout [ size: 77, 34 ]
+				}
+				node __te_S10_g4468 {
+					layout [ size: 85, 34 ]
+				}
+				node __te_S11 {
+					layout [ size: 84, 34 ]
+				}
+				node __te_S12 {
+					layout [ size: 85, 34 ]
+				}
+				node SeatBeltOkay {
+					layout [ size: 118, 34 ]
+				}
+				node __sd_Depth3 {
+					layout [ size: 113, 34 ]
+				}
+				node WarningWithSound {
+					layout [ size: 155, 34 ]
+				}
+				node __sd_Depth4 {
+					layout [ size: 113, 34 ]
+				}
+				node __sd_S7 {
+					layout [ size: 80, 34 ]
+				}
+				node __sd_S8 {
+					layout [ size: 80, 34 ]
+				}
+				node WarningWithoutSound {
+					layout [ size: 178, 34 ]
+				}
+				node __sd_Depth5 {
+					layout [ size: 113, 34 ]
+				}
+				edge __te_S60: __te_S5 -> __te_S6 {
+					label L25: "/ warningLight = true" {
+						layout [ size: 146, 17 ]
+					}
+				}
+				edge __te_S70: __te_S6 -> __te_S7 {
+					label L26: "/ warningSound = true" {
+						layout [ size: 156, 17 ]
+					}
+				}
+				edge WarningWithSound0: __te_S7 -> WarningWithSound {
+					label L27: "/ counter2 = 4" {
+						layout [ size: 97, 17 ]
+					}
+				}
+				edge __te_S90: __te_S8 -> __te_S9 {
+					label L28: "/ warningLight = false" {
+						layout [ size: 151, 17 ]
+					}
+				}
+				edge SeatBeltOkay0: __te_S9 -> SeatBeltOkay {
+					label L29: "/ warningSound = false" {
+						layout [ size: 161, 17 ]
+					}
+				}
+				edge WarningWithSound0_g9619: __te_S10_g4468 -> WarningWithSound {
+					label L30: "/ counter2 = counter2 - 1" {
+						layout [ size: 173, 17 ]
+					}
+				}
+				edge WarningWithoutSound0: __te_S11 -> WarningWithoutSound {
+					label L31: "/ warningSound = false" {
+						layout [ size: 161, 17 ]
+					}
+				}
+				edge SeatBeltOkay0_g0040: __te_S12 -> SeatBeltOkay {
+					label L32: "/ warningLight = false" {
+						layout [ size: 151, 17 ]
+					}
+				}
+				edge __sd_Depth30: SeatBeltOkay -> __sd_Depth3
+				edge __te_S50: __sd_Depth3 -> __te_S5 {
+					label L33: "1: engineOn && !seatBeltBuckled" {
+						layout [ size: 238, 17 ]
+					}
+				}
+				edge SeatBeltOkay0_g3411: __sd_Depth3 -> SeatBeltOkay {
+					label L34: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __sd_Depth40: WarningWithSound -> __sd_Depth4
+				edge __te_S80: __sd_Depth4 -> __te_S8 {
+					label L35: "1: !engineOn || seatBeltBuckled" {
+						layout [ size: 224, 17 ]
+					}
+				}
+				edge __sd_S70: __sd_Depth4 -> __sd_S7 {
+					label L36: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __te_S100: __sd_S7 -> __te_S10_g4468 {
+					label L37: "1: second && engineOn && !seatBeltBuckled && counter2 > 0" {
+						layout [ size: 438, 17 ]
+					}
+				}
+				edge __sd_S80: __sd_S7 -> __sd_S8 {
+					label L38: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __te_S110: __sd_S8 -> __te_S11 {
+					label L39: "1: engineOn && !seatBeltBuckled && counter2 == 0" {
+						layout [ size: 365, 17 ]
+					}
+				}
+				edge WarningWithSound0_g6718: __sd_S8 -> WarningWithSound {
+					label L40: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __sd_Depth50: WarningWithoutSound -> __sd_Depth5
+				edge __te_S120: __sd_Depth5 -> __te_S12 {
+					label L41: "1: !engineOn || seatBeltBuckled" {
+						layout [ size: 224, 17 ]
+					}
+				}
+				edge WarningWithoutSound0_g8486: __sd_Depth5 -> WarningWithoutSound {
+					label L42: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+			}
+		}
+		node __EA_Init {
+			layout [ size: 85, 34 ]
+		}
+		node __EA_C {
+			layout [ size: 74, 34 ]
+		}
+		node __EA_C1 {
+			layout [ size: 83, 34 ]
+		}
+		node __EA_C2 {
+			layout [ size: 83, 34 ]
+		}
+		node __EA_C3 {
+			layout [ size: 83, 34 ]
+		}
+		node __EA_C4 {
+			layout [ size: 83, 34 ]
+		}
+		node __EA_C5 {
+			layout [ size: 83, 34 ]
+		}
+		node __EA_C6 {
+			layout [ size: 83, 34 ]
+		}
+		node __EA_C7 {
+			layout [ size: 83, 34 ]
+		}
+		edge __EA_C0: __EA_Init -> __EA_C {
+			label L1: "/ second = false" {
+				layout [ size: 111, 17 ]
+			}
+		}
+		edge __EA_C10: __EA_C -> __EA_C1 {
+			label L2: "/ engineOn = false" {
+				layout [ size: 129, 17 ]
+			}
+		}
+		edge __EA_C20: __EA_C1 -> __EA_C2 {
+			label L3: "/ seatBeltBuckled = false" {
+				layout [ size: 176, 17 ]
+			}
+		}
+		edge __EA_C30: __EA_C2 -> __EA_C3 {
+			label L4: "/ doorOpen = false" {
+				layout [ size: 131, 17 ]
+			}
+		}
+		edge __EA_C40: __EA_C3 -> __EA_C4 {
+			label L5: "/ domeLight = false" {
+				layout [ size: 134, 17 ]
+			}
+		}
+		edge __EA_C50: __EA_C4 -> __EA_C5 {
+			label L6: "/ warningLight = false" {
+				layout [ size: 151, 17 ]
+			}
+		}
+		edge __EA_C60: __EA_C5 -> __EA_C6 {
+			label L7: "/ warningSound = false" {
+				layout [ size: 161, 17 ]
+			}
+		}
+		edge __EA_C70: __EA_C6 -> __EA_C7 {
+			label L8: "/ counter1 = 0" {
+				layout [ size: 97, 17 ]
+			}
+		}
+		edge Init0: __EA_C7 -> Init {
+			label L9: "/ counter2 = 0" {
+				layout [ size: 97, 17 ]
+			}
+		}
+	}
+}

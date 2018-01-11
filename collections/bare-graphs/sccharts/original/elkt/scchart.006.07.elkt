@@ -1,0 +1,38 @@
+graph G1
+node RetractBoom {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node Retract {
+			layout [ size: 72, 34 ]
+		}
+		node Retracting {
+			layout [ size: 95, 34 ]
+		}
+		node Paused {
+			layout [ size: 74, 34 ]
+		}
+		node Retracted {
+			layout [ size: 97, 40 ]
+		}
+		edge Retracting0: Retract -> Retracting {
+			label L1: "/ BOOM_PULL = true" {
+				layout [ size: 149, 17 ]
+			}
+		}
+		edge Paused0: Retracting -> Paused {
+			label L2: "1: PAUSE / BOOM_PULL = false" {
+				layout [ size: 223, 17 ]
+			}
+		}
+		edge Retracted0: Retracting -> Retracted {
+			label L3: "2: BOOM_IN / BOOM_PULL = false" {
+				layout [ size: 245, 17 ]
+			}
+		}
+		edge Retracting0_g7605: Paused -> Retracting {
+			label L4: "!PAUSE / BOOM_PULL = true" {
+				layout [ size: 206, 17 ]
+			}
+		}
+	}
+}

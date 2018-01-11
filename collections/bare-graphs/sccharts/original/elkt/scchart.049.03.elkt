@@ -1,0 +1,382 @@
+graph G1
+node decode {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node wait {
+			layout [ size: 48, 34 ]
+		}
+		node working {
+			algorithm: org.eclipse.elk.box
+			node N2 {
+				node Pre {
+					algorithm: org.eclipse.elk.box
+					node N3 {
+						node Init {
+							layout [ size: 42, 34 ]
+						}
+						node setWhite {
+							layout [ size: 82, 34 ]
+						}
+						node first {
+							layout [ size: 48, 34 ]
+						}
+						node second {
+							layout [ size: 73, 34 ]
+						}
+						node third {
+							layout [ size: 54, 34 ]
+						}
+						node four {
+							layout [ size: 55, 40 ]
+						}
+						edge setWhite0: Init -> setWhite {
+							label L6: "/ light = sensor - 4" {
+								layout [ size: 127, 17 ]
+							}
+						}
+						edge first0: setWhite -> first {
+							label L7: "sensor <= light - 10 / dark = sensor + 4" {
+								layout [ size: 270, 17 ]
+							}
+						}
+						edge second0: first -> second {
+							label L8: "sensor >= light" {
+								layout [ size: 106, 17 ]
+							}
+						}
+						edge third0: second -> third {
+							label L9: "sensor <= dark" {
+								layout [ size: 107, 17 ]
+							}
+						}
+						edge four0: third -> four {
+							label L10: "sensor >= light" {
+								layout [ size: 106, 17 ]
+							}
+						}
+					}
+				}
+				node read {
+					algorithm: org.eclipse.elk.box
+					node N4 {
+						node Init_g6748 {
+							layout [ size: 42, 34 ]
+						}
+						node getRotation {
+							layout [ size: 104, 34 ]
+						}
+						node threeLight {
+							layout [ size: 94, 34 ]
+						}
+						node threeLightTwoDark {
+							layout [ size: 157, 34 ]
+						}
+						node threeLightOneDark {
+							layout [ size: 158, 34 ]
+						}
+						node twoLight {
+							layout [ size: 81, 34 ]
+						}
+						node twoLightTwoDark {
+							layout [ size: 144, 34 ]
+						}
+						node twoLightOneDark {
+							layout [ size: 145, 34 ]
+						}
+						node oneLight {
+							layout [ size: 83, 34 ]
+						}
+						node oneLightFourDark {
+							layout [ size: 150, 34 ]
+						}
+						node oneLightThreeDark {
+							layout [ size: 160, 34 ]
+						}
+						node oneLightTwoDark {
+							layout [ size: 146, 34 ]
+						}
+						node oneLightTwoDarkThreeLight {
+							layout [ size: 224, 34 ]
+						}
+						node oneLightTwoDarkOneLight {
+							layout [ size: 211, 34 ]
+						}
+						node oneLightOneDark {
+							layout [ size: 147, 34 ]
+						}
+						node oneLightOneDarkThreeLight {
+							layout [ size: 225, 34 ]
+						}
+						node oneLightOneDarkOneLight {
+							layout [ size: 212, 34 ]
+						}
+						node oneLightOneDarkOneLightFourDark {
+							layout [ size: 285, 40 ]
+						}
+						node oneLightOneDarkOneLightOneDark {
+							layout [ size: 276, 34 ]
+						}
+						node endState {
+							layout [ size: 90, 40 ]
+						}
+						node checkRestLight {
+							layout [ size: 131, 34 ]
+						}
+						node checkRestDark {
+							layout [ size: 135, 40 ]
+						}
+						edge getRotation0: Init_g6748 -> getRotation {
+							label L11: "/ rotation = motorRotation" {
+								layout [ size: 182, 17 ]
+							}
+						}
+						edge threeLight0: getRotation -> threeLight {
+							label L12: "1: motorRotation - rotation >= three && sensor <= dark / rotation = motorRotation" {
+								layout [ size: 571, 17 ]
+							}
+						}
+						edge twoLight0: getRotation -> twoLight {
+							label L13: "2: motorRotation - rotation >= two && sensor <= dark / rotation = motorRotation" {
+								layout [ size: 558, 17 ]
+							}
+						}
+						edge oneLight0: getRotation -> oneLight {
+							label L14: "3: sensor <= dark / rotation = motorRotation" {
+								layout [ size: 308, 17 ]
+							}
+						}
+						edge threeLightTwoDark0: threeLight -> threeLightTwoDark {
+							label L15: "1: motorRotation - rotation >= two && sensor >= light" {
+								layout [ size: 372, 17 ]
+							}
+						}
+						edge threeLightOneDark0: threeLight -> threeLightOneDark {
+							label L16: "2: sensor >= light" {
+								layout [ size: 122, 17 ]
+							}
+						}
+						edge checkRestLight0: threeLightTwoDark -> checkRestLight {
+							label L17: "sensor <= dark / value = value + 0" {
+								layout [ size: 239, 17 ]
+							}
+						}
+						edge checkRestLight0_g2360: threeLightOneDark -> checkRestLight {
+							label L18: "sensor <= dark / value = value + 9" {
+								layout [ size: 239, 17 ]
+							}
+						}
+						edge twoLightTwoDark0: twoLight -> twoLightTwoDark {
+							label L19: "1: motorRotation - rotation >= two && sensor >= light" {
+								layout [ size: 372, 17 ]
+							}
+						}
+						edge twoLightOneDark0: twoLight -> twoLightOneDark {
+							label L20: "2: sensor >= light" {
+								layout [ size: 122, 17 ]
+							}
+						}
+						edge checkRestLight0_g0498: twoLightTwoDark -> checkRestLight {
+							label L21: "sensor <= dark / value = value + 1" {
+								layout [ size: 239, 17 ]
+							}
+						}
+						edge checkRestLight0_g9560: twoLightOneDark -> checkRestLight {
+							label L22: "sensor <= dark / value = value + 2" {
+								layout [ size: 239, 17 ]
+							}
+						}
+						edge oneLightFourDark0: oneLight -> oneLightFourDark {
+							label L23: "1: motorRotation - rotation >= four && sensor >= light / rotation = motorRotation" {
+								layout [ size: 562, 17 ]
+							}
+						}
+						edge oneLightThreeDark0: oneLight -> oneLightThreeDark {
+							label L24: "2: motorRotation - rotation >= three && sensor >= light / rotation = motorRotation" {
+								layout [ size: 571, 17 ]
+							}
+						}
+						edge oneLightTwoDark0: oneLight -> oneLightTwoDark {
+							label L25: "3: motorRotation - rotation >= two && sensor >= light / rotation = motorRotation" {
+								layout [ size: 558, 17 ]
+							}
+						}
+						edge oneLightOneDark0: oneLight -> oneLightOneDark {
+							label L26: "4: sensor >= light / rotation = motorRotation" {
+								layout [ size: 308, 17 ]
+							}
+						}
+						edge checkRestLight0_g3471: oneLightFourDark -> checkRestLight {
+							label L27: "sensor <= dark / value = value + 3" {
+								layout [ size: 239, 17 ]
+							}
+						}
+						edge checkRestLight0_g9059: oneLightThreeDark -> checkRestLight {
+							label L28: "sensor <= dark / value = value + 7" {
+								layout [ size: 239, 17 ]
+							}
+						}
+						edge oneLightTwoDarkThreeLight0: oneLightTwoDark -> oneLightTwoDarkThreeLight {
+							label L29: "1: motorRotation - rotation >= three && sensor <= dark" {
+								layout [ size: 386, 17 ]
+							}
+						}
+						edge oneLightTwoDarkOneLight0: oneLightTwoDark -> oneLightTwoDarkOneLight {
+							label L30: "2: sensor <= dark" {
+								layout [ size: 123, 17 ]
+							}
+						}
+						edge checkRestDark0: oneLightTwoDarkThreeLight -> checkRestDark {
+							label L31: "sensor >= light / value = value + 5" {
+								layout [ size: 239, 17 ]
+							}
+						}
+						edge checkRestDark0_g6505: oneLightTwoDarkOneLight -> checkRestDark {
+							label L32: "sensor >= light / value = value + 8" {
+								layout [ size: 239, 17 ]
+							}
+						}
+						edge oneLightOneDarkThreeLight0: oneLightOneDark -> oneLightOneDarkThreeLight {
+							label L33: "1: motorRotation - rotation >= three && sensor <= dark" {
+								layout [ size: 386, 17 ]
+							}
+						}
+						edge oneLightOneDarkOneLight0: oneLightOneDark -> oneLightOneDarkOneLight {
+							label L34: "2: sensor <= dark / rotation = motorRotation" {
+								layout [ size: 308, 17 ]
+							}
+						}
+						edge checkRestDark0_g9155: oneLightOneDarkThreeLight -> checkRestDark {
+							label L35: "sensor >= light / value = value + 4" {
+								layout [ size: 239, 17 ]
+							}
+						}
+						edge oneLightOneDarkOneLightFourDark0: oneLightOneDarkOneLight -> oneLightOneDarkOneLightFourDark {
+							label L36: "1: motorRotation - rotation >= four && sensor >= light / value = value + 6" {
+								layout [ size: 509, 17 ]
+							}
+						}
+						edge oneLightOneDarkOneLightOneDark0: oneLightOneDarkOneLight -> oneLightOneDarkOneLightOneDark {
+							label L37: "2: sensor >= light / terminate = true" {
+								layout [ size: 247, 17 ]
+							}
+						}
+						edge endState0: oneLightOneDarkOneLightOneDark -> endState
+						edge checkRestDark0_g5079: checkRestLight -> checkRestDark {
+							label L38: "sensor >= light" {
+								layout [ size: 106, 17 ]
+							}
+						}
+					}
+				}
+				node checkValue {
+					algorithm: org.eclipse.elk.box
+					node N5 {
+						node init {
+							layout [ size: 42, 34 ]
+						}
+						node getParityDigit {
+							layout [ size: 116, 34 ]
+						}
+						node copy {
+							layout [ size: 55, 34 ]
+						}
+						node add {
+							layout [ size: 47, 34 ]
+						}
+						node nextInt {
+							layout [ size: 69, 34 ]
+						}
+						node goodEnd {
+							layout [ size: 85, 34 ]
+						}
+						node badEnd {
+							layout [ size: 75, 34 ]
+						}
+						node signedValue {
+							layout [ size: 106, 34 ]
+						}
+						node ready {
+							layout [ size: 67, 40 ]
+						}
+						edge getParityDigit0: init -> getParityDigit {
+							label L39: "/ parityDigit = value % 10" {
+								layout [ size: 174, 17 ]
+							}
+						}
+						edge copy0: getParityDigit -> copy {
+							label L40: "/ value = value / 10" {
+								layout [ size: 132, 17 ]
+							}
+						}
+						edge add0: copy -> add {
+							label L41: "/ copyValue = value" {
+								layout [ size: 135, 17 ]
+							}
+						}
+						edge nextInt0: add -> nextInt {
+							label L42: "1: copyValue != 0 / digitSum = digitSum + copyValue % 10" {
+								layout [ size: 395, 17 ]
+							}
+						}
+						edge goodEnd0: add -> goodEnd {
+							label L43: "2: 9 - digitSum % 10 == parityDigit / valid = true" {
+								layout [ size: 326, 17 ]
+							}
+						}
+						edge badEnd0: add -> badEnd {
+							label L44: "3: / valid = false" {
+								layout [ size: 109, 17 ]
+							}
+						}
+						edge add0_g3498: nextInt -> add {
+							label L45: "/ copyValue = copyValue / 10" {
+								layout [ size: 196, 17 ]
+							}
+						}
+						edge signedValue0: goodEnd -> signedValue
+						edge signedValue0_g1322: badEnd -> signedValue
+						edge ready0: signedValue -> ready {
+							label L46: "1: value <= 500" {
+								layout [ size: 106, 17 ]
+							}
+						}
+						edge ready1: signedValue -> ready {
+							label L47: "2: / value = value - 1000" {
+								layout [ size: 165, 17 ]
+							}
+						}
+					}
+				}
+				node ready_g6701 {
+					layout [ size: 67, 40 ]
+				}
+				edge read0: Pre -> read {
+					label L2: "/ `System.out.println(\"L:\" + light + \" D:\" + dark)`" {
+						layout [ size: 329, 17 ]
+					}
+				}
+				edge read0_g9722: read -> read {
+					label L3: "1: terminate == false / value = value * 10" {
+						layout [ size: 281, 17 ]
+					}
+				}
+				edge checkValue0: read -> checkValue {
+					label L4: "2: terminate == true / value = value / 10; `System.out.println(\"Digits:\" + value)`" {
+						layout [ size: 544, 17 ]
+					}
+				}
+				edge ready0_g3024: checkValue -> ready_g6701 {
+					label L5: "/ `System.out.println(value + \" ist \" + valid); Motor.A.stop(); Motor.B.stop();`" {
+						layout [ size: 522, 17 ]
+					}
+				}
+			}
+		}
+		edge working0: wait -> working {
+			label L1: "start == true / `Motor.A.forward();`; checkRotation = motorRotation" {
+				layout [ size: 464, 17 ]
+			}
+		}
+		edge wait0: working -> wait
+	}
+}

@@ -1,0 +1,264 @@
+graph G1
+node Barcode3 {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node Off {
+			layout [ size: 42, 34 ]
+		}
+		node SetUp {
+			algorithm: org.eclipse.elk.box
+			node setTimer {
+				node ^null {
+					layout [ size: 47, 34 ]
+				}
+				node dark1 {
+					layout [ size: 60, 34 ]
+				}
+				node light {
+					layout [ size: 51, 34 ]
+				}
+				node dark2 {
+					layout [ size: 60, 34 ]
+				}
+				node done {
+					layout [ size: 62, 40 ]
+				}
+				edge null0: ^null -> ^null {
+					label L9: "1: lightSensor >= high" {
+						layout [ size: 156, 17 ]
+					}
+				}
+				edge dark10: ^null -> dark1 {
+					label L10: "2: lightSensor <= low / `System.out.println(\"Black1: \" + lightSensor)`" {
+						layout [ size: 476, 17 ]
+					}
+				}
+				edge dark10_g1016: dark1 -> dark1 {
+					label L11: "1: lightSensor <= low" {
+						layout [ size: 149, 17 ]
+					}
+				}
+				edge light0: dark1 -> light {
+					label L12: "2: lightSensor >= high / `System.out.println(\"White0: \" + lightSensor)`; time = time + 1" {
+						layout [ size: 595, 17 ]
+					}
+				}
+				edge light0_g1203: light -> light {
+					label L13: "1: lightSensor >= high && timer / time = time + 1" {
+						layout [ size: 336, 17 ]
+					}
+				}
+				edge dark20: light -> dark2 {
+					label L14: "2: lightSensor <= low && timer / `System.out.println(\"Black2: \" + lightSensor)`" {
+						layout [ size: 542, 17 ]
+					}
+				}
+				edge dark20_g6782: dark2 -> dark2 {
+					label L15: "1: lightSensor <= low" {
+						layout [ size: 149, 17 ]
+					}
+				}
+				edge done0: dark2 -> done {
+					label L16: "2: lightSensor >= high" {
+						layout [ size: 156, 17 ]
+					}
+				}
+			}
+		}
+		node Run {
+			algorithm: org.eclipse.elk.box
+			node count {
+				node light_g5579 {
+					layout [ size: 51, 34 ]
+				}
+				node dark {
+					layout [ size: 52, 34 ]
+				}
+				node done_g2099 {
+					layout [ size: 703, 71 ]
+				}
+				node error {
+					layout [ size: 695, 56 ]
+				}
+				edge done0_g7821: light_g5579 -> done_g2099 {
+					label L17: "1: index >= 3 && bit < 0" {
+						layout [ size: 163, 17 ]
+					}
+				}
+				edge dark0: light_g5579 -> dark {
+					label L18: "2: bit >= 0 && lightSensor <= low && timer / counter = time; bit = bit - 1; `number[index] = (number[index] << 1) | 1`; `System.out.println(\"Black, result:\" + number[index])`" {
+						layout [ size: 1179, 17 ]
+					}
+				}
+				edge light0_g3904: light_g5579 -> light_g5579 {
+					label L19: "3: bit >= 0 && lightSensor >= high && counter >= 0 && timer / counter = counter - 1" {
+						layout [ size: 583, 17 ]
+					}
+				}
+				edge light1: light_g5579 -> light_g5579 {
+					label L20: "4: bit >= 0 && lightSensor >= high && counter < 0 && timer / counter = time; bit = bit - 1; `number[index] = (number[index] << 1)`; `System.out.println(\"White, result:\" + number[index])`" {
+						layout [ size: 1277, 17 ]
+					}
+				}
+				edge error0: light_g5579 -> error {
+					label L21: "5: bit < 0 && timer" {
+						layout [ size: 125, 17 ]
+					}
+				}
+				edge done0_g4577: dark -> done_g2099 {
+					label L22: "1: index >= 3 && bit < 0" {
+						layout [ size: 163, 17 ]
+					}
+				}
+				edge error0_g6685: dark -> error {
+					label L23: "2: bit < 0 && lightSensor <= low && counter < 0 && timer" {
+						layout [ size: 397, 17 ]
+					}
+				}
+				edge dark0_g3832: dark -> dark {
+					label L24: "3: bit >= 0 && lightSensor <= low && counter >= 0 && timer / counter = counter - 1" {
+						layout [ size: 576, 17 ]
+					}
+				}
+				edge dark1_g6090: dark -> dark {
+					label L25: "4: bit >= 0 && lightSensor <= low && counter < 0 && timer / counter = time; bit = bit - 1; `number[index] = (number[index] << 1) | 1`; `System.out.println(\"Black, result:\" + number[index])`" {
+						layout [ size: 1289, 17 ]
+					}
+				}
+				edge light0_g3914: dark -> light_g5579 {
+					label L26: "5: bit < 0 && lightSensor >= high / index = index + 1; counter = time; bit = 5; `number[index] = (number[index] << 1)`; `System.out.println(\"White, result:\" + number[index])`" {
+						layout [ size: 1189, 17 ]
+					}
+				}
+				edge light1_g7788: dark -> light_g5579 {
+					label L27: "6: bit > 0 && lightSensor >= high && timer / counter = time; bit = bit - 1; `number[index] = (number[index] << 1)`; `System.out.println(\"White, result:\" + number[index])`" {
+						layout [ size: 1158, 17 ]
+					}
+				}
+			}
+		}
+		node Valid {
+			algorithm: org.eclipse.elk.box
+			node createResult {
+				node check {
+					layout [ size: 63, 34 ]
+				}
+				node print {
+					layout [ size: 59, 40 ]
+				}
+				edge print0: check -> print {
+					label L28: "1: result < 500 / `System.out.println(\"Zahl: \" + result)`" {
+						layout [ size: 367, 17 ]
+					}
+				}
+				edge print1: check -> print {
+					label L29: "2: result >= 500 / result = result - 1000; `System.out.println(\"Zahl: \" + result)`" {
+						layout [ size: 528, 17 ]
+					}
+				}
+			}
+		}
+		node MoveToEnd {
+			layout [ size: 130, 50 ]
+		}
+		node Turn {
+			algorithm: org.eclipse.elk.box
+			node rotate {
+				node init {
+					layout [ size: 42, 34 ]
+				}
+				node turnLeft {
+					layout [ size: 227, 50 ]
+				}
+				node turnRight {
+					layout [ size: 227, 50 ]
+				}
+				node endTurn {
+					layout [ size: 87, 40 ]
+				}
+				edge turnLeft0: init -> turnLeft {
+					label L30: "1: result >= 0" {
+						layout [ size: 92, 17 ]
+					}
+				}
+				edge turnRight0: init -> turnRight {
+					label L31: "2: result < 0" {
+						layout [ size: 83, 17 ]
+					}
+				}
+				edge endTurn0: init -> endTurn {
+					label L32: "3: result == 0" {
+						layout [ size: 92, 17 ]
+					}
+				}
+				edge turnLeft0_g7380: turnLeft -> turnLeft {
+					label L33: "1: counter > 0 / counter -= 1" {
+						layout [ size: 194, 17 ]
+					}
+				}
+				edge endTurn0_g0430: turnLeft -> endTurn {
+					label L34: "2: counter <= 0 / motor1 = 0; motor2 = 0" {
+						layout [ size: 274, 17 ]
+					}
+				}
+				edge turnRight0_g0994: turnRight -> turnRight {
+					label L35: "1: counter > 0 / counter -= 1" {
+						layout [ size: 194, 17 ]
+					}
+				}
+				edge endTurn0_g4772: turnRight -> endTurn {
+					label L36: "2: counter <= 0 / motor1 = 0; motor2 = 0" {
+						layout [ size: 274, 17 ]
+					}
+				}
+			}
+		}
+		node Invalid {
+			layout [ size: 275, 71 ]
+		}
+		node End {
+			layout [ size: 210, 56 ]
+		}
+		edge SetUp0: Off -> SetUp {
+			label L1: "ignition == true" {
+				layout [ size: 108, 17 ]
+			}
+		}
+		edge Run0: SetUp -> Run {
+			label L2: "/ counter = time; bit = bit - 1; `number[index] = (number[index] << 1)`; `System.out.println(\"White, result:\" + number[index])`" {
+				layout [ size: 860, 17 ]
+			}
+		}
+		edge Valid0: Run -> Valid {
+			label L3: "1: success && code[number[3]] == 9 - (code[number[0]] + code[number[1]] + code[number[2]]) % 10" {
+				layout [ size: 701, 17 ]
+			}
+		}
+		edge Invalid0: Run -> Invalid {
+			label L4: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge MoveToEnd0: Valid -> MoveToEnd {
+			label L5: "1: barcode < 2 / counter = time * 17" {
+				layout [ size: 244, 17 ]
+			}
+		}
+		edge End0: Valid -> End {
+			label L6: "2: barcode >= 2" {
+				layout [ size: 109, 17 ]
+			}
+		}
+		edge MoveToEnd0_g7062: MoveToEnd -> MoveToEnd {
+			label L7: "1: counter > 0 && timer / counter -= 1" {
+				layout [ size: 260, 17 ]
+			}
+		}
+		edge Turn0: MoveToEnd -> Turn {
+			label L8: "2: counter <= 0 / motor1 = 0; motor2 = 0" {
+				layout [ size: 274, 17 ]
+			}
+		}
+		edge SetUp0_g8563: Turn -> SetUp
+	}
+}

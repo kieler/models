@@ -1,0 +1,76 @@
+graph G1
+node Domelight {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node EngineOff {
+			layout [ size: 92, 34 ]
+		}
+		node EngineOn {
+			algorithm: org.eclipse.elk.box
+			node SeatLight {
+				node SeatOff {
+					layout [ size: 74, 34 ]
+				}
+				node SeatOn {
+					layout [ size: 74, 34 ]
+				}
+				edge SeatOn0: SeatOff -> SeatOn {
+					label L5: "seatbelt == true / blight = true" {
+						layout [ size: 210, 17 ]
+					}
+				}
+				edge SeatOff0: SeatOn -> SeatOff {
+					label L6: "seatbelt == false / blight = false" {
+						layout [ size: 220, 17 ]
+					}
+				}
+			}
+			node DoorLight {
+				node DoorOff {
+					layout [ size: 77, 34 ]
+				}
+				node DoorOn {
+					layout [ size: 77, 34 ]
+				}
+				edge DoorOn0: DoorOff -> DoorOn {
+					label L7: "door == true / counter = 4; dlight = true" {
+						layout [ size: 274, 17 ]
+					}
+				}
+				edge DoorOn0_g3795: DoorOn -> DoorOn {
+					label L8: "1: second == true && counter > 0 / dlight = true; counter = counter - 1" {
+						layout [ size: 488, 17 ]
+					}
+				}
+				edge DoorOff0: DoorOn -> DoorOff {
+					label L9: "2: door == false && counter <= 0 / dlight = false" {
+						layout [ size: 331, 17 ]
+					}
+				}
+			}
+		}
+		node waitDoor {
+			layout [ size: 83, 34 ]
+		}
+		edge EngineOn0: EngineOff -> EngineOn {
+			label L1: "engine == true" {
+				layout [ size: 104, 17 ]
+			}
+		}
+		edge waitDoor0: EngineOn -> waitDoor {
+			label L2: "engine == false / blight = false" {
+				layout [ size: 212, 17 ]
+			}
+		}
+		edge EngineOff0: waitDoor -> EngineOff {
+			label L3: "1: counter <= 0 / dlight = false" {
+				layout [ size: 208, 17 ]
+			}
+		}
+		edge waitDoor0_g3226: waitDoor -> waitDoor {
+			label L4: "2: second == true && counter > 0 / counter = counter - 1" {
+				layout [ size: 394, 17 ]
+			}
+		}
+	}
+}

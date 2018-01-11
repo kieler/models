@@ -1,0 +1,81 @@
+graph G1
+node problem {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node mainloop {
+			algorithm: org.eclipse.elk.box
+			node Init {
+				node S11 {
+					layout [ size: 34, 34 ]
+				}
+				node S12a {
+					layout [ size: 34, 34 ]
+				}
+				node S12b {
+					layout [ size: 34, 34 ]
+				}
+				node S13 {
+					layout [ size: 40, 40 ]
+				}
+				edge S12a0: S11 -> S12a {
+					label L1: "/ S = false" {
+						layout [ size: 69, 17 ]
+					}
+				}
+				edge S130: S12a -> S13 {
+					label L2: "1: _Term" {
+						layout [ size: 62, 17 ]
+					}
+				}
+				edge S12b0: S12a -> S12b {
+					label L3: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge S110: S12b -> S11
+			}
+			node Main {
+				node S21a {
+					layout [ size: 34, 34 ]
+				}
+				node S21b {
+					layout [ size: 34, 34 ]
+				}
+				node S22 {
+					layout [ size: 34, 34 ]
+				}
+				node S23a {
+					layout [ size: 34, 34 ]
+				}
+				node S23b {
+					layout [ size: 34, 34 ]
+				}
+				node S24 {
+					layout [ size: 40, 40 ]
+				}
+				edge S21b0: S21a -> S21b {
+					label L4: "/ _Term = false" {
+						layout [ size: 103, 17 ]
+					}
+				}
+				edge S220: S21b -> S22 {
+					label L5: "/ O = S" {
+						layout [ size: 48, 17 ]
+					}
+				}
+				edge S23a0: S22 -> S23a
+				edge S23b0: S23a -> S23b {
+					label L6: "/ S = true" {
+						layout [ size: 64, 17 ]
+					}
+				}
+				edge S240: S23b -> S24 {
+					label L7: "/ _Term = true" {
+						layout [ size: 98, 17 ]
+					}
+				}
+			}
+		}
+		edge mainloop0: mainloop -> mainloop
+	}
+}

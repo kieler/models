@@ -1,0 +1,288 @@
+graph G1
+node Barcode {
+	algorithm: org.eclipse.elk.box
+	node Main {
+		node read {
+			algorithm: org.eclipse.elk.box
+			node N1 {
+				node init {
+					layout [ size: 42, 34 ]
+				}
+				node startRead {
+					algorithm: org.eclipse.elk.box
+					node __EA_Entry {
+						node __EA_Init {
+							layout [ size: 85, 34 ]
+						}
+						node __EA_Done {
+							layout [ size: 107, 40 ]
+						}
+						edge __EA_Done0: __EA_Init -> __EA_Done {
+							label L33: "/ `arr[cnt] = light`" {
+								layout [ size: 118, 17 ]
+							}
+						}
+					}
+				}
+				node endRead {
+					layout [ size: 91, 40 ]
+				}
+				node __EA_Init_g3024 {
+					layout [ size: 85, 34 ]
+				}
+				node __EA_Exit {
+					layout [ size: 90, 34 ]
+				}
+				node __te_S {
+					layout [ size: 69, 34 ]
+				}
+				node __sd_Pause3 {
+					layout [ size: 114, 34 ]
+				}
+				node __sd_Depth3 {
+					layout [ size: 113, 34 ]
+				}
+				edge startRead0: init -> startRead
+				edge __EA_Exit0: startRead -> __EA_Exit
+				edge init0: __EA_Init_g3024 -> init {
+					label L27: "/ _Barcode_local_cnt = 0" {
+						layout [ size: 173, 17 ]
+					}
+				}
+				edge endRead0: __EA_Exit -> endRead {
+					label L28: "1: _Barcode_local_cnt > 26" {
+						layout [ size: 189, 17 ]
+					}
+				}
+				edge __sd_Pause30: __EA_Exit -> __sd_Pause3 {
+					label L29: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge startRead0_g4979: __te_S -> startRead {
+					label L30: "/ _Barcode_local_cnt = _Barcode_local_cnt + 1" {
+						layout [ size: 329, 17 ]
+					}
+				}
+				edge __sd_Depth30: __sd_Pause3 -> __sd_Depth3
+				edge __te_S0: __sd_Depth3 -> __te_S {
+					label L31: "1: _Barcode_local_cnt < 27" {
+						layout [ size: 189, 17 ]
+					}
+				}
+				edge __EA_Exit0_g7618: __sd_Depth3 -> __EA_Exit {
+					label L32: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+			}
+		}
+		node endDelimiter5 {
+			layout [ size: 126, 40 ]
+		}
+		node fail {
+			layout [ size: 48, 40 ]
+		}
+		node __EA_C {
+			layout [ size: 74, 34 ]
+		}
+		node __EA_C1 {
+			layout [ size: 83, 34 ]
+		}
+		node init_g8056 {
+			layout [ size: 42, 34 ]
+		}
+		node __sd_Depth {
+			layout [ size: 105, 34 ]
+		}
+		node startDelimiter1 {
+			layout [ size: 125, 34 ]
+		}
+		node __sd_Depth1 {
+			layout [ size: 113, 34 ]
+		}
+		node startDelimiter2 {
+			layout [ size: 125, 34 ]
+		}
+		node __sd_Depth2 {
+			layout [ size: 113, 34 ]
+		}
+		node __sd_S3 {
+			layout [ size: 80, 34 ]
+		}
+		node endDelimiter1 {
+			layout [ size: 120, 34 ]
+		}
+		node __sd_Depth4 {
+			layout [ size: 113, 34 ]
+		}
+		node __sd_S7 {
+			layout [ size: 80, 34 ]
+		}
+		node endDelimiter2 {
+			layout [ size: 120, 34 ]
+		}
+		node __sd_Depth5 {
+			layout [ size: 113, 34 ]
+		}
+		node __sd_S9 {
+			layout [ size: 80, 34 ]
+		}
+		node endDelimiter3 {
+			layout [ size: 120, 34 ]
+		}
+		node __sd_Depth6 {
+			layout [ size: 113, 34 ]
+		}
+		node __sd_S11 {
+			layout [ size: 87, 34 ]
+		}
+		node endDelimiter4 {
+			layout [ size: 120, 34 ]
+		}
+		node __sd_Depth7 {
+			layout [ size: 113, 34 ]
+		}
+		node __sd_S13 {
+			layout [ size: 88, 34 ]
+		}
+		edge endDelimiter10: read -> endDelimiter1
+		edge __EA_C10: __EA_C -> __EA_C1 {
+			label L1: "/ `System.out.println(\"Ungültiger Barcode\")`" {
+				layout [ size: 309, 17 ]
+			}
+		}
+		edge fail0: __EA_C1 -> fail {
+			label L2: "/ fail = true" {
+				layout [ size: 75, 17 ]
+			}
+		}
+		edge __sd_Depth0: init_g8056 -> __sd_Depth
+		edge startDelimiter10: __sd_Depth -> startDelimiter1 {
+			label L3: "1: light == false" {
+				layout [ size: 107, 17 ]
+			}
+		}
+		edge init0_g0852: __sd_Depth -> init_g8056 {
+			label L4: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge __sd_Depth10: startDelimiter1 -> __sd_Depth1
+		edge startDelimiter20: __sd_Depth1 -> startDelimiter2 {
+			label L5: "1: light" {
+				layout [ size: 47, 17 ]
+			}
+		}
+		edge startDelimiter10_g7281: __sd_Depth1 -> startDelimiter1 {
+			label L6: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge __sd_Depth20: startDelimiter2 -> __sd_Depth2
+		edge read0: __sd_Depth2 -> read {
+			label L7: "1: light == false" {
+				layout [ size: 107, 17 ]
+			}
+		}
+		edge __sd_S30: __sd_Depth2 -> __sd_S3 {
+			label L8: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge init0_g0953: __sd_S3 -> init_g8056 {
+			label L9: "1: light" {
+				layout [ size: 47, 17 ]
+			}
+		}
+		edge startDelimiter20_g8350: __sd_S3 -> startDelimiter2 {
+			label L10: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge __sd_Depth40: endDelimiter1 -> __sd_Depth4
+		edge endDelimiter20: __sd_Depth4 -> endDelimiter2 {
+			label L11: "1: light" {
+				layout [ size: 47, 17 ]
+			}
+		}
+		edge __sd_S70: __sd_Depth4 -> __sd_S7 {
+			label L12: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge __EA_C0: __sd_S7 -> __EA_C {
+			label L13: "1: light == false" {
+				layout [ size: 107, 17 ]
+			}
+		}
+		edge endDelimiter10_g1638: __sd_S7 -> endDelimiter1 {
+			label L14: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge __sd_Depth50: endDelimiter2 -> __sd_Depth5
+		edge endDelimiter30: __sd_Depth5 -> endDelimiter3 {
+			label L15: "1: light == false" {
+				layout [ size: 107, 17 ]
+			}
+		}
+		edge __sd_S90: __sd_Depth5 -> __sd_S9 {
+			label L16: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge __EA_C0_g3544: __sd_S9 -> __EA_C {
+			label L17: "1: light" {
+				layout [ size: 47, 17 ]
+			}
+		}
+		edge endDelimiter20_g7447: __sd_S9 -> endDelimiter2 {
+			label L18: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge __sd_Depth60: endDelimiter3 -> __sd_Depth6
+		edge endDelimiter40: __sd_Depth6 -> endDelimiter4 {
+			label L19: "1: light" {
+				layout [ size: 47, 17 ]
+			}
+		}
+		edge __sd_S110: __sd_Depth6 -> __sd_S11 {
+			label L20: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge __EA_C0_g2279: __sd_S11 -> __EA_C {
+			label L21: "1: light == false" {
+				layout [ size: 107, 17 ]
+			}
+		}
+		edge endDelimiter30_g3730: __sd_S11 -> endDelimiter3 {
+			label L22: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge __sd_Depth70: endDelimiter4 -> __sd_Depth7
+		edge endDelimiter50: __sd_Depth7 -> endDelimiter5 {
+			label L23: "1: light == false" {
+				layout [ size: 107, 17 ]
+			}
+		}
+		edge __sd_S130: __sd_Depth7 -> __sd_S13 {
+			label L24: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge __EA_C0_g2612: __sd_S13 -> __EA_C {
+			label L25: "1: light" {
+				layout [ size: 47, 17 ]
+			}
+		}
+		edge endDelimiter40_g9100: __sd_S13 -> endDelimiter4 {
+			label L26: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+	}
+}

@@ -1,0 +1,85 @@
+graph G1
+node elevator {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node Init {
+			layout [ size: 42, 34 ]
+		}
+		node Up {
+			layout [ size: 41, 34 ]
+		}
+		node Down {
+			layout [ size: 61, 34 ]
+		}
+		edge Up0: Init -> Up {
+			label L1: "1: ButtonUp && !suspended / Move(1)" {
+				layout [ size: 267, 17 ]
+			}
+		}
+		edge Down0: Init -> Down {
+			label L2: "2: ButtonDown && !suspended / Move(-1)" {
+				layout [ size: 292, 17 ]
+			}
+		}
+		edge Init0: Up -> Init {
+			label L3: "IsUp && !suspended / Move(0)" {
+				layout [ size: 215, 17 ]
+			}
+		}
+		edge Init0_g0792: Down -> Init {
+			label L4: "IsDown && !suspended / Move(0)" {
+				layout [ size: 235, 17 ]
+			}
+		}
+	}
+	node N2 {
+		node Init_g7765 {
+			layout [ size: 42, 34 ]
+		}
+		node Alarm0 {
+			layout [ size: 34, 34 ]
+		}
+		node Alarm1 {
+			layout [ size: 34, 34 ]
+		}
+		node Alarm2 {
+			layout [ size: 34, 34 ]
+		}
+		node Alarm3 {
+			layout [ size: 34, 34 ]
+		}
+		node Alarm4 {
+			layout [ size: 34, 34 ]
+		}
+		edge Alarm00: Init_g7765 -> Alarm0 {
+			label L5: "ButtonAlarm / AlarmLamp(true); suspended = true; oldMove = Move; Move(0)" {
+				layout [ size: 540, 17 ]
+			}
+		}
+		edge Alarm10: Alarm0 -> Alarm1 {
+			label L6: "Second / AlarmLamp(false)" {
+				layout [ size: 186, 17 ]
+			}
+		}
+		edge Alarm20: Alarm1 -> Alarm2 {
+			label L7: "Second / AlarmLamp(true)" {
+				layout [ size: 181, 17 ]
+			}
+		}
+		edge Alarm30: Alarm2 -> Alarm3 {
+			label L8: "Second / AlarmLamp(false)" {
+				layout [ size: 186, 17 ]
+			}
+		}
+		edge Alarm40: Alarm3 -> Alarm4 {
+			label L9: "Second / AlarmLamp(true)" {
+				layout [ size: 181, 17 ]
+			}
+		}
+		edge Init0_g9783: Alarm4 -> Init_g7765 {
+			label L10: "Second / AlarmLamp(false); suspended = false; Move(oldMove)" {
+				layout [ size: 444, 17 ]
+			}
+		}
+	}
+}

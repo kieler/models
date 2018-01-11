@@ -1,0 +1,152 @@
+graph G1
+node name {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node Init {
+			layout [ size: 42, 34 ]
+		}
+		node Raising_Stick {
+			layout [ size: 117, 34 ]
+		}
+		node Raising_Bucket {
+			layout [ size: 131, 34 ]
+		}
+		node Await_Retract {
+			layout [ size: 117, 34 ]
+		}
+		node Retract_Bucket_And_Stick {
+			algorithm: org.eclipse.elk.box
+			node N2 {
+				node Retract_Bucket {
+					layout [ size: 130, 34 ]
+				}
+				node Bucket_Retracted {
+					layout [ size: 155, 40 ]
+				}
+				edge Bucket_Retracted0: Retract_Bucket -> Bucket_Retracted {
+					label L7: "1: BUCKET_IN / BUCKET_PULL = false" {
+						layout [ size: 277, 17 ]
+					}
+				}
+				edge Retract_Bucket0: Retract_Bucket -> Retract_Bucket {
+					label L8: "2: / BUCKET_PULL = true" {
+						layout [ size: 181, 17 ]
+					}
+				}
+			}
+			node N3 {
+				node Retract_Stick {
+					layout [ size: 116, 34 ]
+				}
+				node Stick_Retracted {
+					layout [ size: 140, 40 ]
+				}
+				edge Stick_Retracted0: Retract_Stick -> Stick_Retracted {
+					label L9: "1: STICK_IN / STICK_PULL = false" {
+						layout [ size: 241, 17 ]
+					}
+				}
+				edge Retract_Stick0: Retract_Stick -> Retract_Stick {
+					label L10: "2: / STICK_PULL = true" {
+						layout [ size: 163, 17 ]
+					}
+				}
+			}
+		}
+		edge Raising_Stick0: Init -> Raising_Stick {
+			label L1: "EXTEND_BUTTON / STICK_PUSH = true" {
+				layout [ size: 289, 17 ]
+			}
+		}
+		edge Raising_Bucket0: Raising_Stick -> Raising_Bucket {
+			label L2: "1: STICK_OUT / BUCKET_PUSH = true; STICK_PUSH = false" {
+				layout [ size: 430, 17 ]
+			}
+		}
+		edge Raising_Stick0_g8053: Raising_Stick -> Raising_Stick {
+			label L3: "2: / STICK_PUSH = true" {
+				layout [ size: 166, 17 ]
+			}
+		}
+		edge Await_Retract0: Raising_Bucket -> Await_Retract {
+			label L4: "1: BUCKET_OUT / BUCKET_PUSH = false" {
+				layout [ size: 298, 17 ]
+			}
+		}
+		edge Raising_Bucket0_g8332: Raising_Bucket -> Raising_Bucket {
+			label L5: "2: / BUCKET_PUSH = true" {
+				layout [ size: 184, 17 ]
+			}
+		}
+		edge Retract_Bucket_And_Stick0: Await_Retract -> Retract_Bucket_And_Stick {
+			label L6: "RETRACT_BUTTON" {
+				layout [ size: 145, 17 ]
+			}
+		}
+		edge Init0: Retract_Bucket_And_Stick -> Init
+	}
+	node N4 {
+		node Compute_Stationary {
+			layout [ size: 165, 34 ]
+		}
+		edge Compute_Stationary0: Compute_Stationary -> Compute_Stationary {
+			label L11: "/ moving = BUCKET_PUSH || BUCKET_PULL || STICK_PUSH || STICK_PULL" {
+				layout [ size: 540, 17 ]
+			}
+		}
+	}
+	node N5 {
+		node Alarm_Lamp_Off {
+			layout [ size: 135, 34 ]
+		}
+		node Turning_Alarm_Lamp_On {
+			layout [ size: 198, 34 ]
+		}
+		node Alarm_Lamp_On {
+			layout [ size: 135, 34 ]
+		}
+		node Turning_Alarm_Lamp_Off {
+			layout [ size: 198, 34 ]
+		}
+		edge Turning_Alarm_Lamp_On0: Alarm_Lamp_Off -> Turning_Alarm_Lamp_On {
+			label L12: "SECOND && moving / ALARM_LAMP = true" {
+				layout [ size: 304, 17 ]
+			}
+		}
+		edge Alarm_Lamp_Off0: Turning_Alarm_Lamp_On -> Alarm_Lamp_Off {
+			label L13: "1: !moving" {
+				layout [ size: 73, 17 ]
+			}
+		}
+		edge Alarm_Lamp_On0: Turning_Alarm_Lamp_On -> Alarm_Lamp_On {
+			label L14: "2: SECOND && moving / ALARM_LAMP = true" {
+				layout [ size: 320, 17 ]
+			}
+		}
+		edge Turning_Alarm_Lamp_Off0: Alarm_Lamp_On -> Turning_Alarm_Lamp_Off {
+			label L15: "SECOND || !moving / ALARM_LAMP = false" {
+				layout [ size: 299, 17 ]
+			}
+		}
+		edge Alarm_Lamp_On0_g8842: Turning_Alarm_Lamp_Off -> Alarm_Lamp_On {
+			label L16: "1: moving" {
+				layout [ size: 69, 17 ]
+			}
+		}
+		edge Alarm_Lamp_Off0_g3174: Turning_Alarm_Lamp_Off -> Alarm_Lamp_Off {
+			label L17: "2: SECOND && !moving / ALARM_LAMP = false" {
+				layout [ size: 329, 17 ]
+			}
+		}
+	}
+	node N6 {
+		node Done_Lamp {
+			layout [ size: 105, 34 ]
+		}
+		edge Done_Lamp0: Done_Lamp -> Done_Lamp {
+			label L18: "/ DONE_LAMP = !moving" {
+				layout [ size: 175, 17 ]
+			}
+		}
+	}
+}

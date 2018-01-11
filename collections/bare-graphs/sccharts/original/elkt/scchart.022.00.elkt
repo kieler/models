@@ -1,0 +1,123 @@
+graph G1
+node Auto {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node HandleCar {
+			algorithm: org.eclipse.elk.box
+			node Domelight {
+				node off {
+					layout [ size: 39, 34 ]
+				}
+				node on {
+					layout [ size: 171, 50 ]
+				}
+				node pending {
+					algorithm: org.eclipse.elk.box
+					node N2 {
+						node w1 {
+							layout [ size: 40, 34 ]
+						}
+						node w2 {
+							layout [ size: 40, 34 ]
+						}
+						node w3 {
+							layout [ size: 40, 34 ]
+						}
+						node w4 {
+							layout [ size: 46, 40 ]
+						}
+						edge w20: w1 -> w2 {
+							label L4: "second" {
+								layout [ size: 53, 17 ]
+							}
+						}
+						edge w30: w2 -> w3 {
+							label L5: "second" {
+								layout [ size: 53, 17 ]
+							}
+						}
+						edge w40: w3 -> w4 {
+							label L6: "second" {
+								layout [ size: 53, 17 ]
+							}
+						}
+					}
+				}
+				node done {
+					layout [ size: 62, 40 ]
+				}
+				edge on0: off -> on {
+					label L1: "door_open" {
+						layout [ size: 78, 17 ]
+					}
+				}
+				edge pending0: on -> pending {
+					label L2: "!door_open" {
+						layout [ size: 82, 17 ]
+					}
+				}
+				edge done0: pending -> done {
+					label L3: "/ `Motor.A.stop();`" {
+						layout [ size: 121, 17 ]
+					}
+				}
+			}
+			node Seatbelt {
+				node locked {
+					layout [ size: 68, 34 ]
+				}
+				node warning {
+					algorithm: org.eclipse.elk.box
+					node N3 {
+						node wait {
+							layout [ size: 48, 34 ]
+						}
+						node beep {
+							layout [ size: 150, 50 ]
+						}
+						node done_g8761 {
+							layout [ size: 62, 40 ]
+						}
+						edge done0_g8876: wait -> done_g8761 {
+							label L11: "1: wCnt == 2" {
+								layout [ size: 87, 17 ]
+							}
+						}
+						edge beep0: wait -> beep {
+							label L12: "2: second / wCnt = wCnt + 1" {
+								layout [ size: 195, 17 ]
+							}
+						}
+						edge wait0: beep -> wait
+					}
+				}
+				node unlocked {
+					layout [ size: 171, 50 ]
+				}
+				node done_g0994 {
+					layout [ size: 62, 40 ]
+				}
+				edge warning0: locked -> warning {
+					label L7: "!seatbelt_locked" {
+						layout [ size: 117, 17 ]
+					}
+				}
+				edge done0_g4993: warning -> done_g0994 {
+					label L8: "1: seatbelt_locked / `Motor.B.stop();`" {
+						layout [ size: 255, 17 ]
+					}
+				}
+				edge unlocked0: warning -> unlocked {
+					label L9: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge done0_g4009: unlocked -> done_g0994 {
+					label L10: "seatbelt_locked / `Motor.B.stop();`" {
+						layout [ size: 239, 17 ]
+					}
+				}
+			}
+		}
+	}
+}

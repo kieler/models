@@ -1,0 +1,74 @@
+graph G1
+node backhoe1B {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node init {
+			layout [ size: 42, 34 ]
+		}
+		node legsIn {
+			layout [ size: 64, 34 ]
+		}
+		node legsMiddle {
+			layout [ size: 98, 34 ]
+		}
+		node extend {
+			layout [ size: 70, 34 ]
+		}
+		node retract {
+			layout [ size: 67, 34 ]
+		}
+		node legsOut {
+			layout [ size: 179, 65 ]
+		}
+		edge legsIn0: init -> legsIn {
+			label L1: "1: LEGS_IN" {
+				layout [ size: 80, 17 ]
+			}
+		}
+		edge legsMiddle0: init -> legsMiddle {
+			label L2: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge extend0: legsIn -> extend {
+			label L3: "EXTEND_BUTTON / LEGS_EXTEND = true" {
+				layout [ size: 304, 17 ]
+			}
+		}
+		edge extend0_g3519: legsMiddle -> extend {
+			label L4: "1: EXTEND_BUTTON && !RETRACT_BUTTON / LEGS_EXTEND = true" {
+				layout [ size: 499, 17 ]
+			}
+		}
+		edge retract0: legsMiddle -> retract {
+			label L5: "2: RETRACT_BUTTON && !EXTEND_BUTTON / LEGS_RETRACT = true" {
+				layout [ size: 509, 17 ]
+			}
+		}
+		edge legsMiddle0_g8364: extend -> legsMiddle {
+			label L6: "1: STOP_BUTTON / LEGS_EXTEND = false" {
+				layout [ size: 305, 17 ]
+			}
+		}
+		edge legsOut0: extend -> legsOut {
+			label L7: "2: LEGS_OUT / LEGS_EXTEND = false" {
+				layout [ size: 272, 17 ]
+			}
+		}
+		edge legsMiddle0_g4611: retract -> legsMiddle {
+			label L8: "1: STOP_BUTTON / LEGS_RETRACT = false" {
+				layout [ size: 315, 17 ]
+			}
+		}
+		edge legsIn0_g7379: retract -> legsIn {
+			label L9: "2: LEGS_IN / LEGS_RETRACT = false" {
+				layout [ size: 264, 17 ]
+			}
+		}
+		edge retract0_g5500: legsOut -> retract {
+			label L10: "RETRACT_BUTTON / LEGS_RETRACT = true" {
+				layout [ size: 324, 17 ]
+			}
+		}
+	}
+}

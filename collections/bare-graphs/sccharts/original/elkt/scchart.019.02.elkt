@@ -1,0 +1,134 @@
+graph G1
+node ulzfgxoo {
+	algorithm: org.eclipse.elk.box
+	node DomelightController {
+		node init {
+			layout [ size: 42, 34 ]
+		}
+		node DoorsClosedLightOff {
+			layout [ size: 171, 34 ]
+		}
+		node DoorsOpen {
+			layout [ size: 103, 34 ]
+		}
+		node DoorsClosedLightOn {
+			layout [ size: 171, 34 ]
+		}
+		edge DoorsClosedLightOff0: init -> DoorsClosedLightOff {
+			label L1: "/ domelight = false; domelightResetClock = false" {
+				layout [ size: 340, 17 ]
+			}
+		}
+		edge DoorsOpen0: DoorsClosedLightOff -> DoorsOpen {
+			label L2: "!door1 | !door2 / domelight = true" {
+				layout [ size: 230, 17 ]
+			}
+		}
+		edge DoorsClosedLightOn0: DoorsOpen -> DoorsClosedLightOn {
+			label L3: "door1 & door2 / domelightResetClock = true" {
+				layout [ size: 311, 17 ]
+			}
+		}
+		edge DoorsClosedLightOff0_g9457: DoorsClosedLightOn -> DoorsClosedLightOff {
+			label L4: "1: domelightClock / domelight = false" {
+				layout [ size: 259, 17 ]
+			}
+		}
+		edge DoorsOpen0_g3172: DoorsClosedLightOn -> DoorsOpen {
+			label L5: "2: !door1 | !door2" {
+				layout [ size: 119, 17 ]
+			}
+		}
+	}
+	node SeatbeltController {
+		node init_g6420 {
+			layout [ size: 42, 34 ]
+		}
+		node Ok {
+			layout [ size: 41, 34 ]
+		}
+		node BothWarning {
+			layout [ size: 112, 34 ]
+		}
+		node onlyLight {
+			layout [ size: 85, 34 ]
+		}
+		edge Ok0: init_g6420 -> Ok {
+			label L6: "/ warninglight = false; beeper = false; seatbeltResetClock = false" {
+				layout [ size: 454, 17 ]
+			}
+		}
+		edge BothWarning0: Ok -> BothWarning {
+			label L7: "seatbelt & running / warninglight = true; beeper = true; seatbeltResetClock = true" {
+				layout [ size: 574, 17 ]
+			}
+		}
+		edge Ok0_g5667: BothWarning -> Ok {
+			label L8: "1: !seatbelt | !running / warninglight = false; beeper = false" {
+				layout [ size: 408, 17 ]
+			}
+		}
+		edge onlyLight0: BothWarning -> onlyLight {
+			label L9: "2: seatbeltClock / beeper = false" {
+				layout [ size: 227, 17 ]
+			}
+		}
+		edge Ok0_g7759: onlyLight -> Ok {
+			label L10: "!seatbelt | !running / warninglight = false" {
+				layout [ size: 282, 17 ]
+			}
+		}
+	}
+	node IgnitionControl {
+		node init_g7814 {
+			layout [ size: 42, 34 ]
+		}
+		node Off {
+			layout [ size: 42, 34 ]
+		}
+		node OffButtonPressed {
+			layout [ size: 150, 34 ]
+		}
+		node OnButtonPressed {
+			layout [ size: 149, 34 ]
+		}
+		node On {
+			layout [ size: 42, 34 ]
+		}
+		edge Off0: init_g7814 -> Off {
+			label L11: "/ running = false" {
+				layout [ size: 114, 17 ]
+			}
+		}
+		edge OnButtonPressed0: Off -> OnButtonPressed {
+			label L12: "ignition / running = true" {
+				layout [ size: 166, 17 ]
+			}
+		}
+		edge Off0_g4878: OffButtonPressed -> Off {
+			label L13: "!ignition" {
+				layout [ size: 58, 17 ]
+			}
+		}
+		edge On0: OnButtonPressed -> On {
+			label L14: "!ignition" {
+				layout [ size: 58, 17 ]
+			}
+		}
+		edge OffButtonPressed0: On -> OffButtonPressed {
+			label L15: "ignition / running = false" {
+				layout [ size: 171, 17 ]
+			}
+		}
+	}
+	node BeepControl {
+		node init_g5245 {
+			layout [ size: 42, 34 ]
+		}
+		edge init0: init_g5245 -> init_g5245 {
+			label L16: "beeper / `lejos.nxt.Sound.beep()`" {
+				layout [ size: 233, 17 ]
+			}
+		}
+	}
+}

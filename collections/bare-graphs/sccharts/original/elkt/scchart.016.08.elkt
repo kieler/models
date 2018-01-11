@@ -1,0 +1,109 @@
+graph G1
+node elevatorextended {
+	algorithm: org.eclipse.elk.box
+	node main {
+		node I {
+			layout [ size: 34, 34 ]
+		}
+		node elevator {
+			algorithm: org.eclipse.elk.box
+			node second {
+				node counter {
+					layout [ size: 75, 34 ]
+				}
+				edge counter0: counter -> counter {
+					label L2: "Second / counter = counter + 1" {
+						layout [ size: 219, 17 ]
+					}
+				}
+			}
+			node alarm {
+				node wait {
+					layout [ size: 48, 34 ]
+				}
+				node alarming {
+					layout [ size: 81, 34 ]
+				}
+				edge alarming0: wait -> alarming {
+					label L3: "ButtonAlarm / alarm = true; counter = 0; AlarmLamp = true" {
+						layout [ size: 401, 17 ]
+					}
+				}
+				edge wait0: alarming -> wait {
+					label L4: "1: counter >= 5 / alarm = false; AlarmLamp = false" {
+						layout [ size: 341, 17 ]
+					}
+				}
+				edge alarming0_g2089: alarming -> alarming {
+					label L5: "2: / AlarmLamp = !AlarmLamp" {
+						layout [ size: 199, 17 ]
+					}
+				}
+			}
+			node movement {
+				node Movement {
+					algorithm: org.eclipse.elk.box
+					node N1 {
+						node Up {
+							layout [ size: 41, 34 ]
+						}
+						node Upwards {
+							layout [ size: 83, 34 ]
+						}
+						node Down {
+							layout [ size: 61, 34 ]
+						}
+						node Downwards {
+							layout [ size: 103, 34 ]
+						}
+						edge Downwards0: Up -> Downwards {
+							label L6: "ButtonDown && !alarm / Move = -1" {
+								layout [ size: 243, 17 ]
+							}
+						}
+						edge Up0: Upwards -> Up {
+							label L7: "1: IsUp && !alarm / Move = 0" {
+								layout [ size: 198, 17 ]
+							}
+						}
+						edge Upwards0: Upwards -> Upwards {
+							label L8: "2: !alarm / Move = 1" {
+								layout [ size: 136, 17 ]
+							}
+						}
+						edge Upwards1: Upwards -> Upwards {
+							label L9: "3: / Move = 0" {
+								layout [ size: 90, 17 ]
+							}
+						}
+						edge Upwards0_g5890: Down -> Upwards {
+							label L10: "ButtonUp && !alarm / Move = 1" {
+								layout [ size: 218, 17 ]
+							}
+						}
+						edge Down0: Downwards -> Down {
+							label L11: "1: IsDown && !alarm / Move = 0" {
+								layout [ size: 218, 17 ]
+							}
+						}
+						edge Downwards0_g7360: Downwards -> Downwards {
+							label L12: "2: !alarm / Move = -1" {
+								layout [ size: 141, 17 ]
+							}
+						}
+						edge Downwards1: Downwards -> Downwards {
+							label L13: "3: / Move = 0" {
+								layout [ size: 90, 17 ]
+							}
+						}
+					}
+				}
+			}
+		}
+		edge elevator0: I -> elevator {
+			label L1: "/ alarm = false; counter = 0" {
+				layout [ size: 186, 17 ]
+			}
+		}
+	}
+}

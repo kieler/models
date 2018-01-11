@@ -1,0 +1,60 @@
+graph G1
+node legs {
+	algorithm: org.eclipse.elk.box
+	node Lamp {
+		node init {
+			layout [ size: 42, 34 ]
+		}
+		edge init0: init -> init {
+			label L1: "1: LEGS_OUT / DONE_LAMP = true" {
+				layout [ size: 249, 17 ]
+			}
+		}
+		edge init1: init -> init {
+			label L2: "2: !LEGS_OUT / DONE_LAMP = false" {
+				layout [ size: 258, 17 ]
+			}
+		}
+	}
+	node Movement {
+		node standStill {
+			layout [ size: 87, 34 ]
+		}
+		node extending {
+			layout [ size: 92, 34 ]
+		}
+		node retracting {
+			layout [ size: 90, 34 ]
+		}
+		edge extending0: standStill -> extending {
+			label L3: "1: EXTEND_BUTTON && !LEGS_OUT / LEGS_EXTEND = LEGS_EXTEND | true" {
+				layout [ size: 559, 17 ]
+			}
+		}
+		edge retracting0: standStill -> retracting {
+			label L4: "2: RETRACT_BUTTON && !LEGS_IN / LEGS_RETRACT = LEGS_RETRACT | true" {
+				layout [ size: 571, 17 ]
+			}
+		}
+		edge standStill0: extending -> standStill {
+			label L5: "1: STOP_BUTTON / LEGS_STOP = LEGS_STOP | true" {
+				layout [ size: 383, 17 ]
+			}
+		}
+		edge standStill1: extending -> standStill {
+			label L6: "2: LEGS_OUT" {
+				layout [ size: 98, 17 ]
+			}
+		}
+		edge standStill0_g8807: retracting -> standStill {
+			label L7: "1: STOP_BUTTON / LEGS_STOP = LEGS_STOP | true" {
+				layout [ size: 383, 17 ]
+			}
+		}
+		edge standStill1_g5480: retracting -> standStill {
+			label L8: "2: LEGS_IN" {
+				layout [ size: 80, 17 ]
+			}
+		}
+	}
+}

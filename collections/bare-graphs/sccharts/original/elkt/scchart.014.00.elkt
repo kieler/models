@@ -1,0 +1,104 @@
+graph G1
+node domeLightSeatBelt {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node synchron {
+			algorithm: org.eclipse.elk.box
+			node domeLight {
+				node lightOut {
+					layout [ size: 77, 34 ]
+				}
+				node lightOn {
+					layout [ size: 73, 34 ]
+				}
+				node lightOnClosedDoors {
+					layout [ size: 166, 34 ]
+				}
+				edge lightOn0: lightOut -> lightOn {
+					label L1: "doorOpen / domeLight = true" {
+						layout [ size: 205, 17 ]
+					}
+				}
+				edge lightOnClosedDoors0: lightOn -> lightOnClosedDoors {
+					label L2: "!doorOpen / timer = 0" {
+						layout [ size: 150, 17 ]
+					}
+				}
+				edge lightOn0_g4490: lightOnClosedDoors -> lightOn {
+					label L3: "1: doorOpen" {
+						layout [ size: 89, 17 ]
+					}
+				}
+				edge lightOut0: lightOnClosedDoors -> lightOut {
+					label L4: "2: timer >= 3 / domeLight = false" {
+						layout [ size: 224, 17 ]
+					}
+				}
+				edge lightOnClosedDoors0_g6047: lightOnClosedDoors -> lightOnClosedDoors {
+					label L5: "3: second / timer = timer + 1" {
+						layout [ size: 195, 17 ]
+					}
+				}
+			}
+			node seatBelt {
+				node engineOff {
+					layout [ size: 91, 34 ]
+				}
+				node engineOn {
+					algorithm: org.eclipse.elk.box
+					node egineOn {
+						node noWarning {
+							layout [ size: 96, 34 ]
+						}
+						node lightAndSignal {
+							layout [ size: 123, 34 ]
+						}
+						node light {
+							layout [ size: 51, 34 ]
+						}
+						edge lightAndSignal0: noWarning -> lightAndSignal {
+							label L8: "seatBelt / seatBeltLight = true; seatBeltSignal = true; seconds = 0" {
+								layout [ size: 463, 17 ]
+							}
+						}
+						edge noWarning0: lightAndSignal -> noWarning {
+							label L9: "1: !seatBelt / seatBeltLight = false; seatBeltSignal = false" {
+								layout [ size: 399, 17 ]
+							}
+						}
+						edge light0: lightAndSignal -> light {
+							label L10: "2: seconds >= 3 / seatBeltSignal = false" {
+								layout [ size: 276, 17 ]
+							}
+						}
+						edge lightAndSignal0_g7779: lightAndSignal -> lightAndSignal {
+							label L11: "3: second / seconds = seconds + 1" {
+								layout [ size: 243, 17 ]
+							}
+						}
+						edge light0_g2370: light -> light {
+							label L12: "1: seatBelt" {
+								layout [ size: 75, 17 ]
+							}
+						}
+						edge noWarning0_g7161: light -> noWarning {
+							label L13: "2: / seatBeltLight = false" {
+								layout [ size: 170, 17 ]
+							}
+						}
+					}
+				}
+				edge engineOn0: engineOff -> engineOn {
+					label L6: "engine" {
+						layout [ size: 49, 17 ]
+					}
+				}
+				edge engineOff0: engineOn -> engineOff {
+					label L7: "!engine / seatBeltLight = false; seatBeltSignal = false" {
+						layout [ size: 373, 17 ]
+					}
+				}
+			}
+		}
+	}
+}

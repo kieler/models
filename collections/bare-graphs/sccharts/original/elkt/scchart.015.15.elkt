@@ -1,0 +1,72 @@
+graph G1
+node model {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node Init {
+			layout [ size: 42, 34 ]
+		}
+		node S1 {
+			algorithm: org.eclipse.elk.box
+			node LHS {
+				node LInit {
+					layout [ size: 51, 34 ]
+				}
+				node LFinal {
+					layout [ size: 70, 40 ]
+				}
+				edge LFinal0: LInit -> LFinal {
+					label L1: "/ I = true" {
+						layout [ size: 58, 17 ]
+					}
+				}
+			}
+			node RHS {
+				node RInit {
+					layout [ size: 53, 34 ]
+				}
+				node RDelay {
+					layout [ size: 72, 34 ]
+				}
+				node RCase {
+					layout [ size: 67, 34 ]
+				}
+				node RTrue {
+					layout [ size: 34, 34 ]
+				}
+				node RFalse {
+					layout [ size: 34, 34 ]
+				}
+				node RFinal {
+					layout [ size: 72, 40 ]
+				}
+				edge RDelay0: RInit -> RDelay
+				edge RCase0: RDelay -> RCase
+				edge RTrue0: RCase -> RTrue {
+					label L2: "1: I" {
+						layout [ size: 21, 17 ]
+					}
+				}
+				edge RDelay0_g1281: RCase -> RDelay {
+					label L3: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge RFalse0: RTrue -> RFalse {
+					label L4: "/ O = true" {
+						layout [ size: 66, 17 ]
+					}
+				}
+				edge RFinal0: RFalse -> RFinal {
+					label L5: "/ O = false" {
+						layout [ size: 71, 17 ]
+					}
+				}
+			}
+		}
+		node Final {
+			layout [ size: 61, 40 ]
+		}
+		edge S10: Init -> S1
+		edge Final0: S1 -> Final
+	}
+}

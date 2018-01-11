@@ -1,0 +1,76 @@
+graph G1
+node BasicCarControl {
+	algorithm: org.eclipse.elk.box
+	node Domelight {
+		node doorsClosed {
+			layout [ size: 112, 34 ]
+		}
+		node doorsOpen {
+			layout [ size: 101, 34 ]
+		}
+		node doorsClosedWaiting {
+			layout [ size: 163, 34 ]
+		}
+		edge doorsOpen0: doorsClosed -> doorsOpen {
+			label L1: "doorsOpen / domelight = true" {
+				layout [ size: 208, 17 ]
+			}
+		}
+		edge doorsClosedWaiting0: doorsOpen -> doorsClosedWaiting {
+			label L2: "doorsClosed / domelight_s = domelight_stay_secons" {
+				layout [ size: 372, 17 ]
+			}
+		}
+		edge doorsOpen0_g1183: doorsClosedWaiting -> doorsOpen {
+			label L3: "1: doorsOpen" {
+				layout [ size: 97, 17 ]
+			}
+		}
+		edge doorsClosed0: doorsClosedWaiting -> doorsClosed {
+			label L4: "2: !doorsOpen && domelight_s == 0 && second / domelight = false" {
+				layout [ size: 465, 17 ]
+			}
+		}
+		edge doorsClosedWaiting0_g7844: doorsClosedWaiting -> doorsClosedWaiting {
+			label L5: "3: domelight_s > 0 && second / domelight_s = domelight_s - 1" {
+				layout [ size: 432, 17 ]
+			}
+		}
+	}
+	node Seatbelts {
+		node NotWarning {
+			layout [ size: 103, 34 ]
+		}
+		node StartWarning {
+			layout [ size: 112, 34 ]
+		}
+		node Warning {
+			layout [ size: 78, 34 ]
+		}
+		edge StartWarning0: NotWarning -> StartWarning {
+			label L6: "warn / warnLight = true; beeper = true; seatbelt_s = seatbelt_beep_secons" {
+				layout [ size: 526, 17 ]
+			}
+		}
+		edge NotWarning0: StartWarning -> NotWarning {
+			label L7: "1: noWarn / warnLight = false; beeper = false" {
+				layout [ size: 312, 17 ]
+			}
+		}
+		edge Warning0: StartWarning -> Warning {
+			label L8: "2: !noWarn && seatbelt_s == 0 && second / beeper = false" {
+				layout [ size: 406, 17 ]
+			}
+		}
+		edge StartWarning0_g8130: StartWarning -> StartWarning {
+			label L9: "3: seatbelt_s > 0 && second / seatbelt_s = seatbelt_s - 1" {
+				layout [ size: 393, 17 ]
+			}
+		}
+		edge NotWarning0_g5312: Warning -> NotWarning {
+			label L10: "noWarn / warnLight = false" {
+				layout [ size: 186, 17 ]
+			}
+		}
+	}
+}

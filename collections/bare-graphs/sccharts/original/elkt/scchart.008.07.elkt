@@ -1,0 +1,49 @@
+graph G1
+node lueumand {
+	algorithm: org.eclipse.elk.box
+	node A {
+		node init {
+			layout [ size: 42, 34 ]
+		}
+		node O2 {
+			layout [ size: 41, 34 ]
+		}
+		node O3 {
+			layout [ size: 41, 34 ]
+		}
+		edge O20: init -> O2 {
+			label L1: "L / O = O + 2" {
+				layout [ size: 88, 17 ]
+			}
+		}
+		edge O30: O2 -> O3 {
+			label L2: "L / O = O + 1" {
+				layout [ size: 88, 17 ]
+			}
+		}
+		edge init0: O3 -> init {
+			label L3: "R / O = 0" {
+				layout [ size: 61, 17 ]
+			}
+		}
+	}
+	node B {
+		node init_g5394 {
+			layout [ size: 42, 34 ]
+		}
+		node step {
+			layout [ size: 52, 34 ]
+		}
+		edge step0: init_g5394 -> step {
+			label L4: "1: A / L = true" {
+				layout [ size: 90, 17 ]
+			}
+		}
+		edge step1: init_g5394 -> step {
+			label L5: "2: / L = false" {
+				layout [ size: 84, 17 ]
+			}
+		}
+		edge init0_g5606: step -> init_g5394
+	}
+}

@@ -1,0 +1,162 @@
+graph G1
+node racer {
+	algorithm: org.eclipse.elk.box
+	node main {
+		node startMotor {
+			layout [ size: 185, 65 ]
+		}
+		node onBlackLine {
+			layout [ size: 185, 65 ]
+		}
+		node turnLeft {
+			layout [ size: 239, 65 ]
+		}
+		node turnRight {
+			layout [ size: 248, 65 ]
+		}
+		node turnLeftOnTrack {
+			layout [ size: 256, 50 ]
+		}
+		node turnRightOnTrack {
+			layout [ size: 265, 50 ]
+		}
+		node turnBackLeft {
+			layout [ size: 248, 65 ]
+		}
+		node turnBackRight {
+			layout [ size: 239, 65 ]
+		}
+		edge onBlackLine0: startMotor -> onBlackLine {
+			label L1: "black / direction = true; blackCount = 0" {
+				layout [ size: 272, 17 ]
+			}
+		}
+		edge turnLeftOnTrack0: onBlackLine -> turnLeftOnTrack {
+			label L2: "1: blackCount > COUNTUNTILTURN && direction / turnCount = 0; direction = false" {
+				layout [ size: 579, 17 ]
+			}
+		}
+		edge turnRightOnTrack0: onBlackLine -> turnRightOnTrack {
+			label L3: "2: blackCount > COUNTUNTILTURN && !direction / turnCount = 0; direction = true" {
+				layout [ size: 578, 17 ]
+			}
+		}
+		edge turnLeft0: onBlackLine -> turnLeft {
+			label L4: "3: white && direction / turnCount = 0; direction = false" {
+				layout [ size: 378, 17 ]
+			}
+		}
+		edge turnRight0: onBlackLine -> turnRight {
+			label L5: "4: white && !direction / turnCount = 0; direction = true" {
+				layout [ size: 377, 17 ]
+			}
+		}
+		edge onBlackLine0_g5089: onBlackLine -> onBlackLine {
+			label L6: "5: / blackCount = blackCount + 1" {
+				layout [ size: 227, 17 ]
+			}
+		}
+		edge onBlackLine0_g5223: turnLeft -> onBlackLine {
+			label L7: "1: black" {
+				layout [ size: 54, 17 ]
+			}
+		}
+		edge turnBackLeft0: turnLeft -> turnBackLeft {
+			label L8: "2: white && turnCount > TURNDURATION / turnCount = 0" {
+				layout [ size: 404, 17 ]
+			}
+		}
+		edge turnLeft0_g5195: turnLeft -> turnLeft {
+			label L9: "3: / turnCount = turnCount + 1" {
+				layout [ size: 211, 17 ]
+			}
+		}
+		edge onBlackLine0_g9054: turnRight -> onBlackLine {
+			label L10: "1: black" {
+				layout [ size: 54, 17 ]
+			}
+		}
+		edge turnBackRight0: turnRight -> turnBackRight {
+			label L11: "2: white && turnCount > TURNDURATION / turnCount = 0" {
+				layout [ size: 404, 17 ]
+			}
+		}
+		edge turnRight0_g2244: turnRight -> turnRight {
+			label L12: "3: / turnCount = turnCount + 1" {
+				layout [ size: 211, 17 ]
+			}
+		}
+		edge onBlackLine0_g6812: turnLeftOnTrack -> onBlackLine {
+			label L13: "1: turnCount > TURNDURATION * 0.1 / blackCount = 0" {
+				layout [ size: 378, 17 ]
+			}
+		}
+		edge turnLeftOnTrack0_g6816: turnLeftOnTrack -> turnLeftOnTrack {
+			label L14: "2: / turnCount = turnCount + 1" {
+				layout [ size: 211, 17 ]
+			}
+		}
+		edge onBlackLine0_g1516: turnRightOnTrack -> onBlackLine {
+			label L15: "1: turnCount > TURNDURATION * 0.1 / blackCount = 0" {
+				layout [ size: 378, 17 ]
+			}
+		}
+		edge turnRightOnTrack0_g8044: turnRightOnTrack -> turnRightOnTrack {
+			label L16: "2: / turnCount = turnCount + 1" {
+				layout [ size: 211, 17 ]
+			}
+		}
+		edge turnRight0_g3093: turnBackLeft -> turnRight {
+			label L17: "1: turnCount > TURNDURATION / turnCount = 0" {
+				layout [ size: 336, 17 ]
+			}
+		}
+		edge turnBackLeft0_g7363: turnBackLeft -> turnBackLeft {
+			label L18: "2: / turnCount = turnCount + 1" {
+				layout [ size: 211, 17 ]
+			}
+		}
+		edge turnLeft0_g1146: turnBackRight -> turnLeft {
+			label L19: "1: turnCount > TURNDURATION / turnCount = 0" {
+				layout [ size: 336, 17 ]
+			}
+		}
+		edge turnBackRight0_g1745: turnBackRight -> turnBackRight {
+			label L20: "2: / turnCount = turnCount + 1" {
+				layout [ size: 211, 17 ]
+			}
+		}
+	}
+	node read {
+		node init {
+			layout [ size: 204, 50 ]
+		}
+		node readWhite {
+			layout [ size: 135, 65 ]
+		}
+		node readBlack {
+			layout [ size: 134, 65 ]
+		}
+		edge readWhite0: init -> readWhite
+		edge readBlack0: readWhite -> readBlack {
+			label L21: "1: lightSensor < whiteValue - TOLERANCEWHITE && firstBlack / blackCountRead = 0; blackValue = lightSensor" {
+				layout [ size: 778, 17 ]
+			}
+		}
+		edge readBlack1: readWhite -> readBlack {
+			label L22: "2: lightSensor < whiteValue - TOLERANCEWHITE / blackCountRead = 0" {
+				layout [ size: 500, 17 ]
+			}
+		}
+		edge readWhite0_g6276: readBlack -> readWhite {
+			label L23: "1: whiteCountRead > COUNTTHRESHOLD / whiteCountRead = 0" {
+				layout [ size: 457, 17 ]
+			}
+		}
+		edge readBlack0_g2247: readBlack -> readBlack {
+			label L24: "2: lightSensor > blackValue + TOLERANCEBLACK / whiteCountRead = whiteCountRead + 1" {
+				layout [ size: 642, 17 ]
+			}
+		}
+	}
+}

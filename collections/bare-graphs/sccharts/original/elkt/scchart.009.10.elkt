@@ -1,0 +1,56 @@
+graph G1
+node LegsMode {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node Main {
+			algorithm: org.eclipse.elk.box
+			node N2 {
+				node Stopped {
+					layout [ size: 81, 34 ]
+				}
+				node Extending {
+					layout [ size: 93, 34 ]
+				}
+				node Retracting {
+					layout [ size: 95, 34 ]
+				}
+				node Extended {
+					layout [ size: 95, 40 ]
+				}
+				edge Retracting0: Stopped -> Retracting {
+					label L3: "1: RETRACT / LEGS_RETRACT = true" {
+						layout [ size: 267, 17 ]
+					}
+				}
+				edge Extending0: Stopped -> Extending {
+					label L4: "2: EXTEND / LEGS_EXTEND = true" {
+						layout [ size: 247, 17 ]
+					}
+				}
+				edge Extended0: Extending -> Extended {
+					label L5: "LEGS_OUT / LEGS_EXTEND = false" {
+						layout [ size: 256, 17 ]
+					}
+				}
+				edge Stopped0: Retracting -> Stopped {
+					label L6: "LEGS_IN / LEGS_RETRACT = false" {
+						layout [ size: 248, 17 ]
+					}
+				}
+			}
+		}
+		node Final {
+			layout [ size: 61, 40 ]
+		}
+		edge Main0: Main -> Main {
+			label L1: "1: LEGS_STOP / LEGS_EXTEND = false; LEGS_RETRACT = false" {
+				layout [ size: 461, 17 ]
+			}
+		}
+		edge Final0: Main -> Final {
+			label L2: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+	}
+}

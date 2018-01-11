@@ -1,0 +1,397 @@
+graph G1
+node BarCodeExtension {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node init {
+			layout [ size: 42, 34 ]
+		}
+		node Calibration {
+			algorithm: org.eclipse.elk.box
+			node N2 {
+				node WaitForBlack {
+					layout [ size: 113, 34 ]
+				}
+				node WaitForWhite {
+					layout [ size: 113, 34 ]
+				}
+				node CalibrationDone {
+					layout [ size: 141, 40 ]
+				}
+				edge WaitForWhite0: WaitForBlack -> WaitForWhite {
+					label L11: "LeftButton == true / blackVal = true" {
+						layout [ size: 246, 17 ]
+					}
+				}
+				edge CalibrationDone0: WaitForWhite -> CalibrationDone {
+					label L12: "RightButton == true / whiteVal = true; lamp = true" {
+						layout [ size: 344, 17 ]
+					}
+				}
+			}
+		}
+		node ReadingBarCode {
+			algorithm: org.eclipse.elk.box
+			node N3 {
+				node DrivingToStart {
+					layout [ size: 124, 34 ]
+				}
+				node whiteState {
+					layout [ size: 95, 34 ]
+				}
+				node blackState {
+					layout [ size: 94, 34 ]
+				}
+				node Done {
+					layout [ size: 64, 40 ]
+				}
+				edge blackState0: DrivingToStart -> blackState {
+					label L13: "Light < black" {
+						layout [ size: 91, 17 ]
+					}
+				}
+				edge whiteState0: whiteState -> whiteState {
+					label L14: "1: Light > white & clock == true & i <= 22 / count = count + 1" {
+						layout [ size: 418, 17 ]
+					}
+				}
+				edge blackState0_g2521: whiteState -> blackState {
+					label L15: "2: Light < black & i <= 22 / Bar[i] = count; count = 0; i = i + 1" {
+						layout [ size: 411, 17 ]
+					}
+				}
+				edge Done0: whiteState -> Done {
+					label L16: "3: i > 22 / EngineLeftSpeed = 0; EngineRightSpeed = 0" {
+						layout [ size: 382, 17 ]
+					}
+				}
+				edge blackState0_g3554: blackState -> blackState {
+					label L17: "1: Light < black & clock == true & i <= 22 / count = count + 1" {
+						layout [ size: 417, 17 ]
+					}
+				}
+				edge whiteState0_g4576: blackState -> whiteState {
+					label L18: "2: Light > white & i <= 22 / Bar[i] = count; count = 0; i = i + 1" {
+						layout [ size: 412, 17 ]
+					}
+				}
+				edge Done0_g9855: blackState -> Done {
+					label L19: "3: i > 22 / EngineLeftSpeed = 0; EngineRightSpeed = 0" {
+						layout [ size: 382, 17 ]
+					}
+				}
+			}
+		}
+		node SignalProcessing {
+			algorithm: org.eclipse.elk.box
+			node N4 {
+				node DSV {
+					layout [ size: 52, 34 ]
+				}
+				node DSV0 {
+					layout [ size: 59, 34 ]
+				}
+				node DSV1 {
+					layout [ size: 59, 34 ]
+				}
+				node DSVDONE {
+					layout [ size: 95, 34 ]
+				}
+				node LoopControl {
+					layout [ size: 110, 34 ]
+				}
+				node Done_g8371 {
+					layout [ size: 64, 40 ]
+				}
+				edge DSV00: DSV -> DSV0 {
+					label L20: "/ pos = 3; poSy = 0; lamp = true" {
+						layout [ size: 214, 17 ]
+					}
+				}
+				edge DSV10: DSV0 -> DSV1 {
+					label L21: "1: poSy <= 6 & Bar[pos] >= b5Min & Bar[pos] <= b5Max / symbol[poSy] = 1; pos = pos + 1; poSy = poSy + 1" {
+						layout [ size: 740, 17 ]
+					}
+				}
+				edge DSV11: DSV0 -> DSV1 {
+					label L22: "2: poSy <= 6 & Bar[pos] >= b10Min & Bar[pos] <= b10Max / symbol[poSy] = 1; symbol[(poSy + 1)] = 1; pos = pos + 1; poSy = poSy + 2" {
+						layout [ size: 918, 17 ]
+					}
+				}
+				edge DSV12: DSV0 -> DSV1 {
+					label L23: "3: poSy <= 6 & Bar[pos] >= b15Min & Bar[pos] <= b20Max / symbol[poSy] = 1; symbol[(poSy + 1)] = 1; symbol[(poSy + 2)] = 1; pos = pos + 1; poSy = poSy + 3" {
+						layout [ size: 1080, 17 ]
+					}
+				}
+				edge DSVDONE0: DSV0 -> DSVDONE {
+					label L24: "4: poSy > 6 / lamp = false" {
+						layout [ size: 172, 17 ]
+					}
+				}
+				edge DSV00_g0785: DSV1 -> DSV0 {
+					label L25: "1: poSy <= 6 & Bar[pos] >= b5Min & Bar[pos] <= b5Max / symbol[poSy] = 0; pos = pos + 1; poSy = poSy + 1" {
+						layout [ size: 740, 17 ]
+					}
+				}
+				edge DSV01: DSV1 -> DSV0 {
+					label L26: "2: poSy <= 6 & Bar[pos] >= b10Min & Bar[pos] <= b10Max / symbol[poSy] = 0; symbol[(poSy + 1)] = 0; pos = pos + 1; poSy = poSy + 2" {
+						layout [ size: 918, 17 ]
+					}
+				}
+				edge DSV02: DSV1 -> DSV0 {
+					label L27: "3: poSy <= 6 & Bar[pos] >= b15Min & Bar[pos] <= b15Max / symbol[poSy] = 0; symbol[(poSy + 1)] = 0; symbol[(poSy + 2)] = 0; pos = pos + 1; poSy = poSy + 3" {
+						layout [ size: 1080, 17 ]
+					}
+				}
+				edge DSV03: DSV1 -> DSV0 {
+					label L28: "4: poSy <= 6 & Bar[pos] >= b20Min & Bar[pos] <= b20Max / symbol[poSy] = 0; symbol[(poSy + 1)] = 0; symbol[(poSy + 2)] = 0; symbol[(poSy + 3)] = 0; pos = pos + 1; poSy = poSy + 4" {
+						layout [ size: 1242, 17 ]
+					}
+				}
+				edge DSVDONE0_g1415: DSV1 -> DSVDONE {
+					label L29: "5: poSy > 6 / lamp = false" {
+						layout [ size: 172, 17 ]
+					}
+				}
+				edge DSVDONE0_g3219: DSVDONE -> DSVDONE {
+					label L30: "1: RightButton == true / rButtonRelease = true" {
+						layout [ size: 327, 17 ]
+					}
+				}
+				edge LoopControl0: DSVDONE -> LoopControl {
+					label L31: "2: rButtonRelease == true & RightButton == false / rButtonRelease = false; Digit[NumberOfDigit] = 0; NumberOfDigit = NumberOfDigit + 1; sym = true" {
+						layout [ size: 1048, 17 ]
+					}
+				}
+				edge LoopControl1: DSVDONE -> LoopControl {
+					label L32: "3: symbol[0] == 1 & symbol[1] == 1 & symbol[2] == 1 & symbol[3] == 0 & symbol[4] == 0 & symbol[5] == 1 & symbol[6] == 0 / Digit[NumberOfDigit] = 0; NumberOfDigit = NumberOfDigit + 1; sym = true" {
+						layout [ size: 1366, 17 ]
+					}
+				}
+				edge LoopControl2: DSVDONE -> LoopControl {
+					label L33: "4: symbol[0] == 1 & symbol[1] == 1 & symbol[2] == 0 & symbol[3] == 0 & symbol[4] == 1 & symbol[5] == 1 & symbol[6] == 0 / Digit[NumberOfDigit] = 1; NumberOfDigit = NumberOfDigit + 1; sym = true" {
+						layout [ size: 1366, 17 ]
+					}
+				}
+				edge LoopControl3: DSVDONE -> LoopControl {
+					label L34: "5: symbol[0] == 1 & symbol[1] == 1 & symbol[2] == 0 & symbol[3] == 1 & symbol[4] == 1 & symbol[5] == 0 & symbol[6] == 0 / Digit[NumberOfDigit] = 2; NumberOfDigit = NumberOfDigit + 1; sym = true" {
+						layout [ size: 1366, 17 ]
+					}
+				}
+				edge LoopControl4: DSVDONE -> LoopControl {
+					label L35: "6: symbol[0] == 1 & symbol[1] == 0 & symbol[2] == 0 & symbol[3] == 0 & symbol[4] == 0 & symbol[5] == 1 & symbol[6] == 0 / Digit[NumberOfDigit] = 3; NumberOfDigit = NumberOfDigit + 1; sym = true" {
+						layout [ size: 1366, 17 ]
+					}
+				}
+				edge LoopControl5: DSVDONE -> LoopControl {
+					label L36: "7: symbol[0] == 1 & symbol[1] == 0 & symbol[2] == 1 & symbol[3] == 1 & symbol[4] == 1 & symbol[5] == 0 & symbol[6] == 0 / Digit[NumberOfDigit] = 4; NumberOfDigit = NumberOfDigit + 1; sym = true" {
+						layout [ size: 1366, 17 ]
+					}
+				}
+				edge LoopControl6: DSVDONE -> LoopControl {
+					label L37: "8: symbol[0] == 1 & symbol[1] == 0 & symbol[2] == 0 & symbol[3] == 1 & symbol[4] == 1 & symbol[5] == 1 & symbol[6] == 0 / Digit[NumberOfDigit] = 5; NumberOfDigit = NumberOfDigit + 1; sym = true" {
+						layout [ size: 1366, 17 ]
+					}
+				}
+				edge LoopControl7: DSVDONE -> LoopControl {
+					label L38: "9: symbol[0] == 1 & symbol[1] == 0 & symbol[2] == 1 & symbol[3] == 0 & symbol[4] == 0 & symbol[5] == 0 & symbol[6] == 0 / Digit[NumberOfDigit] = 6; NumberOfDigit = NumberOfDigit + 1; sym = true" {
+						layout [ size: 1366, 17 ]
+					}
+				}
+				edge LoopControl8: DSVDONE -> LoopControl {
+					label L39: "10: symbol[0] == 1 & symbol[1] == 0 & symbol[2] == 0 & symbol[3] == 0 & symbol[4] == 1 & symbol[5] == 0 & symbol[6] == 0 / Digit[NumberOfDigit] = 7; NumberOfDigit = NumberOfDigit + 1; sym = true" {
+						layout [ size: 1374, 17 ]
+					}
+				}
+				edge LoopControl9: DSVDONE -> LoopControl {
+					label L40: "11: symbol[0] == 1 & symbol[1] == 0 & symbol[2] == 0 & symbol[3] == 1 & symbol[4] == 0 & symbol[5] == 0 & symbol[6] == 0 / Digit[NumberOfDigit] = 8; NumberOfDigit = NumberOfDigit + 1; sym = true" {
+						layout [ size: 1373, 17 ]
+					}
+				}
+				edge LoopControl10: DSVDONE -> LoopControl {
+					label L41: "12: symbol[0] == 1 & symbol[1] == 1 & symbol[2] == 1 & symbol[3] == 0 & symbol[4] == 1 & symbol[5] == 0 & symbol[6] == 0 / Digit[NumberOfDigit] = 9; NumberOfDigit = NumberOfDigit + 1; sym = true" {
+						layout [ size: 1374, 17 ]
+					}
+				}
+				edge LoopControl0_g5638: LoopControl -> LoopControl {
+					label L42: "1: sym == true / sym = false" {
+						layout [ size: 188, 17 ]
+					}
+				}
+				edge DSV00_g7915: LoopControl -> DSV0 {
+					label L43: "2: NumberOfDigit < 4 / poSy = 0" {
+						layout [ size: 220, 17 ]
+					}
+				}
+				edge Done0_g0571: LoopControl -> Done_g8371 {
+					label L44: "3: NumberOfDigit >= 4 / number = Digit[0] * 100 + Digit[1] * 10 + Digit[2] * 1" {
+						layout [ size: 517, 17 ]
+					}
+				}
+			}
+		}
+		node Printout {
+			layout [ size: 77, 34 ]
+		}
+		node Debug {
+			algorithm: org.eclipse.elk.box
+			node N5 {
+				node output0 {
+					layout [ size: 75, 34 ]
+				}
+				node output1 {
+					layout [ size: 75, 34 ]
+				}
+				node output2 {
+					layout [ size: 75, 34 ]
+				}
+				node output3 {
+					layout [ size: 75, 34 ]
+				}
+				node Done_g6352 {
+					layout [ size: 64, 40 ]
+				}
+				edge output00: output0 -> output0 {
+					label L45: "1: qDebug[0] == true / qDebug[0] = false" {
+						layout [ size: 282, 17 ]
+					}
+				}
+				edge output01: output0 -> output0 {
+					label L46: "2: RightButton == true / rButtonRelease = true" {
+						layout [ size: 327, 17 ]
+					}
+				}
+				edge output10: output0 -> output1 {
+					label L47: "3: RightButton == false & rButtonRelease == true / rButtonRelease = false; qDebug[1] = true" {
+						layout [ size: 651, 17 ]
+					}
+				}
+				edge output10_g6242: output1 -> output1 {
+					label L48: "1: qDebug[1] == true / qDebug[1] = false" {
+						layout [ size: 282, 17 ]
+					}
+				}
+				edge output11: output1 -> output1 {
+					label L49: "2: RightButton == true / rButtonRelease = true" {
+						layout [ size: 327, 17 ]
+					}
+				}
+				edge output20: output1 -> output2 {
+					label L50: "3: RightButton == false & rButtonRelease == true / rButtonRelease = false; qDebug[2] = true" {
+						layout [ size: 651, 17 ]
+					}
+				}
+				edge output20_g3433: output2 -> output2 {
+					label L51: "1: qDebug[2] == true / qDebug[2] = false" {
+						layout [ size: 282, 17 ]
+					}
+				}
+				edge output21: output2 -> output2 {
+					label L52: "2: RightButton == true / rButtonRelease = true" {
+						layout [ size: 327, 17 ]
+					}
+				}
+				edge output30: output2 -> output3 {
+					label L53: "3: RightButton == false & rButtonRelease == true / rButtonRelease = false; qDebug[3] = true" {
+						layout [ size: 651, 17 ]
+					}
+				}
+				edge output30_g9289: output3 -> output3 {
+					label L54: "1: qDebug[3] == true / qDebug[3] = false" {
+						layout [ size: 282, 17 ]
+					}
+				}
+				edge output31: output3 -> output3 {
+					label L55: "2: RightButton == true / rButtonRelease = true" {
+						layout [ size: 327, 17 ]
+					}
+				}
+				edge Done0_g3708: output3 -> Done_g6352 {
+					label L56: "3: RightButton == false & rButtonRelease == true / rButtonRelease = false" {
+						layout [ size: 523, 17 ]
+					}
+				}
+			}
+		}
+		node Rotation {
+			algorithm: org.eclipse.elk.box
+			node N6 {
+				node init_g1449 {
+					layout [ size: 42, 34 ]
+				}
+				node c {
+					layout [ size: 34, 34 ]
+				}
+				node Done_g7455 {
+					layout [ size: 64, 40 ]
+				}
+				edge c0: init_g1449 -> c {
+					label L57: "/ EngineRightSpeed = 10; EngineLeftSpeed = -10; count = 0; lamp = true" {
+						layout [ size: 505, 17 ]
+					}
+				}
+				edge c0_g5848: c -> c {
+					label L58: "1: clockRot == true & count <= TargetAngle / count = count + 10" {
+						layout [ size: 447, 17 ]
+					}
+				}
+				edge Done0_g6642: c -> Done_g7455 {
+					label L59: "2: count > TargetAngle / EngineLeftSpeed = 0; EngineRightSpeed = 0" {
+						layout [ size: 488, 17 ]
+					}
+				}
+			}
+		}
+		edge Calibration0: init -> Calibration
+		edge ReadingBarCode0: Calibration -> ReadingBarCode {
+			label L1: "1: start == true / lamp = true; EngineLeftSpeed = speed; EngineRightSpeed = speed" {
+				layout [ size: 591, 17 ]
+			}
+		}
+		edge ReadingBarCode1: Calibration -> ReadingBarCode {
+			label L2: "2: LeftButton == true / lamp = true; EngineLeftSpeed = 400; EngineRightSpeed = speed; DebugMode = true" {
+				layout [ size: 755, 17 ]
+			}
+		}
+		edge SignalProcessing0: ReadingBarCode -> SignalProcessing {
+			label L3: "1: DebugMode == false / NumberOfDigit = 0; lamp = true" {
+				layout [ size: 393, 17 ]
+			}
+		}
+		edge Debug0: ReadingBarCode -> Debug {
+			label L4: "2: DebugMode == true / qDebug[0] = true" {
+				layout [ size: 290, 17 ]
+			}
+		}
+		edge Printout0: SignalProcessing -> Printout {
+			label L5: "1: number < 500 / dsp = true; lamp = false" {
+				layout [ size: 287, 17 ]
+			}
+		}
+		edge Printout1: SignalProcessing -> Printout {
+			label L6: "2: number >= 500 / dsp = true; lamp = false; number = number - 1000" {
+				layout [ size: 475, 17 ]
+			}
+		}
+		edge Printout0_g8239: Printout -> Printout {
+			label L7: "1: dsp == true / dsp = false" {
+				layout [ size: 186, 17 ]
+			}
+		}
+		edge Rotation0: Printout -> Rotation {
+			label L8: "2: number < 0 & dsp == false / TargetAngle = ((-1) * (number % 360)) * 116" {
+				layout [ size: 509, 17 ]
+			}
+		}
+		edge Rotation1: Printout -> Rotation {
+			label L9: "3: number >= 0 & dsp == false / TargetAngle = (number % 360) * 116" {
+				layout [ size: 471, 17 ]
+			}
+		}
+		edge Rotation0_g3851: Debug -> Rotation
+		edge ReadingBarCode0_g3438: Rotation -> ReadingBarCode {
+			label L10: "/ i = 0; EngineLeftSpeed = 400; EngineRightSpeed = speed" {
+				layout [ size: 414, 17 ]
+			}
+		}
+	}
+}

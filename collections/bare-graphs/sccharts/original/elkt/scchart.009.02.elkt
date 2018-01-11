@@ -1,0 +1,76 @@
+graph G1
+node Controller {
+	algorithm: org.eclipse.elk.box
+	node domelight {
+		node doorClosedLightOff {
+			layout [ size: 161, 34 ]
+		}
+		node doorOpenLightOn {
+			layout [ size: 150, 34 ]
+		}
+		node doorClosedLightOn {
+			layout [ size: 161, 34 ]
+		}
+		edge doorOpenLightOn0: doorClosedLightOff -> doorOpenLightOn {
+			label L1: "open / lightsOn = true" {
+				layout [ size: 154, 17 ]
+			}
+		}
+		edge doorClosedLightOn0: doorOpenLightOn -> doorClosedLightOn {
+			label L2: "allClosed / count = 0" {
+				layout [ size: 144, 17 ]
+			}
+		}
+		edge doorClosedLightOn0_g1344: doorClosedLightOn -> doorClosedLightOn {
+			label L3: "1: count <= 3 && second / count = count + 1" {
+				layout [ size: 307, 17 ]
+			}
+		}
+		edge doorOpenLightOn0_g3698: doorClosedLightOn -> doorOpenLightOn {
+			label L4: "2: open / count = 0" {
+				layout [ size: 130, 17 ]
+			}
+		}
+		edge doorClosedLightOff0: doorClosedLightOn -> doorClosedLightOff {
+			label L5: "3: count > 3 / lightsOn = false" {
+				layout [ size: 204, 17 ]
+			}
+		}
+	}
+	node sealtbelt {
+		node beepOffLightOff {
+			layout [ size: 136, 34 ]
+		}
+		node beepOnLightOn {
+			layout [ size: 135, 34 ]
+		}
+		node beepOffLightOn {
+			layout [ size: 136, 34 ]
+		}
+		edge beepOnLightOn0: beepOffLightOff -> beepOnLightOn {
+			label L6: "warn && engine / beep = true; light = true; count = 0" {
+				layout [ size: 366, 17 ]
+			}
+		}
+		edge beepOnLightOn0_g2338: beepOnLightOn -> beepOnLightOn {
+			label L7: "1: engine && count < 30 && second / count = count + 1" {
+				layout [ size: 385, 17 ]
+			}
+		}
+		edge beepOffLightOff0: beepOnLightOn -> beepOffLightOff {
+			label L8: "2: !engine || !warn / beep = false; light = false" {
+				layout [ size: 312, 17 ]
+			}
+		}
+		edge beepOffLightOn0: beepOnLightOn -> beepOffLightOn {
+			label L9: "3: engine && count > 30 / beep = false" {
+				layout [ size: 267, 17 ]
+			}
+		}
+		edge beepOffLightOff0_g3974: beepOffLightOn -> beepOffLightOff {
+			label L10: "!engine || !warn / light = false" {
+				layout [ size: 201, 17 ]
+			}
+		}
+	}
+}

@@ -1,0 +1,88 @@
+graph G1
+node DoenerAli {
+	algorithm: org.eclipse.elk.box
+	node ChefAli {
+		node EinPauseMachen {
+			layout [ size: 144, 34 ]
+		}
+		node EinsDoenerMachen {
+			algorithm: org.eclipse.elk.box
+			node N1 {
+				node Start {
+					layout [ size: 54, 34 ]
+				}
+				node Fertig {
+					layout [ size: 69, 40 ]
+				}
+				edge Fertig0: Start -> Fertig {
+					label L3: "3 MINUTE" {
+						layout [ size: 72, 17 ]
+					}
+				}
+			}
+		}
+		edge EinsDoenerMachen0: EinPauseMachen -> EinsDoenerMachen {
+			label L1: "kundebInLaden > 0 && !AUFFUELLEN" {
+				layout [ size: 267, 17 ]
+			}
+		}
+		edge EinPauseMachen0: EinsDoenerMachen -> EinPauseMachen {
+			label L2: "/ DOENER; doenerCounter++" {
+				layout [ size: 208, 17 ]
+			}
+		}
+	}
+	node Ahmed {
+		node EinPauseMachen_g9982 {
+			layout [ size: 144, 34 ]
+		}
+		node Auffuellen {
+			algorithm: org.eclipse.elk.box
+			node N2 {
+				node Start_g6372 {
+					layout [ size: 54, 34 ]
+				}
+				node Fertig_g3168 {
+					layout [ size: 69, 40 ]
+				}
+				edge Fertig0_g4435: Start_g6372 -> Fertig_g3168 {
+					label L7: "5 MINUTE" {
+						layout [ size: 72, 17 ]
+					}
+				}
+			}
+		}
+		node MoneyMoney {
+			algorithm: org.eclipse.elk.box
+			node N3 {
+				node GiveMeYourMoney {
+					layout [ size: 158, 34 ]
+				}
+				node ShutUpAndTakeMyMoney {
+					layout [ size: 209, 40 ]
+				}
+				edge ShutUpAndTakeMyMoney0: GiveMeYourMoney -> ShutUpAndTakeMyMoney {
+					label L8: "/ BIER; kundeBezahlen = kundeBezahlen && false" {
+						layout [ size: 355, 17 ]
+					}
+				}
+			}
+		}
+		edge Auffuellen0: EinPauseMachen_g9982 -> Auffuellen {
+			label L4: "1: doenerCounter >= 20" {
+				layout [ size: 168, 17 ]
+			}
+		}
+		edge MoneyMoney0: EinPauseMachen_g9982 -> MoneyMoney {
+			label L5: "2: kundeBezahlen" {
+				layout [ size: 128, 17 ]
+			}
+		}
+		edge EinPauseMachen0_g3348: Auffuellen -> EinPauseMachen_g9982 {
+			label L6: "/ doenerCounter = doenerCounter - doenerCounter" {
+				layout [ size: 365, 17 ]
+			}
+		}
+		edge EinPauseMachen0_g3460: MoneyMoney -> EinPauseMachen_g9982
+	}
+}

@@ -1,0 +1,84 @@
+graph G1
+node Controller2 {
+	algorithm: org.eclipse.elk.box
+	node domelight {
+		node doorClosedLightOff {
+			layout [ size: 161, 34 ]
+		}
+		node doorOpenLightOn {
+			layout [ size: 150, 34 ]
+		}
+		node doorClosedLightOn {
+			layout [ size: 161, 34 ]
+		}
+		edge doorOpenLightOn0: doorClosedLightOff -> doorOpenLightOn {
+			label L1: "!(closed1 && closed2) / lightsOn = true" {
+				layout [ size: 272, 17 ]
+			}
+		}
+		edge doorClosedLightOn0: doorOpenLightOn -> doorClosedLightOn {
+			label L2: "closed1 && closed2 / count = 0" {
+				layout [ size: 218, 17 ]
+			}
+		}
+		edge doorClosedLightOn0_g1491: doorClosedLightOn -> doorClosedLightOn {
+			label L3: "1: count <= 3 && second / count = count + 1" {
+				layout [ size: 307, 17 ]
+			}
+		}
+		edge doorOpenLightOn0_g3444: doorClosedLightOn -> doorOpenLightOn {
+			label L4: "2: !(closed1 && closed2) / count = 0" {
+				layout [ size: 248, 17 ]
+			}
+		}
+		edge doorClosedLightOff0: doorClosedLightOn -> doorClosedLightOff {
+			label L5: "3: count > 3 / lightsOn = false" {
+				layout [ size: 204, 17 ]
+			}
+		}
+	}
+	node sealtbelt {
+		node engineOff {
+			layout [ size: 91, 34 ]
+		}
+		node beepOffLightOff {
+			layout [ size: 136, 34 ]
+		}
+		node beepOnLightOn {
+			layout [ size: 135, 34 ]
+		}
+		node beepOffLightOn {
+			layout [ size: 136, 34 ]
+		}
+		edge beepOffLightOff0: engineOff -> beepOffLightOff {
+			label L6: "engine" {
+				layout [ size: 49, 17 ]
+			}
+		}
+		edge beepOnLightOn0: beepOffLightOff -> beepOnLightOn {
+			label L7: "warn && halfsecond / beep = true; light = true; count = 0" {
+				layout [ size: 395, 17 ]
+			}
+		}
+		edge beepOnLightOn0_g8114: beepOnLightOn -> beepOnLightOn {
+			label L8: "1: count <= 30 && second / count = count + 1" {
+				layout [ size: 315, 17 ]
+			}
+		}
+		edge beepOffLightOff0_g3764: beepOnLightOn -> beepOffLightOff {
+			label L9: "2: warn && halfsecond / beep = false; light = false" {
+				layout [ size: 347, 17 ]
+			}
+		}
+		edge beepOffLightOn0: beepOnLightOn -> beepOffLightOn {
+			label L10: "3: count > 30 / beep = false" {
+				layout [ size: 188, 17 ]
+			}
+		}
+		edge beepOffLightOff0_g2248: beepOffLightOn -> beepOffLightOff {
+			label L11: "warn / light = false" {
+				layout [ size: 128, 17 ]
+			}
+		}
+	}
+}

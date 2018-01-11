@@ -1,0 +1,38 @@
+graph G1
+node ExtendBucket {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node Extend {
+			layout [ size: 71, 34 ]
+		}
+		node Extending {
+			layout [ size: 93, 34 ]
+		}
+		node Paused {
+			layout [ size: 74, 34 ]
+		}
+		node Extended {
+			layout [ size: 95, 40 ]
+		}
+		edge Extending0: Extend -> Extending {
+			label L1: "/ BUCKET_PUSH = true" {
+				layout [ size: 168, 17 ]
+			}
+		}
+		edge Paused0: Extending -> Paused {
+			label L2: "1: PAUSE / BUCKET_PUSH = false" {
+				layout [ size: 242, 17 ]
+			}
+		}
+		edge Extended0: Extending -> Extended {
+			label L3: "2: BUCKET_OUT / BUCKET_PUSH = false" {
+				layout [ size: 298, 17 ]
+			}
+		}
+		edge Extending0_g2766: Paused -> Extending {
+			label L4: "!PAUSE / BUCKET_PUSH = true" {
+				layout [ size: 225, 17 ]
+			}
+		}
+	}
+}

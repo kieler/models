@@ -1,0 +1,151 @@
+graph G1
+node N2 {
+	portConstraints: FREE
+	label L1: "g0" {
+		layout [ size: 14, 14 ]
+	}
+	port P1
+	node N3 {
+		layout [ size: 75, 25 ]
+		nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+		portConstraints: FIXED_SIDE
+		layerConstraint: FIRST
+		label L2: "entry" {
+			layout [ size: 29, 15 ]
+		}
+		port P2 {
+			side: SOUTH
+		}
+	}
+	node N4 {
+		layout [ size: 75, 25 ]
+		nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+		portConstraints: FIXED_SIDE
+		label L3: "drive = true" {
+			layout [ size: 65, 15 ]
+		}
+		port P3 {
+			side: NORTH
+		}
+		port P4 {
+			side: SOUTH
+		}
+	}
+	edge E5: N3.P2 -> N4.P3
+	edge E6: N4.P4 -> P1
+}
+node N5 {
+	portConstraints: FREE
+	label L4: "g1" {
+		layout [ size: 14, 14 ]
+	}
+	port P5
+	port P6
+	port P7
+	node N6 {
+		layout [ size: 75, 25 ]
+		nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+		portConstraints: FIXED_SIDE
+		label L5: "surface" {
+			layout [ size: 43, 15 ]
+		}
+		port P8 {
+			side: NORTH
+		}
+		port P9 {
+			side: SOUTH
+		}
+	}
+	edge E7: P6 -> N6.P8
+	edge E8: P7 -> N6.P8
+	edge E9: N6.P9 -> P5
+}
+node N7 {
+	portConstraints: FREE
+	label L6: "g2" {
+		layout [ size: 14, 14 ]
+	}
+	port P10
+	port P11
+	port P12
+	node N8 {
+		layout [ size: 75, 25 ]
+		nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+		portConstraints: FIXED_SIDE
+		layerConstraint: FIRST
+		label L8: "depth" {
+			layout [ size: 33, 15 ]
+		}
+		port P13 {
+			side: NORTH
+		}
+		port P14 {
+			side: SOUTH
+		}
+	}
+	node N9 {
+		layout [ size: 75, 25 ]
+		nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+		portConstraints: FIXED_SIDE
+		label L9: "done" {
+			layout [ size: 29, 15 ]
+		}
+		port P15 {
+			side: NORTH
+		}
+		port P16 {
+			side: SOUTH
+		}
+		port P17 {
+			northOrSouthPort: true
+			side: EAST
+		}
+	}
+	edge E10: P10 -> N8.P13
+	edge E11: N8.P14 -> N9.P15
+	edge E12: N9.P17 -> P11 {
+		label L7: "true" {
+			layout [ size: 21, 14 ]
+		}
+	}
+	edge E13: N9.P16 -> P12
+}
+node N10 {
+	portConstraints: FREE
+	label L10: "g3" {
+		layout [ size: 14, 14 ]
+	}
+	port P18
+	node N11 {
+		layout [ size: 80, 25 ]
+		nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+		portConstraints: FIXED_SIDE
+		label L11: "drive = false" {
+			layout [ size: 70, 15 ]
+		}
+		port P19 {
+			side: NORTH
+		}
+		port P20 {
+			side: SOUTH
+		}
+	}
+	node N12 {
+		layout [ size: 75, 25 ]
+		nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+		portConstraints: FIXED_SIDE
+		layerConstraint: LAST
+		label L12: "exit" {
+			layout [ size: 21, 15 ]
+		}
+		port P21 {
+			side: NORTH
+		}
+	}
+	edge E14: P18 -> N11.P19
+	edge E15: N11.P20 -> N12.P21
+}
+edge E1: N2.P1 -> N5.P6
+edge E2: N5.P5 -> N7.P10
+edge E3: N7.P12 -> N5.P7
+edge E4: N7.P11 -> N10.P18

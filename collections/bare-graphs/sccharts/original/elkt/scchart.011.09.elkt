@@ -1,0 +1,97 @@
+graph G1
+node Elevator {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node Init {
+			layout [ size: 42, 34 ]
+		}
+		node MovingUp {
+			layout [ size: 94, 34 ]
+		}
+		node MovingDown {
+			layout [ size: 114, 34 ]
+		}
+		node Alarm {
+			algorithm: org.eclipse.elk.box
+			node N2 {
+				node InitAlarm {
+					layout [ size: 83, 34 ]
+				}
+				node Stop {
+					layout [ size: 54, 34 ]
+				}
+				node Wait {
+					layout [ size: 49, 34 ]
+				}
+				node Exit {
+					layout [ size: 53, 40 ]
+				}
+				edge Stop0: InitAlarm -> Stop {
+					label L11: "/ PrevMove = Move" {
+						layout [ size: 139, 17 ]
+					}
+				}
+				edge Wait0: Stop -> Wait {
+					label L12: "/ Move = 0; AlarmLamp = true" {
+						layout [ size: 203, 17 ]
+					}
+				}
+				edge Exit0: Wait -> Exit {
+					label L13: "5 Second / AlarmLamp = false" {
+						layout [ size: 205, 17 ]
+					}
+				}
+			}
+		}
+		edge MovingUp0: Init -> MovingUp {
+			label L1: "1: ButtonUp && !IsUp / Move = 1" {
+				layout [ size: 228, 17 ]
+			}
+		}
+		edge MovingDown0: Init -> MovingDown {
+			label L2: "2: ButtonDown && !IsDown / Move = -1" {
+				layout [ size: 273, 17 ]
+			}
+		}
+		edge Alarm0: Init -> Alarm {
+			label L3: "3: ButtonAlarm" {
+				layout [ size: 105, 17 ]
+			}
+		}
+		edge Init0: MovingUp -> Init {
+			label L4: "1: IsUp" {
+				layout [ size: 49, 17 ]
+			}
+		}
+		edge Alarm0_g7441: MovingUp -> Alarm {
+			label L5: "2: ButtonAlarm" {
+				layout [ size: 105, 17 ]
+			}
+		}
+		edge Init0_g8856: MovingDown -> Init {
+			label L6: "1: IsDown" {
+				layout [ size: 69, 17 ]
+			}
+		}
+		edge Alarm0_g1056: MovingDown -> Alarm {
+			label L7: "2: ButtonAlarm" {
+				layout [ size: 105, 17 ]
+			}
+		}
+		edge MovingUp0_g1048: Alarm -> MovingUp {
+			label L8: "1: PrevMove == 1" {
+				layout [ size: 125, 17 ]
+			}
+		}
+		edge MovingDown0_g5935: Alarm -> MovingDown {
+			label L9: "2: PrevMove == -1" {
+				layout [ size: 130, 17 ]
+			}
+		}
+		edge Init0_g5338: Alarm -> Init {
+			label L10: "3:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+	}
+}

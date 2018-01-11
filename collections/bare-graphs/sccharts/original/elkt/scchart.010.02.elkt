@@ -1,0 +1,89 @@
+graph G1
+node domelight {
+	algorithm: org.eclipse.elk.box
+	node seatbelt {
+		node engine_not_started {
+			layout [ size: 159, 34 ]
+		}
+		node buckled {
+			layout [ size: 77, 34 ]
+		}
+		node unbuckled_beeping {
+			layout [ size: 161, 34 ]
+		}
+		node unbuckled {
+			layout [ size: 95, 34 ]
+		}
+		edge buckled0: engine_not_started -> buckled {
+			label L1: "1: engine && seatbelt" {
+				layout [ size: 152, 17 ]
+			}
+		}
+		edge unbuckled_beeping0: engine_not_started -> unbuckled_beeping {
+			label L2: "2: engine && seatbelt == false / warnLight = true; beeper = true; counter = 0" {
+				layout [ size: 534, 17 ]
+			}
+		}
+		edge unbuckled_beeping0_g1812: buckled -> unbuckled_beeping {
+			label L3: "seatbelt == false / warnLight = true; beeper = true; counter = 0" {
+				layout [ size: 439, 17 ]
+			}
+		}
+		edge buckled0_g9400: unbuckled_beeping -> buckled {
+			label L4: "1: seatbelt / warnLight = false; beeper = false" {
+				layout [ size: 316, 17 ]
+			}
+		}
+		edge unbuckled_beeping0_g2516: unbuckled_beeping -> unbuckled_beeping {
+			label L5: "2: counter < 30 && second / counter = counter + 1" {
+				layout [ size: 351, 17 ]
+			}
+		}
+		edge unbuckled0: unbuckled_beeping -> unbuckled {
+			label L6: "3: counter >= 30 / beeper = false" {
+				layout [ size: 227, 17 ]
+			}
+		}
+		edge buckled0_g7822: unbuckled -> buckled {
+			label L7: "seatbelt / warnLight = false" {
+				layout [ size: 190, 17 ]
+			}
+		}
+	}
+	node doors {
+		node closed {
+			layout [ size: 68, 34 ]
+		}
+		node open {
+			layout [ size: 57, 34 ]
+		}
+		node closed_light {
+			layout [ size: 106, 34 ]
+		}
+		edge open0: closed -> open {
+			label L8: "door / domeLight = true" {
+				layout [ size: 166, 17 ]
+			}
+		}
+		edge closed_light0: open -> closed_light {
+			label L9: "door == false / counter = 0" {
+				layout [ size: 186, 17 ]
+			}
+		}
+		edge closed_light0_g8775: closed_light -> closed_light {
+			label L10: "1: second && counter < 3 / counter = counter + 1" {
+				layout [ size: 343, 17 ]
+			}
+		}
+		edge closed0: closed_light -> closed {
+			label L11: "2: counter >= 3 / domeLight = false" {
+				layout [ size: 243, 17 ]
+			}
+		}
+		edge open0_g4253: closed_light -> open {
+			label L12: "3: door" {
+				layout [ size: 49, 17 ]
+			}
+		}
+	}
+}

@@ -1,0 +1,88 @@
+graph G1
+node ExtendStick {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node Extend {
+			layout [ size: 71, 34 ]
+		}
+		node Extended {
+			layout [ size: 95, 40 ]
+		}
+		node __te_S {
+			layout [ size: 69, 34 ]
+		}
+		node __te_S1 {
+			layout [ size: 77, 34 ]
+		}
+		node __te_S2 {
+			layout [ size: 77, 34 ]
+		}
+		node Extending {
+			layout [ size: 93, 34 ]
+		}
+		node __sd_Depth {
+			layout [ size: 105, 34 ]
+		}
+		node __sd_S1 {
+			layout [ size: 80, 34 ]
+		}
+		node Paused {
+			layout [ size: 74, 34 ]
+		}
+		node __sd_Depth1 {
+			layout [ size: 113, 34 ]
+		}
+		edge Extending0: Extend -> Extending {
+			label L1: "/ STICK_PUSH = true" {
+				layout [ size: 150, 17 ]
+			}
+		}
+		edge Paused0: __te_S -> Paused {
+			label L2: "/ STICK_PUSH = false" {
+				layout [ size: 155, 17 ]
+			}
+		}
+		edge Extended0: __te_S1 -> Extended {
+			label L3: "/ STICK_PUSH = false" {
+				layout [ size: 155, 17 ]
+			}
+		}
+		edge Extending0_g5662: __te_S2 -> Extending {
+			label L4: "/ STICK_PUSH = true" {
+				layout [ size: 150, 17 ]
+			}
+		}
+		edge __sd_Depth0: Extending -> __sd_Depth
+		edge __te_S0: __sd_Depth -> __te_S {
+			label L5: "1: PAUSE" {
+				layout [ size: 66, 17 ]
+			}
+		}
+		edge __sd_S10: __sd_Depth -> __sd_S1 {
+			label L6: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge __te_S10: __sd_S1 -> __te_S1 {
+			label L7: "1: STICK_OUT" {
+				layout [ size: 103, 17 ]
+			}
+		}
+		edge Extending0_g2950: __sd_S1 -> Extending {
+			label L8: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge __sd_Depth10: Paused -> __sd_Depth1
+		edge __te_S20: __sd_Depth1 -> __te_S2 {
+			label L9: "1: !PAUSE" {
+				layout [ size: 70, 17 ]
+			}
+		}
+		edge Paused0_g6053: __sd_Depth1 -> Paused {
+			label L10: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+	}
+}

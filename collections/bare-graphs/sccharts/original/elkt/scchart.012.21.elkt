@@ -1,0 +1,73 @@
+graph G1
+node Elevator_Extended {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node Elevator {
+			algorithm: org.eclipse.elk.box
+			node N2 {
+				node Elevator_main {
+					algorithm: org.eclipse.elk.box
+					node N3 {
+						node A {
+							layout [ size: 34, 34 ]
+						}
+						node BU {
+							layout [ size: 42, 34 ]
+						}
+						node BD {
+							layout [ size: 42, 34 ]
+						}
+						edge BU0: A -> BU {
+							label L1: "1: ButtonUp / Move = 1" {
+								layout [ size: 162, 17 ]
+							}
+						}
+						edge BD0: A -> BD {
+							label L2: "2: ButtonDown / Move = -1" {
+								layout [ size: 187, 17 ]
+							}
+						}
+						edge A0: BU -> A {
+							label L3: "1: IsUp / Move = 0" {
+								layout [ size: 126, 17 ]
+							}
+						}
+						edge BU0_g6885: BU -> BU {
+							label L4: "2: / Move = 1" {
+								layout [ size: 90, 17 ]
+							}
+						}
+						edge A0_g6983: BD -> A {
+							label L5: "1: IsDown / Move = 0" {
+								layout [ size: 146, 17 ]
+							}
+						}
+						edge BD0_g4014: BD -> BD {
+							label L6: "2: / Move = -1" {
+								layout [ size: 95, 17 ]
+							}
+						}
+					}
+				}
+			}
+			node N4 {
+				node B {
+					layout [ size: 34, 34 ]
+				}
+				node Alarm {
+					layout [ size: 61, 34 ]
+				}
+				edge Alarm0: B -> Alarm {
+					label L7: "ButtonAlarm / Move = 0; AlarmLamp = true" {
+						layout [ size: 294, 17 ]
+					}
+				}
+				edge B0: Alarm -> B {
+					label L8: "5 Second / AlarmLamp = false" {
+						layout [ size: 205, 17 ]
+					}
+				}
+			}
+		}
+	}
+}

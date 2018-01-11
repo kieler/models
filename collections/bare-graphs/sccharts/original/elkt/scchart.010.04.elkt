@@ -1,0 +1,89 @@
+graph G1
+node DomeLightController {
+	algorithm: org.eclipse.elk.box
+	node domelight {
+		node init {
+			layout [ size: 42, 34 ]
+		}
+		node on {
+			layout [ size: 39, 34 ]
+		}
+		node count {
+			layout [ size: 60, 34 ]
+		}
+		node off {
+			layout [ size: 39, 34 ]
+		}
+		edge on0: init -> on {
+			label L1: "1: !doorSensor1 || !doorSensor2 / domelight = true" {
+				layout [ size: 352, 17 ]
+			}
+		}
+		edge off0: init -> off {
+			label L2: "2: doorSensor1 && doorSensor2 / domelight = false" {
+				layout [ size: 363, 17 ]
+			}
+		}
+		edge count0: on -> count {
+			label L3: "doorSensor1 && doorSensor2 / counter = 0" {
+				layout [ size: 307, 17 ]
+			}
+		}
+		edge count0_g5141: count -> count {
+			label L4: "1: second / counter = counter + 1" {
+				layout [ size: 233, 17 ]
+			}
+		}
+		edge off0_g1997: count -> off {
+			label L5: "2: counter >= 3 / domelight = false" {
+				layout [ size: 238, 17 ]
+			}
+		}
+		edge on0_g1819: count -> on {
+			label L6: "3: !doorSensor1 || !doorSensor2 / domelight = true" {
+				layout [ size: 352, 17 ]
+			}
+		}
+		edge on0_g2963: off -> on {
+			label L7: "!doorSensor1 || !doorSensor2 / domelight = true" {
+				layout [ size: 336, 17 ]
+			}
+		}
+	}
+	node seatbelt {
+		node off_g3956 {
+			layout [ size: 39, 34 ]
+		}
+		node lightAndBeeper {
+			layout [ size: 131, 34 ]
+		}
+		node light {
+			layout [ size: 51, 34 ]
+		}
+		edge lightAndBeeper0: off_g3956 -> lightAndBeeper {
+			label L8: "ignition && !seatbeltSensor / seatbeltLight = true; beeper = true; counter = 0" {
+				layout [ size: 540, 17 ]
+			}
+		}
+		edge off0_g8720: lightAndBeeper -> off_g3956 {
+			label L9: "1: !ignition || seatbeltSensor / seatbeltLight = false; beeper = false" {
+				layout [ size: 463, 17 ]
+			}
+		}
+		edge lightAndBeeper0_g3165: lightAndBeeper -> lightAndBeeper {
+			label L10: "2: second / counter = counter + 1" {
+				layout [ size: 233, 17 ]
+			}
+		}
+		edge light0: lightAndBeeper -> light {
+			label L11: "3: counter >= 30 / beeper = false" {
+				layout [ size: 227, 17 ]
+			}
+		}
+		edge off0_g1880: light -> off_g3956 {
+			label L12: "!ignition || seatbeltSensor / seatbeltLight = false" {
+				layout [ size: 337, 17 ]
+			}
+		}
+	}
+}

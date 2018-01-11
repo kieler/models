@@ -1,0 +1,65 @@
+graph G1
+node LegController {
+	algorithm: org.eclipse.elk.box
+	node Legs {
+		node init {
+			layout [ size: 42, 34 ]
+		}
+		node legsRetracted {
+			layout [ size: 121, 34 ]
+		}
+		node extendLegs {
+			layout [ size: 105, 34 ]
+		}
+		node stopped {
+			layout [ size: 79, 34 ]
+		}
+		node legsExtended {
+			layout [ size: 119, 34 ]
+		}
+		node retractLegs {
+			layout [ size: 103, 34 ]
+		}
+		edge legsRetracted0: init -> legsRetracted
+		edge extendLegs0: legsRetracted -> extendLegs {
+			label L1: "EXTEND_BUTTON / LEGS_EXTEND = true" {
+				layout [ size: 304, 17 ]
+			}
+		}
+		edge legsExtended0: extendLegs -> legsExtended {
+			label L2: "1: LEGS_OUT / LEGS_EXTEND = false; DONE_LAMP = true" {
+				layout [ size: 419, 17 ]
+			}
+		}
+		edge stopped0: extendLegs -> stopped {
+			label L3: "2: STOP_BUTTON / LEGS_EXTEND = false; LEGS_STOP = true" {
+				layout [ size: 450, 17 ]
+			}
+		}
+		edge extendLegs0_g3834: stopped -> extendLegs {
+			label L4: "1: EXTEND_BUTTON && !STOP_BUTTON && !RETRACT_BUTTON / LEGS_EXTEND = true; LEGS_STOP = false" {
+				layout [ size: 798, 17 ]
+			}
+		}
+		edge retractLegs0: stopped -> retractLegs {
+			label L5: "2: RETRACT_BUTTON && !STOP_BUTTON && !EXTEND_BUTTON / LEGS_RETRACT = true; LEGS_STOP = false" {
+				layout [ size: 808, 17 ]
+			}
+		}
+		edge retractLegs0_g6109: legsExtended -> retractLegs {
+			label L6: "RETRACT_BUTTON / LEGS_RETRACT = true; DONE_LAMP = false" {
+				layout [ size: 476, 17 ]
+			}
+		}
+		edge legsRetracted0_g9691: retractLegs -> legsRetracted {
+			label L7: "1: LEGS_IN / LEGS_RETRACT = false" {
+				layout [ size: 264, 17 ]
+			}
+		}
+		edge stopped0_g2911: retractLegs -> stopped {
+			label L8: "2: STOP_BUTTON / LEGS_RETRACT = false; LEGS_STOP = true" {
+				layout [ size: 460, 17 ]
+			}
+		}
+	}
+}

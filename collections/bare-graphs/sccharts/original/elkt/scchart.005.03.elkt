@@ -1,0 +1,65 @@
+graph G1
+node elevator_core {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node Moving {
+			layout [ size: 74, 34 ]
+		}
+		node Alarm {
+			layout [ size: 61, 34 ]
+		}
+		node Stop {
+			layout [ size: 54, 34 ]
+		}
+		edge Alarm0: Moving -> Alarm {
+			label L1: "1: ButtonAlarm == true / OldMove = Move; Move = 0; AlarmLamp = true" {
+				layout [ size: 495, 17 ]
+			}
+		}
+		edge Moving0: Moving -> Moving {
+			label L2: "2: ButtonUp == true / Move = 1" {
+				layout [ size: 217, 17 ]
+			}
+		}
+		edge Moving1: Moving -> Moving {
+			label L3: "3: ButtonDown == true / Move = -1" {
+				layout [ size: 242, 17 ]
+			}
+		}
+		edge Stop0: Moving -> Stop {
+			label L4: "4: IsUp == true || IsDown == true / Move = 0" {
+				layout [ size: 304, 17 ]
+			}
+		}
+		edge Stop0_g7106: Alarm -> Stop {
+			label L5: "1: Timer == 5 && OldMove == 0 / AlarmLamp = false; Timer = 0" {
+				layout [ size: 434, 17 ]
+			}
+		}
+		edge Moving0_g3040: Alarm -> Moving {
+			label L6: "2: Timer == 5 / AlarmLamp = false; Move = OldMove; Timer = 0" {
+				layout [ size: 435, 17 ]
+			}
+		}
+		edge Alarm0_g2912: Alarm -> Alarm {
+			label L7: "3: Second == true / Timer = Timer + 1" {
+				layout [ size: 262, 17 ]
+			}
+		}
+		edge Alarm0_g4929: Stop -> Alarm {
+			label L8: "1: ButtonAlarm == true / OldMove = 0; AlarmLamp = true" {
+				layout [ size: 390, 17 ]
+			}
+		}
+		edge Moving0_g3528: Stop -> Moving {
+			label L9: "2: ButtonDown == true / Move = -1" {
+				layout [ size: 242, 17 ]
+			}
+		}
+		edge Moving1_g2482: Stop -> Moving {
+			label L10: "3: ButtonUp == true / Move = 1" {
+				layout [ size: 217, 17 ]
+			}
+		}
+	}
+}

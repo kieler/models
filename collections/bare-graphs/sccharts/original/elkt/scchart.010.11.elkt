@@ -1,0 +1,59 @@
+graph G1
+node Elevator {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node NormalImStep {
+			algorithm: org.eclipse.elk.box
+			node N2 {
+				node NotMoving {
+					layout [ size: 99, 34 ]
+				}
+				node Moving {
+					layout [ size: 74, 34 ]
+				}
+				edge Moving0: NotMoving -> Moving {
+					label L2: "1: ButtonUp / Move = 1" {
+						layout [ size: 162, 17 ]
+					}
+				}
+				edge Moving1: NotMoving -> Moving {
+					label L3: "2: ButtonDown / Move = -1" {
+						layout [ size: 187, 17 ]
+					}
+				}
+				edge NotMoving0: Moving -> NotMoving {
+					label L4: "IsUp || IsDown / Move = 0" {
+						layout [ size: 178, 17 ]
+					}
+				}
+			}
+		}
+		node Alarm {
+			algorithm: org.eclipse.elk.box
+			node N3 {
+				node counting {
+					layout [ size: 83, 34 ]
+				}
+				node done {
+					layout [ size: 62, 40 ]
+				}
+				edge done0: counting -> done {
+					label L5: "1: 5 Second" {
+						layout [ size: 83, 17 ]
+					}
+				}
+				edge counting0: counting -> counting {
+					label L6: "2: Second / AlarmLamp = !AlarmLamp" {
+						layout [ size: 257, 17 ]
+					}
+				}
+			}
+		}
+		edge Alarm0: NormalImStep -> Alarm {
+			label L1: "ButtonAlarm" {
+				layout [ size: 89, 17 ]
+			}
+		}
+		edge NormalImStep0: Alarm -> NormalImStep
+	}
+}

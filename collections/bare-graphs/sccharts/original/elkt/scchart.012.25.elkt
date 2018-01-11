@@ -1,0 +1,64 @@
+graph G1
+node backhoe {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node retracted {
+			layout [ size: 179, 65 ]
+		}
+		node extending {
+			algorithm: org.eclipse.elk.box
+			node E {
+				node stick {
+					layout [ size: 179, 65 ]
+				}
+				node bucket {
+					layout [ size: 200, 71 ]
+				}
+				edge bucket0: stick -> bucket {
+					label L5: "STICK_OUT" {
+						layout [ size: 87, 17 ]
+					}
+				}
+			}
+		}
+		node extended {
+			layout [ size: 179, 65 ]
+		}
+		node retracting {
+			algorithm: org.eclipse.elk.box
+			node R {
+				node bucket_g3108 {
+					layout [ size: 190, 65 ]
+				}
+				node stick_g9074 {
+					layout [ size: 181, 71 ]
+				}
+				edge stick0: bucket_g3108 -> stick_g9074 {
+					label L6: "BUCKET_IN" {
+						layout [ size: 87, 17 ]
+					}
+				}
+			}
+		}
+		edge extending0: retracted -> extending {
+			label L1: "EXTEND_BUTTON" {
+				layout [ size: 135, 17 ]
+			}
+		}
+		edge extended0: extending -> extended {
+			label L2: "BUCKET_OUT" {
+				layout [ size: 105, 17 ]
+			}
+		}
+		edge retracting0: extended -> retracting {
+			label L3: "RETRACT_BUTTON" {
+				layout [ size: 145, 17 ]
+			}
+		}
+		edge retracted0: retracting -> retracted {
+			label L4: "STICK_IN" {
+				layout [ size: 69, 17 ]
+			}
+		}
+	}
+}

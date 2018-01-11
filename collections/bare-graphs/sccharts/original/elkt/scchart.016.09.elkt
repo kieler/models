@@ -1,0 +1,76 @@
+graph G1
+node Backhoe {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node WaitForExtend {
+			layout [ size: 179, 65 ]
+		}
+		node ExtendHoe {
+			algorithm: org.eclipse.elk.box
+			node N2 {
+				node ExtendStick {
+					layout [ size: 175, 65 ]
+				}
+				node ExtendBucket {
+					layout [ size: 190, 65 ]
+				}
+				node DoneExtend {
+					layout [ size: 115, 40 ]
+				}
+				edge ExtendBucket0: ExtendStick -> ExtendBucket {
+					label L3: "STICK_OUT" {
+						layout [ size: 87, 17 ]
+					}
+				}
+				edge DoneExtend0: ExtendBucket -> DoneExtend {
+					label L4: "BUCKET_OUT" {
+						layout [ size: 105, 17 ]
+					}
+				}
+			}
+		}
+		node WaitForRetract {
+			layout [ size: 179, 65 ]
+		}
+		node RetractHoe {
+			algorithm: org.eclipse.elk.box
+			node Stick {
+				node RetractStick {
+					layout [ size: 179, 65 ]
+				}
+				node DoneStick {
+					layout [ size: 100, 40 ]
+				}
+				edge DoneStick0: RetractStick -> DoneStick {
+					label L5: "STICK_IN" {
+						layout [ size: 69, 17 ]
+					}
+				}
+			}
+			node Bucket {
+				node RetractBucket {
+					layout [ size: 194, 65 ]
+				}
+				node DoneBucket {
+					layout [ size: 114, 40 ]
+				}
+				edge DoneBucket0: RetractBucket -> DoneBucket {
+					label L6: "BUCKET_IN" {
+						layout [ size: 87, 17 ]
+					}
+				}
+			}
+		}
+		edge ExtendHoe0: WaitForExtend -> ExtendHoe {
+			label L1: "EXTEND_BUTTON" {
+				layout [ size: 135, 17 ]
+			}
+		}
+		edge WaitForRetract0: ExtendHoe -> WaitForRetract
+		edge RetractHoe0: WaitForRetract -> RetractHoe {
+			label L2: "RETRACT_BUTTON" {
+				layout [ size: 145, 17 ]
+			}
+		}
+	}
+}

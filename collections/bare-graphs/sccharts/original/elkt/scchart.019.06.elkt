@@ -1,0 +1,108 @@
+graph G1
+node ComplexFinalState {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node M {
+			algorithm: org.eclipse.elk.box
+			node N2 {
+				node Init {
+					layout [ size: 42, 34 ]
+				}
+				node R1_R2 {
+					algorithm: org.eclipse.elk.box
+					node N3 {
+						node S1 {
+							layout [ size: 39, 34 ]
+						}
+						node S2 {
+							layout [ size: 45, 40 ]
+						}
+						edge S20: S1 -> S2 {
+							label L4: "I1" {
+								layout [ size: 13, 17 ]
+							}
+						}
+					}
+					node N4 {
+						node S3 {
+							layout [ size: 39, 34 ]
+						}
+						node S4 {
+							layout [ size: 45, 40 ]
+						}
+						edge S40: S3 -> S4 {
+							label L5: "I2" {
+								layout [ size: 13, 17 ]
+							}
+						}
+					}
+				}
+				node End {
+					layout [ size: 55, 40 ]
+				}
+				edge R1_R20: Init -> R1_R2 {
+					label L2: "/ term_R1_R2 = false" {
+						layout [ size: 145, 17 ]
+					}
+				}
+				edge End0: R1_R2 -> End {
+					label L3: "/ term_R1_R2 = true" {
+						layout [ size: 140, 17 ]
+					}
+				}
+			}
+			node N5 {
+				node S5 {
+					layout [ size: 39, 34 ]
+				}
+				node S6 {
+					layout [ size: 39, 34 ]
+				}
+				node S7 {
+					layout [ size: 39, 34 ]
+				}
+				node End_g8564 {
+					layout [ size: 55, 40 ]
+				}
+				edge S60: S5 -> S6 {
+					label L6: "I3" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge S50: S6 -> S5 {
+					label L7: "1: I3" {
+						layout [ size: 29, 17 ]
+					}
+				}
+				edge S70: S6 -> S7 {
+					label L8: "2: I4" {
+						layout [ size: 29, 17 ]
+					}
+				}
+				edge End0_g5896: S6 -> End_g8564 {
+					label L9: "3: term_R1_R2" {
+						layout [ size: 103, 17 ]
+					}
+				}
+				edge S50_g7933: S7 -> S5 {
+					label L10: "1:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge End0_g4943: S7 -> End_g8564 {
+					label L11: "2: term_R1_R2" {
+						layout [ size: 103, 17 ]
+					}
+				}
+			}
+		}
+		node F {
+			layout [ size: 40, 40 ]
+		}
+		edge F0: M -> F {
+			label L1: "/ O = true" {
+				layout [ size: 66, 17 ]
+			}
+		}
+	}
+}

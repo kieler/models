@@ -1,0 +1,190 @@
+graph G1
+node Barcode {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node Off {
+			layout [ size: 42, 34 ]
+		}
+		node SetUp {
+			algorithm: org.eclipse.elk.box
+			node setTimer {
+				node ^null {
+					layout [ size: 47, 34 ]
+				}
+				node dark1 {
+					layout [ size: 60, 34 ]
+				}
+				node light {
+					layout [ size: 51, 34 ]
+				}
+				node dark2 {
+					layout [ size: 66, 40 ]
+				}
+				edge null0: ^null -> ^null {
+					label L4: "1: lightSensor > high" {
+						layout [ size: 147, 17 ]
+					}
+				}
+				edge dark10: ^null -> dark1 {
+					label L5: "2: lightSensor <= low" {
+						layout [ size: 149, 17 ]
+					}
+				}
+				edge dark10_g6935: dark1 -> dark1 {
+					label L6: "1: lightSensor <= low" {
+						layout [ size: 149, 17 ]
+					}
+				}
+				edge light0: dark1 -> light {
+					label L7: "2: lightSensor > high" {
+						layout [ size: 147, 17 ]
+					}
+				}
+				edge light0_g8334: light -> light {
+					label L8: "1: lightSensor > high && timer / time = time + 1" {
+						layout [ size: 327, 17 ]
+					}
+				}
+				edge dark20: light -> dark2 {
+					label L9: "2: lightSensor <= low && timer / ready = true" {
+						layout [ size: 311, 17 ]
+					}
+				}
+			}
+		}
+		node Run {
+			algorithm: org.eclipse.elk.box
+			node count {
+				node light_g7373 {
+					layout [ size: 51, 34 ]
+				}
+				node dark {
+					layout [ size: 52, 34 ]
+				}
+				node done {
+					layout [ size: 62, 40 ]
+				}
+				edge done0: light_g7373 -> done {
+					label L10: "1: bit < 0" {
+						layout [ size: 60, 17 ]
+					}
+				}
+				edge dark0: light_g7373 -> dark {
+					label L11: "2: lightSensor <= low && bit > 0 / counter = time; bit = bit - 1; `number[index] = (number[index] << 1) | 1`" {
+						layout [ size: 722, 17 ]
+					}
+				}
+				edge light0_g1491: light_g7373 -> light_g7373 {
+					label L12: "3: counter > 0 && lightSensor > high && timer / counter = counter - 1" {
+						layout [ size: 483, 17 ]
+					}
+				}
+				edge light1: light_g7373 -> light_g7373 {
+					label L13: "4: counter <= 0 && lightSensor > high && timer / counter = time; bit = bit - 1; `number[index] = (number[index] << 1)`" {
+						layout [ size: 812, 17 ]
+					}
+				}
+				edge done0_g1687: dark -> done {
+					label L14: "1: index >= 4 && bit < 0" {
+						layout [ size: 163, 17 ]
+					}
+				}
+				edge light0_g8204: dark -> light_g7373 {
+					label L15: "2: lightSensor > high && bit > 0 && timer / counter = time; bit = bit - 1; `number[index] = (number[index] << 1)`" {
+						layout [ size: 766, 17 ]
+					}
+				}
+				edge light1_g9967: dark -> light_g7373 {
+					label L16: "3: lightSensor > high && bit <= 0 && timer / index = index + 1; counter = time; bit = 6" {
+						layout [ size: 588, 17 ]
+					}
+				}
+				edge dark0_g4998: dark -> dark {
+					label L17: "4: counter > 0 && lightSensor <= low && timer / counter = counter - 1" {
+						layout [ size: 485, 17 ]
+					}
+				}
+				edge dark1_g9404: dark -> dark {
+					label L18: "5: counter <= 0 && lightSensor <= low && timer / counter = time; bit = bit - 1; `number[index] = (number[index] << 1) | 1`" {
+						layout [ size: 834, 17 ]
+					}
+				}
+				edge dark2_g7408: dark -> dark {
+					label L19: "6: lightSensor <= low && bit <= 0 && timer / index = index + 1; counter = time; bit = 7; `number[index] = (number[index] << 1) | 1`" {
+						layout [ size: 894, 17 ]
+					}
+				}
+			}
+		}
+		node CheckAndPrint {
+			algorithm: org.eclipse.elk.box
+			node N2 {
+				node init {
+					layout [ size: 42, 34 ]
+				}
+				node valid {
+					algorithm: org.eclipse.elk.box
+					node createResult {
+						node check {
+							layout [ size: 63, 34 ]
+						}
+						node print {
+							layout [ size: 59, 40 ]
+						}
+						edge print0: check -> print {
+							label L22: "1: result < 500 / `System.out.println(\"Zahl: \" + result)`" {
+								layout [ size: 367, 17 ]
+							}
+						}
+						edge print1: check -> print {
+							label L23: "2: result >= 500 / result = result - 1000; `System.out.println(\"Zahl: \" + result)`" {
+								layout [ size: 528, 17 ]
+							}
+						}
+					}
+				}
+				node invalid {
+					algorithm: org.eclipse.elk.box
+					node print_g7606 {
+						node Do {
+							layout [ size: 41, 34 ]
+						}
+						node Done {
+							layout [ size: 64, 40 ]
+						}
+						edge Done0: Do -> Done {
+							label L24: "/ `System.out.println(\"Invalid Code!\")`" {
+								layout [ size: 263, 17 ]
+							}
+						}
+					}
+				}
+				edge valid0: init -> valid {
+					label L20: "1: code[number[3]] == 9 - (code[number[0]] + code[number[1]] + code[number[2]]) % 10 / result = code[number[0]] * 100 + code[number[1]] * 10 + code[number[2]]" {
+						layout [ size: 1135, 17 ]
+					}
+				}
+				edge invalid0: init -> invalid {
+					label L21: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+			}
+		}
+		edge SetUp0: Off -> SetUp {
+			label L1: "ignition == true / motor1 = speed; motor2 = speed; code[13] = 0; code[25] = 1; code[19] = 2; code[61] = 3; code[35] = 4; code[49] = 5; code[47] = 6; code[59] = 7; code[55] = 8; code[11] = 9" {
+				layout [ size: 1288, 17 ]
+			}
+		}
+		edge Run0: SetUp -> Run {
+			label L2: "ready && lightSensor > high / counter = time; bit = bit - 1" {
+				layout [ size: 396, 17 ]
+			}
+		}
+		edge CheckAndPrint0: Run -> CheckAndPrint {
+			label L3: "index >= 4 / motor1 = 0; motor2 = 0; `System.out.println(\"Folge: \" + code[number[0]] + code[number[1]] + code[number[2]] + code[number[3]])`" {
+				layout [ size: 995, 17 ]
+			}
+		}
+	}
+}

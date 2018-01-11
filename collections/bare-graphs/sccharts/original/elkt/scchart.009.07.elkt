@@ -1,0 +1,72 @@
+graph G1
+node barcode_runner {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node calibrateLow {
+			layout [ size: 111, 34 ]
+		}
+		node calibratedLow {
+			layout [ size: 120, 34 ]
+		}
+		node calibrateHigh {
+			layout [ size: 115, 34 ]
+		}
+		node calibratedHigh {
+			layout [ size: 124, 34 ]
+		}
+		node ready {
+			layout [ size: 61, 34 ]
+		}
+		node setup {
+			layout [ size: 61, 34 ]
+		}
+		node display {
+			layout [ size: 71, 34 ]
+		}
+		edge calibratedLow0: calibrateLow -> calibratedLow {
+			label L1: "1: rightButtonDown / floodlight = true; calLow = true; db5 = light_level; disp5 = true" {
+				layout [ size: 582, 17 ]
+			}
+		}
+		edge ready0: calibrateLow -> ready {
+			label L2: "2: leftButtonDown / yellow = true" {
+				layout [ size: 229, 17 ]
+			}
+		}
+		edge calibrateHigh0: calibratedLow -> calibrateHigh {
+			label L3: "!rightButtonDown / floodlight = false; calLow = false; db5 = light_level" {
+				layout [ size: 489, 17 ]
+			}
+		}
+		edge calibratedHigh0: calibrateHigh -> calibratedHigh {
+			label L4: "rightButtonDown / floodlight = true; calHigh = true; db5 = light_level" {
+				layout [ size: 479, 17 ]
+			}
+		}
+		edge ready0_g6366: calibratedHigh -> ready {
+			label L5: "!rightButtonDown / floodlight = true; calHigh = false; yellow = true; db5 = light_level; disp4 = true; db5 = light_level" {
+				layout [ size: 803, 17 ]
+			}
+		}
+		edge setup0: ready -> setup {
+			label L6: "enterButtonDown / floodlight = true; yellow = false; leftMotorSpeed = 60; rightMotorSpeed = 60; db5 = light_level" {
+				layout [ size: 794, 17 ]
+			}
+		}
+		edge setup0_g5527: setup -> setup {
+			label L7: "1: light_level < 512 && !getZero / RightMotorAngleZero = getRightMotorAngle; db5 = light_level; db6 = RightMotorAngleZero; db7 = getRightMotorAngle; disp6 = true; disp7 = true; getZero = true; yellow = true; disp5 = true" {
+				layout [ size: 1549, 17 ]
+			}
+		}
+		edge display0: setup -> display {
+			label L8: "2: light_level < 512 && getZero && getRightMotorAngle - RightMotorAngleZero > 500 / CurrRightMotorAngle = getRightMotorAngle - RightMotorAngleZero; yellow = false; db4 = getRightMotorAngle; disp4 = true" {
+				layout [ size: 1473, 17 ]
+			}
+		}
+		edge display0_g6218: display -> display {
+			label L9: "true / MotorDiff = CurrRightMotorAngle; disp = true; leftMotorSpeed = 0; rightMotorSpeed = 0; yellow = false; db5 = light_level" {
+				layout [ size: 888, 17 ]
+			}
+		}
+	}
+}

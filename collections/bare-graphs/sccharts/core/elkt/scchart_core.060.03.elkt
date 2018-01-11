@@ -1,0 +1,442 @@
+graph G1
+node backhoe {
+	algorithm: org.eclipse.elk.box
+	node __EA_Entry {
+		node __EA_Main {
+			algorithm: org.eclipse.elk.box
+			node MovingParts {
+				node Retracting {
+					algorithm: org.eclipse.elk.box
+					node Bucketret {
+						node buckturned {
+							layout [ size: 108, 40 ]
+						}
+						node __te_S11 {
+							layout [ size: 84, 34 ]
+						}
+						node __sd_S9 {
+							layout [ size: 80, 34 ]
+						}
+						node Retbuck {
+							layout [ size: 80, 34 ]
+						}
+						node __sd_Depth4 {
+							layout [ size: 113, 34 ]
+						}
+						edge buckturned0: __te_S11 -> buckturned {
+							label L24: "/ BUCKET_PULL = false" {
+								layout [ size: 170, 17 ]
+							}
+						}
+						edge Retbuck0: __sd_S9 -> Retbuck {
+							label L25: "/ BUCKET_PULL = true" {
+								layout [ size: 165, 17 ]
+							}
+						}
+						edge __sd_Depth40: Retbuck -> __sd_Depth4
+						edge __te_S110: __sd_Depth4 -> __te_S11 {
+							label L26: "1: BUCKET_IN == true" {
+								layout [ size: 158, 17 ]
+							}
+						}
+						edge __sd_S90: __sd_Depth4 -> __sd_S9 {
+							label L27: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+					}
+					node Stickret {
+						node stickturned {
+							layout [ size: 107, 40 ]
+						}
+						node __te_S13 {
+							layout [ size: 85, 34 ]
+						}
+						node __sd_S11 {
+							layout [ size: 87, 34 ]
+						}
+						node Retstick {
+							layout [ size: 79, 34 ]
+						}
+						node __sd_Depth5 {
+							layout [ size: 113, 34 ]
+						}
+						edge stickturned0: __te_S13 -> stickturned {
+							label L28: "/ STICK_PULL = false" {
+								layout [ size: 152, 17 ]
+							}
+						}
+						edge Retstick0: __sd_S11 -> Retstick {
+							label L29: "/ STICK_PULL = true" {
+								layout [ size: 147, 17 ]
+							}
+						}
+						edge __sd_Depth50: Retstick -> __sd_Depth5
+						edge __te_S130: __sd_Depth5 -> __te_S13 {
+							label L30: "1: STICK_IN == true" {
+								layout [ size: 140, 17 ]
+							}
+						}
+						edge __sd_S110: __sd_Depth5 -> __sd_S11 {
+							label L31: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+					}
+				}
+				node __te_S {
+					layout [ size: 69, 34 ]
+				}
+				node __te_S1 {
+					layout [ size: 77, 34 ]
+				}
+				node __sd_S1 {
+					layout [ size: 80, 34 ]
+				}
+				node __te_S3 {
+					layout [ size: 77, 34 ]
+				}
+				node __sd_S3 {
+					layout [ size: 80, 34 ]
+				}
+				node __te_S5 {
+					layout [ size: 77, 34 ]
+				}
+				node __te_S6 {
+					layout [ size: 77, 34 ]
+				}
+				node __sd_S5 {
+					layout [ size: 80, 34 ]
+				}
+				node __te_S8 {
+					layout [ size: 77, 34 ]
+				}
+				node __te_S9 {
+					layout [ size: 77, 34 ]
+				}
+				node __sd_S7 {
+					layout [ size: 80, 34 ]
+				}
+				node __te_S15 {
+					layout [ size: 85, 34 ]
+				}
+				node __te_S16 {
+					layout [ size: 85, 34 ]
+				}
+				node WaitingForExtend {
+					layout [ size: 146, 34 ]
+				}
+				node __sd_Depth {
+					layout [ size: 105, 34 ]
+				}
+				node ExtendingStick {
+					layout [ size: 128, 34 ]
+				}
+				node __sd_Depth1 {
+					layout [ size: 113, 34 ]
+				}
+				node ExtendingBucket {
+					layout [ size: 142, 34 ]
+				}
+				node __sd_Depth2 {
+					layout [ size: 113, 34 ]
+				}
+				node Extended {
+					layout [ size: 89, 34 ]
+				}
+				node __sd_Depth3 {
+					layout [ size: 113, 34 ]
+				}
+				edge __te_S150: Retracting -> __te_S15
+				edge __te_S10: __te_S -> __te_S1 {
+					label L3: "/ alarming = true" {
+						layout [ size: 114, 17 ]
+					}
+				}
+				edge ExtendingStick0: __te_S1 -> ExtendingStick {
+					label L4: "/ DONE_LAMP = false" {
+						layout [ size: 152, 17 ]
+					}
+				}
+				edge WaitingForExtend0: __sd_S1 -> WaitingForExtend {
+					label L5: "/ DONE_LAMP = true" {
+						layout [ size: 147, 17 ]
+					}
+				}
+				edge ExtendingBucket0: __te_S3 -> ExtendingBucket {
+					label L6: "/ STICK_PUSH = false" {
+						layout [ size: 155, 17 ]
+					}
+				}
+				edge ExtendingStick0_g3974: __sd_S3 -> ExtendingStick {
+					label L7: "/ STICK_PUSH = true" {
+						layout [ size: 150, 17 ]
+					}
+				}
+				edge __te_S60: __te_S5 -> __te_S6 {
+					label L8: "/ alarming = false" {
+						layout [ size: 119, 17 ]
+					}
+				}
+				edge Extended0: __te_S6 -> Extended {
+					label L9: "/ BUCKET_PUSH = false" {
+						layout [ size: 173, 17 ]
+					}
+				}
+				edge ExtendingBucket0_g2422: __sd_S5 -> ExtendingBucket {
+					label L10: "/ BUCKET_PUSH = true" {
+						layout [ size: 168, 17 ]
+					}
+				}
+				edge __te_S90: __te_S8 -> __te_S9 {
+					label L11: "/ alarming = true" {
+						layout [ size: 114, 17 ]
+					}
+				}
+				edge Retracting0: __te_S9 -> Retracting {
+					label L12: "/ DONE_LAMP = false" {
+						layout [ size: 152, 17 ]
+					}
+				}
+				edge Extended0_g1903: __sd_S7 -> Extended {
+					label L13: "/ DONE_LAMP = true" {
+						layout [ size: 147, 17 ]
+					}
+				}
+				edge __te_S160: __te_S15 -> __te_S16 {
+					label L14: "/ alarming = false" {
+						layout [ size: 119, 17 ]
+					}
+				}
+				edge WaitingForExtend0_g0551: __te_S16 -> WaitingForExtend {
+					label L15: "/ DONE_LAMP = true" {
+						layout [ size: 147, 17 ]
+					}
+				}
+				edge __sd_Depth0: WaitingForExtend -> __sd_Depth
+				edge __te_S0: __sd_Depth -> __te_S {
+					label L16: "1: EXTEND_BUTTON" {
+						layout [ size: 151, 17 ]
+					}
+				}
+				edge __sd_S10: __sd_Depth -> __sd_S1 {
+					label L17: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __sd_Depth10: ExtendingStick -> __sd_Depth1
+				edge __te_S30: __sd_Depth1 -> __te_S3 {
+					label L18: "1: STICK_OUT == true" {
+						layout [ size: 158, 17 ]
+					}
+				}
+				edge __sd_S30: __sd_Depth1 -> __sd_S3 {
+					label L19: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __sd_Depth20: ExtendingBucket -> __sd_Depth2
+				edge __te_S50: __sd_Depth2 -> __te_S5 {
+					label L20: "1: BUCKET_OUT" {
+						layout [ size: 121, 17 ]
+					}
+				}
+				edge __sd_S50: __sd_Depth2 -> __sd_S5 {
+					label L21: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __sd_Depth30: Extended -> __sd_Depth3
+				edge __te_S80: __sd_Depth3 -> __te_S8 {
+					label L22: "1: RETRACT_BUTTON" {
+						layout [ size: 161, 17 ]
+					}
+				}
+				edge __sd_S70: __sd_Depth3 -> __sd_S7 {
+					label L23: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+			}
+			node Lamplight {
+				node __te_S17 {
+					layout [ size: 85, 34 ]
+				}
+				node __te_S18 {
+					layout [ size: 85, 34 ]
+				}
+				node __te_S19 {
+					layout [ size: 85, 34 ]
+				}
+				node __sd_S15 {
+					layout [ size: 88, 34 ]
+				}
+				node __te_S21 {
+					layout [ size: 85, 34 ]
+				}
+				node __te_S22 {
+					layout [ size: 85, 34 ]
+				}
+				node __te_S23 {
+					layout [ size: 85, 34 ]
+				}
+				node __te_S24 {
+					layout [ size: 85, 34 ]
+				}
+				node __sd_S18 {
+					layout [ size: 88, 34 ]
+				}
+				node __te_S26 {
+					layout [ size: 85, 34 ]
+				}
+				node WaitingAlarm {
+					layout [ size: 112, 34 ]
+				}
+				node __sd_Depth6 {
+					layout [ size: 113, 34 ]
+				}
+				node AlarmOn {
+					layout [ size: 81, 34 ]
+				}
+				node __sd_Depth7 {
+					layout [ size: 113, 34 ]
+				}
+				node __sd_S14 {
+					layout [ size: 88, 34 ]
+				}
+				node AlarmOff {
+					layout [ size: 81, 34 ]
+				}
+				node __sd_Depth8 {
+					layout [ size: 113, 34 ]
+				}
+				node __sd_S17 {
+					layout [ size: 88, 34 ]
+				}
+				edge WaitingAlarm0: __te_S17 -> WaitingAlarm {
+					label L32: "/ ALARM_LAMP = false" {
+						layout [ size: 158, 17 ]
+					}
+				}
+				edge __te_S190: __te_S18 -> __te_S19 {
+					label L33: "/ count = 0" {
+						layout [ size: 74, 17 ]
+					}
+				}
+				edge AlarmOff0: __te_S19 -> AlarmOff {
+					label L34: "/ ALARM_LAMP = false" {
+						layout [ size: 158, 17 ]
+					}
+				}
+				edge __te_S210: __sd_S15 -> __te_S21 {
+					label L35: "/ count = count + 1" {
+						layout [ size: 131, 17 ]
+					}
+				}
+				edge AlarmOn0: __te_S21 -> AlarmOn {
+					label L36: "/ ALARM_LAMP = true" {
+						layout [ size: 153, 17 ]
+					}
+				}
+				edge WaitingAlarm0_g6117: __te_S22 -> WaitingAlarm {
+					label L37: "/ ALARM_LAMP = false" {
+						layout [ size: 158, 17 ]
+					}
+				}
+				edge __te_S240: __te_S23 -> __te_S24 {
+					label L38: "/ count = 0" {
+						layout [ size: 74, 17 ]
+					}
+				}
+				edge AlarmOn0_g8925: __te_S24 -> AlarmOn {
+					label L39: "/ ALARM_LAMP = true" {
+						layout [ size: 153, 17 ]
+					}
+				}
+				edge __te_S260: __sd_S18 -> __te_S26 {
+					label L40: "/ count = count + 1" {
+						layout [ size: 131, 17 ]
+					}
+				}
+				edge AlarmOff0_g7581: __te_S26 -> AlarmOff {
+					label L41: "/ ALARM_LAMP = false" {
+						layout [ size: 158, 17 ]
+					}
+				}
+				edge __sd_Depth60: WaitingAlarm -> __sd_Depth6
+				edge AlarmOn0_g7692: __sd_Depth6 -> AlarmOn {
+					label L42: "1: alarming == true" {
+						layout [ size: 131, 17 ]
+					}
+				}
+				edge WaitingAlarm0_g4118: __sd_Depth6 -> WaitingAlarm {
+					label L43: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __sd_Depth70: AlarmOn -> __sd_Depth7
+				edge __te_S170: __sd_Depth7 -> __te_S17 {
+					label L44: "1: alarming == false" {
+						layout [ size: 136, 17 ]
+					}
+				}
+				edge __sd_S140: __sd_Depth7 -> __sd_S14 {
+					label L45: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __te_S180: __sd_S14 -> __te_S18 {
+					label L46: "1: count == 5" {
+						layout [ size: 91, 17 ]
+					}
+				}
+				edge __sd_S150: __sd_S14 -> __sd_S15 {
+					label L47: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __sd_Depth80: AlarmOff -> __sd_Depth8
+				edge __te_S220: __sd_Depth8 -> __te_S22 {
+					label L48: "1: alarming == false" {
+						layout [ size: 136, 17 ]
+					}
+				}
+				edge __sd_S170: __sd_Depth8 -> __sd_S17 {
+					label L49: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __te_S230: __sd_S17 -> __te_S23 {
+					label L50: "1: count == 5" {
+						layout [ size: 91, 17 ]
+					}
+				}
+				edge __sd_S180: __sd_S17 -> __sd_S18 {
+					label L51: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+			}
+		}
+		node __EA_Init {
+			layout [ size: 85, 34 ]
+		}
+		node __EA_Done {
+			layout [ size: 107, 40 ]
+		}
+		node __EA_C {
+			layout [ size: 74, 34 ]
+		}
+		edge __EA_Done0: __EA_Main -> __EA_Done
+		edge __EA_C0: __EA_Init -> __EA_C {
+			label L1: "/ alarming = false" {
+				layout [ size: 119, 17 ]
+			}
+		}
+		edge __EA_Main0: __EA_C -> __EA_Main {
+			label L2: "/ count = 0" {
+				layout [ size: 74, 17 ]
+			}
+		}
+	}
+}

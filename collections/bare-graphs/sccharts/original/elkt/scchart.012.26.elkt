@@ -1,0 +1,75 @@
+graph G1
+node Extender {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node ExtendAll {
+			algorithm: org.eclipse.elk.box
+			node N2 {
+				node Retracted {
+					layout [ size: 91, 34 ]
+				}
+				node StickExtending {
+					layout [ size: 128, 34 ]
+				}
+				node BucketExtending {
+					layout [ size: 143, 34 ]
+				}
+				node BoomExtending {
+					layout [ size: 134, 34 ]
+				}
+				node Extended {
+					layout [ size: 95, 40 ]
+				}
+				edge StickExtending0: Retracted -> StickExtending {
+					label L5: "EXTEND / STICK_PUSH = true; DONE_LAMP = false" {
+						layout [ size: 368, 17 ]
+					}
+				}
+				edge BucketExtending0: StickExtending -> BucketExtending {
+					label L6: "STICK_OUT / STICK_PUSH = false; BUCKET_PUSH = true" {
+						layout [ size: 414, 17 ]
+					}
+				}
+				edge BoomExtending0: BucketExtending -> BoomExtending {
+					label L7: "BUCKET_OUT / BUCKET_PUSH = false; BOOM_PUSH = true" {
+						layout [ size: 434, 17 ]
+					}
+				}
+				edge Extended0: BoomExtending -> Extended {
+					label L8: "BOOM_IN / BOOM_PUSH = false" {
+						layout [ size: 232, 17 ]
+					}
+				}
+			}
+		}
+		node RetractAll {
+			layout [ size: 90, 34 ]
+		}
+		node RetractingAll {
+			layout [ size: 112, 34 ]
+		}
+		node Final {
+			layout [ size: 61, 40 ]
+		}
+		edge RetractAll0: ExtendAll -> RetractAll {
+			label L1: "1: RETRACT / STICK_PUSH = false; BUCKET_PUSH = false; BOOM_PUSH = false" {
+				layout [ size: 577, 17 ]
+			}
+		}
+		edge Final0: ExtendAll -> Final {
+			label L2: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge RetractingAll0: RetractAll -> RetractingAll {
+			label L3: "/ STICK_PULL = true; BUCKET_PULL = true; BOOM_PULL = true" {
+				layout [ size: 461, 17 ]
+			}
+		}
+		edge ExtendAll0: RetractingAll -> ExtendAll {
+			label L4: "STICK_IN && BUCKET_IN && BOOM_IN / STICK_PULL = false; BUCKET_PULL = false; BOOM_PULL = false" {
+				layout [ size: 767, 17 ]
+			}
+		}
+	}
+}

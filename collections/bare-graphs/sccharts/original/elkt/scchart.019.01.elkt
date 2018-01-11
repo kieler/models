@@ -1,0 +1,138 @@
+graph G1
+node car_controller {
+	algorithm: org.eclipse.elk.box
+	node Doors {
+		node closed {
+			layout [ size: 68, 34 ]
+		}
+		node open {
+			layout [ size: 57, 34 ]
+		}
+		edge open0: closed -> open {
+			label L1: "!door1closed || !door2closed / doorsOpen" {
+				layout [ size: 293, 17 ]
+			}
+		}
+		edge closed0: open -> closed {
+			label L2: "door1closed && door1closed / doorsClosed" {
+				layout [ size: 310, 17 ]
+			}
+		}
+	}
+	node SeatbeltToggle {
+		node noWarn_w {
+			layout [ size: 93, 34 ]
+		}
+		node noWarn {
+			layout [ size: 74, 34 ]
+		}
+		node warn_w {
+			layout [ size: 74, 34 ]
+		}
+		node warn {
+			layout [ size: 55, 34 ]
+		}
+		edge noWarn0: noWarn_w -> noWarn {
+			label L3: "!seatbeltButton" {
+				layout [ size: 110, 17 ]
+			}
+		}
+		edge warn_w0: noWarn -> warn_w {
+			label L4: "seatbeltButton / warn" {
+				layout [ size: 152, 17 ]
+			}
+		}
+		edge warn0: warn_w -> warn {
+			label L5: "!seatbeltButton" {
+				layout [ size: 110, 17 ]
+			}
+		}
+		edge noWarn_w0: warn -> noWarn_w {
+			label L6: "seatbeltButton / noWarn" {
+				layout [ size: 171, 17 ]
+			}
+		}
+	}
+	node Domelight {
+		node doorsClosed {
+			layout [ size: 112, 34 ]
+		}
+		node doorsOpen {
+			layout [ size: 101, 34 ]
+		}
+		node doorsClosedWaiting {
+			layout [ size: 163, 34 ]
+		}
+		edge doorsOpen0: doorsClosed -> doorsOpen {
+			label L7: "doorsOpen / domelight = true" {
+				layout [ size: 208, 17 ]
+			}
+		}
+		edge doorsClosedWaiting0: doorsOpen -> doorsClosedWaiting {
+			label L8: "doorsClosed / domelight_s = domelight_stay_secons" {
+				layout [ size: 372, 17 ]
+			}
+		}
+		edge doorsOpen0_g7485: doorsClosedWaiting -> doorsOpen {
+			label L9: "1: doorsOpen" {
+				layout [ size: 97, 17 ]
+			}
+		}
+		edge doorsClosed0: doorsClosedWaiting -> doorsClosed {
+			label L10: "2: !doorsOpen && domelight_s == 0 && second / domelight = false" {
+				layout [ size: 465, 17 ]
+			}
+		}
+		edge doorsClosedWaiting0_g6998: doorsClosedWaiting -> doorsClosedWaiting {
+			label L11: "3: domelight_s > 0 && second / domelight_s = domelight_s - 1" {
+				layout [ size: 432, 17 ]
+			}
+		}
+	}
+	node Seatbelts {
+		node NotWarning {
+			layout [ size: 103, 34 ]
+		}
+		node StartWarning {
+			layout [ size: 112, 34 ]
+		}
+		node Warning {
+			layout [ size: 78, 34 ]
+		}
+		edge StartWarning0: NotWarning -> StartWarning {
+			label L12: "warn / warnLight = true; beeper = true; seatbelt_s = seatbelt_beep_secons" {
+				layout [ size: 526, 17 ]
+			}
+		}
+		edge NotWarning0: StartWarning -> NotWarning {
+			label L13: "1: noWarn / warnLight = false; beeper = false" {
+				layout [ size: 312, 17 ]
+			}
+		}
+		edge Warning0: StartWarning -> Warning {
+			label L14: "2: !noWarn && seatbelt_s == 0 && second / beeper = false" {
+				layout [ size: 406, 17 ]
+			}
+		}
+		edge StartWarning0_g9169: StartWarning -> StartWarning {
+			label L15: "3: seatbelt_s > 0 && second / seatbelt_s = seatbelt_s - 1" {
+				layout [ size: 393, 17 ]
+			}
+		}
+		edge NotWarning0_g4085: Warning -> NotWarning {
+			label L16: "noWarn / warnLight = false" {
+				layout [ size: 186, 17 ]
+			}
+		}
+	}
+	node Beeper {
+		node beeper {
+			layout [ size: 71, 34 ]
+		}
+		edge beeper0: beeper -> beeper {
+			label L17: "beeper && second / beep" {
+				layout [ size: 182, 17 ]
+			}
+		}
+	}
+}

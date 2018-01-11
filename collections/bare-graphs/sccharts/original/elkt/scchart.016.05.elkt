@@ -1,0 +1,91 @@
+graph G1
+node ComplexFinalState {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node Init {
+			layout [ size: 42, 34 ]
+		}
+		node M {
+			algorithm: org.eclipse.elk.box
+			node N2 {
+				node S1 {
+					layout [ size: 39, 34 ]
+				}
+				node S2 {
+					layout [ size: 45, 40 ]
+				}
+				edge S20: S1 -> S2 {
+					label L3: "l1 / finished1 = true" {
+						layout [ size: 135, 17 ]
+					}
+				}
+			}
+			node N3 {
+				node S3 {
+					layout [ size: 39, 34 ]
+				}
+				node S4 {
+					layout [ size: 45, 40 ]
+				}
+				edge S40: S3 -> S4 {
+					label L4: "l2 / finished2 = true" {
+						layout [ size: 135, 17 ]
+					}
+				}
+			}
+			node N4 {
+				node S5 {
+					layout [ size: 39, 34 ]
+				}
+				node S6 {
+					layout [ size: 39, 34 ]
+				}
+				node S7 {
+					layout [ size: 39, 34 ]
+				}
+				node S8 {
+					layout [ size: 45, 40 ]
+				}
+				edge S80: S5 -> S8 {
+					label L5: "1: l3 && finished1 && finished2" {
+						layout [ size: 219, 17 ]
+					}
+				}
+				edge S60: S5 -> S6 {
+					label L6: "2: l3" {
+						layout [ size: 29, 17 ]
+					}
+				}
+				edge S80_g8089: S6 -> S8 {
+					label L7: "1: l4 && finished1 && finished2" {
+						layout [ size: 219, 17 ]
+					}
+				}
+				edge S50: S6 -> S5 {
+					label L8: "2: l3" {
+						layout [ size: 29, 17 ]
+					}
+				}
+				edge S70: S6 -> S7 {
+					label L9: "3: l4" {
+						layout [ size: 29, 17 ]
+					}
+				}
+				edge S50_g3522: S7 -> S5
+			}
+		}
+		node F {
+			layout [ size: 34, 34 ]
+		}
+		edge M0: Init -> M {
+			label L1: "/ finished1 = false; finished2 = false" {
+				layout [ size: 248, 17 ]
+			}
+		}
+		edge F0: M -> F {
+			label L2: "/ O = true" {
+				layout [ size: 66, 17 ]
+			}
+		}
+	}
+}

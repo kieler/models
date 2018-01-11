@@ -1,0 +1,106 @@
+graph G1
+node ComplexFinalState {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node M {
+			algorithm: org.eclipse.elk.box
+			node N2 {
+				node S1 {
+					layout [ size: 39, 34 ]
+				}
+				node S2 {
+					layout [ size: 45, 40 ]
+				}
+				edge S20: S1 -> S2 {
+					label L3: "I1 / State = State + 1" {
+						layout [ size: 141, 17 ]
+					}
+				}
+			}
+			node N3 {
+				node S3 {
+					layout [ size: 39, 34 ]
+				}
+				node S4 {
+					layout [ size: 45, 40 ]
+				}
+				edge S40: S3 -> S4 {
+					label L4: "I2 / State = State + 2" {
+						layout [ size: 141, 17 ]
+					}
+				}
+			}
+			node N4 {
+				node S10 {
+					layout [ size: 47, 34 ]
+				}
+				node S5 {
+					layout [ size: 39, 34 ]
+				}
+				node S8 {
+					layout [ size: 39, 34 ]
+				}
+				node S9 {
+					layout [ size: 39, 34 ]
+				}
+				node S6 {
+					layout [ size: 45, 40 ]
+				}
+				node S7 {
+					layout [ size: 45, 40 ]
+				}
+				edge S50: S10 -> S5 {
+					label L5: "/ State = 0" {
+						layout [ size: 71, 17 ]
+					}
+				}
+				edge S80: S5 -> S8 {
+					label L6: "I3" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge S50_g8079: S8 -> S5 {
+					label L7: "1: I3" {
+						layout [ size: 29, 17 ]
+					}
+				}
+				edge S90: S8 -> S9 {
+					label L8: "2: I4" {
+						layout [ size: 29, 17 ]
+					}
+				}
+				edge S60: S8 -> S6 {
+					label L9: "3: State == 3" {
+						layout [ size: 88, 17 ]
+					}
+				}
+				edge S50_g5953: S9 -> S5 {
+					label L10: "1:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge S70: S9 -> S7 {
+					label L11: "2: State == 3" {
+						layout [ size: 88, 17 ]
+					}
+				}
+			}
+		}
+		node E {
+			layout [ size: 34, 34 ]
+		}
+		node F {
+			layout [ size: 40, 40 ]
+		}
+		edge E0: M -> E {
+			label L1: "/ O = false" {
+				layout [ size: 71, 17 ]
+			}
+		}
+		edge F0: E -> F {
+			label L2: "/ O = O | true" {
+				layout [ size: 90, 17 ]
+			}
+		}
+	}
+}

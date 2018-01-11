@@ -1,0 +1,122 @@
+graph G1
+node ElevatorExtended {
+	algorithm: org.eclipse.elk.box
+	node MovementController {
+		node movement {
+			algorithm: org.eclipse.elk.box
+			node N1 {
+				node dispatch {
+					layout [ size: 81, 34 ]
+				}
+				node idle {
+					layout [ size: 114, 50 ]
+				}
+				node moveDown {
+					layout [ size: 118, 50 ]
+				}
+				node moveUp {
+					layout [ size: 114, 50 ]
+				}
+				edge idle0: dispatch -> idle {
+					label L3: "1: prevMove == 0" {
+						layout [ size: 124, 17 ]
+					}
+				}
+				edge moveUp0: dispatch -> moveUp {
+					label L4: "2: prevMove == 1" {
+						layout [ size: 124, 17 ]
+					}
+				}
+				edge moveDown0: dispatch -> moveDown {
+					label L5: "3: prevMove == -1" {
+						layout [ size: 129, 17 ]
+					}
+				}
+				edge moveUp0_g9865: idle -> moveUp {
+					label L6: "1: ButtonUp" {
+						layout [ size: 85, 17 ]
+					}
+				}
+				edge moveDown0_g5295: idle -> moveDown {
+					label L7: "2: ButtonDown" {
+						layout [ size: 105, 17 ]
+					}
+				}
+				edge idle0_g8082: idle -> idle {
+					label L8: "3:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge idle0_g3111: moveDown -> idle {
+					label L9: "1: IsDown" {
+						layout [ size: 69, 17 ]
+					}
+				}
+				edge moveDown0_g1290: moveDown -> moveDown {
+					label L10: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge idle0_g2055: moveUp -> idle {
+					label L11: "1: IsUp" {
+						layout [ size: 49, 17 ]
+					}
+				}
+				edge moveUp0_g4666: moveUp -> moveUp {
+					label L12: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+			}
+		}
+		node pause {
+			layout [ size: 63, 34 ]
+		}
+		edge pause0: movement -> pause {
+			label L1: "internalAlert / prevMove = Move; Move = 0" {
+				layout [ size: 303, 17 ]
+			}
+		}
+		edge movement0: pause -> movement {
+			label L2: "!internalAlert" {
+				layout [ size: 91, 17 ]
+			}
+		}
+	}
+	node AlertState {
+		node alertOff {
+			layout [ size: 173, 50 ]
+		}
+		node alertOn {
+			layout [ size: 168, 50 ]
+		}
+		edge alertOn0: alertOff -> alertOn {
+			label L13: "ButtonAlarm" {
+				layout [ size: 89, 17 ]
+			}
+		}
+		edge alertOff0: alertOn -> alertOff {
+			label L14: "5 Second" {
+				layout [ size: 67, 17 ]
+			}
+		}
+	}
+	node AlarmLampController {
+		node alarmLampOff {
+			layout [ size: 169, 50 ]
+		}
+		node alarmLampOn {
+			layout [ size: 164, 50 ]
+		}
+		edge alarmLampOn0: alarmLampOff -> alarmLampOn {
+			label L15: "Second && internalAlert" {
+				layout [ size: 171, 17 ]
+			}
+		}
+		edge alarmLampOff0: alarmLampOn -> alarmLampOff {
+			label L16: "Second || !internalAlert" {
+				layout [ size: 161, 17 ]
+			}
+		}
+	}
+}

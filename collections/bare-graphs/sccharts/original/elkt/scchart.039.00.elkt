@@ -1,0 +1,417 @@
+graph G1
+node BarCodeRoboter {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node wait {
+			layout [ size: 48, 34 ]
+		}
+		node read {
+			layout [ size: 53, 34 ]
+		}
+		node initiate {
+			layout [ size: 68, 34 ]
+		}
+		node startD {
+			layout [ size: 63, 34 ]
+		}
+		node startDL {
+			layout [ size: 73, 34 ]
+		}
+		node receivedStartDelimiter {
+			layout [ size: 181, 34 ]
+		}
+		node L {
+			layout [ size: 34, 34 ]
+		}
+		node LL {
+			layout [ size: 39, 34 ]
+		}
+		node LD {
+			layout [ size: 40, 34 ]
+		}
+		node LLL {
+			layout [ size: 48, 34 ]
+		}
+		node LLD {
+			layout [ size: 49, 34 ]
+		}
+		node LDL {
+			layout [ size: 50, 34 ]
+		}
+		node LDD {
+			layout [ size: 51, 34 ]
+		}
+		node LLLD {
+			layout [ size: 58, 34 ]
+		}
+		node LLDL {
+			layout [ size: 59, 34 ]
+		}
+		node LLDD {
+			layout [ size: 60, 34 ]
+		}
+		node LDLL {
+			layout [ size: 59, 34 ]
+		}
+		node LDLD {
+			layout [ size: 60, 34 ]
+		}
+		node LDDL {
+			layout [ size: 61, 34 ]
+		}
+		node LDDD {
+			layout [ size: 62, 34 ]
+		}
+		node LLLDL {
+			layout [ size: 68, 34 ]
+		}
+		node LLLDD {
+			layout [ size: 69, 34 ]
+		}
+		node LLDLL {
+			layout [ size: 68, 34 ]
+		}
+		node LLDDL {
+			layout [ size: 70, 34 ]
+		}
+		node LDLLL {
+			layout [ size: 68, 34 ]
+		}
+		node LDLDD {
+			layout [ size: 71, 34 ]
+		}
+		node LDDLL {
+			layout [ size: 70, 34 ]
+		}
+		node LDDLD {
+			layout [ size: 71, 34 ]
+		}
+		node LDDDL {
+			layout [ size: 72, 34 ]
+		}
+		node LDDDD {
+			layout [ size: 73, 34 ]
+		}
+		node something {
+			layout [ size: 95, 34 ]
+		}
+		node dark {
+			layout [ size: 52, 34 ]
+		}
+		node endL {
+			layout [ size: 57, 34 ]
+		}
+		node endLD {
+			layout [ size: 67, 34 ]
+		}
+		node endLDL {
+			layout [ size: 77, 34 ]
+		}
+		node nothing {
+			layout [ size: 75, 34 ]
+		}
+		node receivedStopDelimiter {
+			layout [ size: 186, 40 ]
+		}
+		edge read0: wait -> read {
+			label L1: "touch / speed = 10" {
+				layout [ size: 130, 17 ]
+			}
+		}
+		edge initiate0: read -> initiate {
+			label L2: "1: light <= 500 / resetH = true" {
+				layout [ size: 203, 17 ]
+			}
+		}
+		edge read0_g2656: read -> read {
+			label L3: "2: light > 500" {
+				layout [ size: 89, 17 ]
+			}
+		}
+		edge startD0: initiate -> startD {
+			label L4: "1: light <= 500 && halfSecond / resetS = true" {
+				layout [ size: 312, 17 ]
+			}
+		}
+		edge read0_g1649: initiate -> read {
+			label L5: "2: light > 500 && halfSecond" {
+				layout [ size: 199, 17 ]
+			}
+		}
+		edge startDL0: startD -> startDL {
+			label L6: "light > 500 && second" {
+				layout [ size: 155, 17 ]
+			}
+		}
+		edge receivedStartDelimiter0: startDL -> receivedStartDelimiter {
+			label L7: "1: light <= 500 && second" {
+				layout [ size: 180, 17 ]
+			}
+		}
+		edge read0_g9272: startDL -> read {
+			label L8: "2: light > 500 && second" {
+				layout [ size: 171, 17 ]
+			}
+		}
+		edge L0: receivedStartDelimiter -> L {
+			label L9: "1: light > 500 && second" {
+				layout [ size: 171, 17 ]
+			}
+		}
+		edge nothing0: receivedStartDelimiter -> nothing {
+			label L10: "2: light <= 500 && second" {
+				layout [ size: 180, 17 ]
+			}
+		}
+		edge LL0: L -> LL {
+			label L11: "1: light > 500 && second" {
+				layout [ size: 171, 17 ]
+			}
+		}
+		edge LD0: L -> LD {
+			label L12: "2: light <= 500 && second" {
+				layout [ size: 180, 17 ]
+			}
+		}
+		edge LLL0: LL -> LLL {
+			label L13: "1: light > 500 && second" {
+				layout [ size: 171, 17 ]
+			}
+		}
+		edge LLD0: LL -> LLD {
+			label L14: "2: light <= 500 && second" {
+				layout [ size: 180, 17 ]
+			}
+		}
+		edge LDL0: LD -> LDL {
+			label L15: "1: light > 500 && second" {
+				layout [ size: 171, 17 ]
+			}
+		}
+		edge LDD0: LD -> LDD {
+			label L16: "2: light <= 500 && second" {
+				layout [ size: 180, 17 ]
+			}
+		}
+		edge nothing0_g4096: LLL -> nothing {
+			label L17: "1: light > 500 && second" {
+				layout [ size: 171, 17 ]
+			}
+		}
+		edge LLLD0: LLL -> LLLD {
+			label L18: "2: light <= 500 && second" {
+				layout [ size: 180, 17 ]
+			}
+		}
+		edge LLDL0: LLD -> LLDL {
+			label L19: "1: light > 500 && second" {
+				layout [ size: 171, 17 ]
+			}
+		}
+		edge LLDD0: LLD -> LLDD {
+			label L20: "2: light <= 500 && second" {
+				layout [ size: 180, 17 ]
+			}
+		}
+		edge LDLL0: LDL -> LDLL {
+			label L21: "1: light > 500 && second" {
+				layout [ size: 171, 17 ]
+			}
+		}
+		edge LDLD0: LDL -> LDLD {
+			label L22: "2: light <= 500 && second" {
+				layout [ size: 180, 17 ]
+			}
+		}
+		edge LDDL0: LDD -> LDDL {
+			label L23: "1: light > 500 && second" {
+				layout [ size: 171, 17 ]
+			}
+		}
+		edge LDDD0: LDD -> LDDD {
+			label L24: "2: light <= 500 && second" {
+				layout [ size: 180, 17 ]
+			}
+		}
+		edge LLLDL0: LLLD -> LLLDL {
+			label L25: "1: light > 500 && second" {
+				layout [ size: 171, 17 ]
+			}
+		}
+		edge LLLDD0: LLLD -> LLLDD {
+			label L26: "2: light <= 500 && second" {
+				layout [ size: 180, 17 ]
+			}
+		}
+		edge LLDLL0: LLDL -> LLDLL {
+			label L27: "1: light > 500 && second" {
+				layout [ size: 171, 17 ]
+			}
+		}
+		edge nothing0_g7185: LLDL -> nothing {
+			label L28: "2: light <= 500 && second" {
+				layout [ size: 180, 17 ]
+			}
+		}
+		edge LLDDL0: LLDD -> LLDDL {
+			label L29: "1: light > 500 && second" {
+				layout [ size: 171, 17 ]
+			}
+		}
+		edge nothing0_g2116: LLDD -> nothing {
+			label L30: "2: light <= 500 && second" {
+				layout [ size: 180, 17 ]
+			}
+		}
+		edge LDLLL0: LDLL -> LDLLL {
+			label L31: "1: light > 500 && second" {
+				layout [ size: 171, 17 ]
+			}
+		}
+		edge nothing0_g9611: LDLL -> nothing {
+			label L32: "2: light <= 500 && second" {
+				layout [ size: 180, 17 ]
+			}
+		}
+		edge nothing0_g6830: LDLD -> nothing {
+			label L33: "1: light > 500 && second" {
+				layout [ size: 171, 17 ]
+			}
+		}
+		edge LDLDD0: LDLD -> LDLDD {
+			label L34: "2: light <= 500 && second" {
+				layout [ size: 180, 17 ]
+			}
+		}
+		edge LDDLL0: LDDL -> LDDLL {
+			label L35: "1: light > 500 && second" {
+				layout [ size: 171, 17 ]
+			}
+		}
+		edge LDDLD0: LDDL -> LDDLD {
+			label L36: "2: light <= 500 && second" {
+				layout [ size: 180, 17 ]
+			}
+		}
+		edge LDDDL0: LDDD -> LDDDL {
+			label L37: "1: light > 500 && second" {
+				layout [ size: 171, 17 ]
+			}
+		}
+		edge LDDDD0: LDDD -> LDDDD {
+			label L38: "2: light <= 500 && second" {
+				layout [ size: 180, 17 ]
+			}
+		}
+		edge something0: LLLDL -> something {
+			label L39: "second / numbers[counter] = 9" {
+				layout [ size: 217, 17 ]
+			}
+		}
+		edge something0_g7329: LLLDD -> something {
+			label L40: "second / numbers[counter] = 0" {
+				layout [ size: 217, 17 ]
+			}
+		}
+		edge something0_g5994: LLDLL -> something {
+			label L41: "second / numbers[counter] = 2" {
+				layout [ size: 217, 17 ]
+			}
+		}
+		edge something0_g1609: LLDDL -> something {
+			label L42: "second / numbers[counter] = 1" {
+				layout [ size: 217, 17 ]
+			}
+		}
+		edge something0_g7093: LDLLL -> something {
+			label L43: "second / numbers[counter] = 4" {
+				layout [ size: 217, 17 ]
+			}
+		}
+		edge something0_g9426: LDLDD -> something {
+			label L44: "second / numbers[counter] = 6" {
+				layout [ size: 217, 17 ]
+			}
+		}
+		edge something0_g6711: LDDLL -> something {
+			label L45: "second / numbers[counter] = 5" {
+				layout [ size: 217, 17 ]
+			}
+		}
+		edge something0_g2499: LDDLD -> something {
+			label L46: "second / numbers[counter] = 8" {
+				layout [ size: 217, 17 ]
+			}
+		}
+		edge something0_g4374: LDDDL -> something {
+			label L47: "second / numbers[counter] = 7" {
+				layout [ size: 217, 17 ]
+			}
+		}
+		edge something0_g2474: LDDDD -> something {
+			label L48: "second / numbers[counter] = 3" {
+				layout [ size: 217, 17 ]
+			}
+		}
+		edge dark0: something -> dark {
+			label L49: "1: light <= 500 && second / counter = counter + 1" {
+				layout [ size: 344, 17 ]
+			}
+		}
+		edge nothing0_g3399: something -> nothing {
+			label L50: "2: light > 500 && second" {
+				layout [ size: 171, 17 ]
+			}
+		}
+		edge L0_g5473: dark -> L {
+			label L51: "1: light > 500 && second && counter < 4" {
+				layout [ size: 281, 17 ]
+			}
+		}
+		edge endL0: dark -> endL {
+			label L52: "2: light > 500 && second && counter == 4" {
+				layout [ size: 290, 17 ]
+			}
+		}
+		edge nothing0_g5223: dark -> nothing {
+			label L53: "3: light <= 500 && second" {
+				layout [ size: 180, 17 ]
+			}
+		}
+		edge nothing0_g5046: endL -> nothing {
+			label L54: "1: light > 500 && second / lamp = true" {
+				layout [ size: 261, 17 ]
+			}
+		}
+		edge endLD0: endL -> endLD {
+			label L55: "2: light <= 500 && second / result = numbers[0] * 100 + numbers[1] * 10 + numbers[2]" {
+				layout [ size: 591, 17 ]
+			}
+		}
+		edge nothing0_g7683: endLD -> nothing {
+			label L56: "1: light <= 500 && second / lamp = true" {
+				layout [ size: 270, 17 ]
+			}
+		}
+		edge endLDL0: endLD -> endLDL {
+			label L57: "2: light > 500 && second" {
+				layout [ size: 171, 17 ]
+			}
+		}
+		edge nothing0_g4103: endLDL -> nothing {
+			label L58: "1: light > 500 && second / lamp = true" {
+				layout [ size: 261, 17 ]
+			}
+		}
+		edge receivedStopDelimiter0: endLDL -> receivedStopDelimiter {
+			label L59: "2: light <= 500 && second / speed = 0; valid = true" {
+				layout [ size: 348, 17 ]
+			}
+		}
+		edge receivedStopDelimiter0_g8063: nothing -> receivedStopDelimiter {
+			label L60: "second / speed = 0" {
+				layout [ size: 134, 17 ]
+			}
+		}
+	}
+}

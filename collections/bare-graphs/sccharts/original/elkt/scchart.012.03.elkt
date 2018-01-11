@@ -1,0 +1,90 @@
+graph G1
+node avwvogabphobyejxifydkzjh {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node Pending {
+			layout [ size: 80, 34 ]
+		}
+		node InProcess {
+			algorithm: org.eclipse.elk.box
+			node DomeLight {
+				node DoorClosedLightOff {
+					layout [ size: 163, 34 ]
+				}
+				node DoorOpenLightOn {
+					layout [ size: 152, 34 ]
+				}
+				node DoorClosedLightOn {
+					layout [ size: 163, 34 ]
+				}
+				edge DoorOpenLightOn0: DoorClosedLightOff -> DoorOpenLightOn {
+					label L1: "open / light = true" {
+						layout [ size: 125, 17 ]
+					}
+				}
+				edge DoorClosedLightOn0: DoorOpenLightOn -> DoorClosedLightOn {
+					label L2: "closed / lightTimer = 0" {
+						layout [ size: 157, 17 ]
+					}
+				}
+				edge DoorClosedLightOn0_g6340: DoorClosedLightOn -> DoorClosedLightOn {
+					label L3: "1: !open && closed && lightTimer + 1 < 4 / lightTimer += 1" {
+						layout [ size: 404, 17 ]
+					}
+				}
+				edge DoorClosedLightOff0: DoorClosedLightOn -> DoorClosedLightOff {
+					label L4: "2: !open && closed && lightTimer < 4 && lightTimer >= 3 / light = false" {
+						layout [ size: 490, 17 ]
+					}
+				}
+				edge DoorOpenLightOn0_g6648: DoorClosedLightOn -> DoorOpenLightOn {
+					label L5: "3: open && lightTimer < 4" {
+						layout [ size: 180, 17 ]
+					}
+				}
+			}
+			node SeatbeltBeeper {
+				node NoWarning {
+					layout [ size: 98, 34 ]
+				}
+				node LightOnAndBeep {
+					layout [ size: 255, 50 ]
+				}
+				node LightOn {
+					layout [ size: 78, 34 ]
+				}
+				edge LightOnAndBeep0: NoWarning -> LightOnAndBeep {
+					label L6: "warn == \"warn\" / beepTimer = 0; warningLight = true; beepSound = true" {
+						layout [ size: 504, 17 ]
+					}
+				}
+				edge LightOn0: LightOnAndBeep -> LightOn {
+					label L7: "1: beepTimer >= 30 / beepSound = false" {
+						layout [ size: 280, 17 ]
+					}
+				}
+				edge LightOnAndBeep0_g8148: LightOnAndBeep -> LightOnAndBeep {
+					label L8: "2: beepTimer < 30 && warn == \"warn\" / beepTimer = 0" {
+						layout [ size: 379, 17 ]
+					}
+				}
+				edge NoWarning0: LightOnAndBeep -> NoWarning {
+					label L9: "3: warn == \"noWarn\" / beepSound = false; warningLight = false" {
+						layout [ size: 439, 17 ]
+					}
+				}
+				edge LightOnAndBeep0_g2927: LightOn -> LightOnAndBeep {
+					label L10: "1: warn == \"warn\" / beepSound = true; beepTimer = 0" {
+						layout [ size: 375, 17 ]
+					}
+				}
+				edge NoWarning0_g3736: LightOn -> NoWarning {
+					label L11: "2: warn == \"noWarn\" / warningLight = false" {
+						layout [ size: 298, 17 ]
+					}
+				}
+			}
+		}
+		edge InProcess0: Pending -> InProcess
+	}
+}

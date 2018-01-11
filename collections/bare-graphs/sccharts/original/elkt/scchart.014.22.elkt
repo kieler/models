@@ -1,0 +1,131 @@
+graph G1
+node Hellevator {
+	algorithm: org.eclipse.elk.box
+	node MOVEMENT {
+		node Init {
+			layout [ size: 42, 34 ]
+		}
+		node Elevator_Up {
+			layout [ size: 109, 34 ]
+		}
+		node Alarm_While_Up {
+			layout [ size: 135, 34 ]
+		}
+		node Move_Down {
+			layout [ size: 109, 34 ]
+		}
+		node Stopped_Moving_Down {
+			layout [ size: 190, 34 ]
+		}
+		node Elevator_Down {
+			layout [ size: 129, 34 ]
+		}
+		node Alarm_While_Down {
+			layout [ size: 155, 34 ]
+		}
+		node Move_Up {
+			layout [ size: 89, 34 ]
+		}
+		node Stopped_Moving_Up {
+			layout [ size: 170, 34 ]
+		}
+		edge Elevator_Up0: Init -> Elevator_Up {
+			label L1: "1: IS_UP" {
+				layout [ size: 60, 17 ]
+			}
+		}
+		edge Elevator_Down0: Init -> Elevator_Down {
+			label L2: "2: IS_DOWN" {
+				layout [ size: 85, 17 ]
+			}
+		}
+		edge Move_Down0: Init -> Move_Down {
+			label L3: "3: / MOVE_DOWN = true" {
+				layout [ size: 169, 17 ]
+			}
+		}
+		edge Alarm_While_Up0: Elevator_Up -> Alarm_While_Up {
+			label L4: "1: ALARM_LAMP" {
+				layout [ size: 116, 17 ]
+			}
+		}
+		edge Move_Down0_g1199: Elevator_Up -> Move_Down {
+			label L5: "2: BUTTON_DOWN / MOVE_DOWN = true" {
+				layout [ size: 293, 17 ]
+			}
+		}
+		edge Elevator_Up0_g1067: Alarm_While_Up -> Elevator_Up {
+			label L6: "!ALARM_LAMP" {
+				layout [ size: 105, 17 ]
+			}
+		}
+		edge Stopped_Moving_Down0: Move_Down -> Stopped_Moving_Down {
+			label L7: "1: ALARM_LAMP / MOVE_DOWN = false" {
+				layout [ size: 277, 17 ]
+			}
+		}
+		edge Elevator_Down0_g5383: Move_Down -> Elevator_Down {
+			label L8: "2: IS_DOWN / MOVE_DOWN = false" {
+				layout [ size: 247, 17 ]
+			}
+		}
+		edge Move_Down0_g1396: Stopped_Moving_Down -> Move_Down {
+			label L9: "!ALARM_LAMP / MOVE_DOWN = true" {
+				layout [ size: 261, 17 ]
+			}
+		}
+		edge Alarm_While_Down0: Elevator_Down -> Alarm_While_Down {
+			label L10: "1: ALARM_LAMP" {
+				layout [ size: 116, 17 ]
+			}
+		}
+		edge Move_Up0: Elevator_Down -> Move_Up {
+			label L11: "2: BUTTON_UP / MOVE_UP = true" {
+				layout [ size: 241, 17 ]
+			}
+		}
+		edge Elevator_Down0_g2347: Alarm_While_Down -> Elevator_Down {
+			label L12: "!ALARM_LAMP" {
+				layout [ size: 105, 17 ]
+			}
+		}
+		edge Stopped_Moving_Up0: Move_Up -> Stopped_Moving_Up {
+			label L13: "1: ALARM_LAMP / MOVE_UP = false" {
+				layout [ size: 251, 17 ]
+			}
+		}
+		edge Elevator_Up0_g4024: Move_Up -> Elevator_Up {
+			label L14: "2: IS_UP / MOVE_UP = false" {
+				layout [ size: 195, 17 ]
+			}
+		}
+		edge Move_Up0_g9358: Stopped_Moving_Up -> Move_Up {
+			label L15: "!ALARM_LAMP / MOVE_UP = true" {
+				layout [ size: 235, 17 ]
+			}
+		}
+	}
+	node ALARM {
+		node No_Alarm {
+			layout [ size: 89, 34 ]
+		}
+		node Alarm_Button_Pressed {
+			layout [ size: 183, 34 ]
+		}
+		edge Alarm_Button_Pressed0: No_Alarm -> Alarm_Button_Pressed {
+			label L16: "BUTTON_ALARM / ALARM_LAMP = true" {
+				layout [ size: 281, 17 ]
+			}
+		}
+		edge Alarm_Button_Pressed0_g9854: Alarm_Button_Pressed -> Alarm_Button_Pressed {
+			label L17: "1: BUTTON_ALARM" {
+				layout [ size: 140, 17 ]
+			}
+		}
+		edge No_Alarm0: Alarm_Button_Pressed -> No_Alarm {
+			label L18: "2: 5 SECOND / ALARM_LAMP = false" {
+				layout [ size: 255, 17 ]
+			}
+		}
+	}
+}

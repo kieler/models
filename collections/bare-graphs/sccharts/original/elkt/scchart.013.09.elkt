@@ -1,0 +1,107 @@
+graph G1
+node backhoe {
+	algorithm: org.eclipse.elk.box
+	node isMoving {
+		node init {
+			layout [ size: 42, 34 ]
+		}
+		edge init0: init -> init {
+			label L1: "1: BOOM_PUSH || BOOM_PULL || STICK_PUSH || STICK_PULL || BUCKET_PUSH || BUCKET_PULL / isMoving = true; DONE_LAMP = false" {
+				layout [ size: 978, 17 ]
+			}
+		}
+		edge init1: init -> init {
+			label L2: "2: / isMoving = false; DONE_LAMP = true" {
+				layout [ size: 287, 17 ]
+			}
+		}
+	}
+	node Alarm {
+		node noAlarm {
+			layout [ size: 79, 34 ]
+		}
+		node flashingOn {
+			layout [ size: 98, 34 ]
+		}
+		node flashingOff {
+			layout [ size: 98, 34 ]
+		}
+		edge flashingOn0: noAlarm -> flashingOn {
+			label L3: "isMoving / ALARM_LAMP = true" {
+				layout [ size: 222, 17 ]
+			}
+		}
+		edge flashingOff0: flashingOn -> flashingOff {
+			label L4: "1: SECOND && isMoving / ALARM_LAMP = false" {
+				layout [ size: 338, 17 ]
+			}
+		}
+		edge noAlarm0: flashingOn -> noAlarm {
+			label L5: "2: !isMoving / ALARM_LAMP = false" {
+				layout [ size: 247, 17 ]
+			}
+		}
+		edge flashingOn0_g5546: flashingOff -> flashingOn {
+			label L6: "1: SECOND && isMoving / ALARM_LAMP = true" {
+				layout [ size: 333, 17 ]
+			}
+		}
+		edge noAlarm0_g5798: flashingOff -> noAlarm {
+			label L7: "2: !isMoving" {
+				layout [ size: 86, 17 ]
+			}
+		}
+	}
+	node Movement {
+		node init_g8579 {
+			layout [ size: 42, 34 ]
+		}
+		node extendStick {
+			layout [ size: 105, 34 ]
+		}
+		node extendBucket {
+			layout [ size: 119, 34 ]
+		}
+		node awaitRetract {
+			layout [ size: 108, 34 ]
+		}
+		node retractStickAndBucket {
+			layout [ size: 179, 34 ]
+		}
+		edge extendStick0: init_g8579 -> extendStick {
+			label L8: "EXTEND_BUTTON / STICK_PUSH = true" {
+				layout [ size: 289, 17 ]
+			}
+		}
+		edge extendBucket0: extendStick -> extendBucket {
+			label L9: "STICK_OUT / STICK_PUSH = false; BUCKET_PUSH = true" {
+				layout [ size: 414, 17 ]
+			}
+		}
+		edge awaitRetract0: extendBucket -> awaitRetract {
+			label L10: "BUCKET_OUT / BUCKET_PUSH = false" {
+				layout [ size: 282, 17 ]
+			}
+		}
+		edge retractStickAndBucket0: awaitRetract -> retractStickAndBucket {
+			label L11: "RETRACT_BUTTON / STICK_PULL = true; BUCKET_PULL = true" {
+				layout [ size: 461, 17 ]
+			}
+		}
+		edge init0_g2511: retractStickAndBucket -> init_g8579 {
+			label L12: "1: STICK_IN && BUCKET_IN / STICK_PULL = false; BUCKET_PULL = false" {
+				layout [ size: 528, 17 ]
+			}
+		}
+		edge retractStickAndBucket0_g3601: retractStickAndBucket -> retractStickAndBucket {
+			label L13: "2: STICK_IN / STICK_PULL = false" {
+				layout [ size: 241, 17 ]
+			}
+		}
+		edge retractStickAndBucket1: retractStickAndBucket -> retractStickAndBucket {
+			label L14: "3: BUCKET_IN / BUCKET_PULL = false" {
+				layout [ size: 277, 17 ]
+			}
+		}
+	}
+}

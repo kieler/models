@@ -1,0 +1,113 @@
+graph G1
+node Elevator_Core {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node Init {
+			layout [ size: 42, 34 ]
+		}
+		node Elevator {
+			algorithm: org.eclipse.elk.box
+			node N2 {
+				node Elevator_main {
+					algorithm: org.eclipse.elk.box
+					node N3 {
+						node A {
+							layout [ size: 34, 34 ]
+						}
+						node BU {
+							layout [ size: 42, 34 ]
+						}
+						node BD {
+							layout [ size: 42, 34 ]
+						}
+						edge BU0: A -> BU {
+							label L2: "1: ButtonUp & !AlarmLamp / Move = 1" {
+								layout [ size: 262, 17 ]
+							}
+						}
+						edge BD0: A -> BD {
+							label L3: "2: ButtonDown & !AlarmLamp / Move = -1" {
+								layout [ size: 287, 17 ]
+							}
+						}
+						edge A0: BU -> A {
+							label L4: "1: IsUp & !AlarmLamp / Move = 0" {
+								layout [ size: 226, 17 ]
+							}
+						}
+						edge BU0_g7825: BU -> BU {
+							label L5: "2: !AlarmLamp / Move = 1" {
+								layout [ size: 175, 17 ]
+							}
+						}
+						edge A0_g6766: BD -> A {
+							label L6: "1: IsDown & !AlarmLamp / Move = 0" {
+								layout [ size: 246, 17 ]
+							}
+						}
+						edge BD0_g1043: BD -> BD {
+							label L7: "2: !AlarmLamp / Move = -1" {
+								layout [ size: 180, 17 ]
+							}
+						}
+					}
+				}
+			}
+			node N4 {
+				node B {
+					layout [ size: 34, 34 ]
+				}
+				node Alarm1 {
+					layout [ size: 68, 34 ]
+				}
+				node Alarm2 {
+					layout [ size: 68, 34 ]
+				}
+				node Alarm3 {
+					layout [ size: 68, 34 ]
+				}
+				node Alarm4 {
+					layout [ size: 68, 34 ]
+				}
+				node Alarm5 {
+					layout [ size: 68, 34 ]
+				}
+				edge Alarm10: B -> Alarm1 {
+					label L8: "ButtonAlarm / Move = 0; AlarmLamp = true" {
+						layout [ size: 294, 17 ]
+					}
+				}
+				edge Alarm20: Alarm1 -> Alarm2 {
+					label L9: "Second" {
+						layout [ size: 55, 17 ]
+					}
+				}
+				edge Alarm30: Alarm2 -> Alarm3 {
+					label L10: "Second" {
+						layout [ size: 55, 17 ]
+					}
+				}
+				edge Alarm40: Alarm3 -> Alarm4 {
+					label L11: "Second" {
+						layout [ size: 55, 17 ]
+					}
+				}
+				edge Alarm50: Alarm4 -> Alarm5 {
+					label L12: "Second" {
+						layout [ size: 55, 17 ]
+					}
+				}
+				edge B0: Alarm5 -> B {
+					label L13: "Second / AlarmLamp = false" {
+						layout [ size: 193, 17 ]
+					}
+				}
+			}
+		}
+		edge Elevator0: Init -> Elevator {
+			label L1: "/ ButtonUp = false; ButtonDown = false; ButtonAlarm = false; IsUp = false; IsDown = false; Second = false; Move = 0; AlarmLamp = false" {
+				layout [ size: 943, 17 ]
+			}
+		}
+	}
+}

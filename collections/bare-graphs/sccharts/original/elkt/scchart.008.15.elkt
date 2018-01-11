@@ -1,0 +1,69 @@
+graph G1
+node Backhoe {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node init {
+			layout [ size: 42, 34 ]
+		}
+		node retracted {
+			layout [ size: 86, 34 ]
+		}
+		node extending {
+			layout [ size: 92, 34 ]
+		}
+		node stopped {
+			layout [ size: 79, 34 ]
+		}
+		node retracting {
+			layout [ size: 90, 34 ]
+		}
+		node extended {
+			layout [ size: 88, 34 ]
+		}
+		edge retracted0: init -> retracted {
+			label L1: "true / DONE_LAMP = true" {
+				layout [ size: 180, 17 ]
+			}
+		}
+		edge extending0: retracted -> extending {
+			label L2: "EXTEND_BUTTON / LEGS_EXTEND = true; DONE_LAMP = false" {
+				layout [ size: 456, 17 ]
+			}
+		}
+		edge extended0: extending -> extended {
+			label L3: "1: LEGS_OUT / DONE_LAMP = true; LEGS_EXTEND = false" {
+				layout [ size: 419, 17 ]
+			}
+		}
+		edge stopped0: extending -> stopped {
+			label L4: "2: STOP_BUTTON / LEGS_EXTEND = false; LEGS_STOP = true" {
+				layout [ size: 450, 17 ]
+			}
+		}
+		edge extending0_g8478: stopped -> extending {
+			label L5: "1: EXTEND_BUTTON / LEGS_STOP = false; LEGS_EXTEND = true" {
+				layout [ size: 470, 17 ]
+			}
+		}
+		edge retracting0: stopped -> retracting {
+			label L6: "2: RETRACT_BUTTON / LEGS_STOP = false; LEGS_RETRACT = true" {
+				layout [ size: 490, 17 ]
+			}
+		}
+		edge retracted0_g8497: retracting -> retracted {
+			label L7: "1: LEGS_IN / DONE_LAMP = true; LEGS_RETRACT = false" {
+				layout [ size: 411, 17 ]
+			}
+		}
+		edge stopped0_g2776: retracting -> stopped {
+			label L8: "2: STOP_BUTTON / LEGS_RETRACT = false; LEGS_STOP = true" {
+				layout [ size: 460, 17 ]
+			}
+		}
+		edge retracting0_g2156: extended -> retracting {
+			label L9: "RETRACT_BUTTON / LEGS_RETRACT = true; DONE_LAMP = false" {
+				layout [ size: 476, 17 ]
+			}
+		}
+	}
+}

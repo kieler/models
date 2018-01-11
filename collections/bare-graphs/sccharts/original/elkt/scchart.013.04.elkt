@@ -1,0 +1,60 @@
+graph G1
+node Exercise1 {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node S {
+			layout [ size: 34, 34 ]
+		}
+		node State {
+			algorithm: org.eclipse.elk.box
+			node N2 {
+				node A1 {
+					layout [ size: 34, 34 ]
+				}
+				node B1 {
+					layout [ size: 40, 40 ]
+				}
+				edge B10: A1 -> B1 {
+					label L1: "/ I = true" {
+						layout [ size: 58, 17 ]
+					}
+				}
+			}
+			node N3 {
+				node A2 {
+					layout [ size: 34, 34 ]
+				}
+				node B2 {
+					layout [ size: 34, 34 ]
+				}
+				node C2 {
+					layout [ size: 34, 34 ]
+				}
+				node D2 {
+					layout [ size: 40, 40 ]
+				}
+				edge B20: A2 -> B2
+				edge C20: B2 -> C2 {
+					label L2: "1: I / O = true" {
+						layout [ size: 90, 17 ]
+					}
+				}
+				edge A20: B2 -> A2 {
+					label L3: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge D20: C2 -> D2 {
+					label L4: "/ O = false" {
+						layout [ size: 71, 17 ]
+					}
+				}
+			}
+		}
+		node F {
+			layout [ size: 40, 40 ]
+		}
+		edge State0: S -> State
+		edge F0: State -> F
+	}
+}

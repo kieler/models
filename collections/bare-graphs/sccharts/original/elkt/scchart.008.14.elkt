@@ -1,0 +1,53 @@
+graph G1
+node backHoeLoaderB {
+	algorithm: org.eclipse.elk.box
+	node legsRegion {
+		node ^start {
+			layout [ size: 52, 34 ]
+		}
+		node extend {
+			layout [ size: 70, 34 ]
+		}
+		node retract {
+			layout [ size: 67, 34 ]
+		}
+		edge extend0: ^start -> extend {
+			label L1: "1: EXTEND_BUTTON / LEGS_EXTEND = true" {
+				layout [ size: 320, 17 ]
+			}
+		}
+		edge retract0: ^start -> retract {
+			label L2: "2: RETRACT_BUTTON / LEGS_RETRACT = true" {
+				layout [ size: 340, 17 ]
+			}
+		}
+		edge start0: extend -> ^start {
+			label L3: "STOP_BUTTON || LEGS_OUT / LEGS_EXTEND = false" {
+				layout [ size: 387, 17 ]
+			}
+		}
+		edge start0_g0429: retract -> ^start {
+			label L4: "STOP_BUTTON || LEGS_IN / LEGS_RETRACT = false" {
+				layout [ size: 379, 17 ]
+			}
+		}
+	}
+	node lampRegion {
+		node noLamp {
+			layout [ size: 77, 34 ]
+		}
+		node yesLamp {
+			layout [ size: 83, 34 ]
+		}
+		edge yesLamp0: noLamp -> yesLamp {
+			label L5: "LEGS_OUT / DONE_LAMP = true" {
+				layout [ size: 233, 17 ]
+			}
+		}
+		edge noLamp0: yesLamp -> noLamp {
+			label L6: "!LEGS_OUT / DONE_LAMP = false" {
+				layout [ size: 242, 17 ]
+			}
+		}
+	}
+}

@@ -1,0 +1,303 @@
+graph G1
+node BACKHOE {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node Init {
+			layout [ size: 42, 34 ]
+		}
+		node WaitForExtend {
+			algorithm: org.eclipse.elk.box
+			node Legs {
+				node Init_g7889 {
+					layout [ size: 42, 34 ]
+				}
+				node Stop {
+					layout [ size: 54, 34 ]
+				}
+				node Extend {
+					layout [ size: 71, 34 ]
+				}
+				node Retract {
+					layout [ size: 72, 34 ]
+				}
+				node Lamp {
+					layout [ size: 59, 34 ]
+				}
+				node Intermediate {
+					layout [ size: 109, 34 ]
+				}
+				node Done {
+					layout [ size: 64, 40 ]
+				}
+				edge Stop0: Init_g7889 -> Stop
+				edge Extend0: Stop -> Extend {
+					label L5: "1: EXTEND_BUTTON / LEGS_EXTEND = true" {
+						layout [ size: 320, 17 ]
+					}
+				}
+				edge Retract0: Stop -> Retract {
+					label L6: "2: RETRACT_BUTTON / LEGS_RETRACT = true" {
+						layout [ size: 340, 17 ]
+					}
+				}
+				edge Stop0_g4485: Extend -> Stop {
+					label L7: "1: STOP_BUTTON / LEGS_EXTEND = false" {
+						layout [ size: 305, 17 ]
+					}
+				}
+				edge Lamp0: Extend -> Lamp {
+					label L8: "2: LEGS_OUT / LEGS_EXTEND = false" {
+						layout [ size: 272, 17 ]
+					}
+				}
+				edge Stop0_g9327: Retract -> Stop {
+					label L9: "STOP_BUTTON || LEGS_IN / LEGS_RETRACT = false" {
+						layout [ size: 379, 17 ]
+					}
+				}
+				edge Intermediate0: Lamp -> Intermediate {
+					label L10: "EXTEND_BUTTON / DONE_LAMP = true" {
+						layout [ size: 286, 17 ]
+					}
+				}
+				edge Done0: Intermediate -> Done
+			}
+		}
+		node EXTEND {
+			algorithm: org.eclipse.elk.box
+			node ALARM {
+				node ALARM_RUNNING {
+					algorithm: org.eclipse.elk.box
+					node N2 {
+						node InitLamp {
+							layout [ size: 81, 34 ]
+						}
+						node SwitchLampOn {
+							layout [ size: 127, 34 ]
+						}
+						node SwitchLampOff {
+							layout [ size: 127, 34 ]
+						}
+						edge SwitchLampOn0: InitLamp -> SwitchLampOn {
+							label L12: "/ ALARM_LAMP = true" {
+								layout [ size: 153, 17 ]
+							}
+						}
+						edge SwitchLampOff0: SwitchLampOn -> SwitchLampOff {
+							label L13: "2 SECOND / ALARM_LAMP = false" {
+								layout [ size: 239, 17 ]
+							}
+						}
+						edge SwitchLampOn0_g1079: SwitchLampOff -> SwitchLampOn {
+							label L14: "2 SECOND / ALARM_LAMP = true" {
+								layout [ size: 234, 17 ]
+							}
+						}
+					}
+				}
+				node ALARM_DONE {
+					layout [ size: 130, 40 ]
+				}
+				edge ALARM_DONE0: ALARM_RUNNING -> ALARM_DONE {
+					label L11: "DONE_LAMP / ALARM_LAMP = false" {
+						layout [ size: 255, 17 ]
+					}
+				}
+			}
+			node MOVE {
+				node MoveInit {
+					layout [ size: 82, 34 ]
+				}
+				node StickMove {
+					layout [ size: 95, 34 ]
+				}
+				node InBetween {
+					layout [ size: 97, 34 ]
+				}
+				node BucketMove {
+					layout [ size: 110, 34 ]
+				}
+				node InBetween2 {
+					layout [ size: 105, 34 ]
+				}
+				node BoomMove {
+					layout [ size: 101, 34 ]
+				}
+				node Move {
+					algorithm: org.eclipse.elk.box
+					node bucket {
+						node InitBucket {
+							layout [ size: 92, 34 ]
+						}
+						node RetractBucket {
+							layout [ size: 122, 34 ]
+						}
+						node DoneBucket {
+							layout [ size: 114, 40 ]
+						}
+						edge RetractBucket0: InitBucket -> RetractBucket {
+							label L22: "/ BUCKET_PULL = true" {
+								layout [ size: 165, 17 ]
+							}
+						}
+						edge DoneBucket0: RetractBucket -> DoneBucket {
+							label L23: "BUCKET_IN / BUCKET_PULL = false" {
+								layout [ size: 261, 17 ]
+							}
+						}
+					}
+					node stick {
+						node InitStick {
+							layout [ size: 78, 34 ]
+						}
+						node RetractStick {
+							layout [ size: 108, 34 ]
+						}
+						node DoneStick {
+							layout [ size: 100, 40 ]
+						}
+						edge RetractStick0: InitStick -> RetractStick {
+							label L24: "/ STICK_PULL = true" {
+								layout [ size: 147, 17 ]
+							}
+						}
+						edge DoneStick0: RetractStick -> DoneStick {
+							label L25: "STICK_IN / STICK_PULL = false" {
+								layout [ size: 225, 17 ]
+							}
+						}
+					}
+				}
+				node MoveDone {
+					layout [ size: 104, 40 ]
+				}
+				edge StickMove0: MoveInit -> StickMove {
+					label L15: "/ STICK_PUSH = true" {
+						layout [ size: 150, 17 ]
+					}
+				}
+				edge InBetween0: StickMove -> InBetween {
+					label L16: "STICK_OUT / STICK_PUSH = false" {
+						layout [ size: 246, 17 ]
+					}
+				}
+				edge BucketMove0: InBetween -> BucketMove {
+					label L17: "/ BUCKET_PUSH = true" {
+						layout [ size: 168, 17 ]
+					}
+				}
+				edge InBetween20: BucketMove -> InBetween2 {
+					label L18: "BUCKET_OUT / BUCKET_PUSH = false" {
+						layout [ size: 282, 17 ]
+					}
+				}
+				edge BoomMove0: InBetween2 -> BoomMove {
+					label L19: "/ BOOM_PUSH = true" {
+						layout [ size: 152, 17 ]
+					}
+				}
+				edge Move0: BoomMove -> Move {
+					label L20: "BOOM_IN / BOOM_PUSH = false" {
+						layout [ size: 232, 17 ]
+					}
+				}
+				edge MoveDone0: Move -> MoveDone {
+					label L21: "/ DONE_LAMP = true" {
+						layout [ size: 147, 17 ]
+					}
+				}
+			}
+		}
+		node WaitForRetract {
+			layout [ size: 125, 34 ]
+		}
+		node Retract_g4598 {
+			algorithm: org.eclipse.elk.box
+			node MOVE_g9418 {
+				node MoveInit_g6209 {
+					layout [ size: 82, 34 ]
+				}
+				node Move_g9828 {
+					layout [ size: 60, 34 ]
+				}
+				node DoneMove {
+					layout [ size: 104, 40 ]
+				}
+				edge Move0_g9846: MoveInit_g6209 -> Move_g9828 {
+					label L26: "/ BOOM_PULL = true" {
+						layout [ size: 149, 17 ]
+					}
+				}
+				edge DoneMove0: Move_g9828 -> DoneMove {
+					label L27: "BOOM_OUT / BOOM_PULL = false; DONE_LAMP = true" {
+						layout [ size: 394, 17 ]
+					}
+				}
+			}
+			node ALARM_g7298 {
+				node AlarmRunning {
+					algorithm: org.eclipse.elk.box
+					node N3 {
+						node AlarmInit {
+							layout [ size: 81, 34 ]
+						}
+						node SwitchLampOn_g0280 {
+							layout [ size: 127, 34 ]
+						}
+						node SwitchLampOff_g3945 {
+							layout [ size: 127, 34 ]
+						}
+						edge SwitchLampOn0_g0843: AlarmInit -> SwitchLampOn_g0280 {
+							label L29: "/ ALARM_LAMP = true" {
+								layout [ size: 153, 17 ]
+							}
+						}
+						edge SwitchLampOff0_g2982: SwitchLampOn_g0280 -> SwitchLampOff_g3945 {
+							label L30: "2 SECOND / ALARM_LAMP = false" {
+								layout [ size: 239, 17 ]
+							}
+						}
+						edge SwitchLampOn0_g5722: SwitchLampOff_g3945 -> SwitchLampOn_g0280 {
+							label L31: "2 SECOND / ALARM_LAMP = true" {
+								layout [ size: 234, 17 ]
+							}
+						}
+					}
+				}
+				node ALARM_DONE_g9375 {
+					layout [ size: 130, 40 ]
+				}
+				edge ALARM_DONE0_g6623: AlarmRunning -> ALARM_DONE_g9375 {
+					label L28: "DONE_LAMP / ALARM_LAMP = false" {
+						layout [ size: 255, 17 ]
+					}
+				}
+			}
+		}
+		node RetractingDone {
+			layout [ size: 132, 34 ]
+		}
+		edge WaitForExtend0: Init -> WaitForExtend {
+			label L1: "/ DONE_LAMP = false" {
+				layout [ size: 152, 17 ]
+			}
+		}
+		edge EXTEND0: WaitForExtend -> EXTEND {
+			label L2: "EXTEND_BUTTON / DONE_LAMP = false" {
+				layout [ size: 291, 17 ]
+			}
+		}
+		edge WaitForRetract0: EXTEND -> WaitForRetract
+		edge Retract0_g1336: WaitForRetract -> Retract_g4598 {
+			label L3: "RETRACT_BUTTON / DONE_LAMP = false" {
+				layout [ size: 301, 17 ]
+			}
+		}
+		edge RetractingDone0: Retract_g4598 -> RetractingDone
+		edge WaitForExtend0_g7502: RetractingDone -> WaitForExtend {
+			label L4: "/ DONE_LAMP = false" {
+				layout [ size: 152, 17 ]
+			}
+		}
+	}
+}

@@ -1,0 +1,74 @@
+graph G1
+node ComplexFinalState {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node M {
+			algorithm: org.eclipse.elk.box
+			node N2 {
+				node S1 {
+					layout [ size: 39, 34 ]
+				}
+				node S2 {
+					layout [ size: 39, 34 ]
+				}
+				edge S20: S1 -> S2 {
+					label L2: "I1 / done1 = true" {
+						layout [ size: 114, 17 ]
+					}
+				}
+			}
+			node N3 {
+				node S3 {
+					layout [ size: 39, 34 ]
+				}
+				node S4 {
+					layout [ size: 39, 34 ]
+				}
+				edge S40: S3 -> S4 {
+					label L3: "I2 / done2 = true" {
+						layout [ size: 114, 17 ]
+					}
+				}
+			}
+			node N4 {
+				node S5 {
+					layout [ size: 39, 34 ]
+				}
+				node S6 {
+					layout [ size: 39, 34 ]
+				}
+				node S7 {
+					layout [ size: 39, 34 ]
+				}
+				edge S60: S5 -> S6 {
+					label L4: "I3 / done3 = true" {
+						layout [ size: 114, 17 ]
+					}
+				}
+				edge S50: S6 -> S5 {
+					label L5: "1: I3 / done3 = false" {
+						layout [ size: 135, 17 ]
+					}
+				}
+				edge S70: S6 -> S7 {
+					label L6: "2: I4" {
+						layout [ size: 29, 17 ]
+					}
+				}
+				edge S50_g5774: S7 -> S5 {
+					label L7: "/ done3 = false" {
+						layout [ size: 103, 17 ]
+					}
+				}
+			}
+		}
+		node F {
+			layout [ size: 40, 40 ]
+		}
+		edge F0: M -> F {
+			label L1: "done1 && done2 && done3 / O = true" {
+				layout [ size: 262, 17 ]
+			}
+		}
+	}
+}

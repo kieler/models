@@ -1,0 +1,113 @@
+graph G1
+node backhoe {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node RETRACTED {
+			layout [ size: 195, 80 ]
+		}
+		node MOVE_EXTEND {
+			algorithm: org.eclipse.elk.box
+			node movement {
+				node EXTEND_STICK {
+					layout [ size: 260, 50 ]
+				}
+				node EXTEND_BUCKET {
+					layout [ size: 275, 50 ]
+				}
+				edge EXTEND_BUCKET0: EXTEND_STICK -> EXTEND_BUCKET {
+					label L5: "STICK_OUT" {
+						layout [ size: 87, 17 ]
+					}
+				}
+			}
+			node lamp {
+				node LAMP_ON {
+					layout [ size: 186, 50 ]
+				}
+				node LAMP_OFF {
+					layout [ size: 191, 50 ]
+				}
+				edge LAMP_OFF0: LAMP_ON -> LAMP_OFF {
+					label L6: "2 SECOND" {
+						layout [ size: 77, 17 ]
+					}
+				}
+				edge LAMP_ON0: LAMP_OFF -> LAMP_ON {
+					label L7: "2 SECOND" {
+						layout [ size: 77, 17 ]
+					}
+				}
+			}
+		}
+		node EXTENDED {
+			layout [ size: 199, 80 ]
+		}
+		node MOVE_RETRACT {
+			algorithm: org.eclipse.elk.box
+			node movementstick {
+				node RETRACT_STICK {
+					layout [ size: 256, 50 ]
+				}
+				node extended {
+					layout [ size: 94, 40 ]
+				}
+				edge extended0: RETRACT_STICK -> extended {
+					label L8: "STICK_IN" {
+						layout [ size: 69, 17 ]
+					}
+				}
+			}
+			node movementbucket {
+				node RETRACT_BUCKET {
+					layout [ size: 271, 50 ]
+				}
+				node extended_g5976 {
+					layout [ size: 94, 40 ]
+				}
+				edge extended0_g5911: RETRACT_BUCKET -> extended_g5976 {
+					label L9: "BUCKET_IN" {
+						layout [ size: 87, 17 ]
+					}
+				}
+			}
+			node lamp_g4302 {
+				node LAMP_ON_g6958 {
+					layout [ size: 186, 50 ]
+				}
+				node LAMP_OFF_g5728 {
+					layout [ size: 191, 50 ]
+				}
+				edge LAMP_OFF0_g2403: LAMP_ON_g6958 -> LAMP_OFF_g5728 {
+					label L10: "2 SECOND" {
+						layout [ size: 77, 17 ]
+					}
+				}
+				edge LAMP_ON0_g6029: LAMP_OFF_g5728 -> LAMP_ON_g6958 {
+					label L11: "2 SECOND" {
+						layout [ size: 77, 17 ]
+					}
+				}
+			}
+		}
+		edge MOVE_EXTEND0: RETRACTED -> MOVE_EXTEND {
+			label L1: "EXTEND_BUTTON / DONE_LAMP = false" {
+				layout [ size: 291, 17 ]
+			}
+		}
+		edge EXTENDED0: MOVE_EXTEND -> EXTENDED {
+			label L2: "BUCKET_OUT" {
+				layout [ size: 105, 17 ]
+			}
+		}
+		edge MOVE_RETRACT0: EXTENDED -> MOVE_RETRACT {
+			label L3: "RETRACT_BUTTON / DONE_LAMP = false" {
+				layout [ size: 301, 17 ]
+			}
+		}
+		edge RETRACTED0: MOVE_RETRACT -> RETRACTED {
+			label L4: "BUCKET_IN && STICK_IN" {
+				layout [ size: 186, 17 ]
+			}
+		}
+	}
+}

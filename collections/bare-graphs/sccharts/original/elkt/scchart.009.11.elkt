@@ -1,0 +1,107 @@
+graph G1
+node agvskacagoxhfeygs {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node down {
+			layout [ size: 59, 34 ]
+		}
+		node moving_up {
+			layout [ size: 99, 34 ]
+		}
+		node moving_down {
+			layout [ size: 119, 34 ]
+		}
+		node up {
+			layout [ size: 39, 34 ]
+		}
+		node setUpAlarm {
+			layout [ size: 103, 34 ]
+		}
+		node alarm {
+			layout [ size: 60, 34 ]
+		}
+		node afterAlarm {
+			layout [ size: 94, 34 ]
+		}
+		edge setUpAlarm0: down -> setUpAlarm {
+			label L1: "1: BUTTON_ALARM / rememberPosition = 0" {
+				layout [ size: 308, 17 ]
+			}
+		}
+		edge moving_up0: down -> moving_up {
+			label L2: "2: BUTTON_UP / MOVE_UP = true" {
+				layout [ size: 241, 17 ]
+			}
+		}
+		edge setUpAlarm0_g7668: moving_up -> setUpAlarm {
+			label L3: "1: BUTTON_ALARM / rememberPosition = 1" {
+				layout [ size: 308, 17 ]
+			}
+		}
+		edge up0: moving_up -> up {
+			label L4: "2: IS_UP / MOVE_UP = false" {
+				layout [ size: 195, 17 ]
+			}
+		}
+		edge setUpAlarm0_g3456: moving_down -> setUpAlarm {
+			label L5: "1: BUTTON_ALARM / rememberPosition = 2" {
+				layout [ size: 308, 17 ]
+			}
+		}
+		edge down0: moving_down -> down {
+			label L6: "2: IS_DOWN / MOVE_DOWN = false" {
+				layout [ size: 247, 17 ]
+			}
+		}
+		edge setUpAlarm0_g7508: up -> setUpAlarm {
+			label L7: "1: BUTTON_ALARM / rememberPosition = 3" {
+				layout [ size: 308, 17 ]
+			}
+		}
+		edge moving_down0: up -> moving_down {
+			label L8: "2: BUTTON_DOWN / MOVE_DOWN = true" {
+				layout [ size: 293, 17 ]
+			}
+		}
+		edge alarm0: setUpAlarm -> alarm {
+			label L9: "1: MOVE_UP / MOVE_UP = false; ALARM_LAMP = true" {
+				layout [ size: 378, 17 ]
+			}
+		}
+		edge alarm1: setUpAlarm -> alarm {
+			label L10: "2: MOVE_DOWN / MOVE_DOWN = false; ALARM_LAMP = true" {
+				layout [ size: 430, 17 ]
+			}
+		}
+		edge alarm2: setUpAlarm -> alarm {
+			label L11: "3: / ALARM_LAMP = true" {
+				layout [ size: 169, 17 ]
+			}
+		}
+		edge afterAlarm0: alarm -> afterAlarm {
+			label L12: "5 SECOND / ALARM_LAMP = ALARM_LAMP && false" {
+				layout [ size: 368, 17 ]
+			}
+		}
+		edge down0_g7159: afterAlarm -> down {
+			label L13: "1: rememberPosition == 0" {
+				layout [ size: 181, 17 ]
+			}
+		}
+		edge moving_up0_g8503: afterAlarm -> moving_up {
+			label L14: "2: rememberPosition == 1 / MOVE_UP = true" {
+				layout [ size: 311, 17 ]
+			}
+		}
+		edge moving_down0_g3390: afterAlarm -> moving_down {
+			label L15: "3: rememberPosition == 2 / MOVE_DOWN = true" {
+				layout [ size: 337, 17 ]
+			}
+		}
+		edge up0_g6592: afterAlarm -> up {
+			label L16: "4: rememberPosition == 3" {
+				layout [ size: 181, 17 ]
+			}
+		}
+	}
+}

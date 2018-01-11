@@ -1,0 +1,436 @@
+graph G1
+node BarcodeReader {
+	algorithm: org.eclipse.elk.box
+	node debug {
+		node debug_g5782 {
+			layout [ size: 66, 34 ]
+		}
+		edge debug0: debug_g5782 -> debug_g5782 {
+			label L1: "enter / rot" {
+				layout [ size: 70, 17 ]
+			}
+		}
+	}
+	node widthdetection {
+		node init {
+			layout [ size: 42, 34 ]
+		}
+		node waiting {
+			layout [ size: 71, 34 ]
+		}
+		node widthselection {
+			layout [ size: 124, 34 ]
+		}
+		edge waiting0: init -> waiting {
+			label L2: "/ start = rotation" {
+				layout [ size: 113, 17 ]
+			}
+		}
+		edge widthselection0: waiting -> widthselection {
+			label L3: "last_black || last_white / width = rotation - start; pwidth" {
+				layout [ size: 380, 17 ]
+			}
+		}
+		edge init0: widthselection -> init {
+			label L4: "1: width >= min1w && width <= max1w / one" {
+				layout [ size: 304, 17 ]
+			}
+		}
+		edge init1: widthselection -> init {
+			label L5: "2: width >= min2w && width <= max2w / two" {
+				layout [ size: 303, 17 ]
+			}
+		}
+		edge init2: widthselection -> init {
+			label L6: "3: width >= min3w && width <= max3w / three" {
+				layout [ size: 315, 17 ]
+			}
+		}
+		edge init3: widthselection -> init {
+			label L7: "4: width >= min4w && width <= max4w / four" {
+				layout [ size: 306, 17 ]
+			}
+		}
+		edge init4: widthselection -> init {
+			label L8: "5: error" {
+				layout [ size: 52, 17 ]
+			}
+		}
+	}
+	node errordetection {
+		node detect {
+			layout [ size: 65, 34 ]
+		}
+		edge detect0: detect -> detect {
+			label L9: "!one && !two && !three && !four && (last_black || last_white) / error; warn = true" {
+				layout [ size: 558, 17 ]
+			}
+		}
+	}
+	node reading {
+		node find_initcode {
+			algorithm: org.eclipse.elk.box
+			node N1 {
+				node search {
+					layout [ size: 69, 34 ]
+				}
+				node one {
+					layout [ size: 47, 34 ]
+				}
+				node two {
+					layout [ size: 46, 34 ]
+				}
+				node go {
+					layout [ size: 45, 40 ]
+				}
+				edge one0: search -> one {
+					label L25: "last_black && one / warn = warn & false" {
+						layout [ size: 277, 17 ]
+					}
+				}
+				edge two0: one -> two {
+					label L26: "1: last_white && one" {
+						layout [ size: 144, 17 ]
+					}
+				}
+				edge search0: one -> search {
+					label L27: "2: last_white && !one" {
+						layout [ size: 148, 17 ]
+					}
+				}
+				edge go0: two -> go {
+					label L28: "1: last_black && one" {
+						layout [ size: 143, 17 ]
+					}
+				}
+				edge search0_g2065: two -> search {
+					label L29: "2: last_black && !one" {
+						layout [ size: 147, 17 ]
+					}
+				}
+			}
+		}
+		node digits {
+			algorithm: org.eclipse.elk.box
+			node N2 {
+				node init_g0143 {
+					layout [ size: 42, 34 ]
+				}
+				node readw {
+					layout [ size: 64, 34 ]
+				}
+				node readb {
+					layout [ size: 62, 34 ]
+				}
+				node read {
+					layout [ size: 53, 34 ]
+				}
+				node out {
+					layout [ size: 43, 34 ]
+				}
+				node ^end {
+					layout [ size: 54, 40 ]
+				}
+				edge readw0: init_g0143 -> readw {
+					label L30: "/ value = 0; stripes = 1" {
+						layout [ size: 155, 17 ]
+					}
+				}
+				edge readb0: readw -> readb {
+					label L31: "1: one / value = value * 2" {
+						layout [ size: 173, 17 ]
+					}
+				}
+				edge readb1: readw -> readb {
+					label L32: "2: two / value = value * 4" {
+						layout [ size: 171, 17 ]
+					}
+				}
+				edge readb2: readw -> readb {
+					label L33: "3: three / value = value * 8" {
+						layout [ size: 184, 17 ]
+					}
+				}
+				edge readb3: readw -> readb {
+					label L34: "4: four / value = value * 16" {
+						layout [ size: 183, 17 ]
+					}
+				}
+				edge end0: readw -> ^end {
+					label L35: "5: error / bad_number" {
+						layout [ size: 152, 17 ]
+					}
+				}
+				edge read0: readb -> read {
+					label L36: "1: one / value = value * 2 + 1" {
+						layout [ size: 198, 17 ]
+					}
+				}
+				edge read1: readb -> read {
+					label L37: "2: two / value = value * 4 + 3" {
+						layout [ size: 196, 17 ]
+					}
+				}
+				edge read2: readb -> read {
+					label L38: "3: three / value = value * 8 + 7" {
+						layout [ size: 209, 17 ]
+					}
+				}
+				edge read3: readb -> read {
+					label L39: "4: four / value = value * 16 + 15" {
+						layout [ size: 216, 17 ]
+					}
+				}
+				edge end0_g3332: readb -> ^end {
+					label L40: "5: error / bad_number" {
+						layout [ size: 152, 17 ]
+					}
+				}
+				edge readw0_g2802: read -> readw {
+					label L41: "1: stripes == 1 / stripes = 0" {
+						layout [ size: 186, 17 ]
+					}
+				}
+				edge out0: read -> out {
+					label L42: "2: stripes == 0" {
+						layout [ size: 100, 17 ]
+					}
+				}
+				edge end0_g6634: out -> ^end {
+					label L43: "1: value == 13 / number = 0" {
+						layout [ size: 189, 17 ]
+					}
+				}
+				edge end1: out -> ^end {
+					label L44: "2: value == 25 / number = 1" {
+						layout [ size: 189, 17 ]
+					}
+				}
+				edge end2: out -> ^end {
+					label L45: "3: value == 19 / number = 2" {
+						layout [ size: 189, 17 ]
+					}
+				}
+				edge end3: out -> ^end {
+					label L46: "4: value == 61 / number = 3" {
+						layout [ size: 189, 17 ]
+					}
+				}
+				edge end4: out -> ^end {
+					label L47: "5: value == 35 / number = 4" {
+						layout [ size: 189, 17 ]
+					}
+				}
+				edge end5: out -> ^end {
+					label L48: "6: value == 49 / number = 5" {
+						layout [ size: 189, 17 ]
+					}
+				}
+				edge end6: out -> ^end {
+					label L49: "7: value == 47 / number = 6" {
+						layout [ size: 189, 17 ]
+					}
+				}
+				edge end7: out -> ^end {
+					label L50: "8: value == 59 / number = 7" {
+						layout [ size: 189, 17 ]
+					}
+				}
+				edge end8: out -> ^end {
+					label L51: "9: value == 55 / number = 8" {
+						layout [ size: 189, 17 ]
+					}
+				}
+				edge end9: out -> ^end {
+					label L52: "10: value == 11 / number = 9" {
+						layout [ size: 196, 17 ]
+					}
+				}
+				edge end10: out -> ^end {
+					label L53: "11: / bad_number" {
+						layout [ size: 119, 17 ]
+					}
+				}
+			}
+		}
+		node calc {
+			layout [ size: 49, 34 ]
+		}
+		node parity_bound {
+			layout [ size: 113, 34 ]
+		}
+		node error {
+			layout [ size: 56, 34 ]
+		}
+		node parity_check {
+			layout [ size: 110, 34 ]
+		}
+		node mapping {
+			layout [ size: 81, 34 ]
+		}
+		node ending {
+			layout [ size: 70, 34 ]
+		}
+		node barcode_read {
+			layout [ size: 125, 40 ]
+		}
+		edge digits0: find_initcode -> digits {
+			label L10: "/ counter = 3; parity = 9; result = 0; beeper" {
+				layout [ size: 293, 17 ]
+			}
+		}
+		edge calc0: digits -> calc {
+			label L11: "/ beeper" {
+				layout [ size: 59, 17 ]
+			}
+		}
+		edge parity_bound0: calc -> parity_bound {
+			label L12: "1: counter > 0 && !bad_number / counter = counter - 1; number_ready; result = result * 10 + number; parity = parity - number" {
+				layout [ size: 865, 17 ]
+			}
+		}
+		edge parity_check0: calc -> parity_check {
+			label L13: "2: counter == 0 && !bad_number / number_ready" {
+				layout [ size: 342, 17 ]
+			}
+		}
+		edge error0: calc -> error {
+			label L14: "3: bad_number / speed = 0" {
+				layout [ size: 186, 17 ]
+			}
+		}
+		edge digits0_g2066: parity_bound -> digits {
+			label L15: "1: parity >= 0" {
+				layout [ size: 90, 17 ]
+			}
+		}
+		edge digits1: parity_bound -> digits {
+			label L16: "2: parity < 0 / parity = parity + 10" {
+				layout [ size: 221, 17 ]
+			}
+		}
+		edge error0_g1330: error -> error {
+			label L17: "second / beeper; print_error" {
+				layout [ size: 200, 17 ]
+			}
+		}
+		edge mapping0: parity_check -> mapping {
+			label L18: "1: number == parity / counter = 3" {
+				layout [ size: 228, 17 ]
+			}
+		}
+		edge error0_g5258: parity_check -> error {
+			label L19: "2: number != parity / speed = 0; bad_parity" {
+				layout [ size: 294, 17 ]
+			}
+		}
+		edge ending0: mapping -> ending {
+			label L20: "1: result >= 500 / result = result - 1000" {
+				layout [ size: 264, 17 ]
+			}
+		}
+		edge ending1: mapping -> ending {
+			label L21: "2: result < 500" {
+				layout [ size: 99, 17 ]
+			}
+		}
+		edge ending0_g8805: ending -> ending {
+			label L22: "1: (last_black || last_white) && one && counter > 0 / counter = counter - 1" {
+				layout [ size: 511, 17 ]
+			}
+		}
+		edge barcode_read0: ending -> barcode_read {
+			label L23: "2: (last_black || last_white) && one && counter == 0 / speed = 0; print_result" {
+				layout [ size: 530, 17 ]
+			}
+		}
+		edge error0_g7606: ending -> error {
+			label L24: "3: (last_black || last_white) && !one / speed = 0" {
+				layout [ size: 326, 17 ]
+			}
+		}
+	}
+	node light {
+		node run {
+			layout [ size: 45, 34 ]
+		}
+		node black {
+			layout [ size: 58, 34 ]
+		}
+		node white {
+			layout [ size: 58, 34 ]
+		}
+		edge black0: run -> black {
+			label L54: "1: light < max_black / lamp = false" {
+				layout [ size: 233, 17 ]
+			}
+		}
+		edge white0: run -> white {
+			label L55: "2: light > min_white / lamp = true" {
+				layout [ size: 226, 17 ]
+			}
+		}
+		edge white0_g1247: black -> white {
+			label L56: "light > min_white / last_black; lamp = true" {
+				layout [ size: 288, 17 ]
+			}
+		}
+		edge black0_g5359: white -> black {
+			label L57: "light < max_black / last_white; lamp = false" {
+				layout [ size: 296, 17 ]
+			}
+		}
+	}
+	node control {
+		node wait {
+			algorithm: org.eclipse.elk.box
+			node N3 {
+				node speedcontrol {
+					layout [ size: 115, 34 ]
+				}
+				node speedcontrol_down {
+					layout [ size: 161, 34 ]
+				}
+				node speedcontrol_up {
+					layout [ size: 141, 34 ]
+				}
+				edge speedcontrol_down0: speedcontrol -> speedcontrol_down {
+					label L58: "1: left / speed = speed - 20" {
+						layout [ size: 186, 17 ]
+					}
+				}
+				edge speedcontrol_up0: speedcontrol -> speedcontrol_up {
+					label L59: "2: right / speed = speed + 20" {
+						layout [ size: 200, 17 ]
+					}
+				}
+				edge speedcontrol0: speedcontrol -> speedcontrol {
+					label L60: "3: doStop / speed = 0" {
+						layout [ size: 149, 17 ]
+					}
+				}
+				edge speedcontrol_down0_g7107: speedcontrol_down -> speedcontrol_down {
+					label L61: "1: left && second / speed = speed - 20" {
+						layout [ size: 268, 17 ]
+					}
+				}
+				edge speedcontrol0_g9846: speedcontrol_down -> speedcontrol {
+					label L62: "2: !left" {
+						layout [ size: 43, 17 ]
+					}
+				}
+				edge speedcontrol_up0_g6131: speedcontrol_up -> speedcontrol_up {
+					label L63: "1: right && second / speed = speed + 20" {
+						layout [ size: 282, 17 ]
+					}
+				}
+				edge speedcontrol0_g7180: speedcontrol_up -> speedcontrol {
+					label L64: "2: !right" {
+						layout [ size: 53, 17 ]
+					}
+				}
+			}
+		}
+		edge wait0: wait -> wait
+	}
+}

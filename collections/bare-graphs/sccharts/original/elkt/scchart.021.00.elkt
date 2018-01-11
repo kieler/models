@@ -1,0 +1,129 @@
+graph G1
+node Seatbelt {
+	algorithm: org.eclipse.elk.box
+	node Main {
+		node behaviour {
+			algorithm: org.eclipse.elk.box
+			node HandleDoors {
+				node doorsOkay {
+					layout [ size: 98, 34 ]
+				}
+				node doorIsOpen {
+					layout [ size: 105, 34 ]
+				}
+				node waiting {
+					algorithm: org.eclipse.elk.box
+					node N1 {
+						node waitOne {
+							layout [ size: 78, 34 ]
+						}
+						node waitTwo {
+							layout [ size: 78, 34 ]
+						}
+						node waitThree {
+							layout [ size: 91, 34 ]
+						}
+						node waitFour {
+							layout [ size: 87, 40 ]
+						}
+						edge waitTwo0: waitOne -> waitTwo {
+							label L5: "second" {
+								layout [ size: 53, 17 ]
+							}
+						}
+						edge waitThree0: waitTwo -> waitThree {
+							label L6: "second" {
+								layout [ size: 53, 17 ]
+							}
+						}
+						edge waitFour0: waitThree -> waitFour {
+							label L7: "second" {
+								layout [ size: 53, 17 ]
+							}
+						}
+					}
+				}
+				edge doorIsOpen0: doorsOkay -> doorIsOpen {
+					label L1: "doorOpen / warnlightDoorOn = true" {
+						layout [ size: 251, 17 ]
+					}
+				}
+				edge waiting0: doorIsOpen -> waiting {
+					label L2: "second && !doorOpen" {
+						layout [ size: 159, 17 ]
+					}
+				}
+				edge doorIsOpen0_g8920: waiting -> doorIsOpen {
+					label L3: "1: doorOpen" {
+						layout [ size: 89, 17 ]
+					}
+				}
+				edge doorsOkay0: waiting -> doorsOkay {
+					label L4: "2: / warnlightDoorOn = false" {
+						layout [ size: 196, 17 ]
+					}
+				}
+			}
+			node HandleBelt {
+				node BeltsOkay {
+					layout [ size: 94, 34 ]
+				}
+				node warnlightIsOn {
+					layout [ size: 119, 34 ]
+				}
+				node noise {
+					algorithm: org.eclipse.elk.box
+					node N2 {
+						node noiseOne {
+							layout [ size: 89, 34 ]
+						}
+						node noiseTwo {
+							layout [ size: 89, 34 ]
+						}
+						node noiseThree {
+							layout [ size: 102, 34 ]
+						}
+						node noiseFour {
+							layout [ size: 98, 40 ]
+						}
+						edge noiseTwo0: noiseOne -> noiseTwo {
+							label L12: "second" {
+								layout [ size: 53, 17 ]
+							}
+						}
+						edge noiseThree0: noiseTwo -> noiseThree {
+							label L13: "second" {
+								layout [ size: 53, 17 ]
+							}
+						}
+						edge noiseFour0: noiseThree -> noiseFour {
+							label L14: "second" {
+								layout [ size: 53, 17 ]
+							}
+						}
+					}
+				}
+				edge noise0: BeltsOkay -> noise {
+					label L8: "motorRunning && !beltBuckled / warnlightBeltOn = true; noiseOn = true" {
+						layout [ size: 507, 17 ]
+					}
+				}
+				edge BeltsOkay0: warnlightIsOn -> BeltsOkay {
+					label L9: "beltBuckled || !motorRunning / warnlightBeltOn = false" {
+						layout [ size: 384, 17 ]
+					}
+				}
+				edge BeltsOkay0_g7355: noise -> BeltsOkay {
+					label L10: "1: beltBuckled || !motorRunning / noiseOn = false; warnlightBeltOn = false" {
+						layout [ size: 519, 17 ]
+					}
+				}
+				edge warnlightIsOn0: noise -> warnlightIsOn {
+					label L11: "2: second / noiseOn = false" {
+						layout [ size: 191, 17 ]
+					}
+				}
+			}
+		}
+	}
+}

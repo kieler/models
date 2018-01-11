@@ -1,0 +1,66 @@
+graph G1
+node Pathfinder {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node Init {
+			layout [ size: 42, 34 ]
+		}
+		node Boot {
+			layout [ size: 54, 34 ]
+		}
+		node Straight {
+			layout [ size: 76, 34 ]
+		}
+		node MoveLeft {
+			layout [ size: 88, 34 ]
+		}
+		node MoveRight {
+			layout [ size: 98, 34 ]
+		}
+		edge Boot0: Init -> Boot {
+			label L1: "/ motorA = 40; motorC = 40" {
+				layout [ size: 184, 17 ]
+			}
+		}
+		edge Boot0_g3338: Boot -> Boot {
+			label L2: "1: i < 400 / i = i + 1; readLight" {
+				layout [ size: 199, 17 ]
+			}
+		}
+		edge Straight0: Boot -> Straight {
+			label L3: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge Straight0_g0727: Straight -> Straight {
+			label L4: "1: currentResult > dark / readLight" {
+				layout [ size: 242, 17 ]
+			}
+		}
+		edge MoveLeft0: Straight -> MoveLeft {
+			label L5: "2: / readLight; motorA = 5; motorC = 400" {
+				layout [ size: 276, 17 ]
+			}
+		}
+		edge MoveLeft0_g5546: MoveLeft -> MoveLeft {
+			label L6: "1: currentResult < light / readLight" {
+				layout [ size: 242, 17 ]
+			}
+		}
+		edge MoveRight0: MoveLeft -> MoveRight {
+			label L7: "2: / readLight; motorA = 600; motorC = 30" {
+				layout [ size: 284, 17 ]
+			}
+		}
+		edge MoveRight0_g2650: MoveRight -> MoveRight {
+			label L8: "1: currentResult > dark / readLight" {
+				layout [ size: 242, 17 ]
+			}
+		}
+		edge MoveLeft0_g9903: MoveRight -> MoveLeft {
+			label L9: "2: / readLight; motorA = 5; motorC = 400" {
+				layout [ size: 276, 17 ]
+			}
+		}
+	}
+}

@@ -1,0 +1,304 @@
+graph G1
+node barcode_runnerV4 {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node calibrateLow {
+			layout [ size: 111, 34 ]
+		}
+		node calibrateHigh {
+			layout [ size: 115, 34 ]
+		}
+		node calculateThresh {
+			layout [ size: 135, 34 ]
+		}
+		node ready {
+			layout [ size: 61, 34 ]
+		}
+		node setup {
+			layout [ size: 61, 34 ]
+		}
+		node readingStartDelim {
+			layout [ size: 150, 34 ]
+		}
+		node readingCodeHigh2Low {
+			layout [ size: 183, 34 ]
+		}
+		node readingCodeLow2High {
+			layout [ size: 183, 34 ]
+		}
+		node calculateT {
+			layout [ size: 93, 34 ]
+		}
+		node decodeData {
+			layout [ size: 106, 34 ]
+		}
+		node decider {
+			layout [ size: 74, 34 ]
+		}
+		node decoder {
+			layout [ size: 79, 34 ]
+		}
+		node display {
+			layout [ size: 71, 34 ]
+		}
+		node calculateRotation {
+			layout [ size: 144, 34 ]
+		}
+		node rotate {
+			layout [ size: 62, 34 ]
+		}
+		node rotateNow {
+			layout [ size: 94, 34 ]
+		}
+		edge ready0: calibrateLow -> ready {
+			label L1: "1: leftButtonDown" {
+				layout [ size: 128, 17 ]
+			}
+		}
+		edge calibrateLow0: calibrateLow -> calibrateLow {
+			label L2: "2: rightButtonDown && !measuring / floodlight = true; measuring = true; lightLevelSum = light_level; num_meas = 1" {
+				layout [ size: 808, 17 ]
+			}
+		}
+		edge calibrateLow1: calibrateLow -> calibrateLow {
+			label L3: "3: measuring && num_meas != 100 && ten_ms / lightLevelSum = lightLevelSum + light_level; num_meas++; reset_ten_ms = true" {
+				layout [ size: 896, 17 ]
+			}
+		}
+		edge calibrateHigh0: calibrateLow -> calibrateHigh {
+			label L4: "4: num_meas == 100 / measuring = false; floodlight = false; lightLevelThresh = lightLevelSum / 100; num_meas = 0" {
+				layout [ size: 798, 17 ]
+			}
+		}
+		edge calibrateHigh0_g6526: calibrateHigh -> calibrateHigh {
+			label L5: "1: leftButtonDown && !measuring / floodlight = true; measuring = true; lightLevelSum = light_level; num_meas = 1" {
+				layout [ size: 798, 17 ]
+			}
+		}
+		edge calibrateHigh1: calibrateHigh -> calibrateHigh {
+			label L6: "2: measuring && num_meas != 100 && ten_ms / lightLevelSum = lightLevelSum + light_level; num_meas++; reset_ten_ms = true" {
+				layout [ size: 896, 17 ]
+			}
+		}
+		edge calculateThresh0: calibrateHigh -> calculateThresh {
+			label L7: "3: num_meas == 100 / measuring = false; floodlight = false; num_meas = 0" {
+				layout [ size: 513, 17 ]
+			}
+		}
+		edge calculateThresh0_g2062: calculateThresh -> calculateThresh {
+			label L8: "1: !measuring / measuring = true; lightLevelThresh = (lightLevelSum / 100 + lightLevelThresh) / 2" {
+				layout [ size: 681, 17 ]
+			}
+		}
+		edge ready0_g3699: calculateThresh -> ready {
+			label L9: "2: measuring / measuring = false; floodlight = true" {
+				layout [ size: 348, 17 ]
+			}
+		}
+		edge setup0: ready -> setup {
+			label L10: "StartButtonDown / floodlight = true; leftMotorSpeed = 880; rightMotorSpeed = 880" {
+				layout [ size: 578, 17 ]
+			}
+		}
+		edge readingStartDelim0: setup -> readingStartDelim {
+			label L11: "light_level < lightLevelThresh / startSW1 = true" {
+				layout [ size: 334, 17 ]
+			}
+		}
+		edge readingStartDelim0_g5119: readingStartDelim -> readingStartDelim {
+			label L12: "1: !help && light_level >= lightLevelThresh / help = true" {
+				layout [ size: 392, 17 ]
+			}
+		}
+		edge readingStartDelim1: readingStartDelim -> readingStartDelim {
+			label L13: "2: help && light_level < lightLevelThresh / helper2 = true" {
+				layout [ size: 402, 17 ]
+			}
+		}
+		edge readingCodeHigh2Low0: readingStartDelim -> readingCodeHigh2Low {
+			label L14: "3: helper2 && light_level > lightLevelThresh / help = false; helper2 = false; t[0] = getCurrentTimeSW1; reading = 1" {
+				layout [ size: 800, 17 ]
+			}
+		}
+		edge readingCodeLow2High0: readingCodeHigh2Low -> readingCodeLow2High {
+			label L15: "1: reading < 21 && light_level < lightLevelThresh / t[reading] = getCurrentTimeSW1; reading++" {
+				layout [ size: 668, 17 ]
+			}
+		}
+		edge calculateT0: readingCodeHigh2Low -> calculateT {
+			label L16: "2: reading == 21 / rightMotorSpeed = 0; leftMotorSpeed = 0; reading = 0" {
+				layout [ size: 502, 17 ]
+			}
+		}
+		edge readingCodeHigh2Low0_g6898: readingCodeLow2High -> readingCodeHigh2Low {
+			label L17: "light_level > lightLevelThresh / t[reading] = getCurrentTimeSW1; reading++" {
+				layout [ size: 535, 17 ]
+			}
+		}
+		edge decodeData0: calculateT -> decodeData {
+			label L18: "reading == 0 / T = ((t[0] + (t[20] - t[16])) * 1000) / 7; reading = 0" {
+				layout [ size: 426, 17 ]
+			}
+		}
+		edge decodeData0_g1886: decodeData -> decodeData {
+			label L19: "1: reading <= 15 / d[reading] = ((t[reading + 1] - t[reading]) * 1000000) / T; reading++" {
+				layout [ size: 580, 17 ]
+			}
+		}
+		edge decider0: decodeData -> decider {
+			label L20: "2: reading == 16 / reading = 0" {
+				layout [ size: 204, 17 ]
+			}
+		}
+		edge decider0_g3405: decider -> decider {
+			label L21: "1: reading < 16 && d[reading] < 1500 / d[reading] = 1; reading++" {
+				layout [ size: 445, 17 ]
+			}
+		}
+		edge decider1: decider -> decider {
+			label L22: "2: reading < 16 && (1500 <= d[reading] && d[reading] < 2500) / d[reading] = 2; reading++; db7 = reading" {
+				layout [ size: 722, 17 ]
+			}
+		}
+		edge decider2: decider -> decider {
+			label L23: "3: reading < 16 && (2500 <= d[reading] && d[reading] < 3500) / d[reading] = 3; reading++; db7 = reading" {
+				layout [ size: 722, 17 ]
+			}
+		}
+		edge decider3: decider -> decider {
+			label L24: "4: reading < 16 && 3500 <= d[reading] / d[reading] = 4; reading++" {
+				layout [ size: 454, 17 ]
+			}
+		}
+		edge decoder0: decider -> decoder {
+			label L25: "5: reading == 16 / reading = 0" {
+				layout [ size: 204, 17 ]
+			}
+		}
+		edge decoder0_g9929: decoder -> decoder {
+			label L26: "1: reading < 4 && (d[0 + reading * 4] == 3 && d[1 + reading * 4] == 2) / D[reading] = 0; reading++" {
+				layout [ size: 665, 17 ]
+			}
+		}
+		edge decoder1: decoder -> decoder {
+			label L27: "2: reading < 4 && (d[0 + reading * 4] == 3 && d[1 + reading * 4] == 1) / D[reading] = 9; reading++" {
+				layout [ size: 665, 17 ]
+			}
+		}
+		edge decoder2: decoder -> decoder {
+			label L28: "3: reading < 4 && (d[0 + reading * 4] == 2 && d[1 + reading * 4] == 2) / D[reading] = 1; reading++" {
+				layout [ size: 665, 17 ]
+			}
+		}
+		edge decoder3: decoder -> decoder {
+			label L29: "4: reading < 4 && (d[0 + reading * 4] == 2 && d[1 + reading * 4] == 1) / D[reading] = 2; reading++" {
+				layout [ size: 665, 17 ]
+			}
+		}
+		edge decoder4: decoder -> decoder {
+			label L30: "5: reading < 4 && (d[0 + reading * 4] == 1 && d[1 + reading * 4] == 4) / D[reading] = 3; reading++" {
+				layout [ size: 665, 17 ]
+			}
+		}
+		edge decoder5: decoder -> decoder {
+			label L31: "6: reading < 4 && (d[0 + reading * 4] == 1 && d[1 + reading * 4] == 3) / D[reading] = 7; reading++" {
+				layout [ size: 665, 17 ]
+			}
+		}
+		edge decoder6: decoder -> decoder {
+			label L32: "7: reading < 4 && (d[0 + reading * 4] == 1 && d[1 + reading * 4] == 2 && d[2 + reading * 4] == 1) / D[reading] = 8; reading++" {
+				layout [ size: 849, 17 ]
+			}
+		}
+		edge decoder7: decoder -> decoder {
+			label L33: "8: reading < 4 && (d[0 + reading * 4] == 1 && d[1 + reading * 4] == 2 && d[2 + reading * 4] == 3) / D[reading] = 5; reading++" {
+				layout [ size: 849, 17 ]
+			}
+		}
+		edge decoder8: decoder -> decoder {
+			label L34: "9: reading < 4 && ((d[0 + reading * 4] == 1 && d[1 + reading * 4] == 1) && d[2 + reading * 4] == 1) / D[reading] = 6; reading++" {
+				layout [ size: 859, 17 ]
+			}
+		}
+		edge decoder9: decoder -> decoder {
+			label L35: "10: reading < 4 && ((d[0 + reading * 4] == 1 && d[1 + reading * 4] == 1) && d[2 + reading * 4] == 3) / D[reading] = 4; reading++" {
+				layout [ size: 867, 17 ]
+			}
+		}
+		edge decoder10: decoder -> decoder {
+			label L36: "11: reading == 4 / D[0] = 100 * D[0] + 10 * D[1] + D[2]; reading++" {
+				layout [ size: 438, 17 ]
+			}
+		}
+		edge display0: decoder -> display {
+			label L37: "12: reading == 5 && D[0] >= 500 / D[0] = D[0] - 1000; twoBeep = true; reading = 0" {
+				layout [ size: 558, 17 ]
+			}
+		}
+		edge display1: decoder -> display {
+			label L38: "13: reading == 5 && D[0] < 500 / twoBeep = true; reading = 0" {
+				layout [ size: 421, 17 ]
+			}
+		}
+		edge display0_g6811: display -> display {
+			label L39: "1: twoBeep && num_meas == 1 / db7 = D[0]; disp7 = true; twoBeep = false" {
+				layout [ size: 516, 17 ]
+			}
+		}
+		edge display1_g9707: display -> display {
+			label L40: "2: twoBeep && num_meas == 0 / db6 = D[0]; disp6 = true; twoBeep = false" {
+				layout [ size: 516, 17 ]
+			}
+		}
+		edge calculateRotation0: display -> calculateRotation {
+			label L41: "3: !twoBeep && num_meas == 0" {
+				layout [ size: 223, 17 ]
+			}
+		}
+		edge ready0_g4382: display -> ready {
+			label L42: "4: leftButtonDown / startSW1 = false; measuring = false; floodlight = true; num_meas = 0" {
+				layout [ size: 616, 17 ]
+			}
+		}
+		edge calculateRotation0_g1536: calculateRotation -> calculateRotation {
+			label L43: "1: !help / D[0] = D[0] % 360; help = true" {
+				layout [ size: 268, 17 ]
+			}
+		}
+		edge rotate0: calculateRotation -> rotate {
+			label L44: "2: help && D[0] >= 180 / help = false; D[0] = (-360) + D[0]" {
+				layout [ size: 389, 17 ]
+			}
+		}
+		edge rotate1: calculateRotation -> rotate {
+			label L45: "3: help && D[0] <= -180 / help = false; D[0] = 360 + D[0]" {
+				layout [ size: 379, 17 ]
+			}
+		}
+		edge rotate2: calculateRotation -> rotate {
+			label L46: "4: help && D[0] < 180 && D[0] > -180 / help = false" {
+				layout [ size: 346, 17 ]
+			}
+		}
+		edge rotate0_g8323: rotate -> rotate {
+			label L47: "1: !help / D[0] = (1587 * D[0] - 10000) / 100; help = true" {
+				layout [ size: 368, 17 ]
+			}
+		}
+		edge rotateNow0: rotate -> rotateNow {
+			label L48: "2: D[0] >= 0 && help / help = false; rotationSpeed = 890; rotateDeg = D[0]; rotateNow = true" {
+				layout [ size: 636, 17 ]
+			}
+		}
+		edge rotateNow1: rotate -> rotateNow {
+			label L49: "3: D[0] < 0 && help / help = false; rotationSpeed = -890; rotateDeg = D[0]; rotateNow = true" {
+				layout [ size: 632, 17 ]
+			}
+		}
+		edge setup0_g9106: rotateNow -> setup {
+			label L50: "!rotateNow / startSW1 = false; measuring = false; floodlight = true; num_meas = 1; rightMotorSpeed = 880; leftMotorSpeed = 880" {
+				layout [ size: 896, 17 ]
+			}
+		}
+	}
+}

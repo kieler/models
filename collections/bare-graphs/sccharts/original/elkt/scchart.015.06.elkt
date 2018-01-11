@@ -1,0 +1,93 @@
+graph G1
+node bphtldughtqhun {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node Init {
+			layout [ size: 42, 34 ]
+		}
+		node Controller {
+			algorithm: org.eclipse.elk.box
+			node Domelight {
+				node Idle {
+					layout [ size: 140, 50 ]
+				}
+				node DomelightOn {
+					layout [ size: 140, 50 ]
+				}
+				node WaitingLight {
+					layout [ size: 156, 50 ]
+				}
+				edge DomelightOn0: Idle -> DomelightOn {
+					label L1: "!leftDoorClosed || !rightDoorClosed" {
+						layout [ size: 251, 17 ]
+					}
+				}
+				edge WaitingLight0: DomelightOn -> WaitingLight {
+					label L2: "leftDoorClosed && rightDoorClosed" {
+						layout [ size: 257, 17 ]
+					}
+				}
+				edge DomelightOn0_g9864: WaitingLight -> DomelightOn {
+					label L3: "1: !leftDoorClosed || !rightDoorClosed" {
+						layout [ size: 267, 17 ]
+					}
+				}
+				edge Idle0: WaitingLight -> Idle {
+					label L4: "2: lightClock" {
+						layout [ size: 88, 17 ]
+					}
+				}
+			}
+			node Seatbelt {
+				node Idle_g2063 {
+					layout [ size: 245, 50 ]
+				}
+				node EngineOn {
+					algorithm: org.eclipse.elk.box
+					node N2 {
+						node Idle_g9337 {
+							layout [ size: 245, 50 ]
+						}
+						node BeepAndLight {
+							layout [ size: 351, 50 ]
+						}
+						node Light {
+							layout [ size: 240, 50 ]
+						}
+						edge BeepAndLight0: Idle_g9337 -> BeepAndLight {
+							label L7: "!seatbelt" {
+								layout [ size: 61, 17 ]
+							}
+						}
+						edge Idle0_g1012: BeepAndLight -> Idle_g9337 {
+							label L8: "1: seatbelt" {
+								layout [ size: 73, 17 ]
+							}
+						}
+						edge Light0: BeepAndLight -> Light {
+							label L9: "2: beeperClock" {
+								layout [ size: 108, 17 ]
+							}
+						}
+						edge Idle0_g6295: Light -> Idle_g9337 {
+							label L10: "seatbelt" {
+								layout [ size: 57, 17 ]
+							}
+						}
+					}
+				}
+				edge EngineOn0: Idle_g2063 -> EngineOn {
+					label L5: "engine && seatbelt" {
+						layout [ size: 136, 17 ]
+					}
+				}
+				edge Idle0_g9179: EngineOn -> Idle_g2063 {
+					label L6: "engine" {
+						layout [ size: 49, 17 ]
+					}
+				}
+			}
+		}
+		edge Controller0: Init -> Controller
+	}
+}

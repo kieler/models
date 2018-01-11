@@ -1,0 +1,196 @@
+graph G1
+node Backhoe {
+	algorithm: org.eclipse.elk.box
+	node Backhoe_g6712 {
+		node init {
+			layout [ size: 42, 34 ]
+		}
+		node extendStick {
+			layout [ size: 105, 34 ]
+		}
+		node extendBucket {
+			layout [ size: 119, 34 ]
+		}
+		node stickAndBucketExtended {
+			layout [ size: 199, 34 ]
+		}
+		node retractingStingAndBucket {
+			algorithm: org.eclipse.elk.box
+			node retractStick {
+				node waitForStick {
+					layout [ size: 108, 34 ]
+				}
+				node stickIN {
+					layout [ size: 74, 40 ]
+				}
+				edge stickIN0: waitForStick -> stickIN {
+					label L5: "STICK_IN / STICK_PUSH = false; stickInMotion = false" {
+						layout [ size: 382, 17 ]
+					}
+				}
+			}
+			node retractBucket {
+				node waitForBucket {
+					layout [ size: 122, 34 ]
+				}
+				node bucketIN {
+					layout [ size: 89, 40 ]
+				}
+				edge bucketIN0: waitForBucket -> bucketIN {
+					label L6: "BUCKET_IN / BUCKET_PUSH = false; bucketInMotion = false" {
+						layout [ size: 433, 17 ]
+					}
+				}
+			}
+		}
+		edge extendStick0: init -> extendStick {
+			label L1: "EXTEND_BUTTON / STICK_PULL = true; stickInMotion = true" {
+				layout [ size: 435, 17 ]
+			}
+		}
+		edge extendBucket0: extendStick -> extendBucket {
+			label L2: "STICK_OUT / STICK_PULL = false; stickInMotion = false; BUCKET_PULL = true; bucketInMotion = true" {
+				layout [ size: 726, 17 ]
+			}
+		}
+		edge stickAndBucketExtended0: extendBucket -> stickAndBucketExtended {
+			label L3: "BUCKET_OUT / BUCKET_PULL = false; bucketInMotion = false" {
+				layout [ size: 448, 17 ]
+			}
+		}
+		edge retractingStingAndBucket0: stickAndBucketExtended -> retractingStingAndBucket {
+			label L4: "RETRACT_BUTTON / STICK_PUSH = true; BUCKET_PUSH = true; bucketInMotion = true; stickInMotion = true" {
+				layout [ size: 780, 17 ]
+			}
+		}
+		edge init0: retractingStingAndBucket -> init
+	}
+	node Legs {
+		node init_g3877 {
+			layout [ size: 42, 34 ]
+		}
+		node legsRetracted {
+			layout [ size: 121, 34 ]
+		}
+		node extendLegs {
+			layout [ size: 105, 34 ]
+		}
+		node stopped {
+			layout [ size: 79, 34 ]
+		}
+		node legsExtended {
+			layout [ size: 119, 34 ]
+		}
+		node retractLegs {
+			layout [ size: 103, 34 ]
+		}
+		edge legsRetracted0: init_g3877 -> legsRetracted
+		edge extendLegs0: legsRetracted -> extendLegs {
+			label L7: "EXTEND_BUTTON / legsInMotion = true; LEGS_EXTEND = true" {
+				layout [ size: 450, 17 ]
+			}
+		}
+		edge legsExtended0: extendLegs -> legsExtended {
+			label L8: "1: LEGS_OUT / legsInMotion = false; LEGS_EXTEND = false" {
+				layout [ size: 423, 17 ]
+			}
+		}
+		edge stopped0: extendLegs -> stopped {
+			label L9: "2: STOP_BUTTON / LEGS_EXTEND = false; LEGS_STOP = true" {
+				layout [ size: 450, 17 ]
+			}
+		}
+		edge extendLegs0_g3582: stopped -> extendLegs {
+			label L10: "1: EXTEND_BUTTON && !STOP_BUTTON && !RETRACT_BUTTON / LEGS_EXTEND = true; LEGS_STOP = false" {
+				layout [ size: 798, 17 ]
+			}
+		}
+		edge extendLegs1: stopped -> extendLegs {
+			label L11: "2: RETRACT_BUTTON && !STOP_BUTTON && !EXTEND_BUTTON / LEGS_RETRACT = true; LEGS_STOP = false" {
+				layout [ size: 808, 17 ]
+			}
+		}
+		edge retractLegs0: legsExtended -> retractLegs {
+			label L12: "RETRACT_BUTTON / legsInMotion = true; LEGS_RETRACT = true" {
+				layout [ size: 470, 17 ]
+			}
+		}
+		edge legsRetracted0_g9071: retractLegs -> legsRetracted {
+			label L13: "1: LEGS_OUT / legsInMotion = false; LEGS_RETRACT = false" {
+				layout [ size: 433, 17 ]
+			}
+		}
+		edge stopped0_g4075: retractLegs -> stopped {
+			label L14: "2: STOP_BUTTON / LEGS_RETRACT = false; LEGS_STOP = true" {
+				layout [ size: 460, 17 ]
+			}
+		}
+	}
+	node MotionDetector {
+		node nothingMoves {
+			layout [ size: 123, 34 ]
+		}
+		node somethingMoves {
+			layout [ size: 143, 34 ]
+		}
+		edge somethingMoves0: nothingMoves -> somethingMoves {
+			label L15: "boomInMotion || stickInMotion || bucketInMotion || legsInMotion / isInMotion = true" {
+				layout [ size: 578, 17 ]
+			}
+		}
+		edge nothingMoves0: somethingMoves -> nothingMoves {
+			label L16: "!boomInMotion && !stickInMotion && !bucketInMotion && !legsInMotion / isInMotion = false" {
+				layout [ size: 641, 17 ]
+			}
+		}
+	}
+	node LampHandling {
+		node init_g3982 {
+			layout [ size: 42, 34 ]
+		}
+		node DoneLampON {
+			layout [ size: 119, 34 ]
+		}
+		node AlarmLampOFF {
+			layout [ size: 128, 34 ]
+		}
+		node AlarmLampON {
+			layout [ size: 120, 34 ]
+		}
+		edge DoneLampON0: init_g3982 -> DoneLampON {
+			label L17: "1: !isInMotion / DONE_LAMP = true; ALARM_LAMP = false" {
+				layout [ size: 403, 17 ]
+			}
+		}
+		edge AlarmLampON0: init_g3982 -> AlarmLampON {
+			label L18: "2: isInMotion / DONE_LAMP = false; ALARM_LAMP = true" {
+				layout [ size: 399, 17 ]
+			}
+		}
+		edge AlarmLampON0_g6407: DoneLampON -> AlarmLampON {
+			label L19: "isInMotion / DONE_LAMP = false" {
+				layout [ size: 230, 17 ]
+			}
+		}
+		edge DoneLampON0_g7410: AlarmLampOFF -> DoneLampON {
+			label L20: "1: !isInMotion / DONE_LAMP = true" {
+				layout [ size: 245, 17 ]
+			}
+		}
+		edge AlarmLampON0_g8367: AlarmLampOFF -> AlarmLampON {
+			label L21: "2: 2 SECOND && isInMotion / ALARM_LAMP = true" {
+				layout [ size: 354, 17 ]
+			}
+		}
+		edge DoneLampON0_g1698: AlarmLampON -> DoneLampON {
+			label L22: "1: !isInMotion / DONE_LAMP = true; ALARM_LAMP = false" {
+				layout [ size: 403, 17 ]
+			}
+		}
+		edge AlarmLampOFF0: AlarmLampON -> AlarmLampOFF {
+			label L23: "2: / ALARM_LAMP = false" {
+				layout [ size: 174, 17 ]
+			}
+		}
+	}
+}

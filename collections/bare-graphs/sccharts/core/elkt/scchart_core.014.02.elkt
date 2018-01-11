@@ -1,0 +1,74 @@
+graph G1
+node SeqConstructive {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node Setup {
+			layout [ size: 63, 34 ]
+		}
+		node Run {
+			algorithm: org.eclipse.elk.box
+			node Read {
+				node B {
+					layout [ size: 40, 40 ]
+				}
+				node A {
+					layout [ size: 34, 34 ]
+				}
+				node __sd_Depth {
+					layout [ size: 105, 34 ]
+				}
+				edge __sd_Depth0: A -> __sd_Depth
+				edge B0: __sd_Depth -> B {
+					label L2: "1: X" {
+						layout [ size: 27, 17 ]
+					}
+				}
+				edge A0: __sd_Depth -> A {
+					label L3: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+			}
+			node Emit {
+				node B_g1737 {
+					layout [ size: 40, 40 ]
+				}
+				node __te_S {
+					layout [ size: 69, 34 ]
+				}
+				node A1 {
+					layout [ size: 38, 34 ]
+				}
+				node __sd_Depth1 {
+					layout [ size: 113, 34 ]
+				}
+				edge B0_g1549: __te_S -> B_g1737 {
+					label L4: "/ X = X || true" {
+						layout [ size: 90, 17 ]
+					}
+				}
+				edge __sd_Depth10: A1 -> __sd_Depth1
+				edge __te_S0: __sd_Depth1 -> __te_S {
+					label L5: "1: !X" {
+						layout [ size: 31, 17 ]
+					}
+				}
+				edge A10: __sd_Depth1 -> A1 {
+					label L6: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+			}
+		}
+		node __sd_HaltState {
+			layout [ size: 126, 34 ]
+		}
+		edge Run0: Setup -> Run {
+			label L1: "/ X = false" {
+				layout [ size: 69, 17 ]
+			}
+		}
+		edge __sd_HaltState0: Run -> __sd_HaltState
+		edge __sd_HaltState0_g7629: __sd_HaltState -> __sd_HaltState
+	}
+}

@@ -1,0 +1,73 @@
+graph G1
+node Tick2 {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node run {
+			layout [ size: 186, 80 ]
+		}
+		node correctLeft {
+			layout [ size: 99, 34 ]
+		}
+		node correctRight {
+			layout [ size: 109, 34 ]
+		}
+		node runABit {
+			layout [ size: 186, 50 ]
+		}
+		edge correctLeft0: run -> correctLeft {
+			label L1: "!line / motorA = true; motorB = false; tachoReset = true" {
+				layout [ size: 383, 17 ]
+			}
+		}
+		edge runABit0: correctLeft -> runABit {
+			label L2: "1: distanceCounter == 10 / motorA = true; motorB = true" {
+				layout [ size: 389, 17 ]
+			}
+		}
+		edge correctRight0: correctLeft -> correctRight {
+			label L3: "2: !line && rotationA > distanceCounter * distance / motorA = false; motorB = true; tachoReset = true" {
+				layout [ size: 701, 17 ]
+			}
+		}
+		edge run0: correctLeft -> run {
+			label L4: "3: line / motorA = true; motorB = true; tachoReset = true" {
+				layout [ size: 390, 17 ]
+			}
+		}
+		edge correctLeft0_g3464: correctLeft -> correctLeft {
+			label L5: "4: !line / tachoReset = false" {
+				layout [ size: 190, 17 ]
+			}
+		}
+		edge runABit0_g8529: correctRight -> runABit {
+			label L6: "1: distanceCounter == 10 / motorA = true; motorB = true" {
+				layout [ size: 389, 17 ]
+			}
+		}
+		edge correctLeft0_g0026: correctRight -> correctLeft {
+			label L7: "2: !line && rotationB > (distanceCounter * distance) * 2 / motorA = true; motorB = false; tachoReset = true; distanceCounter = distanceCounter + 5" {
+				layout [ size: 1023, 17 ]
+			}
+		}
+		edge run0_g0405: correctRight -> run {
+			label L8: "3: line / motorA = true; motorB = true; tachoReset = true" {
+				layout [ size: 390, 17 ]
+			}
+		}
+		edge correctRight0_g0187: correctRight -> correctRight {
+			label L9: "4: !line / tachoReset = false" {
+				layout [ size: 190, 17 ]
+			}
+		}
+		edge run0_g9990: runABit -> run {
+			label L10: "1: line / motorA = true; motorB = true" {
+				layout [ size: 255, 17 ]
+			}
+		}
+		edge correctLeft0_g5017: runABit -> correctLeft {
+			label L11: "2: !line && counter == 30 / motorA = true; motorB = false; tachoReset = true" {
+				layout [ size: 526, 17 ]
+			}
+		}
+	}
+}

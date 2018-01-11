@@ -1,0 +1,428 @@
+graph G1
+node barcodereader {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node programStart {
+			layout [ size: 113, 34 ]
+		}
+		node searchForStartDelimiter {
+			algorithm: org.eclipse.elk.box
+			node N2 {
+				node searchStart {
+					layout [ size: 102, 34 ]
+				}
+				node firstWhite {
+					layout [ size: 88, 34 ]
+				}
+				node secondBlack {
+					layout [ size: 112, 34 ]
+				}
+				node tryAgain {
+					algorithm: org.eclipse.elk.box
+					node N3 {
+						node waitToStop {
+							layout [ size: 100, 34 ]
+						}
+						node finish {
+							layout [ size: 66, 40 ]
+						}
+						edge finish0: waitToStop -> finish {
+							label L20: "!isMovingA && !isMovingB" {
+								layout [ size: 187, 17 ]
+							}
+						}
+					}
+				}
+				node finished {
+					layout [ size: 84, 40 ]
+				}
+				edge firstWhite0: searchStart -> firstWhite {
+					label L12: "1: preciseClock && lightValue < lightThreshold / motorRotationA = rotationByDegrees - initialRotation; motorRotationB = rotationByDegrees - initialRotation" {
+						layout [ size: 1095, 17 ]
+					}
+				}
+				edge searchStart0: searchStart -> searchStart {
+					label L13: "2: preciseClock / motorRotationA = -2; motorRotationB = -2" {
+						layout [ size: 411, 17 ]
+					}
+				}
+				edge secondBlack0: firstWhite -> secondBlack {
+					label L14: "1: mainClock && lightValue > lightThreshold / motorRotationA = rotationByDegrees; motorRotationB = rotationByDegrees" {
+						layout [ size: 853, 17 ]
+					}
+				}
+				edge tryAgain0: firstWhite -> tryAgain {
+					label L15: "2: mainClock && startTry < maxTriesToFindStart / startTry = startTry + 1" {
+						layout [ size: 500, 17 ]
+					}
+				}
+				edge finished0: firstWhite -> finished {
+					label L16: "3: mainClock / notValid = true; startInvalid = true" {
+						layout [ size: 336, 17 ]
+					}
+				}
+				edge finished0_g0083: secondBlack -> finished {
+					label L17: "1: mainClock && lightValue < lightThreshold" {
+						layout [ size: 310, 17 ]
+					}
+				}
+				edge tryAgain0_g5228: secondBlack -> tryAgain {
+					label L18: "2: mainClock && startTry < maxTriesToFindStart / startTry = startTry + 1" {
+						layout [ size: 500, 17 ]
+					}
+				}
+				edge finished1: secondBlack -> finished {
+					label L19: "3: mainClock / notValid = true; startInvalid = true" {
+						layout [ size: 336, 17 ]
+					}
+				}
+				edge searchStart0_g4140: tryAgain -> searchStart
+			}
+		}
+		node scanNumber {
+			layout [ size: 109, 34 ]
+		}
+		node calculateNumber {
+			algorithm: org.eclipse.elk.box
+			node N4 {
+				node init {
+					layout [ size: 42, 34 ]
+				}
+				node number0 {
+					layout [ size: 83, 34 ]
+				}
+				node number1 {
+					layout [ size: 83, 34 ]
+				}
+				node number2 {
+					layout [ size: 83, 34 ]
+				}
+				node number3 {
+					layout [ size: 83, 34 ]
+				}
+				node number4 {
+					layout [ size: 83, 34 ]
+				}
+				node number5 {
+					layout [ size: 83, 34 ]
+				}
+				node number6 {
+					layout [ size: 83, 34 ]
+				}
+				node number7 {
+					layout [ size: 83, 34 ]
+				}
+				node number8 {
+					layout [ size: 83, 34 ]
+				}
+				node number9 {
+					layout [ size: 83, 34 ]
+				}
+				node done {
+					layout [ size: 520, 56 ]
+				}
+				edge number00: init -> number0 {
+					label L21: "1: bars == 2221121" {
+						layout [ size: 129, 17 ]
+					}
+				}
+				edge number10: init -> number1 {
+					label L22: "2: bars == 2211221" {
+						layout [ size: 129, 17 ]
+					}
+				}
+				edge number20: init -> number2 {
+					label L23: "3: bars == 2212211" {
+						layout [ size: 129, 17 ]
+					}
+				}
+				edge number30: init -> number3 {
+					label L24: "4: bars == 2111121" {
+						layout [ size: 127, 17 ]
+					}
+				}
+				edge number40: init -> number4 {
+					label L25: "5: bars == 2122211" {
+						layout [ size: 129, 17 ]
+					}
+				}
+				edge number50: init -> number5 {
+					label L26: "6: bars == 2112221" {
+						layout [ size: 129, 17 ]
+					}
+				}
+				edge number60: init -> number6 {
+					label L27: "7: bars == 2121111" {
+						layout [ size: 127, 17 ]
+					}
+				}
+				edge number70: init -> number7 {
+					label L28: "8: bars == 2111211" {
+						layout [ size: 127, 17 ]
+					}
+				}
+				edge number80: init -> number8 {
+					label L29: "9: bars == 2112111" {
+						layout [ size: 127, 17 ]
+					}
+				}
+				edge number90: init -> number9 {
+					label L30: "10: bars == 2221211" {
+						layout [ size: 137, 17 ]
+					}
+				}
+				edge done0: init -> done {
+					label L31: "11: / notValid = true; digitsInvalid = true; outputNumber = 0" {
+						layout [ size: 409, 17 ]
+					}
+				}
+				edge done0_g6468: number0 -> done {
+					label L32: "/ outputNumber = outputNumber + outputNumberIndicator * 0" {
+						layout [ size: 433, 17 ]
+					}
+				}
+				edge done0_g2876: number1 -> done {
+					label L33: "/ outputNumber = outputNumber + outputNumberIndicator * 1" {
+						layout [ size: 433, 17 ]
+					}
+				}
+				edge done0_g7654: number2 -> done {
+					label L34: "/ outputNumber = outputNumber + outputNumberIndicator * 2" {
+						layout [ size: 433, 17 ]
+					}
+				}
+				edge done0_g8852: number3 -> done {
+					label L35: "/ outputNumber = outputNumber + outputNumberIndicator * 3" {
+						layout [ size: 433, 17 ]
+					}
+				}
+				edge done0_g2949: number4 -> done {
+					label L36: "/ outputNumber = outputNumber + outputNumberIndicator * 4" {
+						layout [ size: 433, 17 ]
+					}
+				}
+				edge done0_g5266: number5 -> done {
+					label L37: "/ outputNumber = outputNumber + outputNumberIndicator * 5" {
+						layout [ size: 433, 17 ]
+					}
+				}
+				edge done0_g1493: number6 -> done {
+					label L38: "/ outputNumber = outputNumber + outputNumberIndicator * 6" {
+						layout [ size: 433, 17 ]
+					}
+				}
+				edge done0_g6286: number7 -> done {
+					label L39: "/ outputNumber = outputNumber + outputNumberIndicator * 7" {
+						layout [ size: 433, 17 ]
+					}
+				}
+				edge done0_g9465: number8 -> done {
+					label L40: "/ outputNumber = outputNumber + outputNumberIndicator * 8" {
+						layout [ size: 433, 17 ]
+					}
+				}
+				edge done0_g2518: number9 -> done {
+					label L41: "/ outputNumber = outputNumber + outputNumberIndicator * 9" {
+						layout [ size: 433, 17 ]
+					}
+				}
+			}
+		}
+		node checkEndDelimiter {
+			algorithm: org.eclipse.elk.box
+			node N5 {
+				node searchStart_g8181 {
+					layout [ size: 102, 34 ]
+				}
+				node firstBlack {
+					layout [ size: 88, 34 ]
+				}
+				node secondWhite {
+					layout [ size: 112, 34 ]
+				}
+				node secondBlack_g4633 {
+					layout [ size: 112, 34 ]
+				}
+				node finished_g8238 {
+					layout [ size: 84, 40 ]
+				}
+				edge firstBlack0: searchStart_g8181 -> firstBlack {
+					label L42: "1: mainClock && lightValue > lightThreshold / motorRotationA = rotationByDegrees; motorRotationB = rotationByDegrees" {
+						layout [ size: 853, 17 ]
+					}
+				}
+				edge firstBlack1: searchStart_g8181 -> firstBlack {
+					label L43: "2: mainClock / notValid = true; endInvalid = true" {
+						layout [ size: 331, 17 ]
+					}
+				}
+				edge secondWhite0: firstBlack -> secondWhite {
+					label L44: "1: mainClock && lightValue < lightThreshold / motorRotationA = rotationByDegrees; motorRotationB = rotationByDegrees" {
+						layout [ size: 853, 17 ]
+					}
+				}
+				edge secondWhite1: firstBlack -> secondWhite {
+					label L45: "2: mainClock / notValid = true; endInvalid = true" {
+						layout [ size: 331, 17 ]
+					}
+				}
+				edge secondBlack0_g3504: secondWhite -> secondBlack_g4633 {
+					label L46: "1: mainClock && lightValue > lightThreshold / motorRotationA = rotationByDegrees; motorRotationB = rotationByDegrees" {
+						layout [ size: 853, 17 ]
+					}
+				}
+				edge secondBlack1: secondWhite -> secondBlack_g4633 {
+					label L47: "2: mainClock / notValid = true; endInvalid = true" {
+						layout [ size: 331, 17 ]
+					}
+				}
+				edge finished0_g4870: secondBlack_g4633 -> finished_g8238 {
+					label L48: "1: mainClock && lightValue < lightThreshold" {
+						layout [ size: 310, 17 ]
+					}
+				}
+				edge finished1_g6915: secondBlack_g4633 -> finished_g8238 {
+					label L49: "2: mainClock / notValid = true; endInvalid = true" {
+						layout [ size: 331, 17 ]
+					}
+				}
+			}
+		}
+		node checkCheckSum {
+			algorithm: org.eclipse.elk.box
+			node N6 {
+				node startCheck {
+					layout [ size: 98, 34 ]
+				}
+				node checkFirstDigit {
+					layout [ size: 127, 34 ]
+				}
+				node checkSecondDigit {
+					layout [ size: 149, 34 ]
+				}
+				node checkThirdDigit {
+					layout [ size: 133, 34 ]
+				}
+				node allChecked {
+					layout [ size: 760, 71 ]
+				}
+				edge checkFirstDigit0: startCheck -> checkFirstDigit {
+					label L50: "/ firstDigit = (outputNumber / 1) % 10" {
+						layout [ size: 256, 17 ]
+					}
+				}
+				edge checkSecondDigit0: checkFirstDigit -> checkSecondDigit {
+					label L51: "/ secondDigit = (outputNumber / 10) % 10" {
+						layout [ size: 288, 17 ]
+					}
+				}
+				edge checkThirdDigit0: checkSecondDigit -> checkThirdDigit {
+					label L52: "/ thirdDigit = (outputNumber / 100) % 10" {
+						layout [ size: 277, 17 ]
+					}
+				}
+				edge allChecked0: checkThirdDigit -> allChecked {
+					label L53: "1: outputNumber / 1000 != 9 - (thirdDigit + secondDigit + firstDigit) % 10 / finalValue = firstDigit * 100 + secondDigit * 10 + thirdDigit; notValid = true" {
+						layout [ size: 1018, 17 ]
+					}
+				}
+				edge allChecked1: checkThirdDigit -> allChecked {
+					label L54: "2: outputNumber / 1000 == 9 - (thirdDigit + secondDigit + firstDigit) % 10 / finalValue = firstDigit * 100 + secondDigit * 10 + thirdDigit" {
+						layout [ size: 913, 17 ]
+					}
+				}
+			}
+		}
+		node turnAround {
+			algorithm: org.eclipse.elk.box
+			node N7 {
+				node turn {
+					layout [ size: 316, 50 ]
+				}
+				node driveForward {
+					layout [ size: 482, 50 ]
+				}
+				node rotate {
+					layout [ size: 544, 50 ]
+				}
+				node done_g6237 {
+					layout [ size: 62, 40 ]
+				}
+				edge driveForward0: turn -> driveForward
+				edge rotate0: driveForward -> rotate {
+					label L55: "!isMovingA && !isMovingB" {
+						layout [ size: 187, 17 ]
+					}
+				}
+				edge done0_g0719: rotate -> done_g6237 {
+					label L56: "!isMovingA && !isMovingB" {
+						layout [ size: 187, 17 ]
+					}
+				}
+			}
+		}
+		node finish_g9184 {
+			layout [ size: 133, 56 ]
+		}
+		node invalid {
+			layout [ size: 432, 86 ]
+		}
+		edge searchForStartDelimiter0: programStart -> searchForStartDelimiter {
+			label L1: "programStart / floodlight = true" {
+				layout [ size: 218, 17 ]
+			}
+		}
+		edge invalid0: searchForStartDelimiter -> invalid {
+			label L2: "1: notValid && startInvalid" {
+				layout [ size: 182, 17 ]
+			}
+		}
+		edge scanNumber0: searchForStartDelimiter -> scanNumber {
+			label L3: "2: / motorRotationA = rotationByDegrees; motorRotationB = rotationByDegrees; startTry = 0" {
+				layout [ size: 643, 17 ]
+			}
+		}
+		edge calculateNumber0: scanNumber -> calculateNumber {
+			label L4: "1: barCounter >= 7" {
+				layout [ size: 132, 17 ]
+			}
+		}
+		edge checkEndDelimiter0: scanNumber -> checkEndDelimiter {
+			label L5: "2: outputNumberIndicator > 1000" {
+				layout [ size: 230, 17 ]
+			}
+		}
+		edge scanNumber0_g7798: scanNumber -> scanNumber {
+			label L6: "3: mainClock && lightValue < lightThreshold / motorRotationA = rotationByDegrees; motorRotationB = rotationByDegrees; bars = bars * 10 + 1; barCounter = barCounter + 1" {
+				layout [ size: 1207, 17 ]
+			}
+		}
+		edge scanNumber1: scanNumber -> scanNumber {
+			label L7: "4: mainClock / motorRotationA = rotationByDegrees; motorRotationB = rotationByDegrees; bars = bars * 10 + 2; barCounter = barCounter + 1" {
+				layout [ size: 987, 17 ]
+			}
+		}
+		edge scanNumber0_g6307: calculateNumber -> scanNumber
+		edge checkCheckSum0: checkEndDelimiter -> checkCheckSum
+		edge invalid0_g4400: checkCheckSum -> invalid {
+			label L8: "1: notValid == true" {
+				layout [ size: 127, 17 ]
+			}
+		}
+		edge turnAround0: checkCheckSum -> turnAround {
+			label L9: "2: codesRead < numberOfBarcodes / validLight = true; outputNumberIndicator = 1; outputNumber = 0; bars = 0; barCounter = 0" {
+				layout [ size: 891, 17 ]
+			}
+		}
+		edge finish0_g6212: checkCheckSum -> finish_g9184 {
+			label L10: "3: / printTwo = \"Done!\"; validLight = true" {
+				layout [ size: 283, 17 ]
+			}
+		}
+		edge searchForStartDelimiter0_g3339: turnAround -> searchForStartDelimiter {
+			label L11: "/ validLight = false" {
+				layout [ size: 129, 17 ]
+			}
+		}
+	}
+}

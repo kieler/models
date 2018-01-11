@@ -1,0 +1,90 @@
+graph G1
+node ELEVATOR {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node Init {
+			layout [ size: 42, 34 ]
+		}
+		node Wait {
+			layout [ size: 49, 34 ]
+		}
+		node Moving {
+			layout [ size: 74, 34 ]
+		}
+		node StartAlarm {
+			layout [ size: 95, 34 ]
+		}
+		node Alarm1 {
+			layout [ size: 68, 34 ]
+		}
+		node Alarm2 {
+			layout [ size: 68, 34 ]
+		}
+		node Alarm3 {
+			layout [ size: 68, 34 ]
+		}
+		node Alarm4 {
+			layout [ size: 68, 34 ]
+		}
+		edge Wait0: Init -> Wait {
+			label L1: "/ recentMove = 0" {
+				layout [ size: 120, 17 ]
+			}
+		}
+		edge StartAlarm0: Wait -> StartAlarm {
+			label L2: "1: ButtonAlarm / recentMove = 0; Move = 0; AlarmLamp = true" {
+				layout [ size: 429, 17 ]
+			}
+		}
+		edge Moving0: Wait -> Moving {
+			label L3: "2: ButtonUp & !IsUp / Move = 1" {
+				layout [ size: 217, 17 ]
+			}
+		}
+		edge Moving1: Wait -> Moving {
+			label L4: "3: ButtonDown & !IsDown / Move = -1" {
+				layout [ size: 262, 17 ]
+			}
+		}
+		edge StartAlarm0_g3364: Moving -> StartAlarm {
+			label L5: "1: ButtonAlarm / recentMove = Move; Move = 0; AlarmLamp = true" {
+				layout [ size: 461, 17 ]
+			}
+		}
+		edge Wait0_g4738: Moving -> Wait {
+			label L6: "2: IsUp | IsDown / Move = 0" {
+				layout [ size: 190, 17 ]
+			}
+		}
+		edge Alarm10: StartAlarm -> Alarm1 {
+			label L7: "Second / AlarmLamp = false" {
+				layout [ size: 193, 17 ]
+			}
+		}
+		edge Alarm20: Alarm1 -> Alarm2 {
+			label L8: "Second / AlarmLamp = true" {
+				layout [ size: 188, 17 ]
+			}
+		}
+		edge Alarm30: Alarm2 -> Alarm3 {
+			label L9: "Second / AlarmLamp = false" {
+				layout [ size: 193, 17 ]
+			}
+		}
+		edge Alarm40: Alarm3 -> Alarm4 {
+			label L10: "Second / AlarmLamp = true" {
+				layout [ size: 188, 17 ]
+			}
+		}
+		edge Wait0_g6232: Alarm4 -> Wait {
+			label L11: "1: Second & recentMove == 0 / AlarmLamp = false" {
+				layout [ size: 348, 17 ]
+			}
+		}
+		edge Moving0_g6902: Alarm4 -> Moving {
+			label L12: "2: Second & recentMove != 0 / AlarmLamp = false; Move = recentMove" {
+				layout [ size: 494, 17 ]
+			}
+		}
+	}
+}

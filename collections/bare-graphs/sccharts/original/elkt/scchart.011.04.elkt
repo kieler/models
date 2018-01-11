@@ -1,0 +1,131 @@
+graph G1
+node Pathfinder {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node optimize {
+			algorithm: org.eclipse.elk.box
+			node sensor {
+				node left {
+					layout [ size: 43, 34 ]
+				}
+				node right_search_black {
+					layout [ size: 155, 34 ]
+				}
+				node right {
+					layout [ size: 53, 34 ]
+				}
+				node left_search_black {
+					layout [ size: 145, 34 ]
+				}
+				edge right_search_black0: left -> right_search_black {
+					label L1: "1: !color / MotorC = false; error = false; tickDegreeCalc = tickDegreeMax" {
+						layout [ size: 509, 17 ]
+					}
+				}
+				edge left0: left -> left {
+					label L2: "2: color / calculatedDegree = cdegree" {
+						layout [ size: 265, 17 ]
+					}
+				}
+				edge right_search_black1: left -> right_search_black {
+					label L3: "3: cdegree < (-1) * tickDegreeCalc / MotorC = false; error = true; tickDegreeCalc = tickDegreeError" {
+						layout [ size: 693, 17 ]
+					}
+				}
+				edge left_search_black0: left -> left_search_black {
+					label L4: "4: cdegree > tickDegreeCalc / MotorC = true; error = true; tickDegreeCalc = tickDegreeError" {
+						layout [ size: 651, 17 ]
+					}
+				}
+				edge right0: right_search_black -> right {
+					label L5: "1: color / calculatedDegree = cdegree; MotorC = false; error = false; tickDegreeCalc = tickDegreeMax" {
+						layout [ size: 714, 17 ]
+					}
+				}
+				edge left_search_black0_g2403: right_search_black -> left_search_black {
+					label L6: "2: cdegree > tickDegreeCalc / MotorC = true; error = true; tickDegreeCalc = tickDegreeError" {
+						layout [ size: 651, 17 ]
+					}
+				}
+				edge right_search_black0_g1601: right_search_black -> right_search_black {
+					label L7: "3: cdegree < (-1) * tickDegreeCalc / MotorC = false; error = true; tickDegreeCalc = tickDegreeError" {
+						layout [ size: 693, 17 ]
+					}
+				}
+				edge right0_g1464: right -> right {
+					label L8: "1: color / MotorC = false; calculatedDegree = cdegree" {
+						layout [ size: 377, 17 ]
+					}
+				}
+				edge left_search_black0_g1600: right -> left_search_black {
+					label L9: "2: !color / MotorC = true; error = false; tickDegreeCalc = tickDegreeMax" {
+						layout [ size: 504, 17 ]
+					}
+				}
+				edge left_search_black1: right -> left_search_black {
+					label L10: "3: cdegree > tickDegreeCalc / MotorC = true; error = true; tickDegreeCalc = tickDegreeError" {
+						layout [ size: 651, 17 ]
+					}
+				}
+				edge right_search_black0_g8554: right -> right_search_black {
+					label L11: "4: cdegree < (-1) * tickDegreeCalc / MotorC = false; error = true; tickDegreeCalc = tickDegreeError" {
+						layout [ size: 693, 17 ]
+					}
+				}
+				edge left0_g9394: left_search_black -> left {
+					label L12: "1: color / calculatedDegree = cdegree; MotorC = true; error = false; tickDegreeCalc = tickDegreeMax" {
+						layout [ size: 709, 17 ]
+					}
+				}
+				edge right_search_black0_g4266: left_search_black -> right_search_black {
+					label L13: "2: cdegree < (-1) * tickDegreeCalc / MotorC = false; error = true; tickDegreeCalc = tickDegreeError" {
+						layout [ size: 693, 17 ]
+					}
+				}
+				edge left_search_black0_g5272: left_search_black -> left_search_black {
+					label L14: "3: cdegree > tickDegreeCalc / MotorC = true; error = true; tickDegreeCalc = tickDegreeError" {
+						layout [ size: 651, 17 ]
+					}
+				}
+			}
+			node calc {
+				node calc_g3419 {
+					layout [ size: 57, 42 ]
+				}
+				node error {
+					layout [ size: 56, 34 ]
+				}
+				edge error0: calc_g3419 -> error {
+					label L15: "1: error / MotorASpeed = MotorASpeed / 10; MotorBSpeed = MotorBSpeed / 10" {
+						layout [ size: 555, 17 ]
+					}
+				}
+				edge calc0: calc_g3419 -> calc_g3419 {
+					label L16: "2: calculatedDegree < -50 / MotorASpeed = speed; MotorBSpeed = (-1) * speed" {
+						layout [ size: 555, 17 ]
+					}
+				}
+				edge calc1: calc_g3419 -> calc_g3419 {
+					label L17: "3: calculatedDegree > 50 / MotorBSpeed = speed; MotorASpeed = (-1) * speed" {
+						layout [ size: 550, 17 ]
+					}
+				}
+				edge calc2: calc_g3419 -> calc_g3419 {
+					label L18: "4: calculatedDegree <= 0 / MotorASpeed = speed + degree * (-1) * calculatedDegree; MotorBSpeed = speed / 5" {
+						layout [ size: 778, 17 ]
+					}
+				}
+				edge calc3: calc_g3419 -> calc_g3419 {
+					label L19: "5: calculatedDegree > 0 / MotorBSpeed = speed + degree * calculatedDegree; MotorASpeed = speed / 5" {
+						layout [ size: 732, 17 ]
+					}
+				}
+				edge calc0_g4901: error -> calc_g3419 {
+					label L20: "!error / MotorASpeed = MotorASpeed * 10; MotorBSpeed = MotorBSpeed * 10" {
+						layout [ size: 547, 17 ]
+					}
+				}
+			}
+		}
+	}
+}

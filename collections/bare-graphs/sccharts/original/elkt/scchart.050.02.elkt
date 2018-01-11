@@ -1,0 +1,301 @@
+graph G1
+node Backhoe {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node A {
+			algorithm: org.eclipse.elk.box
+			node Main {
+				node Start {
+					layout [ size: 54, 34 ]
+				}
+				node LegControl {
+					algorithm: org.eclipse.elk.box
+					node N2 {
+						node Start_g1772 {
+							layout [ size: 54, 34 ]
+						}
+						node LowerLegs {
+							layout [ size: 100, 34 ]
+						}
+						node LegsOut {
+							layout [ size: 81, 34 ]
+						}
+						node RaiseLegs {
+							layout [ size: 96, 34 ]
+						}
+						node End {
+							layout [ size: 55, 40 ]
+						}
+						edge LegsOut0: Start_g1772 -> LegsOut {
+							label L1: "1: LEGS_OUT" {
+								layout [ size: 98, 17 ]
+							}
+						}
+						edge LowerLegs0: Start_g1772 -> LowerLegs {
+							label L2: "2: EXTEND_BUTTON / LEGS_EXTEND = true" {
+								layout [ size: 320, 17 ]
+							}
+						}
+						edge LegsOut0_g1575: LowerLegs -> LegsOut {
+							label L3: "LEGS_OUT / LEGS_EXTEND = false; DONE_LAMP = true" {
+								layout [ size: 403, 17 ]
+							}
+						}
+						edge RaiseLegs0: LegsOut -> RaiseLegs {
+							label L4: "1: RETRACT_BUTTON / LEGS_RETRACT = true" {
+								layout [ size: 340, 17 ]
+							}
+						}
+						edge End0: LegsOut -> End {
+							label L5: "2: EXTEND_BUTTON" {
+								layout [ size: 151, 17 ]
+							}
+						}
+						edge Start0: RaiseLegs -> Start_g1772 {
+							label L6: "LEGS_IN / LEGS_RETRACT = false" {
+								layout [ size: 248, 17 ]
+							}
+						}
+					}
+				}
+				node BackhoeControl {
+					algorithm: org.eclipse.elk.box
+					node N3 {
+						node StartExtend {
+							layout [ size: 105, 34 ]
+						}
+						node Extend {
+							algorithm: org.eclipse.elk.box
+							node N4 {
+								node DriveStick {
+									layout [ size: 95, 34 ]
+								}
+								node DriveBucket {
+									layout [ size: 109, 34 ]
+								}
+								node DriveBoom {
+									layout [ size: 102, 34 ]
+								}
+								node End_g2750 {
+									layout [ size: 55, 40 ]
+								}
+								node Retract {
+									algorithm: org.eclipse.elk.box
+									node A_g4626 {
+										node B {
+											algorithm: org.eclipse.elk.box
+											node Boom {
+												node ^start {
+													layout [ size: 52, 34 ]
+												}
+												node ^end {
+													layout [ size: 54, 40 ]
+												}
+												edge end0: ^start -> ^end {
+													label L23: "BOOM_OUT / BOOM_PULL = false" {
+														layout [ size: 247, 17 ]
+													}
+												}
+											}
+											node Bucket {
+												node start_g3635 {
+													layout [ size: 52, 34 ]
+												}
+												node end_g2670 {
+													layout [ size: 54, 40 ]
+												}
+												edge end0_g7986: start_g3635 -> end_g2670 {
+													label L24: "BUCKET_IN / BUCKET_PULL = false" {
+														layout [ size: 261, 17 ]
+													}
+												}
+											}
+											node Stick {
+												node start_g0020 {
+													layout [ size: 52, 34 ]
+												}
+												node end_g0185 {
+													layout [ size: 54, 40 ]
+												}
+												edge end0_g9626: start_g0020 -> end_g0185 {
+													label L25: "STICK_IN / STICK_PULL = false" {
+														layout [ size: 225, 17 ]
+													}
+												}
+											}
+										}
+										node Done {
+											layout [ size: 58, 34 ]
+										}
+										edge Done0: B -> Done {
+											label L22: "/ help = true" {
+												layout [ size: 85, 17 ]
+											}
+										}
+									}
+									node CancelLamp {
+										node On {
+											layout [ size: 42, 34 ]
+										}
+										node Off {
+											layout [ size: 42, 34 ]
+										}
+										edge Off0: On -> Off {
+											label L26: "SECOND / CANCEL_LAMP = false" {
+												layout [ size: 238, 17 ]
+											}
+										}
+										edge On0: Off -> On {
+											label L27: "SECOND / CANCEL_LAMP = true" {
+												layout [ size: 233, 17 ]
+											}
+										}
+									}
+								}
+								edge Retract0: DriveStick -> Retract {
+									label L15: "1: RETRACT_BUTTON / STICK_PUSH = false; STICK_PULL = true" {
+										layout [ size: 467, 17 ]
+									}
+								}
+								edge DriveBucket0: DriveStick -> DriveBucket {
+									label L16: "2: STICK_OUT / STICK_PUSH = false; BUCKET_PUSH = true" {
+										layout [ size: 430, 17 ]
+									}
+								}
+								edge Retract0_g4392: DriveBucket -> Retract {
+									label L17: "1: RETRACT_BUTTON / BUCKET_PUSH = false; BUCKET_PULL = true; STICK_PULL = true" {
+										layout [ size: 650, 17 ]
+									}
+								}
+								edge DriveBoom0: DriveBucket -> DriveBoom {
+									label L18: "2: BUCKET_OUT / BUCKET_PUSH = false; BOOM_PUSH = true" {
+										layout [ size: 450, 17 ]
+									}
+								}
+								edge Retract0_g4025: DriveBoom -> Retract {
+									label L19: "1: RETRACT_BUTTON / BOOM_PUSH = false; BUCKET_PULL = true; STICK_PULL = true; BOOM_PULL = true" {
+										layout [ size: 783, 17 ]
+									}
+								}
+								edge End0_g7705: DriveBoom -> End_g2750 {
+									label L20: "2: BOOM_IN / BOOM_PUSH = false" {
+										layout [ size: 248, 17 ]
+									}
+								}
+								edge End0_g9823: Retract -> End_g2750 {
+									label L21: "help / abortExtend = true; help = false" {
+										layout [ size: 266, 17 ]
+									}
+								}
+							}
+						}
+						node Retract_g3221 {
+							algorithm: org.eclipse.elk.box
+							node HandleStick {
+								node w {
+									layout [ size: 34, 34 ]
+								}
+								node StickIn {
+									layout [ size: 75, 40 ]
+								}
+								edge StickIn0: w -> StickIn {
+									label L28: "STICK_IN" {
+										layout [ size: 69, 17 ]
+									}
+								}
+							}
+							node HandleBucket {
+								node wBucket {
+									layout [ size: 81, 34 ]
+								}
+								node BucketIn {
+									layout [ size: 90, 40 ]
+								}
+								edge BucketIn0: wBucket -> BucketIn {
+									label L29: "BUCKET_IN" {
+										layout [ size: 87, 17 ]
+									}
+								}
+							}
+						}
+						node Wait {
+							layout [ size: 49, 34 ]
+						}
+						node BoomPull {
+							layout [ size: 89, 34 ]
+						}
+						node End_g7214 {
+							layout [ size: 55, 40 ]
+						}
+						edge Extend0: StartExtend -> Extend {
+							label L7: "1: EXTEND_BUTTON / STICK_PUSH = true; DONE_LAMP = false" {
+								layout [ size: 457, 17 ]
+							}
+						}
+						edge End0_g0134: StartExtend -> End_g7214 {
+							label L8: "2: RETRACT_BUTTON / DONE_LAMP = false" {
+								layout [ size: 317, 17 ]
+							}
+						}
+						edge StartExtend0: Extend -> StartExtend {
+							label L9: "1: abortExtend / abortExtend = false" {
+								layout [ size: 253, 17 ]
+							}
+						}
+						edge Retract0_g2431: Extend -> Retract_g3221 {
+							label L10: "2: BOOM_IN / BUCKET_PULL = true; STICK_PULL = true" {
+								layout [ size: 403, 17 ]
+							}
+						}
+						edge Wait0: Retract_g3221 -> Wait {
+							label L11: "/ DONE_LAMP = true; BUCKET_PULL = false; STICK_PULL = false" {
+								layout [ size: 469, 17 ]
+							}
+						}
+						edge End0_g1060: Wait -> End_g7214 {
+							label L12: "1: BOOM_OUT" {
+								layout [ size: 105, 17 ]
+							}
+						}
+						edge BoomPull0: Wait -> BoomPull {
+							label L13: "2: RETRACT_BUTTON / BOOM_PULL = true; DONE_LAMP = false" {
+								layout [ size: 466, 17 ]
+							}
+						}
+						edge End0_g1929: BoomPull -> End_g7214 {
+							label L14: "BOOM_OUT / BOOM_PULL = false" {
+								layout [ size: 247, 17 ]
+							}
+						}
+					}
+				}
+				edge LegControl0: Start -> LegControl
+				edge BackhoeControl0: LegControl -> BackhoeControl
+				edge Start0_g5360: BackhoeControl -> Start
+			}
+			node Stop {
+				node Start_g5511 {
+					layout [ size: 54, 34 ]
+				}
+				node changeStop {
+					layout [ size: 106, 34 ]
+				}
+				edge changeStop0: Start_g5511 -> changeStop {
+					label L30: "STOP_BUTTON" {
+						layout [ size: 115, 17 ]
+					}
+				}
+				edge Start0_g0283: changeStop -> Start_g5511 {
+					label L31: "1: stop / stop = false" {
+						layout [ size: 141, 17 ]
+					}
+				}
+				edge Start1: changeStop -> Start_g5511 {
+					label L32: "2: !stop / stop = true" {
+						layout [ size: 140, 17 ]
+					}
+				}
+			}
+		}
+	}
+}

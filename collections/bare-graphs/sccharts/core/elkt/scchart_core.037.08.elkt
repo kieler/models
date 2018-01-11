@@ -1,0 +1,190 @@
+graph G1
+node xblchixj {
+	algorithm: org.eclipse.elk.box
+	node _CFSMain {
+		node _CFSI {
+			algorithm: org.eclipse.elk.box
+			node __EA_Entry {
+				node __EA_Main {
+					algorithm: org.eclipse.elk.box
+					node A {
+						node stateA {
+							algorithm: org.eclipse.elk.box
+							node N1 {
+								node s {
+									layout [ size: 34, 34 ]
+								}
+								node inter {
+									layout [ size: 53, 34 ]
+								}
+								node finals {
+									layout [ size: 65, 40 ]
+								}
+								edge inter0: s -> inter {
+									label L5: "1: S" {
+										layout [ size: 27, 17 ]
+									}
+								}
+								edge inter1: s -> inter {
+									label L6: "2:" {
+										layout [ size: 13, 17 ]
+									}
+								}
+								edge finals0: inter -> finals {
+									label L7: "1: S" {
+										layout [ size: 27, 17 ]
+									}
+								}
+								edge finals1: inter -> finals {
+									label L8: "2:" {
+										layout [ size: 13, 17 ]
+									}
+								}
+							}
+							node _ACtrl {
+								node __sd_Depth1 {
+									layout [ size: 113, 34 ]
+								}
+								node _ADone {
+									layout [ size: 81, 40 ]
+								}
+								node __sd_Pause1 {
+									layout [ size: 114, 34 ]
+								}
+								edge _ADone0: __sd_Depth1 -> _ADone {
+									label L9: "1: _CFSterm && _CFSterm1" {
+										layout [ size: 195, 17 ]
+									}
+								}
+								edge __sd_Pause10: __sd_Depth1 -> __sd_Pause1 {
+									label L10: "2:" {
+										layout [ size: 13, 17 ]
+									}
+								}
+								edge __sd_Depth10: __sd_Pause1 -> __sd_Depth1
+							}
+						}
+						node _AAborted {
+							layout [ size: 100, 40 ]
+						}
+						node __sd_Depth {
+							layout [ size: 105, 34 ]
+						}
+						node __te_S1 {
+							layout [ size: 77, 34 ]
+						}
+						edge _AAborted0: stateA -> _AAborted
+						edge __te_S10: __sd_Depth -> __te_S1 {
+							label L3: "/ S = S && false" {
+								layout [ size: 109, 17 ]
+							}
+						}
+						edge stateA0: __te_S1 -> stateA {
+							label L4: "/ _CFSterm = true" {
+								layout [ size: 124, 17 ]
+							}
+						}
+					}
+					node B {
+						node initB {
+							algorithm: org.eclipse.elk.box
+							node __EA_Entry_g3598 {
+								node __EA_Init {
+									layout [ size: 85, 34 ]
+								}
+								node __EA_Done {
+									layout [ size: 107, 40 ]
+								}
+								edge __EA_Done0: __EA_Init -> __EA_Done {
+									label L12: "/ S = true" {
+										layout [ size: 64, 17 ]
+									}
+								}
+							}
+						}
+						node stateB {
+							algorithm: org.eclipse.elk.box
+							node N2 {
+								node internB {
+									layout [ size: 73, 34 ]
+								}
+								node finternB {
+									layout [ size: 84, 40 ]
+								}
+								edge finternB0: internB -> finternB {
+									label L13: "1: S" {
+										layout [ size: 27, 17 ]
+									}
+								}
+								edge finternB1: internB -> finternB {
+									label L14: "2:" {
+										layout [ size: 13, 17 ]
+									}
+								}
+							}
+							node _ACtrl1 {
+								node __sd_Depth2 {
+									layout [ size: 113, 34 ]
+								}
+								node _ADone1 {
+									layout [ size: 90, 40 ]
+								}
+								node __sd_Pause2 {
+									layout [ size: 114, 34 ]
+								}
+								edge _ADone10: __sd_Depth2 -> _ADone1 {
+									label L15: "1: _CFSterm && _CFSterm1" {
+										layout [ size: 195, 17 ]
+									}
+								}
+								edge __sd_Pause20: __sd_Depth2 -> __sd_Pause2 {
+									label L16: "2:" {
+										layout [ size: 13, 17 ]
+									}
+								}
+								edge __sd_Depth20: __sd_Pause2 -> __sd_Depth2
+							}
+						}
+						node _AAborted1 {
+							layout [ size: 108, 40 ]
+						}
+						node __sd_Depth3 {
+							layout [ size: 113, 34 ]
+						}
+						edge __sd_Depth30: initB -> __sd_Depth3
+						edge _AAborted10: stateB -> _AAborted1
+						edge stateB0: __sd_Depth3 -> stateB {
+							label L11: "/ _CFSterm1 = true" {
+								layout [ size: 132, 17 ]
+							}
+						}
+					}
+				}
+				node __EA_Init_g4834 {
+					layout [ size: 85, 34 ]
+				}
+				node __EA_Done_g2946 {
+					layout [ size: 107, 40 ]
+				}
+				node __EA_C {
+					layout [ size: 74, 34 ]
+				}
+				edge __EA_Done0_g8966: __EA_Main -> __EA_Done_g2946
+				edge __EA_C0: __EA_Init_g4834 -> __EA_C {
+					label L1: "/ _CFSterm = false" {
+						layout [ size: 129, 17 ]
+					}
+				}
+				edge __EA_Main0: __EA_C -> __EA_Main {
+					label L2: "/ _CFSterm1 = false" {
+						layout [ size: 137, 17 ]
+					}
+				}
+			}
+		}
+		node _CFSF {
+			layout [ size: 74, 40 ]
+		}
+		edge _CFSF0: _CFSI -> _CFSF
+	}
+}

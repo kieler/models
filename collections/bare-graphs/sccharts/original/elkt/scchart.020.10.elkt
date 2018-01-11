@@ -1,0 +1,142 @@
+graph G1
+node ArmController {
+	algorithm: org.eclipse.elk.box
+	node ArmController_g9180 {
+		node Retracted {
+			layout [ size: 91, 34 ]
+		}
+		node ExtendingStick {
+			layout [ size: 128, 34 ]
+		}
+		node ExtendingBucket {
+			layout [ size: 142, 34 ]
+		}
+		node Extended {
+			layout [ size: 89, 34 ]
+		}
+		node Retracting {
+			algorithm: org.eclipse.elk.box
+			node RetractStick {
+				node Retract {
+					layout [ size: 72, 34 ]
+				}
+				node Finish {
+					layout [ size: 70, 40 ]
+				}
+				edge Finish0: Retract -> Finish {
+					label L6: "STICK_IN / STICK_PULL = false" {
+						layout [ size: 225, 17 ]
+					}
+				}
+			}
+			node RetractBucket {
+				node Retract_g0511 {
+					layout [ size: 72, 34 ]
+				}
+				node Finish_g3858 {
+					layout [ size: 70, 40 ]
+				}
+				edge Finish0_g0676: Retract_g0511 -> Finish_g3858 {
+					label L7: "BUCKET_IN / BUCKET_PULL = false" {
+						layout [ size: 261, 17 ]
+					}
+				}
+			}
+		}
+		edge ExtendingStick0: Retracted -> ExtendingStick {
+			label L1: "EXTEND_BUTTON / STICK_PUSH = true; moving = true" {
+				layout [ size: 395, 17 ]
+			}
+		}
+		edge ExtendingBucket0: ExtendingStick -> ExtendingBucket {
+			label L2: "STICK_OUT / STICK_PUSH = false; BUCKET_PUSH = true" {
+				layout [ size: 414, 17 ]
+			}
+		}
+		edge Extended0: ExtendingBucket -> Extended {
+			label L3: "BUCKET_OUT / BUCKET_PUSH = false" {
+				layout [ size: 282, 17 ]
+			}
+		}
+		edge Retracting0: Extended -> Retracting {
+			label L4: "RETRACT_BUTTON / STICK_PULL = true; BUCKET_PULL = true; moving = true" {
+				layout [ size: 567, 17 ]
+			}
+		}
+		edge Retracted0: Retracting -> Retracted {
+			label L5: "/ moving = false" {
+				layout [ size: 111, 17 ]
+			}
+		}
+	}
+	node LampController {
+		node Start {
+			layout [ size: 54, 34 ]
+		}
+		node Done {
+			layout [ size: 58, 34 ]
+		}
+		node MovingOn1 {
+			layout [ size: 103, 34 ]
+		}
+		node MovingOn2 {
+			layout [ size: 103, 34 ]
+		}
+		node MovingOff1 {
+			layout [ size: 104, 34 ]
+		}
+		node MovingOff2 {
+			layout [ size: 104, 34 ]
+		}
+		edge Done0: Start -> Done {
+			label L8: "/ DONE_LAMP = true" {
+				layout [ size: 147, 17 ]
+			}
+		}
+		edge MovingOn10: Done -> MovingOn1 {
+			label L9: "moving / DONE_LAMP = false; ALARM_LAMP = true" {
+				layout [ size: 361, 17 ]
+			}
+		}
+		edge MovingOn20: MovingOn1 -> MovingOn2 {
+			label L10: "1: SECOND" {
+				layout [ size: 81, 17 ]
+			}
+		}
+		edge Done0_g3130: MovingOn1 -> Done {
+			label L11: "2: !moving / DONE_LAMP = true; ALARM_LAMP = false" {
+				layout [ size: 381, 17 ]
+			}
+		}
+		edge MovingOff10: MovingOn2 -> MovingOff1 {
+			label L12: "1: SECOND / ALARM_LAMP = false" {
+				layout [ size: 243, 17 ]
+			}
+		}
+		edge Done0_g5157: MovingOn2 -> Done {
+			label L13: "2: !moving / DONE_LAMP = true; ALARM_LAMP = false" {
+				layout [ size: 381, 17 ]
+			}
+		}
+		edge MovingOff20: MovingOff1 -> MovingOff2 {
+			label L14: "1: SECOND" {
+				layout [ size: 81, 17 ]
+			}
+		}
+		edge Done0_g6856: MovingOff1 -> Done {
+			label L15: "2: !moving / DONE_LAMP = true" {
+				layout [ size: 223, 17 ]
+			}
+		}
+		edge MovingOn10_g8169: MovingOff2 -> MovingOn1 {
+			label L16: "1: SECOND / ALARM_LAMP = true" {
+				layout [ size: 238, 17 ]
+			}
+		}
+		edge Done0_g5989: MovingOff2 -> Done {
+			label L17: "2: !moving / DONE_LAMP = true" {
+				layout [ size: 223, 17 ]
+			}
+		}
+	}
+}

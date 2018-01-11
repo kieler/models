@@ -1,0 +1,58 @@
+graph G1
+node PathFinder {
+	algorithm: org.eclipse.elk.box
+	node MoveSearchSensor {
+		node waitForPath {
+			layout [ size: 105, 34 ]
+		}
+		node movingLeft {
+			layout [ size: 100, 34 ]
+		}
+		node movingRight {
+			layout [ size: 110, 34 ]
+		}
+		edge movingLeft0: waitForPath -> movingLeft {
+			label L1: "/ left = true" {
+				layout [ size: 77, 17 ]
+			}
+		}
+		edge movingRight0: movingLeft -> movingRight {
+			label L2: "1: sensorAngle >= 75 / left = false; darkestValue = 100; changeDirection = true" {
+				layout [ size: 544, 17 ]
+			}
+		}
+		edge movingLeft0_g0851: movingLeft -> movingLeft {
+			label L3: "2: sensorAngle < 75 && sensorValue < darkestValue / darkestValue = sensorValue; targetAngle = sensorAngle; changeDirection = false" {
+				layout [ size: 942, 17 ]
+			}
+		}
+		edge movingLeft0_g2079: movingRight -> movingLeft {
+			label L4: "1: sensorAngle <= -75 / left = true; darkestValue = 100; changeDirection = true" {
+				layout [ size: 544, 17 ]
+			}
+		}
+		edge movingRight0_g0606: movingRight -> movingRight {
+			label L5: "2: sensorAngle > -75 && sensorValue < darkestValue / darkestValue = sensorValue; targetAngle = sensorAngle; changeDirection = false" {
+				layout [ size: 947, 17 ]
+			}
+		}
+	}
+	node RecognizeColor {
+		node white {
+			layout [ size: 58, 34 ]
+		}
+		node black {
+			layout [ size: 58, 34 ]
+		}
+		edge black0: white -> black {
+			label L6: "sensorValue < 20 / white = false" {
+				layout [ size: 221, 17 ]
+			}
+		}
+		edge white0: black -> white {
+			label L7: "sensorValue > 30 / white = true" {
+				layout [ size: 216, 17 ]
+			}
+		}
+	}
+}

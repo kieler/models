@@ -1,0 +1,85 @@
+graph G1
+node LegsController {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node Init {
+			layout [ size: 42, 34 ]
+		}
+		node Retracted {
+			layout [ size: 91, 34 ]
+		}
+		node Extended {
+			layout [ size: 89, 34 ]
+		}
+		node Retracting {
+			layout [ size: 95, 34 ]
+		}
+		node RetractingPaused {
+			layout [ size: 148, 34 ]
+		}
+		node Extending {
+			layout [ size: 93, 34 ]
+		}
+		node ExtendingPaused {
+			layout [ size: 146, 34 ]
+		}
+		node JustExtended {
+			layout [ size: 125, 40 ]
+		}
+		edge Retracted0: Init -> Retracted {
+			label L1: "1: LEGS_IN" {
+				layout [ size: 80, 17 ]
+			}
+		}
+		edge Extended0: Init -> Extended {
+			label L2: "2: LEGS_OUT" {
+				layout [ size: 98, 17 ]
+			}
+		}
+		edge Extending0: Retracted -> Extending {
+			label L3: "!PAUSE && EXTEND_BUTTON / LEGS_EXTEND = true" {
+				layout [ size: 387, 17 ]
+			}
+		}
+		edge Retracting0: Extended -> Retracting {
+			label L4: "1: !PAUSE && RETRACT_BUTTON / LEGS_RETRACT = true" {
+				layout [ size: 423, 17 ]
+			}
+		}
+		edge JustExtended0: Extended -> JustExtended {
+			label L5: "2: !PAUSE && EXTEND_BUTTON" {
+				layout [ size: 234, 17 ]
+			}
+		}
+		edge RetractingPaused0: Retracting -> RetractingPaused {
+			label L6: "1: PAUSE / LEGS_STOP = true; LEGS_RETRACT = false" {
+				layout [ size: 394, 17 ]
+			}
+		}
+		edge Retracted0_g6744: Retracting -> Retracted {
+			label L7: "2: LEGS_IN / LEGS_RETRACT = false" {
+				layout [ size: 264, 17 ]
+			}
+		}
+		edge Retracting0_g4018: RetractingPaused -> Retracting {
+			label L8: "!PAUSE / LEGS_STOP = false; LEGS_RETRACT = true" {
+				layout [ size: 382, 17 ]
+			}
+		}
+		edge ExtendingPaused0: Extending -> ExtendingPaused {
+			label L9: "1: PAUSE / LEGS_STOP = true; LEGS_RETRACT = false" {
+				layout [ size: 394, 17 ]
+			}
+		}
+		edge JustExtended0_g2279: Extending -> JustExtended {
+			label L10: "2: LEGS_OUT / LEGS_EXTEND = false" {
+				layout [ size: 272, 17 ]
+			}
+		}
+		edge Extending0_g3067: ExtendingPaused -> Extending {
+			label L11: "!PAUSE / LEGS_STOP = false; LEGS_EXTEND = true" {
+				layout [ size: 372, 17 ]
+			}
+		}
+	}
+}

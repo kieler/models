@@ -1,0 +1,123 @@
+graph G1
+node DomeSeatbeltController {
+	algorithm: org.eclipse.elk.box
+	node DomeLightControl {
+		node lightOff {
+			layout [ size: 73, 34 ]
+		}
+		node lightOn {
+			layout [ size: 73, 34 ]
+		}
+		node waitForClock {
+			layout [ size: 113, 34 ]
+		}
+		edge lightOn0: lightOff -> lightOn {
+			label L1: "!leftDoorClosed || !rightDoorClosed / domeLight = true" {
+				layout [ size: 383, 17 ]
+			}
+		}
+		edge waitForClock0: lightOn -> waitForClock {
+			label L2: "leftDoorClosed && rightDoorClosed / resetDomeLightTimer = true" {
+				layout [ size: 469, 17 ]
+			}
+		}
+		edge lightOff0: waitForClock -> lightOff {
+			label L3: "domeLightTimer / domeLight = false" {
+				layout [ size: 254, 17 ]
+			}
+		}
+	}
+	node SeatBeltControl {
+		node engineOff {
+			layout [ size: 91, 34 ]
+		}
+		node beeperOnRedlightOn {
+			layout [ size: 174, 34 ]
+		}
+		node beeperOffRedlightOff {
+			layout [ size: 175, 34 ]
+		}
+		node beeperOffRedlightOn {
+			layout [ size: 175, 34 ]
+		}
+		edge beeperOnRedlightOn0: engineOff -> beeperOnRedlightOn {
+			label L4: "1: engineIgnition && unbuckledSeatbelt / engineBeeper = true; seatbeltWarningLight = true; resetEngineIgnitionTimer = true" {
+				layout [ size: 880, 17 ]
+			}
+		}
+		edge beeperOffRedlightOff0: engineOff -> beeperOffRedlightOff {
+			label L5: "2: engineIgnition / resetEngineIgnitionTimer = true" {
+				layout [ size: 357, 17 ]
+			}
+		}
+		edge engineOff0: beeperOnRedlightOn -> engineOff {
+			label L6: "1: !engineIgnition / engineBeeper = false; seatbeltWarningLight = false" {
+				layout [ size: 496, 17 ]
+			}
+		}
+		edge beeperOffRedlightOff0_g4541: beeperOnRedlightOn -> beeperOffRedlightOff {
+			label L7: "2: !unbuckledSeatbelt / engineBeeper = false; seatbeltWarningLight = false" {
+				layout [ size: 527, 17 ]
+			}
+		}
+		edge beeperOffRedlightOn0: beeperOnRedlightOn -> beeperOffRedlightOn {
+			label L8: "3: engineIgnitionTimer / engineBeeper = false" {
+				layout [ size: 324, 17 ]
+			}
+		}
+		edge engineOff0_g2417: beeperOffRedlightOff -> engineOff {
+			label L9: "1: !engineIgnition / engineBeeper = false; seatbeltWarningLight = false" {
+				layout [ size: 496, 17 ]
+			}
+		}
+		edge beeperOffRedlightOn0_g9763: beeperOffRedlightOff -> beeperOffRedlightOn {
+			label L10: "2: unbuckledSeatbelt / seatbeltWarningLight = true" {
+				layout [ size: 357, 17 ]
+			}
+		}
+		edge engineOff0_g1316: beeperOffRedlightOn -> engineOff {
+			label L11: "1: !engineIgnition / engineBeeper = false; seatbeltWarningLight = false" {
+				layout [ size: 496, 17 ]
+			}
+		}
+		edge beeperOffRedlightOff0_g4227: beeperOffRedlightOn -> beeperOffRedlightOff {
+			label L12: "2: !unbuckledSeatbelt / seatbeltWarningLight = false" {
+				layout [ size: 366, 17 ]
+			}
+		}
+	}
+	node EngineIgnitionControl {
+		node engineOff_g2581 {
+			layout [ size: 91, 34 ]
+		}
+		node engineOnBlocked {
+			layout [ size: 149, 34 ]
+		}
+		node engineOn {
+			layout [ size: 91, 34 ]
+		}
+		node engineOffBlocked {
+			layout [ size: 150, 34 ]
+		}
+		edge engineOnBlocked0: engineOff_g2581 -> engineOnBlocked {
+			label L13: "engineIgnitionLock / engineIgnition = true" {
+				layout [ size: 296, 17 ]
+			}
+		}
+		edge engineOn0: engineOnBlocked -> engineOn {
+			label L14: "!engineIgnitionLock" {
+				layout [ size: 141, 17 ]
+			}
+		}
+		edge engineOffBlocked0: engineOn -> engineOffBlocked {
+			label L15: "engineIgnitionLock / engineIgnition = false" {
+				layout [ size: 301, 17 ]
+			}
+		}
+		edge engineOff0_g6064: engineOffBlocked -> engineOff_g2581 {
+			label L16: "!engineIgnitionLock" {
+				layout [ size: 141, 17 ]
+			}
+		}
+	}
+}

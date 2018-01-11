@@ -1,0 +1,103 @@
+graph G1
+node DomelightNXJ {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node Init {
+			layout [ size: 42, 34 ]
+		}
+		node Parallel {
+			algorithm: org.eclipse.elk.box
+			node Domelight {
+				node doorClosed {
+					layout [ size: 164, 50 ]
+				}
+				node doorOpen {
+					layout [ size: 159, 50 ]
+				}
+				node doorJustClosed {
+					layout [ size: 220, 65 ]
+				}
+				edge doorOpen0: doorClosed -> doorOpen {
+					label L1: "!door1Closed || !door2Closed" {
+						layout [ size: 207, 17 ]
+					}
+				}
+				edge doorJustClosed0: doorOpen -> doorJustClosed {
+					label L2: "door1Closed && door2Closed" {
+						layout [ size: 213, 17 ]
+					}
+				}
+				edge doorOpen0_g0752: doorJustClosed -> doorOpen {
+					label L3: "1: !door1Closed || !door2Closed" {
+						layout [ size: 223, 17 ]
+					}
+				}
+				edge doorClosed0: doorJustClosed -> doorClosed {
+					label L4: "2: counter >= 3" {
+						layout [ size: 106, 17 ]
+					}
+				}
+			}
+			node Seatbelt {
+				node engineOff {
+					layout [ size: 249, 50 ]
+				}
+				node buckledUp {
+					layout [ size: 249, 50 ]
+				}
+				node notBuckledUp {
+					layout [ size: 313, 65 ]
+				}
+				node beeperOff {
+					layout [ size: 143, 50 ]
+				}
+				edge buckledUp0: engineOff -> buckledUp {
+					label L5: "1: ignition && seatbeltOn" {
+						layout [ size: 178, 17 ]
+					}
+				}
+				edge notBuckledUp0: engineOff -> notBuckledUp {
+					label L6: "2: ignition && !seatbeltOn" {
+						layout [ size: 182, 17 ]
+					}
+				}
+				edge notBuckledUp0_g2566: buckledUp -> notBuckledUp {
+					label L7: "1: !seatbeltOn" {
+						layout [ size: 99, 17 ]
+					}
+				}
+				edge engineOff0: buckledUp -> engineOff {
+					label L8: "2: !ignition" {
+						layout [ size: 74, 17 ]
+					}
+				}
+				edge buckledUp0_g4780: notBuckledUp -> buckledUp {
+					label L9: "1: seatbeltOn" {
+						layout [ size: 95, 17 ]
+					}
+				}
+				edge beeperOff0: notBuckledUp -> beeperOff {
+					label L10: "2: counter >= 3" {
+						layout [ size: 106, 17 ]
+					}
+				}
+				edge engineOff0_g1194: notBuckledUp -> engineOff {
+					label L11: "3: !ignition" {
+						layout [ size: 74, 17 ]
+					}
+				}
+				edge buckledUp0_g7971: beeperOff -> buckledUp {
+					label L12: "1: seatbeltOn" {
+						layout [ size: 95, 17 ]
+					}
+				}
+				edge engineOff0_g0179: beeperOff -> engineOff {
+					label L13: "2: !ignition" {
+						layout [ size: 74, 17 ]
+					}
+				}
+			}
+		}
+		edge Parallel0: Init -> Parallel
+	}
+}

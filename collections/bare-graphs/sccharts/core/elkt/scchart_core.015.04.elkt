@@ -1,0 +1,81 @@
+graph G1
+node problem {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node mainloop {
+			algorithm: org.eclipse.elk.box
+			node Init {
+				node EntryInit {
+					layout [ size: 79, 34 ]
+				}
+				node MidInit {
+					layout [ size: 68, 34 ]
+				}
+				node InitPause {
+					layout [ size: 86, 34 ]
+				}
+				node ExitInit {
+					layout [ size: 75, 40 ]
+				}
+				edge MidInit0: EntryInit -> MidInit {
+					label L1: "/ _problem_local_S = false" {
+						layout [ size: 184, 17 ]
+					}
+				}
+				edge ExitInit0: MidInit -> ExitInit {
+					label L2: "1: _problem_local__Term" {
+						layout [ size: 177, 17 ]
+					}
+				}
+				edge InitPause0: MidInit -> InitPause {
+					label L3: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge EntryInit0: InitPause -> EntryInit
+			}
+			node Main {
+				node EntryMain {
+					layout [ size: 92, 34 ]
+				}
+				node Mid1aMain {
+					layout [ size: 97, 34 ]
+				}
+				node Mid1Main {
+					layout [ size: 89, 34 ]
+				}
+				node Mid2Main {
+					layout [ size: 89, 34 ]
+				}
+				node Mid2aMain {
+					layout [ size: 97, 34 ]
+				}
+				node ExitMain {
+					layout [ size: 88, 40 ]
+				}
+				edge Mid1aMain0: EntryMain -> Mid1aMain {
+					label L4: "/ _problem_local__Term = false" {
+						layout [ size: 218, 17 ]
+					}
+				}
+				edge Mid1Main0: Mid1aMain -> Mid1Main {
+					label L5: "/ O = _problem_local_S" {
+						layout [ size: 163, 17 ]
+					}
+				}
+				edge Mid2Main0: Mid1Main -> Mid2Main
+				edge Mid2aMain0: Mid2Main -> Mid2aMain {
+					label L6: "/ _problem_local_S = true" {
+						layout [ size: 179, 17 ]
+					}
+				}
+				edge ExitMain0: Mid2aMain -> ExitMain {
+					label L7: "/ _problem_local__Term = true" {
+						layout [ size: 213, 17 ]
+					}
+				}
+			}
+		}
+		edge mainloop0: mainloop -> mainloop
+	}
+}

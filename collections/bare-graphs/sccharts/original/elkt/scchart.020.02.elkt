@@ -1,0 +1,203 @@
+graph G1
+node BarCodeReader {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node init {
+			layout [ size: 42, 34 ]
+		}
+		node calibBlack {
+			layout [ size: 93, 34 ]
+		}
+		node calibBlack2 {
+			layout [ size: 101, 34 ]
+		}
+		node calibWhite {
+			layout [ size: 93, 34 ]
+		}
+		node calibWhite2 {
+			layout [ size: 102, 34 ]
+		}
+		node ^start {
+			layout [ size: 52, 34 ]
+		}
+		node ForwardAndScan {
+			algorithm: org.eclipse.elk.box
+			node Scan {
+				node CheckRotation {
+					layout [ size: 134, 42 ]
+				}
+				node readMode {
+					layout [ size: 98, 40 ]
+				}
+				edge readMode0: CheckRotation -> readMode {
+					label L10: "clock / resetClock = true" {
+						layout [ size: 172, 17 ]
+					}
+				}
+				edge CheckRotation0: readMode -> CheckRotation {
+					label L11: "1: light - accuracy <= black && light + accuracy >= black / barcode[counter] = 0; counter = counter + 1" {
+						layout [ size: 709, 17 ]
+					}
+				}
+				edge CheckRotation1: readMode -> CheckRotation {
+					label L12: "2: light - accuracy <= white && light + accuracy >= white / barcode[counter] = 1; counter = counter + 1" {
+						layout [ size: 711, 17 ]
+					}
+				}
+			}
+			node Output {
+				node findStart {
+					layout [ size: 81, 34 ]
+				}
+				node readRest {
+					layout [ size: 85, 34 ]
+				}
+				node findEnd {
+					layout [ size: 76, 34 ]
+				}
+				node mapArray {
+					layout [ size: 87, 34 ]
+				}
+				node checkParity {
+					layout [ size: 110, 40 ]
+				}
+				edge readRest0: findStart -> readRest {
+					label L13: "1: barcode[i] == 0 && barcode[i + 1] == 1 && barcode[i + 2] == 0 / i = i + 3" {
+						layout [ size: 507, 17 ]
+					}
+				}
+				edge findStart0: findStart -> findStart {
+					label L14: "2: counter > i + 2 / i = i + 1" {
+						layout [ size: 180, 17 ]
+					}
+				}
+				edge readRest0_g0856: readRest -> readRest {
+					label L15: "1: barcode[i] == 1 && barcode[i + 1] == 1 && barcode[i + 2] == 1 && barcode[i + 3] == 0 && barcode[i + 4] == 0 && barcode[i + 5] == 1 && barcode[i + 6] == 0 / barcodeOutput[x] = 0; x = x + 7" {
+						layout [ size: 1317, 17 ]
+					}
+				}
+				edge readRest1: readRest -> readRest {
+					label L16: "2: barcode[i] == 1 && barcode[i + 1] == 1 && barcode[i + 2] == 0 && barcode[i + 3] == 0 && barcode[i + 4] == 1 && barcode[i + 5] == 1 && barcode[i + 6] == 0 / barcodeOutput[x] = 1; x = x + 7" {
+						layout [ size: 1317, 17 ]
+					}
+				}
+				edge readRest2: readRest -> readRest {
+					label L17: "3: barcode[i] == 1 && barcode[i + 1] == 1 && barcode[i + 2] == 0 && barcode[i + 3] == 1 && barcode[i + 4] == 1 && barcode[i + 5] == 0 && barcode[i + 6] == 0 / barcodeOutput[x] = 2; x = x + 7" {
+						layout [ size: 1317, 17 ]
+					}
+				}
+				edge readRest3: readRest -> readRest {
+					label L18: "4: barcode[i] == 1 && barcode[i + 1] == 0 && barcode[i + 2] == 0 && barcode[i + 3] == 0 && barcode[i + 4] == 0 && barcode[i + 5] == 1 && barcode[i + 6] == 0 / barcodeOutput[x] = 3; x = x + 7" {
+						layout [ size: 1317, 17 ]
+					}
+				}
+				edge readRest4: readRest -> readRest {
+					label L19: "5: barcode[i] == 1 && barcode[i + 1] == 0 && barcode[i + 2] == 1 && barcode[i + 3] == 1 && barcode[i + 4] == 1 && barcode[i + 5] == 0 && barcode[i + 6] == 0 / barcodeOutput[x] = 4; x = x + 7" {
+						layout [ size: 1317, 17 ]
+					}
+				}
+				edge readRest5: readRest -> readRest {
+					label L20: "6: barcode[i] == 1 && barcode[i + 1] == 0 && barcode[i + 2] == 0 && barcode[i + 3] == 1 && barcode[i + 4] == 1 && barcode[i + 5] == 1 && barcode[i + 6] == 0 / barcodeOutput[x] = 5; x = x + 7" {
+						layout [ size: 1317, 17 ]
+					}
+				}
+				edge readRest6: readRest -> readRest {
+					label L21: "7: barcode[i] == 1 && barcode[i + 1] == 0 && barcode[i + 2] == 1 && barcode[i + 3] == 0 && barcode[i + 4] == 0 && barcode[i + 5] == 0 && barcode[i + 6] == 0 / barcodeOutput[x] = 6; x = x + 7" {
+						layout [ size: 1317, 17 ]
+					}
+				}
+				edge readRest7: readRest -> readRest {
+					label L22: "8: barcode[i] == 1 && barcode[i + 1] == 0 && barcode[i + 2] == 0 && barcode[i + 3] == 0 && barcode[i + 4] == 1 && barcode[i + 5] == 0 && barcode[i + 6] == 0 / barcodeOutput[x] = 7; x = x + 7" {
+						layout [ size: 1317, 17 ]
+					}
+				}
+				edge readRest8: readRest -> readRest {
+					label L23: "9: barcode[i] == 1 && barcode[i + 1] == 0 && barcode[i + 2] == 0 && barcode[i + 3] == 1 && barcode[i + 4] == 0 && barcode[i + 5] == 0 && barcode[i + 6] == 0 / barcodeOutput[x] = 8; x = x + 7" {
+						layout [ size: 1317, 17 ]
+					}
+				}
+				edge readRest9: readRest -> readRest {
+					label L24: "10: barcode[i] == 1 && barcode[i + 1] == 1 && barcode[i + 2] == 1 && barcode[i + 3] == 0 && barcode[i + 4] == 1 && barcode[i + 5] == 0 && barcode[i + 6] == 0 / barcodeOutput[x] = 9; x = x + 7" {
+						layout [ size: 1325, 17 ]
+					}
+				}
+				edge findEnd0: readRest -> findEnd {
+					label L25: "11: barcode[i] == 1 && barcode[i + 1] == 0 && barcode[i + 2] == 1 && barcode[i + 3] == 0 / i = i + 3" {
+						layout [ size: 675, 17 ]
+					}
+				}
+				edge mapArray0: findEnd -> mapArray {
+					label L26: "1: 100 * barcodeOutput[0] + 10 * barcodeOutput[1] + barcodeOutput[2] < 500 / barcodeConv = 100 * barcodeOutput[0] + 10 * barcodeOutput[1] + barcodeOutput[2]" {
+						layout [ size: 1136, 17 ]
+					}
+				}
+				edge mapArray1: findEnd -> mapArray {
+					label L27: "2: 100 * barcodeOutput[0] + 10 * barcodeOutput[1] + barcodeOutput[2] >= 500 / barcodeConv = (100 * barcodeOutput[0] + 10 * barcodeOutput[1] + barcodeOutput[2]) - 1000" {
+						layout [ size: 1201, 17 ]
+					}
+				}
+				edge checkParity0: mapArray -> checkParity {
+					label L28: "1: 9 - (barcodeOutput[0] + barcodeOutput[1] + barcodeOutput[2]) % 10 == barcodeOutput[3] / validCode = true; end = true" {
+						layout [ size: 855, 17 ]
+					}
+				}
+				edge checkParity1: mapArray -> checkParity {
+					label L29: "2: / validCode = false; end = true" {
+						layout [ size: 228, 17 ]
+					}
+				}
+			}
+		}
+		node stopRun {
+			layout [ size: 81, 34 ]
+		}
+		node ^end {
+			layout [ size: 54, 40 ]
+		}
+		edge calibBlack0: init -> calibBlack {
+			label L1: "/ `System.out.println(\"Schwarz und ENTER\")`" {
+				layout [ size: 317, 17 ]
+			}
+		}
+		edge calibBlack20: calibBlack -> calibBlack2 {
+			label L2: "Enter / black = light; `System.out.println(\"Weiss und ENTER\")`" {
+				layout [ size: 435, 17 ]
+			}
+		}
+		edge calibWhite0: calibBlack2 -> calibWhite {
+			label L3: "!Enter" {
+				layout [ size: 43, 17 ]
+			}
+		}
+		edge calibWhite20: calibWhite -> calibWhite2 {
+			label L4: "Enter / white = light; `System.out.println(\"Barcode und ENTER\")`" {
+				layout [ size: 454, 17 ]
+			}
+		}
+		edge start0: calibWhite2 -> ^start {
+			label L5: "!Enter / accuracy = (white - black) / ` 2.1f `" {
+				layout [ size: 287, 17 ]
+			}
+		}
+		edge ForwardAndScan0: ^start -> ForwardAndScan {
+			label L6: "Enter / motorA = motorspeed; motorB = motorspeed" {
+				layout [ size: 365, 17 ]
+			}
+		}
+		edge stopRun0: ForwardAndScan -> stopRun {
+			label L7: "end / motorA = 0; motorB = 0" {
+				layout [ size: 199, 17 ]
+			}
+		}
+		edge end0: stopRun -> ^end {
+			label L8: "1: validCode / `System.out.println(\"Code: \" + barcodeConv);`" {
+				layout [ size: 425, 17 ]
+			}
+		}
+		edge end1: stopRun -> ^end {
+			label L9: "2: !validCode / `System.out.println(\"Not valid.\")`" {
+				layout [ size: 333, 17 ]
+			}
+		}
+	}
+}

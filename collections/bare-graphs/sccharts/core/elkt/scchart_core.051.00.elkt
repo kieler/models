@@ -1,0 +1,422 @@
+graph G1
+node DomeSeatbeltController {
+	algorithm: org.eclipse.elk.box
+	node DomeLightControl {
+		node __te_S {
+			layout [ size: 69, 34 ]
+		}
+		node __te_S1 {
+			layout [ size: 77, 34 ]
+		}
+		node __te_S2 {
+			layout [ size: 77, 34 ]
+		}
+		node lightOff {
+			layout [ size: 73, 34 ]
+		}
+		node __sd_Depth {
+			layout [ size: 105, 34 ]
+		}
+		node lightOn {
+			layout [ size: 73, 34 ]
+		}
+		node __sd_Depth1 {
+			layout [ size: 113, 34 ]
+		}
+		node waitForClock {
+			layout [ size: 113, 34 ]
+		}
+		node __sd_Depth2 {
+			layout [ size: 113, 34 ]
+		}
+		edge lightOn0: __te_S -> lightOn {
+			label L1: "/ domeLight = true" {
+				layout [ size: 129, 17 ]
+			}
+		}
+		edge waitForClock0: __te_S1 -> waitForClock {
+			label L2: "/ resetDomeLightTimer = true" {
+				layout [ size: 209, 17 ]
+			}
+		}
+		edge lightOff0: __te_S2 -> lightOff {
+			label L3: "/ domeLight = false" {
+				layout [ size: 134, 17 ]
+			}
+		}
+		edge __sd_Depth0: lightOff -> __sd_Depth
+		edge __te_S0: __sd_Depth -> __te_S {
+			label L4: "1: !leftDoorClosed || !rightDoorClosed" {
+				layout [ size: 267, 17 ]
+			}
+		}
+		edge lightOff0_g7357: __sd_Depth -> lightOff {
+			label L5: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge __sd_Depth10: lightOn -> __sd_Depth1
+		edge __te_S10: __sd_Depth1 -> __te_S1 {
+			label L6: "1: leftDoorClosed && rightDoorClosed" {
+				layout [ size: 273, 17 ]
+			}
+		}
+		edge lightOn0_g4395: __sd_Depth1 -> lightOn {
+			label L7: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge __sd_Depth20: waitForClock -> __sd_Depth2
+		edge __te_S20: __sd_Depth2 -> __te_S2 {
+			label L8: "1: domeLightTimer" {
+				layout [ size: 132, 17 ]
+			}
+		}
+		edge waitForClock0_g8247: __sd_Depth2 -> waitForClock {
+			label L9: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+	}
+	node SeatBeltControl {
+		node __te_S3 {
+			layout [ size: 77, 34 ]
+		}
+		node __te_S4 {
+			layout [ size: 77, 34 ]
+		}
+		node __te_S5 {
+			layout [ size: 77, 34 ]
+		}
+		node __te_S6 {
+			layout [ size: 77, 34 ]
+		}
+		node __te_S7 {
+			layout [ size: 77, 34 ]
+		}
+		node __te_S8 {
+			layout [ size: 77, 34 ]
+		}
+		node __te_S9 {
+			layout [ size: 77, 34 ]
+		}
+		node __te_S10_g5266 {
+			layout [ size: 85, 34 ]
+		}
+		node __te_S11 {
+			layout [ size: 84, 34 ]
+		}
+		node __te_S12 {
+			layout [ size: 85, 34 ]
+		}
+		node __te_S13 {
+			layout [ size: 85, 34 ]
+		}
+		node __te_S14 {
+			layout [ size: 85, 34 ]
+		}
+		node __te_S15 {
+			layout [ size: 85, 34 ]
+		}
+		node __te_S16 {
+			layout [ size: 85, 34 ]
+		}
+		node __te_S17 {
+			layout [ size: 85, 34 ]
+		}
+		node engineOff {
+			layout [ size: 91, 34 ]
+		}
+		node __sd_Depth3 {
+			layout [ size: 113, 34 ]
+		}
+		node __sd_S4 {
+			layout [ size: 80, 34 ]
+		}
+		node beeperOnRedlightOn {
+			layout [ size: 174, 34 ]
+		}
+		node __sd_Depth4 {
+			layout [ size: 113, 34 ]
+		}
+		node __sd_S6 {
+			layout [ size: 80, 34 ]
+		}
+		node __sd_S7 {
+			layout [ size: 80, 34 ]
+		}
+		node beeperOffRedlightOff {
+			layout [ size: 175, 34 ]
+		}
+		node __sd_Depth5 {
+			layout [ size: 113, 34 ]
+		}
+		node __sd_S9 {
+			layout [ size: 80, 34 ]
+		}
+		node beeperOffRedlightOn {
+			layout [ size: 175, 34 ]
+		}
+		node __sd_Depth6 {
+			layout [ size: 113, 34 ]
+		}
+		node __sd_S11 {
+			layout [ size: 87, 34 ]
+		}
+		edge __te_S40: __te_S3 -> __te_S4 {
+			label L10: "/ engineBeeper = true" {
+				layout [ size: 156, 17 ]
+			}
+		}
+		edge __te_S50: __te_S4 -> __te_S5 {
+			label L11: "/ seatbeltWarningLight = true" {
+				layout [ size: 204, 17 ]
+			}
+		}
+		edge beeperOnRedlightOn0: __te_S5 -> beeperOnRedlightOn {
+			label L12: "/ resetEngineIgnitionTimer = true" {
+				layout [ size: 235, 17 ]
+			}
+		}
+		edge beeperOffRedlightOff0: __te_S6 -> beeperOffRedlightOff {
+			label L13: "/ resetEngineIgnitionTimer = true" {
+				layout [ size: 235, 17 ]
+			}
+		}
+		edge __te_S80: __te_S7 -> __te_S8 {
+			label L14: "/ engineBeeper = false" {
+				layout [ size: 161, 17 ]
+			}
+		}
+		edge engineOff0: __te_S8 -> engineOff {
+			label L15: "/ seatbeltWarningLight = false" {
+				layout [ size: 209, 17 ]
+			}
+		}
+		edge __te_S100: __te_S9 -> __te_S10_g5266 {
+			label L16: "/ engineBeeper = false" {
+				layout [ size: 161, 17 ]
+			}
+		}
+		edge beeperOffRedlightOff0_g6424: __te_S10_g5266 -> beeperOffRedlightOff {
+			label L17: "/ seatbeltWarningLight = false" {
+				layout [ size: 209, 17 ]
+			}
+		}
+		edge beeperOffRedlightOn0: __te_S11 -> beeperOffRedlightOn {
+			label L18: "/ engineBeeper = false" {
+				layout [ size: 161, 17 ]
+			}
+		}
+		edge __te_S130: __te_S12 -> __te_S13 {
+			label L19: "/ engineBeeper = false" {
+				layout [ size: 161, 17 ]
+			}
+		}
+		edge engineOff0_g6279: __te_S13 -> engineOff {
+			label L20: "/ seatbeltWarningLight = false" {
+				layout [ size: 209, 17 ]
+			}
+		}
+		edge beeperOffRedlightOn0_g6159: __te_S14 -> beeperOffRedlightOn {
+			label L21: "/ seatbeltWarningLight = true" {
+				layout [ size: 204, 17 ]
+			}
+		}
+		edge __te_S160: __te_S15 -> __te_S16 {
+			label L22: "/ engineBeeper = false" {
+				layout [ size: 161, 17 ]
+			}
+		}
+		edge engineOff0_g9147: __te_S16 -> engineOff {
+			label L23: "/ seatbeltWarningLight = false" {
+				layout [ size: 209, 17 ]
+			}
+		}
+		edge beeperOffRedlightOff0_g4693: __te_S17 -> beeperOffRedlightOff {
+			label L24: "/ seatbeltWarningLight = false" {
+				layout [ size: 209, 17 ]
+			}
+		}
+		edge __sd_Depth30: engineOff -> __sd_Depth3
+		edge __te_S30: __sd_Depth3 -> __te_S3 {
+			label L25: "1: engineIgnition && unbuckledSeatbelt" {
+				layout [ size: 281, 17 ]
+			}
+		}
+		edge __sd_S40: __sd_Depth3 -> __sd_S4 {
+			label L26: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge __te_S60: __sd_S4 -> __te_S6 {
+			label L27: "1: engineIgnition" {
+				layout [ size: 119, 17 ]
+			}
+		}
+		edge engineOff0_g7063: __sd_S4 -> engineOff {
+			label L28: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge __sd_Depth40: beeperOnRedlightOn -> __sd_Depth4
+		edge __te_S70: __sd_Depth4 -> __te_S7 {
+			label L29: "1: !engineIgnition" {
+				layout [ size: 123, 17 ]
+			}
+		}
+		edge __sd_S60: __sd_Depth4 -> __sd_S6 {
+			label L30: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge __te_S90: __sd_S6 -> __te_S9 {
+			label L31: "1: !unbuckledSeatbelt" {
+				layout [ size: 153, 17 ]
+			}
+		}
+		edge __sd_S70: __sd_S6 -> __sd_S7 {
+			label L32: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge __te_S110: __sd_S7 -> __te_S11 {
+			label L33: "1: engineIgnitionTimer" {
+				layout [ size: 159, 17 ]
+			}
+		}
+		edge beeperOnRedlightOn0_g5691: __sd_S7 -> beeperOnRedlightOn {
+			label L34: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge __sd_Depth50: beeperOffRedlightOff -> __sd_Depth5
+		edge __te_S120: __sd_Depth5 -> __te_S12 {
+			label L35: "1: !engineIgnition" {
+				layout [ size: 123, 17 ]
+			}
+		}
+		edge __sd_S90: __sd_Depth5 -> __sd_S9 {
+			label L36: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge __te_S140: __sd_S9 -> __te_S14 {
+			label L37: "1: unbuckledSeatbelt" {
+				layout [ size: 149, 17 ]
+			}
+		}
+		edge beeperOffRedlightOff0_g5155: __sd_S9 -> beeperOffRedlightOff {
+			label L38: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge __sd_Depth60: beeperOffRedlightOn -> __sd_Depth6
+		edge __te_S150: __sd_Depth6 -> __te_S15 {
+			label L39: "1: !engineIgnition" {
+				layout [ size: 123, 17 ]
+			}
+		}
+		edge __sd_S110: __sd_Depth6 -> __sd_S11 {
+			label L40: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge __te_S170: __sd_S11 -> __te_S17 {
+			label L41: "1: !unbuckledSeatbelt" {
+				layout [ size: 153, 17 ]
+			}
+		}
+		edge beeperOffRedlightOn0_g7402: __sd_S11 -> beeperOffRedlightOn {
+			label L42: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+	}
+	node EngineIgnitionControl {
+		node __te_S18 {
+			layout [ size: 85, 34 ]
+		}
+		node __te_S19 {
+			layout [ size: 85, 34 ]
+		}
+		node engineOff1 {
+			layout [ size: 100, 34 ]
+		}
+		node __sd_Depth7 {
+			layout [ size: 113, 34 ]
+		}
+		node engineOnBlocked {
+			layout [ size: 149, 34 ]
+		}
+		node __sd_Depth8 {
+			layout [ size: 113, 34 ]
+		}
+		node engineOn {
+			layout [ size: 91, 34 ]
+		}
+		node __sd_Depth9 {
+			layout [ size: 113, 34 ]
+		}
+		node engineOffBlocked {
+			layout [ size: 150, 34 ]
+		}
+		node __sd_Depth10_g5239 {
+			layout [ size: 121, 34 ]
+		}
+		edge engineOnBlocked0: __te_S18 -> engineOnBlocked {
+			label L43: "/ engineIgnition = true" {
+				layout [ size: 156, 17 ]
+			}
+		}
+		edge engineOffBlocked0: __te_S19 -> engineOffBlocked {
+			label L44: "/ engineIgnition = false" {
+				layout [ size: 161, 17 ]
+			}
+		}
+		edge __sd_Depth70: engineOff1 -> __sd_Depth7
+		edge __te_S180: __sd_Depth7 -> __te_S18 {
+			label L45: "1: engineIgnitionLock" {
+				layout [ size: 153, 17 ]
+			}
+		}
+		edge engineOff10: __sd_Depth7 -> engineOff1 {
+			label L46: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge __sd_Depth80: engineOnBlocked -> __sd_Depth8
+		edge engineOn0: __sd_Depth8 -> engineOn {
+			label L47: "1: !engineIgnitionLock" {
+				layout [ size: 157, 17 ]
+			}
+		}
+		edge engineOnBlocked0_g3429: __sd_Depth8 -> engineOnBlocked {
+			label L48: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge __sd_Depth90: engineOn -> __sd_Depth9
+		edge __te_S190: __sd_Depth9 -> __te_S19 {
+			label L49: "1: engineIgnitionLock" {
+				layout [ size: 153, 17 ]
+			}
+		}
+		edge engineOn0_g2513: __sd_Depth9 -> engineOn {
+			label L50: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge __sd_Depth100: engineOffBlocked -> __sd_Depth10_g5239
+		edge engineOff10_g5380: __sd_Depth10_g5239 -> engineOff1 {
+			label L51: "1: !engineIgnitionLock" {
+				layout [ size: 157, 17 ]
+			}
+		}
+		edge engineOffBlocked0_g4015: __sd_Depth10_g5239 -> engineOffBlocked {
+			label L52: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+	}
+}

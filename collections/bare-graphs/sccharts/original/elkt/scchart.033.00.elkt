@@ -1,0 +1,450 @@
+graph G1
+node barcode {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node calL {
+			layout [ size: 50, 34 ]
+		}
+		node calD {
+			layout [ size: 51, 34 ]
+		}
+		node waitEnter {
+			layout [ size: 87, 34 ]
+		}
+		node init {
+			layout [ size: 42, 34 ]
+		}
+		node d {
+			layout [ size: 34, 34 ]
+		}
+		node dl {
+			layout [ size: 34, 34 ]
+		}
+		node dld {
+			layout [ size: 43, 34 ]
+		}
+		node ^start {
+			layout [ size: 52, 34 ]
+		}
+		node N2 {
+			layout [ size: 525, 190 ]
+		}
+		node l {
+			layout [ size: 34, 34 ]
+		}
+		node ld {
+			layout [ size: 34, 34 ]
+		}
+		node ldl {
+			layout [ size: 38, 34 ]
+		}
+		node ldlll {
+			layout [ size: 46, 34 ]
+		}
+		node ldd {
+			layout [ size: 43, 34 ]
+		}
+		node lddl {
+			layout [ size: 47, 34 ]
+		}
+		node lddlll {
+			layout [ size: 55, 34 ]
+		}
+		node lddd {
+			layout [ size: 52, 34 ]
+		}
+		node ldddl {
+			layout [ size: 56, 34 ]
+		}
+		node ldddd {
+			layout [ size: 61, 34 ]
+		}
+		node lddddl {
+			layout [ size: 65, 34 ]
+		}
+		node ll {
+			layout [ size: 34, 34 ]
+		}
+		node lld {
+			layout [ size: 38, 34 ]
+		}
+		node lldll {
+			layout [ size: 46, 34 ]
+		}
+		node lldd {
+			layout [ size: 47, 34 ]
+		}
+		node llddll {
+			layout [ size: 55, 34 ]
+		}
+		node lll {
+			layout [ size: 34, 34 ]
+		}
+		node llld {
+			layout [ size: 42, 34 ]
+		}
+		node llldl {
+			layout [ size: 46, 34 ]
+		}
+		node llldd {
+			layout [ size: 51, 34 ]
+		}
+		node lllddl {
+			layout [ size: 55, 34 ]
+		}
+		node check {
+			layout [ size: 63, 34 ]
+		}
+		edge calD0: calL -> calD {
+			label L1: "left / light = lightSensor" {
+				layout [ size: 165, 17 ]
+			}
+		}
+		edge waitEnter0: calD -> waitEnter {
+			label L2: "right / dark = lightSensor; wb = (light + dark) / 2" {
+				layout [ size: 330, 17 ]
+			}
+		}
+		edge waitEnter0_g0747: waitEnter -> waitEnter {
+			label L3: "1: enter && cnt == 0 / cnt = 1" {
+				layout [ size: 200, 17 ]
+			}
+		}
+		edge waitEnter1: waitEnter -> waitEnter {
+			label L4: "2: cnt > 0 && cnt < 200 / cnt = cnt + 1" {
+				layout [ size: 255, 17 ]
+			}
+		}
+		edge init0: waitEnter -> init {
+			label L5: "3: cnt >= 200 / motorLeft = 40; motorRight = 40" {
+				layout [ size: 323, 17 ]
+			}
+		}
+		edge init0_g9657: init -> init {
+			label L6: "1: lightSensor > wb" {
+				layout [ size: 136, 17 ]
+			}
+		}
+		edge d0: init -> d {
+			label L7: "2: lightSensor < wb / cnt = 0; stat = 1" {
+				layout [ size: 254, 17 ]
+			}
+		}
+		edge d0_g8970: d -> d {
+			label L8: "1: lightSensor < wb / cnt = cnt + 1" {
+				layout [ size: 234, 17 ]
+			}
+		}
+		edge dl0: d -> dl {
+			label L9: "2: lightSensor >= wb / minD = cnt - cnt / 3; maxD = cnt + cnt / 3; cnt = 0; stat = 2" {
+				layout [ size: 546, 17 ]
+			}
+		}
+		edge dl0_g2815: dl -> dl {
+			label L10: "1: lightSensor > wb / cnt = cnt + 1" {
+				layout [ size: 234, 17 ]
+			}
+		}
+		edge dld0: dl -> dld {
+			label L11: "2: lightSensor <= wb / minL = cnt - cnt / 3; maxL = cnt + cnt / 3; cnt = 0; stat = 3" {
+				layout [ size: 542, 17 ]
+			}
+		}
+		edge dld0_g7389: dld -> dld {
+			label L12: "1: lightSensor < wb / cnt = cnt + 1" {
+				layout [ size: 234, 17 ]
+			}
+		}
+		edge start0: dld -> ^start {
+			label L13: "2: lightSensor >= wb / cnt = 0; stat = 4" {
+				layout [ size: 263, 17 ]
+			}
+		}
+		edge start0_g4628: ^start -> ^start {
+			label L14: "1: lightSensor > wb / cnt = cnt + 1" {
+				layout [ size: 234, 17 ]
+			}
+		}
+		edge l0: ^start -> l {
+			label L15: "2: lightSensor <= wb && cnt > minL && cnt < maxL / cnt = 0; stat = 5" {
+				layout [ size: 472, 17 ]
+			}
+		}
+		edge ll0: ^start -> ll {
+			label L16: "3: lightSensor <= wb && cnt / 2 > minL && cnt / 2 < maxL / cnt = 0; stat = 6" {
+				layout [ size: 512, 17 ]
+			}
+		}
+		edge lll0: ^start -> lll {
+			label L17: "4: lightSensor <= wb && cnt / 3 > minL && cnt / 3 < maxL / cnt = 0; stat = 7" {
+				layout [ size: 512, 17 ]
+			}
+		}
+		edge E1: ^start -> N2
+		edge l0_g9123: l -> l {
+			label L18: "1: lightSensor < wb / cnt = cnt + 1" {
+				layout [ size: 234, 17 ]
+			}
+		}
+		edge ld0: l -> ld {
+			label L19: "2: lightSensor >= wb && cnt > minD && cnt < maxD / cnt = 0; stat = 8" {
+				layout [ size: 476, 17 ]
+			}
+		}
+		edge ldd0: l -> ldd {
+			label L20: "3: lightSensor >= wb && cnt / 2 > minD && cnt / 2 < maxD / cnt = 0; stat = 9" {
+				layout [ size: 516, 17 ]
+			}
+		}
+		edge lddd0: l -> lddd {
+			label L21: "4: lightSensor >= wb && cnt / 3 > minD && cnt / 3 < maxD / cnt = 0; stat = 10" {
+				layout [ size: 524, 17 ]
+			}
+		}
+		edge ldddd0: l -> ldddd {
+			label L22: "5: lightSensor >= wb && cnt / 4 > minD && cnt / 4 < maxD / cnt = 0; stat = 18" {
+				layout [ size: 524, 17 ]
+			}
+		}
+		edge ld0_g6831: ld -> ld {
+			label L23: "1: lightSensor > wb / cnt = cnt + 1" {
+				layout [ size: 234, 17 ]
+			}
+		}
+		edge ldl0: ld -> ldl {
+			label L24: "2: lightSensor <= wb && cnt > minL && cnt < maxL / cnt = 0; stat = 21" {
+				layout [ size: 480, 17 ]
+			}
+		}
+		edge ldlll0: ld -> ldlll {
+			label L25: "3: lightSensor <= wb && cnt / 3 > minL && cnt / 3 < maxL / cnt = 0; stat = 22" {
+				layout [ size: 520, 17 ]
+			}
+		}
+		edge ldl0_g7430: ldl -> ldl {
+			label L26: "1: lightSensor < wb / cnt = cnt + 1" {
+				layout [ size: 234, 17 ]
+			}
+		}
+		edge check0: ldl -> check {
+			label L27: "2: lightSensor >= wb && cnt > minD && cnt < maxD / cnt = 0; value = 100 * values[0] + 10 * values[1] + values[2]; stat = 99" {
+				layout [ size: 845, 17 ]
+			}
+		}
+		edge start0_g8483: ldl -> ^start {
+			label L28: "3: lightSensor >= wb && cnt / 4 > minD && cnt / 4 < maxD / cnt = 0; stat = 23; values[vCnt] = 6; vCnt = vCnt + 1" {
+				layout [ size: 766, 17 ]
+			}
+		}
+		edge ldlll0_g9133: ldlll -> ldlll {
+			label L29: "1: lightSensor < wb / cnt = cnt + 1" {
+				layout [ size: 234, 17 ]
+			}
+		}
+		edge start0_g6168: ldlll -> ^start {
+			label L30: "2: lightSensor >= wb && cnt / 2 > minD && cnt / 2 < maxD / cnt = 0; stat = 24; values[vCnt] = 4; vCnt = vCnt + 1" {
+				layout [ size: 766, 17 ]
+			}
+		}
+		edge ldd0_g1764: ldd -> ldd {
+			label L31: "1: lightSensor > wb / cnt = cnt + 1" {
+				layout [ size: 234, 17 ]
+			}
+		}
+		edge lddl0: ldd -> lddl {
+			label L32: "2: lightSensor <= wb && cnt > minL && cnt < maxL / cnt = 0; stat = 25" {
+				layout [ size: 480, 17 ]
+			}
+		}
+		edge lddlll0: ldd -> lddlll {
+			label L33: "3: lightSensor <= wb && cnt / 3 > minL && cnt / 3 < maxL / cnt = 0; stat = 26" {
+				layout [ size: 520, 17 ]
+			}
+		}
+		edge lddl0_g7437: lddl -> lddl {
+			label L34: "1: lightSensor < wb / cnt = cnt + 1" {
+				layout [ size: 234, 17 ]
+			}
+		}
+		edge start0_g5220: lddl -> ^start {
+			label L35: "2: lightSensor >= wb && cnt / 3 > minD && cnt / 3 < maxD / cnt = 0; stat = 27; values[vCnt] = 8; vCnt = vCnt + 1" {
+				layout [ size: 766, 17 ]
+			}
+		}
+		edge lddlll0_g9379: lddlll -> lddlll {
+			label L36: "1: lightSensor < wb / cnt = cnt + 1" {
+				layout [ size: 234, 17 ]
+			}
+		}
+		edge start0_g2163: lddlll -> ^start {
+			label L37: "2: lightSensor >= wb && cnt > minD && cnt < maxD / cnt = 0; stat = 28; values[vCnt] = 5; vCnt = vCnt + 1" {
+				layout [ size: 726, 17 ]
+			}
+		}
+		edge lddd0_g3083: lddd -> lddd {
+			label L38: "1: lightSensor > wb / cnt = cnt + 1" {
+				layout [ size: 234, 17 ]
+			}
+		}
+		edge ldddl0: lddd -> ldddl {
+			label L39: "2: lightSensor <= wb && cnt > minL && cnt < maxL / cnt = 0; stat = 29" {
+				layout [ size: 480, 17 ]
+			}
+		}
+		edge ldddl0_g7663: ldddl -> ldddl {
+			label L40: "1: lightSensor < wb / cnt = cnt + 1" {
+				layout [ size: 234, 17 ]
+			}
+		}
+		edge start0_g8667: ldddl -> ^start {
+			label L41: "2: lightSensor >= wb && cnt / 2 > minD && cnt / 2 < maxD / cnt = 0; stat = 30; values[vCnt] = 7; vCnt = vCnt + 1" {
+				layout [ size: 766, 17 ]
+			}
+		}
+		edge ldddd0_g7983: ldddd -> ldddd {
+			label L42: "1: lightSensor > wb / cnt = cnt + 1" {
+				layout [ size: 234, 17 ]
+			}
+		}
+		edge lddddl0: ldddd -> lddddl {
+			label L43: "2: lightSensor <= wb && cnt > minL && cnt < maxL / cnt = 0; stat = 19" {
+				layout [ size: 480, 17 ]
+			}
+		}
+		edge lddddl0_g7735: lddddl -> lddddl {
+			label L44: "1: lightSensor < wb / cnt = cnt + 1" {
+				layout [ size: 234, 17 ]
+			}
+		}
+		edge start0_g7722: lddddl -> ^start {
+			label L45: "2: lightSensor >= wb && cnt > minD && cnt < maxD / cnt = 0; stat = 20; values[vCnt] = 3; vCnt = vCnt + 1" {
+				layout [ size: 726, 17 ]
+			}
+		}
+		edge ll0_g0920: ll -> ll {
+			label L46: "1: lightSensor < wb / cnt = cnt + 1" {
+				layout [ size: 234, 17 ]
+			}
+		}
+		edge lld0: ll -> lld {
+			label L47: "2: lightSensor >= wb && cnt > minD && cnt < maxD / cnt = 0; stat = 11" {
+				layout [ size: 483, 17 ]
+			}
+		}
+		edge lldd0: ll -> lldd {
+			label L48: "3: lightSensor >= wb && cnt / 2 > minD && cnt / 2 < maxD / cnt = 0; stat = 12" {
+				layout [ size: 524, 17 ]
+			}
+		}
+		edge lld0_g5032: lld -> lld {
+			label L49: "1: lightSensor > wb / cnt = cnt + 1" {
+				layout [ size: 234, 17 ]
+			}
+		}
+		edge lldll0: lld -> lldll {
+			label L50: "2: lightSensor <= wb && cnt / 2 > minL && cnt / 2 < maxL / cnt = 0; stat = 16" {
+				layout [ size: 520, 17 ]
+			}
+		}
+		edge lldll0_g8483: lldll -> lldll {
+			label L51: "1: lightSensor < wb / cnt = cnt + 1" {
+				layout [ size: 234, 17 ]
+			}
+		}
+		edge start0_g7471: lldll -> ^start {
+			label L52: "2: lightSensor >= wb && cnt / 2 > minD && cnt / 2 < maxD / cnt = 0; stat = 17; values[vCnt] = 2; vCnt = vCnt + 1" {
+				layout [ size: 766, 17 ]
+			}
+		}
+		edge lldd0_g0921: lldd -> lldd {
+			label L53: "1: lightSensor > wb / cnt = cnt + 1" {
+				layout [ size: 234, 17 ]
+			}
+		}
+		edge llddll0: lldd -> llddll {
+			label L54: "2: lightSensor <= wb && cnt / 2 > minL && cnt / 2 < maxL / cnt = 0; stat = 15" {
+				layout [ size: 520, 17 ]
+			}
+		}
+		edge llddll0_g7355: llddll -> llddll {
+			label L55: "1: lightSensor < wb / cnt = cnt + 1" {
+				layout [ size: 234, 17 ]
+			}
+		}
+		edge start0_g2375: llddll -> ^start {
+			label L56: "2: lightSensor >= wb && cnt > minD && cnt < maxD / cnt = 0; stat = 16; values[vCnt] = 1; vCnt = vCnt + 1" {
+				layout [ size: 726, 17 ]
+			}
+		}
+		edge lll0_g4273: lll -> lll {
+			label L57: "1: lightSensor < wb / cnt = cnt + 1" {
+				layout [ size: 234, 17 ]
+			}
+		}
+		edge llld0: lll -> llld {
+			label L58: "2: lightSensor >= wb && cnt > minD && cnt < maxD / cnt = 0; stat = 13" {
+				layout [ size: 484, 17 ]
+			}
+		}
+		edge llldd0: lll -> llldd {
+			label L59: "3: lightSensor >= wb && cnt / 2 > minD && cnt / 2 < maxD / cnt = 0; stat = 14" {
+				layout [ size: 524, 17 ]
+			}
+		}
+		edge llld0_g3786: llld -> llld {
+			label L60: "1: lightSensor > wb / cnt = cnt + 1" {
+				layout [ size: 234, 17 ]
+			}
+		}
+		edge llldl0: llld -> llldl {
+			label L61: "2: lightSensor <= wb && cnt > minL && cnt < maxL / cnt = 0; stat = 31" {
+				layout [ size: 480, 17 ]
+			}
+		}
+		edge llldl0_g5459: llldl -> llldl {
+			label L62: "1: lightSensor < wb / cnt = cnt + 1" {
+				layout [ size: 234, 17 ]
+			}
+		}
+		edge start0_g0306: llldl -> ^start {
+			label L63: "2: lightSensor >= wb && cnt / 2 > minD && cnt / 2 < maxD / cnt = 0; stat = 32; values[vCnt] = 9; vCnt = vCnt + 1" {
+				layout [ size: 766, 17 ]
+			}
+		}
+		edge llldd0_g8004: llldd -> llldd {
+			label L64: "1: lightSensor > wb / cnt = cnt + 1" {
+				layout [ size: 234, 17 ]
+			}
+		}
+		edge lllddl0: llldd -> lllddl {
+			label L65: "2: lightSensor <= wb && cnt > minL && cnt < maxL / cnt = 0; stat = 33" {
+				layout [ size: 480, 17 ]
+			}
+		}
+		edge lllddl0_g6790: lllddl -> lllddl {
+			label L66: "1: lightSensor < wb / cnt = cnt + 1" {
+				layout [ size: 234, 17 ]
+			}
+		}
+		edge start0_g9723: lllddl -> ^start {
+			label L67: "2: lightSensor >= wb && cnt > minD && cnt < maxD / cnt = 0; stat = 34; values[vCnt] = 0; vCnt = vCnt + 1" {
+				layout [ size: 726, 17 ]
+			}
+		}
+		edge waitEnter0_g7809: check -> waitEnter {
+			label L68: "1: 9 - (values[0] + values[1] + values[2]) % 10 == values[3] && value < 500 / barcode = value; valid = true; motorLeft = 0; motorRight = 0" {
+				layout [ size: 943, 17 ]
+			}
+		}
+		edge waitEnter1_g0076: check -> waitEnter {
+			label L69: "2: 9 - (values[0] + values[1] + values[2]) % 10 == values[3] && value >= 500 / barcode = value - 1000; valid = true; motorLeft = 0; motorRight = 0" {
+				layout [ size: 997, 17 ]
+			}
+		}
+		edge waitEnter2: check -> waitEnter {
+			label L70: "3: 9 - (values[0] + values[1] + values[2]) % 10 != values[3] / invalid = true; motorLeft = 0; motorRight = 0; barcode = 9 - (values[0] + values[1] + values[2]) % 10" {
+				layout [ size: 1099, 17 ]
+			}
+		}
+	}
+}

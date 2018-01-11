@@ -1,0 +1,71 @@
+graph G1
+node eccalcwj {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node START {
+			algorithm: org.eclipse.elk.box
+			node R1 {
+				node STARTR1 {
+					layout [ size: 89, 34 ]
+				}
+				node WAIT {
+					layout [ size: 55, 34 ]
+				}
+				node COUNT {
+					layout [ size: 75, 34 ]
+				}
+				node RESET {
+					layout [ size: 71, 34 ]
+				}
+				edge COUNT0: STARTR1 -> COUNT {
+					label L1: "1: L / O = O + 2" {
+						layout [ size: 104, 17 ]
+					}
+				}
+				edge WAIT0: STARTR1 -> WAIT {
+					label L2: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge COUNT0_g1068: WAIT -> COUNT {
+					label L3: "L / O = O + 2" {
+						layout [ size: 88, 17 ]
+					}
+				}
+				edge RESET0: COUNT -> RESET {
+					label L4: "L / O = O + 1" {
+						layout [ size: 88, 17 ]
+					}
+				}
+				edge STARTR10: RESET -> STARTR1 {
+					label L5: "R / O = 0" {
+						layout [ size: 61, 17 ]
+					}
+				}
+			}
+			node R2 {
+				node STARTR2 {
+					layout [ size: 89, 34 ]
+				}
+				node ASTATE {
+					layout [ size: 77, 34 ]
+				}
+				edge ASTATE0: STARTR2 -> ASTATE {
+					label L6: "A / L = true" {
+						layout [ size: 75, 17 ]
+					}
+				}
+				edge ASTATE0_g6367: ASTATE -> ASTATE {
+					label L7: "1: A / L = true" {
+						layout [ size: 90, 17 ]
+					}
+				}
+				edge ASTATE1: ASTATE -> ASTATE {
+					label L8: "2: / L = false" {
+						layout [ size: 84, 17 ]
+					}
+				}
+			}
+		}
+	}
+}

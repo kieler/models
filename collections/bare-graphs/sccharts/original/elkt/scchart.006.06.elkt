@@ -1,0 +1,38 @@
+graph G1
+node ExtendStick {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node Extend {
+			layout [ size: 71, 34 ]
+		}
+		node Extending {
+			layout [ size: 93, 34 ]
+		}
+		node Paused {
+			layout [ size: 74, 34 ]
+		}
+		node Extended {
+			layout [ size: 95, 40 ]
+		}
+		edge Extending0: Extend -> Extending {
+			label L1: "/ STICK_PUSH = true" {
+				layout [ size: 150, 17 ]
+			}
+		}
+		edge Paused0: Extending -> Paused {
+			label L2: "1: PAUSE / STICK_PUSH = false" {
+				layout [ size: 224, 17 ]
+			}
+		}
+		edge Extended0: Extending -> Extended {
+			label L3: "2: STICK_OUT / STICK_PUSH = false" {
+				layout [ size: 262, 17 ]
+			}
+		}
+		edge Extending0_g0593: Paused -> Extending {
+			label L4: "!PAUSE / STICK_PUSH = true" {
+				layout [ size: 207, 17 ]
+			}
+		}
+	}
+}

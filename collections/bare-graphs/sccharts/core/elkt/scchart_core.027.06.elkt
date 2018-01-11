@@ -1,0 +1,169 @@
+graph G1
+node Segment {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node pending {
+			algorithm: org.eclipse.elk.box
+			node __EA_Entry {
+				node __EA_Done {
+					layout [ size: 107, 40 ]
+				}
+				node __sd_Depth {
+					layout [ size: 105, 34 ]
+				}
+				node __te_S1 {
+					layout [ size: 77, 34 ]
+				}
+				node __te_S2 {
+					layout [ size: 77, 34 ]
+				}
+				edge __te_S10: __sd_Depth -> __te_S1 {
+					label L9: "/ EXTEND = false" {
+						layout [ size: 121, 17 ]
+					}
+				}
+				edge __te_S20: __te_S1 -> __te_S2 {
+					label L10: "/ RETRACT = false" {
+						layout [ size: 131, 17 ]
+					}
+				}
+				edge __EA_Done0: __te_S2 -> __EA_Done {
+					label L11: "/ STOP = true" {
+						layout [ size: 96, 17 ]
+					}
+				}
+			}
+		}
+		node extend {
+			algorithm: org.eclipse.elk.box
+			node __EA_Entry_g3056 {
+				node __EA_Done_g2992 {
+					layout [ size: 107, 40 ]
+				}
+				node __sd_Depth1 {
+					layout [ size: 113, 34 ]
+				}
+				node __te_S4 {
+					layout [ size: 77, 34 ]
+				}
+				node __te_S5 {
+					layout [ size: 77, 34 ]
+				}
+				edge __te_S40: __sd_Depth1 -> __te_S4 {
+					label L12: "/ EXTEND = true" {
+						layout [ size: 116, 17 ]
+					}
+				}
+				edge __te_S50: __te_S4 -> __te_S5 {
+					label L13: "/ RETRACT = false" {
+						layout [ size: 131, 17 ]
+					}
+				}
+				edge __EA_Done0_g7476: __te_S5 -> __EA_Done_g2992 {
+					label L14: "/ STOP = false" {
+						layout [ size: 101, 17 ]
+					}
+				}
+			}
+		}
+		node retract {
+			algorithm: org.eclipse.elk.box
+			node __EA_Entry_g6183 {
+				node __EA_Done_g1474 {
+					layout [ size: 107, 40 ]
+				}
+				node __sd_Depth2 {
+					layout [ size: 113, 34 ]
+				}
+				node __te_S7 {
+					layout [ size: 77, 34 ]
+				}
+				node __te_S8 {
+					layout [ size: 77, 34 ]
+				}
+				edge __te_S70: __sd_Depth2 -> __te_S7 {
+					label L15: "/ RETRACT = true" {
+						layout [ size: 126, 17 ]
+					}
+				}
+				edge __te_S80: __te_S7 -> __te_S8 {
+					label L16: "/ EXTEND = false" {
+						layout [ size: 121, 17 ]
+					}
+				}
+				edge __EA_Done0_g0173: __te_S8 -> __EA_Done_g1474 {
+					label L17: "/ STOP = false" {
+						layout [ size: 101, 17 ]
+					}
+				}
+			}
+		}
+		node __EA_Exit {
+			layout [ size: 90, 34 ]
+		}
+		node __sd_Depth3 {
+			layout [ size: 113, 34 ]
+		}
+		node __sd_S4 {
+			layout [ size: 80, 34 ]
+		}
+		node __EA_Exit1 {
+			layout [ size: 99, 34 ]
+		}
+		node __sd_Depth4 {
+			layout [ size: 113, 34 ]
+		}
+		node __EA_Exit2 {
+			layout [ size: 99, 34 ]
+		}
+		node __sd_Depth5 {
+			layout [ size: 113, 34 ]
+		}
+		edge __EA_Exit0: pending -> __EA_Exit
+		edge __EA_Exit10: extend -> __EA_Exit1
+		edge __EA_Exit20: retract -> __EA_Exit2
+		edge __sd_Depth30: __EA_Exit -> __sd_Depth3
+		edge extend0: __sd_Depth3 -> extend {
+			label L1: "1: movement == 1" {
+				layout [ size: 125, 17 ]
+			}
+		}
+		edge __sd_S40: __sd_Depth3 -> __sd_S4 {
+			label L2: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge retract0: __sd_S4 -> retract {
+			label L3: "1: movement == -1" {
+				layout [ size: 130, 17 ]
+			}
+		}
+		edge __EA_Exit0_g7904: __sd_S4 -> __EA_Exit {
+			label L4: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge __sd_Depth40: __EA_Exit1 -> __sd_Depth4
+		edge pending0: __sd_Depth4 -> pending {
+			label L5: "1: movement < 1 || OUT" {
+				layout [ size: 164, 17 ]
+			}
+		}
+		edge __EA_Exit10_g0573: __sd_Depth4 -> __EA_Exit1 {
+			label L6: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge __sd_Depth50: __EA_Exit2 -> __sd_Depth5
+		edge pending0_g4013: __sd_Depth5 -> pending {
+			label L7: "1: movement > -1 || IN" {
+				layout [ size: 151, 17 ]
+			}
+		}
+		edge __EA_Exit20_g6692: __sd_Depth5 -> __EA_Exit2 {
+			label L8: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+	}
+}

@@ -1,0 +1,962 @@
+graph G1
+node BarCodeReader {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node init {
+			layout [ size: 42, 34 ]
+		}
+		node ForwardAndScan {
+			algorithm: org.eclipse.elk.box
+			node __EA_Entry {
+				node __EA_Main {
+					algorithm: org.eclipse.elk.box
+					node Scan {
+						node CheckRotation {
+							layout [ size: 126, 34 ]
+						}
+						node readMode {
+							layout [ size: 92, 34 ]
+						}
+						node _AAborted {
+							layout [ size: 100, 40 ]
+						}
+						node __te_S8 {
+							layout [ size: 77, 34 ]
+						}
+						node __te_S9 {
+							layout [ size: 77, 34 ]
+						}
+						node __te_S10 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S11 {
+							layout [ size: 84, 34 ]
+						}
+						node __te_S12 {
+							layout [ size: 85, 34 ]
+						}
+						node __sd_Pause5 {
+							layout [ size: 114, 34 ]
+						}
+						node __sd_Depth5 {
+							layout [ size: 113, 34 ]
+						}
+						node __sd_Pause6 {
+							layout [ size: 114, 34 ]
+						}
+						node __sd_Depth6 {
+							layout [ size: 113, 34 ]
+						}
+						node __sd_S8 {
+							layout [ size: 80, 34 ]
+						}
+						edge _AAborted0: CheckRotation -> _AAborted {
+							label L33: "1: _Atrig" {
+								layout [ size: 58, 17 ]
+							}
+						}
+						edge __sd_Pause50: CheckRotation -> __sd_Pause5 {
+							label L34: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge _AAborted0_g2966: readMode -> _AAborted {
+							label L35: "1: _Atrig" {
+								layout [ size: 58, 17 ]
+							}
+						}
+						edge __sd_Pause60: readMode -> __sd_Pause6 {
+							label L36: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge readMode0: __te_S8 -> readMode {
+							label L37: "/ resetClock = true" {
+								layout [ size: 131, 17 ]
+							}
+						}
+						edge __te_S100: __te_S9 -> __te_S10 {
+							label L38: "/ barcode[counter] = 0" {
+								layout [ size: 157, 17 ]
+							}
+						}
+						edge CheckRotation0: __te_S10 -> CheckRotation {
+							label L39: "/ counter = counter + 1" {
+								layout [ size: 161, 17 ]
+							}
+						}
+						edge __te_S120: __te_S11 -> __te_S12 {
+							label L40: "/ barcode[counter] = 1" {
+								layout [ size: 157, 17 ]
+							}
+						}
+						edge CheckRotation0_g5361: __te_S12 -> CheckRotation {
+							label L41: "/ counter = counter + 1" {
+								layout [ size: 161, 17 ]
+							}
+						}
+						edge __sd_Depth50: __sd_Pause5 -> __sd_Depth5
+						edge __te_S80: __sd_Depth5 -> __te_S8 {
+							label L42: "1: clock" {
+								layout [ size: 54, 17 ]
+							}
+						}
+						edge CheckRotation0_g1752: __sd_Depth5 -> CheckRotation {
+							label L43: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __sd_Depth60: __sd_Pause6 -> __sd_Depth6
+						edge __te_S90: __sd_Depth6 -> __te_S9 {
+							label L44: "1: light - accuracy <= black && light + accuracy >= black" {
+								layout [ size: 389, 17 ]
+							}
+						}
+						edge __sd_S80: __sd_Depth6 -> __sd_S8 {
+							label L45: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __te_S110: __sd_S8 -> __te_S11 {
+							label L46: "1: light - accuracy <= white && light + accuracy >= white" {
+								layout [ size: 390, 17 ]
+							}
+						}
+						edge readMode0_g5194: __sd_S8 -> readMode {
+							label L47: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+					}
+					node Output {
+						node findStart {
+							layout [ size: 81, 34 ]
+						}
+						node readRest {
+							layout [ size: 85, 34 ]
+						}
+						node findEnd {
+							layout [ size: 76, 34 ]
+						}
+						node mapArray {
+							layout [ size: 87, 34 ]
+						}
+						node checkParity {
+							layout [ size: 110, 40 ]
+						}
+						node __te_S13 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S14 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S15 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S16 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S17 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S18 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S19 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S20 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S21 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S22 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S23 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S24 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S25 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S26 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S27 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S28 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S29 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S30 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S31 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S32 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S33 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S34 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S35 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S36 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S37 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S38 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S39 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S40 {
+							layout [ size: 85, 34 ]
+						}
+						node __sd_S29 {
+							layout [ size: 88, 34 ]
+						}
+						node __te_S42 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S43 {
+							layout [ size: 85, 34 ]
+						}
+						node __sd_Pause7 {
+							layout [ size: 114, 34 ]
+						}
+						node __sd_Depth7 {
+							layout [ size: 113, 34 ]
+						}
+						node __sd_S11 {
+							layout [ size: 87, 34 ]
+						}
+						node __sd_Pause8 {
+							layout [ size: 114, 34 ]
+						}
+						node __sd_Depth8 {
+							layout [ size: 113, 34 ]
+						}
+						node __sd_S14 {
+							layout [ size: 88, 34 ]
+						}
+						node __sd_S15 {
+							layout [ size: 88, 34 ]
+						}
+						node __sd_S16 {
+							layout [ size: 88, 34 ]
+						}
+						node __sd_S17 {
+							layout [ size: 88, 34 ]
+						}
+						node __sd_S18 {
+							layout [ size: 88, 34 ]
+						}
+						node __sd_S19 {
+							layout [ size: 88, 34 ]
+						}
+						node __sd_S20 {
+							layout [ size: 88, 34 ]
+						}
+						node __sd_S21 {
+							layout [ size: 88, 34 ]
+						}
+						node __sd_S22 {
+							layout [ size: 88, 34 ]
+						}
+						node __sd_S23 {
+							layout [ size: 88, 34 ]
+						}
+						node __sd_Pause9 {
+							layout [ size: 114, 34 ]
+						}
+						node __sd_Depth9 {
+							layout [ size: 113, 34 ]
+						}
+						node __sd_S26 {
+							layout [ size: 88, 34 ]
+						}
+						node __sd_Pause10 {
+							layout [ size: 122, 34 ]
+						}
+						node __sd_Depth10 {
+							layout [ size: 121, 34 ]
+						}
+						edge checkParity0: findStart -> checkParity {
+							label L48: "1: _Atrig" {
+								layout [ size: 58, 17 ]
+							}
+						}
+						edge __sd_Pause70: findStart -> __sd_Pause7 {
+							label L49: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge checkParity0_g8723: readRest -> checkParity {
+							label L50: "1: _Atrig" {
+								layout [ size: 58, 17 ]
+							}
+						}
+						edge __sd_Pause80: readRest -> __sd_Pause8 {
+							label L51: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge checkParity0_g6079: findEnd -> checkParity {
+							label L52: "1: _Atrig" {
+								layout [ size: 58, 17 ]
+							}
+						}
+						edge __sd_Pause90: findEnd -> __sd_Pause9 {
+							label L53: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge checkParity0_g0079: mapArray -> checkParity {
+							label L54: "1: _Atrig" {
+								layout [ size: 58, 17 ]
+							}
+						}
+						edge __sd_Pause100: mapArray -> __sd_Pause10 {
+							label L55: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge readRest0: __te_S13 -> readRest {
+							label L56: "/ i = i + 3" {
+								layout [ size: 59, 17 ]
+							}
+						}
+						edge findStart0: __te_S14 -> findStart {
+							label L57: "/ i = i + 1" {
+								layout [ size: 59, 17 ]
+							}
+						}
+						edge __te_S160: __te_S15 -> __te_S16 {
+							label L58: "/ barcodeOutput[x] = 0" {
+								layout [ size: 159, 17 ]
+							}
+						}
+						edge readRest0_g0815: __te_S16 -> readRest {
+							label L59: "/ x = x + 7" {
+								layout [ size: 67, 17 ]
+							}
+						}
+						edge __te_S180: __te_S17 -> __te_S18 {
+							label L60: "/ barcodeOutput[x] = 1" {
+								layout [ size: 159, 17 ]
+							}
+						}
+						edge readRest0_g8806: __te_S18 -> readRest {
+							label L61: "/ x = x + 7" {
+								layout [ size: 67, 17 ]
+							}
+						}
+						edge __te_S200: __te_S19 -> __te_S20 {
+							label L62: "/ barcodeOutput[x] = 2" {
+								layout [ size: 159, 17 ]
+							}
+						}
+						edge readRest0_g6248: __te_S20 -> readRest {
+							label L63: "/ x = x + 7" {
+								layout [ size: 67, 17 ]
+							}
+						}
+						edge __te_S220: __te_S21 -> __te_S22 {
+							label L64: "/ barcodeOutput[x] = 3" {
+								layout [ size: 159, 17 ]
+							}
+						}
+						edge readRest0_g8518: __te_S22 -> readRest {
+							label L65: "/ x = x + 7" {
+								layout [ size: 67, 17 ]
+							}
+						}
+						edge __te_S240: __te_S23 -> __te_S24 {
+							label L66: "/ barcodeOutput[x] = 4" {
+								layout [ size: 159, 17 ]
+							}
+						}
+						edge readRest0_g0312: __te_S24 -> readRest {
+							label L67: "/ x = x + 7" {
+								layout [ size: 67, 17 ]
+							}
+						}
+						edge __te_S260: __te_S25 -> __te_S26 {
+							label L68: "/ barcodeOutput[x] = 5" {
+								layout [ size: 159, 17 ]
+							}
+						}
+						edge readRest0_g0095: __te_S26 -> readRest {
+							label L69: "/ x = x + 7" {
+								layout [ size: 67, 17 ]
+							}
+						}
+						edge __te_S280: __te_S27 -> __te_S28 {
+							label L70: "/ barcodeOutput[x] = 6" {
+								layout [ size: 159, 17 ]
+							}
+						}
+						edge readRest0_g8175: __te_S28 -> readRest {
+							label L71: "/ x = x + 7" {
+								layout [ size: 67, 17 ]
+							}
+						}
+						edge __te_S300: __te_S29 -> __te_S30 {
+							label L72: "/ barcodeOutput[x] = 7" {
+								layout [ size: 159, 17 ]
+							}
+						}
+						edge readRest0_g7495: __te_S30 -> readRest {
+							label L73: "/ x = x + 7" {
+								layout [ size: 67, 17 ]
+							}
+						}
+						edge __te_S320: __te_S31 -> __te_S32 {
+							label L74: "/ barcodeOutput[x] = 8" {
+								layout [ size: 159, 17 ]
+							}
+						}
+						edge readRest0_g0784: __te_S32 -> readRest {
+							label L75: "/ x = x + 7" {
+								layout [ size: 67, 17 ]
+							}
+						}
+						edge __te_S340: __te_S33 -> __te_S34 {
+							label L76: "/ barcodeOutput[x] = 9" {
+								layout [ size: 159, 17 ]
+							}
+						}
+						edge readRest0_g9496: __te_S34 -> readRest {
+							label L77: "/ x = x + 7" {
+								layout [ size: 67, 17 ]
+							}
+						}
+						edge findEnd0: __te_S35 -> findEnd {
+							label L78: "/ i = i + 3" {
+								layout [ size: 59, 17 ]
+							}
+						}
+						edge mapArray0: __te_S36 -> mapArray {
+							label L79: "/ barcodeConv = 100 * barcodeOutput[0] + 10 * barcodeOutput[1] + barcodeOutput[2]" {
+								layout [ size: 598, 17 ]
+							}
+						}
+						edge mapArray0_g7044: __te_S37 -> mapArray {
+							label L80: "/ barcodeConv = (100 * barcodeOutput[0] + 10 * barcodeOutput[1] + barcodeOutput[2]) - 1000" {
+								layout [ size: 654, 17 ]
+							}
+						}
+						edge __te_S390: __te_S38 -> __te_S39 {
+							label L81: "/ validCode = true" {
+								layout [ size: 126, 17 ]
+							}
+						}
+						edge __te_S400: __te_S39 -> __te_S40 {
+							label L82: "/ end = true" {
+								layout [ size: 81, 17 ]
+							}
+						}
+						edge checkParity0_g5412: __te_S40 -> checkParity {
+							label L83: "/ _CFSterm = true" {
+								layout [ size: 124, 17 ]
+							}
+						}
+						edge __te_S420: __sd_S29 -> __te_S42 {
+							label L84: "/ validCode = false" {
+								layout [ size: 131, 17 ]
+							}
+						}
+						edge __te_S430: __te_S42 -> __te_S43 {
+							label L85: "/ end = true" {
+								layout [ size: 81, 17 ]
+							}
+						}
+						edge checkParity0_g2733: __te_S43 -> checkParity {
+							label L86: "/ _CFSterm = true" {
+								layout [ size: 124, 17 ]
+							}
+						}
+						edge __sd_Depth70: __sd_Pause7 -> __sd_Depth7
+						edge __te_S130: __sd_Depth7 -> __te_S13 {
+							label L87: "1: barcode[i] == 0 && barcode[i + 1] == 1 && barcode[i + 2] == 0" {
+								layout [ size: 445, 17 ]
+							}
+						}
+						edge __sd_S110: __sd_Depth7 -> __sd_S11 {
+							label L88: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __te_S140: __sd_S11 -> __te_S14 {
+							label L89: "1: counter > i + 2" {
+								layout [ size: 118, 17 ]
+							}
+						}
+						edge findStart0_g2983: __sd_S11 -> findStart {
+							label L90: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __sd_Depth80: __sd_Pause8 -> __sd_Depth8
+						edge __te_S150: __sd_Depth8 -> __te_S15 {
+							label L91: "1: barcode[i] == 1 && barcode[i + 1] == 1 && barcode[i + 2] == 1 && barcode[i + 3] == 0 && barcode[i + 4] == 0 && barcode[i + 5] == 1 && barcode[i + 6] == 0" {
+								layout [ size: 1089, 17 ]
+							}
+						}
+						edge __sd_S140: __sd_Depth8 -> __sd_S14 {
+							label L92: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __te_S170: __sd_S14 -> __te_S17 {
+							label L93: "1: barcode[i] == 1 && barcode[i + 1] == 1 && barcode[i + 2] == 0 && barcode[i + 3] == 0 && barcode[i + 4] == 1 && barcode[i + 5] == 1 && barcode[i + 6] == 0" {
+								layout [ size: 1089, 17 ]
+							}
+						}
+						edge __sd_S150: __sd_S14 -> __sd_S15 {
+							label L94: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __te_S190: __sd_S15 -> __te_S19 {
+							label L95: "1: barcode[i] == 1 && barcode[i + 1] == 1 && barcode[i + 2] == 0 && barcode[i + 3] == 1 && barcode[i + 4] == 1 && barcode[i + 5] == 0 && barcode[i + 6] == 0" {
+								layout [ size: 1089, 17 ]
+							}
+						}
+						edge __sd_S160: __sd_S15 -> __sd_S16 {
+							label L96: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __te_S210: __sd_S16 -> __te_S21 {
+							label L97: "1: barcode[i] == 1 && barcode[i + 1] == 0 && barcode[i + 2] == 0 && barcode[i + 3] == 0 && barcode[i + 4] == 0 && barcode[i + 5] == 1 && barcode[i + 6] == 0" {
+								layout [ size: 1089, 17 ]
+							}
+						}
+						edge __sd_S170: __sd_S16 -> __sd_S17 {
+							label L98: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __te_S230: __sd_S17 -> __te_S23 {
+							label L99: "1: barcode[i] == 1 && barcode[i + 1] == 0 && barcode[i + 2] == 1 && barcode[i + 3] == 1 && barcode[i + 4] == 1 && barcode[i + 5] == 0 && barcode[i + 6] == 0" {
+								layout [ size: 1089, 17 ]
+							}
+						}
+						edge __sd_S180: __sd_S17 -> __sd_S18 {
+							label L100: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __te_S250: __sd_S18 -> __te_S25 {
+							label L101: "1: barcode[i] == 1 && barcode[i + 1] == 0 && barcode[i + 2] == 0 && barcode[i + 3] == 1 && barcode[i + 4] == 1 && barcode[i + 5] == 1 && barcode[i + 6] == 0" {
+								layout [ size: 1089, 17 ]
+							}
+						}
+						edge __sd_S190: __sd_S18 -> __sd_S19 {
+							label L102: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __te_S270: __sd_S19 -> __te_S27 {
+							label L103: "1: barcode[i] == 1 && barcode[i + 1] == 0 && barcode[i + 2] == 1 && barcode[i + 3] == 0 && barcode[i + 4] == 0 && barcode[i + 5] == 0 && barcode[i + 6] == 0" {
+								layout [ size: 1089, 17 ]
+							}
+						}
+						edge __sd_S200: __sd_S19 -> __sd_S20 {
+							label L104: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __te_S290: __sd_S20 -> __te_S29 {
+							label L105: "1: barcode[i] == 1 && barcode[i + 1] == 0 && barcode[i + 2] == 0 && barcode[i + 3] == 0 && barcode[i + 4] == 1 && barcode[i + 5] == 0 && barcode[i + 6] == 0" {
+								layout [ size: 1089, 17 ]
+							}
+						}
+						edge __sd_S210: __sd_S20 -> __sd_S21 {
+							label L106: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __te_S310: __sd_S21 -> __te_S31 {
+							label L107: "1: barcode[i] == 1 && barcode[i + 1] == 0 && barcode[i + 2] == 0 && barcode[i + 3] == 1 && barcode[i + 4] == 0 && barcode[i + 5] == 0 && barcode[i + 6] == 0" {
+								layout [ size: 1089, 17 ]
+							}
+						}
+						edge __sd_S220: __sd_S21 -> __sd_S22 {
+							label L108: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __te_S330: __sd_S22 -> __te_S33 {
+							label L109: "1: barcode[i] == 1 && barcode[i + 1] == 1 && barcode[i + 2] == 1 && barcode[i + 3] == 0 && barcode[i + 4] == 1 && barcode[i + 5] == 0 && barcode[i + 6] == 0" {
+								layout [ size: 1089, 17 ]
+							}
+						}
+						edge __sd_S230: __sd_S22 -> __sd_S23 {
+							label L110: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __te_S350: __sd_S23 -> __te_S35 {
+							label L111: "1: barcode[i] == 1 && barcode[i + 1] == 0 && barcode[i + 2] == 1 && barcode[i + 3] == 0" {
+								layout [ size: 606, 17 ]
+							}
+						}
+						edge readRest0_g2706: __sd_S23 -> readRest {
+							label L112: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __sd_Depth90: __sd_Pause9 -> __sd_Depth9
+						edge __te_S360: __sd_Depth9 -> __te_S36 {
+							label L113: "1: 100 * barcodeOutput[0] + 10 * barcodeOutput[1] + barcodeOutput[2] < 500" {
+								layout [ size: 535, 17 ]
+							}
+						}
+						edge __sd_S260: __sd_Depth9 -> __sd_S26 {
+							label L114: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __te_S370: __sd_S26 -> __te_S37 {
+							label L115: "1: 100 * barcodeOutput[0] + 10 * barcodeOutput[1] + barcodeOutput[2] >= 500" {
+								layout [ size: 544, 17 ]
+							}
+						}
+						edge findEnd0_g6808: __sd_S26 -> findEnd {
+							label L116: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __sd_Depth100: __sd_Pause10 -> __sd_Depth10
+						edge __te_S380: __sd_Depth10 -> __te_S38 {
+							label L117: "1: 9 - (barcodeOutput[0] + barcodeOutput[1] + barcodeOutput[2]) % 10 == barcodeOutput[3]" {
+								layout [ size: 644, 17 ]
+							}
+						}
+						edge __sd_S290: __sd_Depth10 -> __sd_S29 {
+							label L118: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+					}
+					node _ACtrl {
+						node _ADone {
+							layout [ size: 81, 40 ]
+						}
+						node __te_S44 {
+							layout [ size: 85, 34 ]
+						}
+						node _ARun {
+							layout [ size: 67, 34 ]
+						}
+						node __sd_Depth11 {
+							layout [ size: 120, 34 ]
+						}
+						edge _ADone0: __te_S44 -> _ADone {
+							label L119: "/ _Atrig = true" {
+								layout [ size: 95, 17 ]
+							}
+						}
+						edge __sd_Depth110: _ARun -> __sd_Depth11
+						edge __te_S440: __sd_Depth11 -> __te_S44 {
+							label L120: "1: end" {
+								layout [ size: 44, 17 ]
+							}
+						}
+						edge _ARun0: __sd_Depth11 -> _ARun {
+							label L121: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+					}
+				}
+				node __EA_Init {
+					layout [ size: 85, 34 ]
+				}
+				node __EA_Done {
+					layout [ size: 107, 40 ]
+				}
+				node __EA_C3 {
+					layout [ size: 83, 34 ]
+				}
+				edge __EA_Done0: __EA_Main -> __EA_Done
+				edge __EA_C30: __EA_Init -> __EA_C3 {
+					label L31: "/ _CFSterm = false" {
+						layout [ size: 129, 17 ]
+					}
+				}
+				edge __EA_Main0: __EA_C3 -> __EA_Main {
+					label L32: "/ _Atrig = false" {
+						layout [ size: 100, 17 ]
+					}
+				}
+			}
+		}
+		node ^end {
+			layout [ size: 54, 40 ]
+		}
+		node __EA_Init_g5655 {
+			layout [ size: 85, 34 ]
+		}
+		node __EA_C {
+			layout [ size: 74, 34 ]
+		}
+		node __EA_C1 {
+			layout [ size: 83, 34 ]
+		}
+		node __EA_C2 {
+			layout [ size: 83, 34 ]
+		}
+		node __te_S {
+			layout [ size: 69, 34 ]
+		}
+		node __te_S1 {
+			layout [ size: 77, 34 ]
+		}
+		node __te_S2 {
+			layout [ size: 77, 34 ]
+		}
+		node __te_S3 {
+			layout [ size: 77, 34 ]
+		}
+		node __te_S4 {
+			layout [ size: 77, 34 ]
+		}
+		node __te_S5 {
+			layout [ size: 77, 34 ]
+		}
+		node __te_S6 {
+			layout [ size: 77, 34 ]
+		}
+		node __te_S7 {
+			layout [ size: 77, 34 ]
+		}
+		node __te_S45 {
+			layout [ size: 85, 34 ]
+		}
+		node __te_S46 {
+			layout [ size: 85, 34 ]
+		}
+		node __te_S47 {
+			layout [ size: 85, 34 ]
+		}
+		node __te_S48 {
+			layout [ size: 85, 34 ]
+		}
+		node calibBlack {
+			layout [ size: 93, 34 ]
+		}
+		node __sd_Depth {
+			layout [ size: 105, 34 ]
+		}
+		node calibBlack2 {
+			layout [ size: 101, 34 ]
+		}
+		node __sd_Depth1 {
+			layout [ size: 113, 34 ]
+		}
+		node calibWhite {
+			layout [ size: 93, 34 ]
+		}
+		node __sd_Depth2 {
+			layout [ size: 113, 34 ]
+		}
+		node calibWhite2 {
+			layout [ size: 102, 34 ]
+		}
+		node __sd_Depth3 {
+			layout [ size: 113, 34 ]
+		}
+		node ^start {
+			layout [ size: 52, 34 ]
+		}
+		node __sd_Depth4 {
+			layout [ size: 113, 34 ]
+		}
+		node stopRun {
+			layout [ size: 81, 34 ]
+		}
+		node __sd_Depth12 {
+			layout [ size: 121, 34 ]
+		}
+		node __sd_S33 {
+			layout [ size: 88, 34 ]
+		}
+		edge __te_S0: init -> __te_S
+		edge __te_S450: ForwardAndScan -> __te_S45
+		edge __EA_C0: __EA_Init_g5655 -> __EA_C {
+			label L1: "/ end = false" {
+				layout [ size: 86, 17 ]
+			}
+		}
+		edge __EA_C10: __EA_C -> __EA_C1 {
+			label L2: "/ i = 0" {
+				layout [ size: 38, 17 ]
+			}
+		}
+		edge __EA_C20: __EA_C1 -> __EA_C2 {
+			label L3: "/ x = 0" {
+				layout [ size: 42, 17 ]
+			}
+		}
+		edge init0: __EA_C2 -> init {
+			label L4: "/ counter = 0" {
+				layout [ size: 89, 17 ]
+			}
+		}
+		edge calibBlack0: __te_S -> calibBlack {
+			label L5: "/ `System.out.println(\"Schwarz und ENTER\")`" {
+				layout [ size: 317, 17 ]
+			}
+		}
+		edge __te_S20_g1200: __te_S1 -> __te_S2 {
+			label L6: "/ black = light" {
+				layout [ size: 93, 17 ]
+			}
+		}
+		edge calibBlack20: __te_S2 -> calibBlack2 {
+			label L7: "/ `System.out.println(\"Weiss und ENTER\")`" {
+				layout [ size: 299, 17 ]
+			}
+		}
+		edge __te_S40_g7848: __te_S3 -> __te_S4 {
+			label L8: "/ white = light" {
+				layout [ size: 94, 17 ]
+			}
+		}
+		edge calibWhite20: __te_S4 -> calibWhite2 {
+			label L9: "/ `System.out.println(\"Barcode und ENTER\")`" {
+				layout [ size: 317, 17 ]
+			}
+		}
+		edge start0: __te_S5 -> ^start {
+			label L10: "/ accuracy = (white - black) / ` 2.1f `" {
+				layout [ size: 240, 17 ]
+			}
+		}
+		edge __te_S70: __te_S6 -> __te_S7 {
+			label L11: "/ motorA = 20" {
+				layout [ size: 91, 17 ]
+			}
+		}
+		edge ForwardAndScan0: __te_S7 -> ForwardAndScan {
+			label L12: "/ motorB = 20" {
+				layout [ size: 94, 17 ]
+			}
+		}
+		edge __te_S460: __te_S45 -> __te_S46 {
+			label L13: "/ motorA = 0" {
+				layout [ size: 83, 17 ]
+			}
+		}
+		edge stopRun0: __te_S46 -> stopRun {
+			label L14: "/ motorB = 0" {
+				layout [ size: 86, 17 ]
+			}
+		}
+		edge end0: __te_S47 -> ^end {
+			label L15: "/ `System.out.println(\"Code: \" + barcodeConv);`" {
+				layout [ size: 333, 17 ]
+			}
+		}
+		edge end0_g5592: __te_S48 -> ^end {
+			label L16: "/ `System.out.println(\"Not valid.\")`" {
+				layout [ size: 237, 17 ]
+			}
+		}
+		edge __sd_Depth0: calibBlack -> __sd_Depth
+		edge __te_S10_g4112: __sd_Depth -> __te_S1 {
+			label L17: "1: Enter" {
+				layout [ size: 55, 17 ]
+			}
+		}
+		edge calibBlack0_g2822: __sd_Depth -> calibBlack {
+			label L18: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge __sd_Depth10_g5553: calibBlack2 -> __sd_Depth1
+		edge calibWhite0: __sd_Depth1 -> calibWhite {
+			label L19: "1: !Enter" {
+				layout [ size: 59, 17 ]
+			}
+		}
+		edge calibBlack20_g1320: __sd_Depth1 -> calibBlack2 {
+			label L20: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge __sd_Depth20: calibWhite -> __sd_Depth2
+		edge __te_S30_g4149: __sd_Depth2 -> __te_S3 {
+			label L21: "1: Enter" {
+				layout [ size: 55, 17 ]
+			}
+		}
+		edge calibWhite0_g2818: __sd_Depth2 -> calibWhite {
+			label L22: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge __sd_Depth30: calibWhite2 -> __sd_Depth3
+		edge __te_S50: __sd_Depth3 -> __te_S5 {
+			label L23: "1: !Enter" {
+				layout [ size: 59, 17 ]
+			}
+		}
+		edge calibWhite20_g2947: __sd_Depth3 -> calibWhite2 {
+			label L24: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge __sd_Depth40: ^start -> __sd_Depth4
+		edge __te_S60: __sd_Depth4 -> __te_S6 {
+			label L25: "1: Enter" {
+				layout [ size: 55, 17 ]
+			}
+		}
+		edge start0_g0922: __sd_Depth4 -> ^start {
+			label L26: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge __sd_Depth120: stopRun -> __sd_Depth12
+		edge __te_S470: __sd_Depth12 -> __te_S47 {
+			label L27: "1: validCode" {
+				layout [ size: 88, 17 ]
+			}
+		}
+		edge __sd_S330: __sd_Depth12 -> __sd_S33 {
+			label L28: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge __te_S480: __sd_S33 -> __te_S48 {
+			label L29: "1: !validCode" {
+				layout [ size: 92, 17 ]
+			}
+		}
+		edge stopRun0_g8319: __sd_S33 -> stopRun {
+			label L30: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+	}
+}

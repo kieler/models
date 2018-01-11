@@ -1,0 +1,155 @@
+graph G1
+node BACKHOE {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node Init {
+			layout [ size: 42, 34 ]
+		}
+		node WaitForExtendButton {
+			layout [ size: 172, 34 ]
+		}
+		node Extend {
+			algorithm: org.eclipse.elk.box
+			node Extend_g0214 {
+				node ExtendStick {
+					layout [ size: 106, 34 ]
+				}
+				node ExtendBucket {
+					layout [ size: 120, 34 ]
+				}
+				node Extended {
+					layout [ size: 95, 40 ]
+				}
+				edge ExtendBucket0: ExtendStick -> ExtendBucket {
+					label L6: "STICK_OUT / STICK_PUSH = false; BUCKET_PUSH = true" {
+						layout [ size: 414, 17 ]
+					}
+				}
+				edge Extended0: ExtendBucket -> Extended {
+					label L7: "BUCKET_OUT / BUCKET_PUSH = false" {
+						layout [ size: 282, 17 ]
+					}
+				}
+			}
+			node BlinkAlarmLamp {
+				node On {
+					layout [ size: 42, 34 ]
+				}
+				node Off {
+					layout [ size: 42, 34 ]
+				}
+				node Stop {
+					layout [ size: 60, 40 ]
+				}
+				edge Off0: On -> Off {
+					label L8: "1: SEC / ALARM_LAMP = false" {
+						layout [ size: 209, 17 ]
+					}
+				}
+				edge Stop0: On -> Stop {
+					label L9: "2: BUCKET_OUT / ALARM_LAMP = false" {
+						layout [ size: 283, 17 ]
+					}
+				}
+				edge On0: Off -> On {
+					label L10: "1: SEC / ALARM_LAMP = true" {
+						layout [ size: 204, 17 ]
+					}
+				}
+				edge Stop0_g4570: Off -> Stop {
+					label L11: "2: BUCKET_OUT / ALARM_LAMP = false" {
+						layout [ size: 283, 17 ]
+					}
+				}
+			}
+		}
+		node WaitForRetractButton {
+			layout [ size: 174, 34 ]
+		}
+		node Retract {
+			algorithm: org.eclipse.elk.box
+			node RetractBucket {
+				node Retract_g8082 {
+					layout [ size: 72, 34 ]
+				}
+				node Finished {
+					layout [ size: 88, 40 ]
+				}
+				edge Finished0: Retract_g8082 -> Finished {
+					label L12: "BUCKET_IN / BUCKET_PULL = false" {
+						layout [ size: 261, 17 ]
+					}
+				}
+			}
+			node RetractStick {
+				node Retract_g9103 {
+					layout [ size: 72, 34 ]
+				}
+				node Finished_g6395 {
+					layout [ size: 88, 40 ]
+				}
+				edge Finished0_g0589: Retract_g9103 -> Finished_g6395 {
+					label L13: "STICK_IN / STICK_PULL = false" {
+						layout [ size: 225, 17 ]
+					}
+				}
+			}
+			node BlinkAlarmLamp_g3752 {
+				node On_g5500 {
+					layout [ size: 42, 34 ]
+				}
+				node Off_g5866 {
+					layout [ size: 42, 34 ]
+				}
+				node Stop_g8486 {
+					layout [ size: 60, 40 ]
+				}
+				edge Off0_g6209: On_g5500 -> Off_g5866 {
+					label L14: "1: SEC / ALARM_LAMP = false" {
+						layout [ size: 209, 17 ]
+					}
+				}
+				edge Stop0_g9799: On_g5500 -> Stop_g8486 {
+					label L15: "2: STICK_IN && BUCKET_IN / ALARM_LAMP = false" {
+						layout [ size: 364, 17 ]
+					}
+				}
+				edge On0_g7786: Off_g5866 -> On_g5500 {
+					label L16: "1: SEC / ALARM_LAMP = true" {
+						layout [ size: 204, 17 ]
+					}
+				}
+				edge Stop0_g7520: Off_g5866 -> Stop_g8486 {
+					label L17: "2: STICK_IN && BUCKET_IN / ALARM_LAMP = false" {
+						layout [ size: 364, 17 ]
+					}
+				}
+			}
+		}
+		edge WaitForExtendButton0: Init -> WaitForExtendButton {
+			label L1: "/ DONE_LAMP = true" {
+				layout [ size: 147, 17 ]
+			}
+		}
+		edge Extend0: WaitForExtendButton -> Extend {
+			label L2: "EXTEND_BUTTON / STICK_PUSH = true; DONE_LAMP = false; ALARM_LAMP = true" {
+				layout [ size: 594, 17 ]
+			}
+		}
+		edge WaitForRetractButton0: Extend -> WaitForRetractButton {
+			label L3: "/ DONE_LAMP = true" {
+				layout [ size: 147, 17 ]
+			}
+		}
+		edge Retract0: WaitForRetractButton -> Retract {
+			label L4: "RETRACT_BUTTON / BUCKET_PULL = true; STICK_PULL = true; DONE_LAMP = false; ALARM_LAMP = true" {
+				layout [ size: 766, 17 ]
+			}
+		}
+		edge WaitForExtendButton0_g6216: Retract -> WaitForExtendButton {
+			label L5: "/ DONE_LAMP = true" {
+				layout [ size: 147, 17 ]
+			}
+		}
+	}
+}

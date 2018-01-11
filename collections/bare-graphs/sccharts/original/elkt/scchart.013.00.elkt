@@ -1,0 +1,118 @@
+graph G1
+node LinefinderScChart {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node Init {
+			layout [ size: 202, 80 ]
+		}
+		node waitPressed {
+			layout [ size: 167, 50 ]
+		}
+		node waitNotPressed {
+			layout [ size: 167, 50 ]
+		}
+		node FoundStartposition {
+			layout [ size: 264, 125 ]
+		}
+		node MeasuringTacho {
+			layout [ size: 294, 95 ]
+		}
+		node MeasuringLight {
+			layout [ size: 264, 110 ]
+		}
+		node CompleteMeasuring {
+			layout [ size: 151, 80 ]
+		}
+		node SearchMinimum {
+			layout [ size: 226, 50 ]
+		}
+		node NewMinimum {
+			layout [ size: 207, 65 ]
+		}
+		node CalcSpeed {
+			layout [ size: 305, 65 ]
+		}
+		node Drive {
+			layout [ size: 290, 170 ]
+		}
+		edge waitPressed0: Init -> waitPressed
+		edge waitPressed0_g9428: waitPressed -> waitPressed {
+			label L1: "1: isPressed == false" {
+				layout [ size: 147, 17 ]
+			}
+		}
+		edge waitNotPressed0: waitPressed -> waitNotPressed {
+			label L2: "2: isPressed == true / `Sound.playTone(5000,50);`" {
+				layout [ size: 344, 17 ]
+			}
+		}
+		edge waitNotPressed0_g4120: waitNotPressed -> waitNotPressed {
+			label L3: "1: isPressed == true" {
+				layout [ size: 142, 17 ]
+			}
+		}
+		edge FoundStartposition0: waitNotPressed -> FoundStartposition {
+			label L4: "2: isPressed == false" {
+				layout [ size: 147, 17 ]
+			}
+		}
+		edge MeasuringTacho0: FoundStartposition -> MeasuringTacho
+		edge MeasuringTacho0_g6083: MeasuringTacho -> MeasuringTacho {
+			label L5: "1: tachoCount < 5 && !isPressed" {
+				layout [ size: 229, 17 ]
+			}
+		}
+		edge MeasuringLight0: MeasuringTacho -> MeasuringLight {
+			label L6: "2: tachoCount >= 5 && !isPressed" {
+				layout [ size: 238, 17 ]
+			}
+		}
+		edge CompleteMeasuring0: MeasuringTacho -> CompleteMeasuring {
+			label L7: "3: isPressed" {
+				layout [ size: 88, 17 ]
+			}
+		}
+		edge MeasuringTacho0_g8592: MeasuringLight -> MeasuringTacho {
+			label L8: "1: !isPressed / i = i + 1" {
+				layout [ size: 154, 17 ]
+			}
+		}
+		edge CompleteMeasuring0_g5618: MeasuringLight -> CompleteMeasuring {
+			label L9: "2: isPressed" {
+				layout [ size: 88, 17 ]
+			}
+		}
+		edge SearchMinimum0: CompleteMeasuring -> SearchMinimum {
+			label L10: "/ minIndex = 0; `minValue = Integer.MAX_VALUE`; k = 0" {
+				layout [ size: 378, 17 ]
+			}
+		}
+		edge NewMinimum0: SearchMinimum -> NewMinimum {
+			label L11: "1: k < hoi && currentValue < minValue" {
+				layout [ size: 263, 17 ]
+			}
+		}
+		edge SearchMinimum0_g7914: SearchMinimum -> SearchMinimum {
+			label L12: "2: k < hoi && currentValue >= minValue / k = k + 1" {
+				layout [ size: 343, 17 ]
+			}
+		}
+		edge CalcSpeed0: SearchMinimum -> CalcSpeed {
+			label L13: "3: k >= hoi" {
+				layout [ size: 73, 17 ]
+			}
+		}
+		edge SearchMinimum0_g7476: NewMinimum -> SearchMinimum {
+			label L14: "1: k < hoi / k = k + 1" {
+				layout [ size: 134, 17 ]
+			}
+		}
+		edge CalcSpeed0_g3438: NewMinimum -> CalcSpeed {
+			label L15: "2: k >= hoi" {
+				layout [ size: 73, 17 ]
+			}
+		}
+		edge Drive0: CalcSpeed -> Drive
+		edge waitNotPressed0_g0594: Drive -> waitNotPressed
+	}
+}

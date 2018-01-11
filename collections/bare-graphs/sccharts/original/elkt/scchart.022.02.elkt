@@ -1,0 +1,354 @@
+graph G1
+node pwxvwphetqhwethhiqcldfhigaytnzzxpgknzifhnbe {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node init {
+			layout [ size: 42, 34 ]
+		}
+		node open {
+			layout [ size: 57, 34 ]
+		}
+		node run {
+			layout [ size: 45, 34 ]
+		}
+		node measure_light {
+			layout [ size: 120, 34 ]
+		}
+		node changed {
+			layout [ size: 82, 34 ]
+		}
+		node timed_out {
+			layout [ size: 90, 34 ]
+		}
+		node barcode_detected {
+			layout [ size: 150, 34 ]
+		}
+		node decode_durations {
+			layout [ size: 149, 34 ]
+		}
+		node white_bits {
+			layout [ size: 93, 34 ]
+		}
+		node black_bits {
+			layout [ size: 92, 34 ]
+		}
+		node check_start {
+			layout [ size: 102, 34 ]
+		}
+		node first_digit {
+			layout [ size: 87, 34 ]
+		}
+		node second_digit {
+			layout [ size: 111, 34 ]
+		}
+		node third_digit {
+			layout [ size: 92, 34 ]
+		}
+		node checkdigit {
+			layout [ size: 93, 34 ]
+		}
+		node debug {
+			layout [ size: 66, 34 ]
+		}
+		node done {
+			layout [ size: 56, 34 ]
+		}
+		node fail {
+			layout [ size: 42, 34 ]
+		}
+		node done_g1359 {
+			layout [ size: 56, 34 ]
+		}
+		edge run0: init -> run
+		edge run0_g8399: open -> run {
+			label L1: "/ `lejos.nxt.comm.RConsole.open()`" {
+				layout [ size: 247, 17 ]
+			}
+		}
+		edge measure_light0: run -> measure_light {
+			label L2: "/ right_motor = -900; left_motor = -900" {
+				layout [ size: 263, 17 ]
+			}
+		}
+		edge timed_out0: measure_light -> timed_out {
+			label L3: "1: time > last_time + timeout" {
+				layout [ size: 196, 17 ]
+			}
+		}
+		edge measure_light0_g1514: measure_light -> measure_light {
+			label L4: "2: current_bit && light - last_light > threshold / last_light = light" {
+				layout [ size: 441, 17 ]
+			}
+		}
+		edge measure_light1: measure_light -> measure_light {
+			label L5: "3: current_bit == false && last_light - light > threshold / last_light = light" {
+				layout [ size: 501, 17 ]
+			}
+		}
+		edge changed0: measure_light -> changed {
+			label L6: "4: light - last_light > threshold / last_light = light; current_bit = true" {
+				layout [ size: 465, 17 ]
+			}
+		}
+		edge changed1: measure_light -> changed {
+			label L7: "5: last_light - light > threshold / last_light = light; current_bit = false" {
+				layout [ size: 470, 17 ]
+			}
+		}
+		edge measure_light0_g5648: changed -> measure_light {
+			label L8: "/ durations[(index % durbuflen)] = time - last_time; last_time = time; index = index + 1" {
+				layout [ size: 594, 17 ]
+			}
+		}
+		edge barcode_detected0: timed_out -> barcode_detected {
+			label L9: "1: index >= durbuflen - 3 / right_motor = 0; left_motor = 0" {
+				layout [ size: 396, 17 ]
+			}
+		}
+		edge measure_light0_g9775: timed_out -> measure_light {
+			label L10: "2: / last_time = time; index = 0" {
+				layout [ size: 207, 17 ]
+			}
+		}
+		edge decode_durations0: barcode_detected -> decode_durations {
+			label L11: "/ index = index - 1; bitlength = (durations[index % durbuflen] + durations[(index - 1) % durbuflen] + durations[(index - 2) % durbuflen] + durations[(index - 3) % durbuflen]) / 4; halfbit = bitlength / 2; durations[0] = (durations[0] + halfbit) / bitlength; durations[1] = (durations[1] + halfbit) / bitlength; durations[2] = (durations[2] + halfbit) / bitlength; durations[3] = (durations[3] + halfbit) / bitlength; durations[4] = (durations[4] + halfbit) / bitlength; durations[5] = (durations[5] + halfbit) / bitlength; durations[6] = (durations[6] + halfbit) / bitlength; durations[7] = (durations[7] + halfbit) / bitlength; durations[8] = (durations[8] + halfbit) / bitlength; durations[9] = (durations[9] + halfbit) / bitlength; durations[10] = (durations[10] + halfbit) / bitlength; durations[11] = (durations[11] + halfbit) / bitlength; durations[12] = (durations[12] + halfbit) / bitlength; durations[13] = (durations[13] + halfbit) / bitlength; durations[14] = (durations[14] + halfbit) / bitlength; durations[15] = (durations[15] + halfbit) / bitlength; durations[16] = (durations[16] + halfbit) / bitlength; durations[17] = (durations[17] + halfbit) / bitlength; durations[18] = (durations[18] + halfbit) / bitlength; durations[19] = (durations[19] + halfbit) / bitlength; durations[20] = (durations[20] + halfbit) / bitlength; durations[21] = (durations[21] + halfbit) / bitlength; durations[22] = (durations[22] + halfbit) / bitlength; durations[23] = (durations[23] + halfbit) / bitlength; durations[24] = (durations[24] + halfbit) / bitlength" {
+				layout [ size: 10126, 17 ]
+			}
+		}
+		edge black_bits0: decode_durations -> black_bits {
+			label L12: "1: durations[index % durbuflen] == 1 && durations[(index - 1) % durbuflen] == 1 && durations[(index - 2) % durbuflen] == 1 && durations[(index - 3) % durbuflen] == 1 / barcode[34] = 0; barcode[33] = 1; barcode[32] = 0; barcode[31] = 1; durbegin = 30; bc_index = durbegin; index = index - 4" {
+				layout [ size: 2014, 17 ]
+			}
+		}
+		edge fail0: decode_durations -> fail {
+			label L13: "2: / `System.out.println(\"End not Okay\r\n\" + durations[(index - 3) % durbuflen] + durations[(index - 2) % durbuflen] + durations[(index - 1) % durbuflen] + durations[(index) % durbuflen])`" {
+				layout [ size: 1012, 34 ]
+			}
+		}
+		edge check_start0: white_bits -> check_start {
+			label L14: "1: bc_index < 0" {
+				layout [ size: 106, 17 ]
+			}
+		}
+		edge white_bits0: white_bits -> white_bits {
+			label L15: "2: durbegin - bc_index < durations[index % durbuflen] / barcode[bc_index] = 1; bc_index = bc_index - 1" {
+				layout [ size: 724, 17 ]
+			}
+		}
+		edge black_bits0_g0557: white_bits -> black_bits {
+			label L16: "3: durbegin - bc_index >= durations[index % durbuflen] / index = index - 1; durbegin = bc_index" {
+				layout [ size: 671, 17 ]
+			}
+		}
+		edge check_start0_g6320: black_bits -> check_start {
+			label L17: "1: bc_index < 0" {
+				layout [ size: 106, 17 ]
+			}
+		}
+		edge black_bits0_g3957: black_bits -> black_bits {
+			label L18: "2: durbegin - bc_index < durations[index % durbuflen] / barcode[bc_index] = 0; bc_index = bc_index - 1" {
+				layout [ size: 724, 17 ]
+			}
+		}
+		edge white_bits0_g7149: black_bits -> white_bits {
+			label L19: "3: durbegin - bc_index >= durations[index % durbuflen] / index = index - 1; durbegin = bc_index" {
+				layout [ size: 671, 17 ]
+			}
+		}
+		edge first_digit0: check_start -> first_digit {
+			label L20: "1: barcode[0] == 0 && barcode[1] == 1 && barcode[2] == 0" {
+				layout [ size: 407, 17 ]
+			}
+		}
+		edge fail0_g5953: check_start -> fail {
+			label L21: "2: / `System.out.println(\"Start not correct\")`" {
+				layout [ size: 302, 17 ]
+			}
+		}
+		edge second_digit0: first_digit -> second_digit {
+			label L22: "1: barcode[3] == 1 && barcode[4] == 1 && barcode[5] == 1 && barcode[6] == 0 && barcode[7] == 0 && barcode[8] == 1 && barcode[9] == 0 / number = 0 * 100" {
+				layout [ size: 1096, 17 ]
+			}
+		}
+		edge second_digit1: first_digit -> second_digit {
+			label L23: "2: barcode[3] == 1 && barcode[4] == 1 && barcode[5] == 0 && barcode[6] == 0 && barcode[7] == 1 && barcode[8] == 1 && barcode[9] == 0 / number = 1 * 100" {
+				layout [ size: 1096, 17 ]
+			}
+		}
+		edge second_digit2: first_digit -> second_digit {
+			label L24: "3: barcode[3] == 1 && barcode[4] == 1 && barcode[5] == 0 && barcode[6] == 1 && barcode[7] == 1 && barcode[8] == 0 && barcode[9] == 0 / number = 2 * 100" {
+				layout [ size: 1096, 17 ]
+			}
+		}
+		edge second_digit3: first_digit -> second_digit {
+			label L25: "4: barcode[3] == 1 && barcode[4] == 0 && barcode[5] == 0 && barcode[6] == 0 && barcode[7] == 0 && barcode[8] == 1 && barcode[9] == 0 / number = 3 * 100" {
+				layout [ size: 1096, 17 ]
+			}
+		}
+		edge second_digit4: first_digit -> second_digit {
+			label L26: "5: barcode[3] == 1 && barcode[4] == 0 && barcode[5] == 1 && barcode[6] == 1 && barcode[7] == 1 && barcode[8] == 0 && barcode[9] == 0 / number = 4 * 100" {
+				layout [ size: 1096, 17 ]
+			}
+		}
+		edge second_digit5: first_digit -> second_digit {
+			label L27: "6: barcode[3] == 1 && barcode[4] == 0 && barcode[5] == 0 && barcode[6] == 1 && barcode[7] == 1 && barcode[8] == 1 && barcode[9] == 0 / number = 5 * 100" {
+				layout [ size: 1096, 17 ]
+			}
+		}
+		edge second_digit6: first_digit -> second_digit {
+			label L28: "7: barcode[3] == 1 && barcode[4] == 0 && barcode[5] == 1 && barcode[6] == 0 && barcode[7] == 0 && barcode[8] == 0 && barcode[9] == 0 / number = 6 * 100" {
+				layout [ size: 1096, 17 ]
+			}
+		}
+		edge second_digit7: first_digit -> second_digit {
+			label L29: "8: barcode[3] == 1 && barcode[4] == 0 && barcode[5] == 0 && barcode[6] == 0 && barcode[7] == 1 && barcode[8] == 0 && barcode[9] == 0 / number = 7 * 100" {
+				layout [ size: 1096, 17 ]
+			}
+		}
+		edge second_digit8: first_digit -> second_digit {
+			label L30: "9: barcode[3] == 1 && barcode[4] == 0 && barcode[5] == 0 && barcode[6] == 1 && barcode[7] == 0 && barcode[8] == 0 && barcode[9] == 0 / number = 8 * 100" {
+				layout [ size: 1096, 17 ]
+			}
+		}
+		edge second_digit9: first_digit -> second_digit {
+			label L31: "10: barcode[3] == 1 && barcode[4] == 1 && barcode[5] == 1 && barcode[6] == 0 && barcode[7] == 1 && barcode[8] == 0 && barcode[9] == 0 / number = 9 * 100" {
+				layout [ size: 1104, 17 ]
+			}
+		}
+		edge fail0_g4876: first_digit -> fail {
+			label L32: "11: / `System.out.println(\"First Digit not found!\")`" {
+				layout [ size: 338, 17 ]
+			}
+		}
+		edge third_digit0: second_digit -> third_digit {
+			label L33: "1: barcode[10] == 1 && barcode[11] == 1 && barcode[12] == 1 && barcode[13] == 0 && barcode[14] == 0 && barcode[15] == 1 && barcode[16] == 0 / number = number + 0 * 10" {
+				layout [ size: 1214, 17 ]
+			}
+		}
+		edge third_digit1: second_digit -> third_digit {
+			label L34: "2: barcode[10] == 1 && barcode[11] == 1 && barcode[12] == 0 && barcode[13] == 0 && barcode[14] == 1 && barcode[15] == 1 && barcode[16] == 0 / number = number + 1 * 10" {
+				layout [ size: 1214, 17 ]
+			}
+		}
+		edge third_digit2: second_digit -> third_digit {
+			label L35: "3: barcode[10] == 1 && barcode[11] == 1 && barcode[12] == 0 && barcode[13] == 1 && barcode[14] == 1 && barcode[15] == 0 && barcode[16] == 0 / number = number + 2 * 10" {
+				layout [ size: 1214, 17 ]
+			}
+		}
+		edge third_digit3: second_digit -> third_digit {
+			label L36: "4: barcode[10] == 1 && barcode[11] == 0 && barcode[12] == 0 && barcode[13] == 0 && barcode[14] == 0 && barcode[15] == 1 && barcode[16] == 0 / number = number + 3 * 10" {
+				layout [ size: 1214, 17 ]
+			}
+		}
+		edge third_digit4: second_digit -> third_digit {
+			label L37: "5: barcode[10] == 1 && barcode[11] == 0 && barcode[12] == 1 && barcode[13] == 1 && barcode[14] == 1 && barcode[15] == 0 && barcode[16] == 0 / number = number + 4 * 10" {
+				layout [ size: 1214, 17 ]
+			}
+		}
+		edge third_digit5: second_digit -> third_digit {
+			label L38: "6: barcode[10] == 1 && barcode[11] == 0 && barcode[12] == 0 && barcode[13] == 1 && barcode[14] == 1 && barcode[15] == 1 && barcode[16] == 0 / number = number + 5 * 10" {
+				layout [ size: 1214, 17 ]
+			}
+		}
+		edge third_digit6: second_digit -> third_digit {
+			label L39: "7: barcode[10] == 1 && barcode[11] == 0 && barcode[12] == 1 && barcode[13] == 0 && barcode[14] == 0 && barcode[15] == 0 && barcode[16] == 0 / number = number + 6 * 10" {
+				layout [ size: 1214, 17 ]
+			}
+		}
+		edge third_digit7: second_digit -> third_digit {
+			label L40: "8: barcode[10] == 1 && barcode[11] == 0 && barcode[12] == 0 && barcode[13] == 0 && barcode[14] == 1 && barcode[15] == 0 && barcode[16] == 0 / number = number + 7 * 10" {
+				layout [ size: 1214, 17 ]
+			}
+		}
+		edge third_digit8: second_digit -> third_digit {
+			label L41: "9: barcode[10] == 1 && barcode[11] == 0 && barcode[12] == 0 && barcode[13] == 1 && barcode[14] == 0 && barcode[15] == 0 && barcode[16] == 0 / number = number + 8 * 10" {
+				layout [ size: 1214, 17 ]
+			}
+		}
+		edge third_digit9: second_digit -> third_digit {
+			label L42: "10: barcode[10] == 1 && barcode[11] == 1 && barcode[12] == 1 && barcode[13] == 0 && barcode[14] == 1 && barcode[15] == 0 && barcode[16] == 0 / number = number + 9 * 10" {
+				layout [ size: 1222, 17 ]
+			}
+		}
+		edge fail0_g8658: second_digit -> fail {
+			label L43: "11: / `System.out.println(\"Second Digit not found!\")`" {
+				layout [ size: 360, 17 ]
+			}
+		}
+		edge checkdigit0: third_digit -> checkdigit {
+			label L44: "1: barcode[17] == 1 && barcode[18] == 1 && barcode[19] == 1 && barcode[20] == 0 && barcode[21] == 0 && barcode[22] == 1 && barcode[23] == 0 / number = number + 0" {
+				layout [ size: 1185, 17 ]
+			}
+		}
+		edge checkdigit1: third_digit -> checkdigit {
+			label L45: "2: barcode[17] == 1 && barcode[18] == 1 && barcode[19] == 0 && barcode[20] == 0 && barcode[21] == 1 && barcode[22] == 1 && barcode[23] == 0 / number = number + 1" {
+				layout [ size: 1185, 17 ]
+			}
+		}
+		edge checkdigit2: third_digit -> checkdigit {
+			label L46: "3: barcode[17] == 1 && barcode[18] == 1 && barcode[19] == 0 && barcode[20] == 1 && barcode[21] == 1 && barcode[22] == 0 && barcode[23] == 0 / number = number + 2" {
+				layout [ size: 1185, 17 ]
+			}
+		}
+		edge checkdigit3: third_digit -> checkdigit {
+			label L47: "4: barcode[17] == 1 && barcode[18] == 0 && barcode[19] == 0 && barcode[20] == 0 && barcode[21] == 0 && barcode[22] == 1 && barcode[23] == 0 / number = number + 3" {
+				layout [ size: 1185, 17 ]
+			}
+		}
+		edge checkdigit4: third_digit -> checkdigit {
+			label L48: "5: barcode[17] == 1 && barcode[18] == 0 && barcode[19] == 1 && barcode[20] == 1 && barcode[21] == 1 && barcode[22] == 0 && barcode[23] == 0 / number = number + 4" {
+				layout [ size: 1185, 17 ]
+			}
+		}
+		edge checkdigit5: third_digit -> checkdigit {
+			label L49: "6: barcode[17] == 1 && barcode[18] == 0 && barcode[19] == 0 && barcode[20] == 1 && barcode[21] == 1 && barcode[22] == 1 && barcode[23] == 0 / number = number + 5" {
+				layout [ size: 1185, 17 ]
+			}
+		}
+		edge checkdigit6: third_digit -> checkdigit {
+			label L50: "7: barcode[17] == 1 && barcode[18] == 0 && barcode[19] == 1 && barcode[20] == 0 && barcode[21] == 0 && barcode[22] == 0 && barcode[23] == 0 / number = number + 6" {
+				layout [ size: 1185, 17 ]
+			}
+		}
+		edge checkdigit7: third_digit -> checkdigit {
+			label L51: "8: barcode[17] == 1 && barcode[18] == 0 && barcode[19] == 0 && barcode[20] == 0 && barcode[21] == 1 && barcode[22] == 0 && barcode[23] == 0 / number = number + 7" {
+				layout [ size: 1185, 17 ]
+			}
+		}
+		edge checkdigit8: third_digit -> checkdigit {
+			label L52: "9: barcode[17] == 1 && barcode[18] == 0 && barcode[19] == 0 && barcode[20] == 1 && barcode[21] == 0 && barcode[22] == 0 && barcode[23] == 0 / number = number + 8" {
+				layout [ size: 1185, 17 ]
+			}
+		}
+		edge checkdigit9: third_digit -> checkdigit {
+			label L53: "10: barcode[17] == 1 && barcode[18] == 1 && barcode[19] == 1 && barcode[20] == 0 && barcode[21] == 1 && barcode[22] == 0 && barcode[23] == 0 / number = number + 9" {
+				layout [ size: 1193, 17 ]
+			}
+		}
+		edge fail0_g6216: third_digit -> fail {
+			label L54: "11: / `System.out.println(\"Third Digit not found!\")`" {
+				layout [ size: 344, 17 ]
+			}
+		}
+		edge debug0: checkdigit -> debug
+		edge done0: debug -> done {
+			label L55: "/ `System.out.println(\"Read: \" + number)`" {
+				layout [ size: 286, 17 ]
+			}
+		}
+		edge init0: done -> init {
+			label L56: "isRightDown" {
+				layout [ size: 91, 17 ]
+			}
+		}
+		edge done0_g8542: fail -> done {
+			label L57: "/ `System.out.println(\"\"+ barcode[0]  + barcode[1]  + barcode[2])`; `System.out.println(\"\"+ barcode[3]  + barcode[4]  + barcode[5]  + barcode[6]  + barcode[7]  + barcode[8]  + barcode[9])`; `System.out.println(\"\"+ barcode[10] + barcode[11] + barcode[12] + barcode[13] + barcode[14] + barcode[15] + barcode[16])`; `System.out.println(\"\"+ barcode[17] + barcode[18] + barcode[19] + barcode[20] + barcode[21] + barcode[22] + barcode[23] )`; `System.out.println(\"\"+ barcode[24] + barcode[25] + barcode[26] + barcode[27] + barcode[28] + barcode[29] + barcode[30])`; `System.out.println(\"\"+ barcode[31]  + barcode[32]  + barcode[33]  + barcode[34])`; `lejos.nxt.comm.RConsole.println(java.util.Arrays.toString(barcode))`; `lejos.nxt.comm.RConsole.println((index % durbuflen) + \": \" + java.util.Arrays.toString(durations))`" {
+				layout [ size: 5680, 17 ]
+			}
+		}
+	}
+}
+node N2 {
+	layout [ size: 534, 34 ]
+}
+edge E1: pwxvwphetqhwethhiqcldfhigaytnzzxpgknzifhnbe -> N2

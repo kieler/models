@@ -1,0 +1,396 @@
+graph G1
+node Elevator {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node moving_up {
+			algorithm: org.eclipse.elk.box
+			node N2 {
+				node done {
+					layout [ size: 56, 34 ]
+				}
+				node _Done {
+					layout [ size: 72, 40 ]
+				}
+				node __EA_Init {
+					layout [ size: 85, 34 ]
+				}
+				node init {
+					layout [ size: 42, 34 ]
+				}
+				node __sd_Depth1 {
+					layout [ size: 113, 34 ]
+				}
+				node __sd_S2 {
+					layout [ size: 80, 34 ]
+				}
+				edge _Done0: done -> _Done {
+					label L9: "/ MOVE_UP = false" {
+						layout [ size: 132, 17 ]
+					}
+				}
+				edge init0: __EA_Init -> init {
+					label L10: "/ MOVE_UP = true" {
+						layout [ size: 127, 17 ]
+					}
+				}
+				edge __sd_Depth10: init -> __sd_Depth1
+				edge done0: __sd_Depth1 -> done {
+					label L11: "1: BUTTON_ALARM" {
+						layout [ size: 140, 17 ]
+					}
+				}
+				edge __sd_S20: __sd_Depth1 -> __sd_S2 {
+					label L12: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge done0_g9990: __sd_S2 -> done {
+					label L13: "1: IS_UP" {
+						layout [ size: 60, 17 ]
+					}
+				}
+				edge init0_g3103: __sd_S2 -> init {
+					label L14: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+			}
+		}
+		node moving_down {
+			algorithm: org.eclipse.elk.box
+			node N3 {
+				node done1 {
+					layout [ size: 65, 34 ]
+				}
+				node _Done_g0220 {
+					layout [ size: 72, 40 ]
+				}
+				node __EA_Init1 {
+					layout [ size: 94, 34 ]
+				}
+				node init1 {
+					layout [ size: 51, 34 ]
+				}
+				node __sd_Depth2 {
+					layout [ size: 113, 34 ]
+				}
+				node __sd_S4 {
+					layout [ size: 80, 34 ]
+				}
+				edge _Done0_g8398: done1 -> _Done_g0220 {
+					label L15: "/ MOVE_DOWN = false" {
+						layout [ size: 158, 17 ]
+					}
+				}
+				edge init10: __EA_Init1 -> init1 {
+					label L16: "/ MOVE_DOWN = true" {
+						layout [ size: 153, 17 ]
+					}
+				}
+				edge __sd_Depth20: init1 -> __sd_Depth2
+				edge done10: __sd_Depth2 -> done1 {
+					label L17: "1: BUTTON_ALARM" {
+						layout [ size: 140, 17 ]
+					}
+				}
+				edge __sd_S40: __sd_Depth2 -> __sd_S4 {
+					label L18: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge done10_g1801: __sd_S4 -> done1 {
+					label L19: "1: IS_DOWN" {
+						layout [ size: 85, 17 ]
+					}
+				}
+				edge init10_g9339: __sd_S4 -> init1 {
+					label L20: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+			}
+		}
+		node alarm_then_up {
+			algorithm: org.eclipse.elk.box
+			node N4 {
+				node ^end {
+					layout [ size: 48, 34 ]
+				}
+				node _Done_g2824 {
+					layout [ size: 72, 40 ]
+				}
+				node __EA_Init2 {
+					layout [ size: 94, 34 ]
+				}
+				node init2 {
+					layout [ size: 51, 34 ]
+				}
+				node __sd_Depth3 {
+					layout [ size: 113, 34 ]
+				}
+				node _cdinit2 {
+					layout [ size: 76, 34 ]
+				}
+				node __sd_Depth4 {
+					layout [ size: 113, 34 ]
+				}
+				node _cdinit3 {
+					layout [ size: 76, 34 ]
+				}
+				node __sd_Depth5 {
+					layout [ size: 113, 34 ]
+				}
+				node _cdinit4 {
+					layout [ size: 76, 34 ]
+				}
+				node __sd_Depth6 {
+					layout [ size: 113, 34 ]
+				}
+				node _cdinit5 {
+					layout [ size: 76, 34 ]
+				}
+				node __sd_Depth7 {
+					layout [ size: 113, 34 ]
+				}
+				edge _Done0_g8011: ^end -> _Done_g2824 {
+					label L21: "/ ALARM_LAMP = false" {
+						layout [ size: 158, 17 ]
+					}
+				}
+				edge init20: __EA_Init2 -> init2 {
+					label L22: "/ ALARM_LAMP = true" {
+						layout [ size: 153, 17 ]
+					}
+				}
+				edge __sd_Depth30: init2 -> __sd_Depth3
+				edge _cdinit20: __sd_Depth3 -> _cdinit2 {
+					label L23: "1: SECOND" {
+						layout [ size: 81, 17 ]
+					}
+				}
+				edge init20_g6747: __sd_Depth3 -> init2 {
+					label L24: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __sd_Depth40: _cdinit2 -> __sd_Depth4
+				edge _cdinit30: __sd_Depth4 -> _cdinit3 {
+					label L25: "1: SECOND" {
+						layout [ size: 81, 17 ]
+					}
+				}
+				edge _cdinit20_g8173: __sd_Depth4 -> _cdinit2 {
+					label L26: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __sd_Depth50: _cdinit3 -> __sd_Depth5
+				edge _cdinit40: __sd_Depth5 -> _cdinit4 {
+					label L27: "1: SECOND" {
+						layout [ size: 81, 17 ]
+					}
+				}
+				edge _cdinit30_g4806: __sd_Depth5 -> _cdinit3 {
+					label L28: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __sd_Depth60: _cdinit4 -> __sd_Depth6
+				edge _cdinit50: __sd_Depth6 -> _cdinit5 {
+					label L29: "1: SECOND" {
+						layout [ size: 81, 17 ]
+					}
+				}
+				edge _cdinit40_g2282: __sd_Depth6 -> _cdinit4 {
+					label L30: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __sd_Depth70: _cdinit5 -> __sd_Depth7
+				edge end0: __sd_Depth7 -> ^end {
+					label L31: "1: SECOND" {
+						layout [ size: 81, 17 ]
+					}
+				}
+				edge _cdinit50_g7187: __sd_Depth7 -> _cdinit5 {
+					label L32: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+			}
+		}
+		node alarm_then_down {
+			algorithm: org.eclipse.elk.box
+			node N5 {
+				node end_g7463 {
+					layout [ size: 54, 40 ]
+				}
+				node __EA_Init3 {
+					layout [ size: 94, 34 ]
+				}
+				node __EA_C {
+					layout [ size: 74, 34 ]
+				}
+				node init3 {
+					layout [ size: 51, 34 ]
+				}
+				node __sd_Depth8 {
+					layout [ size: 113, 34 ]
+				}
+				node _cdinit21 {
+					layout [ size: 84, 34 ]
+				}
+				node __sd_Depth9 {
+					layout [ size: 113, 34 ]
+				}
+				node _cdinit31 {
+					layout [ size: 84, 34 ]
+				}
+				node __sd_Depth10_g6361 {
+					layout [ size: 121, 34 ]
+				}
+				node _cdinit41 {
+					layout [ size: 84, 34 ]
+				}
+				node __sd_Depth11 {
+					layout [ size: 120, 34 ]
+				}
+				node _cdinit51 {
+					layout [ size: 84, 34 ]
+				}
+				node __sd_Depth12 {
+					layout [ size: 121, 34 ]
+				}
+				edge __EA_C0: __EA_Init3 -> __EA_C {
+					label L33: "/ ALARM_LAMP = true" {
+						layout [ size: 153, 17 ]
+					}
+				}
+				edge init30: __EA_C -> init3 {
+					label L34: "/ ALARM_LAMP = false" {
+						layout [ size: 158, 17 ]
+					}
+				}
+				edge __sd_Depth80: init3 -> __sd_Depth8
+				edge _cdinit210: __sd_Depth8 -> _cdinit21 {
+					label L35: "1: SECOND" {
+						layout [ size: 81, 17 ]
+					}
+				}
+				edge init30_g3419: __sd_Depth8 -> init3 {
+					label L36: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __sd_Depth90: _cdinit21 -> __sd_Depth9
+				edge _cdinit310: __sd_Depth9 -> _cdinit31 {
+					label L37: "1: SECOND" {
+						layout [ size: 81, 17 ]
+					}
+				}
+				edge _cdinit210_g6561: __sd_Depth9 -> _cdinit21 {
+					label L38: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __sd_Depth100: _cdinit31 -> __sd_Depth10_g6361
+				edge _cdinit410: __sd_Depth10_g6361 -> _cdinit41 {
+					label L39: "1: SECOND" {
+						layout [ size: 81, 17 ]
+					}
+				}
+				edge _cdinit310_g3671: __sd_Depth10_g6361 -> _cdinit31 {
+					label L40: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __sd_Depth110: _cdinit41 -> __sd_Depth11
+				edge _cdinit510: __sd_Depth11 -> _cdinit51 {
+					label L41: "1: SECOND" {
+						layout [ size: 81, 17 ]
+					}
+				}
+				edge _cdinit410_g4181: __sd_Depth11 -> _cdinit41 {
+					label L42: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __sd_Depth120: _cdinit51 -> __sd_Depth12
+				edge end0_g4186: __sd_Depth12 -> end_g7463 {
+					label L43: "1: SECOND" {
+						layout [ size: 81, 17 ]
+					}
+				}
+				edge _cdinit510_g9768: __sd_Depth12 -> _cdinit51 {
+					label L44: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+			}
+		}
+		node _AC {
+			layout [ size: 48, 34 ]
+		}
+		node _AC1 {
+			layout [ size: 57, 34 ]
+		}
+		node down {
+			layout [ size: 59, 34 ]
+		}
+		node __sd_Depth {
+			layout [ size: 105, 34 ]
+		}
+		node up {
+			layout [ size: 39, 34 ]
+		}
+		node __sd_Depth13 {
+			layout [ size: 121, 34 ]
+		}
+		edge _AC0: moving_up -> _AC
+		edge _AC10: moving_down -> _AC1
+		edge moving_up0: alarm_then_up -> moving_up
+		edge moving_down0: alarm_then_down -> moving_down
+		edge alarm_then_up0: _AC -> alarm_then_up {
+			label L1: "1: BUTTON_ALARM" {
+				layout [ size: 140, 17 ]
+			}
+		}
+		edge up0: _AC -> up {
+			label L2: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge alarm_then_down0: _AC1 -> alarm_then_down {
+			label L3: "1: BUTTON_ALARM" {
+				layout [ size: 140, 17 ]
+			}
+		}
+		edge up0_g1826: _AC1 -> up {
+			label L4: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge __sd_Depth0: down -> __sd_Depth
+		edge moving_up0_g5658: __sd_Depth -> moving_up {
+			label L5: "1: BUTTON_UP" {
+				layout [ size: 111, 17 ]
+			}
+		}
+		edge down0: __sd_Depth -> down {
+			label L6: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge __sd_Depth130: up -> __sd_Depth13
+		edge moving_down0_g3509: __sd_Depth13 -> moving_down {
+			label L7: "1: BUTTON_DOWN" {
+				layout [ size: 136, 17 ]
+			}
+		}
+		edge up0_g7816: __sd_Depth13 -> up {
+			label L8: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+	}
+}

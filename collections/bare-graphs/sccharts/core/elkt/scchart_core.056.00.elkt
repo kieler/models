@@ -1,0 +1,427 @@
+graph G1
+node tmyqoudczvpxkrnbsgvphycn {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node __sd_Depth {
+			algorithm: org.eclipse.elk.box
+			node DomeLight {
+				node __te_S {
+					layout [ size: 69, 34 ]
+				}
+				node __te_S1 {
+					layout [ size: 77, 34 ]
+				}
+				node __te_S2 {
+					layout [ size: 77, 34 ]
+				}
+				node __te_S3 {
+					layout [ size: 77, 34 ]
+				}
+				node DoorClosedLightOff {
+					layout [ size: 163, 34 ]
+				}
+				node __sd_Depth1 {
+					layout [ size: 113, 34 ]
+				}
+				node DoorOpenLightOn {
+					layout [ size: 152, 34 ]
+				}
+				node __sd_Depth2 {
+					layout [ size: 113, 34 ]
+				}
+				node DoorClosedLightOn {
+					layout [ size: 163, 34 ]
+				}
+				node __sd_Depth3 {
+					layout [ size: 113, 34 ]
+				}
+				node __sd_S4 {
+					layout [ size: 80, 34 ]
+				}
+				node __sd_S5 {
+					layout [ size: 80, 34 ]
+				}
+				edge DoorOpenLightOn0: __te_S -> DoorOpenLightOn {
+					label L1: "/ light = true" {
+						layout [ size: 85, 17 ]
+					}
+				}
+				edge DoorClosedLightOn0: __te_S1 -> DoorClosedLightOn {
+					label L2: "/ lightTimer = 0" {
+						layout [ size: 106, 17 ]
+					}
+				}
+				edge DoorClosedLightOn0_g3924: __te_S2 -> DoorClosedLightOn {
+					label L3: "/ lightTimer += 1" {
+						layout [ size: 115, 17 ]
+					}
+				}
+				edge DoorClosedLightOff0: __te_S3 -> DoorClosedLightOff {
+					label L4: "/ light = false" {
+						layout [ size: 90, 17 ]
+					}
+				}
+				edge __sd_Depth10: DoorClosedLightOff -> __sd_Depth1
+				edge __te_S0: __sd_Depth1 -> __te_S {
+					label L5: "1: open" {
+						layout [ size: 53, 17 ]
+					}
+				}
+				edge DoorClosedLightOff0_g5685: __sd_Depth1 -> DoorClosedLightOff {
+					label L6: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __sd_Depth20: DoorOpenLightOn -> __sd_Depth2
+				edge __te_S10: __sd_Depth2 -> __te_S1 {
+					label L7: "1: closed" {
+						layout [ size: 64, 17 ]
+					}
+				}
+				edge DoorOpenLightOn0_g1535: __sd_Depth2 -> DoorOpenLightOn {
+					label L8: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __sd_Depth30: DoorClosedLightOn -> __sd_Depth3
+				edge __te_S20: __sd_Depth3 -> __te_S2 {
+					label L9: "1: !open && closed && lightTimer + 1 < 4" {
+						layout [ size: 286, 17 ]
+					}
+				}
+				edge __sd_S40: __sd_Depth3 -> __sd_S4 {
+					label L10: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __te_S30: __sd_S4 -> __te_S3 {
+					label L11: "1: !open && closed && lightTimer < 4 && lightTimer >= 3" {
+						layout [ size: 397, 17 ]
+					}
+				}
+				edge __sd_S50: __sd_S4 -> __sd_S5 {
+					label L12: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge DoorOpenLightOn0_g5031: __sd_S5 -> DoorOpenLightOn {
+					label L13: "1: open && lightTimer < 4" {
+						layout [ size: 180, 17 ]
+					}
+				}
+				edge DoorClosedLightOn0_g5884: __sd_S5 -> DoorClosedLightOn {
+					label L14: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+			}
+			node SeatbeltBeeper {
+				node LightOnAndBeep {
+					algorithm: org.eclipse.elk.box
+					node __EA_Entry {
+						node __EA_Main {
+							algorithm: org.eclipse.elk.box
+							node _During {
+								node _I {
+									layout [ size: 34, 34 ]
+								}
+								node _AAborted {
+									layout [ size: 100, 40 ]
+								}
+								node __te_S7 {
+									layout [ size: 77, 34 ]
+								}
+								node __sd_Pause5 {
+									layout [ size: 114, 34 ]
+								}
+								node __sd_Depth5 {
+									layout [ size: 113, 34 ]
+								}
+								edge _AAborted0: _I -> _AAborted {
+									label L38: "1: (ojqnvrizegzmzgdemzerputsmlmiumpywugpyi || ojqnvrizegzmzgdemzerputsmlmiumpywugpyi1) || ojqnvrizegzmzgdemzerputsmlmiumpywugpyi2" {
+										layout [ size: 972, 17 ]
+									}
+								}
+								edge __sd_Pause50: _I -> __sd_Pause5 {
+									label L39: "2:" {
+										layout [ size: 13, 17 ]
+									}
+								}
+								edge _I0: __te_S7 -> _I {
+									label L40: "/ beepTimer += 1" {
+										layout [ size: 120, 17 ]
+									}
+								}
+								edge __sd_Depth50: __sd_Pause5 -> __sd_Depth5
+								edge __te_S70: __sd_Depth5 -> __te_S7 {
+									label L41: "1: beepTimer < 30" {
+										layout [ size: 127, 17 ]
+									}
+								}
+								edge _I0_g3637: __sd_Depth5 -> _I {
+									label L42: "2:" {
+										layout [ size: 13, 17 ]
+									}
+								}
+							}
+							node _ACtrl {
+								node _ADone {
+									layout [ size: 81, 40 ]
+								}
+								node __te_S8 {
+									layout [ size: 77, 34 ]
+								}
+								node __te_S9 {
+									layout [ size: 77, 34 ]
+								}
+								node __te_S10_g1233 {
+									layout [ size: 85, 34 ]
+								}
+								node _ARun {
+									layout [ size: 67, 34 ]
+								}
+								node __sd_Depth6 {
+									layout [ size: 113, 34 ]
+								}
+								node __sd_S10 {
+									layout [ size: 88, 34 ]
+								}
+								node __sd_S11 {
+									layout [ size: 87, 34 ]
+								}
+								edge _ADone0: __te_S8 -> _ADone {
+									label L43: "/ ezcqklktffstdndtpigodrrrloeujyysontsva = true" {
+										layout [ size: 353, 17 ]
+									}
+								}
+								edge _ADone0_g0775: __te_S9 -> _ADone {
+									label L44: "/ nfranreynzngesrcvigqwtzkeauqwwrbpoqghcl = true" {
+										layout [ size: 361, 17 ]
+									}
+								}
+								edge _ADone0_g3192: __te_S10_g1233 -> _ADone {
+									label L45: "/ redvcdekbvpxkpmxwkkmbctmfygzxiqexmpcmbo = true" {
+										layout [ size: 361, 17 ]
+									}
+								}
+								edge __sd_Depth60: _ARun -> __sd_Depth6
+								edge __te_S80: __sd_Depth6 -> __te_S8 {
+									label L46: "1: beepTimer >= 30" {
+										layout [ size: 136, 17 ]
+									}
+								}
+								edge __sd_S100: __sd_Depth6 -> __sd_S10 {
+									label L47: "2:" {
+										layout [ size: 13, 17 ]
+									}
+								}
+								edge __te_S90: __sd_S10 -> __te_S9 {
+									label L48: "1: beepTimer < 30 && warn == \"warn\"" {
+										layout [ size: 265, 17 ]
+									}
+								}
+								edge __sd_S110: __sd_S10 -> __sd_S11 {
+									label L49: "2:" {
+										layout [ size: 13, 17 ]
+									}
+								}
+								edge __te_S100: __sd_S11 -> __te_S10_g1233 {
+									label L50: "1: warn == \"noWarn\"" {
+										layout [ size: 144, 17 ]
+									}
+								}
+								edge _ARun0: __sd_S11 -> _ARun {
+									label L51: "2:" {
+										layout [ size: 13, 17 ]
+									}
+								}
+							}
+						}
+						node __EA_Init {
+							layout [ size: 85, 34 ]
+						}
+						node __EA_Done {
+							layout [ size: 107, 40 ]
+						}
+						node __EA_C {
+							layout [ size: 74, 34 ]
+						}
+						node __EA_C1 {
+							layout [ size: 83, 34 ]
+						}
+						edge __EA_Done0: __EA_Main -> __EA_Done
+						edge __EA_C0: __EA_Init -> __EA_C {
+							label L35: "/ vtyxgpvhtfsvhgrfoxcdrqocpudyrgctpjzeao = false" {
+								layout [ size: 358, 17 ]
+							}
+						}
+						edge __EA_C10: __EA_C -> __EA_C1 {
+							label L36: "/ zurgfupiivnsnyspphqueranasvwyqhrxidjwzy = false" {
+								layout [ size: 366, 17 ]
+							}
+						}
+						edge __EA_Main0: __EA_C1 -> __EA_Main {
+							label L37: "/ vgybkfomdvdqwrszseeofaejpluxixprecrmanj = false" {
+								layout [ size: 366, 17 ]
+							}
+						}
+					}
+				}
+				node __sd_Depth8 {
+					layout [ size: 113, 34 ]
+				}
+				node __te_S4 {
+					layout [ size: 77, 34 ]
+				}
+				node __te_S5 {
+					layout [ size: 77, 34 ]
+				}
+				node __te_S6 {
+					layout [ size: 77, 34 ]
+				}
+				node __te_S11 {
+					layout [ size: 84, 34 ]
+				}
+				node __te_S12 {
+					layout [ size: 85, 34 ]
+				}
+				node __te_S13 {
+					layout [ size: 85, 34 ]
+				}
+				node __te_S14 {
+					layout [ size: 85, 34 ]
+				}
+				node __te_S15 {
+					layout [ size: 85, 34 ]
+				}
+				node __sd_S15 {
+					layout [ size: 88, 34 ]
+				}
+				node __te_S17 {
+					layout [ size: 85, 34 ]
+				}
+				node NoWarning {
+					layout [ size: 98, 34 ]
+				}
+				node __sd_Depth4 {
+					layout [ size: 113, 34 ]
+				}
+				node LightOn {
+					layout [ size: 78, 34 ]
+				}
+				node __sd_Depth7 {
+					layout [ size: 113, 34 ]
+				}
+				node __sd_S13 {
+					layout [ size: 88, 34 ]
+				}
+				node __sd_S14 {
+					layout [ size: 88, 34 ]
+				}
+				edge __sd_Depth80: LightOnAndBeep -> __sd_Depth8
+				edge __te_S140: __sd_Depth8 -> __te_S14 {
+					label L15: "1: pjujrxmgxibhnynbazlqgchtpoywddnkxpwjfd" {
+						layout [ size: 316, 17 ]
+					}
+				}
+				edge __sd_S140: __sd_Depth8 -> __sd_S14 {
+					label L16: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __te_S50: __te_S4 -> __te_S5 {
+					label L17: "/ beepTimer = 0" {
+						layout [ size: 111, 17 ]
+					}
+				}
+				edge __te_S60: __te_S5 -> __te_S6 {
+					label L18: "/ warningLight = true" {
+						layout [ size: 146, 17 ]
+					}
+				}
+				edge LightOnAndBeep0: __te_S6 -> LightOnAndBeep {
+					label L19: "/ beepSound = true" {
+						layout [ size: 136, 17 ]
+					}
+				}
+				edge __te_S120: __te_S11 -> __te_S12 {
+					label L20: "/ beepSound = true" {
+						layout [ size: 136, 17 ]
+					}
+				}
+				edge LightOnAndBeep0_g1647: __te_S12 -> LightOnAndBeep {
+					label L21: "/ beepTimer = 0" {
+						layout [ size: 111, 17 ]
+					}
+				}
+				edge NoWarning0: __te_S13 -> NoWarning {
+					label L22: "/ warningLight = false" {
+						layout [ size: 151, 17 ]
+					}
+				}
+				edge LightOn0: __te_S14 -> LightOn {
+					label L23: "/ beepSound = false" {
+						layout [ size: 141, 17 ]
+					}
+				}
+				edge LightOnAndBeep0_g1825: __te_S15 -> LightOnAndBeep {
+					label L24: "/ beepTimer = 0" {
+						layout [ size: 111, 17 ]
+					}
+				}
+				edge __te_S170: __sd_S15 -> __te_S17 {
+					label L25: "/ beepSound = false" {
+						layout [ size: 141, 17 ]
+					}
+				}
+				edge NoWarning0_g8586: __te_S17 -> NoWarning {
+					label L26: "/ warningLight = false" {
+						layout [ size: 151, 17 ]
+					}
+				}
+				edge __sd_Depth40: NoWarning -> __sd_Depth4
+				edge __te_S40: __sd_Depth4 -> __te_S4 {
+					label L27: "1: warn == \"warn\"" {
+						layout [ size: 125, 17 ]
+					}
+				}
+				edge NoWarning0_g1922: __sd_Depth4 -> NoWarning {
+					label L28: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __sd_Depth70: LightOn -> __sd_Depth7
+				edge __te_S110: __sd_Depth7 -> __te_S11 {
+					label L29: "1: warn == \"warn\"" {
+						layout [ size: 125, 17 ]
+					}
+				}
+				edge __sd_S130: __sd_Depth7 -> __sd_S13 {
+					label L30: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __te_S130: __sd_S13 -> __te_S13 {
+					label L31: "1: warn == \"noWarn\"" {
+						layout [ size: 144, 17 ]
+					}
+				}
+				edge LightOn0_g3942: __sd_S13 -> LightOn {
+					label L32: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __te_S150: __sd_S14 -> __te_S15 {
+					label L33: "1: pobxfjmdzmntjpatrmoqyuvjzlreqqynbaedyvc" {
+						layout [ size: 324, 17 ]
+					}
+				}
+				edge __sd_S150: __sd_S14 -> __sd_S15 {
+					label L34: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+			}
+		}
+	}
+}

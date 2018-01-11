@@ -1,0 +1,288 @@
+graph G1
+node BarCodeProgram {
+	algorithm: org.eclipse.elk.box
+	node countTime {
+		node init {
+			layout [ size: 42, 34 ]
+		}
+		edge init0: init -> init {
+			label L1: "/ runtime = runtime + 1" {
+				layout [ size: 159, 17 ]
+			}
+		}
+	}
+	node Main {
+		node searchStart {
+			layout [ size: 171, 65 ]
+		}
+		node startD1 {
+			layout [ size: 227, 50 ]
+		}
+		node startL1 {
+			layout [ size: 416, 50 ]
+		}
+		node startD2 {
+			layout [ size: 416, 50 ]
+		}
+		node readSpace0 {
+			layout [ size: 272, 50 ]
+		}
+		node readSpace1 {
+			layout [ size: 272, 50 ]
+		}
+		node readSpace2 {
+			layout [ size: 272, 50 ]
+		}
+		node readSpace3 {
+			layout [ size: 272, 50 ]
+		}
+		node interpretDigit {
+			layout [ size: 277, 50 ]
+		}
+		node setDigit {
+			layout [ size: 75, 34 ]
+		}
+		node checkNumber {
+			layout [ size: 343, 65 ]
+		}
+		node finish {
+			layout [ size: 229, 86 ]
+		}
+		node error {
+			layout [ size: 56, 34 ]
+		}
+		edge startD10: searchStart -> startD1 {
+			label L2: "darkEdge" {
+				layout [ size: 68, 17 ]
+			}
+		}
+		edge startL10: startD1 -> startL1 {
+			label L3: "lightEdge" {
+				layout [ size: 68, 17 ]
+			}
+		}
+		edge startD20: startL1 -> startD2 {
+			label L4: "darkEdge" {
+				layout [ size: 68, 17 ]
+			}
+		}
+		edge readSpace00: startD2 -> readSpace0 {
+			label L5: "lightEdge" {
+				layout [ size: 68, 17 ]
+			}
+		}
+		edge readSpace10: readSpace0 -> readSpace1 {
+			label L6: "1: darkEdge && duration < singleReadDuration * 1.4 / space0 = 1" {
+				layout [ size: 453, 17 ]
+			}
+		}
+		edge readSpace11: readSpace0 -> readSpace1 {
+			label L7: "2: darkEdge && duration < singleReadDuration * 2.4 / space0 = 2" {
+				layout [ size: 453, 17 ]
+			}
+		}
+		edge readSpace12: readSpace0 -> readSpace1 {
+			label L8: "3: darkEdge && duration < singleReadDuration * 3.4 / space0 = 3" {
+				layout [ size: 453, 17 ]
+			}
+		}
+		edge error0: readSpace0 -> error {
+			label L9: "4: darkEdge / `System.out.println(\"duration:\"+duration+\",\"+singleReadDuration)`" {
+				layout [ size: 566, 17 ]
+			}
+		}
+		edge readSpace20: readSpace1 -> readSpace2 {
+			label L10: "1: lightEdge && duration < singleReadDuration * 1.4 / space1 = 1" {
+				layout [ size: 453, 17 ]
+			}
+		}
+		edge readSpace21: readSpace1 -> readSpace2 {
+			label L11: "2: lightEdge && duration < singleReadDuration * 2.4 / space1 = 2" {
+				layout [ size: 453, 17 ]
+			}
+		}
+		edge readSpace22: readSpace1 -> readSpace2 {
+			label L12: "3: lightEdge && duration < singleReadDuration * 3.4 / space1 = 3" {
+				layout [ size: 453, 17 ]
+			}
+		}
+		edge readSpace23: readSpace1 -> readSpace2 {
+			label L13: "4: lightEdge && duration < singleReadDuration * 4.4 / space1 = 4" {
+				layout [ size: 453, 17 ]
+			}
+		}
+		edge error0_g3625: readSpace1 -> error {
+			label L14: "5: lightEdge / `System.out.println(\"duration:\"+duration+\",\"+singleReadDuration)`" {
+				layout [ size: 566, 17 ]
+			}
+		}
+		edge readSpace30: readSpace2 -> readSpace3 {
+			label L15: "1: darkEdge && duration < singleReadDuration * 1.4 / space2 = 1" {
+				layout [ size: 453, 17 ]
+			}
+		}
+		edge readSpace31: readSpace2 -> readSpace3 {
+			label L16: "2: darkEdge && duration < singleReadDuration * 2.4 / space2 = 2" {
+				layout [ size: 453, 17 ]
+			}
+		}
+		edge readSpace32: readSpace2 -> readSpace3 {
+			label L17: "3: darkEdge && duration < singleReadDuration * 3.4 / space2 = 3" {
+				layout [ size: 453, 17 ]
+			}
+		}
+		edge error0_g0856: readSpace2 -> error {
+			label L18: "4: darkEdge / `System.out.println(\"duration:\"+duration+\",\"+singleReadDuration)`" {
+				layout [ size: 566, 17 ]
+			}
+		}
+		edge interpretDigit0: readSpace3 -> interpretDigit {
+			label L19: "1: lightEdge && duration < singleReadDuration * 1.4 / space3 = 1" {
+				layout [ size: 453, 17 ]
+			}
+		}
+		edge interpretDigit1: readSpace3 -> interpretDigit {
+			label L20: "2: lightEdge && duration < singleReadDuration * 2.4 / space3 = 2" {
+				layout [ size: 453, 17 ]
+			}
+		}
+		edge interpretDigit2: readSpace3 -> interpretDigit {
+			label L21: "3: lightEdge && duration < singleReadDuration * 3.4 / space3 = 3" {
+				layout [ size: 453, 17 ]
+			}
+		}
+		edge interpretDigit3: readSpace3 -> interpretDigit {
+			label L22: "4: lightEdge && duration < singleReadDuration * 4.4 / space3 = 4" {
+				layout [ size: 453, 17 ]
+			}
+		}
+		edge error0_g2268: readSpace3 -> error {
+			label L23: "5: darkEdge / `System.out.println(\"duration:\"+duration+\",\"+singleReadDuration)`" {
+				layout [ size: 566, 17 ]
+			}
+		}
+		edge finish0: interpretDigit -> finish {
+			label L24: "1: space0 == 1 && space1 == 1 && space2 == 1 && space3 == 1" {
+				layout [ size: 443, 17 ]
+			}
+		}
+		edge setDigit0: interpretDigit -> setDigit {
+			label L25: "2: space0 == 3 && space1 == 2 && space2 == 1 && space3 == 1 / digitValue = 0" {
+				layout [ size: 549, 17 ]
+			}
+		}
+		edge setDigit1: interpretDigit -> setDigit {
+			label L26: "3: space0 == 2 && space1 == 2 && space2 == 2 && space3 == 1 / digitValue = 1" {
+				layout [ size: 549, 17 ]
+			}
+		}
+		edge setDigit2: interpretDigit -> setDigit {
+			label L27: "4: space0 == 2 && space1 == 1 && space2 == 2 && space3 == 2 / digitValue = 2" {
+				layout [ size: 549, 17 ]
+			}
+		}
+		edge setDigit3: interpretDigit -> setDigit {
+			label L28: "5: space0 == 1 && space1 == 4 && space2 == 1 && space3 == 1 / digitValue = 3" {
+				layout [ size: 549, 17 ]
+			}
+		}
+		edge setDigit4: interpretDigit -> setDigit {
+			label L29: "6: space0 == 1 && space1 == 1 && space2 == 3 && space3 == 2 / digitValue = 4" {
+				layout [ size: 549, 17 ]
+			}
+		}
+		edge setDigit5: interpretDigit -> setDigit {
+			label L30: "7: space0 == 1 && space1 == 2 && space2 == 3 && space3 == 1 / digitValue = 5" {
+				layout [ size: 549, 17 ]
+			}
+		}
+		edge setDigit6: interpretDigit -> setDigit {
+			label L31: "8: space0 == 1 && space1 == 1 && space2 == 1 && space3 == 4 / digitValue = 6" {
+				layout [ size: 549, 17 ]
+			}
+		}
+		edge setDigit7: interpretDigit -> setDigit {
+			label L32: "9: space0 == 1 && space1 == 3 && space2 == 1 && space3 == 2 / digitValue = 7" {
+				layout [ size: 549, 17 ]
+			}
+		}
+		edge setDigit8: interpretDigit -> setDigit {
+			label L33: "10: space0 == 1 && space1 == 2 && space2 == 1 && space3 == 3 / digitValue = 8" {
+				layout [ size: 557, 17 ]
+			}
+		}
+		edge setDigit9: interpretDigit -> setDigit {
+			label L34: "11: space0 == 3 && space1 == 1 && space2 == 1 && space3 == 2 / digitValue = 9" {
+				layout [ size: 556, 17 ]
+			}
+		}
+		edge error0_g6104: interpretDigit -> error {
+			label L35: "12: / `System.out.println(\"not a digit:\"+space0+\",\"+space1+\",\"+space2+\",\"+space3+\"|\"+singleReadDuration)`" {
+				layout [ size: 762, 17 ]
+			}
+		}
+		edge error0_g2369: setDigit -> error {
+			label L36: "1: digitValue < 0 || digitValue > 9 / `System.out.println(\"not a value!\");`" {
+				layout [ size: 480, 17 ]
+			}
+		}
+		edge readSpace00_g9814: setDigit -> readSpace0 {
+			label L37: "2: digit0 == -1 / digit0 = digitValue" {
+				layout [ size: 231, 17 ]
+			}
+		}
+		edge readSpace01: setDigit -> readSpace0 {
+			label L38: "3: digit1 == -1 / digit1 = digitValue" {
+				layout [ size: 231, 17 ]
+			}
+		}
+		edge readSpace02: setDigit -> readSpace0 {
+			label L39: "4: digit2 == -1 / digit2 = digitValue" {
+				layout [ size: 231, 17 ]
+			}
+		}
+		edge checkNumber0: setDigit -> checkNumber {
+			label L40: "5: digit3 == -1 / digit3 = digitValue" {
+				layout [ size: 231, 17 ]
+			}
+		}
+		edge finish0_g7915: checkNumber -> finish {
+			label L41: "1: checkSum == digit3 && barCodeValue < 500 / `System.out.println(\"bar code:\"+barCodeValue)`" {
+				layout [ size: 672, 17 ]
+			}
+		}
+		edge finish1: checkNumber -> finish {
+			label L42: "2: checkSum == digit3 && barCodeValue >= 500 / `System.out.println(\"bar code:\"+(barCodeValue-1000))`" {
+				layout [ size: 728, 17 ]
+			}
+		}
+		edge error0_g1804: checkNumber -> error {
+			label L43: "3: checkSum != digit3 / `System.out.println(\"wrong checksum\");`" {
+				layout [ size: 446, 17 ]
+			}
+		}
+		edge finish0_g4167: error -> finish {
+			label L44: "/ `System.out.print(\"error\")`" {
+				layout [ size: 193, 17 ]
+			}
+		}
+	}
+	node ReadLightDark {
+		node light {
+			layout [ size: 227, 65 ]
+		}
+		node dark {
+			layout [ size: 227, 65 ]
+		}
+		edge dark0: light -> dark {
+			label L45: "lightPerCent < 50 / darkEdge = true" {
+				layout [ size: 249, 17 ]
+			}
+		}
+		edge light0: dark -> light {
+			label L46: "lightPerCent > 60 / lightEdge = true" {
+				layout [ size: 249, 17 ]
+			}
+		}
+	}
+}

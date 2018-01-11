@@ -1,0 +1,40 @@
+graph G1
+node elevator2 {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node waiting {
+			layout [ size: 71, 34 ]
+		}
+		node moving {
+			layout [ size: 73, 34 ]
+		}
+		node alarm {
+			layout [ size: 293, 65 ]
+		}
+		edge moving0: waiting -> moving {
+			label L1: "1: ButtonDown / Move = -1" {
+				layout [ size: 187, 17 ]
+			}
+		}
+		edge moving1: waiting -> moving {
+			label L2: "2: ButtonUp / Move = 1" {
+				layout [ size: 162, 17 ]
+			}
+		}
+		edge alarm0: moving -> alarm {
+			label L3: "1: ButtonAlarm / AlarmLamp = true" {
+				layout [ size: 237, 17 ]
+			}
+		}
+		edge waiting0: moving -> waiting {
+			label L4: "2: IsUp || IsDown / Move = 0" {
+				layout [ size: 194, 17 ]
+			}
+		}
+		edge moving0_g1190: alarm -> moving {
+			label L5: "5 Second / Move = prevMovement; AlarmLamp = false" {
+				layout [ size: 378, 17 ]
+			}
+		}
+	}
+}

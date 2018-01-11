@@ -1,0 +1,180 @@
+graph G1
+node BarCodeReader {
+	algorithm: org.eclipse.elk.box
+	node sensor {
+		node initInit {
+			layout [ size: 64, 34 ]
+		}
+		node initS {
+			layout [ size: 53, 34 ]
+		}
+		edge initS0: initInit -> initS {
+			label L1: "/ toLight = true; motor1 = 10; motor2 = 10" {
+				layout [ size: 285, 17 ]
+			}
+		}
+		edge initS0_g9246: initS -> initS {
+			label L2: "1: lightSensor >= lightBuffer & toLight / toLight = true; toDark = false; lightBuffer = lightSensor" {
+				layout [ size: 666, 17 ]
+			}
+		}
+		edge initS1: initS -> initS {
+			label L3: "2: lightSensor >= lightBuffer & toDark / dark = true; toLight = true; toDark = false; lightBuffer = lightSensor" {
+				layout [ size: 748, 17 ]
+			}
+		}
+		edge initS2: initS -> initS {
+			label L4: "3: lightSensor < lightBuffer & toDark / toDark = true; toLight = false; lightBuffer = lightSensor" {
+				layout [ size: 654, 17 ]
+			}
+		}
+		edge initS3: initS -> initS {
+			label L5: "4: lightSensor < lightBuffer & toLight / light = true; toDark = true; lightBuffer = lightSensor" {
+				layout [ size: 633, 17 ]
+			}
+		}
+		edge initS4: initS -> initS {
+			label L6: "5: end / motor1 = 0; motor2 = 0" {
+				layout [ size: 212, 17 ]
+			}
+		}
+	}
+	node decode {
+		node intitD {
+			layout [ size: 58, 34 ]
+		}
+		node startDel {
+			layout [ size: 77, 34 ]
+		}
+		node startDigit {
+			layout [ size: 85, 34 ]
+		}
+		node digit {
+			layout [ size: 51, 34 ]
+		}
+		node digitCheck {
+			layout [ size: 97, 34 ]
+		}
+		node endDel {
+			layout [ size: 72, 34 ]
+		}
+		node ^end {
+			layout [ size: 54, 40 ]
+		}
+		edge startDel0: intitD -> startDel {
+			label L7: "dark / count = count + 1" {
+				layout [ size: 166, 17 ]
+			}
+		}
+		edge startDel0_g9061: startDel -> startDel {
+			label L8: "1: light & count == 1 / count = count + 1" {
+				layout [ size: 275, 17 ]
+			}
+		}
+		edge startDigit0: startDel -> startDigit {
+			label L9: "2: dark & count == 2 / count = 0" {
+				layout [ size: 218, 17 ]
+			}
+		}
+		edge digit0: startDigit -> digit {
+			label L10: "light / count = 0; in[count] = true" {
+				layout [ size: 225, 17 ]
+			}
+		}
+		edge digit0_g3797: digit -> digit {
+			label L11: "1: light / count = count + 1; in[count] = true" {
+				layout [ size: 298, 17 ]
+			}
+		}
+		edge digit1: digit -> digit {
+			label L12: "2: dark / count = count + 1; in[count] = false" {
+				layout [ size: 303, 17 ]
+			}
+		}
+		edge digitCheck0: digit -> digitCheck {
+			label L13: "3: count == 6 | digitCount == 1 / count = 0; digitCount = digitCount + 1" {
+				layout [ size: 486, 17 ]
+			}
+		}
+		edge digitCheck1: digit -> digitCheck {
+			label L14: "4: count == 6 | digitCount == 2 / count = 0; digitCount = digitCount + 1" {
+				layout [ size: 486, 17 ]
+			}
+		}
+		edge digitCheck2: digit -> digitCheck {
+			label L15: "5: count == 6 | digitCount == 3 / count = 0; digitCount = digitCount + 1" {
+				layout [ size: 486, 17 ]
+			}
+		}
+		edge digitCheck3: digit -> digitCheck {
+			label L16: "6: count == 6 | digitCount == 4 / count = 0; end = true" {
+				layout [ size: 368, 17 ]
+			}
+		}
+		edge endDel0: digit -> endDel {
+			label L17: "7: end" {
+				layout [ size: 44, 17 ]
+			}
+		}
+		edge startDigit0_g1376: digitCheck -> startDigit {
+			label L18: "1: in[0] == true & in[1] == true & in[2] == true & in[3] == false & in[4] == false & in[5] == true & in[6] == false / d[digitCount] = 0" {
+				layout [ size: 878, 17 ]
+			}
+		}
+		edge startDigit1: digitCheck -> startDigit {
+			label L19: "2: in[0] == true & in[1] == true & in[2] == false & in[3] == false & in[4] == true & in[5] == true & in[6] == false / d[digitCount] = 1" {
+				layout [ size: 878, 17 ]
+			}
+		}
+		edge startDigit2: digitCheck -> startDigit {
+			label L20: "3: in[0] == true & in[1] == true & in[2] == false & in[3] == true & in[4] == true & in[5] == false & in[6] == false / d[digitCount] = 2" {
+				layout [ size: 878, 17 ]
+			}
+		}
+		edge startDigit3: digitCheck -> startDigit {
+			label L21: "4: in[0] == true & in[1] == false & in[2] == false & in[3] == false & in[4] == false & in[5] == true & in[6] == false / d[digitCount] = 3" {
+				layout [ size: 888, 17 ]
+			}
+		}
+		edge startDigit4: digitCheck -> startDigit {
+			label L22: "5: in[0] == true & in[1] == false & in[2] == true & in[3] == true & in[4] == true & in[5] == false & in[6] == false / d[digitCount] = 4" {
+				layout [ size: 878, 17 ]
+			}
+		}
+		edge startDigit5: digitCheck -> startDigit {
+			label L23: "6: in[0] == true & in[1] == false & in[2] == false & in[3] == true & in[4] == true & in[5] == true & in[6] == false / d[digitCount] = 5" {
+				layout [ size: 878, 17 ]
+			}
+		}
+		edge startDigit6: digitCheck -> startDigit {
+			label L24: "7: in[0] == true & in[1] == false & in[2] == true & in[3] == false & in[4] == false & in[5] == false & in[6] == false / d[digitCount] = 6" {
+				layout [ size: 888, 17 ]
+			}
+		}
+		edge startDigit7: digitCheck -> startDigit {
+			label L25: "8: in[0] == true & in[1] == false & in[2] == false & in[3] == false & in[4] == true & in[5] == false & in[6] == false / d[digitCount] = 7" {
+				layout [ size: 888, 17 ]
+			}
+		}
+		edge startDigit8: digitCheck -> startDigit {
+			label L26: "9: in[0] == true & in[1] == false & in[2] == false & in[3] == true & in[4] == false & in[5] == false & in[6] == false / d[digitCount] = 8" {
+				layout [ size: 888, 17 ]
+			}
+		}
+		edge startDigit9: digitCheck -> startDigit {
+			label L27: "10: in[0] == true & in[1] == true & in[2] == true & in[3] == false & in[4] == true & in[5] == false & in[6] == false / d[digitCount] = 9" {
+				layout [ size: 886, 17 ]
+			}
+		}
+		edge endDel0_g3708: endDel -> endDel {
+			label L28: "1: light & (count == 1 | count == 3) / count = count + 1" {
+				layout [ size: 371, 17 ]
+			}
+		}
+		edge end0: endDel -> ^end {
+			label L29: "2: dark & (count == 2 | count == 4) / count = 0; end = true" {
+				layout [ size: 394, 17 ]
+			}
+		}
+	}
+}

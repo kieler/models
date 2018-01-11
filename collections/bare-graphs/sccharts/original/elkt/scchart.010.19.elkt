@@ -1,0 +1,89 @@
+graph G1
+node Elevator {
+	algorithm: org.eclipse.elk.box
+	node Control {
+		node init {
+			layout [ size: 42, 34 ]
+		}
+		node up {
+			layout [ size: 39, 34 ]
+		}
+		node up_alarm {
+			layout [ size: 86, 34 ]
+		}
+		node down {
+			layout [ size: 59, 34 ]
+		}
+		node down_alarm {
+			layout [ size: 106, 34 ]
+		}
+		edge up0: init -> up {
+			label L1: "1: BUTTON_UP && !IS_UP && !alarm / MOVE_UP = true" {
+				layout [ size: 390, 17 ]
+			}
+		}
+		edge down0: init -> down {
+			label L2: "2: BUTTON_DOWN && !IS_DOWN && !alarm / MOVE_DOWN = true" {
+				layout [ size: 468, 17 ]
+			}
+		}
+		edge init0: up -> init {
+			label L3: "1: IS_UP / MOVE_UP = false" {
+				layout [ size: 195, 17 ]
+			}
+		}
+		edge up_alarm0: up -> up_alarm {
+			label L4: "2: alarm / MOVE_UP = false" {
+				layout [ size: 190, 17 ]
+			}
+		}
+		edge up0_g9883: up_alarm -> up {
+			label L5: "!alarm / MOVE_UP = true" {
+				layout [ size: 173, 17 ]
+			}
+		}
+		edge init0_g3044: down -> init {
+			label L6: "1: IS_DOWN / MOVE_DOWN = false" {
+				layout [ size: 247, 17 ]
+			}
+		}
+		edge down_alarm0: down -> down_alarm {
+			label L7: "2: alarm / MOVE_DOWN = false" {
+				layout [ size: 216, 17 ]
+			}
+		}
+		edge down0_g6817: down_alarm -> down {
+			label L8: "!alarm / MOVE_DOWN = true" {
+				layout [ size: 199, 17 ]
+			}
+		}
+	}
+	node Alarm {
+		node no_alarm {
+			layout [ size: 86, 34 ]
+		}
+		node alarm {
+			layout [ size: 60, 34 ]
+		}
+		edge alarm0: no_alarm -> alarm {
+			label L9: "BUTTON_ALARM / alarm = true; ALARM_LAMP = true; seconds = 5" {
+				layout [ size: 467, 17 ]
+			}
+		}
+		edge alarm0_g9360: alarm -> alarm {
+			label L10: "1: BUTTON_ALARM / seconds = 5" {
+				layout [ size: 238, 17 ]
+			}
+		}
+		edge no_alarm0: alarm -> no_alarm {
+			label L11: "2: SECOND && seconds <= 1 / seconds = 0; alarm = false; ALARM_LAMP = false" {
+				layout [ size: 557, 17 ]
+			}
+		}
+		edge alarm1: alarm -> alarm {
+			label L12: "3: SECOND / seconds = seconds - 1; ALARM_LAMP = !ALARM_LAMP" {
+				layout [ size: 480, 17 ]
+			}
+		}
+	}
+}

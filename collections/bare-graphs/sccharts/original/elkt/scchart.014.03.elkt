@@ -1,0 +1,89 @@
+graph G1
+node DomelightController {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node init {
+			layout [ size: 42, 34 ]
+		}
+		node Light {
+			algorithm: org.eclipse.elk.box
+			node Door {
+				node DoorOpen {
+					layout [ size: 95, 34 ]
+				}
+				node DoorClosedLightOn {
+					layout [ size: 163, 34 ]
+				}
+				node DoorClosedLightOff {
+					layout [ size: 163, 34 ]
+				}
+				edge DoorClosedLightOn0: DoorOpen -> DoorClosedLightOn {
+					label L2: "doorLeft && doorRight / clockEnabled = true; counter = 0; resetClock = true" {
+						layout [ size: 534, 17 ]
+					}
+				}
+				edge DoorClosedLightOff0: DoorClosedLightOn -> DoorClosedLightOff {
+					label L3: "1: counter >= 3 / light = false; clockEnabled = false" {
+						layout [ size: 353, 17 ]
+					}
+				}
+				edge DoorOpen0: DoorClosedLightOn -> DoorOpen {
+					label L4: "2: !doorLeft || !doorRight / resetClock = true; light = true" {
+						layout [ size: 392, 17 ]
+					}
+				}
+				edge DoorOpen0_g4371: DoorClosedLightOff -> DoorOpen {
+					label L5: "!doorLeft || !doorRight / resetClock = true; light = true" {
+						layout [ size: 376, 17 ]
+					}
+				}
+			}
+			node Seatbelt {
+				node NoWarning {
+					layout [ size: 98, 34 ]
+				}
+				node Warning {
+					layout [ size: 78, 34 ]
+				}
+				edge Warning0: NoWarning -> Warning {
+					label L6: "doorLeft && doorRight && engine && !seatbelt / warning = true" {
+						layout [ size: 446, 17 ]
+					}
+				}
+				edge NoWarning0: Warning -> NoWarning {
+					label L7: "!engine || seatbelt || !doorLeft || !doorRight / warning = false" {
+						layout [ size: 417, 17 ]
+					}
+				}
+			}
+			node Clock {
+				node Count {
+					layout [ size: 63, 34 ]
+				}
+				node DontCount {
+					layout [ size: 97, 34 ]
+				}
+				edge Count0: Count -> Count {
+					label L8: "1: clock && counter <= 3 / clock = true; counter = counter + 1" {
+						layout [ size: 428, 17 ]
+					}
+				}
+				edge DontCount0: Count -> DontCount {
+					label L9: "2: !clockEnabled || counter > 3 / resetClock = true" {
+						layout [ size: 346, 17 ]
+					}
+				}
+				edge Count0_g0048: DontCount -> Count {
+					label L10: "clockEnabled / counter = 0" {
+						layout [ size: 188, 17 ]
+					}
+				}
+			}
+		}
+		edge Light0: init -> Light {
+			label L1: "/ light = true; clockEnabled = false; counter = 0" {
+				layout [ size: 328, 17 ]
+			}
+		}
+	}
+}

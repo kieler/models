@@ -1,0 +1,72 @@
+graph G1
+node elevator_extended {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node Moving {
+			algorithm: org.eclipse.elk.box
+			node N2 {
+				node MoveUp {
+					layout [ size: 114, 50 ]
+				}
+				node MoveDown {
+					layout [ size: 118, 50 ]
+				}
+				node Stop {
+					layout [ size: 114, 50 ]
+				}
+				edge MoveDown0: MoveUp -> MoveDown {
+					label L2: "1: ButtonDown" {
+						layout [ size: 105, 17 ]
+					}
+				}
+				edge Stop0: MoveUp -> Stop {
+					label L3: "2: IsUp" {
+						layout [ size: 49, 17 ]
+					}
+				}
+				edge MoveUp0: MoveDown -> MoveUp {
+					label L4: "1: ButtonUp" {
+						layout [ size: 85, 17 ]
+					}
+				}
+				edge Stop0_g6375: MoveDown -> Stop {
+					label L5: "2: IsDown" {
+						layout [ size: 69, 17 ]
+					}
+				}
+				edge MoveUp0_g8464: Stop -> MoveUp {
+					label L6: "1: ButtonUp" {
+						layout [ size: 85, 17 ]
+					}
+				}
+				edge MoveDown0_g3824: Stop -> MoveDown {
+					label L7: "2: ButtonDown" {
+						layout [ size: 105, 17 ]
+					}
+				}
+			}
+		}
+		node Alarm {
+			algorithm: org.eclipse.elk.box
+			node N3 {
+				node Wait {
+					layout [ size: 49, 34 ]
+				}
+				node Done {
+					layout [ size: 64, 40 ]
+				}
+				edge Done0: Wait -> Done {
+					label L8: "Timer == 5" {
+						layout [ size: 76, 17 ]
+					}
+				}
+			}
+		}
+		edge Alarm0: Moving -> Alarm {
+			label L1: "ButtonAlarm / Move = 0" {
+				layout [ size: 165, 17 ]
+			}
+		}
+		edge Moving0: Alarm -> Moving
+	}
+}

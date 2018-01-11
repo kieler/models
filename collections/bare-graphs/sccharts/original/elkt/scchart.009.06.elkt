@@ -1,0 +1,76 @@
+graph G1
+node mindstorm {
+	algorithm: org.eclipse.elk.box
+	node domeLight {
+		node lightOff {
+			layout [ size: 73, 34 ]
+		}
+		node doorOpen {
+			layout [ size: 93, 34 ]
+		}
+		node pending {
+			layout [ size: 79, 34 ]
+		}
+		edge doorOpen0: lightOff -> doorOpen {
+			label L1: "(!doorOne || !doorTwo) && second / light = true" {
+				layout [ size: 330, 17 ]
+			}
+		}
+		edge pending0: doorOpen -> pending {
+			label L2: "(doorTwo && doorOne) && second / cntDL = 0" {
+				layout [ size: 327, 17 ]
+			}
+		}
+		edge pending0_g9844: pending -> pending {
+			label L3: "1: cntDL < 2 && !(!doorOne || !doorTwo) && second / cntDL = cntDL + 1" {
+				layout [ size: 497, 17 ]
+			}
+		}
+		edge doorOpen0_g2980: pending -> doorOpen {
+			label L4: "2: (!doorOne || !doorTwo) && second" {
+				layout [ size: 258, 17 ]
+			}
+		}
+		edge lightOff0: pending -> lightOff {
+			label L5: "3: cntDL >= 2 && second / light = false" {
+				layout [ size: 268, 17 ]
+			}
+		}
+	}
+	node seatbealt {
+		node ok {
+			layout [ size: 38, 34 ]
+		}
+		node beepLamp {
+			layout [ size: 95, 34 ]
+		}
+		node lamp {
+			layout [ size: 54, 34 ]
+		}
+		edge beepLamp0: ok -> beepLamp {
+			label L6: "engine && !seatbelt && second / cntSB = 0; buzzer = true; warnLight = true" {
+				layout [ size: 529, 17 ]
+			}
+		}
+		edge ok0: beepLamp -> ok {
+			label L7: "1: seatbelt && second / buzzer = false; warnLight = false" {
+				layout [ size: 396, 17 ]
+			}
+		}
+		edge beepLamp0_g9152: beepLamp -> beepLamp {
+			label L8: "2: cntSB < 30 && second && !seatbelt / cntSB = cntSB + 1" {
+				layout [ size: 406, 17 ]
+			}
+		}
+		edge lamp0: beepLamp -> lamp {
+			label L9: "3: cntSB >= 30 && second && !seatbelt / buzzer = false" {
+				layout [ size: 386, 17 ]
+			}
+		}
+		edge ok0_g5660: lamp -> ok {
+			label L10: "seatbelt && second / warnLight = false" {
+				layout [ size: 272, 17 ]
+			}
+		}
+	}
+}

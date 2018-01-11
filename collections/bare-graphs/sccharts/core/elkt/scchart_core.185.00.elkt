@@ -1,0 +1,1433 @@
+graph G1
+node BarCodeReader30 {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node init {
+			algorithm: org.eclipse.elk.box
+			node _Exit {
+				node _Done {
+					layout [ size: 72, 40 ]
+				}
+				node _Memorize {
+					layout [ size: 98, 34 ]
+				}
+				node _C {
+					layout [ size: 39, 34 ]
+				}
+				node _C1 {
+					layout [ size: 48, 34 ]
+				}
+				node __EA_Init1 {
+					layout [ size: 94, 34 ]
+				}
+				node _Init {
+					layout [ size: 50, 34 ]
+				}
+				node __sd_Depth {
+					layout [ size: 105, 34 ]
+				}
+				edge _C0: _Memorize -> _C {
+					label L15: "/ black = (brightness * 5) / 6" {
+						layout [ size: 191, 17 ]
+					}
+				}
+				edge _C10: _C -> _C1 {
+					label L16: "/ white = brightness" {
+						layout [ size: 140, 17 ]
+					}
+				}
+				edge _Done0: _C1 -> _Done {
+					label L17: "/ threshold = (white + black) / 2" {
+						layout [ size: 216, 17 ]
+					}
+				}
+				edge _Init0: __EA_Init1 -> _Init {
+					label L18: "/ brightness = lightSens" {
+						layout [ size: 169, 17 ]
+					}
+				}
+				edge __sd_Depth0: _Init -> __sd_Depth
+				edge _Memorize0: __sd_Depth -> _Memorize {
+					label L19: "1: start" {
+						layout [ size: 48, 17 ]
+					}
+				}
+				edge _Init0_g8496: __sd_Depth -> _Init {
+					label L20: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+			}
+		}
+		node StartDelim {
+			algorithm: org.eclipse.elk.box
+			node N2 {
+				node searchBlack {
+					algorithm: org.eclipse.elk.box
+					node __EA_Entry {
+						node __EA_Init {
+							layout [ size: 85, 34 ]
+						}
+						node __EA_Done {
+							layout [ size: 107, 40 ]
+						}
+						edge __EA_Done0: __EA_Init -> __EA_Done {
+							label L38: "/ brightness = lightSens" {
+								layout [ size: 169, 17 ]
+							}
+						}
+					}
+				}
+				node firstBar {
+					algorithm: org.eclipse.elk.box
+					node _Exit_g8458 {
+						node _Done_g6783 {
+							layout [ size: 72, 40 ]
+						}
+						node _Memorize_g8502 {
+							layout [ size: 98, 34 ]
+						}
+						node __EA_Init2 {
+							layout [ size: 94, 34 ]
+						}
+						node __EA_C10 {
+							layout [ size: 91, 34 ]
+						}
+						node __te_S {
+							layout [ size: 69, 34 ]
+						}
+						node __te_S1 {
+							layout [ size: 77, 34 ]
+						}
+						node __te_S2 {
+							layout [ size: 77, 34 ]
+						}
+						node __te_S3 {
+							layout [ size: 77, 34 ]
+						}
+						node _Init1 {
+							layout [ size: 59, 34 ]
+						}
+						node __sd_Depth1 {
+							layout [ size: 113, 34 ]
+						}
+						node __sd_S2 {
+							layout [ size: 80, 34 ]
+						}
+						edge __te_S20: _Memorize_g8502 -> __te_S2 {
+							label L39: "1: brightness < black" {
+								layout [ size: 147, 17 ]
+							}
+						}
+						edge _Done0_g1802: _Memorize_g8502 -> _Done_g6783 {
+							label L40: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __EA_C100: __EA_Init2 -> __EA_C10 {
+							label L41: "/ counter = counter + 1" {
+								layout [ size: 161, 17 ]
+							}
+						}
+						edge _Init10: __EA_C10 -> _Init1 {
+							label L42: "/ brightness = lightSens" {
+								layout [ size: 169, 17 ]
+							}
+						}
+						edge _Memorize0_g2539: __te_S -> _Memorize_g8502 {
+							label L43: "/ _BarCodeReader30_local__exit = 1" {
+								layout [ size: 256, 17 ]
+							}
+						}
+						edge _Memorize0_g9232: __te_S1 -> _Memorize_g8502 {
+							label L44: "/ _BarCodeReader30_local__exit = 2" {
+								layout [ size: 256, 17 ]
+							}
+						}
+						edge __te_S30: __te_S2 -> __te_S3 {
+							label L45: "/ black = brightness" {
+								layout [ size: 139, 17 ]
+							}
+						}
+						edge _Done0_g4424: __te_S3 -> _Done_g6783 {
+							label L46: "/ threshold = (white + black) / 2" {
+								layout [ size: 216, 17 ]
+							}
+						}
+						edge __sd_Depth10: _Init1 -> __sd_Depth1
+						edge __te_S0: __sd_Depth1 -> __te_S {
+							label L47: "1: brightness <= threshold && clock" {
+								layout [ size: 254, 17 ]
+							}
+						}
+						edge __sd_S20: __sd_Depth1 -> __sd_S2 {
+							label L48: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __te_S10: __sd_S2 -> __te_S1 {
+							label L49: "1: brightness > threshold && clock" {
+								layout [ size: 245, 17 ]
+							}
+						}
+						edge _Init10_g4765: __sd_S2 -> _Init1 {
+							label L50: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+					}
+				}
+				node secondBar {
+					algorithm: org.eclipse.elk.box
+					node _Exit_g1472 {
+						node _Done_g0610 {
+							layout [ size: 72, 40 ]
+						}
+						node _Memorize_g1640 {
+							layout [ size: 98, 34 ]
+						}
+						node __EA_Init3 {
+							layout [ size: 94, 34 ]
+						}
+						node __EA_C11 {
+							layout [ size: 90, 34 ]
+						}
+						node __te_S4 {
+							layout [ size: 77, 34 ]
+						}
+						node __te_S5 {
+							layout [ size: 77, 34 ]
+						}
+						node __te_S6 {
+							layout [ size: 77, 34 ]
+						}
+						node __te_S7 {
+							layout [ size: 77, 34 ]
+						}
+						node _Init2 {
+							layout [ size: 59, 34 ]
+						}
+						node __sd_Depth2 {
+							layout [ size: 113, 34 ]
+						}
+						node __sd_S4 {
+							layout [ size: 80, 34 ]
+						}
+						edge __te_S60: _Memorize_g1640 -> __te_S6 {
+							label L51: "1: brightness > white" {
+								layout [ size: 147, 17 ]
+							}
+						}
+						edge _Done0_g2974: _Memorize_g1640 -> _Done_g0610 {
+							label L52: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __EA_C110: __EA_Init3 -> __EA_C11 {
+							label L53: "/ counter = counter + 1" {
+								layout [ size: 161, 17 ]
+							}
+						}
+						edge _Init20: __EA_C11 -> _Init2 {
+							label L54: "/ brightness = lightSens" {
+								layout [ size: 169, 17 ]
+							}
+						}
+						edge _Memorize0_g0193: __te_S4 -> _Memorize_g1640 {
+							label L55: "/ _BarCodeReader30_local__exit1 = 1" {
+								layout [ size: 264, 17 ]
+							}
+						}
+						edge _Memorize0_g6755: __te_S5 -> _Memorize_g1640 {
+							label L56: "/ _BarCodeReader30_local__exit1 = 2" {
+								layout [ size: 264, 17 ]
+							}
+						}
+						edge __te_S70: __te_S6 -> __te_S7 {
+							label L57: "/ white = brightness" {
+								layout [ size: 140, 17 ]
+							}
+						}
+						edge _Done0_g1425: __te_S7 -> _Done_g0610 {
+							label L58: "/ threshold = (white + black) / 2" {
+								layout [ size: 216, 17 ]
+							}
+						}
+						edge __sd_Depth20: _Init2 -> __sd_Depth2
+						edge __te_S40: __sd_Depth2 -> __te_S4 {
+							label L59: "1: brightness >= threshold && clock" {
+								layout [ size: 254, 17 ]
+							}
+						}
+						edge __sd_S40: __sd_Depth2 -> __sd_S4 {
+							label L60: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __te_S50: __sd_S4 -> __te_S5 {
+							label L61: "1: brightness < threshold && clock" {
+								layout [ size: 245, 17 ]
+							}
+						}
+						edge _Init20_g2205: __sd_S4 -> _Init2 {
+							label L62: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+					}
+				}
+				node thirdBar {
+					algorithm: org.eclipse.elk.box
+					node __EA_Entry_g0886 {
+						node __EA_Init_g3795 {
+							layout [ size: 85, 34 ]
+						}
+						node __EA_Done_g8903 {
+							layout [ size: 107, 40 ]
+						}
+						node __EA_C12 {
+							layout [ size: 91, 34 ]
+						}
+						edge __EA_C120: __EA_Init_g3795 -> __EA_C12 {
+							label L63: "/ brightness = lightSens" {
+								layout [ size: 169, 17 ]
+							}
+						}
+						edge __EA_Done0_g5056: __EA_C12 -> __EA_Done_g8903 {
+							label L64: "/ counter = counter + 1" {
+								layout [ size: 161, 17 ]
+							}
+						}
+					}
+				}
+				node done {
+					layout [ size: 62, 40 ]
+				}
+				node __sd_Depth3 {
+					layout [ size: 113, 34 ]
+				}
+				node __sd_Depth4 {
+					layout [ size: 113, 34 ]
+				}
+				node __EA_C13 {
+					layout [ size: 91, 34 ]
+				}
+				node __sd_S5 {
+					layout [ size: 80, 34 ]
+				}
+				node __sd_Pause3 {
+					layout [ size: 114, 34 ]
+				}
+				node __sd_S8 {
+					layout [ size: 80, 34 ]
+				}
+				node __sd_Pause4 {
+					layout [ size: 114, 34 ]
+				}
+				node __EA_Exit {
+					layout [ size: 90, 34 ]
+				}
+				node __sd_Depth5 {
+					layout [ size: 113, 34 ]
+				}
+				node __sd_S12 {
+					layout [ size: 88, 34 ]
+				}
+				node __EA_Exit1 {
+					layout [ size: 99, 34 ]
+				}
+				node __sd_Depth6 {
+					layout [ size: 113, 34 ]
+				}
+				node __sd_S14 {
+					layout [ size: 88, 34 ]
+				}
+				edge __EA_Exit0: searchBlack -> __EA_Exit
+				edge __sd_Depth30: firstBar -> __sd_Depth3
+				edge __sd_Depth40: secondBar -> __sd_Depth4
+				edge __EA_Exit10: thirdBar -> __EA_Exit1
+				edge firstBar0: __sd_Depth3 -> firstBar {
+					label L21: "1: _BarCodeReader30_local__exit == 1" {
+						layout [ size: 273, 17 ]
+					}
+				}
+				edge __sd_S50: __sd_Depth3 -> __sd_S5 {
+					label L22: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge secondBar0: __sd_Depth4 -> secondBar {
+					label L23: "1: _BarCodeReader30_local__exit1 == 1" {
+						layout [ size: 281, 17 ]
+					}
+				}
+				edge __sd_S80: __sd_Depth4 -> __sd_S8 {
+					label L24: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge done0: __EA_C13 -> done {
+					label L25: "/ thickness = counter / 3" {
+						layout [ size: 169, 17 ]
+					}
+				}
+				edge secondBar0_g3088: __sd_S5 -> secondBar {
+					label L26: "1: _BarCodeReader30_local__exit == 2" {
+						layout [ size: 273, 17 ]
+					}
+				}
+				edge __sd_Pause30: __sd_S5 -> __sd_Pause3 {
+					label L27: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __sd_Depth30_g7588: __sd_Pause3 -> __sd_Depth3
+				edge thirdBar0: __sd_S8 -> thirdBar {
+					label L28: "1: _BarCodeReader30_local__exit1 == 2" {
+						layout [ size: 281, 17 ]
+					}
+				}
+				edge __sd_Pause40: __sd_S8 -> __sd_Pause4 {
+					label L29: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __sd_Depth40_g4632: __sd_Pause4 -> __sd_Depth4
+				edge __sd_Depth50: __EA_Exit -> __sd_Depth5
+				edge searchBlack0: __sd_Depth5 -> searchBlack {
+					label L30: "1: brightness >= threshold && clock" {
+						layout [ size: 254, 17 ]
+					}
+				}
+				edge __sd_S120: __sd_Depth5 -> __sd_S12 {
+					label L31: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge firstBar0_g6859: __sd_S12 -> firstBar {
+					label L32: "1: brightness < threshold && clock" {
+						layout [ size: 245, 17 ]
+					}
+				}
+				edge __EA_Exit0_g3890: __sd_S12 -> __EA_Exit {
+					label L33: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __sd_Depth60: __EA_Exit1 -> __sd_Depth6
+				edge thirdBar0_g0014: __sd_Depth6 -> thirdBar {
+					label L34: "1: brightness <= threshold && clock" {
+						layout [ size: 254, 17 ]
+					}
+				}
+				edge __sd_S140: __sd_Depth6 -> __sd_S14 {
+					label L35: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __EA_C130: __sd_S14 -> __EA_C13 {
+					label L36: "1: brightness > threshold" {
+						layout [ size: 178, 17 ]
+					}
+				}
+				edge __EA_Exit10_g6862: __sd_S14 -> __EA_Exit1 {
+					label L37: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+			}
+		}
+		node readCode {
+			algorithm: org.eclipse.elk.box
+			node N3 {
+				node __sd_Depth9 {
+					algorithm: org.eclipse.elk.box
+					node __EA_Entry_g8734 {
+						node __EA_Init_g7196 {
+							layout [ size: 85, 34 ]
+						}
+						node __EA_Done_g1101 {
+							layout [ size: 107, 40 ]
+						}
+						node __EA_C18 {
+							layout [ size: 91, 34 ]
+						}
+						edge __EA_C180: __EA_Init_g7196 -> __EA_C18 {
+							label L112: "/ brightness = lightSens" {
+								layout [ size: 169, 17 ]
+							}
+						}
+						edge __EA_Done0_g1874: __EA_C18 -> __EA_Done_g1101 {
+							label L113: "/ counter = counter + 1" {
+								layout [ size: 161, 17 ]
+							}
+						}
+					}
+				}
+				node readBlack {
+					algorithm: org.eclipse.elk.box
+					node __EA_Entry_g5658 {
+						node __EA_Init_g3560 {
+							layout [ size: 85, 34 ]
+						}
+						node __EA_Done_g2984 {
+							layout [ size: 107, 40 ]
+						}
+						node __EA_C19 {
+							layout [ size: 91, 34 ]
+						}
+						edge __EA_C190: __EA_Init_g3560 -> __EA_C19 {
+							label L114: "/ brightness = lightSens" {
+								layout [ size: 169, 17 ]
+							}
+						}
+						edge __EA_Done0_g4922: __EA_C19 -> __EA_Done_g2984 {
+							label L115: "/ counter = counter + 1" {
+								layout [ size: 161, 17 ]
+							}
+						}
+					}
+				}
+				node interprete {
+					algorithm: org.eclipse.elk.box
+					node __EA_Entry_g0833 {
+						node __EA_Init_g0365 {
+							layout [ size: 85, 34 ]
+						}
+						node __EA_Done_g9726 {
+							layout [ size: 107, 40 ]
+						}
+						node __EA_C20 {
+							layout [ size: 91, 34 ]
+						}
+						node __EA_C21 {
+							layout [ size: 91, 34 ]
+						}
+						edge __EA_C200: __EA_Init_g0365 -> __EA_C20 {
+							label L116: "/ _BarCodeReader30_local_bars[_BarCodeReader30_local_write] = _BarCodeReader30_local_wasLastWhite" {
+								layout [ size: 762, 17 ]
+							}
+						}
+						edge __EA_C210: __EA_C20 -> __EA_C21 {
+							label L117: "/ counter = counter - thickness" {
+								layout [ size: 217, 17 ]
+							}
+						}
+						edge __EA_Done0_g9875: __EA_C21 -> __EA_Done_g9726 {
+							label L118: "/ programstate = 4" {
+								layout [ size: 128, 17 ]
+							}
+						}
+					}
+				}
+				node isEnd {
+					algorithm: org.eclipse.elk.box
+					node __EA_Entry_g6553 {
+						node __EA_Init_g9169 {
+							layout [ size: 85, 34 ]
+						}
+						node __EA_Done_g1086 {
+							layout [ size: 107, 40 ]
+						}
+						node __sd_Depth7 {
+							layout [ size: 113, 34 ]
+						}
+						node __te_S10_g4538 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S11 {
+							layout [ size: 84, 34 ]
+						}
+						edge __sd_Depth70: __EA_Init_g9169 -> __sd_Depth7 {
+							label L119: "/ _BarCodeReader30_local_end = _BarCodeReader30_local_bars[0] && !_BarCodeReader30_local_bars[1] && _BarCodeReader30_local_bars[2] && !_BarCodeReader30_local_bars[3] && digit1 != 10" {
+								layout [ size: 1393, 17 ]
+							}
+						}
+						edge __te_S100: __sd_Depth7 -> __te_S10_g4538 {
+							label L120: "/ programstate = 5" {
+								layout [ size: 128, 17 ]
+							}
+						}
+						edge __te_S110: __te_S10_g4538 -> __te_S11 {
+							label L121: "/ speedA = 0" {
+								layout [ size: 86, 17 ]
+							}
+						}
+						edge __EA_Done0_g4461: __te_S11 -> __EA_Done_g1086 {
+							label L122: "/ speedB = 0" {
+								layout [ size: 89, 17 ]
+							}
+						}
+					}
+				}
+				node calculateDigit {
+					algorithm: org.eclipse.elk.box
+					node _Exit_g8508 {
+						node _Init_g7507 {
+							layout [ size: 50, 34 ]
+						}
+						node _Done_g0563 {
+							layout [ size: 72, 40 ]
+						}
+						node _C2 {
+							layout [ size: 48, 34 ]
+						}
+						node _C3 {
+							layout [ size: 48, 34 ]
+						}
+						node _C4 {
+							layout [ size: 48, 34 ]
+						}
+						node __EA_Init5 {
+							layout [ size: 94, 34 ]
+						}
+						node __EA_C23 {
+							layout [ size: 91, 34 ]
+						}
+						node __EA_C24 {
+							layout [ size: 91, 34 ]
+						}
+						node __EA_C25 {
+							layout [ size: 91, 34 ]
+						}
+						node __EA_C26 {
+							layout [ size: 91, 34 ]
+						}
+						node __EA_C27 {
+							layout [ size: 91, 34 ]
+						}
+						node __EA_C28 {
+							layout [ size: 91, 34 ]
+						}
+						node __EA_C29 {
+							layout [ size: 91, 34 ]
+						}
+						node __EA_C30 {
+							layout [ size: 91, 34 ]
+						}
+						node __EA_C31 {
+							layout [ size: 91, 34 ]
+						}
+						node __sd_Depth8 {
+							layout [ size: 113, 34 ]
+						}
+						node __te_S13 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S14 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S15 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S16 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S17 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S18 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S19 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S20_g0849 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S21 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S22 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S23 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S24 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S25 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S26 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S27 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S28 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S29 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S30_g2295 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S31 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S32 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S33 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S34 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S35 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S36 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S37 {
+							layout [ size: 85, 34 ]
+						}
+						edge __sd_Depth80: _Init_g7507 -> __sd_Depth8
+						edge _C30: _C2 -> _C3 {
+							label L123: "/ _BarCodeReader30_local_write = 0" {
+								layout [ size: 257, 17 ]
+							}
+						}
+						edge __te_S140: _C3 -> __te_S14 {
+							label L124: "1: digit1 == 10" {
+								layout [ size: 98, 17 ]
+							}
+						}
+						edge _C40: _C3 -> _C4 {
+							label L125: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __te_S170: _C4 -> __te_S17 {
+							label L126: "1: digit1 != 10" {
+								layout [ size: 93, 17 ]
+							}
+						}
+						edge _Done0_g7370: _C4 -> _Done_g0563 {
+							label L127: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __te_S180: __EA_Init5 -> __te_S18 {
+							label L128: "1: _BarCodeReader30_local_bars[0] && _BarCodeReader30_local_bars[1] && !_BarCodeReader30_local_bars[2] && !_BarCodeReader30_local_bars[3]" {
+								layout [ size: 1062, 17 ]
+							}
+						}
+						edge __EA_C230: __EA_Init5 -> __EA_C23 {
+							label L129: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __te_S200: __EA_C23 -> __te_S20_g0849 {
+							label L130: "1: _BarCodeReader30_local_bars[0] && _BarCodeReader30_local_bars[1] && !_BarCodeReader30_local_bars[2] && _BarCodeReader30_local_bars[3]" {
+								layout [ size: 1058, 17 ]
+							}
+						}
+						edge __EA_C240: __EA_C23 -> __EA_C24 {
+							label L131: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __te_S220: __EA_C24 -> __te_S22 {
+							label L132: "1: _BarCodeReader30_local_bars[0] && !_BarCodeReader30_local_bars[1] && !_BarCodeReader30_local_bars[2] && !_BarCodeReader30_local_bars[3] && !_BarCodeReader30_local_bars[4]" {
+								layout [ size: 1337, 17 ]
+							}
+						}
+						edge __EA_C250: __EA_C24 -> __EA_C25 {
+							label L133: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __te_S240: __EA_C25 -> __te_S24 {
+							label L134: "1: _BarCodeReader30_local_bars[0] && !_BarCodeReader30_local_bars[1] && _BarCodeReader30_local_bars[2] && _BarCodeReader30_local_bars[3]" {
+								layout [ size: 1058, 17 ]
+							}
+						}
+						edge __EA_C260: __EA_C25 -> __EA_C26 {
+							label L135: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __te_S260: __EA_C26 -> __te_S26 {
+							label L136: "1: _BarCodeReader30_local_bars[0] && !_BarCodeReader30_local_bars[1] && !_BarCodeReader30_local_bars[2] && _BarCodeReader30_local_bars[3] && _BarCodeReader30_local_bars[4]" {
+								layout [ size: 1329, 17 ]
+							}
+						}
+						edge __EA_C270: __EA_C26 -> __EA_C27 {
+							label L137: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __te_S280: __EA_C27 -> __te_S28 {
+							label L138: "1: _BarCodeReader30_local_bars[0] && !_BarCodeReader30_local_bars[1] && _BarCodeReader30_local_bars[2] && !_BarCodeReader30_local_bars[3]" {
+								layout [ size: 1062, 17 ]
+							}
+						}
+						edge __EA_C280: __EA_C27 -> __EA_C28 {
+							label L139: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __te_S300: __EA_C28 -> __te_S30_g2295 {
+							label L140: "1: _BarCodeReader30_local_bars[0] && !_BarCodeReader30_local_bars[1] && !_BarCodeReader30_local_bars[2] && !_BarCodeReader30_local_bars[3] && _BarCodeReader30_local_bars[4]" {
+								layout [ size: 1333, 17 ]
+							}
+						}
+						edge __EA_C290: __EA_C28 -> __EA_C29 {
+							label L141: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __te_S320: __EA_C29 -> __te_S32 {
+							label L142: "1: _BarCodeReader30_local_bars[0] && !_BarCodeReader30_local_bars[1] && !_BarCodeReader30_local_bars[2] && _BarCodeReader30_local_bars[3] && !_BarCodeReader30_local_bars[4]" {
+								layout [ size: 1333, 17 ]
+							}
+						}
+						edge __EA_C300: __EA_C29 -> __EA_C30 {
+							label L143: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __te_S340: __EA_C30 -> __te_S34 {
+							label L144: "1: _BarCodeReader30_local_bars[0] && _BarCodeReader30_local_bars[1] && _BarCodeReader30_local_bars[2] && _BarCodeReader30_local_bars[4]" {
+								layout [ size: 1054, 17 ]
+							}
+						}
+						edge __EA_C310: __EA_C30 -> __EA_C31 {
+							label L145: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __te_S360: __EA_C31 -> __te_S36 {
+							label L146: "1: _BarCodeReader30_local_bars[0] && _BarCodeReader30_local_bars[1] && _BarCodeReader30_local_bars[2] && !_BarCodeReader30_local_bars[4]" {
+								layout [ size: 1058, 17 ]
+							}
+						}
+						edge _Init0_g1405: __EA_C31 -> _Init_g7507 {
+							label L147: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __te_S130: __sd_Depth8 -> __te_S13 {
+							label L148: "/ speedA = SPEED" {
+								layout [ size: 128, 17 ]
+							}
+						}
+						edge _C20: __te_S13 -> _C2 {
+							label L149: "/ speedB = SPEED" {
+								layout [ size: 131, 17 ]
+							}
+						}
+						edge __te_S150: __te_S14 -> __te_S15 {
+							label L150: "/ digit1 = digit2" {
+								layout [ size: 104, 17 ]
+							}
+						}
+						edge __te_S160: __te_S15 -> __te_S16 {
+							label L151: "/ digit2 = digit3" {
+								layout [ size: 104, 17 ]
+							}
+						}
+						edge _C40_g7727: __te_S16 -> _C4 {
+							label L152: "/ digit3 = digit4" {
+								layout [ size: 104, 17 ]
+							}
+						}
+						edge _Done0_g3139: __te_S17 -> _Done_g0563 {
+							label L153: "/ _BarCodeReader30_local_end = true" {
+								layout [ size: 269, 17 ]
+							}
+						}
+						edge __te_S190: __te_S18 -> __te_S19 {
+							label L154: "/ digit4 = 1" {
+								layout [ size: 73, 17 ]
+							}
+						}
+						edge __EA_C230_g7106: __te_S19 -> __EA_C23 {
+							label L155: "/ programstate = 31" {
+								layout [ size: 136, 17 ]
+							}
+						}
+						edge __te_S210: __te_S20_g0849 -> __te_S21 {
+							label L156: "/ digit4 = 2" {
+								layout [ size: 73, 17 ]
+							}
+						}
+						edge __EA_C240_g6301: __te_S21 -> __EA_C24 {
+							label L157: "/ programstate = 32" {
+								layout [ size: 136, 17 ]
+							}
+						}
+						edge __te_S230: __te_S22 -> __te_S23 {
+							label L158: "/ digit4 = 3" {
+								layout [ size: 73, 17 ]
+							}
+						}
+						edge __EA_C250_g5075: __te_S23 -> __EA_C25 {
+							label L159: "/ programstate = 33" {
+								layout [ size: 136, 17 ]
+							}
+						}
+						edge __te_S250: __te_S24 -> __te_S25 {
+							label L160: "/ digit4 = 4" {
+								layout [ size: 73, 17 ]
+							}
+						}
+						edge __EA_C260_g8359: __te_S25 -> __EA_C26 {
+							label L161: "/ programstate = 34" {
+								layout [ size: 136, 17 ]
+							}
+						}
+						edge __te_S270: __te_S26 -> __te_S27 {
+							label L162: "/ digit4 = 5" {
+								layout [ size: 73, 17 ]
+							}
+						}
+						edge __EA_C270_g8319: __te_S27 -> __EA_C27 {
+							label L163: "/ programstate = 35" {
+								layout [ size: 136, 17 ]
+							}
+						}
+						edge __te_S290: __te_S28 -> __te_S29 {
+							label L164: "/ digit4 = 6" {
+								layout [ size: 73, 17 ]
+							}
+						}
+						edge __EA_C280_g9926: __te_S29 -> __EA_C28 {
+							label L165: "/ programstate = 36" {
+								layout [ size: 136, 17 ]
+							}
+						}
+						edge __te_S310: __te_S30_g2295 -> __te_S31 {
+							label L166: "/ digit4 = 7" {
+								layout [ size: 73, 17 ]
+							}
+						}
+						edge __EA_C290_g5183: __te_S31 -> __EA_C29 {
+							label L167: "/ programstate = 37" {
+								layout [ size: 136, 17 ]
+							}
+						}
+						edge __te_S330: __te_S32 -> __te_S33 {
+							label L168: "/ digit4 = 8" {
+								layout [ size: 73, 17 ]
+							}
+						}
+						edge __EA_C300_g7745: __te_S33 -> __EA_C30 {
+							label L169: "/ programstate = 38" {
+								layout [ size: 136, 17 ]
+							}
+						}
+						edge __te_S350: __te_S34 -> __te_S35 {
+							label L170: "/ digit4 = 9" {
+								layout [ size: 73, 17 ]
+							}
+						}
+						edge __EA_C310_g2459: __te_S35 -> __EA_C31 {
+							label L171: "/ programstate = 39" {
+								layout [ size: 136, 17 ]
+							}
+						}
+						edge __te_S370: __te_S36 -> __te_S37 {
+							label L172: "/ digit4 = 0" {
+								layout [ size: 73, 17 ]
+							}
+						}
+						edge _Init0_g2923: __te_S37 -> _Init_g7507 {
+							label L173: "/ programstate = 30" {
+								layout [ size: 136, 17 ]
+							}
+						}
+					}
+				}
+				node done_g1404 {
+					layout [ size: 62, 40 ]
+				}
+				node __EA_Init4 {
+					layout [ size: 94, 34 ]
+				}
+				node __EA_C14 {
+					layout [ size: 91, 34 ]
+				}
+				node __EA_C15 {
+					layout [ size: 91, 34 ]
+				}
+				node __EA_C16 {
+					layout [ size: 91, 34 ]
+				}
+				node __EA_C17 {
+					layout [ size: 91, 34 ]
+				}
+				node __te_S38 {
+					layout [ size: 85, 34 ]
+				}
+				node __te_S39 {
+					layout [ size: 85, 34 ]
+				}
+				node __te_S40_g0061 {
+					layout [ size: 85, 34 ]
+				}
+				node __te_S41 {
+					layout [ size: 85, 34 ]
+				}
+				node __te_S42 {
+					layout [ size: 85, 34 ]
+				}
+				node __te_S43 {
+					layout [ size: 85, 34 ]
+				}
+				node __te_S44 {
+					layout [ size: 85, 34 ]
+				}
+				node __te_S45 {
+					layout [ size: 85, 34 ]
+				}
+				node __te_S46 {
+					layout [ size: 85, 34 ]
+				}
+				node __te_S47 {
+					layout [ size: 85, 34 ]
+				}
+				node __te_S48 {
+					layout [ size: 85, 34 ]
+				}
+				node __te_S49 {
+					layout [ size: 85, 34 ]
+				}
+				node __te_S50_g7834 {
+					layout [ size: 85, 34 ]
+				}
+				node __te_S51 {
+					layout [ size: 85, 34 ]
+				}
+				node __te_S52 {
+					layout [ size: 85, 34 ]
+				}
+				node __te_S53 {
+					layout [ size: 85, 34 ]
+				}
+				node __te_S54 {
+					layout [ size: 85, 34 ]
+				}
+				node __te_S55 {
+					layout [ size: 85, 34 ]
+				}
+				node __EA_Exit2 {
+					layout [ size: 99, 34 ]
+				}
+				node __sd_Depth10_g9435 {
+					layout [ size: 121, 34 ]
+				}
+				node __sd_S19 {
+					layout [ size: 88, 34 ]
+				}
+				node __EA_Exit3 {
+					layout [ size: 99, 34 ]
+				}
+				node __sd_Depth11 {
+					layout [ size: 120, 34 ]
+				}
+				node __sd_S21 {
+					layout [ size: 88, 34 ]
+				}
+				node __EA_Exit4 {
+					layout [ size: 99, 34 ]
+				}
+				node __sd_Depth12 {
+					layout [ size: 121, 34 ]
+				}
+				node __sd_S23 {
+					layout [ size: 88, 34 ]
+				}
+				node __sd_S24 {
+					layout [ size: 88, 34 ]
+				}
+				node __sd_S25 {
+					layout [ size: 88, 34 ]
+				}
+				node __sd_S26 {
+					layout [ size: 88, 34 ]
+				}
+				node __EA_Exit5 {
+					layout [ size: 99, 34 ]
+				}
+				node __sd_Depth13 {
+					layout [ size: 121, 34 ]
+				}
+				node __sd_S28 {
+					layout [ size: 88, 34 ]
+				}
+				node __sd_S29 {
+					layout [ size: 88, 34 ]
+				}
+				edge __EA_Exit20: __sd_Depth9 -> __EA_Exit2
+				edge __EA_Exit30: readBlack -> __EA_Exit3
+				edge __EA_Exit40: interprete -> __EA_Exit4
+				edge __EA_Exit50: isEnd -> __EA_Exit5
+				edge __sd_Depth90: calculateDigit -> __sd_Depth9
+				edge __EA_C140: __EA_Init4 -> __EA_C14 {
+					label L65: "/ _BarCodeReader30_local_write = 0" {
+						layout [ size: 257, 17 ]
+					}
+				}
+				edge __EA_C150: __EA_C14 -> __EA_C15 {
+					label L66: "/ _BarCodeReader30_local_read = 0" {
+						layout [ size: 254, 17 ]
+					}
+				}
+				edge __EA_C160: __EA_C15 -> __EA_C16 {
+					label L67: "/ _BarCodeReader30_local_wasLastWhite = false" {
+						layout [ size: 344, 17 ]
+					}
+				}
+				edge __EA_C170: __EA_C16 -> __EA_C17 {
+					label L68: "/ _BarCodeReader30_local_end = false" {
+						layout [ size: 274, 17 ]
+					}
+				}
+				edge __sd_Depth90_g8862: __EA_C17 -> __sd_Depth9 {
+					label L69: "/ counter = 0" {
+						layout [ size: 89, 17 ]
+					}
+				}
+				edge interprete0: __te_S38 -> interprete {
+					label L70: "/ _BarCodeReader30_local_wasLastWhite = true" {
+						layout [ size: 339, 17 ]
+					}
+				}
+				edge interprete0_g2067: __te_S39 -> interprete {
+					label L71: "/ _BarCodeReader30_local_wasLastWhite = false" {
+						layout [ size: 344, 17 ]
+					}
+				}
+				edge interprete0_g7304: __te_S40_g0061 -> interprete {
+					label L72: "/ _BarCodeReader30_local_write = _BarCodeReader30_local_write + 1" {
+						layout [ size: 497, 17 ]
+					}
+				}
+				edge __te_S420: __te_S41 -> __te_S42 {
+					label L73: "/ counter = 0" {
+						layout [ size: 89, 17 ]
+					}
+				}
+				edge __te_S430: __te_S42 -> __te_S43 {
+					label L74: "/ speedA = SPEED" {
+						layout [ size: 128, 17 ]
+					}
+				}
+				edge __te_S440: __te_S43 -> __te_S44 {
+					label L75: "/ speedB = SPEED" {
+						layout [ size: 131, 17 ]
+					}
+				}
+				edge __sd_Depth90_g1163: __te_S44 -> __sd_Depth9 {
+					label L76: "/ _BarCodeReader30_local_write = _BarCodeReader30_local_write + 1" {
+						layout [ size: 497, 17 ]
+					}
+				}
+				edge __te_S460: __te_S45 -> __te_S46 {
+					label L77: "/ counter = 0" {
+						layout [ size: 89, 17 ]
+					}
+				}
+				edge __te_S470: __te_S46 -> __te_S47 {
+					label L78: "/ speedA = SPEED" {
+						layout [ size: 128, 17 ]
+					}
+				}
+				edge __te_S480: __te_S47 -> __te_S48 {
+					label L79: "/ speedB = SPEED" {
+						layout [ size: 131, 17 ]
+					}
+				}
+				edge readBlack0: __te_S48 -> readBlack {
+					label L80: "/ _BarCodeReader30_local_write = _BarCodeReader30_local_write + 1" {
+						layout [ size: 497, 17 ]
+					}
+				}
+				edge isEnd0: __te_S49 -> isEnd {
+					label L81: "/ counter = 0" {
+						layout [ size: 89, 17 ]
+					}
+				}
+				edge calculateDigit0: __te_S50_g7834 -> calculateDigit {
+					label L82: "/ counter = 0" {
+						layout [ size: 89, 17 ]
+					}
+				}
+				edge done0_g1042: __te_S51 -> done_g1404 {
+					label L83: "/ programstate = 6" {
+						layout [ size: 128, 17 ]
+					}
+				}
+				edge __te_S530: __te_S52 -> __te_S53 {
+					label L84: "/ speedA = SPEED" {
+						layout [ size: 128, 17 ]
+					}
+				}
+				edge __sd_Depth90_g7835: __te_S53 -> __sd_Depth9 {
+					label L85: "/ speedB = SPEED" {
+						layout [ size: 131, 17 ]
+					}
+				}
+				edge __te_S550: __te_S54 -> __te_S55 {
+					label L86: "/ speedA = SPEED" {
+						layout [ size: 128, 17 ]
+					}
+				}
+				edge readBlack0_g3297: __te_S55 -> readBlack {
+					label L87: "/ speedB = SPEED" {
+						layout [ size: 131, 17 ]
+					}
+				}
+				edge __sd_Depth100: __EA_Exit2 -> __sd_Depth10_g9435
+				edge __sd_Depth90_g1921: __sd_Depth10_g9435 -> __sd_Depth9 {
+					label L88: "1: clock && brightness >= threshold" {
+						layout [ size: 254, 17 ]
+					}
+				}
+				edge __sd_S190: __sd_Depth10_g9435 -> __sd_S19 {
+					label L89: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __te_S380: __sd_S19 -> __te_S38 {
+					label L90: "1: brightness < threshold" {
+						layout [ size: 178, 17 ]
+					}
+				}
+				edge __EA_Exit20_g2886: __sd_S19 -> __EA_Exit2 {
+					label L91: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __sd_Depth110: __EA_Exit3 -> __sd_Depth11
+				edge readBlack0_g5371: __sd_Depth11 -> readBlack {
+					label L92: "1: clock && brightness <= threshold" {
+						layout [ size: 254, 17 ]
+					}
+				}
+				edge __sd_S210: __sd_Depth11 -> __sd_S21 {
+					label L93: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __te_S390: __sd_S21 -> __te_S39 {
+					label L94: "1: brightness > threshold" {
+						layout [ size: 178, 17 ]
+					}
+				}
+				edge __EA_Exit30_g9836: __sd_S21 -> __EA_Exit3 {
+					label L95: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __sd_Depth120: __EA_Exit4 -> __sd_Depth12
+				edge __te_S400: __sd_Depth12 -> __te_S40_g0061 {
+					label L96: "1: counter > thickness / 2 && _BarCodeReader30_local_write != 6" {
+						layout [ size: 459, 17 ]
+					}
+				}
+				edge __sd_S230: __sd_Depth12 -> __sd_S23 {
+					label L97: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __te_S410: __sd_S23 -> __te_S41 {
+					label L98: "1: counter < thickness / 2 && !_BarCodeReader30_local_wasLastWhite && _BarCodeReader30_local_write != 6" {
+						layout [ size: 778, 17 ]
+					}
+				}
+				edge __sd_S240: __sd_S23 -> __sd_S24 {
+					label L99: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __te_S450: __sd_S24 -> __te_S45 {
+					label L100: "1: counter < thickness / 2 && _BarCodeReader30_local_wasLastWhite && _BarCodeReader30_local_write != 6" {
+						layout [ size: 774, 17 ]
+					}
+				}
+				edge __sd_S250: __sd_S24 -> __sd_S25 {
+					label L101: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __te_S490: __sd_S25 -> __te_S49 {
+					label L102: "1: _BarCodeReader30_local_end && _BarCodeReader30_local_write == 3 && digit4 != 0" {
+						layout [ size: 617, 17 ]
+					}
+				}
+				edge __sd_S260: __sd_S25 -> __sd_S26 {
+					label L103: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __te_S500: __sd_S26 -> __te_S50_g7834 {
+					label L104: "1: _BarCodeReader30_local_write == 6" {
+						layout [ size: 274, 17 ]
+					}
+				}
+				edge __EA_Exit40_g5596: __sd_S26 -> __EA_Exit4 {
+					label L105: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __sd_Depth130: __EA_Exit5 -> __sd_Depth13
+				edge __te_S510: __sd_Depth13 -> __te_S51 {
+					label L106: "1: _BarCodeReader30_local_end" {
+						layout [ size: 232, 17 ]
+					}
+				}
+				edge __sd_S280: __sd_Depth13 -> __sd_S28 {
+					label L107: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __te_S520: __sd_S28 -> __te_S52 {
+					label L108: "1: !_BarCodeReader30_local_wasLastWhite && !_BarCodeReader30_local_end" {
+						layout [ size: 555, 17 ]
+					}
+				}
+				edge __sd_S290: __sd_S28 -> __sd_S29 {
+					label L109: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __te_S540: __sd_S29 -> __te_S54 {
+					label L110: "1: _BarCodeReader30_local_wasLastWhite && !_BarCodeReader30_local_end" {
+						layout [ size: 551, 17 ]
+					}
+				}
+				edge __EA_Exit50_g7621: __sd_S29 -> __EA_Exit5 {
+					label L111: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+			}
+		}
+		node __EA_Init_g2529 {
+			layout [ size: 85, 34 ]
+		}
+		node __EA_C {
+			layout [ size: 74, 34 ]
+		}
+		node __EA_C1 {
+			layout [ size: 83, 34 ]
+		}
+		node __EA_C2 {
+			layout [ size: 83, 34 ]
+		}
+		node __EA_C3 {
+			layout [ size: 83, 34 ]
+		}
+		node __EA_C4 {
+			layout [ size: 83, 34 ]
+		}
+		node __EA_C5 {
+			layout [ size: 83, 34 ]
+		}
+		node __EA_C6 {
+			layout [ size: 83, 34 ]
+		}
+		node __EA_C7 {
+			layout [ size: 83, 34 ]
+		}
+		node __EA_C8 {
+			layout [ size: 83, 34 ]
+		}
+		node __EA_C9 {
+			layout [ size: 83, 34 ]
+		}
+		node __te_S8 {
+			layout [ size: 77, 34 ]
+		}
+		node __sd_Depth14 {
+			layout [ size: 121, 34 ]
+		}
+		node __te_S57 {
+			layout [ size: 85, 34 ]
+		}
+		node __sd_HaltState {
+			layout [ size: 126, 34 ]
+		}
+		edge __sd_Depth140: init -> __sd_Depth14
+		edge __te_S80: StartDelim -> __te_S8
+		edge __sd_HaltState0: readCode -> __sd_HaltState
+		edge __EA_C0: __EA_Init_g2529 -> __EA_C {
+			label L1: "/ SPEED = 50" {
+				layout [ size: 93, 17 ]
+			}
+		}
+		edge __EA_C10_g1397: __EA_C -> __EA_C1 {
+			label L2: "/ speedA = 0" {
+				layout [ size: 86, 17 ]
+			}
+		}
+		edge __EA_C20_g4145: __EA_C1 -> __EA_C2 {
+			label L3: "/ speedB = 0" {
+				layout [ size: 89, 17 ]
+			}
+		}
+		edge __EA_C30_g6302: __EA_C2 -> __EA_C3 {
+			label L4: "/ brightness = 0" {
+				layout [ size: 110, 17 ]
+			}
+		}
+		edge __EA_C40: __EA_C3 -> __EA_C4 {
+			label L5: "/ thickness = 0" {
+				layout [ size: 102, 17 ]
+			}
+		}
+		edge __EA_C50: __EA_C4 -> __EA_C5 {
+			label L6: "/ counter = 0" {
+				layout [ size: 89, 17 ]
+			}
+		}
+		edge __EA_C60: __EA_C5 -> __EA_C6 {
+			label L7: "/ digit1 = 10" {
+				layout [ size: 81, 17 ]
+			}
+		}
+		edge __EA_C70: __EA_C6 -> __EA_C7 {
+			label L8: "/ digit2 = 10" {
+				layout [ size: 81, 17 ]
+			}
+		}
+		edge __EA_C80: __EA_C7 -> __EA_C8 {
+			label L9: "/ digit3 = 10" {
+				layout [ size: 81, 17 ]
+			}
+		}
+		edge __EA_C90: __EA_C8 -> __EA_C9 {
+			label L10: "/ digit4 = 10" {
+				layout [ size: 81, 17 ]
+			}
+		}
+		edge init0: __EA_C9 -> init {
+			label L11: "/ programstate = 0" {
+				layout [ size: 128, 17 ]
+			}
+		}
+		edge readCode0: __te_S8 -> readCode {
+			label L12: "/ programstate = 3" {
+				layout [ size: 128, 17 ]
+			}
+		}
+		edge __te_S570: __sd_Depth14 -> __te_S57 {
+			label L13: "/ speedA = SPEED" {
+				layout [ size: 128, 17 ]
+			}
+		}
+		edge StartDelim0: __te_S57 -> StartDelim {
+			label L14: "/ speedB = SPEED" {
+				layout [ size: 131, 17 ]
+			}
+		}
+		edge __sd_HaltState0_g2589: __sd_HaltState -> __sd_HaltState
+	}
+}

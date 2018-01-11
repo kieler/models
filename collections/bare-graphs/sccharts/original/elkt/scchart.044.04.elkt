@@ -1,0 +1,370 @@
+graph G1
+node partc {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node pause {
+			layout [ size: 63, 34 ]
+		}
+		node extend {
+			layout [ size: 70, 34 ]
+		}
+		node retract {
+			layout [ size: 67, 34 ]
+		}
+		node retractAll {
+			algorithm: org.eclipse.elk.box
+			node R0 {
+				node retStick {
+					layout [ size: 76, 34 ]
+				}
+				edge retStick0: retStick -> retStick {
+					label L35: "/ STICK_PULL" {
+						layout [ size: 102, 17 ]
+					}
+				}
+			}
+			node R1 {
+				node retBucket {
+					layout [ size: 90, 34 ]
+				}
+				edge retBucket0: retBucket -> retBucket {
+					label L36: "/ BUCKET_PULL" {
+						layout [ size: 120, 17 ]
+					}
+				}
+			}
+			node R2 {
+				node retBoom {
+					layout [ size: 83, 34 ]
+				}
+				edge retBoom0: retBoom -> retBoom {
+					label L37: "/ BOOM_PULL" {
+						layout [ size: 104, 17 ]
+					}
+				}
+			}
+			node R3 {
+				node cancelOn {
+					layout [ size: 88, 34 ]
+				}
+				node cancelOff {
+					layout [ size: 88, 34 ]
+				}
+				edge cancelOff0: cancelOn -> cancelOff {
+					label L38: "1: SECOND" {
+						layout [ size: 81, 17 ]
+					}
+				}
+				edge cancelOn0: cancelOn -> cancelOn {
+					label L39: "2: / CANCEL_LAMP" {
+						layout [ size: 135, 17 ]
+					}
+				}
+				edge cancelOn0_g3331: cancelOff -> cancelOn {
+					label L40: "SECOND" {
+						layout [ size: 65, 17 ]
+					}
+				}
+			}
+		}
+		node retractAllPause {
+			algorithm: org.eclipse.elk.box
+			node N2 {
+				node cancelOn_g6643 {
+					layout [ size: 88, 34 ]
+				}
+				node cancelOff_g7646 {
+					layout [ size: 88, 34 ]
+				}
+				edge cancelOff0_g5540: cancelOn_g6643 -> cancelOff_g7646 {
+					label L41: "1: SECOND" {
+						layout [ size: 81, 17 ]
+					}
+				}
+				edge cancelOn0_g6087: cancelOn_g6643 -> cancelOn_g6643 {
+					label L42: "2: / CANCEL_LAMP" {
+						layout [ size: 135, 17 ]
+					}
+				}
+				edge cancelOn0_g0042: cancelOff_g7646 -> cancelOn_g6643 {
+					label L43: "SECOND" {
+						layout [ size: 65, 17 ]
+					}
+				}
+			}
+		}
+		node waitForExtend {
+			layout [ size: 123, 34 ]
+		}
+		node raiseStickAndBoom {
+			algorithm: org.eclipse.elk.box
+			node R0_g8974 {
+				node retStick_g1763 {
+					layout [ size: 76, 34 ]
+				}
+				edge retStick0_g5218: retStick_g1763 -> retStick_g1763 {
+					label L44: "/ STICK_PUSH" {
+						layout [ size: 104, 17 ]
+					}
+				}
+			}
+			node R1_g4870 {
+				node retBucket_g8355 {
+					layout [ size: 90, 34 ]
+				}
+				edge retBucket0_g1429: retBucket_g8355 -> retBucket_g8355 {
+					label L45: "/ BUCKET_PUSH" {
+						layout [ size: 122, 17 ]
+					}
+				}
+			}
+		}
+		node raiseStickAndBoomPause {
+			layout [ size: 202, 34 ]
+		}
+		node lowerBoom {
+			algorithm: org.eclipse.elk.box
+			node R1_g8838 {
+				node retBoom_g0346 {
+					layout [ size: 83, 34 ]
+				}
+				edge retBoom0_g2087: retBoom_g0346 -> retBoom_g0346 {
+					label L46: "/ BOOM_PUSH" {
+						layout [ size: 106, 17 ]
+					}
+				}
+			}
+		}
+		node lowerBoomPause {
+			layout [ size: 144, 34 ]
+		}
+		node retractStickAndBucket {
+			algorithm: org.eclipse.elk.box
+			node R0_g9895 {
+				node retStick_g0996 {
+					layout [ size: 76, 34 ]
+				}
+				edge retStick0_g6572: retStick_g0996 -> retStick_g0996 {
+					label L47: "/ STICK_PULL" {
+						layout [ size: 102, 17 ]
+					}
+				}
+			}
+			node R1_g3633 {
+				node retBucket_g5163 {
+					layout [ size: 90, 34 ]
+				}
+				edge retBucket0_g2244: retBucket_g5163 -> retBucket_g5163 {
+					label L48: "/ BUCKET_PULL" {
+						layout [ size: 120, 17 ]
+					}
+				}
+			}
+		}
+		node retractStickAndBucketPause {
+			layout [ size: 223, 34 ]
+		}
+		node waitForRetractButton {
+			layout [ size: 173, 34 ]
+		}
+		node resetBoom {
+			algorithm: org.eclipse.elk.box
+			node R0_g1186 {
+				node retBoom_g2047 {
+					layout [ size: 83, 34 ]
+				}
+				edge retBoom0_g0627: retBoom_g2047 -> retBoom_g2047 {
+					label L49: "/ BOOM_PULL" {
+						layout [ size: 104, 17 ]
+					}
+				}
+			}
+		}
+		node resetBoomPause {
+			layout [ size: 142, 34 ]
+		}
+		node backToLegMode {
+			algorithm: org.eclipse.elk.box
+			node Ro {
+				node retLegs {
+					layout [ size: 76, 34 ]
+				}
+				edge retLegs0: retLegs -> retLegs {
+					label L50: "/ LEGS_RETRACT" {
+						layout [ size: 129, 17 ]
+					}
+				}
+			}
+		}
+		edge extend0: pause -> extend {
+			label L1: "1: EXTEND_BUTTON / LEGS_EXTEND" {
+				layout [ size: 274, 17 ]
+			}
+		}
+		edge retract0: pause -> retract {
+			label L2: "2: RETRACT_BUTTON / LEGS_RETRACT" {
+				layout [ size: 294, 17 ]
+			}
+		}
+		edge pause0: extend -> pause {
+			label L3: "1: STOP_BUTTON / LEGS_STOP" {
+				layout [ size: 235, 17 ]
+			}
+		}
+		edge waitForExtend0: extend -> waitForExtend {
+			label L4: "2: LEGS_OUT / LEGS_STOP" {
+				layout [ size: 202, 17 ]
+			}
+		}
+		edge retract0_g2405: extend -> retract {
+			label L5: "3: RETRACT_BUTTON / LEGS_RETRACT" {
+				layout [ size: 294, 17 ]
+			}
+		}
+		edge pause0_g6025: retract -> pause {
+			label L6: "1: STOP_BUTTON || LEGS_IN / LEGS_STOP" {
+				layout [ size: 315, 17 ]
+			}
+		}
+		edge extend0_g0380: retract -> extend {
+			label L7: "2: EXTEND_BUTTON / LEGS_EXTEND" {
+				layout [ size: 274, 17 ]
+			}
+		}
+		edge waitForExtend0_g8172: retractAll -> waitForExtend {
+			label L8: "1: BUCKET_IN && BOOM_OUT && STICK_IN" {
+				layout [ size: 321, 17 ]
+			}
+		}
+		edge retractAllPause0: retractAll -> retractAllPause {
+			label L9: "2: STOP_BUTTON" {
+				layout [ size: 131, 17 ]
+			}
+		}
+		edge retractAll0: retractAllPause -> retractAll {
+			label L10: "1: STOP_BUTTON" {
+				layout [ size: 131, 17 ]
+			}
+		}
+		edge retractAllPause0_g3774: retractAllPause -> retractAllPause {
+			label L11: "2: / ALARM_LAMP" {
+				layout [ size: 124, 17 ]
+			}
+		}
+		edge raiseStickAndBoom0: waitForExtend -> raiseStickAndBoom {
+			label L12: "1: EXTEND_BUTTON" {
+				layout [ size: 151, 17 ]
+			}
+		}
+		edge waitForExtend0_g0354: waitForExtend -> waitForExtend {
+			label L13: "2: / DONE_LAMP" {
+				layout [ size: 118, 17 ]
+			}
+		}
+		edge lowerBoom0: raiseStickAndBoom -> lowerBoom {
+			label L14: "1: BUCKET_OUT && STICK_OUT" {
+				layout [ size: 238, 17 ]
+			}
+		}
+		edge retractAll0_g2033: raiseStickAndBoom -> retractAll {
+			label L15: "2: RETRACT_BUTTON" {
+				layout [ size: 161, 17 ]
+			}
+		}
+		edge raiseStickAndBoomPause0: raiseStickAndBoom -> raiseStickAndBoomPause {
+			label L16: "3: STOP_BUTTON / ALARM_LAMP" {
+				layout [ size: 243, 17 ]
+			}
+		}
+		edge raiseStickAndBoom0_g9253: raiseStickAndBoomPause -> raiseStickAndBoom {
+			label L17: "1: STOP_BUTTON" {
+				layout [ size: 131, 17 ]
+			}
+		}
+		edge raiseStickAndBoomPause0_g7587: raiseStickAndBoomPause -> raiseStickAndBoomPause {
+			label L18: "2: / ALARM_LAMP" {
+				layout [ size: 124, 17 ]
+			}
+		}
+		edge retractStickAndBucket0: lowerBoom -> retractStickAndBucket {
+			label L19: "1: BOOM_IN" {
+				layout [ size: 87, 17 ]
+			}
+		}
+		edge retractAll0_g3337: lowerBoom -> retractAll {
+			label L20: "2: RETRACT_BUTTON" {
+				layout [ size: 161, 17 ]
+			}
+		}
+		edge lowerBoomPause0: lowerBoom -> lowerBoomPause {
+			label L21: "3: STOP_BUTTON" {
+				layout [ size: 131, 17 ]
+			}
+		}
+		edge lowerBoom0_g0280: lowerBoomPause -> lowerBoom {
+			label L22: "1: STOP_BUTTON" {
+				layout [ size: 131, 17 ]
+			}
+		}
+		edge lowerBoomPause0_g8346: lowerBoomPause -> lowerBoomPause {
+			label L23: "2: / ALARM_LAMP" {
+				layout [ size: 124, 17 ]
+			}
+		}
+		edge waitForRetractButton0: retractStickAndBucket -> waitForRetractButton {
+			label L24: "1: BUCKET_IN && STICK_IN / DONE_LAMP" {
+				layout [ size: 308, 17 ]
+			}
+		}
+		edge retractStickAndBucketPause0: retractStickAndBucket -> retractStickAndBucketPause {
+			label L25: "2: STOP_BUTTON" {
+				layout [ size: 131, 17 ]
+			}
+		}
+		edge retractStickAndBucket0_g8931: retractStickAndBucketPause -> retractStickAndBucket {
+			label L26: "1: STOP_BUTTON" {
+				layout [ size: 131, 17 ]
+			}
+		}
+		edge retractStickAndBucketPause0_g3171: retractStickAndBucketPause -> retractStickAndBucketPause {
+			label L27: "2: / ALARM_LAMP" {
+				layout [ size: 124, 17 ]
+			}
+		}
+		edge resetBoom0: waitForRetractButton -> resetBoom {
+			label L28: "1: RETRACT_BUTTON" {
+				layout [ size: 161, 17 ]
+			}
+		}
+		edge waitForRetractButton0_g2171: waitForRetractButton -> waitForRetractButton {
+			label L29: "2: / DONE_LAMP" {
+				layout [ size: 118, 17 ]
+			}
+		}
+		edge backToLegMode0: resetBoom -> backToLegMode {
+			label L30: "1: BOOM_OUT" {
+				layout [ size: 105, 17 ]
+			}
+		}
+		edge resetBoomPause0: resetBoom -> resetBoomPause {
+			label L31: "2: STOP_BUTTON / ALARM_LAMP" {
+				layout [ size: 243, 17 ]
+			}
+		}
+		edge resetBoom0_g7633: resetBoomPause -> resetBoom {
+			label L32: "1: STOP_BUTTON" {
+				layout [ size: 131, 17 ]
+			}
+		}
+		edge resetBoomPause0_g6622: resetBoomPause -> resetBoomPause {
+			label L33: "2: / ALARM_LAMP" {
+				layout [ size: 124, 17 ]
+			}
+		}
+		edge pause0_g0020: backToLegMode -> pause {
+			label L34: "LEGS_IN" {
+				layout [ size: 64, 17 ]
+			}
+		}
+	}
+}

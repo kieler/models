@@ -1,0 +1,1793 @@
+graph G1
+node BarcodeReader {
+	algorithm: org.eclipse.elk.box
+	node __EA_Entry {
+		node __EA_Main {
+			algorithm: org.eclipse.elk.box
+			node debug {
+				node __te_S {
+					layout [ size: 69, 34 ]
+				}
+				node debug_g7322 {
+					layout [ size: 66, 34 ]
+				}
+				node __sd_Depth {
+					layout [ size: 105, 34 ]
+				}
+				edge debug0: __te_S -> debug_g7322 {
+					label L6: "/ rot |= true" {
+						layout [ size: 78, 17 ]
+					}
+				}
+				edge __sd_Depth0: debug_g7322 -> __sd_Depth
+				edge __te_S0: __sd_Depth -> __te_S {
+					label L7: "1: enter" {
+						layout [ size: 54, 17 ]
+					}
+				}
+				edge debug0_g2342: __sd_Depth -> debug_g7322 {
+					label L8: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+			}
+			node widthdetection {
+				node init {
+					layout [ size: 42, 34 ]
+				}
+				node __sd_Depth2 {
+					layout [ size: 113, 34 ]
+				}
+				node __te_S1 {
+					layout [ size: 77, 34 ]
+				}
+				node __te_S2 {
+					layout [ size: 77, 34 ]
+				}
+				node __te_S3 {
+					layout [ size: 77, 34 ]
+				}
+				node __te_S4 {
+					layout [ size: 77, 34 ]
+				}
+				node __te_S5 {
+					layout [ size: 77, 34 ]
+				}
+				node __te_S6 {
+					layout [ size: 77, 34 ]
+				}
+				node waiting {
+					layout [ size: 71, 34 ]
+				}
+				node __sd_Depth1 {
+					layout [ size: 113, 34 ]
+				}
+				node __sd_S2 {
+					layout [ size: 80, 34 ]
+				}
+				node __sd_S3 {
+					layout [ size: 80, 34 ]
+				}
+				node __sd_S4 {
+					layout [ size: 80, 34 ]
+				}
+				node __sd_S5 {
+					layout [ size: 80, 34 ]
+				}
+				node __sd_Pause2 {
+					layout [ size: 114, 34 ]
+				}
+				edge waiting0: init -> waiting {
+					label L9: "/ start = rotation" {
+						layout [ size: 113, 17 ]
+					}
+				}
+				edge __te_S30: __sd_Depth2 -> __te_S3 {
+					label L10: "1: width >= 5 && width <= 14" {
+						layout [ size: 199, 17 ]
+					}
+				}
+				edge __sd_S20: __sd_Depth2 -> __sd_S2 {
+					label L11: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __te_S20: __te_S1 -> __te_S2 {
+					label L12: "/ width = rotation - start" {
+						layout [ size: 163, 17 ]
+					}
+				}
+				edge __sd_Depth20: __te_S2 -> __sd_Depth2 {
+					label L13: "/ pwidth |= true" {
+						layout [ size: 105, 17 ]
+					}
+				}
+				edge init0: __te_S3 -> init {
+					label L14: "/ one |= true" {
+						layout [ size: 85, 17 ]
+					}
+				}
+				edge init0_g5660: __te_S4 -> init {
+					label L15: "/ two |= true" {
+						layout [ size: 83, 17 ]
+					}
+				}
+				edge init0_g3442: __te_S5 -> init {
+					label L16: "/ three |= true" {
+						layout [ size: 96, 17 ]
+					}
+				}
+				edge init0_g3510: __te_S6 -> init {
+					label L17: "/ four |= true" {
+						layout [ size: 87, 17 ]
+					}
+				}
+				edge __sd_Depth10: waiting -> __sd_Depth1
+				edge __te_S10: __sd_Depth1 -> __te_S1 {
+					label L18: "1: last_black || last_white" {
+						layout [ size: 173, 17 ]
+					}
+				}
+				edge waiting0_g4217: __sd_Depth1 -> waiting {
+					label L19: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __te_S40: __sd_S2 -> __te_S4 {
+					label L20: "1: width >= 16 && width <= 24" {
+						layout [ size: 207, 17 ]
+					}
+				}
+				edge __sd_S30: __sd_S2 -> __sd_S3 {
+					label L21: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __te_S50: __sd_S3 -> __te_S5 {
+					label L22: "1: width >= 26 && width <= 34" {
+						layout [ size: 207, 17 ]
+					}
+				}
+				edge __sd_S40: __sd_S3 -> __sd_S4 {
+					label L23: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __te_S60: __sd_S4 -> __te_S6 {
+					label L24: "1: width >= 36 && width <= 44" {
+						layout [ size: 207, 17 ]
+					}
+				}
+				edge __sd_S50: __sd_S4 -> __sd_S5 {
+					label L25: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge init0_g1807: __sd_S5 -> init {
+					label L26: "1: error" {
+						layout [ size: 52, 17 ]
+					}
+				}
+				edge __sd_Pause20: __sd_S5 -> __sd_Pause2 {
+					label L27: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __sd_Depth20_g8263: __sd_Pause2 -> __sd_Depth2
+			}
+			node errordetection {
+				node __te_S7 {
+					layout [ size: 77, 34 ]
+				}
+				node __te_S8 {
+					layout [ size: 77, 34 ]
+				}
+				node detect {
+					layout [ size: 65, 34 ]
+				}
+				node __sd_Depth3 {
+					layout [ size: 113, 34 ]
+				}
+				edge __te_S80: __te_S7 -> __te_S8 {
+					label L28: "/ error |= true" {
+						layout [ size: 94, 17 ]
+					}
+				}
+				edge detect0: __te_S8 -> detect {
+					label L29: "/ warn = true" {
+						layout [ size: 88, 17 ]
+					}
+				}
+				edge __sd_Depth30: detect -> __sd_Depth3
+				edge __te_S70: __sd_Depth3 -> __te_S7 {
+					label L30: "1: !one && !two && !three && !four && (last_black || last_white)" {
+						layout [ size: 438, 17 ]
+					}
+				}
+				edge detect0_g9319: __sd_Depth3 -> detect {
+					label L31: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+			}
+			node reading {
+				node find_initcode {
+					algorithm: org.eclipse.elk.box
+					node N1 {
+						node go {
+							layout [ size: 45, 40 ]
+						}
+						node __te_S9 {
+							layout [ size: 77, 34 ]
+						}
+						node search {
+							layout [ size: 69, 34 ]
+						}
+						node __sd_Depth4 {
+							layout [ size: 113, 34 ]
+						}
+						node one {
+							layout [ size: 47, 34 ]
+						}
+						node __sd_Depth5 {
+							layout [ size: 113, 34 ]
+						}
+						node __sd_S14 {
+							layout [ size: 88, 34 ]
+						}
+						node two {
+							layout [ size: 46, 34 ]
+						}
+						node __sd_Depth6 {
+							layout [ size: 113, 34 ]
+						}
+						node __sd_S16 {
+							layout [ size: 88, 34 ]
+						}
+						edge one0: __te_S9 -> one {
+							label L80: "/ warn = warn & false" {
+								layout [ size: 146, 17 ]
+							}
+						}
+						edge __sd_Depth40: search -> __sd_Depth4
+						edge __te_S90: __sd_Depth4 -> __te_S9 {
+							label L81: "1: last_black && one" {
+								layout [ size: 143, 17 ]
+							}
+						}
+						edge search0: __sd_Depth4 -> search {
+							label L82: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __sd_Depth50: one -> __sd_Depth5
+						edge two0: __sd_Depth5 -> two {
+							label L83: "1: last_white && one" {
+								layout [ size: 144, 17 ]
+							}
+						}
+						edge __sd_S140: __sd_Depth5 -> __sd_S14 {
+							label L84: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge search0_g9751: __sd_S14 -> search {
+							label L85: "1: last_white && !one" {
+								layout [ size: 148, 17 ]
+							}
+						}
+						edge one0_g3400: __sd_S14 -> one {
+							label L86: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __sd_Depth60: two -> __sd_Depth6
+						edge go0: __sd_Depth6 -> go {
+							label L87: "1: last_black && one" {
+								layout [ size: 143, 17 ]
+							}
+						}
+						edge __sd_S160: __sd_Depth6 -> __sd_S16 {
+							label L88: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge search0_g4782: __sd_S16 -> search {
+							label L89: "1: last_black && !one" {
+								layout [ size: 147, 17 ]
+							}
+						}
+						edge two0_g9427: __sd_S16 -> two {
+							label L90: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+					}
+				}
+				node digits {
+					algorithm: org.eclipse.elk.box
+					node N2 {
+						node __sd_Depth10_g2646 {
+							layout [ size: 121, 34 ]
+						}
+						node out {
+							layout [ size: 43, 34 ]
+						}
+						node ^end {
+							layout [ size: 54, 40 ]
+						}
+						node __sd_Depth7 {
+							layout [ size: 113, 34 ]
+						}
+						node __te_S15 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S16 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S17 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S18 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S19 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S20_g0965 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S21 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S22 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S23 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S24 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S25 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S26 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S27 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S28 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S29 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S30_g9717 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S31 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S32 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S33 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S34 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S35 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S36 {
+							layout [ size: 85, 34 ]
+						}
+						node __sd_S50_g2308 {
+							layout [ size: 88, 34 ]
+						}
+						node readw {
+							layout [ size: 64, 34 ]
+						}
+						node __sd_Depth8 {
+							layout [ size: 113, 34 ]
+						}
+						node __sd_S19 {
+							layout [ size: 88, 34 ]
+						}
+						node __sd_S20_g4798 {
+							layout [ size: 88, 34 ]
+						}
+						node __sd_S21 {
+							layout [ size: 88, 34 ]
+						}
+						node __sd_S22 {
+							layout [ size: 88, 34 ]
+						}
+						node readb {
+							layout [ size: 62, 34 ]
+						}
+						node __sd_Depth9 {
+							layout [ size: 113, 34 ]
+						}
+						node __sd_S24 {
+							layout [ size: 88, 34 ]
+						}
+						node __sd_S25 {
+							layout [ size: 88, 34 ]
+						}
+						node __sd_S26 {
+							layout [ size: 88, 34 ]
+						}
+						node __sd_S27 {
+							layout [ size: 88, 34 ]
+						}
+						node __sd_S28 {
+							layout [ size: 88, 34 ]
+						}
+						node __sd_Pause10 {
+							layout [ size: 122, 34 ]
+						}
+						node __sd_S31 {
+							layout [ size: 88, 34 ]
+						}
+						node __sd_S32 {
+							layout [ size: 88, 34 ]
+						}
+						node __sd_S33 {
+							layout [ size: 88, 34 ]
+						}
+						node __sd_S34 {
+							layout [ size: 88, 34 ]
+						}
+						node __sd_S35 {
+							layout [ size: 88, 34 ]
+						}
+						node __sd_S36 {
+							layout [ size: 88, 34 ]
+						}
+						node __sd_S37 {
+							layout [ size: 88, 34 ]
+						}
+						node __sd_S38 {
+							layout [ size: 88, 34 ]
+						}
+						node __sd_S39 {
+							layout [ size: 88, 34 ]
+						}
+						node __sd_Pause11 {
+							layout [ size: 121, 34 ]
+						}
+						node __sd_Depth11 {
+							layout [ size: 120, 34 ]
+						}
+						node __sd_S41 {
+							layout [ size: 88, 34 ]
+						}
+						node __sd_S42 {
+							layout [ size: 88, 34 ]
+						}
+						node __sd_S43 {
+							layout [ size: 88, 34 ]
+						}
+						node __sd_S44 {
+							layout [ size: 88, 34 ]
+						}
+						node __sd_S45 {
+							layout [ size: 88, 34 ]
+						}
+						node __sd_S46 {
+							layout [ size: 88, 34 ]
+						}
+						node __sd_S47 {
+							layout [ size: 88, 34 ]
+						}
+						node __sd_S48 {
+							layout [ size: 88, 34 ]
+						}
+						node __sd_S49 {
+							layout [ size: 88, 34 ]
+						}
+						edge __te_S260: __sd_Depth10_g2646 -> __te_S26 {
+							label L91: "1: _BarcodeReader_local_stripes == 1" {
+								layout [ size: 269, 17 ]
+							}
+						}
+						edge __sd_S280: __sd_Depth10_g2646 -> __sd_S28 {
+							label L92: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __te_S270: out -> __te_S27 {
+							label L93: "1: _BarcodeReader_local_value == 13" {
+								layout [ size: 267, 17 ]
+							}
+						}
+						edge __sd_S310: out -> __sd_S31 {
+							label L94: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __te_S150: __sd_Depth7 -> __te_S15 {
+							label L95: "/ _BarcodeReader_local_value = 0" {
+								layout [ size: 242, 17 ]
+							}
+						}
+						edge readw0: __te_S15 -> readw {
+							label L96: "/ _BarcodeReader_local_stripes = 1" {
+								layout [ size: 252, 17 ]
+							}
+						}
+						edge readb0: __te_S16 -> readb {
+							label L97: "/ _BarcodeReader_local_value = _BarcodeReader_local_value * 2" {
+								layout [ size: 464, 17 ]
+							}
+						}
+						edge readb0_g7168: __te_S17 -> readb {
+							label L98: "/ _BarcodeReader_local_value = _BarcodeReader_local_value * 4" {
+								layout [ size: 464, 17 ]
+							}
+						}
+						edge readb0_g7841: __te_S18 -> readb {
+							label L99: "/ _BarcodeReader_local_value = _BarcodeReader_local_value * 8" {
+								layout [ size: 464, 17 ]
+							}
+						}
+						edge readb0_g5263: __te_S19 -> readb {
+							label L100: "/ _BarcodeReader_local_value = _BarcodeReader_local_value * 16" {
+								layout [ size: 472, 17 ]
+							}
+						}
+						edge end0: __te_S20_g0965 -> ^end {
+							label L101: "/ bad_number |= true" {
+								layout [ size: 146, 17 ]
+							}
+						}
+						edge __sd_Depth100: __te_S21 -> __sd_Depth10_g2646 {
+							label L102: "/ _BarcodeReader_local_value = _BarcodeReader_local_value * 2 + 1" {
+								layout [ size: 489, 17 ]
+							}
+						}
+						edge __sd_Depth100_g6937: __te_S22 -> __sd_Depth10_g2646 {
+							label L103: "/ _BarcodeReader_local_value = _BarcodeReader_local_value * 4 + 3" {
+								layout [ size: 489, 17 ]
+							}
+						}
+						edge __sd_Depth100_g3657: __te_S23 -> __sd_Depth10_g2646 {
+							label L104: "/ _BarcodeReader_local_value = _BarcodeReader_local_value * 8 + 7" {
+								layout [ size: 489, 17 ]
+							}
+						}
+						edge __sd_Depth100_g9230: __te_S24 -> __sd_Depth10_g2646 {
+							label L105: "/ _BarcodeReader_local_value = _BarcodeReader_local_value * 16 + 15" {
+								layout [ size: 505, 17 ]
+							}
+						}
+						edge end0_g8560: __te_S25 -> ^end {
+							label L106: "/ bad_number |= true" {
+								layout [ size: 146, 17 ]
+							}
+						}
+						edge readw0_g0790: __te_S26 -> readw {
+							label L107: "/ _BarcodeReader_local_stripes = 0" {
+								layout [ size: 252, 17 ]
+							}
+						}
+						edge end0_g8539: __te_S27 -> ^end {
+							label L108: "/ number = 0" {
+								layout [ size: 88, 17 ]
+							}
+						}
+						edge end0_g3396: __te_S28 -> ^end {
+							label L109: "/ number = 1" {
+								layout [ size: 88, 17 ]
+							}
+						}
+						edge end0_g2271: __te_S29 -> ^end {
+							label L110: "/ number = 2" {
+								layout [ size: 88, 17 ]
+							}
+						}
+						edge end0_g4460: __te_S30_g9717 -> ^end {
+							label L111: "/ number = 3" {
+								layout [ size: 88, 17 ]
+							}
+						}
+						edge end0_g9373: __te_S31 -> ^end {
+							label L112: "/ number = 4" {
+								layout [ size: 88, 17 ]
+							}
+						}
+						edge end0_g5126: __te_S32 -> ^end {
+							label L113: "/ number = 5" {
+								layout [ size: 88, 17 ]
+							}
+						}
+						edge end0_g3601: __te_S33 -> ^end {
+							label L114: "/ number = 6" {
+								layout [ size: 88, 17 ]
+							}
+						}
+						edge end0_g9003: __te_S34 -> ^end {
+							label L115: "/ number = 7" {
+								layout [ size: 88, 17 ]
+							}
+						}
+						edge end0_g8503: __te_S35 -> ^end {
+							label L116: "/ number = 8" {
+								layout [ size: 88, 17 ]
+							}
+						}
+						edge end0_g1893: __te_S36 -> ^end {
+							label L117: "/ number = 9" {
+								layout [ size: 88, 17 ]
+							}
+						}
+						edge end0_g8605: __sd_S50_g2308 -> ^end {
+							label L118: "/ bad_number |= true" {
+								layout [ size: 146, 17 ]
+							}
+						}
+						edge __sd_Depth80: readw -> __sd_Depth8
+						edge __te_S160: __sd_Depth8 -> __te_S16 {
+							label L119: "1: one" {
+								layout [ size: 43, 17 ]
+							}
+						}
+						edge __sd_S190: __sd_Depth8 -> __sd_S19 {
+							label L120: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __te_S170: __sd_S19 -> __te_S17 {
+							label L121: "1: two" {
+								layout [ size: 42, 17 ]
+							}
+						}
+						edge __sd_S200: __sd_S19 -> __sd_S20_g4798 {
+							label L122: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __te_S180: __sd_S20_g4798 -> __te_S18 {
+							label L123: "1: three" {
+								layout [ size: 54, 17 ]
+							}
+						}
+						edge __sd_S210: __sd_S20_g4798 -> __sd_S21 {
+							label L124: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __te_S190: __sd_S21 -> __te_S19 {
+							label L125: "1: four" {
+								layout [ size: 45, 17 ]
+							}
+						}
+						edge __sd_S220: __sd_S21 -> __sd_S22 {
+							label L126: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __te_S200: __sd_S22 -> __te_S20_g0965 {
+							label L127: "1: error" {
+								layout [ size: 52, 17 ]
+							}
+						}
+						edge readw0_g0751: __sd_S22 -> readw {
+							label L128: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __sd_Depth90: readb -> __sd_Depth9
+						edge __te_S210: __sd_Depth9 -> __te_S21 {
+							label L129: "1: one" {
+								layout [ size: 43, 17 ]
+							}
+						}
+						edge __sd_S240: __sd_Depth9 -> __sd_S24 {
+							label L130: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __te_S220: __sd_S24 -> __te_S22 {
+							label L131: "1: two" {
+								layout [ size: 42, 17 ]
+							}
+						}
+						edge __sd_S250: __sd_S24 -> __sd_S25 {
+							label L132: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __te_S230: __sd_S25 -> __te_S23 {
+							label L133: "1: three" {
+								layout [ size: 54, 17 ]
+							}
+						}
+						edge __sd_S260: __sd_S25 -> __sd_S26 {
+							label L134: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __te_S240: __sd_S26 -> __te_S24 {
+							label L135: "1: four" {
+								layout [ size: 45, 17 ]
+							}
+						}
+						edge __sd_S270: __sd_S26 -> __sd_S27 {
+							label L136: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __te_S250: __sd_S27 -> __te_S25 {
+							label L137: "1: error" {
+								layout [ size: 52, 17 ]
+							}
+						}
+						edge readb0_g0223: __sd_S27 -> readb {
+							label L138: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge out0: __sd_S28 -> out {
+							label L139: "1: _BarcodeReader_local_stripes == 0" {
+								layout [ size: 269, 17 ]
+							}
+						}
+						edge __sd_Pause100: __sd_S28 -> __sd_Pause10 {
+							label L140: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __sd_Depth100_g1857: __sd_Pause10 -> __sd_Depth10_g2646
+						edge __te_S280: __sd_S31 -> __te_S28 {
+							label L141: "1: _BarcodeReader_local_value == 25" {
+								layout [ size: 267, 17 ]
+							}
+						}
+						edge __sd_S320: __sd_S31 -> __sd_S32 {
+							label L142: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __te_S290: __sd_S32 -> __te_S29 {
+							label L143: "1: _BarcodeReader_local_value == 19" {
+								layout [ size: 267, 17 ]
+							}
+						}
+						edge __sd_S330: __sd_S32 -> __sd_S33 {
+							label L144: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __te_S300: __sd_S33 -> __te_S30_g9717 {
+							label L145: "1: _BarcodeReader_local_value == 61" {
+								layout [ size: 267, 17 ]
+							}
+						}
+						edge __sd_S340: __sd_S33 -> __sd_S34 {
+							label L146: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __te_S310: __sd_S34 -> __te_S31 {
+							label L147: "1: _BarcodeReader_local_value == 35" {
+								layout [ size: 267, 17 ]
+							}
+						}
+						edge __sd_S350: __sd_S34 -> __sd_S35 {
+							label L148: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __te_S320: __sd_S35 -> __te_S32 {
+							label L149: "1: _BarcodeReader_local_value == 49" {
+								layout [ size: 267, 17 ]
+							}
+						}
+						edge __sd_S360: __sd_S35 -> __sd_S36 {
+							label L150: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __te_S330: __sd_S36 -> __te_S33 {
+							label L151: "1: _BarcodeReader_local_value == 47" {
+								layout [ size: 267, 17 ]
+							}
+						}
+						edge __sd_S370: __sd_S36 -> __sd_S37 {
+							label L152: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __te_S340: __sd_S37 -> __te_S34 {
+							label L153: "1: _BarcodeReader_local_value == 59" {
+								layout [ size: 267, 17 ]
+							}
+						}
+						edge __sd_S380: __sd_S37 -> __sd_S38 {
+							label L154: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __te_S350: __sd_S38 -> __te_S35 {
+							label L155: "1: _BarcodeReader_local_value == 55" {
+								layout [ size: 267, 17 ]
+							}
+						}
+						edge __sd_S390: __sd_S38 -> __sd_S39 {
+							label L156: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __te_S360: __sd_S39 -> __te_S36 {
+							label L157: "1: _BarcodeReader_local_value == 11" {
+								layout [ size: 266, 17 ]
+							}
+						}
+						edge __sd_Pause110: __sd_S39 -> __sd_Pause11 {
+							label L158: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __sd_Depth110: __sd_Pause11 -> __sd_Depth11
+						edge __te_S270_g9080: __sd_Depth11 -> __te_S27 {
+							label L159: "1: _BarcodeReader_local_value == 13" {
+								layout [ size: 267, 17 ]
+							}
+						}
+						edge __sd_S410: __sd_Depth11 -> __sd_S41 {
+							label L160: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __te_S280_g8014: __sd_S41 -> __te_S28 {
+							label L161: "1: _BarcodeReader_local_value == 25" {
+								layout [ size: 267, 17 ]
+							}
+						}
+						edge __sd_S420: __sd_S41 -> __sd_S42 {
+							label L162: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __te_S290_g6255: __sd_S42 -> __te_S29 {
+							label L163: "1: _BarcodeReader_local_value == 19" {
+								layout [ size: 267, 17 ]
+							}
+						}
+						edge __sd_S430: __sd_S42 -> __sd_S43 {
+							label L164: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __te_S300_g5439: __sd_S43 -> __te_S30_g9717 {
+							label L165: "1: _BarcodeReader_local_value == 61" {
+								layout [ size: 267, 17 ]
+							}
+						}
+						edge __sd_S440: __sd_S43 -> __sd_S44 {
+							label L166: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __te_S310_g6160: __sd_S44 -> __te_S31 {
+							label L167: "1: _BarcodeReader_local_value == 35" {
+								layout [ size: 267, 17 ]
+							}
+						}
+						edge __sd_S450: __sd_S44 -> __sd_S45 {
+							label L168: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __te_S320_g6416: __sd_S45 -> __te_S32 {
+							label L169: "1: _BarcodeReader_local_value == 49" {
+								layout [ size: 267, 17 ]
+							}
+						}
+						edge __sd_S460: __sd_S45 -> __sd_S46 {
+							label L170: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __te_S330_g5221: __sd_S46 -> __te_S33 {
+							label L171: "1: _BarcodeReader_local_value == 47" {
+								layout [ size: 267, 17 ]
+							}
+						}
+						edge __sd_S470: __sd_S46 -> __sd_S47 {
+							label L172: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __te_S340_g1909: __sd_S47 -> __te_S34 {
+							label L173: "1: _BarcodeReader_local_value == 59" {
+								layout [ size: 267, 17 ]
+							}
+						}
+						edge __sd_S480: __sd_S47 -> __sd_S48 {
+							label L174: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __te_S350_g2290: __sd_S48 -> __te_S35 {
+							label L175: "1: _BarcodeReader_local_value == 55" {
+								layout [ size: 267, 17 ]
+							}
+						}
+						edge __sd_S490: __sd_S48 -> __sd_S49 {
+							label L176: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __te_S360_g6415: __sd_S49 -> __te_S36 {
+							label L177: "1: _BarcodeReader_local_value == 11" {
+								layout [ size: 266, 17 ]
+							}
+						}
+						edge __sd_S500: __sd_S49 -> __sd_S50_g2308 {
+							label L178: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+					}
+				}
+				node __sd_Depth12 {
+					layout [ size: 121, 34 ]
+				}
+				node __sd_Depth13 {
+					layout [ size: 121, 34 ]
+				}
+				node __sd_Depth15 {
+					layout [ size: 121, 34 ]
+				}
+				node __sd_Depth16 {
+					layout [ size: 121, 34 ]
+				}
+				node barcode_read {
+					layout [ size: 125, 40 ]
+				}
+				node __te_S10_g1623 {
+					layout [ size: 85, 34 ]
+				}
+				node __te_S11 {
+					layout [ size: 84, 34 ]
+				}
+				node __te_S12 {
+					layout [ size: 85, 34 ]
+				}
+				node __te_S13 {
+					layout [ size: 85, 34 ]
+				}
+				node __te_S38 {
+					layout [ size: 85, 34 ]
+				}
+				node __te_S39 {
+					layout [ size: 85, 34 ]
+				}
+				node __te_S40_g6882 {
+					layout [ size: 85, 34 ]
+				}
+				node __te_S41 {
+					layout [ size: 85, 34 ]
+				}
+				node __te_S42 {
+					layout [ size: 85, 34 ]
+				}
+				node __te_S43 {
+					layout [ size: 85, 34 ]
+				}
+				node __te_S44 {
+					layout [ size: 85, 34 ]
+				}
+				node __te_S45 {
+					layout [ size: 85, 34 ]
+				}
+				node __te_S46 {
+					layout [ size: 85, 34 ]
+				}
+				node __te_S47 {
+					layout [ size: 85, 34 ]
+				}
+				node __te_S48 {
+					layout [ size: 85, 34 ]
+				}
+				node __te_S49 {
+					layout [ size: 85, 34 ]
+				}
+				node __te_S50_g1081 {
+					layout [ size: 85, 34 ]
+				}
+				node __te_S51 {
+					layout [ size: 85, 34 ]
+				}
+				node __te_S52 {
+					layout [ size: 85, 34 ]
+				}
+				node __te_S53 {
+					layout [ size: 85, 34 ]
+				}
+				node __te_S54 {
+					layout [ size: 85, 34 ]
+				}
+				node __te_S55 {
+					layout [ size: 85, 34 ]
+				}
+				node __sd_S51 {
+					layout [ size: 88, 34 ]
+				}
+				node __sd_S52 {
+					layout [ size: 88, 34 ]
+				}
+				node __sd_Pause12 {
+					layout [ size: 122, 34 ]
+				}
+				node __sd_S56 {
+					layout [ size: 88, 34 ]
+				}
+				node __sd_Pause13 {
+					layout [ size: 122, 34 ]
+				}
+				node error {
+					layout [ size: 56, 34 ]
+				}
+				node __sd_Depth14 {
+					layout [ size: 121, 34 ]
+				}
+				node __sd_S60 {
+					layout [ size: 88, 34 ]
+				}
+				node __sd_Pause15 {
+					layout [ size: 122, 34 ]
+				}
+				node __sd_S63 {
+					layout [ size: 88, 34 ]
+				}
+				node __sd_Pause16 {
+					layout [ size: 122, 34 ]
+				}
+				node ending {
+					layout [ size: 70, 34 ]
+				}
+				node __sd_Depth17 {
+					layout [ size: 121, 34 ]
+				}
+				node __sd_S67 {
+					layout [ size: 88, 34 ]
+				}
+				node __sd_S68 {
+					layout [ size: 88, 34 ]
+				}
+				edge __te_S100: find_initcode -> __te_S10_g1623
+				edge __te_S380: digits -> __te_S38
+				edge __te_S390: __sd_Depth12 -> __te_S39 {
+					label L32: "1: counter > 0 && !bad_number" {
+						layout [ size: 218, 17 ]
+					}
+				}
+				edge __sd_S510: __sd_Depth12 -> __sd_S51 {
+					label L33: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge digits0: __sd_Depth13 -> digits {
+					label L34: "1: parity >= 0" {
+						layout [ size: 90, 17 ]
+					}
+				}
+				edge __sd_S560: __sd_Depth13 -> __sd_S56 {
+					label L35: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __te_S480: __sd_Depth15 -> __te_S48 {
+					label L36: "1: number == parity" {
+						layout [ size: 137, 17 ]
+					}
+				}
+				edge __sd_S600: __sd_Depth15 -> __sd_S60 {
+					label L37: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __te_S510: __sd_Depth16 -> __te_S51 {
+					label L38: "1: result >= 500" {
+						layout [ size: 108, 17 ]
+					}
+				}
+				edge __sd_S630: __sd_Depth16 -> __sd_S63 {
+					label L39: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __te_S110: __te_S10_g1623 -> __te_S11 {
+					label L40: "/ counter = 3" {
+						layout [ size: 89, 17 ]
+					}
+				}
+				edge __te_S120: __te_S11 -> __te_S12 {
+					label L41: "/ parity = 9" {
+						layout [ size: 73, 17 ]
+					}
+				}
+				edge __te_S130: __te_S12 -> __te_S13 {
+					label L42: "/ result = 0" {
+						layout [ size: 75, 17 ]
+					}
+				}
+				edge digits0_g3780: __te_S13 -> digits {
+					label L43: "/ beeper |= true" {
+						layout [ size: 109, 17 ]
+					}
+				}
+				edge __sd_Depth120: __te_S38 -> __sd_Depth12 {
+					label L44: "/ beeper |= true" {
+						layout [ size: 109, 17 ]
+					}
+				}
+				edge __te_S400: __te_S39 -> __te_S40_g6882 {
+					label L45: "/ counter = counter - 1" {
+						layout [ size: 157, 17 ]
+					}
+				}
+				edge __te_S410: __te_S40_g6882 -> __te_S41 {
+					label L46: "/ number_ready |= true" {
+						layout [ size: 159, 17 ]
+					}
+				}
+				edge __te_S420: __te_S41 -> __te_S42 {
+					label L47: "/ result = result * 10 + number" {
+						layout [ size: 208, 17 ]
+					}
+				}
+				edge __sd_Depth130: __te_S42 -> __sd_Depth13 {
+					label L48: "/ parity = parity - number" {
+						layout [ size: 170, 17 ]
+					}
+				}
+				edge __sd_Depth150: __te_S43 -> __sd_Depth15 {
+					label L49: "/ number_ready |= true" {
+						layout [ size: 159, 17 ]
+					}
+				}
+				edge error0: __te_S44 -> error {
+					label L50: "/ speed = 0" {
+						layout [ size: 78, 17 ]
+					}
+				}
+				edge digits0_g5088: __te_S45 -> digits {
+					label L51: "/ parity = parity + 10" {
+						layout [ size: 137, 17 ]
+					}
+				}
+				edge __te_S470: __te_S46 -> __te_S47 {
+					label L52: "/ beeper |= true" {
+						layout [ size: 109, 17 ]
+					}
+				}
+				edge error0_g6540: __te_S47 -> error {
+					label L53: "/ print_error |= true" {
+						layout [ size: 135, 17 ]
+					}
+				}
+				edge __sd_Depth160: __te_S48 -> __sd_Depth16 {
+					label L54: "/ counter = 3" {
+						layout [ size: 89, 17 ]
+					}
+				}
+				edge __te_S500: __te_S49 -> __te_S50_g1081 {
+					label L55: "/ speed = 0" {
+						layout [ size: 78, 17 ]
+					}
+				}
+				edge error0_g2644: __te_S50_g1081 -> error {
+					label L56: "/ bad_parity |= true" {
+						layout [ size: 131, 17 ]
+					}
+				}
+				edge ending0: __te_S51 -> ending {
+					label L57: "/ result = result - 1000" {
+						layout [ size: 153, 17 ]
+					}
+				}
+				edge ending0_g4512: __te_S52 -> ending {
+					label L58: "/ counter = counter - 1" {
+						layout [ size: 157, 17 ]
+					}
+				}
+				edge __te_S540: __te_S53 -> __te_S54 {
+					label L59: "/ speed = 0" {
+						layout [ size: 78, 17 ]
+					}
+				}
+				edge barcode_read0: __te_S54 -> barcode_read {
+					label L60: "/ print_result |= true" {
+						layout [ size: 140, 17 ]
+					}
+				}
+				edge error0_g6348: __te_S55 -> error {
+					label L61: "/ speed = 0" {
+						layout [ size: 78, 17 ]
+					}
+				}
+				edge __te_S430: __sd_S51 -> __te_S43 {
+					label L62: "1: counter == 0 && !bad_number" {
+						layout [ size: 227, 17 ]
+					}
+				}
+				edge __sd_S520: __sd_S51 -> __sd_S52 {
+					label L63: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __te_S440: __sd_S52 -> __te_S44 {
+					label L64: "1: bad_number" {
+						layout [ size: 104, 17 ]
+					}
+				}
+				edge __sd_Pause120: __sd_S52 -> __sd_Pause12 {
+					label L65: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __sd_Depth120_g6129: __sd_Pause12 -> __sd_Depth12
+				edge __te_S450: __sd_S56 -> __te_S45 {
+					label L66: "1: parity < 0" {
+						layout [ size: 81, 17 ]
+					}
+				}
+				edge __sd_Pause130: __sd_S56 -> __sd_Pause13 {
+					label L67: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __sd_Depth130_g9586: __sd_Pause13 -> __sd_Depth13
+				edge __sd_Depth140: error -> __sd_Depth14
+				edge __te_S460: __sd_Depth14 -> __te_S46 {
+					label L68: "1: second" {
+						layout [ size: 69, 17 ]
+					}
+				}
+				edge error0_g6636: __sd_Depth14 -> error {
+					label L69: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __te_S490: __sd_S60 -> __te_S49 {
+					label L70: "1: number != parity" {
+						layout [ size: 132, 17 ]
+					}
+				}
+				edge __sd_Pause150: __sd_S60 -> __sd_Pause15 {
+					label L71: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __sd_Depth150_g5420: __sd_Pause15 -> __sd_Depth15
+				edge ending0_g7775: __sd_S63 -> ending {
+					label L72: "1: result < 500" {
+						layout [ size: 99, 17 ]
+					}
+				}
+				edge __sd_Pause160: __sd_S63 -> __sd_Pause16 {
+					label L73: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __sd_Depth160_g6732: __sd_Pause16 -> __sd_Depth16
+				edge __sd_Depth170: ending -> __sd_Depth17
+				edge __te_S520: __sd_Depth17 -> __te_S52 {
+					label L74: "1: (last_black || last_white) && one && counter > 0" {
+						layout [ size: 351, 17 ]
+					}
+				}
+				edge __sd_S670: __sd_Depth17 -> __sd_S67 {
+					label L75: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __te_S530: __sd_S67 -> __te_S53 {
+					label L76: "1: (last_black || last_white) && one && counter == 0" {
+						layout [ size: 360, 17 ]
+					}
+				}
+				edge __sd_S680: __sd_S67 -> __sd_S68 {
+					label L77: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __te_S550: __sd_S68 -> __te_S55 {
+					label L78: "1: (last_black || last_white) && !one" {
+						layout [ size: 244, 17 ]
+					}
+				}
+				edge ending0_g1352: __sd_S68 -> ending {
+					label L79: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+			}
+			node light {
+				node __te_S56 {
+					layout [ size: 85, 34 ]
+				}
+				node __te_S57 {
+					layout [ size: 85, 34 ]
+				}
+				node __te_S58 {
+					layout [ size: 85, 34 ]
+				}
+				node __te_S59 {
+					layout [ size: 85, 34 ]
+				}
+				node __te_S60_g8710 {
+					layout [ size: 85, 34 ]
+				}
+				node __te_S61 {
+					layout [ size: 85, 34 ]
+				}
+				node run {
+					layout [ size: 45, 34 ]
+				}
+				node __sd_Depth18 {
+					layout [ size: 121, 34 ]
+				}
+				node __sd_S70 {
+					layout [ size: 88, 34 ]
+				}
+				node black {
+					layout [ size: 58, 34 ]
+				}
+				node __sd_Depth19 {
+					layout [ size: 121, 34 ]
+				}
+				node white {
+					layout [ size: 58, 34 ]
+				}
+				node __sd_Depth20_g5087 {
+					layout [ size: 121, 34 ]
+				}
+				edge black0: __te_S56 -> black {
+					label L179: "/ lamp = false" {
+						layout [ size: 92, 17 ]
+					}
+				}
+				edge white0: __te_S57 -> white {
+					label L180: "/ lamp = true" {
+						layout [ size: 87, 17 ]
+					}
+				}
+				edge __te_S590: __te_S58 -> __te_S59 {
+					label L181: "/ last_black |= true" {
+						layout [ size: 128, 17 ]
+					}
+				}
+				edge white0_g2911: __te_S59 -> white {
+					label L182: "/ lamp = true" {
+						layout [ size: 87, 17 ]
+					}
+				}
+				edge __te_S610: __te_S60_g8710 -> __te_S61 {
+					label L183: "/ last_white |= true" {
+						layout [ size: 129, 17 ]
+					}
+				}
+				edge black0_g5200: __te_S61 -> black {
+					label L184: "/ lamp = false" {
+						layout [ size: 92, 17 ]
+					}
+				}
+				edge __sd_Depth180: run -> __sd_Depth18
+				edge __te_S560: __sd_Depth18 -> __te_S56 {
+					label L185: "1: light < 495" {
+						layout [ size: 89, 17 ]
+					}
+				}
+				edge __sd_S700: __sd_Depth18 -> __sd_S70 {
+					label L186: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __te_S570: __sd_S70 -> __te_S57 {
+					label L187: "1: light > 505" {
+						layout [ size: 89, 17 ]
+					}
+				}
+				edge run0: __sd_S70 -> run {
+					label L188: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __sd_Depth190: black -> __sd_Depth19
+				edge __te_S580: __sd_Depth19 -> __te_S58 {
+					label L189: "1: light > 505" {
+						layout [ size: 89, 17 ]
+					}
+				}
+				edge black0_g2508: __sd_Depth19 -> black {
+					label L190: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __sd_Depth200: white -> __sd_Depth20_g5087
+				edge __te_S600: __sd_Depth20_g5087 -> __te_S60_g8710 {
+					label L191: "1: light < 495" {
+						layout [ size: 89, 17 ]
+					}
+				}
+				edge white0_g3323: __sd_Depth20_g5087 -> white {
+					label L192: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+			}
+			node control {
+				node wait {
+					algorithm: org.eclipse.elk.box
+					node N3 {
+						node speedcontrol {
+							layout [ size: 115, 34 ]
+						}
+						node speedcontrol_down {
+							layout [ size: 161, 34 ]
+						}
+						node speedcontrol_up {
+							layout [ size: 141, 34 ]
+						}
+						node _AAborted {
+							layout [ size: 100, 40 ]
+						}
+						node __te_S62 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S63 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S64 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S65 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S66 {
+							layout [ size: 85, 34 ]
+						}
+						node __sd_Pause21 {
+							layout [ size: 122, 34 ]
+						}
+						node __sd_Depth21 {
+							layout [ size: 121, 34 ]
+						}
+						node __sd_S74 {
+							layout [ size: 88, 34 ]
+						}
+						node __sd_S75 {
+							layout [ size: 88, 34 ]
+						}
+						node __sd_Pause22 {
+							layout [ size: 122, 34 ]
+						}
+						node __sd_Depth22 {
+							layout [ size: 121, 34 ]
+						}
+						node __sd_S78 {
+							layout [ size: 88, 34 ]
+						}
+						node __sd_Pause23 {
+							layout [ size: 122, 34 ]
+						}
+						node __sd_Depth23 {
+							layout [ size: 121, 34 ]
+						}
+						node __sd_S81 {
+							layout [ size: 88, 34 ]
+						}
+						edge _AAborted0: speedcontrol -> _AAborted {
+							label L193: "1: true" {
+								layout [ size: 45, 17 ]
+							}
+						}
+						edge __sd_Pause210: speedcontrol -> __sd_Pause21 {
+							label L194: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge _AAborted0_g5300: speedcontrol_down -> _AAborted {
+							label L195: "1: true" {
+								layout [ size: 45, 17 ]
+							}
+						}
+						edge __sd_Pause220: speedcontrol_down -> __sd_Pause22 {
+							label L196: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge _AAborted0_g6957: speedcontrol_up -> _AAborted {
+							label L197: "1: true" {
+								layout [ size: 45, 17 ]
+							}
+						}
+						edge __sd_Pause230: speedcontrol_up -> __sd_Pause23 {
+							label L198: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge speedcontrol_down0: __te_S62 -> speedcontrol_down {
+							label L199: "/ speed = speed - 20" {
+								layout [ size: 143, 17 ]
+							}
+						}
+						edge speedcontrol_up0: __te_S63 -> speedcontrol_up {
+							label L200: "/ speed = speed + 20" {
+								layout [ size: 147, 17 ]
+							}
+						}
+						edge speedcontrol0: __te_S64 -> speedcontrol {
+							label L201: "/ speed = 0" {
+								layout [ size: 78, 17 ]
+							}
+						}
+						edge speedcontrol_down0_g9271: __te_S65 -> speedcontrol_down {
+							label L202: "/ speed = speed - 20" {
+								layout [ size: 143, 17 ]
+							}
+						}
+						edge speedcontrol_up0_g7361: __te_S66 -> speedcontrol_up {
+							label L203: "/ speed = speed + 20" {
+								layout [ size: 147, 17 ]
+							}
+						}
+						edge __sd_Depth210: __sd_Pause21 -> __sd_Depth21
+						edge __te_S620: __sd_Depth21 -> __te_S62 {
+							label L204: "1: left" {
+								layout [ size: 39, 17 ]
+							}
+						}
+						edge __sd_S740: __sd_Depth21 -> __sd_S74 {
+							label L205: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __te_S630: __sd_S74 -> __te_S63 {
+							label L206: "1: right" {
+								layout [ size: 49, 17 ]
+							}
+						}
+						edge __sd_S750: __sd_S74 -> __sd_S75 {
+							label L207: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __te_S640: __sd_S75 -> __te_S64 {
+							label L208: "1: doStop" {
+								layout [ size: 68, 17 ]
+							}
+						}
+						edge speedcontrol0_g7758: __sd_S75 -> speedcontrol {
+							label L209: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __sd_Depth220: __sd_Pause22 -> __sd_Depth22
+						edge __te_S650: __sd_Depth22 -> __te_S65 {
+							label L210: "1: left && second" {
+								layout [ size: 122, 17 ]
+							}
+						}
+						edge __sd_S780: __sd_Depth22 -> __sd_S78 {
+							label L211: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge speedcontrol0_g5335: __sd_S78 -> speedcontrol {
+							label L212: "1: !left" {
+								layout [ size: 43, 17 ]
+							}
+						}
+						edge speedcontrol_down0_g3375: __sd_S78 -> speedcontrol_down {
+							label L213: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __sd_Depth230: __sd_Pause23 -> __sd_Depth23
+						edge __te_S660: __sd_Depth23 -> __te_S66 {
+							label L214: "1: right && second" {
+								layout [ size: 132, 17 ]
+							}
+						}
+						edge __sd_S810: __sd_Depth23 -> __sd_S81 {
+							label L215: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge speedcontrol0_g1967: __sd_S81 -> speedcontrol {
+							label L216: "1: !right" {
+								layout [ size: 53, 17 ]
+							}
+						}
+						edge speedcontrol_up0_g4368: __sd_S81 -> speedcontrol_up {
+							label L217: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+					}
+				}
+				edge wait0: wait -> wait
+			}
+			node _During {
+				node _S {
+					layout [ size: 39, 34 ]
+				}
+				node __sd_Depth24 {
+					layout [ size: 121, 34 ]
+				}
+				node __te_S68 {
+					layout [ size: 85, 34 ]
+				}
+				node __te_S69 {
+					layout [ size: 85, 34 ]
+				}
+				node __te_S70_g5896 {
+					layout [ size: 85, 34 ]
+				}
+				node __te_S71 {
+					layout [ size: 85, 34 ]
+				}
+				node __te_S72 {
+					layout [ size: 85, 34 ]
+				}
+				node __te_S73 {
+					layout [ size: 85, 34 ]
+				}
+				node __te_S74 {
+					layout [ size: 85, 34 ]
+				}
+				node __te_S75 {
+					layout [ size: 85, 34 ]
+				}
+				node __te_S76 {
+					layout [ size: 85, 34 ]
+				}
+				node __te_S77 {
+					layout [ size: 85, 34 ]
+				}
+				node __te_S78 {
+					layout [ size: 85, 34 ]
+				}
+				node __te_S79 {
+					layout [ size: 85, 34 ]
+				}
+				node __te_S80_g1322 {
+					layout [ size: 85, 34 ]
+				}
+				node __te_S81 {
+					layout [ size: 85, 34 ]
+				}
+				edge __sd_Depth240: _S -> __sd_Depth24
+				edge __te_S680: __sd_Depth24 -> __te_S68 {
+					label L218: "/ last_black = false" {
+						layout [ size: 129, 17 ]
+					}
+				}
+				edge __te_S690: __te_S68 -> __te_S69 {
+					label L219: "/ last_white = false" {
+						layout [ size: 130, 17 ]
+					}
+				}
+				edge __te_S700: __te_S69 -> __te_S70_g5896 {
+					label L220: "/ rot = false" {
+						layout [ size: 79, 17 ]
+					}
+				}
+				edge __te_S710: __te_S70_g5896 -> __te_S71 {
+					label L221: "/ pwidth = false" {
+						layout [ size: 106, 17 ]
+					}
+				}
+				edge __te_S720: __te_S71 -> __te_S72 {
+					label L222: "/ beeper = false" {
+						layout [ size: 110, 17 ]
+					}
+				}
+				edge __te_S730: __te_S72 -> __te_S73 {
+					label L223: "/ one = false" {
+						layout [ size: 86, 17 ]
+					}
+				}
+				edge __te_S740: __te_S73 -> __te_S74 {
+					label L224: "/ two = false" {
+						layout [ size: 84, 17 ]
+					}
+				}
+				edge __te_S750: __te_S74 -> __te_S75 {
+					label L225: "/ three = false" {
+						layout [ size: 97, 17 ]
+					}
+				}
+				edge __te_S760: __te_S75 -> __te_S76 {
+					label L226: "/ four = false" {
+						layout [ size: 88, 17 ]
+					}
+				}
+				edge __te_S770: __te_S76 -> __te_S77 {
+					label L227: "/ error = false" {
+						layout [ size: 95, 17 ]
+					}
+				}
+				edge __te_S780: __te_S77 -> __te_S78 {
+					label L228: "/ number_ready = false" {
+						layout [ size: 160, 17 ]
+					}
+				}
+				edge __te_S790: __te_S78 -> __te_S79 {
+					label L229: "/ bad_number = false" {
+						layout [ size: 147, 17 ]
+					}
+				}
+				edge __te_S800: __te_S79 -> __te_S80_g1322 {
+					label L230: "/ bad_parity = false" {
+						layout [ size: 132, 17 ]
+					}
+				}
+				edge __te_S810: __te_S80_g1322 -> __te_S81 {
+					label L231: "/ print_result = false" {
+						layout [ size: 141, 17 ]
+					}
+				}
+				edge _S0: __te_S81 -> _S {
+					label L232: "/ print_error = false" {
+						layout [ size: 136, 17 ]
+					}
+				}
+			}
+		}
+		node __EA_Init {
+			layout [ size: 85, 34 ]
+		}
+		node __EA_Done {
+			layout [ size: 107, 40 ]
+		}
+		node __EA_C {
+			layout [ size: 74, 34 ]
+		}
+		node __EA_C1 {
+			layout [ size: 83, 34 ]
+		}
+		node __EA_C2 {
+			layout [ size: 83, 34 ]
+		}
+		node __EA_C3 {
+			layout [ size: 83, 34 ]
+		}
+		edge __EA_Done0: __EA_Main -> __EA_Done
+		edge __EA_C0: __EA_Init -> __EA_C {
+			label L1: "/ floodlight = true" {
+				layout [ size: 121, 17 ]
+			}
+		}
+		edge __EA_C10: __EA_C -> __EA_C1 {
+			label L2: "/ speed = 600" {
+				layout [ size: 94, 17 ]
+			}
+		}
+		edge __EA_C20: __EA_C1 -> __EA_C2 {
+			label L3: "/ alwaysTrue = true" {
+				layout [ size: 133, 17 ]
+			}
+		}
+		edge __EA_C30: __EA_C2 -> __EA_C3 {
+			label L4: "/ warn = false" {
+				layout [ size: 93, 17 ]
+			}
+		}
+		edge __EA_Main0: __EA_C3 -> __EA_Main {
+			label L5: "/ lamp = false" {
+				layout [ size: 92, 17 ]
+			}
+		}
+	}
+}

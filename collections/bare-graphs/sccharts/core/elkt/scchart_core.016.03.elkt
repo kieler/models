@@ -1,0 +1,94 @@
+graph G1
+node problem {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node mainloop {
+			algorithm: org.eclipse.elk.box
+			node N2 {
+				node __sd_S1 {
+					layout [ size: 80, 34 ]
+				}
+				node S2 {
+					layout [ size: 39, 34 ]
+				}
+				node S3 {
+					layout [ size: 45, 40 ]
+				}
+				node __sd_Pause {
+					layout [ size: 105, 34 ]
+				}
+				node __sd_Depth {
+					layout [ size: 105, 34 ]
+				}
+				edge S20: __sd_S1 -> S2 {
+					label L1: "/ _problem_local_S = false" {
+						layout [ size: 184, 17 ]
+					}
+				}
+				edge S30: S2 -> S3 {
+					label L2: "1: _problem_local__Term" {
+						layout [ size: 177, 17 ]
+					}
+				}
+				edge __sd_Pause0: S2 -> __sd_Pause {
+					label L3: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __sd_Depth0: __sd_Pause -> __sd_Depth
+				edge S30_g1075: __sd_Depth -> S3 {
+					label L4: "1: _problem_local__Term" {
+						layout [ size: 177, 17 ]
+					}
+				}
+				edge __sd_S10: __sd_Depth -> __sd_S1 {
+					label L5: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+			}
+			node N3 {
+				node S5 {
+					layout [ size: 39, 34 ]
+				}
+				node S7 {
+					layout [ size: 45, 40 ]
+				}
+				node __sd_Depth1 {
+					layout [ size: 113, 34 ]
+				}
+				node __te_S1 {
+					layout [ size: 77, 34 ]
+				}
+				node __sd_Depth2 {
+					layout [ size: 113, 34 ]
+				}
+				node __te_S3 {
+					layout [ size: 77, 34 ]
+				}
+				edge __sd_Depth20: S5 -> __sd_Depth2
+				edge __te_S10: __sd_Depth1 -> __te_S1 {
+					label L6: "/ _problem_local__Term = false" {
+						layout [ size: 218, 17 ]
+					}
+				}
+				edge S50: __te_S1 -> S5 {
+					label L7: "/ O = _problem_local_S" {
+						layout [ size: 163, 17 ]
+					}
+				}
+				edge __te_S30: __sd_Depth2 -> __te_S3 {
+					label L8: "/ _problem_local_S = true" {
+						layout [ size: 179, 17 ]
+					}
+				}
+				edge S70: __te_S3 -> S7 {
+					label L9: "/ _problem_local__Term = true" {
+						layout [ size: 213, 17 ]
+					}
+				}
+			}
+		}
+		edge mainloop0: mainloop -> mainloop
+	}
+}

@@ -1,0 +1,86 @@
+graph G1
+node DomelightControllerNXJ {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node DomelightControll {
+			algorithm: org.eclipse.elk.box
+			node DomeLight {
+				node LightOn {
+					layout [ size: 241, 80 ]
+				}
+				node LightOff {
+					layout [ size: 78, 34 ]
+				}
+				edge LightOff0: LightOn -> LightOff {
+					label L1: "door1 && door2 && counter >= 3 / Domelight = false" {
+						layout [ size: 366, 17 ]
+					}
+				}
+				edge LightOn0: LightOff -> LightOn {
+					label L2: "!door1 || !door2 / Domelight = true; counter = 0" {
+						layout [ size: 325, 17 ]
+					}
+				}
+			}
+			node SeatBelt {
+				node init {
+					layout [ size: 42, 34 ]
+				}
+				node EngineOn {
+					algorithm: org.eclipse.elk.box
+					node Beep {
+						node BeepOn {
+							layout [ size: 80, 34 ]
+						}
+						node BeepOff {
+							layout [ size: 86, 40 ]
+						}
+						edge BeepOn0: BeepOn -> BeepOn {
+							label L6: "1: second && seatbelt && counter < 30 / beep = true; counter = counter + 1" {
+								layout [ size: 528, 17 ]
+							}
+						}
+						edge BeepOff0: BeepOn -> BeepOff {
+							label L7: "2: !seatbelt || counter >= 30 / beep = false" {
+								layout [ size: 289, 17 ]
+							}
+						}
+					}
+					node WarnLight {
+						node LightOn_g4187 {
+							layout [ size: 78, 34 ]
+						}
+						node LightOff_g3105 {
+							layout [ size: 78, 34 ]
+						}
+						edge LightOff0_g4406: LightOn_g4187 -> LightOff_g3105 {
+							label L8: "!seatbelt / warnLight = false" {
+								layout [ size: 194, 17 ]
+							}
+						}
+						edge LightOn0_g2815: LightOff_g3105 -> LightOn_g4187 {
+							label L9: "seatbelt / warnLight = true" {
+								layout [ size: 185, 17 ]
+							}
+						}
+					}
+				}
+				edge EngineOn0: init -> EngineOn {
+					label L3: "1: engine && seatbelt / beep = true; warnLight = true; counter = 0" {
+						layout [ size: 459, 17 ]
+					}
+				}
+				edge EngineOn1: init -> EngineOn {
+					label L4: "2: engine && !seatbelt / beep = true; warnLight = true; counter = 30" {
+						layout [ size: 471, 17 ]
+					}
+				}
+				edge init0: EngineOn -> init {
+					label L5: "!engine / beep = false; warnLight = false" {
+						layout [ size: 281, 17 ]
+					}
+				}
+			}
+		}
+	}
+}

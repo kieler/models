@@ -1,0 +1,84 @@
+graph G1
+node Elevator {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node Super {
+			algorithm: org.eclipse.elk.box
+			node N2 {
+				node Init {
+					layout [ size: 42, 34 ]
+				}
+				node Up {
+					layout [ size: 41, 34 ]
+				}
+				node Down {
+					layout [ size: 61, 34 ]
+				}
+				edge Up0: Init -> Up {
+					label L1: "1: ButtonUp / Move(1)" {
+						layout [ size: 154, 17 ]
+					}
+				}
+				edge Down0: Init -> Down {
+					label L2: "2: ButtonDown / Move(-1)" {
+						layout [ size: 179, 17 ]
+					}
+				}
+				edge Init0: Up -> Init {
+					label L3: "IsUp / Move(0)" {
+						layout [ size: 102, 17 ]
+					}
+				}
+				edge Init0_g4117: Down -> Init {
+					label L4: "IsDown / Move(0)" {
+						layout [ size: 122, 17 ]
+					}
+				}
+			}
+		}
+	}
+	node N3 {
+		node Init_g0320 {
+			layout [ size: 42, 34 ]
+		}
+		node Flash {
+			algorithm: org.eclipse.elk.box
+			node N4 {
+				node Init_g4261 {
+					layout [ size: 42, 34 ]
+				}
+				node On {
+					layout [ size: 42, 34 ]
+				}
+				node Off {
+					layout [ size: 42, 34 ]
+				}
+				edge On0: Init_g4261 -> On {
+					label L7: "/ AlarmLamp(true)" {
+						layout [ size: 123, 17 ]
+					}
+				}
+				edge Off0: On -> Off {
+					label L8: "Second / AlarmLamp(false)" {
+						layout [ size: 186, 17 ]
+					}
+				}
+				edge On0_g6138: Off -> On {
+					label L9: "Second / AlarmLamp(true)" {
+						layout [ size: 181, 17 ]
+					}
+				}
+			}
+		}
+		edge Flash0: Init_g0320 -> Flash {
+			label L5: "ButtonAlarm / Suspend = true; OldMove = Move" {
+				layout [ size: 338, 17 ]
+			}
+		}
+		edge Init0_g1626: Flash -> Init_g0320 {
+			label L6: "5 Second / Suspend = false; Move(OldMove)" {
+				layout [ size: 315, 17 ]
+			}
+		}
+	}
+}

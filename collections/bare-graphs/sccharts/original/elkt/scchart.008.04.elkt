@@ -1,0 +1,55 @@
+graph G1
+node BACKHOE {
+	algorithm: org.eclipse.elk.box
+	node Legs {
+		node Init {
+			layout [ size: 42, 34 ]
+		}
+		node Stop {
+			layout [ size: 54, 34 ]
+		}
+		node Extend {
+			layout [ size: 71, 34 ]
+		}
+		node Retract {
+			layout [ size: 72, 34 ]
+		}
+		node Lamp {
+			layout [ size: 59, 34 ]
+		}
+		node Done {
+			layout [ size: 64, 40 ]
+		}
+		edge Stop0: Init -> Stop
+		edge Extend0: Stop -> Extend {
+			label L1: "1: EXTEND_BUTTON / LEGS_EXTEND = true" {
+				layout [ size: 320, 17 ]
+			}
+		}
+		edge Retract0: Stop -> Retract {
+			label L2: "2: RETRACT_BUTTON / LEGS_RETRACT = true" {
+				layout [ size: 340, 17 ]
+			}
+		}
+		edge Stop0_g3129: Extend -> Stop {
+			label L3: "1: STOP_BUTTON / LEGS_EXTEND = false" {
+				layout [ size: 305, 17 ]
+			}
+		}
+		edge Lamp0: Extend -> Lamp {
+			label L4: "2: LEGS_OUT / LEGS_EXTEND = false" {
+				layout [ size: 272, 17 ]
+			}
+		}
+		edge Stop0_g8232: Retract -> Stop {
+			label L5: "STOP_BUTTON || LEGS_IN / LEGS_RETRACT = false" {
+				layout [ size: 379, 17 ]
+			}
+		}
+		edge Done0: Lamp -> Done {
+			label L6: "/ DONE_LAMP = true" {
+				layout [ size: 147, 17 ]
+			}
+		}
+	}
+}

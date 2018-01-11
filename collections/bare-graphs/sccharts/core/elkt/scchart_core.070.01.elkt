@@ -1,0 +1,386 @@
+graph G1
+node Backhoe {
+	algorithm: org.eclipse.elk.box
+	node __EA_Entry {
+		node __EA_Main {
+			algorithm: org.eclipse.elk.box
+			node N1 {
+				node WaitForExtend {
+					algorithm: org.eclipse.elk.box
+					node _Exit {
+						node _Done {
+							layout [ size: 72, 40 ]
+						}
+						node _Memorize {
+							layout [ size: 98, 34 ]
+						}
+						node __EA_Init {
+							layout [ size: 85, 34 ]
+						}
+						node _Init {
+							layout [ size: 50, 34 ]
+						}
+						node __sd_Depth {
+							layout [ size: 105, 34 ]
+						}
+						edge _Done0: _Memorize -> _Done {
+							label L2: "/ DONE_LAMP = false" {
+								layout [ size: 152, 17 ]
+							}
+						}
+						edge _Init0: __EA_Init -> _Init {
+							label L3: "/ DONE_LAMP = true" {
+								layout [ size: 147, 17 ]
+							}
+						}
+						edge __sd_Depth0: _Init -> __sd_Depth
+						edge _Memorize0: __sd_Depth -> _Memorize {
+							label L4: "1: EXTEND_BUTTON" {
+								layout [ size: 151, 17 ]
+							}
+						}
+						edge _Init0_g9165: __sd_Depth -> _Init {
+							label L5: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+					}
+				}
+				node __sd_Depth11 {
+					algorithm: org.eclipse.elk.box
+					node N2 {
+						node ExtendStick {
+							algorithm: org.eclipse.elk.box
+							node _Exit_g3994 {
+								node _Done_g1574 {
+									layout [ size: 72, 40 ]
+								}
+								node _Memorize_g5073 {
+									layout [ size: 98, 34 ]
+								}
+								node __EA_Init2 {
+									layout [ size: 94, 34 ]
+								}
+								node _Init1 {
+									layout [ size: 59, 34 ]
+								}
+								node __sd_Depth1 {
+									layout [ size: 113, 34 ]
+								}
+								edge _Done0_g0622: _Memorize_g5073 -> _Done_g1574 {
+									label L9: "/ STICK_PULL = false" {
+										layout [ size: 152, 17 ]
+									}
+								}
+								edge _Init10: __EA_Init2 -> _Init1 {
+									label L10: "/ STICK_PULL = true" {
+										layout [ size: 147, 17 ]
+									}
+								}
+								edge __sd_Depth10: _Init1 -> __sd_Depth1
+								edge _Memorize0_g2585: __sd_Depth1 -> _Memorize_g5073 {
+									label L11: "1: STICK_OUT" {
+										layout [ size: 103, 17 ]
+									}
+								}
+								edge _Init10_g9711: __sd_Depth1 -> _Init1 {
+									label L12: "2:" {
+										layout [ size: 13, 17 ]
+									}
+								}
+							}
+						}
+						node __sd_Depth4 {
+							algorithm: org.eclipse.elk.box
+							node _Exit_g0149 {
+								node _Done_g8929 {
+									layout [ size: 72, 40 ]
+								}
+								node _Memorize_g2397 {
+									layout [ size: 98, 34 ]
+								}
+								node __EA_Init3 {
+									layout [ size: 94, 34 ]
+								}
+								node _Init2 {
+									layout [ size: 59, 34 ]
+								}
+								node __sd_Depth2 {
+									layout [ size: 113, 34 ]
+								}
+								edge _Done0_g3059: _Memorize_g2397 -> _Done_g8929 {
+									label L13: "/ BUCKET_PULL = false" {
+										layout [ size: 170, 17 ]
+									}
+								}
+								edge _Init20: __EA_Init3 -> _Init2 {
+									label L14: "/ BUCKET_PULL = true" {
+										layout [ size: 165, 17 ]
+									}
+								}
+								edge __sd_Depth20: _Init2 -> __sd_Depth2
+								edge _Memorize0_g8691: __sd_Depth2 -> _Memorize_g2397 {
+									label L15: "1: BUCKET_OUT" {
+										layout [ size: 121, 17 ]
+									}
+								}
+								edge _Init20_g6338: __sd_Depth2 -> _Init2 {
+									label L16: "2:" {
+										layout [ size: 13, 17 ]
+									}
+								}
+							}
+						}
+						node _Done_g8467 {
+							layout [ size: 72, 40 ]
+						}
+						node __EA_Init1 {
+							layout [ size: 94, 34 ]
+						}
+						node __sd_Depth5 {
+							layout [ size: 113, 34 ]
+						}
+						node __te_S1 {
+							layout [ size: 77, 34 ]
+						}
+						edge __sd_Depth40: ExtendStick -> __sd_Depth4
+						edge __sd_Depth50: __sd_Depth4 -> __sd_Depth5
+						edge ExtendStick0: __EA_Init1 -> ExtendStick {
+							label L6: "/ move = true" {
+								layout [ size: 93, 17 ]
+							}
+						}
+						edge __te_S10: __sd_Depth5 -> __te_S1 {
+							label L7: "/ move = false" {
+								layout [ size: 98, 17 ]
+							}
+						}
+						edge _Done0_g1696: __te_S1 -> _Done_g8467 {
+							label L8: "/ ALARM_LAMP = false" {
+								layout [ size: 158, 17 ]
+							}
+						}
+					}
+				}
+				node WaitForRetract {
+					algorithm: org.eclipse.elk.box
+					node _Exit_g0559 {
+						node _Done_g4871 {
+							layout [ size: 72, 40 ]
+						}
+						node _Memorize_g0641 {
+							layout [ size: 98, 34 ]
+						}
+						node __EA_Init4 {
+							layout [ size: 94, 34 ]
+						}
+						node _Init3 {
+							layout [ size: 59, 34 ]
+						}
+						node __sd_Depth6 {
+							layout [ size: 113, 34 ]
+						}
+						edge _Done0_g9863: _Memorize_g0641 -> _Done_g4871 {
+							label L17: "/ DONE_LAMP = false" {
+								layout [ size: 152, 17 ]
+							}
+						}
+						edge _Init30: __EA_Init4 -> _Init3 {
+							label L18: "/ DONE_LAMP = true" {
+								layout [ size: 147, 17 ]
+							}
+						}
+						edge __sd_Depth60: _Init3 -> __sd_Depth6
+						edge _Memorize0_g9810: __sd_Depth6 -> _Memorize_g0641 {
+							label L19: "1: RETRACT_BUTTON" {
+								layout [ size: 161, 17 ]
+							}
+						}
+						edge _Init30_g1658: __sd_Depth6 -> _Init3 {
+							label L20: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+					}
+				}
+				node __sd_Depth12 {
+					algorithm: org.eclipse.elk.box
+					node _Entry {
+						node _Main {
+							algorithm: org.eclipse.elk.box
+							node Stick {
+								node RetractStick {
+									algorithm: org.eclipse.elk.box
+									node _Exit_g3799 {
+										node _Done_g9375 {
+											layout [ size: 72, 40 ]
+										}
+										node _Memorize_g7365 {
+											layout [ size: 98, 34 ]
+										}
+										node __EA_Init6 {
+											layout [ size: 94, 34 ]
+										}
+										node _Init4 {
+											layout [ size: 59, 34 ]
+										}
+										node __sd_Depth7 {
+											layout [ size: 113, 34 ]
+										}
+										edge _Done0_g4482: _Memorize_g7365 -> _Done_g9375 {
+											label L24: "/ STICK_PUSH = false" {
+												layout [ size: 155, 17 ]
+											}
+										}
+										edge _Init40: __EA_Init6 -> _Init4 {
+											label L25: "/ STICK_PUSH = true" {
+												layout [ size: 150, 17 ]
+											}
+										}
+										edge __sd_Depth70: _Init4 -> __sd_Depth7
+										edge _Memorize0_g8337: __sd_Depth7 -> _Memorize_g7365 {
+											label L26: "1: STICK_IN" {
+												layout [ size: 85, 17 ]
+											}
+										}
+										edge _Init40_g2741: __sd_Depth7 -> _Init4 {
+											label L27: "2:" {
+												layout [ size: 13, 17 ]
+											}
+										}
+									}
+								}
+								node __sd_Depth8 {
+									layout [ size: 119, 40 ]
+								}
+								edge __sd_Depth80: RetractStick -> __sd_Depth8
+							}
+							node Bucket {
+								node RetractBucket {
+									algorithm: org.eclipse.elk.box
+									node _Exit_g4776 {
+										node _Done_g7040 {
+											layout [ size: 72, 40 ]
+										}
+										node _Memorize_g6966 {
+											layout [ size: 98, 34 ]
+										}
+										node __EA_Init7 {
+											layout [ size: 94, 34 ]
+										}
+										node _Init5 {
+											layout [ size: 59, 34 ]
+										}
+										node __sd_Depth9 {
+											layout [ size: 113, 34 ]
+										}
+										edge _Done0_g5601: _Memorize_g6966 -> _Done_g7040 {
+											label L28: "/ BUCKET_PUSH = false" {
+												layout [ size: 173, 17 ]
+											}
+										}
+										edge _Init50: __EA_Init7 -> _Init5 {
+											label L29: "/ BUCKET_PUSH = true" {
+												layout [ size: 168, 17 ]
+											}
+										}
+										edge __sd_Depth90: _Init5 -> __sd_Depth9
+										edge _Memorize0_g6400: __sd_Depth9 -> _Memorize_g6966 {
+											label L30: "1: BUCKET_IN" {
+												layout [ size: 103, 17 ]
+											}
+										}
+										edge _Init50_g2085: __sd_Depth9 -> _Init5 {
+											label L31: "2:" {
+												layout [ size: 13, 17 ]
+											}
+										}
+									}
+								}
+								node __sd_Depth10_g7376 {
+									layout [ size: 127, 40 ]
+								}
+								edge __sd_Depth100: RetractBucket -> __sd_Depth10_g7376
+							}
+						}
+						node _Done_g9557 {
+							layout [ size: 72, 40 ]
+						}
+						node __EA_Init5 {
+							layout [ size: 94, 34 ]
+						}
+						node __te_S2 {
+							layout [ size: 77, 34 ]
+						}
+						node __te_S3 {
+							layout [ size: 77, 34 ]
+						}
+						edge __te_S20: _Main -> __te_S2
+						edge _Main0: __EA_Init5 -> _Main {
+							label L21: "/ move = true" {
+								layout [ size: 93, 17 ]
+							}
+						}
+						edge __te_S30: __te_S2 -> __te_S3 {
+							label L22: "/ move = false" {
+								layout [ size: 98, 17 ]
+							}
+						}
+						edge _Done0_g2827: __te_S3 -> _Done_g9557 {
+							label L23: "/ ALARM_LAMP = false" {
+								layout [ size: 158, 17 ]
+							}
+						}
+					}
+				}
+				node __sd_HaltState {
+					layout [ size: 126, 34 ]
+				}
+				edge __sd_Depth110: WaitForExtend -> __sd_Depth11
+				edge WaitForRetract0: __sd_Depth11 -> WaitForRetract
+				edge __sd_Depth120: WaitForRetract -> __sd_Depth12
+				edge __sd_HaltState0: __sd_Depth12 -> __sd_HaltState
+				edge __sd_HaltState0_g9665: __sd_HaltState -> __sd_HaltState
+			}
+			node _During {
+				node __te_S4 {
+					layout [ size: 77, 34 ]
+				}
+				node _I {
+					layout [ size: 34, 34 ]
+				}
+				node __sd_Depth13 {
+					layout [ size: 121, 34 ]
+				}
+				edge _I0: __te_S4 -> _I {
+					label L32: "/ ALARM_LAMP = !ALARM_LAMP" {
+						layout [ size: 229, 17 ]
+					}
+				}
+				edge __sd_Depth130: _I -> __sd_Depth13
+				edge __te_S40: __sd_Depth13 -> __te_S4 {
+					label L33: "1: move && SECOND" {
+						layout [ size: 150, 17 ]
+					}
+				}
+				edge _I0_g2040: __sd_Depth13 -> _I {
+					label L34: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+			}
+		}
+		node __EA_Init_g2590 {
+			layout [ size: 85, 34 ]
+		}
+		node __EA_Done {
+			layout [ size: 107, 40 ]
+		}
+		edge __EA_Done0: __EA_Main -> __EA_Done
+		edge __EA_Main0: __EA_Init_g2590 -> __EA_Main {
+			label L1: "/ move = false" {
+				layout [ size: 98, 17 ]
+			}
+		}
+	}
+}

@@ -1,0 +1,157 @@
+graph G1
+node BackhoeLoader_a {
+	algorithm: org.eclipse.elk.box
+	node Main {
+		node Waiting {
+			layout [ size: 72, 34 ]
+		}
+		node StickOut {
+			layout [ size: 81, 34 ]
+		}
+		node BucketOut {
+			layout [ size: 96, 34 ]
+		}
+		node Waiting2 {
+			layout [ size: 80, 34 ]
+		}
+		node Retracting {
+			layout [ size: 95, 34 ]
+		}
+		edge StickOut0: Waiting -> StickOut {
+			label L1: "EXTEND_BUTTON / stickOut = true" {
+				layout [ size: 252, 17 ]
+			}
+		}
+		edge BucketOut0: StickOut -> BucketOut {
+			label L2: "!stickOut / bucketOut = true" {
+				layout [ size: 195, 17 ]
+			}
+		}
+		edge Waiting20: BucketOut -> Waiting2 {
+			label L3: "!bucketOut" {
+				layout [ size: 78, 17 ]
+			}
+		}
+		edge Retracting0: Waiting2 -> Retracting {
+			label L4: "RETRACT_BUTTON / stickIn = true; bucketIn = true" {
+				layout [ size: 364, 17 ]
+			}
+		}
+		edge Waiting0: Retracting -> Waiting {
+			label L5: "!stickIn && !bucketIn" {
+				layout [ size: 146, 17 ]
+			}
+		}
+	}
+	node Stick {
+		node Stick_g3546 {
+			layout [ size: 56, 34 ]
+		}
+		edge Stick0: Stick_g3546 -> Stick_g3546 {
+			label L6: "1: STICK_OUT && stickOut / stickOut = stickOut & false" {
+				layout [ size: 392, 17 ]
+			}
+		}
+		edge Stick1: Stick_g3546 -> Stick_g3546 {
+			label L7: "2: STICK_IN && stickIn / stickIn = stickIn & false" {
+				layout [ size: 335, 17 ]
+			}
+		}
+		edge Stick2: Stick_g3546 -> Stick_g3546 {
+			label L8: "3: stickOut / STICK_PUSH" {
+				layout [ size: 183, 17 ]
+			}
+		}
+		edge Stick3: Stick_g3546 -> Stick_g3546 {
+			label L9: "4: stickIn / STICK_PULL" {
+				layout [ size: 168, 17 ]
+			}
+		}
+	}
+	node Bucket {
+		node Bucket_g9413 {
+			layout [ size: 70, 34 ]
+		}
+		edge Bucket0: Bucket_g9413 -> Bucket_g9413 {
+			label L10: "1: BUCKET_OUT && bucketOut / bucketOut = bucketOut & false" {
+				layout [ size: 455, 17 ]
+			}
+		}
+		edge Bucket1: Bucket_g9413 -> Bucket_g9413 {
+			label L11: "2: BUCKET_IN && bucketIn / bucketIn = bucketIn & false" {
+				layout [ size: 398, 17 ]
+			}
+		}
+		edge Bucket2: Bucket_g9413 -> Bucket_g9413 {
+			label L12: "3: bucketOut / BUCKET_PUSH" {
+				layout [ size: 216, 17 ]
+			}
+		}
+		edge Bucket3: Bucket_g9413 -> Bucket_g9413 {
+			label L13: "4: bucketIn / BUCKET_PULL" {
+				layout [ size: 201, 17 ]
+			}
+		}
+	}
+	node Moving {
+		node Moving_g8821 {
+			layout [ size: 74, 34 ]
+		}
+		edge Moving0: Moving_g8821 -> Moving_g8821 {
+			label L14: "/ moving = STICK_PULL || STICK_PUSH || BUCKET_PULL || BUCKET_PUSH" {
+				layout [ size: 539, 17 ]
+			}
+		}
+	}
+	node Done {
+		node Done_g2561 {
+			layout [ size: 58, 34 ]
+		}
+		edge Done0: Done_g2561 -> Done_g2561 {
+			label L15: "!moving / DONE_LAMP" {
+				layout [ size: 162, 17 ]
+			}
+		}
+	}
+	node Alarm {
+		node noAlarm {
+			layout [ size: 79, 34 ]
+		}
+		node AlarmOn {
+			layout [ size: 81, 34 ]
+		}
+		node AlarmOff {
+			layout [ size: 81, 34 ]
+		}
+		edge AlarmOn0: noAlarm -> AlarmOn {
+			label L16: "moving / ALARM_LAMP" {
+				layout [ size: 164, 17 ]
+			}
+		}
+		edge noAlarm0: AlarmOn -> noAlarm {
+			label L17: "1: !moving" {
+				layout [ size: 73, 17 ]
+			}
+		}
+		edge AlarmOff0: AlarmOn -> AlarmOff {
+			label L18: "2: SECOND" {
+				layout [ size: 81, 17 ]
+			}
+		}
+		edge AlarmOn0_g2200: AlarmOn -> AlarmOn {
+			label L19: "3: / ALARM_LAMP" {
+				layout [ size: 124, 17 ]
+			}
+		}
+		edge noAlarm0_g7286: AlarmOff -> noAlarm {
+			label L20: "1: !moving" {
+				layout [ size: 73, 17 ]
+			}
+		}
+		edge AlarmOn0_g2089: AlarmOff -> AlarmOn {
+			label L21: "2: SECOND" {
+				layout [ size: 81, 17 ]
+			}
+		}
+	}
+}

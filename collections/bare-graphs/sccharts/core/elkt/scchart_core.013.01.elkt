@@ -1,0 +1,64 @@
+graph G1
+node Exercise1 {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node __sd_Depth {
+			algorithm: org.eclipse.elk.box
+			node N2 {
+				node A1 {
+					layout [ size: 34, 34 ]
+				}
+				node B1 {
+					layout [ size: 40, 40 ]
+				}
+				edge B10: A1 -> B1 {
+					label L1: "/ I = true" {
+						layout [ size: 58, 17 ]
+					}
+				}
+			}
+			node N3 {
+				node A2 {
+					layout [ size: 34, 34 ]
+				}
+				node B2 {
+					layout [ size: 34, 34 ]
+				}
+				node C2 {
+					layout [ size: 34, 34 ]
+				}
+				node D2 {
+					layout [ size: 40, 40 ]
+				}
+				node __te_S {
+					layout [ size: 69, 34 ]
+				}
+				edge B20: A2 -> B2
+				edge __te_S0: B2 -> __te_S {
+					label L2: "1: I" {
+						layout [ size: 21, 17 ]
+					}
+				}
+				edge A20: B2 -> A2 {
+					label L3: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge D20: C2 -> D2 {
+					label L4: "/ O = false" {
+						layout [ size: 71, 17 ]
+					}
+				}
+				edge C20: __te_S -> C2 {
+					label L5: "/ O = true" {
+						layout [ size: 66, 17 ]
+					}
+				}
+			}
+		}
+		node F {
+			layout [ size: 40, 40 ]
+		}
+		edge F0: __sd_Depth -> F
+	}
+}

@@ -1,0 +1,100 @@
+graph G1
+node awklxdni {
+	algorithm: org.eclipse.elk.box
+	node seatbelt {
+		node engine_not_started {
+			layout [ size: 159, 34 ]
+		}
+		node buckled {
+			layout [ size: 77, 34 ]
+		}
+		node unbuckled_beeping_pressed {
+			layout [ size: 227, 34 ]
+		}
+		node unbuckled_beeping {
+			layout [ size: 161, 34 ]
+		}
+		node buckled_pressed {
+			layout [ size: 143, 34 ]
+		}
+		node unbuckled {
+			layout [ size: 95, 34 ]
+		}
+		edge buckled0: engine_not_started -> buckled {
+			label L1: "engine" {
+				layout [ size: 49, 17 ]
+			}
+		}
+		edge unbuckled_beeping_pressed0: buckled -> unbuckled_beeping_pressed {
+			label L2: "seatbelt / warnLight = true; beeper = true; counter = 0" {
+				layout [ size: 379, 17 ]
+			}
+		}
+		edge unbuckled_beeping0: unbuckled_beeping_pressed -> unbuckled_beeping {
+			label L3: "seatbelt == false" {
+				layout [ size: 117, 17 ]
+			}
+		}
+		edge buckled_pressed0: unbuckled_beeping -> buckled_pressed {
+			label L4: "1: seatbelt / warnLight = false; beeper = false" {
+				layout [ size: 316, 17 ]
+			}
+		}
+		edge unbuckled_beeping0_g4396: unbuckled_beeping -> unbuckled_beeping {
+			label L5: "2: counter < 30 && second / counter = counter + 1" {
+				layout [ size: 351, 17 ]
+			}
+		}
+		edge unbuckled0: unbuckled_beeping -> unbuckled {
+			label L6: "3: counter >= 30 / beeper = false" {
+				layout [ size: 227, 17 ]
+			}
+		}
+		edge buckled0_g6361: buckled_pressed -> buckled {
+			label L7: "seatbelt == false" {
+				layout [ size: 117, 17 ]
+			}
+		}
+		edge buckled_pressed0_g8612: unbuckled -> buckled_pressed {
+			label L8: "seatbelt / warnLight = false" {
+				layout [ size: 190, 17 ]
+			}
+		}
+	}
+	node doors {
+		node closed {
+			layout [ size: 68, 34 ]
+		}
+		node open {
+			layout [ size: 57, 34 ]
+		}
+		node closed_light {
+			layout [ size: 106, 34 ]
+		}
+		edge open0: closed -> open {
+			label L9: "door1 == false || door2 == false / domeLight = true" {
+				layout [ size: 351, 17 ]
+			}
+		}
+		edge closed_light0: open -> closed_light {
+			label L10: "door1 && door2 / counter = 0" {
+				layout [ size: 205, 17 ]
+			}
+		}
+		edge closed_light0_g9759: closed_light -> closed_light {
+			label L11: "1: second && counter < 3 / counter = counter + 1" {
+				layout [ size: 343, 17 ]
+			}
+		}
+		edge closed0: closed_light -> closed {
+			label L12: "2: counter >= 3 / domeLight = false" {
+				layout [ size: 243, 17 ]
+			}
+		}
+		edge open0_g7403: closed_light -> open {
+			label L13: "3: door1 == false || door2 == false" {
+				layout [ size: 234, 17 ]
+			}
+		}
+	}
+}

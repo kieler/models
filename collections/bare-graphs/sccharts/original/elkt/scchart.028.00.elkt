@@ -1,0 +1,210 @@
+graph G1
+node ELEVATOR {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node MoveUp {
+			layout [ size: 81, 34 ]
+		}
+		node MoveDown {
+			layout [ size: 101, 34 ]
+		}
+		node MoveDownStopped {
+			algorithm: org.eclipse.elk.box
+			node flashing {
+				node On {
+					layout [ size: 42, 34 ]
+				}
+				node Off {
+					layout [ size: 48, 40 ]
+				}
+				edge Off0: On -> Off {
+					label L13: "Second / AlarmLamp = true" {
+						layout [ size: 188, 17 ]
+					}
+				}
+				edge On0: Off -> On {
+					label L14: "Second / AlarmLamp = false" {
+						layout [ size: 193, 17 ]
+					}
+				}
+			}
+			node counting {
+				node zero {
+					layout [ size: 53, 34 ]
+				}
+				node one {
+					layout [ size: 47, 34 ]
+				}
+				node two {
+					layout [ size: 46, 34 ]
+				}
+				node three {
+					layout [ size: 58, 34 ]
+				}
+				node four {
+					layout [ size: 49, 34 ]
+				}
+				node five {
+					layout [ size: 53, 40 ]
+				}
+				edge one0: zero -> one {
+					label L15: "Second" {
+						layout [ size: 55, 17 ]
+					}
+				}
+				edge two0: one -> two {
+					label L16: "Second" {
+						layout [ size: 55, 17 ]
+					}
+				}
+				edge three0: two -> three {
+					label L17: "Second" {
+						layout [ size: 55, 17 ]
+					}
+				}
+				edge four0: three -> four {
+					label L18: "Second" {
+						layout [ size: 55, 17 ]
+					}
+				}
+				edge five0: four -> five {
+					label L19: "Second" {
+						layout [ size: 55, 17 ]
+					}
+				}
+			}
+		}
+		node MoveUpStopped {
+			algorithm: org.eclipse.elk.box
+			node flashing_g6944 {
+				node On_g7911 {
+					layout [ size: 42, 34 ]
+				}
+				node Off_g3026 {
+					layout [ size: 48, 40 ]
+				}
+				edge Off0_g6079: On_g7911 -> Off_g3026 {
+					label L20: "Second / AlarmLamp = true" {
+						layout [ size: 188, 17 ]
+					}
+				}
+				edge On0_g6142: Off_g3026 -> On_g7911 {
+					label L21: "Second / AlarmLamp = false" {
+						layout [ size: 193, 17 ]
+					}
+				}
+			}
+			node counting_g3977 {
+				node zero_g4841 {
+					layout [ size: 53, 34 ]
+				}
+				node one_g3623 {
+					layout [ size: 47, 34 ]
+				}
+				node two_g2142 {
+					layout [ size: 46, 34 ]
+				}
+				node three_g4085 {
+					layout [ size: 58, 34 ]
+				}
+				node four_g7853 {
+					layout [ size: 49, 34 ]
+				}
+				node five_g2107 {
+					layout [ size: 53, 40 ]
+				}
+				edge one0_g8359: zero_g4841 -> one_g3623 {
+					label L22: "Second" {
+						layout [ size: 55, 17 ]
+					}
+				}
+				edge two0_g3429: one_g3623 -> two_g2142 {
+					label L23: "Second" {
+						layout [ size: 55, 17 ]
+					}
+				}
+				edge three0_g9844: two_g2142 -> three_g4085 {
+					label L24: "Second" {
+						layout [ size: 55, 17 ]
+					}
+				}
+				edge four0_g5270: three_g4085 -> four_g7853 {
+					label L25: "Second" {
+						layout [ size: 55, 17 ]
+					}
+				}
+				edge five0_g4193: four_g7853 -> five_g2107 {
+					label L26: "Second" {
+						layout [ size: 55, 17 ]
+					}
+				}
+			}
+		}
+		node Up {
+			layout [ size: 41, 34 ]
+		}
+		node Down {
+			layout [ size: 61, 34 ]
+		}
+		edge MoveDown0: MoveUp -> MoveDown {
+			label L1: "1: ButtonDown / Move = -1" {
+				layout [ size: 187, 17 ]
+			}
+		}
+		edge MoveUpStopped0: MoveUp -> MoveUpStopped {
+			label L2: "2: ButtonAlarm == true / Move = 0" {
+				layout [ size: 236, 17 ]
+			}
+		}
+		edge MoveUp0: MoveUp -> MoveUp {
+			label L3: "3: isUp == false / Move = 1" {
+				layout [ size: 186, 17 ]
+			}
+		}
+		edge Up0: MoveUp -> Up {
+			label L4: "4: isUp == true / Move = 0" {
+				layout [ size: 181, 17 ]
+			}
+		}
+		edge MoveUp0_g4915: MoveDown -> MoveUp {
+			label L5: "1: ButtonUp / Move = 1" {
+				layout [ size: 162, 17 ]
+			}
+		}
+		edge MoveDownStopped0: MoveDown -> MoveDownStopped {
+			label L6: "2: ButtonAlarm == true / Move = 0" {
+				layout [ size: 236, 17 ]
+			}
+		}
+		edge MoveDown0_g0687: MoveDown -> MoveDown {
+			label L7: "3: isDown == false / Move = -1" {
+				layout [ size: 211, 17 ]
+			}
+		}
+		edge Down0: MoveDown -> Down {
+			label L8: "4: isDown == true / Move = 0" {
+				layout [ size: 201, 17 ]
+			}
+		}
+		edge MoveDown0_g7878: MoveDownStopped -> MoveDown {
+			label L9: "/ AlarmLamp = false" {
+				layout [ size: 135, 17 ]
+			}
+		}
+		edge MoveUp0_g6432: MoveUpStopped -> MoveUp {
+			label L10: "/ AlarmLamp = false" {
+				layout [ size: 135, 17 ]
+			}
+		}
+		edge MoveDown0_g5227: Up -> MoveDown {
+			label L11: "ButtonAlarm == false && ButtonDown == true" {
+				layout [ size: 320, 17 ]
+			}
+		}
+		edge MoveUp0_g6242: Down -> MoveUp {
+			label L12: "ButtonAlarm == false && ButtonUp == true" {
+				layout [ size: 300, 17 ]
+			}
+		}
+	}
+}

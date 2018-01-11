@@ -1,0 +1,64 @@
+graph G1
+node SCGExample {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node F {
+			algorithm: org.eclipse.elk.box
+			node N2 {
+				node E1 {
+					layout [ size: 39, 34 ]
+				}
+				node Ex1 {
+					layout [ size: 53, 40 ]
+				}
+				edge Ex10: E1 -> Ex1 {
+					label L1: "/ I = true" {
+						layout [ size: 58, 17 ]
+					}
+				}
+			}
+			node N3 {
+				node E2 {
+					layout [ size: 39, 34 ]
+				}
+				node S2 {
+					layout [ size: 39, 34 ]
+				}
+				node S3 {
+					layout [ size: 39, 34 ]
+				}
+				node Await {
+					layout [ size: 57, 34 ]
+				}
+				node Ex2 {
+					layout [ size: 53, 40 ]
+				}
+				edge S20: E2 -> S2 {
+					label L2: "1: I" {
+						layout [ size: 21, 17 ]
+					}
+				}
+				edge Await0: E2 -> Await {
+					label L3: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge S30: S2 -> S3 {
+					label L4: "/ O = true" {
+						layout [ size: 66, 17 ]
+					}
+				}
+				edge Ex20: S3 -> Ex2 {
+					label L5: "/ O = false" {
+						layout [ size: 71, 17 ]
+					}
+				}
+				edge E20: Await -> E2
+			}
+		}
+		node E {
+			layout [ size: 40, 40 ]
+		}
+		edge E0: F -> E
+	}
+}

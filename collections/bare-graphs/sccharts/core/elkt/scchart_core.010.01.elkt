@@ -1,0 +1,55 @@
+graph G1
+node P {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node T1_I {
+			layout [ size: 51, 34 ]
+		}
+		node T1_F {
+			layout [ size: 62, 40 ]
+		}
+		edge T1_F0: T1_I -> T1_F {
+			label L1: "/ I = true" {
+				layout [ size: 58, 17 ]
+			}
+		}
+	}
+	node N2 {
+		node T2_F {
+			layout [ size: 62, 40 ]
+		}
+		node __te_S {
+			layout [ size: 69, 34 ]
+		}
+		node __te_S1 {
+			layout [ size: 77, 34 ]
+		}
+		node T2_I {
+			layout [ size: 51, 34 ]
+		}
+		node __sd_Depth {
+			layout [ size: 105, 34 ]
+		}
+		edge __te_S10: __te_S -> __te_S1 {
+			label L2: "/ O = true" {
+				layout [ size: 66, 17 ]
+			}
+		}
+		edge T2_F0: __te_S1 -> T2_F {
+			label L3: "/ O = false" {
+				layout [ size: 71, 17 ]
+			}
+		}
+		edge __sd_Depth0: T2_I -> __sd_Depth
+		edge __te_S0: __sd_Depth -> __te_S {
+			label L4: "1: I" {
+				layout [ size: 21, 17 ]
+			}
+		}
+		edge T2_I0: __sd_Depth -> T2_I {
+			label L5: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+	}
+}

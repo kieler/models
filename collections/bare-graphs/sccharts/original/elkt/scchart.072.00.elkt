@@ -1,0 +1,451 @@
+graph G1
+node backhoe2 {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node init {
+			layout [ size: 42, 34 ]
+		}
+		node legMode {
+			algorithm: org.eclipse.elk.box
+			node N2 {
+				node init_g3356 {
+					layout [ size: 42, 34 ]
+				}
+				node legsIn {
+					layout [ size: 64, 34 ]
+				}
+				node legsMiddle {
+					layout [ size: 98, 34 ]
+				}
+				node extend {
+					layout [ size: 70, 34 ]
+				}
+				node toggleSwitchLegsOut {
+					layout [ size: 2, 2 ]
+				}
+				node toggleSwitchLegsIn {
+					layout [ size: 2, 2 ]
+				}
+				node retract {
+					layout [ size: 67, 34 ]
+				}
+				node legsOut {
+					layout [ size: 76, 34 ]
+				}
+				edge legsIn0: init_g3356 -> legsIn {
+					label L3: "1: LEGS_IN" {
+						layout [ size: 80, 17 ]
+					}
+				}
+				edge legsOut0: init_g3356 -> legsOut {
+					label L4: "2: LEGS_OUT" {
+						layout [ size: 98, 17 ]
+					}
+				}
+				edge legsMiddle0: init_g3356 -> legsMiddle {
+					label L5: "3:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge extend0: legsIn -> extend {
+					label L6: "EXTEND_BUTTON / LEGS_EXTEND = true" {
+						layout [ size: 304, 17 ]
+					}
+				}
+				edge extend0_g5164: legsMiddle -> extend {
+					label L7: "1: EXTEND_BUTTON && !RETRACT_BUTTON / LEGS_EXTEND = true" {
+						layout [ size: 499, 17 ]
+					}
+				}
+				edge retract0: legsMiddle -> retract {
+					label L8: "2: RETRACT_BUTTON && !EXTEND_BUTTON / LEGS_RETRACT = true" {
+						layout [ size: 509, 17 ]
+					}
+				}
+				edge legsMiddle0_g6903: extend -> legsMiddle {
+					label L9: "1: STOP_BUTTON / LEGS_EXTEND = false" {
+						layout [ size: 305, 17 ]
+					}
+				}
+				edge toggleSwitchLegsOut0: extend -> toggleSwitchLegsOut {
+					label L10: "2: LEGS_OUT / LEGS_EXTEND = false" {
+						layout [ size: 272, 17 ]
+					}
+				}
+				edge legsOut0_g1709: toggleSwitchLegsOut -> legsOut {
+					label L11: "/ goToDiggingMode = true" {
+						layout [ size: 185, 17 ]
+					}
+				}
+				edge legsIn0_g2542: toggleSwitchLegsIn -> legsIn {
+					label L12: "/ goToDiggingMode = true" {
+						layout [ size: 185, 17 ]
+					}
+				}
+				edge legsMiddle0_g7089: retract -> legsMiddle {
+					label L13: "1: STOP_BUTTON / LEGS_RETRACT = false" {
+						layout [ size: 315, 17 ]
+					}
+				}
+				edge toggleSwitchLegsIn0: retract -> toggleSwitchLegsIn {
+					label L14: "2: LEGS_IN / LEGS_RETRACT = false" {
+						layout [ size: 264, 17 ]
+					}
+				}
+				edge retract0_g0220: legsOut -> retract {
+					label L15: "RETRACT_BUTTON / LEGS_RETRACT = true" {
+						layout [ size: 324, 17 ]
+					}
+				}
+			}
+		}
+		node diggingMode {
+			algorithm: org.eclipse.elk.box
+			node N3 {
+				node movementState {
+					algorithm: org.eclipse.elk.box
+					node N4 {
+						node waitForExtendButton {
+							layout [ size: 191, 80 ]
+						}
+						node stepOneAndTwo {
+							algorithm: org.eclipse.elk.box
+							node N5 {
+								node extendingStick {
+									algorithm: org.eclipse.elk.box
+									node N6 {
+										node init_g6137 {
+											layout [ size: 42, 34 ]
+										}
+										node one {
+											layout [ size: 47, 34 ]
+										}
+										node two {
+											layout [ size: 186, 65 ]
+										}
+										edge one0: init_g6137 -> one {
+											label L25: "SECOND" {
+												layout [ size: 65, 17 ]
+											}
+										}
+										edge two0: one -> two {
+											label L26: "SECOND" {
+												layout [ size: 65, 17 ]
+											}
+										}
+										edge one0_g9573: two -> one {
+											label L27: "SECOND" {
+												layout [ size: 65, 17 ]
+											}
+										}
+									}
+								}
+								node extendingBucket {
+									algorithm: org.eclipse.elk.box
+									node N7 {
+										node init_g9593 {
+											layout [ size: 42, 34 ]
+										}
+										node one_g0937 {
+											layout [ size: 47, 34 ]
+										}
+										node two_g7404 {
+											layout [ size: 186, 65 ]
+										}
+										edge one0_g2402: init_g9593 -> one_g0937 {
+											label L28: "SECOND" {
+												layout [ size: 65, 17 ]
+											}
+										}
+										edge two0_g1796: one_g0937 -> two_g7404 {
+											label L29: "SECOND" {
+												layout [ size: 65, 17 ]
+											}
+										}
+										edge one0_g1571: two_g7404 -> one_g0937 {
+											label L30: "SECOND" {
+												layout [ size: 65, 17 ]
+											}
+										}
+									}
+								}
+								node ^end {
+									layout [ size: 54, 40 ]
+								}
+								edge extendingBucket0: extendingStick -> extendingBucket {
+									label L23: "STICK_OUT / BUCKET_PULL = true" {
+										layout [ size: 256, 17 ]
+									}
+								}
+								edge end0: extendingBucket -> ^end {
+									label L24: "BUCKET_OUT" {
+										layout [ size: 105, 17 ]
+									}
+								}
+							}
+						}
+						node loweringBoom {
+							algorithm: org.eclipse.elk.box
+							node N8 {
+								node init_g1725 {
+									layout [ size: 42, 34 ]
+								}
+								node one_g7825 {
+									layout [ size: 47, 34 ]
+								}
+								node two_g7358 {
+									layout [ size: 186, 65 ]
+								}
+								edge one0_g0481: init_g1725 -> one_g7825 {
+									label L31: "SECOND" {
+										layout [ size: 65, 17 ]
+									}
+								}
+								edge two0_g8320: one_g7825 -> two_g7358 {
+									label L32: "SECOND" {
+										layout [ size: 65, 17 ]
+									}
+								}
+								edge one0_g2911: two_g7358 -> one_g7825 {
+									label L33: "SECOND" {
+										layout [ size: 65, 17 ]
+									}
+								}
+							}
+						}
+						node retractingStickAndBucket {
+							algorithm: org.eclipse.elk.box
+							node A {
+								node init_g2893 {
+									layout [ size: 42, 34 ]
+								}
+								node end_g2503 {
+									layout [ size: 54, 40 ]
+								}
+								edge end0_g3978: init_g2893 -> end_g2503 {
+									label L34: "STICK_IN" {
+										layout [ size: 69, 17 ]
+									}
+								}
+							}
+							node B {
+								node init_g3737 {
+									layout [ size: 42, 34 ]
+								}
+								node end_g1811 {
+									layout [ size: 54, 40 ]
+								}
+								edge end0_g8208: init_g3737 -> end_g1811 {
+									label L35: "BUCKET_IN" {
+										layout [ size: 87, 17 ]
+									}
+								}
+							}
+							node C {
+								node init_g1743 {
+									layout [ size: 42, 34 ]
+								}
+								node ^start {
+									layout [ size: 58, 40 ]
+								}
+								node one_g3411 {
+									layout [ size: 53, 40 ]
+								}
+								node two_g5411 {
+									layout [ size: 192, 71 ]
+								}
+								edge start0: init_g1743 -> ^start
+								edge one0_g4327: ^start -> one_g3411 {
+									label L36: "SECOND" {
+										layout [ size: 65, 17 ]
+									}
+								}
+								edge two0_g0572: one_g3411 -> two_g5411 {
+									label L37: "SECOND" {
+										layout [ size: 65, 17 ]
+									}
+								}
+								edge one0_g2994: two_g5411 -> one_g3411 {
+									label L38: "SECOND" {
+										layout [ size: 65, 17 ]
+									}
+								}
+							}
+						}
+						node waitForRetractButton {
+							layout [ size: 191, 80 ]
+						}
+						node returnToStartingPosition {
+							algorithm: org.eclipse.elk.box
+							node A_g5681 {
+								node init_g9954 {
+									layout [ size: 42, 34 ]
+								}
+								node end_g7297 {
+									layout [ size: 54, 40 ]
+								}
+								edge end0_g5687: init_g9954 -> end_g7297 {
+									label L39: "STICK_IN" {
+										layout [ size: 69, 17 ]
+									}
+								}
+							}
+							node B_g9586 {
+								node init_g6300 {
+									layout [ size: 42, 34 ]
+								}
+								node end_g2598 {
+									layout [ size: 54, 40 ]
+								}
+								edge end0_g1416: init_g6300 -> end_g2598 {
+									label L40: "BUCKET_IN" {
+										layout [ size: 87, 17 ]
+									}
+								}
+							}
+							node C_g5075 {
+								node init_g4670 {
+									layout [ size: 42, 34 ]
+								}
+								node end_g2686 {
+									layout [ size: 54, 40 ]
+								}
+								edge end0_g8828: init_g4670 -> end_g2686 {
+									label L41: "BOOM_IN" {
+										layout [ size: 71, 17 ]
+									}
+								}
+							}
+							node D {
+								node init_g5205 {
+									layout [ size: 42, 34 ]
+								}
+								node start_g4409 {
+									layout [ size: 58, 40 ]
+								}
+								node one_g6713 {
+									layout [ size: 53, 40 ]
+								}
+								node two_g2834 {
+									layout [ size: 52, 40 ]
+								}
+								edge start0_g4421: init_g5205 -> start_g4409
+								edge one0_g2690: start_g4409 -> one_g6713 {
+									label L42: "SECOND" {
+										layout [ size: 65, 17 ]
+									}
+								}
+								edge two0_g3891: one_g6713 -> two_g2834 {
+									label L43: "SECOND / ALARM_LAMP = true" {
+										layout [ size: 222, 17 ]
+									}
+								}
+								edge one0_g0335: two_g2834 -> one_g6713 {
+									label L44: "SECOND / ALARM_LAMP = false" {
+										layout [ size: 227, 17 ]
+									}
+								}
+							}
+							node E {
+								node init_g5370 {
+									layout [ size: 42, 34 ]
+								}
+								node start_g8378 {
+									layout [ size: 148, 56 ]
+								}
+								node one_g7962 {
+									layout [ size: 53, 40 ]
+								}
+								node two_g1554 {
+									layout [ size: 52, 40 ]
+								}
+								node end_g9672 {
+									layout [ size: 54, 40 ]
+								}
+								edge start0_g2921: init_g5370 -> start_g8378 {
+									label L45: "1: cancel" {
+										layout [ size: 63, 17 ]
+									}
+								}
+								edge end0_g3277: init_g5370 -> end_g9672 {
+									label L46: "2:" {
+										layout [ size: 13, 17 ]
+									}
+								}
+								edge one0_g0982: start_g8378 -> one_g7962 {
+									label L47: "SECOND" {
+										layout [ size: 65, 17 ]
+									}
+								}
+								edge two0_g0961: one_g7962 -> two_g1554 {
+									label L48: "SECOND / CANCEL_LAMP = true" {
+										layout [ size: 233, 17 ]
+									}
+								}
+								edge one0_g9063: two_g1554 -> one_g7962 {
+									label L49: "SECOND / CANCEL_LAMP = false" {
+										layout [ size: 238, 17 ]
+									}
+								}
+							}
+						}
+						node switchModes {
+							layout [ size: 179, 50 ]
+						}
+						edge stepOneAndTwo0: waitForExtendButton -> stepOneAndTwo {
+							label L18: "EXTEND_BUTTON / STICK_PULL = true" {
+								layout [ size: 286, 17 ]
+							}
+						}
+						edge returnToStartingPosition0: stepOneAndTwo -> returnToStartingPosition {
+							label L19: "1: RETRACT_BUTTON / cancel = true" {
+								layout [ size: 265, 17 ]
+							}
+						}
+						edge loweringBoom0: stepOneAndTwo -> loweringBoom {
+							label L20: "2: / BOOM_PUSH = true" {
+								layout [ size: 168, 17 ]
+							}
+						}
+						edge retractingStickAndBucket0: loweringBoom -> retractingStickAndBucket {
+							label L21: "BOOM_OUT" {
+								layout [ size: 89, 17 ]
+							}
+						}
+						edge waitForRetractButton0: retractingStickAndBucket -> waitForRetractButton
+						edge returnToStartingPosition0_g0895: waitForRetractButton -> returnToStartingPosition {
+							label L22: "RETRACT_BUTTON" {
+								layout [ size: 145, 17 ]
+							}
+						}
+						edge switchModes0: returnToStartingPosition -> switchModes
+					}
+				}
+				node stopAllMotion {
+					layout [ size: 118, 34 ]
+				}
+				edge stopAllMotion0: movementState -> stopAllMotion {
+					label L16: "STOP_BUTTON / ALARM_LAMP = true" {
+						layout [ size: 272, 17 ]
+					}
+				}
+				edge movementState0: stopAllMotion -> movementState {
+					label L17: "STOP_BUTTON / ALARM_LAMP = false" {
+						layout [ size: 277, 17 ]
+					}
+				}
+			}
+		}
+		edge legMode0: init -> legMode
+		edge diggingMode0: legMode -> diggingMode {
+			label L1: "goToDiggingMode / goToDiggingMode = false" {
+				layout [ size: 325, 17 ]
+			}
+		}
+		edge legMode0_g5603: diggingMode -> legMode {
+			label L2: "goToLegMode / goToLegMode = false" {
+				layout [ size: 269, 17 ]
+			}
+		}
+	}
+}

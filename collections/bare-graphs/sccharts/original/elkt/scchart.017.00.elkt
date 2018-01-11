@@ -1,0 +1,140 @@
+graph G1
+node LightController {
+	algorithm: org.eclipse.elk.box
+	node Main {
+		node init {
+			layout [ size: 42, 34 ]
+		}
+		node controller {
+			algorithm: org.eclipse.elk.box
+			node engine {
+				node engineOff {
+					layout [ size: 254, 50 ]
+				}
+				node noWarn {
+					layout [ size: 254, 50 ]
+				}
+				node warnAndBeep {
+					layout [ size: 332, 80 ]
+				}
+				node wait1 {
+					layout [ size: 332, 65 ]
+				}
+				node wait2 {
+					layout [ size: 332, 65 ]
+				}
+				node warnAndNoBeep {
+					layout [ size: 254, 50 ]
+				}
+				edge noWarn0: engineOff -> noWarn {
+					label L1: "engine" {
+						layout [ size: 49, 17 ]
+					}
+				}
+				edge warnAndBeep0: noWarn -> warnAndBeep {
+					label L2: "noSeatbelt" {
+						layout [ size: 77, 17 ]
+					}
+				}
+				edge noWarn0_g3028: warnAndBeep -> noWarn {
+					label L3: "1: !noSeatbelt" {
+						layout [ size: 97, 17 ]
+					}
+				}
+				edge wait10: warnAndBeep -> wait1 {
+					label L4: "2: secondEngine" {
+						layout [ size: 118, 17 ]
+					}
+				}
+				edge noWarn0_g8347: wait1 -> noWarn {
+					label L5: "1: !noSeatbelt" {
+						layout [ size: 97, 17 ]
+					}
+				}
+				edge wait20: wait1 -> wait2 {
+					label L6: "2: secondEngine" {
+						layout [ size: 118, 17 ]
+					}
+				}
+				edge noWarn0_g3074: wait2 -> noWarn {
+					label L7: "1: !noSeatbelt" {
+						layout [ size: 97, 17 ]
+					}
+				}
+				edge warnAndNoBeep0: wait2 -> warnAndNoBeep {
+					label L8: "2: secondEngine" {
+						layout [ size: 118, 17 ]
+					}
+				}
+				edge noWarn0_g6151: warnAndNoBeep -> noWarn {
+					label L9: "1: !noSeatbelt" {
+						layout [ size: 97, 17 ]
+					}
+				}
+				edge engineOff0: warnAndNoBeep -> engineOff {
+					label L10: "2: !engine" {
+						layout [ size: 69, 17 ]
+					}
+				}
+			}
+			node door {
+				node LightOff {
+					layout [ size: 254, 50 ]
+				}
+				node doorOpen {
+					layout [ size: 254, 50 ]
+				}
+				node doorClosed {
+					layout [ size: 319, 50 ]
+				}
+				node wait1_g3610 {
+					layout [ size: 319, 50 ]
+				}
+				node wait2_g5069 {
+					layout [ size: 319, 50 ]
+				}
+				edge doorOpen0: LightOff -> doorOpen {
+					label L11: "open" {
+						layout [ size: 37, 17 ]
+					}
+				}
+				edge doorClosed0: doorOpen -> doorClosed {
+					label L12: "!open" {
+						layout [ size: 41, 17 ]
+					}
+				}
+				edge doorOpen0_g7247: doorClosed -> doorOpen {
+					label L13: "1: open" {
+						layout [ size: 53, 17 ]
+					}
+				}
+				edge wait10_g3328: doorClosed -> wait1_g3610 {
+					label L14: "2: secondDoor" {
+						layout [ size: 103, 17 ]
+					}
+				}
+				edge doorOpen0_g2957: wait1_g3610 -> doorOpen {
+					label L15: "1: open" {
+						layout [ size: 53, 17 ]
+					}
+				}
+				edge wait20_g4074: wait1_g3610 -> wait2_g5069 {
+					label L16: "2: secondDoor" {
+						layout [ size: 103, 17 ]
+					}
+				}
+				edge doorOpen0_g3842: wait2_g5069 -> doorOpen {
+					label L17: "1: open" {
+						layout [ size: 53, 17 ]
+					}
+				}
+				edge LightOff0: wait2_g5069 -> LightOff {
+					label L18: "2: secondDoor" {
+						layout [ size: 103, 17 ]
+					}
+				}
+			}
+		}
+		edge controller0: init -> controller
+	}
+}

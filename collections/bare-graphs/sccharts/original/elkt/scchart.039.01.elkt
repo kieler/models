@@ -1,0 +1,404 @@
+graph G1
+node BarcodeReader {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node waitStart {
+			layout [ size: 82, 34 ]
+		}
+		node ^start {
+			layout [ size: 52, 34 ]
+		}
+		node scan {
+			algorithm: org.eclipse.elk.box
+			node calibrateSensor {
+				node waitFirstBar {
+					layout [ size: 105, 34 ]
+				}
+				node waitSecondBar {
+					layout [ size: 127, 34 ]
+				}
+				node waitThirdBar {
+					layout [ size: 111, 34 ]
+				}
+				node calibrationDone {
+					layout [ size: 138, 40 ]
+				}
+				edge waitSecondBar0: waitFirstBar -> waitSecondBar {
+					label L21: "color == BLACK / calibration = currentPosition" {
+						layout [ size: 327, 17 ]
+					}
+				}
+				edge waitThirdBar0: waitSecondBar -> waitThirdBar {
+					label L22: "color == WHITE / calibration_helper = currentPosition; calibration = calibration_helper - calibration" {
+						layout [ size: 692, 17 ]
+					}
+				}
+				edge calibrationDone0: waitThirdBar -> calibrationDone {
+					label L23: "color == BLACK / calibration = (calibration + (currentPosition - calibration_helper)) / 2" {
+						layout [ size: 599, 17 ]
+					}
+				}
+			}
+			node scanBarcode {
+				node waitStartDelim {
+					layout [ size: 124, 34 ]
+				}
+				node blackFlank {
+					layout [ size: 250, 50 ]
+				}
+				node checkBlack {
+					layout [ size: 102, 34 ]
+				}
+				node whiteFlank {
+					layout [ size: 250, 50 ]
+				}
+				node checkWhite {
+					layout [ size: 102, 34 ]
+				}
+				edge blackFlank0: waitStartDelim -> blackFlank {
+					label L24: "color == BLACK / lastPosition = currentPosition; flanks++" {
+						layout [ size: 403, 17 ]
+					}
+				}
+				edge checkBlack0: blackFlank -> checkBlack {
+					label L25: "color == WHITE / flanks++" {
+						layout [ size: 182, 17 ]
+					}
+				}
+				edge whiteFlank0: checkBlack -> whiteFlank {
+					label L26: "1: currentPosition - lastPosition >= 4 * (calibration - calibration_tolerance_black) - 1 / barcode_raw[index] = 1; barcode_raw[(index + 1)] = 1; barcode_raw[(index + 2)] = 1; index += 3; lastPosition = currentPosition" {
+						layout [ size: 1475, 17 ]
+					}
+				}
+				edge whiteFlank1: checkBlack -> whiteFlank {
+					label L27: "2: currentPosition - lastPosition >= 3 * (calibration - calibration_tolerance_black) - 1 / barcode_raw[index] = 1; barcode_raw[(index + 1)] = 1; index += 2; lastPosition = currentPosition" {
+						layout [ size: 1267, 17 ]
+					}
+				}
+				edge whiteFlank2: checkBlack -> whiteFlank {
+					label L28: "3: currentPosition - lastPosition >= 2 * (calibration - calibration_tolerance_black) - 1 / barcode_raw[index] = 1; index++; lastPosition = currentPosition" {
+						layout [ size: 1043, 17 ]
+					}
+				}
+				edge whiteFlank3: checkBlack -> whiteFlank {
+					label L29: "4: / lastPosition = currentPosition" {
+						layout [ size: 235, 17 ]
+					}
+				}
+				edge checkWhite0: whiteFlank -> checkWhite {
+					label L30: "color == BLACK / flanks++" {
+						layout [ size: 185, 17 ]
+					}
+				}
+				edge blackFlank0_g4542: checkWhite -> blackFlank {
+					label L31: "1: currentPosition - lastPosition >= 3 * (calibration - calibration_tolerance_white) / barcode_raw[index] = 0; barcode_raw[(index + 1)] = 0; index += 2; lastPosition = currentPosition" {
+						layout [ size: 1247, 17 ]
+					}
+				}
+				edge blackFlank1: checkWhite -> blackFlank {
+					label L32: "2: currentPosition - lastPosition >= 2 * (calibration - calibration_tolerance_white) / barcode_raw[index] = 0; index++; lastPosition = currentPosition" {
+						layout [ size: 1023, 17 ]
+					}
+				}
+				edge blackFlank2: checkWhite -> blackFlank {
+					label L33: "3: / lastPosition = currentPosition" {
+						layout [ size: 235, 17 ]
+					}
+				}
+			}
+		}
+		node decode {
+			algorithm: org.eclipse.elk.box
+			node N2 {
+				node selectFirstBar {
+					layout [ size: 120, 34 ]
+				}
+				node decodeBar {
+					layout [ size: 98, 34 ]
+				}
+				node Found0 {
+					layout [ size: 74, 34 ]
+				}
+				node Found1 {
+					layout [ size: 74, 34 ]
+				}
+				node Found2 {
+					layout [ size: 74, 34 ]
+				}
+				node Found3 {
+					layout [ size: 74, 34 ]
+				}
+				node Found4 {
+					layout [ size: 74, 34 ]
+				}
+				node Found5 {
+					layout [ size: 74, 34 ]
+				}
+				node Found6 {
+					layout [ size: 74, 34 ]
+				}
+				node Found7 {
+					layout [ size: 74, 34 ]
+				}
+				node Found8 {
+					layout [ size: 74, 34 ]
+				}
+				node Found9 {
+					layout [ size: 74, 34 ]
+				}
+				node selectNextBar {
+					layout [ size: 121, 34 ]
+				}
+				node done {
+					layout [ size: 62, 40 ]
+				}
+				edge decodeBar0: selectFirstBar -> decodeBar {
+					label L34: "/ bar0 = barcode_raw[i + 3]; bar1 = barcode_raw[i + 4]; bar2 = barcode_raw[i + 5]; bar3 = barcode_raw[i + 6]; bar4 = barcode_raw[i + 7]; bar5 = barcode_raw[i + 8]; bar6 = barcode_raw[i + 9]; i += 10" {
+						layout [ size: 1357, 17 ]
+					}
+				}
+				edge Found00: decodeBar -> Found0 {
+					label L35: "1: bar0 == 0 && bar1 == 0 && bar2 == 0 && bar3 == 1 && bar4 == 1 && bar5 == 0 && bar6 == 1" {
+						layout [ size: 652, 17 ]
+					}
+				}
+				edge Found10: decodeBar -> Found1 {
+					label L36: "2: bar0 == 0 && bar1 == 0 && bar2 == 1 && bar3 == 1 && bar4 == 0 && bar5 == 0 && bar6 == 1" {
+						layout [ size: 652, 17 ]
+					}
+				}
+				edge Found20: decodeBar -> Found2 {
+					label L37: "3: bar0 == 0 && bar1 == 0 && bar2 == 1 && bar3 == 0 && bar4 == 0 && bar5 == 1 && bar6 == 1" {
+						layout [ size: 652, 17 ]
+					}
+				}
+				edge Found30: decodeBar -> Found3 {
+					label L38: "4: bar0 == 0 && bar1 == 1 && bar2 == 1 && bar3 == 1 && bar4 == 1 && bar5 == 0 && bar6 == 1" {
+						layout [ size: 652, 17 ]
+					}
+				}
+				edge Found40: decodeBar -> Found4 {
+					label L39: "5: bar0 == 0 && bar1 == 1 && bar2 == 0 && bar3 == 0 && bar4 == 0 && bar5 == 1 && bar6 == 1" {
+						layout [ size: 652, 17 ]
+					}
+				}
+				edge Found50: decodeBar -> Found5 {
+					label L40: "6: bar0 == 0 && bar1 == 1 && bar2 == 1 && bar3 == 0 && bar4 == 0 && bar5 == 0 && bar6 == 1" {
+						layout [ size: 652, 17 ]
+					}
+				}
+				edge Found60: decodeBar -> Found6 {
+					label L41: "7: bar0 == 0 && bar1 == 1 && bar2 == 0 && bar3 == 1 && bar4 == 1 && bar5 == 1 && bar6 == 1" {
+						layout [ size: 652, 17 ]
+					}
+				}
+				edge Found70: decodeBar -> Found7 {
+					label L42: "8: bar0 == 0 && bar1 == 1 && bar2 == 1 && bar3 == 1 && bar4 == 0 && bar5 == 1 && bar6 == 1" {
+						layout [ size: 652, 17 ]
+					}
+				}
+				edge Found80: decodeBar -> Found8 {
+					label L43: "9: bar0 == 0 && bar1 == 1 && bar2 == 1 && bar3 == 0 && bar4 == 1 && bar5 == 1 && bar6 == 1" {
+						layout [ size: 652, 17 ]
+					}
+				}
+				edge Found90: decodeBar -> Found9 {
+					label L44: "10: bar0 == 0 && bar1 == 0 && bar2 == 0 && bar3 == 1 && bar4 == 0 && bar5 == 1 && bar6 == 1" {
+						layout [ size: 660, 17 ]
+					}
+				}
+				edge done0: decodeBar -> done {
+					label L45: "11: / error = true" {
+						layout [ size: 113, 17 ]
+					}
+				}
+				edge selectNextBar0: Found0 -> selectNextBar {
+					label L46: "/ barcode_dec[x] = 0; x += 1" {
+						layout [ size: 194, 17 ]
+					}
+				}
+				edge selectNextBar0_g2721: Found1 -> selectNextBar {
+					label L47: "/ barcode_dec[x] = 1; x += 1" {
+						layout [ size: 194, 17 ]
+					}
+				}
+				edge selectNextBar0_g2604: Found2 -> selectNextBar {
+					label L48: "/ barcode_dec[x] = 2; x += 1" {
+						layout [ size: 194, 17 ]
+					}
+				}
+				edge selectNextBar0_g0238: Found3 -> selectNextBar {
+					label L49: "/ barcode_dec[x] = 3; x += 1" {
+						layout [ size: 194, 17 ]
+					}
+				}
+				edge selectNextBar0_g7168: Found4 -> selectNextBar {
+					label L50: "/ barcode_dec[x] = 4; x += 1" {
+						layout [ size: 194, 17 ]
+					}
+				}
+				edge selectNextBar0_g6437: Found5 -> selectNextBar {
+					label L51: "/ barcode_dec[x] = 5; x += 1" {
+						layout [ size: 194, 17 ]
+					}
+				}
+				edge selectNextBar0_g3276: Found6 -> selectNextBar {
+					label L52: "/ barcode_dec[x] = 6; x += 1" {
+						layout [ size: 194, 17 ]
+					}
+				}
+				edge selectNextBar0_g5970: Found7 -> selectNextBar {
+					label L53: "/ barcode_dec[x] = 7; x += 1" {
+						layout [ size: 194, 17 ]
+					}
+				}
+				edge selectNextBar0_g9505: Found8 -> selectNextBar {
+					label L54: "/ barcode_dec[x] = 8; x += 1" {
+						layout [ size: 194, 17 ]
+					}
+				}
+				edge selectNextBar0_g4382: Found9 -> selectNextBar {
+					label L55: "/ barcode_dec[x] = 9; x += 1" {
+						layout [ size: 194, 17 ]
+					}
+				}
+				edge done0_g5217: selectNextBar -> done {
+					label L56: "1: i > 50 / error = true" {
+						layout [ size: 147, 17 ]
+					}
+				}
+				edge done1: selectNextBar -> done {
+					label L57: "2: x == 4" {
+						layout [ size: 59, 17 ]
+					}
+				}
+				edge decodeBar0_g0879: selectNextBar -> decodeBar {
+					label L58: "3: / bar0 = barcode_raw[i + 0]; bar1 = barcode_raw[i + 1]; bar2 = barcode_raw[i + 2]; bar3 = barcode_raw[i + 3]; bar4 = barcode_raw[i + 4]; bar5 = barcode_raw[i + 5]; bar6 = barcode_raw[i + 6]; i += 7" {
+						layout [ size: 1365, 17 ]
+					}
+				}
+			}
+		}
+		node checkParity {
+			layout [ size: 104, 34 ]
+		}
+		node prepare_rotate {
+			layout [ size: 126, 34 ]
+		}
+		node start_rotate {
+			layout [ size: 102, 34 ]
+		}
+		node clockwise {
+			layout [ size: 89, 34 ]
+		}
+		node counterClockwise {
+			layout [ size: 147, 34 ]
+		}
+		node initSecondScan {
+			layout [ size: 132, 34 ]
+		}
+		node done_g2405 {
+			layout [ size: 62, 40 ]
+		}
+		edge start0: waitStart -> ^start {
+			label L1: "1: LEFT / speedmode = 0" {
+				layout [ size: 175, 17 ]
+			}
+		}
+		edge start1: waitStart -> ^start {
+			label L2: "2: ENTER / speedmode = 1" {
+				layout [ size: 189, 17 ]
+			}
+		}
+		edge start2: waitStart -> ^start {
+			label L3: "3: RIGHT / speedmode = 2" {
+				layout [ size: 185, 17 ]
+			}
+		}
+		edge scan0: ^start -> scan {
+			label L4: "1: speedmode == 0 / leftMotor_speed = LOW_SPEED; rightMotor_speed = LOW_SPEED" {
+				layout [ size: 617, 17 ]
+			}
+		}
+		edge scan1: ^start -> scan {
+			label L5: "2: speedmode == 1 / leftMotor_speed = MED_SPEED; rightMotor_speed = MED_SPEED" {
+				layout [ size: 617, 17 ]
+			}
+		}
+		edge scan2: ^start -> scan {
+			label L6: "3: speedmode == 2 / leftMotor_speed = MAX_SPEED; rightMotor_speed = MAX_SPEED" {
+				layout [ size: 613, 17 ]
+			}
+		}
+		edge decode0: scan -> decode {
+			label L7: "flanks == 24 || UP / leftMotor_speed = 0; rightMotor_speed = 0" {
+				layout [ size: 436, 17 ]
+			}
+		}
+		edge done0_g1205: decode -> done_g2405 {
+			label L8: "1: error" {
+				layout [ size: 52, 17 ]
+			}
+		}
+		edge checkParity0: decode -> checkParity {
+			label L9: "2: 100 * barcode_dec[0] + 10 * barcode_dec[1] + barcode_dec[2] < 500 / barcode = 100 * barcode_dec[0] + 10 * barcode_dec[1] + barcode_dec[2]" {
+				layout [ size: 1008, 17 ]
+			}
+		}
+		edge checkParity1: decode -> checkParity {
+			label L10: "3: 100 * barcode_dec[0] + 10 * barcode_dec[1] + barcode_dec[2] >= 500 / barcode = (100 * barcode_dec[0] + 10 * barcode_dec[1] + barcode_dec[2]) - 1000" {
+				layout [ size: 1073, 17 ]
+			}
+		}
+		edge prepare_rotate0: checkParity -> prepare_rotate {
+			label L11: "1: 9 - (barcode_dec[0] + barcode_dec[1] + barcode_dec[2]) % 10 == barcode_dec[3] / lastPosition = currentPosition; leftMotor_speed = MED_SPEED; rightMotor_speed = MED_SPEED; `System.out.println(barcode)`" {
+				layout [ size: 1500, 17 ]
+			}
+		}
+		edge done0_g9109: checkParity -> done_g2405 {
+			label L12: "2: / `System.out.println(\"ParityCheck failed!\")`" {
+				layout [ size: 318, 17 ]
+			}
+		}
+		edge done0_g5950: prepare_rotate -> done_g2405 {
+			label L13: "1: second_scan / leftMotor_speed = 0; rightMotor_speed = 0" {
+				layout [ size: 424, 17 ]
+			}
+		}
+		edge start_rotate0: prepare_rotate -> start_rotate {
+			label L14: "2: currentPosition >= lastPosition + 300 / leftMotor_speed = 0; rightMotor_speed = 0" {
+				layout [ size: 591, 17 ]
+			}
+		}
+		edge clockwise0: start_rotate -> clockwise {
+			label L15: "1: barcode > 0 / startPosition = currentPosition; rightMotor_speed = -rotation_speed; leftMotor_speed = rotation_speed" {
+				layout [ size: 842, 17 ]
+			}
+		}
+		edge counterClockwise0: start_rotate -> counterClockwise {
+			label L16: "2: barcode < 0 / startPosition = currentPosition; rightMotor_speed = rotation_speed; leftMotor_speed = -rotation_speed" {
+				layout [ size: 842, 17 ]
+			}
+		}
+		edge initSecondScan0: start_rotate -> initSecondScan {
+			label L17: "3:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge initSecondScan0_g8800: clockwise -> initSecondScan {
+			label L18: "currentPosition >= startPosition + 2 * (barcode + rotation_const) / rightMotor_speed = 0; leftMotor_speed = 0" {
+				layout [ size: 767, 17 ]
+			}
+		}
+		edge initSecondScan0_g6168: counterClockwise -> initSecondScan {
+			label L19: "currentPosition <= startPosition + 2 * (barcode + rotation_const) / rightMotor_speed = 0; leftMotor_speed = 0" {
+				layout [ size: 767, 17 ]
+			}
+		}
+		edge start0_g6247: initSecondScan -> ^start {
+			label L20: "/ index = 0; flanks = 0; i = 0; x = 0; second_scan = true" {
+				layout [ size: 372, 17 ]
+			}
+		}
+	}
+}

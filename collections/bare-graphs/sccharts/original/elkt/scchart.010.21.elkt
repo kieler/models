@@ -1,0 +1,79 @@
+graph G1
+node backHoeLoaderA {
+	algorithm: org.eclipse.elk.box
+	node loaderRegion {
+		node ^start {
+			layout [ size: 52, 34 ]
+		}
+		node stickExtend {
+			layout [ size: 104, 34 ]
+		}
+		node bucketExtend {
+			layout [ size: 119, 34 ]
+		}
+		node retract {
+			layout [ size: 67, 34 ]
+		}
+		edge stickExtend0: ^start -> stickExtend {
+			label L1: "1: EXTEND_BUTTON / STICK_PULL = true; alarm = true" {
+				layout [ size: 394, 17 ]
+			}
+		}
+		edge retract0: ^start -> retract {
+			label L2: "2: RETRACT_BUTTON / STICK_PUSH = true; BUCKET_PUSH = true; alarm = true" {
+				layout [ size: 575, 17 ]
+			}
+		}
+		edge bucketExtend0: stickExtend -> bucketExtend {
+			label L3: "STICK_OUT / STICK_PULL = false; BUCKET_PULL = true" {
+				layout [ size: 408, 17 ]
+			}
+		}
+		edge start0: bucketExtend -> ^start {
+			label L4: "BUCKET_OUT / BUCKET_PULL = false; alarm = false" {
+				layout [ size: 376, 17 ]
+			}
+		}
+		edge start0_g7251: retract -> ^start {
+			label L5: "STICK_IN && BUCKET_IN / STICK_PUSH = false; BUCKET_PUSH = false; alarm = false" {
+				layout [ size: 615, 17 ]
+			}
+		}
+	}
+	node alarmRegion {
+		node noAlarm {
+			layout [ size: 79, 34 ]
+		}
+		node yesAlarm1 {
+			layout [ size: 92, 34 ]
+		}
+		node yesAlarm2 {
+			layout [ size: 92, 34 ]
+		}
+		edge yesAlarm10: noAlarm -> yesAlarm1 {
+			label L6: "alarm / ALARM_LAMP = true" {
+				layout [ size: 195, 17 ]
+			}
+		}
+		edge yesAlarm20: yesAlarm1 -> yesAlarm2 {
+			label L7: "1: SECOND / ALARM_LAMP = false" {
+				layout [ size: 243, 17 ]
+			}
+		}
+		edge noAlarm0: yesAlarm1 -> noAlarm {
+			label L8: "2: !alarm / ALARM_LAMP = false" {
+				layout [ size: 220, 17 ]
+			}
+		}
+		edge yesAlarm10_g6116: yesAlarm2 -> yesAlarm1 {
+			label L9: "1: SECOND / ALARM_LAMP = true" {
+				layout [ size: 238, 17 ]
+			}
+		}
+		edge noAlarm0_g5463: yesAlarm2 -> noAlarm {
+			label L10: "2: !alarm" {
+				layout [ size: 60, 17 ]
+			}
+		}
+	}
+}

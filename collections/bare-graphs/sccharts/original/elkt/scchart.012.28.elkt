@@ -1,0 +1,99 @@
+graph G1
+node ELEVATOR {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node Move {
+			algorithm: org.eclipse.elk.box
+			node N2 {
+				node OngoingMovement {
+					layout [ size: 156, 34 ]
+				}
+				node Done {
+					layout [ size: 64, 40 ]
+				}
+				edge Done0: OngoingMovement -> Done {
+					label L7: "1: isUp == true && movement == 1 / Move = 0" {
+						layout [ size: 319, 17 ]
+					}
+				}
+				edge Done1: OngoingMovement -> Done {
+					label L8: "2: isDown == true && movement == -1 / Move = 0" {
+						layout [ size: 344, 17 ]
+					}
+				}
+				edge OngoingMovement0: OngoingMovement -> OngoingMovement {
+					label L9: "3: ButtonUp == true / Move = 1" {
+						layout [ size: 217, 17 ]
+					}
+				}
+				edge OngoingMovement1: OngoingMovement -> OngoingMovement {
+					label L10: "4: ButtonDown == true / Move = -1" {
+						layout [ size: 242, 17 ]
+					}
+				}
+				edge OngoingMovement2: OngoingMovement -> OngoingMovement {
+					label L11: "5: / Move = movement" {
+						layout [ size: 155, 17 ]
+					}
+				}
+			}
+		}
+		node Alarm {
+			algorithm: org.eclipse.elk.box
+			node N3 {
+				node On {
+					layout [ size: 42, 34 ]
+				}
+				node Off {
+					layout [ size: 42, 34 ]
+				}
+				edge Off0: On -> Off {
+					label L12: "Second / AlarmLamp = true" {
+						layout [ size: 188, 17 ]
+					}
+				}
+				edge On0: Off -> On {
+					label L13: "Second / AlarmLamp = false" {
+						layout [ size: 193, 17 ]
+					}
+				}
+			}
+		}
+		node Up {
+			layout [ size: 41, 34 ]
+		}
+		node Down {
+			layout [ size: 61, 34 ]
+		}
+		edge Alarm0: Move -> Alarm {
+			label L1: "1: ButtonAlarm == true / Move = 0" {
+				layout [ size: 236, 17 ]
+			}
+		}
+		edge Up0: Move -> Up {
+			label L2: "2: isUp == true" {
+				layout [ size: 103, 17 ]
+			}
+		}
+		edge Down0: Move -> Down {
+			label L3: "3: isDown == true" {
+				layout [ size: 123, 17 ]
+			}
+		}
+		edge Move0: Alarm -> Move {
+			label L4: "5 Second / AlarmLamp = false" {
+				layout [ size: 205, 17 ]
+			}
+		}
+		edge Move0_g1349: Up -> Move {
+			label L5: "ButtonDown == true && ButtonAlarm == false / movement = -1" {
+				layout [ size: 437, 17 ]
+			}
+		}
+		edge Move0_g6089: Down -> Move {
+			label L6: "ButtonUp == true && ButtonAlarm == false / movement = 1" {
+				layout [ size: 412, 17 ]
+			}
+		}
+	}
+}

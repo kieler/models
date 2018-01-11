@@ -1,0 +1,93 @@
+graph G1
+node cuudfvbeznklitfspdzel {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node Init {
+			layout [ size: 42, 34 ]
+		}
+		node Controller {
+			algorithm: org.eclipse.elk.box
+			node Domelight {
+				node Idle {
+					layout [ size: 164, 50 ]
+				}
+				node DomelightOn {
+					layout [ size: 159, 50 ]
+				}
+				node WaitingLight {
+					layout [ size: 219, 65 ]
+				}
+				edge DomelightOn0: Idle -> DomelightOn {
+					label L1: "doorOpen" {
+						layout [ size: 73, 17 ]
+					}
+				}
+				edge WaitingLight0: DomelightOn -> WaitingLight {
+					label L2: "!doorOpen" {
+						layout [ size: 77, 17 ]
+					}
+				}
+				edge DomelightOn0_g6542: WaitingLight -> DomelightOn {
+					label L3: "1: doorOpen" {
+						layout [ size: 89, 17 ]
+					}
+				}
+				edge Idle0: WaitingLight -> Idle {
+					label L4: "2: count >= 4" {
+						layout [ size: 91, 17 ]
+					}
+				}
+			}
+			node Seatbelt {
+				node Idle_g7933 {
+					layout [ size: 245, 50 ]
+				}
+				node EngineOn {
+					algorithm: org.eclipse.elk.box
+					node N2 {
+						node Idle_g3258 {
+							layout [ size: 245, 50 ]
+						}
+						node BeepAndLight {
+							layout [ size: 298, 65 ]
+						}
+						node Light {
+							layout [ size: 240, 50 ]
+						}
+						edge BeepAndLight0: Idle_g3258 -> BeepAndLight {
+							label L7: "seatbeltOpen" {
+								layout [ size: 97, 17 ]
+							}
+						}
+						edge Idle0_g0482: BeepAndLight -> Idle_g3258 {
+							label L8: "1: !seatbeltOpen" {
+								layout [ size: 117, 17 ]
+							}
+						}
+						edge Light0: BeepAndLight -> Light {
+							label L9: "2: count >= 30" {
+								layout [ size: 99, 17 ]
+							}
+						}
+						edge Idle0_g2629: Light -> Idle_g3258 {
+							label L10: "!seatbeltOpen" {
+								layout [ size: 101, 17 ]
+							}
+						}
+					}
+				}
+				edge EngineOn0: Idle_g7933 -> EngineOn {
+					label L5: "engineOn" {
+						layout [ size: 71, 17 ]
+					}
+				}
+				edge Idle0_g4988: EngineOn -> Idle_g7933 {
+					label L6: "!engineOn" {
+						layout [ size: 75, 17 ]
+					}
+				}
+			}
+		}
+		edge Controller0: Init -> Controller
+	}
+}

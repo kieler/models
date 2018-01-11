@@ -1,0 +1,61 @@
+graph G1
+node problem {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node mainloop {
+			algorithm: org.eclipse.elk.box
+			node Init {
+				node S11 {
+					layout [ size: 34, 34 ]
+				}
+				node S12 {
+					layout [ size: 34, 34 ]
+				}
+				node S13 {
+					layout [ size: 40, 40 ]
+				}
+				edge S120: S11 -> S12 {
+					label L1: "/ S = false" {
+						layout [ size: 69, 17 ]
+					}
+				}
+				edge S130: S12 -> S13 {
+					label L2: "1: _Term" {
+						layout [ size: 62, 17 ]
+					}
+				}
+				edge S110: S12 -> S11 {
+					label L3: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+			}
+			node Main {
+				node S21 {
+					layout [ size: 34, 34 ]
+				}
+				node S22 {
+					layout [ size: 34, 34 ]
+				}
+				node S23 {
+					layout [ size: 34, 34 ]
+				}
+				node S24 {
+					layout [ size: 40, 40 ]
+				}
+				edge S220: S21 -> S22 {
+					label L4: "/ _Term = false; O = S" {
+						layout [ size: 151, 17 ]
+					}
+				}
+				edge S230: S22 -> S23
+				edge S240: S23 -> S24 {
+					label L5: "/ S = true; _Term = true" {
+						layout [ size: 162, 17 ]
+					}
+				}
+			}
+		}
+		edge mainloop0: mainloop -> mainloop
+	}
+}

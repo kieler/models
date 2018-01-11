@@ -1,0 +1,98 @@
+graph G1
+node Backhoe {
+	algorithm: org.eclipse.elk.box
+	node Main {
+		node init {
+			layout [ size: 42, 34 ]
+		}
+		node init2 {
+			layout [ size: 51, 34 ]
+		}
+		node extendstick {
+			layout [ size: 103, 34 ]
+		}
+		node extendbucket {
+			layout [ size: 117, 34 ]
+		}
+		node extended {
+			layout [ size: 88, 34 ]
+		}
+		node retract {
+			layout [ size: 67, 34 ]
+		}
+		node retractedstick {
+			layout [ size: 119, 34 ]
+		}
+		node retractedbucket {
+			layout [ size: 133, 34 ]
+		}
+		edge init20: init -> init2 {
+			label L1: "true / DONE_LAMP = true" {
+				layout [ size: 180, 17 ]
+			}
+		}
+		edge extendstick0: init2 -> extendstick {
+			label L2: "EXTEND_BUTTON / STICK_PULL = true; DONE_LAMP = false" {
+				layout [ size: 438, 17 ]
+			}
+		}
+		edge extendbucket0: extendstick -> extendbucket {
+			label L3: "STICK_OUT / STICK_PULL = false; BUCKET_PULL = true" {
+				layout [ size: 408, 17 ]
+			}
+		}
+		edge extended0: extendbucket -> extended {
+			label L4: "BUCKET_OUT / BUCKET_PULL = false; DONE_LAMP = true" {
+				layout [ size: 426, 17 ]
+			}
+		}
+		edge retract0: extended -> retract {
+			label L5: "RETRACT_BUTTON / DONE_LAMP = false; STICK_PUSH = true; BUCKET_PUSH = true" {
+				layout [ size: 619, 17 ]
+			}
+		}
+		edge init20_g1178: retract -> init2 {
+			label L6: "1: STICK_IN && BUCKET_IN / STICK_PUSH = false; BUCKET_PUSH = false; DONE_LAMP = true" {
+				layout [ size: 681, 17 ]
+			}
+		}
+		edge retractedstick0: retract -> retractedstick {
+			label L7: "2: STICK_IN / STICK_PUSH = false" {
+				layout [ size: 244, 17 ]
+			}
+		}
+		edge retractedbucket0: retract -> retractedbucket {
+			label L8: "3: BUCKET_IN / BUCKET_PUSH = false" {
+				layout [ size: 280, 17 ]
+			}
+		}
+		edge init20_g3792: retractedstick -> init2 {
+			label L9: "BUCKET_IN / BUCKET_PUSH = false; DONE_LAMP = true" {
+				layout [ size: 411, 17 ]
+			}
+		}
+		edge init20_g1976: retractedbucket -> init2 {
+			label L10: "STICK_IN / STICK_PUSH = false; DONE_LAMP = true" {
+				layout [ size: 375, 17 ]
+			}
+		}
+	}
+	node Alarm {
+		node initalarm {
+			layout [ size: 82, 34 ]
+		}
+		node wait {
+			layout [ size: 48, 34 ]
+		}
+		edge wait0: initalarm -> wait {
+			label L11: "STICK_PUSH || STICK_PULL || BUCKET_PUSH || BUCKET_PULL / ALARM_LAMP = true" {
+				layout [ size: 619, 17 ]
+			}
+		}
+		edge initalarm0: wait -> initalarm {
+			label L12: "2 SECOND / ALARM_LAMP = false" {
+				layout [ size: 239, 17 ]
+			}
+		}
+	}
+}

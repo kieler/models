@@ -1,0 +1,134 @@
+graph G1
+node BACKHOE {
+	algorithm: org.eclipse.elk.box
+	node Legs {
+		node Lamp {
+			layout [ size: 59, 34 ]
+		}
+		node Done {
+			layout [ size: 64, 40 ]
+		}
+		node __te_S {
+			layout [ size: 69, 34 ]
+		}
+		node __te_S1 {
+			layout [ size: 77, 34 ]
+		}
+		node __te_S2 {
+			layout [ size: 77, 34 ]
+		}
+		node __te_S3 {
+			layout [ size: 77, 34 ]
+		}
+		node __te_S4 {
+			layout [ size: 77, 34 ]
+		}
+		node __sd_Depth {
+			layout [ size: 105, 34 ]
+		}
+		node __sd_Depth1 {
+			layout [ size: 113, 34 ]
+		}
+		node __sd_S2 {
+			layout [ size: 80, 34 ]
+		}
+		node Extend {
+			layout [ size: 71, 34 ]
+		}
+		node __sd_Depth2 {
+			layout [ size: 113, 34 ]
+		}
+		node __sd_S4 {
+			layout [ size: 80, 34 ]
+		}
+		node Retract {
+			layout [ size: 72, 34 ]
+		}
+		node __sd_Depth3 {
+			layout [ size: 113, 34 ]
+		}
+		edge Done0: Lamp -> Done {
+			label L1: "/ DONE_LAMP = true" {
+				layout [ size: 147, 17 ]
+			}
+		}
+		edge Extend0: __te_S -> Extend {
+			label L2: "/ LEGS_EXTEND = true" {
+				layout [ size: 165, 17 ]
+			}
+		}
+		edge Retract0: __te_S1 -> Retract {
+			label L3: "/ LEGS_RETRACT = true" {
+				layout [ size: 175, 17 ]
+			}
+		}
+		edge __sd_Depth0: __te_S2 -> __sd_Depth {
+			label L4: "/ LEGS_EXTEND = false" {
+				layout [ size: 170, 17 ]
+			}
+		}
+		edge Lamp0: __te_S3 -> Lamp {
+			label L5: "/ LEGS_EXTEND = false" {
+				layout [ size: 170, 17 ]
+			}
+		}
+		edge __sd_Depth0_g6830: __te_S4 -> __sd_Depth {
+			label L6: "/ LEGS_RETRACT = false" {
+				layout [ size: 180, 17 ]
+			}
+		}
+		edge __sd_Depth10: __sd_Depth -> __sd_Depth1
+		edge __te_S0: __sd_Depth1 -> __te_S {
+			label L7: "1: EXTEND_BUTTON" {
+				layout [ size: 151, 17 ]
+			}
+		}
+		edge __sd_S20: __sd_Depth1 -> __sd_S2 {
+			label L8: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge __te_S10: __sd_S2 -> __te_S1 {
+			label L9: "1: RETRACT_BUTTON" {
+				layout [ size: 161, 17 ]
+			}
+		}
+		edge __sd_Depth0_g4488: __sd_S2 -> __sd_Depth {
+			label L10: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge __sd_Depth20: Extend -> __sd_Depth2
+		edge __te_S20: __sd_Depth2 -> __te_S2 {
+			label L11: "1: STOP_BUTTON" {
+				layout [ size: 131, 17 ]
+			}
+		}
+		edge __sd_S40: __sd_Depth2 -> __sd_S4 {
+			label L12: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge __te_S30: __sd_S4 -> __te_S3 {
+			label L13: "1: LEGS_OUT" {
+				layout [ size: 98, 17 ]
+			}
+		}
+		edge Extend0_g6457: __sd_S4 -> Extend {
+			label L14: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge __sd_Depth30: Retract -> __sd_Depth3
+		edge __te_S40: __sd_Depth3 -> __te_S4 {
+			label L15: "1: STOP_BUTTON || LEGS_IN" {
+				layout [ size: 211, 17 ]
+			}
+		}
+		edge Retract0_g9916: __sd_Depth3 -> Retract {
+			label L16: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+	}
+}

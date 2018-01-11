@@ -1,0 +1,50 @@
+graph G1
+node lamplight {
+	algorithm: org.eclipse.elk.box
+	node Lamplight {
+		node WaitingAlarm {
+			layout [ size: 112, 34 ]
+		}
+		node AlarmOn {
+			layout [ size: 81, 34 ]
+		}
+		node AlarmOff {
+			layout [ size: 81, 34 ]
+		}
+		edge AlarmOn0: WaitingAlarm -> AlarmOn {
+			label L1: "flash == true" {
+				layout [ size: 89, 17 ]
+			}
+		}
+		edge WaitingAlarm0: AlarmOn -> WaitingAlarm {
+			label L2: "1: flash == false / FLASH_LAMP = false" {
+				layout [ size: 270, 17 ]
+			}
+		}
+		edge AlarmOff0: AlarmOn -> AlarmOff {
+			label L3: "2: count == 5 / count = 0; FLASH_LAMP = false" {
+				layout [ size: 323, 17 ]
+			}
+		}
+		edge AlarmOn0_g9740: AlarmOn -> AlarmOn {
+			label L4: "3: / count = count + 1; FLASH_LAMP = true" {
+				layout [ size: 297, 17 ]
+			}
+		}
+		edge WaitingAlarm0_g4505: AlarmOff -> WaitingAlarm {
+			label L5: "1: flash == false / FLASH_LAMP = false" {
+				layout [ size: 270, 17 ]
+			}
+		}
+		edge AlarmOn0_g8955: AlarmOff -> AlarmOn {
+			label L6: "2: count == 5 / count = 0; FLASH_LAMP = true" {
+				layout [ size: 318, 17 ]
+			}
+		}
+		edge AlarmOff0_g9861: AlarmOff -> AlarmOff {
+			label L7: "3: / count = count + 1; FLASH_LAMP = false" {
+				layout [ size: 302, 17 ]
+			}
+		}
+	}
+}

@@ -1,0 +1,238 @@
+graph G1
+node sync {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node isDown {
+			layout [ size: 73, 34 ]
+		}
+		node isUp {
+			layout [ size: 53, 34 ]
+		}
+		node moveDown {
+			layout [ size: 100, 34 ]
+		}
+		node moveUp {
+			layout [ size: 80, 34 ]
+		}
+		node alarmID1 {
+			layout [ size: 82, 34 ]
+		}
+		node alarmID2 {
+			layout [ size: 82, 34 ]
+		}
+		node alarmID3 {
+			layout [ size: 82, 34 ]
+		}
+		node alarmID4 {
+			layout [ size: 82, 34 ]
+		}
+		node alarmID5 {
+			layout [ size: 82, 34 ]
+		}
+		node alarmIU1 {
+			layout [ size: 82, 34 ]
+		}
+		node alarmIU2 {
+			layout [ size: 82, 34 ]
+		}
+		node alarmIU3 {
+			layout [ size: 82, 34 ]
+		}
+		node alarmIU4 {
+			layout [ size: 82, 34 ]
+		}
+		node alarmIU5 {
+			layout [ size: 82, 34 ]
+		}
+		node alarmMD1 {
+			layout [ size: 91, 34 ]
+		}
+		node alarmMD2 {
+			layout [ size: 91, 34 ]
+		}
+		node alarmMD3 {
+			layout [ size: 91, 34 ]
+		}
+		node alarmMD4 {
+			layout [ size: 91, 34 ]
+		}
+		node alarmMD5 {
+			layout [ size: 91, 34 ]
+		}
+		node alarmMU1 {
+			layout [ size: 91, 34 ]
+		}
+		node alarmMU2 {
+			layout [ size: 91, 34 ]
+		}
+		node alarmMU3 {
+			layout [ size: 91, 34 ]
+		}
+		node alarmMU4 {
+			layout [ size: 91, 34 ]
+		}
+		node alarmMU5 {
+			layout [ size: 91, 34 ]
+		}
+		edge moveUp0: isDown -> moveUp {
+			label L1: "1: BUTTON_UP && !BUTTON_ALARM / MOVE_UP = true" {
+				layout [ size: 399, 17 ]
+			}
+		}
+		edge alarmID10: isDown -> alarmID1 {
+			label L2: "2: BUTTON_ALARM && !BUTTON_UP / ALARM_LAMP = true" {
+				layout [ size: 425, 17 ]
+			}
+		}
+		edge alarmMU10: isDown -> alarmMU1 {
+			label L3: "3: BUTTON_ALARM && BUTTON_UP / ALARM_LAMP = true" {
+				layout [ size: 421, 17 ]
+			}
+		}
+		edge moveDown0: isUp -> moveDown {
+			label L4: "1: BUTTON_DOWN && !BUTTON_ALARM / MOVE_DOWN = true" {
+				layout [ size: 451, 17 ]
+			}
+		}
+		edge alarmIU10: isUp -> alarmIU1 {
+			label L5: "2: BUTTON_ALARM && !BUTTON_DOWN / ALARM_LAMP = true" {
+				layout [ size: 451, 17 ]
+			}
+		}
+		edge alarmMD10: isUp -> alarmMD1 {
+			label L6: "3: BUTTON_ALARM && BUTTON_DOWN / ALARM_LAMP = true" {
+				layout [ size: 447, 17 ]
+			}
+		}
+		edge isDown0: moveDown -> isDown {
+			label L7: "1: IS_DOWN && !BUTTON_ALARM / MOVE_DOWN = false" {
+				layout [ size: 405, 17 ]
+			}
+		}
+		edge alarmMD10_g1478: moveDown -> alarmMD1 {
+			label L8: "2: BUTTON_ALARM && !IS_DOWN / ALARM_LAMP = true; MOVE_DOWN = false" {
+				layout [ size: 558, 17 ]
+			}
+		}
+		edge alarmID10_g6003: moveDown -> alarmID1 {
+			label L9: "3: BUTTON_ALARM && IS_DOWN / ALARM_LAMP = true; MOVE_DOWN = false" {
+				layout [ size: 554, 17 ]
+			}
+		}
+		edge isUp0: moveUp -> isUp {
+			label L10: "1: IS_UP && !BUTTON_ALARM / MOVE_UP = false" {
+				layout [ size: 353, 17 ]
+			}
+		}
+		edge alarmMU10_g9094: moveUp -> alarmMU1 {
+			label L11: "2: BUTTON_ALARM && !IS_UP / ALARM_LAMP = true; MOVE_UP = false" {
+				layout [ size: 506, 17 ]
+			}
+		}
+		edge alarmIU10_g5080: moveUp -> alarmIU1 {
+			label L12: "3: BUTTON_ALARM && IS_UP / ALARM_LAMP = true; MOVE_UP = false" {
+				layout [ size: 502, 17 ]
+			}
+		}
+		edge alarmID20: alarmID1 -> alarmID2 {
+			label L13: "SECOND" {
+				layout [ size: 65, 17 ]
+			}
+		}
+		edge alarmID30: alarmID2 -> alarmID3 {
+			label L14: "SECOND" {
+				layout [ size: 65, 17 ]
+			}
+		}
+		edge alarmID40: alarmID3 -> alarmID4 {
+			label L15: "SECOND" {
+				layout [ size: 65, 17 ]
+			}
+		}
+		edge alarmID50: alarmID4 -> alarmID5 {
+			label L16: "SECOND" {
+				layout [ size: 65, 17 ]
+			}
+		}
+		edge isDown0_g8143: alarmID5 -> isDown {
+			label L17: "SECOND / ALARM_LAMP = false" {
+				layout [ size: 227, 17 ]
+			}
+		}
+		edge alarmIU20: alarmIU1 -> alarmIU2 {
+			label L18: "SECOND" {
+				layout [ size: 65, 17 ]
+			}
+		}
+		edge alarmIU30: alarmIU2 -> alarmIU3 {
+			label L19: "SECOND" {
+				layout [ size: 65, 17 ]
+			}
+		}
+		edge alarmIU40: alarmIU3 -> alarmIU4 {
+			label L20: "SECOND" {
+				layout [ size: 65, 17 ]
+			}
+		}
+		edge alarmIU50: alarmIU4 -> alarmIU5 {
+			label L21: "SECOND" {
+				layout [ size: 65, 17 ]
+			}
+		}
+		edge isUp0_g9021: alarmIU5 -> isUp {
+			label L22: "SECOND / ALARM_LAMP = false" {
+				layout [ size: 227, 17 ]
+			}
+		}
+		edge alarmMD20: alarmMD1 -> alarmMD2 {
+			label L23: "SECOND" {
+				layout [ size: 65, 17 ]
+			}
+		}
+		edge alarmMD30: alarmMD2 -> alarmMD3 {
+			label L24: "SECOND" {
+				layout [ size: 65, 17 ]
+			}
+		}
+		edge alarmMD40: alarmMD3 -> alarmMD4 {
+			label L25: "SECOND" {
+				layout [ size: 65, 17 ]
+			}
+		}
+		edge alarmMD50: alarmMD4 -> alarmMD5 {
+			label L26: "SECOND" {
+				layout [ size: 65, 17 ]
+			}
+		}
+		edge moveDown0_g8782: alarmMD5 -> moveDown {
+			label L27: "SECOND / ALARM_LAMP = false; MOVE_DOWN = true" {
+				layout [ size: 380, 17 ]
+			}
+		}
+		edge alarmMU20: alarmMU1 -> alarmMU2 {
+			label L28: "SECOND" {
+				layout [ size: 65, 17 ]
+			}
+		}
+		edge alarmMU30: alarmMU2 -> alarmMU3 {
+			label L29: "SECOND" {
+				layout [ size: 65, 17 ]
+			}
+		}
+		edge alarmMU40: alarmMU3 -> alarmMU4 {
+			label L30: "SECOND" {
+				layout [ size: 65, 17 ]
+			}
+		}
+		edge alarmMU50: alarmMU4 -> alarmMU5 {
+			label L31: "SECOND" {
+				layout [ size: 65, 17 ]
+			}
+		}
+		edge moveUp0_g7134: alarmMU5 -> moveUp {
+			label L32: "SECOND / ALARM_LAMP = false; MOVE_UP = true" {
+				layout [ size: 354, 17 ]
+			}
+		}
+	}
+}

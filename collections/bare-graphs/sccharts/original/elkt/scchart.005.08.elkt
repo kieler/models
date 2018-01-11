@@ -1,0 +1,30 @@
+graph G1
+node move {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node INIT {
+			layout [ size: 49, 34 ]
+		}
+		node MOVE {
+			layout [ size: 65, 34 ]
+		}
+		node REACHED {
+			layout [ size: 99, 40 ]
+		}
+		edge MOVE0: INIT -> MOVE {
+			label L1: "START_BUTTON / DIRECTION = true" {
+				layout [ size: 264, 17 ]
+			}
+		}
+		edge REACHED0: MOVE -> REACHED {
+			label L2: "1: REACHED / DIRECTION = false" {
+				layout [ size: 236, 17 ]
+			}
+		}
+		edge INIT0: MOVE -> INIT {
+			label L3: "2: INTERRUPT_BUTTON_A | INTERRUPT_BUTTON_B / DIRECTION = false" {
+				layout [ size: 532, 17 ]
+			}
+		}
+	}
+}

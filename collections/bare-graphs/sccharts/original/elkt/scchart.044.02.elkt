@@ -1,0 +1,422 @@
+graph G1
+node barcode {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node calL {
+			layout [ size: 50, 34 ]
+		}
+		node calD {
+			layout [ size: 51, 34 ]
+		}
+		node waitEnter {
+			layout [ size: 87, 34 ]
+		}
+		node readBarcode {
+			algorithm: org.eclipse.elk.box
+			node N2 {
+				node init {
+					layout [ size: 42, 34 ]
+				}
+				node d {
+					layout [ size: 34, 34 ]
+				}
+				node dl {
+					layout [ size: 34, 34 ]
+				}
+				node dld {
+					layout [ size: 43, 34 ]
+				}
+				node ^start {
+					layout [ size: 52, 34 ]
+				}
+				node l {
+					layout [ size: 34, 34 ]
+				}
+				node ld {
+					layout [ size: 34, 34 ]
+				}
+				node ldl {
+					layout [ size: 38, 34 ]
+				}
+				node ldlll {
+					layout [ size: 46, 34 ]
+				}
+				node ldd {
+					layout [ size: 43, 34 ]
+				}
+				node lddl {
+					layout [ size: 47, 34 ]
+				}
+				node lddlll {
+					layout [ size: 55, 34 ]
+				}
+				node lddd {
+					layout [ size: 52, 34 ]
+				}
+				node ldddl {
+					layout [ size: 56, 34 ]
+				}
+				node ldddd {
+					layout [ size: 61, 34 ]
+				}
+				node lddddl {
+					layout [ size: 65, 34 ]
+				}
+				node ll {
+					layout [ size: 34, 34 ]
+				}
+				node lld {
+					layout [ size: 38, 34 ]
+				}
+				node lldll {
+					layout [ size: 46, 34 ]
+				}
+				node lldd {
+					layout [ size: 47, 34 ]
+				}
+				node llddll {
+					layout [ size: 55, 34 ]
+				}
+				node lll {
+					layout [ size: 34, 34 ]
+				}
+				node llld {
+					layout [ size: 42, 34 ]
+				}
+				node llldl {
+					layout [ size: 46, 34 ]
+				}
+				node llldd {
+					layout [ size: 51, 34 ]
+				}
+				node lllddl {
+					layout [ size: 55, 34 ]
+				}
+				node check {
+					layout [ size: 63, 34 ]
+				}
+				node ^end {
+					layout [ size: 54, 40 ]
+				}
+				edge init0: init -> init {
+					label L10: "1: lightSensor > wb" {
+						layout [ size: 136, 17 ]
+					}
+				}
+				edge d0: init -> d {
+					label L11: "2: lightSensor < wb / cnt = cnt - cnt; stat = 1" {
+						layout [ size: 303, 17 ]
+					}
+				}
+				edge dl0: d -> dl {
+					label L12: "lightSensor >= wb / minD = cnt - cnt / 3; maxD = cnt + cnt / 3; cnt = cnt - cnt; stat = 2" {
+						layout [ size: 579, 17 ]
+					}
+				}
+				edge dld0: dl -> dld {
+					label L13: "lightSensor <= wb / minL = cnt - cnt / 3; maxL = cnt + cnt / 3; cnt = cnt - cnt; stat = 3" {
+						layout [ size: 575, 17 ]
+					}
+				}
+				edge start0: dld -> ^start {
+					label L14: "lightSensor >= wb / cnt = cnt - cnt; stat = 4" {
+						layout [ size: 296, 17 ]
+					}
+				}
+				edge l0: ^start -> l {
+					label L15: "1: lightSensor <= wb && cnt > minL && cnt < maxL / cnt = cnt - cnt; stat = 5" {
+						layout [ size: 521, 17 ]
+					}
+				}
+				edge ll0: ^start -> ll {
+					label L16: "2: lightSensor <= wb && cnt > minL * 2 && cnt < maxL * 2 / cnt = cnt - cnt; stat = 6" {
+						layout [ size: 565, 17 ]
+					}
+				}
+				edge lll0: ^start -> lll {
+					label L17: "3: lightSensor <= wb && cnt > minL * 3 && cnt < maxL * 3 / cnt = cnt - cnt; stat = 7" {
+						layout [ size: 565, 17 ]
+					}
+				}
+				edge ld0: l -> ld {
+					label L18: "1: lightSensor >= wb && cnt > minD && cnt <= maxD / cnt = cnt - cnt; stat = 8" {
+						layout [ size: 534, 17 ]
+					}
+				}
+				edge ldd0: l -> ldd {
+					label L19: "2: lightSensor >= wb && cnt > minD * 2 && cnt < maxD * 2 / cnt = cnt - cnt; stat = 9" {
+						layout [ size: 569, 17 ]
+					}
+				}
+				edge lddd0: l -> lddd {
+					label L20: "3: lightSensor >= wb && cnt > minD * 3 && cnt < maxD * 3 / cnt = cnt - cnt; stat = 10" {
+						layout [ size: 577, 17 ]
+					}
+				}
+				edge ldddd0: l -> ldddd {
+					label L21: "4: lightSensor >= wb && cnt > minD * 4 && cnt < maxD * 4 / cnt = cnt - cnt; stat = 18" {
+						layout [ size: 577, 17 ]
+					}
+				}
+				edge ldl0: ld -> ldl {
+					label L22: "1: lightSensor <= wb && cnt > minL && cnt <= maxL / cnt = cnt - cnt; stat = 21" {
+						layout [ size: 538, 17 ]
+					}
+				}
+				edge ldlll0: ld -> ldlll {
+					label L23: "2: lightSensor <= wb && cnt > minL * 3 && cnt < maxL * 3 / cnt = cnt - cnt; stat = 22" {
+						layout [ size: 573, 17 ]
+					}
+				}
+				edge check0: ldl -> check {
+					label L24: "1: lightSensor >= wb && cnt > minD && cnt <= maxD / cnt = cnt - cnt; value = 100 * values[0] + 10 * values[1] + values[2]; stat = 99" {
+						layout [ size: 903, 17 ]
+					}
+				}
+				edge start0_g4483: ldl -> ^start {
+					label L25: "2: lightSensor >= wb && cnt > minD * 4 && cnt < maxD * 4 / cnt = cnt - cnt; stat = 23; values[vCnt] = 6; vCnt = vCnt + 1" {
+						layout [ size: 819, 17 ]
+					}
+				}
+				edge start0_g9374: ldlll -> ^start {
+					label L26: "lightSensor >= wb && cnt > minD * 2 && cnt < maxD * 2 / cnt = cnt - cnt; stat = 24; values[vCnt] = 4; vCnt = vCnt + 1" {
+						layout [ size: 803, 17 ]
+					}
+				}
+				edge lddl0: ldd -> lddl {
+					label L27: "1: lightSensor <= wb && cnt > minL && cnt <= maxL / cnt = cnt - cnt; stat = 25" {
+						layout [ size: 538, 17 ]
+					}
+				}
+				edge lddlll0: ldd -> lddlll {
+					label L28: "2: lightSensor <= wb && cnt > minL * 3 && cnt < maxL * 3 / cnt = cnt - cnt; stat = 26" {
+						layout [ size: 573, 17 ]
+					}
+				}
+				edge start0_g3639: lddl -> ^start {
+					label L29: "lightSensor >= wb && cnt > minD * 3 && cnt < maxD * 3 / cnt = cnt - cnt; stat = 27; values[vCnt] = 8; vCnt = vCnt + 1" {
+						layout [ size: 803, 17 ]
+					}
+				}
+				edge start0_g8221: lddlll -> ^start {
+					label L30: "lightSensor >= wb && cnt > minD && cnt <= maxD / cnt = cnt - cnt; stat = 28; values[vCnt] = 5; vCnt = vCnt + 1" {
+						layout [ size: 768, 17 ]
+					}
+				}
+				edge ldddl0: lddd -> ldddl {
+					label L31: "lightSensor <= wb && cnt > minL && cnt <= maxL / cnt = cnt - cnt; stat = 29" {
+						layout [ size: 522, 17 ]
+					}
+				}
+				edge start0_g0893: ldddl -> ^start {
+					label L32: "lightSensor >= wb && cnt > minD * 2 && cnt < maxD * 2 / cnt = cnt - cnt; stat = 30; values[vCnt] = 7; vCnt = vCnt + 1" {
+						layout [ size: 803, 17 ]
+					}
+				}
+				edge lddddl0: ldddd -> lddddl {
+					label L33: "lightSensor <= wb && cnt > minL && cnt <= maxL / cnt = cnt - cnt; stat = 19" {
+						layout [ size: 522, 17 ]
+					}
+				}
+				edge start0_g9361: lddddl -> ^start {
+					label L34: "lightSensor >= wb && cnt > minD && cnt <= maxD / cnt = cnt - cnt; stat = 20; values[vCnt] = 3; vCnt = vCnt + 1" {
+						layout [ size: 768, 17 ]
+					}
+				}
+				edge lld0: ll -> lld {
+					label L35: "1: lightSensor >= wb && cnt > minD && cnt <= maxD / cnt = cnt - cnt; stat = 11" {
+						layout [ size: 541, 17 ]
+					}
+				}
+				edge lldd0: ll -> lldd {
+					label L36: "2: lightSensor >= wb && cnt > minD * 2 && cnt < maxD * 2 / cnt = cnt - cnt; stat = 12" {
+						layout [ size: 577, 17 ]
+					}
+				}
+				edge lldll0: lld -> lldll {
+					label L37: "lightSensor <= wb && cnt > minL * 2 && cnt < maxL * 2 / cnt = cnt - cnt; stat = 16" {
+						layout [ size: 557, 17 ]
+					}
+				}
+				edge start0_g2797: lldll -> ^start {
+					label L38: "lightSensor >= wb && cnt > minD * 2 && cnt < maxD * 2 / cnt = cnt - cnt; stat = 17; values[vCnt] = 2; vCnt = vCnt + 1" {
+						layout [ size: 803, 17 ]
+					}
+				}
+				edge llddll0: lldd -> llddll {
+					label L39: "lightSensor <= wb && cnt > minL * 2 && cnt < maxL * 2 / cnt = cnt - cnt; stat = 15" {
+						layout [ size: 557, 17 ]
+					}
+				}
+				edge start0_g3445: llddll -> ^start {
+					label L40: "lightSensor >= wb && cnt > minD && cnt <= maxD / cnt = cnt - cnt; stat = 16; values[vCnt] = 1; vCnt = vCnt + 1" {
+						layout [ size: 768, 17 ]
+					}
+				}
+				edge llld0: lll -> llld {
+					label L41: "1: lightSensor >= wb && cnt > minD && cnt <= maxD / cnt = cnt - cnt; stat = 13" {
+						layout [ size: 542, 17 ]
+					}
+				}
+				edge llldd0: lll -> llldd {
+					label L42: "2: lightSensor >= wb && cnt > minD * 2 && cnt < maxD * 2 / cnt = cnt - cnt; stat = 14" {
+						layout [ size: 577, 17 ]
+					}
+				}
+				edge llldl0: llld -> llldl {
+					label L43: "lightSensor <= wb && cnt > minL && cnt <= maxL / cnt = cnt - cnt; stat = 31" {
+						layout [ size: 522, 17 ]
+					}
+				}
+				edge start0_g1176: llldl -> ^start {
+					label L44: "lightSensor >= wb && cnt > minD * 2 && cnt < maxD * 2 / cnt = cnt - cnt; stat = 32; values[vCnt] = 9; vCnt = vCnt + 1" {
+						layout [ size: 803, 17 ]
+					}
+				}
+				edge lllddl0: llldd -> lllddl {
+					label L45: "lightSensor <= wb && cnt > minL && cnt <= maxL / cnt = cnt - cnt; stat = 33" {
+						layout [ size: 522, 17 ]
+					}
+				}
+				edge start0_g3762: lllddl -> ^start {
+					label L46: "lightSensor >= wb && cnt > minD && cnt <= maxD / cnt = cnt - cnt; stat = 34; values[vCnt] = 0; vCnt = vCnt + 1" {
+						layout [ size: 768, 17 ]
+					}
+				}
+				edge end0: check -> ^end {
+					label L47: "1: 9 - (values[0] + values[1] + values[2]) % 10 == values[3] && value < 500 / barcode = value; valid = true" {
+						layout [ size: 728, 17 ]
+					}
+				}
+				edge end1: check -> ^end {
+					label L48: "2: 9 - (values[0] + values[1] + values[2]) % 10 == values[3] && value >= 500 / barcode = value - 1000; valid = true" {
+						layout [ size: 782, 17 ]
+					}
+				}
+				edge end2: check -> ^end {
+					label L49: "3: 9 - (values[0] + values[1] + values[2]) % 10 != values[3] / invalid = true" {
+						layout [ size: 504, 17 ]
+					}
+				}
+			}
+		}
+		node N3 {
+			layout [ size: 525, 190 ]
+		}
+		node rotate {
+			algorithm: org.eclipse.elk.box
+			node N4 {
+				node gotoEnd {
+					layout [ size: 81, 34 ]
+				}
+				node startRota {
+					layout [ size: 86, 34 ]
+				}
+				node rotaRight {
+					layout [ size: 86, 34 ]
+				}
+				node N5 {
+					layout [ size: 442, 47 ]
+				}
+				node rotaLeft {
+					layout [ size: 76, 34 ]
+				}
+				node rotaEnd {
+					layout [ size: 83, 40 ]
+				}
+				edge gotoEnd0: gotoEnd -> gotoEnd {
+					label L50: "1: motorRotaRight < rotaRight + 160" {
+						layout [ size: 253, 17 ]
+					}
+				}
+				edge startRota0: gotoEnd -> startRota {
+					label L51: "2: motorRotaRight >= rotaRight + 160 / rotaLeft = motorRotaLeft; rotaRight = motorRotaRight" {
+						layout [ size: 651, 17 ]
+					}
+				}
+				edge rotaRight0: startRota -> rotaRight {
+					label L52: "1: barcode > 0 / motorLeft = -40; motorRight = 40" {
+						layout [ size: 339, 17 ]
+					}
+				}
+				edge rotaLeft0: startRota -> rotaLeft {
+					label L53: "2: barcode < 0 / motorLeft = 40; motorRight = -40" {
+						layout [ size: 339, 17 ]
+					}
+				}
+				edge rotaEnd0: startRota -> rotaEnd {
+					label L54: "3: barcode == 0" {
+						layout [ size: 109, 17 ]
+					}
+				}
+				edge rotaRight0_g9125: rotaRight -> rotaRight {
+					label L55: "1: motorRotaRight < rotaRight + (((barcode * 10000) / 360) * 766) / 10000" {
+						layout [ size: 497, 17 ]
+					}
+				}
+				edge rotaEnd0_g0938: rotaRight -> rotaEnd {
+					label L56: "2: motorRotaRight >= rotaRight + (((barcode * 10000) / 360) * 766) / 10000" {
+						layout [ size: 506, 17 ]
+					}
+				}
+				edge E2: rotaRight -> N5
+				edge rotaLeft0_g4768: rotaLeft -> rotaLeft {
+					label L57: "1: motorRotaLeft < rotaLeft + (((barcode * (-10000)) / 360) * 766) / 10000" {
+						layout [ size: 492, 17 ]
+					}
+				}
+				edge rotaEnd0_g9074: rotaLeft -> rotaEnd {
+					label L58: "2: motorRotaLeft >= rotaLeft + (((barcode * (-10000)) / 360) * 766) / 10000" {
+						layout [ size: 501, 17 ]
+					}
+				}
+			}
+		}
+		edge calL0: calL -> calL {
+			label L1: "1: !left / light = lightSensor" {
+				layout [ size: 185, 17 ]
+			}
+		}
+		edge calD0: calL -> calD {
+			label L2: "2: left / light = lightSensor" {
+				layout [ size: 181, 17 ]
+			}
+		}
+		edge calD0_g2368: calD -> calD {
+			label L3: "1: !right / dark = lightSensor; wb = 508" {
+				layout [ size: 265, 17 ]
+			}
+		}
+		edge waitEnter0: calD -> waitEnter {
+			label L4: "2: right / dark = lightSensor; wb = 508" {
+				layout [ size: 261, 17 ]
+			}
+		}
+		edge waitEnter0_g2223: waitEnter -> waitEnter {
+			label L5: "1: enter && cnt == 0 / cnt = 1" {
+				layout [ size: 200, 17 ]
+			}
+		}
+		edge waitEnter1: waitEnter -> waitEnter {
+			label L6: "2: clock && cnt > 0 && cnt < 200 / cnt = cnt + 1" {
+				layout [ size: 322, 17 ]
+			}
+		}
+		edge readBarcode0: waitEnter -> readBarcode {
+			label L7: "3: cnt >= 200 / motorLeft = 40; motorRight = 40" {
+				layout [ size: 323, 17 ]
+			}
+		}
+		edge rotate0: readBarcode -> rotate {
+			label L8: "true / cnt = cnt - cnt; stat = 100" {
+				layout [ size: 213, 17 ]
+			}
+		}
+		edge E1: readBarcode -> N3
+		edge readBarcode0_g1382: rotate -> readBarcode {
+			label L9: "/ motorLeft = 50; motorRight = 50" {
+				layout [ size: 231, 17 ]
+			}
+		}
+	}
+}

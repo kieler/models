@@ -1,0 +1,384 @@
+graph G1
+node uybfdkzwviutcc {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node init {
+			layout [ size: 109, 50 ]
+		}
+		node Active {
+			algorithm: org.eclipse.elk.box
+			node N2 {
+				node Scan {
+					algorithm: org.eclipse.elk.box
+					node N3 {
+						node WaitForStartDelimiter {
+							layout [ size: 171, 34 ]
+						}
+						node WaitForLight {
+							layout [ size: 194, 50 ]
+						}
+						node WriteDark {
+							layout [ size: 91, 34 ]
+						}
+						node WaitForDark {
+							layout [ size: 194, 50 ]
+						}
+						node WriteLight {
+							layout [ size: 93, 34 ]
+						}
+						edge WaitForLight0: WaitForStartDelimiter -> WaitForLight {
+							label L5: "red < 0.35" {
+								layout [ size: 70, 17 ]
+							}
+						}
+						edge WriteDark0: WaitForLight -> WriteDark {
+							label L6: "red >= 0.4 / scannedLength = (((rotation - startRotation) + 5) - ((rotation - startRotation) + 5) % 10) / 10" {
+								layout [ size: 708, 17 ]
+							}
+						}
+						edge WriteDark0_g1744: WriteDark -> WriteDark {
+							label L7: "1: scannedLength > 0 / scanned[scanPointer] = false; scanPointer = scanPointer + 1; scannedLength = scannedLength - 1" {
+								layout [ size: 856, 17 ]
+							}
+						}
+						edge WaitForDark0: WriteDark -> WaitForDark {
+							label L8: "2: scannedLength <= 0" {
+								layout [ size: 161, 17 ]
+							}
+						}
+						edge WriteLight0: WaitForDark -> WriteLight {
+							label L9: "red < 0.35 / scannedLength = (((rotation - startRotation) + 5) - ((rotation - startRotation) + 5) % 10) / 10" {
+								layout [ size: 707, 17 ]
+							}
+						}
+						edge WriteLight0_g7504: WriteLight -> WriteLight {
+							label L10: "1: scannedLength > 0 / scanned[scanPointer] = true; scanPointer = scanPointer + 1; scannedLength = scannedLength - 1" {
+								layout [ size: 851, 17 ]
+							}
+						}
+						edge WaitForLight0_g2568: WriteLight -> WaitForLight {
+							label L11: "2: scannedLength <= 0" {
+								layout [ size: 161, 17 ]
+							}
+						}
+					}
+				}
+				node Decode {
+					algorithm: org.eclipse.elk.box
+					node N4 {
+						node CheckStartDelimiter {
+							layout [ size: 288, 80 ]
+						}
+						node Decoding {
+							algorithm: org.eclipse.elk.box
+							node N5 {
+								node init_g5250 {
+									layout [ size: 42, 34 ]
+								}
+								node All {
+									layout [ size: 238, 50 ]
+								}
+								node ZeroOneTwoNine {
+									layout [ size: 238, 50 ]
+								}
+								node ZeroNine {
+									layout [ size: 238, 50 ]
+								}
+								node ZeroNine2 {
+									layout [ size: 238, 50 ]
+								}
+								node Zero {
+									layout [ size: 244, 71 ]
+								}
+								node Nine {
+									layout [ size: 244, 71 ]
+								}
+								node OneTwo {
+									layout [ size: 238, 50 ]
+								}
+								node One {
+									layout [ size: 244, 71 ]
+								}
+								node Two {
+									layout [ size: 244, 71 ]
+								}
+								node ThreeFourFiveSixSevenEightEnd {
+									layout [ size: 238, 50 ]
+								}
+								node ThreeFiveSevenEight {
+									layout [ size: 238, 50 ]
+								}
+								node FiveEight {
+									layout [ size: 238, 50 ]
+								}
+								node Five {
+									layout [ size: 244, 71 ]
+								}
+								node Eight {
+									layout [ size: 244, 71 ]
+								}
+								node ThreeSeven {
+									layout [ size: 238, 50 ]
+								}
+								node Seven {
+									layout [ size: 244, 71 ]
+								}
+								node Three {
+									layout [ size: 244, 71 ]
+								}
+								node FourSixEnd {
+									layout [ size: 238, 50 ]
+								}
+								node Four {
+									layout [ size: 244, 71 ]
+								}
+								node SixEnd {
+									layout [ size: 238, 50 ]
+								}
+								node Six {
+									layout [ size: 244, 71 ]
+								}
+								node End {
+									layout [ size: 244, 56 ]
+								}
+								edge All0: init_g5250 -> All {
+									label L20: "1: scanned[scanPointer] == true" {
+										layout [ size: 226, 17 ]
+									}
+								}
+								edge End0: init_g5250 -> End {
+									label L21: "2: scanned[scanPointer] == false / decodeError = true" {
+										layout [ size: 379, 17 ]
+									}
+								}
+								edge ZeroOneTwoNine0: All -> ZeroOneTwoNine {
+									label L22: "1: scanned[scanPointer] == true" {
+										layout [ size: 226, 17 ]
+									}
+								}
+								edge ThreeFourFiveSixSevenEightEnd0: All -> ThreeFourFiveSixSevenEightEnd {
+									label L23: "2: scanned[scanPointer] == false" {
+										layout [ size: 231, 17 ]
+									}
+								}
+								edge ZeroNine0: ZeroOneTwoNine -> ZeroNine {
+									label L24: "1: scanned[scanPointer] == true" {
+										layout [ size: 226, 17 ]
+									}
+								}
+								edge OneTwo0: ZeroOneTwoNine -> OneTwo {
+									label L25: "2: scanned[scanPointer] == false" {
+										layout [ size: 231, 17 ]
+									}
+								}
+								edge End0_g7949: ZeroNine -> End {
+									label L26: "1: scanned[scanPointer] == true / decodeError = true" {
+										layout [ size: 374, 17 ]
+									}
+								}
+								edge ZeroNine20: ZeroNine -> ZeroNine2 {
+									label L27: "2: scanned[scanPointer] == false" {
+										layout [ size: 231, 17 ]
+									}
+								}
+								edge Nine0: ZeroNine2 -> Nine {
+									label L28: "1: scanned[scanPointer] == true" {
+										layout [ size: 226, 17 ]
+									}
+								}
+								edge Zero0: ZeroNine2 -> Zero {
+									label L29: "2: scanned[scanPointer] == false" {
+										layout [ size: 231, 17 ]
+									}
+								}
+								edge Two0: OneTwo -> Two {
+									label L30: "1: scanned[scanPointer] == true" {
+										layout [ size: 226, 17 ]
+									}
+								}
+								edge One0: OneTwo -> One {
+									label L31: "2: scanned[scanPointer] == false" {
+										layout [ size: 231, 17 ]
+									}
+								}
+								edge FourSixEnd0: ThreeFourFiveSixSevenEightEnd -> FourSixEnd {
+									label L32: "1: scanned[scanPointer] == true" {
+										layout [ size: 226, 17 ]
+									}
+								}
+								edge ThreeFiveSevenEight0: ThreeFourFiveSixSevenEightEnd -> ThreeFiveSevenEight {
+									label L33: "2: scanned[scanPointer] == false" {
+										layout [ size: 231, 17 ]
+									}
+								}
+								edge FiveEight0: ThreeFiveSevenEight -> FiveEight {
+									label L34: "1: scanned[scanPointer] == true" {
+										layout [ size: 226, 17 ]
+									}
+								}
+								edge ThreeSeven0: ThreeFiveSevenEight -> ThreeSeven {
+									label L35: "2: scanned[scanPointer] == false" {
+										layout [ size: 231, 17 ]
+									}
+								}
+								edge Five0: FiveEight -> Five {
+									label L36: "1: scanned[scanPointer] == true" {
+										layout [ size: 226, 17 ]
+									}
+								}
+								edge Eight0: FiveEight -> Eight {
+									label L37: "2: scanned[scanPointer] == false" {
+										layout [ size: 231, 17 ]
+									}
+								}
+								edge Seven0: ThreeSeven -> Seven {
+									label L38: "1: scanned[scanPointer] == true" {
+										layout [ size: 226, 17 ]
+									}
+								}
+								edge Three0: ThreeSeven -> Three {
+									label L39: "2: scanned[scanPointer] == false" {
+										layout [ size: 231, 17 ]
+									}
+								}
+								edge Four0: FourSixEnd -> Four {
+									label L40: "1: scanned[scanPointer] == true" {
+										layout [ size: 226, 17 ]
+									}
+								}
+								edge SixEnd0: FourSixEnd -> SixEnd {
+									label L41: "2: scanned[scanPointer] == false" {
+										layout [ size: 231, 17 ]
+									}
+								}
+								edge End0_g3331: SixEnd -> End {
+									label L42: "1: scanned[scanPointer] == true || digits == 3" {
+										layout [ size: 316, 17 ]
+									}
+								}
+								edge Six0: SixEnd -> Six {
+									label L43: "2: scanned[scanPointer] == false" {
+										layout [ size: 231, 17 ]
+									}
+								}
+							}
+						}
+						node Add {
+							layout [ size: 258, 50 ]
+						}
+						node Check {
+							layout [ size: 399, 80 ]
+						}
+						node Map {
+							layout [ size: 304, 50 ]
+						}
+						node Error {
+							layout [ size: 278, 86 ]
+						}
+						node Done {
+							layout [ size: 277, 56 ]
+						}
+						edge Error0: CheckStartDelimiter -> Error {
+							label L12: "1: decodeError" {
+								layout [ size: 106, 17 ]
+							}
+						}
+						edge Decoding0: CheckStartDelimiter -> Decoding {
+							label L13: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge Error0_g8442: Decoding -> Error {
+							label L14: "1: decodeError" {
+								layout [ size: 106, 17 ]
+							}
+						}
+						edge Check0: Decoding -> Check {
+							label L15: "2: digits >= 3" {
+								layout [ size: 90, 17 ]
+							}
+						}
+						edge Add0: Decoding -> Add {
+							label L16: "3: digits < 3" {
+								layout [ size: 81, 17 ]
+							}
+						}
+						edge Decoding0_g4634: Add -> Decoding {
+							label L17: "/ digits = digits + 1" {
+								layout [ size: 129, 17 ]
+							}
+						}
+						edge Error0_g9179: Check -> Error {
+							label L18: "1: 9 - (d1 + d2 + d3) % 10 != lastDigit / barcodeValid = false" {
+								layout [ size: 402, 17 ]
+							}
+						}
+						edge Map0: Check -> Map {
+							label L19: "2: 9 - (d1 + d2 + d3) % 10 == lastDigit / barcodeValid = true" {
+								layout [ size: 402, 17 ]
+							}
+						}
+						edge Done0: Map -> Done
+					}
+				}
+				node Rotate {
+					algorithm: org.eclipse.elk.box
+					node N6 {
+						node init_g8581 {
+							layout [ size: 275, 65 ]
+						}
+						node rotateLeft {
+							layout [ size: 177, 50 ]
+						}
+						node rotateRight {
+							layout [ size: 176, 50 ]
+						}
+						node Done_g7034 {
+							layout [ size: 278, 56 ]
+						}
+						edge rotateLeft0: init_g8581 -> rotateLeft {
+							label L44: "1: toRotate < 0" {
+								layout [ size: 103, 17 ]
+							}
+						}
+						edge rotateRight0: init_g8581 -> rotateRight {
+							label L45: "2: toRotate >= 0" {
+								layout [ size: 112, 17 ]
+							}
+						}
+						edge Done0_g6236: rotateLeft -> Done_g7034 {
+							label L46: "gyroAngle + toRotate >= 0.0" {
+								layout [ size: 196, 17 ]
+							}
+						}
+						edge Done0_g2533: rotateRight -> Done_g7034 {
+							label L47: "gyroAngle + toRotate <= 0.0" {
+								layout [ size: 196, 17 ]
+							}
+						}
+					}
+				}
+				edge Decode0: Scan -> Decode {
+					label L2: "scanPointer == 35" {
+						layout [ size: 128, 17 ]
+					}
+				}
+				edge Rotate0: Decode -> Rotate {
+					label L3: "barcodeValid" {
+						layout [ size: 92, 17 ]
+					}
+				}
+				edge Scan0: Rotate -> Scan {
+					label L4: "/ motorSpeedA = initialSpeed; motorSpeedD = initialSpeed" {
+						layout [ size: 412, 17 ]
+					}
+				}
+			}
+		}
+		edge Active0: init -> Active {
+			label L1: "isEnterDown / motorSpeedA = initialSpeed; motorSpeedD = initialSpeed" {
+				layout [ size: 507, 17 ]
+			}
+		}
+	}
+}

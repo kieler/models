@@ -1,0 +1,99 @@
+graph G1
+node kcxihyjv {
+	algorithm: org.eclipse.elk.box
+	node DomeLightController {
+		node closedLightOff {
+			layout [ size: 125, 34 ]
+		}
+		node opened {
+			layout [ size: 75, 34 ]
+		}
+		node closedLightOn {
+			layout [ size: 125, 34 ]
+		}
+		edge opened0: closedLightOff -> opened {
+			label L1: "!doorStatus / domeLightStatus = true" {
+				layout [ size: 260, 17 ]
+			}
+		}
+		edge closedLightOn0: opened -> closedLightOn {
+			label L2: "doorStatus / domeLightOnTime = 0" {
+				layout [ size: 247, 17 ]
+			}
+		}
+		edge opened0_g1338: closedLightOn -> opened {
+			label L3: "1: !doorStatus" {
+				layout [ size: 99, 17 ]
+			}
+		}
+		edge closedLightOff0: closedLightOn -> closedLightOff {
+			label L4: "2: domeLightOnTime >= 3 / domeLightStatus = false" {
+				layout [ size: 364, 17 ]
+			}
+		}
+		edge closedLightOn0_g8933: closedLightOn -> closedLightOn {
+			label L5: "3: second / domeLightOnTime = domeLightOnTime + 1" {
+				layout [ size: 385, 17 ]
+			}
+		}
+	}
+	node SeatBeltController {
+		node engineOff {
+			layout [ size: 91, 34 ]
+		}
+		node engineOnAllBuckled {
+			layout [ size: 166, 34 ]
+		}
+		node beeperOnLightOn {
+			layout [ size: 150, 34 ]
+		}
+		node beeperOffLightOn {
+			layout [ size: 151, 34 ]
+		}
+		edge engineOnAllBuckled0: engineOff -> engineOnAllBuckled {
+			label L6: "ignition" {
+				layout [ size: 54, 17 ]
+			}
+		}
+		edge engineOff0: engineOnAllBuckled -> engineOff {
+			label L7: "1: !ignition" {
+				layout [ size: 74, 17 ]
+			}
+		}
+		edge beeperOnLightOn0: engineOnAllBuckled -> beeperOnLightOn {
+			label L8: "2: seatBeltStatus / warningLightStatus = true; beeperStatus = true; beeperOnTime = 0" {
+				layout [ size: 606, 17 ]
+			}
+		}
+		edge engineOff0_g1192: beeperOnLightOn -> engineOff {
+			label L9: "1: !ignition" {
+				layout [ size: 74, 17 ]
+			}
+		}
+		edge engineOnAllBuckled0_g5540: beeperOnLightOn -> engineOnAllBuckled {
+			label L10: "2: !seatBeltStatus / warningLightStatus = false; beeperStatus = false" {
+				layout [ size: 479, 17 ]
+			}
+		}
+		edge beeperOffLightOn0: beeperOnLightOn -> beeperOffLightOn {
+			label L11: "3: beeperOnTime >= 30 / beeperStatus = false" {
+				layout [ size: 324, 17 ]
+			}
+		}
+		edge beeperOnLightOn0_g2984: beeperOnLightOn -> beeperOnLightOn {
+			label L12: "4: second / beeperOnTime = beeperOnTime + 1" {
+				layout [ size: 337, 17 ]
+			}
+		}
+		edge engineOff0_g2487: beeperOffLightOn -> engineOff {
+			label L13: "1: !ignition" {
+				layout [ size: 74, 17 ]
+			}
+		}
+		edge engineOnAllBuckled0_g6594: beeperOffLightOn -> engineOnAllBuckled {
+			label L14: "2: !seatBeltStatus / warningLightStatus = false" {
+				layout [ size: 324, 17 ]
+			}
+		}
+	}
+}

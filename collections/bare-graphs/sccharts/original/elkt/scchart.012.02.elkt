@@ -1,0 +1,164 @@
+graph G1
+node Domelight {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node Union {
+			algorithm: org.eclipse.elk.box
+			node rDomeLight {
+				node LightsOff {
+					layout [ size: 86, 34 ]
+				}
+				node DoorOpen {
+					layout [ size: 95, 34 ]
+				}
+				node DoorClosed {
+					layout [ size: 106, 34 ]
+				}
+				edge DoorOpen0: LightsOff -> DoorOpen {
+					label L1: "DoorSensor1 == false | DoorSensor2 == false / DomeLight = true" {
+						layout [ size: 455, 17 ]
+					}
+				}
+				edge DoorClosed0: DoorOpen -> DoorClosed {
+					label L2: "DoorSensor1 == true & DoorSensor2 == true / DomeLight = true; counter = 0" {
+						layout [ size: 541, 17 ]
+					}
+				}
+				edge DoorClosed0_g7812: DoorClosed -> DoorClosed {
+					label L3: "1: Clock == true / counter = counter + 1" {
+						layout [ size: 276, 17 ]
+					}
+				}
+				edge LightsOff0: DoorClosed -> LightsOff {
+					label L4: "2: counter >= 32 / DomeLight = false" {
+						layout [ size: 253, 17 ]
+					}
+				}
+				edge DoorOpen0_g4550: DoorClosed -> DoorOpen {
+					label L5: "3: DoorSensor1 == false | DoorSensor2 == false / DomeLight = true" {
+						layout [ size: 471, 17 ]
+					}
+				}
+			}
+			node rSeatBelt {
+				node EngineOff {
+					layout [ size: 92, 34 ]
+				}
+				node NoEvent {
+					layout [ size: 82, 34 ]
+				}
+				node Event {
+					layout [ size: 62, 34 ]
+				}
+				node EventNoTone {
+					layout [ size: 118, 34 ]
+				}
+				edge EngineOff0: EngineOff -> EngineOff {
+					label L6: "1: Ignition == true / IgnitionReleased = true" {
+						layout [ size: 302, 17 ]
+					}
+				}
+				edge NoEvent0: EngineOff -> NoEvent {
+					label L7: "2: Ignition == false & IgnitionReleased == true & SeatbeltStatus == false / IgnitionReleased = false" {
+						layout [ size: 689, 17 ]
+					}
+				}
+				edge Event0: EngineOff -> Event {
+					label L8: "3: Ignition == false & IgnitionReleased == true & SeatbeltStatus == true / IgnitionReleased = false; WarnLight = true; WarnTone = true; counter2 = 0" {
+						layout [ size: 1031, 17 ]
+					}
+				}
+				edge EngineOff1: EngineOff -> EngineOff {
+					label L9: "4: Seatbelt == true & SeatbeltStatus == false / SeatbeltReleased = true" {
+						layout [ size: 497, 17 ]
+					}
+				}
+				edge EngineOff2: EngineOff -> EngineOff {
+					label L10: "5: Seatbelt == false & SeatbeltReleased == true & SeatbeltStatus == false / SeatbeltStatus = true; SeatbeltReleased = false" {
+						layout [ size: 865, 17 ]
+					}
+				}
+				edge EngineOff3: EngineOff -> EngineOff {
+					label L11: "6: Seatbelt == true & SeatbeltStatus == true / SeatbeltReleased = true" {
+						layout [ size: 492, 17 ]
+					}
+				}
+				edge EngineOff4: EngineOff -> EngineOff {
+					label L12: "7: Seatbelt == false & SeatbeltReleased == true & SeatbeltStatus == true / SeatbeltStatus = false; SeatbeltReleased = false" {
+						layout [ size: 865, 17 ]
+					}
+				}
+				edge NoEvent0_g7701: NoEvent -> NoEvent {
+					label L13: "1: Ignition == true / IgnitionReleased = true" {
+						layout [ size: 302, 17 ]
+					}
+				}
+				edge EngineOff0_g3190: NoEvent -> EngineOff {
+					label L14: "2: Ignition == false & IgnitionReleased == true / IgnitionReleased = false" {
+						layout [ size: 506, 17 ]
+					}
+				}
+				edge NoEvent1: NoEvent -> NoEvent {
+					label L15: "3: Seatbelt == true / SeatbeltReleased = true" {
+						layout [ size: 314, 17 ]
+					}
+				}
+				edge Event0_g7629: NoEvent -> Event {
+					label L16: "4: Seatbelt == false & SeatbeltReleased == true / SeatbeltReleased = false; WarnLight = true; WarnTone = true; counter2 = 0" {
+						layout [ size: 871, 17 ]
+					}
+				}
+				edge Event0_g6778: Event -> Event {
+					label L17: "1: Seatbelt == true / SeatbeltReleased = true" {
+						layout [ size: 314, 17 ]
+					}
+				}
+				edge NoEvent0_g5804: Event -> NoEvent {
+					label L18: "2: Seatbelt == false & SeatbeltReleased == true / SeatbeltReleased = false; WarnLight = false; WarnTone = false" {
+						layout [ size: 784, 17 ]
+					}
+				}
+				edge Event1: Event -> Event {
+					label L19: "3: Ignition == true / IgnitionReleased = true" {
+						layout [ size: 302, 17 ]
+					}
+				}
+				edge EngineOff0_g0198: Event -> EngineOff {
+					label L20: "4: Ignition == false & IgnitionReleased == true / IgnitionReleased = false; WarnLight = false; WarnTone = false; SeatbeltStatus = true" {
+						layout [ size: 924, 17 ]
+					}
+				}
+				edge Event2: Event -> Event {
+					label L21: "5: Clock / counter2 = counter2 + 1" {
+						layout [ size: 237, 17 ]
+					}
+				}
+				edge EventNoTone0: Event -> EventNoTone {
+					label L22: "6: counter2 >= 300 / WarnTone = false" {
+						layout [ size: 263, 17 ]
+					}
+				}
+				edge EventNoTone0_g2694: EventNoTone -> EventNoTone {
+					label L23: "1: Ignition == true / IgnitionReleased = true" {
+						layout [ size: 302, 17 ]
+					}
+				}
+				edge EngineOff0_g4945: EventNoTone -> EngineOff {
+					label L24: "2: Ignition == false & IgnitionReleased == true / IgnitionReleased = false; WarnLight = false; WarnTone = false; SeatbeltStatus = true" {
+						layout [ size: 924, 17 ]
+					}
+				}
+				edge EventNoTone1: EventNoTone -> EventNoTone {
+					label L25: "3: Seatbelt == true / SeatbeltReleased = true" {
+						layout [ size: 314, 17 ]
+					}
+				}
+				edge NoEvent0_g0947: EventNoTone -> NoEvent {
+					label L26: "4: Seatbelt == false & SeatbeltReleased == true / SeatbeltReleased = false; WarnLight = false; WarnTone = false" {
+						layout [ size: 784, 17 ]
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,90 @@
+graph G1
+node Legs {
+	algorithm: org.eclipse.elk.box
+	node controller {
+		node init {
+			layout [ size: 42, 34 ]
+		}
+		node pending {
+			layout [ size: 108, 50 ]
+		}
+		node extend {
+			layout [ size: 239, 50 ]
+		}
+		node retract {
+			layout [ size: 243, 50 ]
+		}
+		edge pending0: init -> pending
+		edge extend0: pending -> extend {
+			label L1: "1: EXTEND_BUTTON && !LEGS_OUT" {
+				layout [ size: 267, 17 ]
+			}
+		}
+		edge retract0: pending -> retract {
+			label L2: "2: RETRACT_BUTTON && !LEGS_IN" {
+				layout [ size: 259, 17 ]
+			}
+		}
+		edge pending0_g2566: extend -> pending {
+			label L3: "1: LEGS_OUT / DONE_LAMP = true" {
+				layout [ size: 249, 17 ]
+			}
+		}
+		edge pending1: extend -> pending {
+			label L4: "2: STOP_BUTTON" {
+				layout [ size: 131, 17 ]
+			}
+		}
+		edge retract0_g9070: extend -> retract {
+			label L5: "3: RETRACT_BUTTON" {
+				layout [ size: 161, 17 ]
+			}
+		}
+		edge pending0_g6369: retract -> pending {
+			label L6: "1: LEGS_IN" {
+				layout [ size: 80, 17 ]
+			}
+		}
+		edge pending1_g4292: retract -> pending {
+			label L7: "2: STOP_BUTTON" {
+				layout [ size: 131, 17 ]
+			}
+		}
+		edge extend0_g9295: retract -> extend {
+			label L8: "3: EXTEND_BUTTON" {
+				layout [ size: 151, 17 ]
+			}
+		}
+	}
+	node legs {
+		node pending_g5019 {
+			layout [ size: 471, 50 ]
+		}
+		node extend_g8416 {
+			layout [ size: 471, 50 ]
+		}
+		node retract_g6362 {
+			layout [ size: 471, 50 ]
+		}
+		edge extend0_g9685: pending_g5019 -> extend_g8416 {
+			label L9: "1: legs == 1" {
+				layout [ size: 81, 17 ]
+			}
+		}
+		edge retract0_g1992: pending_g5019 -> retract_g6362 {
+			label L10: "2: legs == -1" {
+				layout [ size: 86, 17 ]
+			}
+		}
+		edge pending0_g8540: extend_g8416 -> pending_g5019 {
+			label L11: "legs < 1 || LEGS_OUT" {
+				layout [ size: 153, 17 ]
+			}
+		}
+		edge pending0_g3185: retract_g6362 -> pending_g5019 {
+			label L12: "legs > -1 || LEGS_IN" {
+				layout [ size: 140, 17 ]
+			}
+		}
+	}
+}

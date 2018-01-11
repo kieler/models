@@ -1,0 +1,310 @@
+graph G1
+node Elevator {
+	algorithm: org.eclipse.elk.box
+	node __EA_Entry {
+		node __EA_Main {
+			algorithm: org.eclipse.elk.box
+			node elevator {
+				node elevatorMovement {
+					algorithm: org.eclipse.elk.box
+					node N1 {
+						node __te_S {
+							layout [ size: 69, 34 ]
+						}
+						node __te_S1 {
+							layout [ size: 77, 34 ]
+						}
+						node __te_S2 {
+							layout [ size: 77, 34 ]
+						}
+						node __te_S3 {
+							layout [ size: 77, 34 ]
+						}
+						node down {
+							layout [ size: 59, 34 ]
+						}
+						node __sd_Depth {
+							layout [ size: 105, 34 ]
+						}
+						node up {
+							layout [ size: 39, 34 ]
+						}
+						node __sd_Depth1 {
+							layout [ size: 113, 34 ]
+						}
+						node movingUp {
+							layout [ size: 93, 34 ]
+						}
+						node __sd_Depth2 {
+							layout [ size: 113, 34 ]
+						}
+						node movingDown {
+							layout [ size: 113, 34 ]
+						}
+						node __sd_Depth3 {
+							layout [ size: 113, 34 ]
+						}
+						edge movingUp0: __te_S -> movingUp {
+							label L4: "/ movingUp = true" {
+								layout [ size: 126, 17 ]
+							}
+						}
+						edge movingDown0: __te_S1 -> movingDown {
+							label L5: "/ movingDown = true" {
+								layout [ size: 146, 17 ]
+							}
+						}
+						edge up0: __te_S2 -> up {
+							label L6: "/ movingUp = false" {
+								layout [ size: 131, 17 ]
+							}
+						}
+						edge down0: __te_S3 -> down {
+							label L7: "/ movingDown = false" {
+								layout [ size: 151, 17 ]
+							}
+						}
+						edge __sd_Depth0: down -> __sd_Depth
+						edge __te_S0: __sd_Depth -> __te_S {
+							label L8: "1: BUTTON_UP && _Elevator_local__enabled" {
+								layout [ size: 323, 17 ]
+							}
+						}
+						edge down0_g3022: __sd_Depth -> down {
+							label L9: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __sd_Depth10: up -> __sd_Depth1
+						edge __te_S10: __sd_Depth1 -> __te_S1 {
+							label L10: "1: BUTTON_DOWN && _Elevator_local__enabled" {
+								layout [ size: 349, 17 ]
+							}
+						}
+						edge up0_g5267: __sd_Depth1 -> up {
+							label L11: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __sd_Depth20: movingUp -> __sd_Depth2
+						edge __te_S20: __sd_Depth2 -> __te_S2 {
+							label L12: "1: IS_UP && _Elevator_local__enabled" {
+								layout [ size: 272, 17 ]
+							}
+						}
+						edge movingUp0_g0926: __sd_Depth2 -> movingUp {
+							label L13: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __sd_Depth30: movingDown -> __sd_Depth3
+						edge __te_S30: __sd_Depth3 -> __te_S3 {
+							label L14: "1: IS_DOWN && _Elevator_local__enabled" {
+								layout [ size: 298, 17 ]
+							}
+						}
+						edge movingDown0_g5315: __sd_Depth3 -> movingDown {
+							label L15: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+					}
+					node _During {
+						node _I {
+							layout [ size: 34, 34 ]
+						}
+						node _S {
+							layout [ size: 39, 34 ]
+						}
+						edge _S0: _I -> _S {
+							label L16: "/ _Elevator_local__enabled = true" {
+								layout [ size: 236, 17 ]
+							}
+						}
+						edge _I0: _S -> _I
+					}
+					node _During1 {
+						node _I_g3042 {
+							layout [ size: 34, 34 ]
+						}
+						node __te_S4 {
+							layout [ size: 77, 34 ]
+						}
+						edge __te_S40: _I_g3042 -> __te_S4
+						edge _I0_g1973: __te_S4 -> _I_g3042 {
+							label L17: "/ _Elevator_local__enabled &= !(alarmRaised == true)" {
+								layout [ size: 374, 17 ]
+							}
+						}
+					}
+				}
+			}
+			node alarm {
+				node alarmActive {
+					algorithm: org.eclipse.elk.box
+					node N2 {
+						node ^end {
+							layout [ size: 54, 40 ]
+						}
+						node __EA_Init {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S11 {
+							layout [ size: 84, 34 ]
+						}
+						node tick {
+							layout [ size: 46, 34 ]
+						}
+						node __sd_Depth5 {
+							layout [ size: 113, 34 ]
+						}
+						node __sd_S7 {
+							layout [ size: 80, 34 ]
+						}
+						edge tick0: __EA_Init -> tick {
+							label L28: "/ _Elevator_local_counter = 5" {
+								layout [ size: 206, 17 ]
+							}
+						}
+						edge tick0_g9191: __te_S11 -> tick {
+							label L29: "/ _Elevator_local_counter = _Elevator_local_counter - 1" {
+								layout [ size: 391, 17 ]
+							}
+						}
+						edge __sd_Depth50: tick -> __sd_Depth5
+						edge end0: __sd_Depth5 -> ^end {
+							label L30: "1: _Elevator_local_counter == 0" {
+								layout [ size: 223, 17 ]
+							}
+						}
+						edge __sd_S70: __sd_Depth5 -> __sd_S7 {
+							label L31: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __te_S110: __sd_S7 -> __te_S11 {
+							label L32: "1: SECOND && _Elevator_local_counter > 0" {
+								layout [ size: 309, 17 ]
+							}
+						}
+						edge tick0_g3099: __sd_S7 -> tick {
+							label L33: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+					}
+				}
+				node __te_S5 {
+					layout [ size: 77, 34 ]
+				}
+				node __te_S6 {
+					layout [ size: 77, 34 ]
+				}
+				node __te_S7 {
+					layout [ size: 77, 34 ]
+				}
+				node __te_S8 {
+					layout [ size: 77, 34 ]
+				}
+				node __sd_S5 {
+					layout [ size: 80, 34 ]
+				}
+				node __te_S10_g0318 {
+					layout [ size: 85, 34 ]
+				}
+				node __te_S12 {
+					layout [ size: 85, 34 ]
+				}
+				node __te_S13 {
+					layout [ size: 85, 34 ]
+				}
+				node alarmCheck {
+					layout [ size: 104, 34 ]
+				}
+				node __sd_Depth4 {
+					layout [ size: 113, 34 ]
+				}
+				edge __te_S120: alarmActive -> __te_S12
+				edge __te_S60: __te_S5 -> __te_S6 {
+					label L18: "/ alarmRaised = true" {
+						layout [ size: 141, 17 ]
+					}
+				}
+				edge __te_S70: __te_S6 -> __te_S7 {
+					label L19: "/ ALARM_LAMP = true" {
+						layout [ size: 153, 17 ]
+					}
+				}
+				edge __te_S80: __te_S7 -> __te_S8 {
+					label L20: "/ MOVE_UP = false" {
+						layout [ size: 132, 17 ]
+					}
+				}
+				edge alarmActive0: __te_S8 -> alarmActive {
+					label L21: "/ MOVE_DOWN = false" {
+						layout [ size: 158, 17 ]
+					}
+				}
+				edge __te_S100: __sd_S5 -> __te_S10_g0318 {
+					label L22: "/ MOVE_UP = movingUp" {
+						layout [ size: 171, 17 ]
+					}
+				}
+				edge alarmCheck0: __te_S10_g0318 -> alarmCheck {
+					label L23: "/ MOVE_DOWN = movingDown" {
+						layout [ size: 217, 17 ]
+					}
+				}
+				edge __te_S130: __te_S12 -> __te_S13 {
+					label L24: "/ alarmRaised = false" {
+						layout [ size: 146, 17 ]
+					}
+				}
+				edge alarmCheck0_g1013: __te_S13 -> alarmCheck {
+					label L25: "/ ALARM_LAMP = false" {
+						layout [ size: 158, 17 ]
+					}
+				}
+				edge __sd_Depth40: alarmCheck -> __sd_Depth4
+				edge __te_S50: __sd_Depth4 -> __te_S5 {
+					label L26: "1: BUTTON_ALARM" {
+						layout [ size: 140, 17 ]
+					}
+				}
+				edge __sd_S50: __sd_Depth4 -> __sd_S5 {
+					label L27: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+			}
+		}
+		node __EA_Init_g3516 {
+			layout [ size: 85, 34 ]
+		}
+		node __EA_Done {
+			layout [ size: 107, 40 ]
+		}
+		node __EA_C {
+			layout [ size: 74, 34 ]
+		}
+		node __EA_C1 {
+			layout [ size: 83, 34 ]
+		}
+		edge __EA_Done0: __EA_Main -> __EA_Done
+		edge __EA_C0: __EA_Init_g3516 -> __EA_C {
+			label L1: "/ alarmRaised = false" {
+				layout [ size: 146, 17 ]
+			}
+		}
+		edge __EA_C10: __EA_C -> __EA_C1 {
+			label L2: "/ movingUp = false" {
+				layout [ size: 131, 17 ]
+			}
+		}
+		edge __EA_Main0: __EA_C1 -> __EA_Main {
+			label L3: "/ movingDown = false" {
+				layout [ size: 151, 17 ]
+			}
+		}
+	}
+}

@@ -1,0 +1,87 @@
+graph G1
+node ComplexFinalState {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node M {
+			algorithm: org.eclipse.elk.box
+			node r1 {
+				node S1 {
+					layout [ size: 39, 34 ]
+				}
+				node S2 {
+					layout [ size: 45, 40 ]
+				}
+				edge S20: S1 -> S2 {
+					label L2: "I1 / M_T2 = true" {
+						layout [ size: 109, 17 ]
+					}
+				}
+			}
+			node r2 {
+				node S3 {
+					layout [ size: 39, 34 ]
+				}
+				node S4 {
+					layout [ size: 45, 40 ]
+				}
+				edge S40: S3 -> S4 {
+					label L3: "I2 / M_T4 = true" {
+						layout [ size: 109, 17 ]
+					}
+				}
+			}
+			node r3 {
+				node Done {
+					layout [ size: 64, 40 ]
+				}
+				node S5 {
+					layout [ size: 39, 34 ]
+				}
+				node S6 {
+					layout [ size: 39, 34 ]
+				}
+				node S7 {
+					layout [ size: 39, 34 ]
+				}
+				edge S60: S5 -> S6 {
+					label L4: "I3 / M_T6 = true" {
+						layout [ size: 109, 17 ]
+					}
+				}
+				edge S50: S6 -> S5 {
+					label L5: "1: I3 / M_T6 = false" {
+						layout [ size: 130, 17 ]
+					}
+				}
+				edge S70: S6 -> S7 {
+					label L6: "2: I4 / M_T6 = false; M_T7 = true" {
+						layout [ size: 223, 17 ]
+					}
+				}
+				edge Done0: S6 -> Done {
+					label L7: "3: M_T2 && M_T4" {
+						layout [ size: 125, 17 ]
+					}
+				}
+				edge S50_g2618: S7 -> S5 {
+					label L8: "1: / M_T7 = false" {
+						layout [ size: 114, 17 ]
+					}
+				}
+				edge Done0_g9074: S7 -> Done {
+					label L9: "2: M_T2 && M_T4" {
+						layout [ size: 125, 17 ]
+					}
+				}
+			}
+		}
+		node F {
+			layout [ size: 40, 40 ]
+		}
+		edge F0: M -> F {
+			label L1: "/ O = true" {
+				layout [ size: 66, 17 ]
+			}
+		}
+	}
+}

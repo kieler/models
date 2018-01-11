@@ -1,0 +1,85 @@
+graph G1
+node path {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node ^start {
+			layout [ size: 52, 34 ]
+		}
+		node go {
+			layout [ size: 39, 34 ]
+		}
+		node curveLookLeft {
+			layout [ size: 124, 34 ]
+		}
+		node curveLookRight {
+			layout [ size: 134, 34 ]
+		}
+		node curveProblem {
+			layout [ size: 122, 34 ]
+		}
+		node goCurveLeft {
+			layout [ size: 110, 34 ]
+		}
+		node goCurveRight {
+			layout [ size: 120, 34 ]
+		}
+		node finish {
+			layout [ size: 66, 40 ]
+		}
+		edge go0: ^start -> go {
+			label L1: "true / `black = light;`; motorLeft = 7; motorRight = 7; motorLight = 0; curveleft = 0; curveright = 0" {
+				layout [ size: 669, 17 ]
+			}
+		}
+		edge curveLookLeft0: go -> curveLookLeft {
+			label L2: "1: `light > (black+threshold)` / curveleft = 0; curveright = 0; motorLeft = 0; motorRight = 0; count = 1" {
+				layout [ size: 694, 17 ]
+			}
+		}
+		edge go0_g7015: go -> go {
+			label L3: "2: `light <= (black+threshold)` / motorLeft = 7; motorRight = 7" {
+				layout [ size: 426, 17 ]
+			}
+		}
+		edge curveLookRight0: curveLookLeft -> curveLookRight {
+			label L4: "1: `light > (black+threshold)` / `motorLight = ((45/7)*count)*(-1)`; `motorRight=0`; `motorLeft=0`" {
+				layout [ size: 655, 17 ]
+			}
+		}
+		edge goCurveRight0: curveLookLeft -> goCurveRight {
+			label L5: "2: `light <= (black+threshold)` / curveright = motorLight; count = 1; motorLight = 0" {
+				layout [ size: 571, 17 ]
+			}
+		}
+		edge curveProblem0: curveLookRight -> curveProblem {
+			label L6: "1: `((light > (black+threshold)) && (count>=7))` / count = 1; `motorLight =0`; `motorRight=0`; `motorLeft=0`; problem = 1; curveleft = 0; curveright = 0" {
+				layout [ size: 1031, 17 ]
+			}
+		}
+		edge curveLookLeft0_g6250: curveLookRight -> curveLookLeft {
+			label L7: "2: `light > (black+threshold)` / `motorLight =((45/7)*count)`; count = count + 1; `motorLeft = 0`; `motorRight=0`" {
+				layout [ size: 760, 17 ]
+			}
+		}
+		edge goCurveLeft0: curveLookRight -> goCurveLeft {
+			label L8: "3: `light <= (black+threshold)` / curveleft = (-1) * motorLight; motorLight = 0" {
+				layout [ size: 525, 17 ]
+			}
+		}
+		edge go0_g1770: curveProblem -> go {
+			label L9: "true / motorLight = 0; motorLeft = 0; motorRight = 0; curveleft = 0; curveright = 0; motorLight = 0; problem = 0" {
+				layout [ size: 763, 17 ]
+			}
+		}
+		edge go0_g2563: goCurveLeft -> go {
+			label L10: "true / motorLight = 0; motorLeft = 0; motorRight = 0; curveleft = 0; curveright = 0" {
+				layout [ size: 562, 17 ]
+			}
+		}
+		edge go0_g3785: goCurveRight -> go {
+			label L11: "true / motorLight = 0; motorLeft = 0; motorRight = 0; curveleft = 0; curveright = 0" {
+				layout [ size: 562, 17 ]
+			}
+		}
+	}
+}

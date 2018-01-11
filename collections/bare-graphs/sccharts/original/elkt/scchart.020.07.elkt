@@ -1,0 +1,131 @@
+graph G1
+node ComplexFinalState {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node M {
+			algorithm: org.eclipse.elk.box
+			node N2 {
+				node S1 {
+					layout [ size: 39, 34 ]
+				}
+				node S2 {
+					layout [ size: 45, 40 ]
+				}
+				edge S20: S1 -> S2 {
+					label L2: "I1" {
+						layout [ size: 13, 17 ]
+					}
+				}
+			}
+			node N3 {
+				node S3 {
+					layout [ size: 39, 34 ]
+				}
+				node S4 {
+					layout [ size: 45, 40 ]
+				}
+				edge S40: S3 -> S4 {
+					label L3: "I2" {
+						layout [ size: 13, 17 ]
+					}
+				}
+			}
+			node N4 {
+				node S5 {
+					layout [ size: 39, 34 ]
+				}
+				node S6 {
+					layout [ size: 39, 34 ]
+				}
+				node S7 {
+					layout [ size: 39, 34 ]
+				}
+				node F {
+					layout [ size: 40, 40 ]
+				}
+				edge S60: S5 -> S6 {
+					label L4: "I3" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge S50: S6 -> S5 {
+					label L5: "1: I3" {
+						layout [ size: 29, 17 ]
+					}
+				}
+				edge S70: S6 -> S7 {
+					label L6: "2: I4" {
+						layout [ size: 29, 17 ]
+					}
+				}
+				edge F0: S6 -> F {
+					label L7: "3: done" {
+						layout [ size: 52, 17 ]
+					}
+				}
+				edge S50_g6538: S7 -> S5 {
+					label L8: "1:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge F0_g3733: S7 -> F {
+					label L9: "2: done" {
+						layout [ size: 52, 17 ]
+					}
+				}
+			}
+			node N5 {
+				node C1 {
+					layout [ size: 40, 34 ]
+				}
+				node DONE1 {
+					layout [ size: 73, 34 ]
+				}
+				node DONE2 {
+					layout [ size: 73, 34 ]
+				}
+				node DONE {
+					layout [ size: 71, 40 ]
+				}
+				edge DONE0: C1 -> DONE {
+					label L10: "1: I1 & I2 / done" {
+						layout [ size: 107, 17 ]
+					}
+				}
+				edge DONE10: C1 -> DONE1 {
+					label L11: "2: I1" {
+						layout [ size: 29, 17 ]
+					}
+				}
+				edge DONE20: C1 -> DONE2 {
+					label L12: "3: I2" {
+						layout [ size: 29, 17 ]
+					}
+				}
+				edge DONE0_g6967: DONE1 -> DONE {
+					label L13: "I2 / done" {
+						layout [ size: 60, 17 ]
+					}
+				}
+				edge DONE0_g7692: DONE2 -> DONE {
+					label L14: "I1 / done" {
+						layout [ size: 60, 17 ]
+					}
+				}
+				edge DONE0_g1124: DONE -> DONE {
+					label L15: "/ done" {
+						layout [ size: 44, 17 ]
+					}
+				}
+			}
+		}
+		node F_g5432 {
+			layout [ size: 40, 40 ]
+		}
+		edge F0_g2319: M -> F_g5432 {
+			label L1: "/ O = true" {
+				layout [ size: 66, 17 ]
+			}
+		}
+	}
+}

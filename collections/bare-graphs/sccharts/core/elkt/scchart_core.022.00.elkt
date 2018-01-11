@@ -1,0 +1,148 @@
+graph G1
+node FollowLineV4 {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node driveLeft {
+			algorithm: org.eclipse.elk.box
+			node __EA_Entry {
+				node __EA_Init {
+					layout [ size: 85, 34 ]
+				}
+				node __EA_Done {
+					layout [ size: 107, 40 ]
+				}
+				node __EA_C3 {
+					layout [ size: 83, 34 ]
+				}
+				edge __EA_C30: __EA_Init -> __EA_C3 {
+					label L13: "/ lMotor = MV - mL * (PV - lsV)" {
+						layout [ size: 204, 17 ]
+					}
+				}
+				edge __EA_Done0: __EA_C3 -> __EA_Done {
+					label L14: "/ rMotor = MV + mL * (PV - lsV)" {
+						layout [ size: 210, 17 ]
+					}
+				}
+			}
+		}
+		node driveRight {
+			algorithm: org.eclipse.elk.box
+			node __EA_Entry_g2213 {
+				node __EA_Init_g1586 {
+					layout [ size: 85, 34 ]
+				}
+				node __EA_Done_g8093 {
+					layout [ size: 107, 40 ]
+				}
+				node __EA_C4 {
+					layout [ size: 83, 34 ]
+				}
+				edge __EA_C40: __EA_Init_g1586 -> __EA_C4 {
+					label L15: "/ lMotor = MV - mR * (PV - lsV)" {
+						layout [ size: 206, 17 ]
+					}
+				}
+				edge __EA_Done0_g9746: __EA_C4 -> __EA_Done_g8093 {
+					label L16: "/ rMotor = MV + mR * (PV - lsV)" {
+						layout [ size: 212, 17 ]
+					}
+				}
+			}
+		}
+		node __EA_Init_g2651 {
+			layout [ size: 85, 34 ]
+		}
+		node __EA_C {
+			layout [ size: 74, 34 ]
+		}
+		node __EA_C1 {
+			layout [ size: 83, 34 ]
+		}
+		node __EA_C2 {
+			layout [ size: 83, 34 ]
+		}
+		node __EA_Exit {
+			layout [ size: 90, 34 ]
+		}
+		node __sd_Depth {
+			layout [ size: 105, 34 ]
+		}
+		node __sd_S1 {
+			layout [ size: 80, 34 ]
+		}
+		node __EA_Exit1 {
+			layout [ size: 99, 34 ]
+		}
+		node __sd_Depth1 {
+			layout [ size: 113, 34 ]
+		}
+		node __sd_S3 {
+			layout [ size: 80, 34 ]
+		}
+		edge __EA_Exit0: driveLeft -> __EA_Exit
+		edge __EA_Exit10: driveRight -> __EA_Exit1
+		edge __EA_C0: __EA_Init_g2651 -> __EA_C {
+			label L1: "/ PV = 460" {
+				layout [ size: 69, 17 ]
+			}
+		}
+		edge __EA_C10: __EA_C -> __EA_C1 {
+			label L2: "/ MV = 320" {
+				layout [ size: 72, 17 ]
+			}
+		}
+		edge __EA_C20: __EA_C1 -> __EA_C2 {
+			label L3: "/ mR = 2" {
+				layout [ size: 57, 17 ]
+			}
+		}
+		edge driveLeft0: __EA_C2 -> driveLeft {
+			label L4: "/ mL = 6" {
+				layout [ size: 55, 17 ]
+			}
+		}
+		edge __sd_Depth0: __EA_Exit -> __sd_Depth
+		edge driveLeft0_g7464: __sd_Depth -> driveLeft {
+			label L5: "1: lsV <= PV" {
+				layout [ size: 84, 17 ]
+			}
+		}
+		edge __sd_S10: __sd_Depth -> __sd_S1 {
+			label L6: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge driveRight0: __sd_S1 -> driveRight {
+			label L7: "1: lsV > PV" {
+				layout [ size: 75, 17 ]
+			}
+		}
+		edge __EA_Exit0_g2839: __sd_S1 -> __EA_Exit {
+			label L8: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge __sd_Depth10: __EA_Exit1 -> __sd_Depth1
+		edge driveRight0_g5653: __sd_Depth1 -> driveRight {
+			label L9: "1: lsV > PV" {
+				layout [ size: 75, 17 ]
+			}
+		}
+		edge __sd_S30: __sd_Depth1 -> __sd_S3 {
+			label L10: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge driveLeft0_g6197: __sd_S3 -> driveLeft {
+			label L11: "1: lsV <= PV" {
+				layout [ size: 84, 17 ]
+			}
+		}
+		edge __EA_Exit10_g4478: __sd_S3 -> __EA_Exit1 {
+			label L12: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+	}
+}

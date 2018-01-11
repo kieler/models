@@ -1,0 +1,94 @@
+graph G1
+node Backhoe {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node waitForExtract {
+			layout [ size: 199, 110 ]
+		}
+		node extendStick {
+			layout [ size: 175, 50 ]
+		}
+		node extendBucket {
+			layout [ size: 190, 65 ]
+		}
+		node waitForRetract {
+			layout [ size: 195, 95 ]
+		}
+		node retractBucket {
+			layout [ size: 184, 50 ]
+		}
+		node retractStick {
+			layout [ size: 199, 50 ]
+		}
+		node FlashingLight {
+			algorithm: org.eclipse.elk.box
+			node N2 {
+				node on {
+					layout [ size: 39, 34 ]
+				}
+				node off {
+					layout [ size: 39, 34 ]
+				}
+				edge off0: on -> off {
+					label L10: "SECOND / ALARM_LAMP = true" {
+						layout [ size: 222, 17 ]
+					}
+				}
+				edge on0: off -> on {
+					label L11: "SECOND / ALARM_LAMP = false" {
+						layout [ size: 227, 17 ]
+					}
+				}
+			}
+		}
+		edge extendStick0: waitForExtract -> extendStick {
+			label L1: "EXTEND_BUTTON" {
+				layout [ size: 135, 17 ]
+			}
+		}
+		edge FlashingLight0: extendStick -> FlashingLight
+		edge FlashingLight0_g6669: extendBucket -> FlashingLight
+		edge FlashingLight0_g0561: waitForRetract -> FlashingLight {
+			label L2: "RETRACT_BUTTON / STICK_PUSH = true; BUCKET_PUSH = true" {
+				layout [ size: 467, 17 ]
+			}
+		}
+		edge FlashingLight0_g6018: retractBucket -> FlashingLight
+		edge FlashingLight0_g0319: retractStick -> FlashingLight
+		edge waitForRetract0: FlashingLight -> waitForRetract {
+			label L3: "1: BUCKET_OUT & BUCKET_PULL" {
+				layout [ size: 252, 17 ]
+			}
+		}
+		edge extendBucket0: FlashingLight -> extendBucket {
+			label L4: "2: STICK_OUT & STICK_PULL" {
+				layout [ size: 216, 17 ]
+			}
+		}
+		edge waitForExtract0: FlashingLight -> waitForExtract {
+			label L5: "3: !STICK_PUSH & BUCKET_IN" {
+				layout [ size: 222, 17 ]
+			}
+		}
+		edge waitForExtract1: FlashingLight -> waitForExtract {
+			label L6: "4: !BUCKET_PUSH & STICK_IN" {
+				layout [ size: 222, 17 ]
+			}
+		}
+		edge waitForExtract2: FlashingLight -> waitForExtract {
+			label L7: "5: BUCKET_IN & STICK_IN" {
+				layout [ size: 191, 17 ]
+			}
+		}
+		edge retractBucket0: FlashingLight -> retractBucket {
+			label L8: "6: STICK_IN" {
+				layout [ size: 85, 17 ]
+			}
+		}
+		edge retractStick0: FlashingLight -> retractStick {
+			label L9: "7: BUCKET_IN" {
+				layout [ size: 103, 17 ]
+			}
+		}
+	}
+}

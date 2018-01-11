@@ -1,0 +1,145 @@
+graph G1
+node parta {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node extPre {
+			layout [ size: 67, 34 ]
+		}
+		node ext {
+			algorithm: org.eclipse.elk.box
+			node R0 {
+				node extStick {
+					layout [ size: 78, 34 ]
+				}
+				node extBucket {
+					layout [ size: 92, 34 ]
+				}
+				edge extBucket0: extStick -> extBucket {
+					label L8: "1: STICK_OUT" {
+						layout [ size: 103, 17 ]
+					}
+				}
+				edge extStick0: extStick -> extStick {
+					label L9: "2: / STICK_PUSH" {
+						layout [ size: 120, 17 ]
+					}
+				}
+				edge extBucket0_g6774: extBucket -> extBucket {
+					label L10: "/ BUCKET_PUSH" {
+						layout [ size: 122, 17 ]
+					}
+				}
+			}
+			node R1 {
+				node alarmOn {
+					layout [ size: 80, 34 ]
+				}
+				node alarmOff {
+					layout [ size: 80, 34 ]
+				}
+				edge alarmOff0: alarmOn -> alarmOff {
+					label L11: "1: SECOND" {
+						layout [ size: 81, 17 ]
+					}
+				}
+				edge alarmOn0: alarmOn -> alarmOn {
+					label L12: "2: / ALARM_LAMP" {
+						layout [ size: 124, 17 ]
+					}
+				}
+				edge alarmOn0_g0255: alarmOff -> alarmOn {
+					label L13: "SECOND" {
+						layout [ size: 65, 17 ]
+					}
+				}
+			}
+		}
+		node retPre {
+			layout [ size: 65, 34 ]
+		}
+		node ret {
+			algorithm: org.eclipse.elk.box
+			node R0_g0737 {
+				node retStick {
+					layout [ size: 76, 34 ]
+				}
+				edge retStick0: retStick -> retStick {
+					label L14: "/ STICK_PULL" {
+						layout [ size: 102, 17 ]
+					}
+				}
+			}
+			node R1_g5962 {
+				node retBucket {
+					layout [ size: 90, 34 ]
+				}
+				edge retBucket0: retBucket -> retBucket {
+					label L15: "/ BUCKET_PULL" {
+						layout [ size: 120, 17 ]
+					}
+				}
+			}
+			node R2 {
+				node alarmOn_g6738 {
+					layout [ size: 80, 34 ]
+				}
+				node alarmOff_g5957 {
+					layout [ size: 80, 34 ]
+				}
+				edge alarmOff0_g5059: alarmOn_g6738 -> alarmOff_g5957 {
+					label L16: "1: SECOND" {
+						layout [ size: 81, 17 ]
+					}
+				}
+				edge alarmOn0_g3009: alarmOn_g6738 -> alarmOn_g6738 {
+					label L17: "2: / ALARM_LAMP" {
+						layout [ size: 124, 17 ]
+					}
+				}
+				edge alarmOn0_g9492: alarmOff_g5957 -> alarmOn_g6738 {
+					label L18: "SECOND" {
+						layout [ size: 65, 17 ]
+					}
+				}
+			}
+		}
+		node ^end {
+			layout [ size: 54, 40 ]
+		}
+		edge ext0: extPre -> ext {
+			label L1: "1: EXTEND_BUTTON" {
+				layout [ size: 151, 17 ]
+			}
+		}
+		edge extPre0: extPre -> extPre {
+			label L2: "2: / DONE_LAMP" {
+				layout [ size: 118, 17 ]
+			}
+		}
+		edge retPre0: ext -> retPre {
+			label L3: "BUCKET_OUT && STICK_OUT" {
+				layout [ size: 222, 17 ]
+			}
+		}
+		edge ret0: retPre -> ret {
+			label L4: "1: RETRACT_BUTTON" {
+				layout [ size: 161, 17 ]
+			}
+		}
+		edge retPre0_g7834: retPre -> retPre {
+			label L5: "2: / DONE_LAMP" {
+				layout [ size: 118, 17 ]
+			}
+		}
+		edge end0: ret -> ^end {
+			label L6: "BUCKET_IN && STICK_IN / DONE_LAMP" {
+				layout [ size: 292, 17 ]
+			}
+		}
+		edge end0_g3221: ^end -> ^end {
+			label L7: "/ DONE_LAMP" {
+				layout [ size: 102, 17 ]
+			}
+		}
+	}
+}

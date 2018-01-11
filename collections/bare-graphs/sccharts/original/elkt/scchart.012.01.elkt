@@ -1,0 +1,84 @@
+graph G1
+node Controller {
+	algorithm: org.eclipse.elk.box
+	node domeLightController {
+		node init {
+			layout [ size: 164, 50 ]
+		}
+		node doorsOpen {
+			layout [ size: 101, 34 ]
+		}
+		node doorsClosedWait {
+			layout [ size: 140, 34 ]
+		}
+		edge doorsOpen0: init -> doorsOpen {
+			label L1: "isDoorOpen / domeLight = true" {
+				layout [ size: 219, 17 ]
+			}
+		}
+		edge doorsClosedWait0: doorsOpen -> doorsClosedWait {
+			label L2: "!isDoorOpen" {
+				layout [ size: 91, 17 ]
+			}
+		}
+		edge doorsOpen0_g3117: doorsClosedWait -> doorsOpen {
+			label L3: "1: isDoorOpen" {
+				layout [ size: 103, 17 ]
+			}
+		}
+		edge init0: doorsClosedWait -> init {
+			label L4: "2: 3 second / domeLight = false" {
+				layout [ size: 218, 17 ]
+			}
+		}
+	}
+	node seatBeltController {
+		node init_g1166 {
+			layout [ size: 159, 65 ]
+		}
+		node superState {
+			algorithm: org.eclipse.elk.box
+			node N1 {
+				node belted {
+					layout [ size: 66, 34 ]
+				}
+				node light_beep {
+					layout [ size: 96, 34 ]
+				}
+				node light {
+					layout [ size: 51, 34 ]
+				}
+				edge light_beep0: belted -> light_beep {
+					label L7: "isSeatUnBuckled / warnLight = true; beep = true" {
+						layout [ size: 340, 17 ]
+					}
+				}
+				edge belted0: light_beep -> belted {
+					label L8: "1: !isSeatUnBuckled / beep = false; warnLight = false" {
+						layout [ size: 370, 17 ]
+					}
+				}
+				edge light0: light_beep -> light {
+					label L9: "2: 3 second / beep = false" {
+						layout [ size: 179, 17 ]
+					}
+				}
+				edge belted0_g4520: light -> belted {
+					label L10: "!isSeatUnBuckled / warnLight = false" {
+						layout [ size: 259, 17 ]
+					}
+				}
+			}
+		}
+		edge superState0: init_g1166 -> superState {
+			label L5: "engine" {
+				layout [ size: 49, 17 ]
+			}
+		}
+		edge init0_g6940: superState -> init_g1166 {
+			label L6: "!engine" {
+				layout [ size: 53, 17 ]
+			}
+		}
+	}
+}

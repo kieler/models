@@ -1,0 +1,127 @@
+graph G1
+node lightSeatbelt {
+	algorithm: org.eclipse.elk.box
+	node door {
+		node Init {
+			layout [ size: 42, 34 ]
+		}
+		node Closed {
+			layout [ size: 71, 34 ]
+		}
+		node Open {
+			layout [ size: 60, 34 ]
+		}
+		node Afterlight {
+			layout [ size: 85, 34 ]
+		}
+		edge Closed0: Init -> Closed
+		edge Open0: Closed -> Open {
+			label L1: "open == true / light = true" {
+				layout [ size: 180, 17 ]
+			}
+		}
+		edge Afterlight0: Open -> Afterlight {
+			label L2: "closed == true / time = 3" {
+				layout [ size: 170, 17 ]
+			}
+		}
+		edge Afterlight0_g9896: Afterlight -> Afterlight {
+			label L3: "1: second == true / time = time - 1" {
+				layout [ size: 234, 17 ]
+			}
+		}
+		edge Closed0_g8101: Afterlight -> Closed {
+			label L4: "2: time == 0 / light = false" {
+				layout [ size: 174, 17 ]
+			}
+		}
+	}
+	node beeper {
+		node Init2 {
+			layout [ size: 51, 34 ]
+		}
+		node EngineOffSeatOff {
+			layout [ size: 146, 34 ]
+		}
+		node EngineOffSeatOn {
+			layout [ size: 146, 34 ]
+		}
+		node EngineOnSeatOn {
+			layout [ size: 145, 34 ]
+		}
+		node EngineOnSeatOff {
+			layout [ size: 145, 34 ]
+		}
+		edge EngineOffSeatOff0: Init2 -> EngineOffSeatOff
+		edge EngineOnSeatOn0: EngineOffSeatOff -> EngineOnSeatOn {
+			label L5: "1: engineOn == true && seatOn == true" {
+				layout [ size: 277, 17 ]
+			}
+		}
+		edge EngineOffSeatOn0: EngineOffSeatOff -> EngineOffSeatOn {
+			label L6: "2: seatOn == true" {
+				layout [ size: 122, 17 ]
+			}
+		}
+		edge EngineOnSeatOff0: EngineOffSeatOff -> EngineOnSeatOff {
+			label L7: "3: engineOn == true / beeper = true; time = 3; redlight = true" {
+				layout [ size: 422, 17 ]
+			}
+		}
+		edge EngineOnSeatOff0_g6760: EngineOffSeatOn -> EngineOnSeatOff {
+			label L8: "1: engineOn == true && seatOff == true / beeper = true; time = 3; redlight = true" {
+				layout [ size: 559, 17 ]
+			}
+		}
+		edge EngineOnSeatOn0_g0361: EngineOffSeatOn -> EngineOnSeatOn {
+			label L9: "2: engineOn == true" {
+				layout [ size: 141, 17 ]
+			}
+		}
+		edge EngineOffSeatOff0_g3806: EngineOffSeatOn -> EngineOffSeatOff {
+			label L10: "3: engineOff == true" {
+				layout [ size: 142, 17 ]
+			}
+		}
+		edge EngineOffSeatOff0_g6608: EngineOnSeatOn -> EngineOffSeatOff {
+			label L11: "1: engineOff == true && seatOff == true" {
+				layout [ size: 279, 17 ]
+			}
+		}
+		edge EngineOffSeatOn0_g3158: EngineOnSeatOn -> EngineOffSeatOn {
+			label L12: "2: engineOff == true" {
+				layout [ size: 142, 17 ]
+			}
+		}
+		edge EngineOnSeatOff0_g0305: EngineOnSeatOn -> EngineOnSeatOff {
+			label L13: "3: seatOff == true / beeper = true; time = 3; redlight = true" {
+				layout [ size: 404, 17 ]
+			}
+		}
+		edge EngineOffSeatOn0_g4469: EngineOnSeatOff -> EngineOffSeatOn {
+			label L14: "1: engineOff == true && seatOn == true / beeper = false; redlight = false" {
+				layout [ size: 506, 17 ]
+			}
+		}
+		edge EngineOffSeatOff0_g4383: EngineOnSeatOff -> EngineOffSeatOff {
+			label L15: "2: engineOff == true / beeper = false; redlight = false" {
+				layout [ size: 370, 17 ]
+			}
+		}
+		edge EngineOnSeatOn0_g7481: EngineOnSeatOff -> EngineOnSeatOn {
+			label L16: "3: seatOn == true / beeper = false; redlight = false" {
+				layout [ size: 350, 17 ]
+			}
+		}
+		edge EngineOnSeatOff0_g1121: EngineOnSeatOff -> EngineOnSeatOff {
+			label L17: "4: time > 0 / time = time - 1" {
+				layout [ size: 182, 17 ]
+			}
+		}
+		edge EngineOnSeatOff1: EngineOnSeatOff -> EngineOnSeatOff {
+			label L18: "5: time == 0 / beeper = false" {
+				layout [ size: 194, 17 ]
+			}
+		}
+	}
+}

@@ -1,0 +1,283 @@
+graph G1
+node mindstorm {
+	algorithm: org.eclipse.elk.box
+	node __EA_Entry {
+		node __EA_Main {
+			algorithm: org.eclipse.elk.box
+			node domeLight {
+				node __te_S {
+					layout [ size: 69, 34 ]
+				}
+				node __te_S1 {
+					layout [ size: 77, 34 ]
+				}
+				node __te_S2 {
+					layout [ size: 77, 34 ]
+				}
+				node __te_S3 {
+					layout [ size: 77, 34 ]
+				}
+				node lightOff {
+					layout [ size: 73, 34 ]
+				}
+				node __sd_Depth {
+					layout [ size: 105, 34 ]
+				}
+				node doorOpen {
+					layout [ size: 93, 34 ]
+				}
+				node __sd_Depth1 {
+					layout [ size: 113, 34 ]
+				}
+				node pending {
+					layout [ size: 79, 34 ]
+				}
+				node __sd_Depth2 {
+					layout [ size: 113, 34 ]
+				}
+				node __sd_S3 {
+					layout [ size: 80, 34 ]
+				}
+				node __sd_S4 {
+					layout [ size: 80, 34 ]
+				}
+				edge doorOpen0: __te_S -> doorOpen {
+					label L3: "/ light = true" {
+						layout [ size: 85, 17 ]
+					}
+				}
+				edge pending0: __te_S1 -> pending {
+					label L4: "/ cntDL = 0" {
+						layout [ size: 76, 17 ]
+					}
+				}
+				edge pending0_g7750: __te_S2 -> pending {
+					label L5: "/ cntDL = cntDL + 1" {
+						layout [ size: 135, 17 ]
+					}
+				}
+				edge lightOff0: __te_S3 -> lightOff {
+					label L6: "/ light = false" {
+						layout [ size: 90, 17 ]
+					}
+				}
+				edge __sd_Depth0: lightOff -> __sd_Depth
+				edge __te_S0: __sd_Depth -> __te_S {
+					label L7: "1: (!doorOne || !doorTwo) && second" {
+						layout [ size: 258, 17 ]
+					}
+				}
+				edge lightOff0_g7778: __sd_Depth -> lightOff {
+					label L8: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __sd_Depth10: doorOpen -> __sd_Depth1
+				edge __te_S10: __sd_Depth1 -> __te_S1 {
+					label L9: "1: (doorTwo && doorOne) && second" {
+						layout [ size: 264, 17 ]
+					}
+				}
+				edge doorOpen0_g4474: __sd_Depth1 -> doorOpen {
+					label L10: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __sd_Depth20: pending -> __sd_Depth2
+				edge __te_S20: __sd_Depth2 -> __te_S2 {
+					label L11: "1: cntDL < 2 && !(!doorOne || !doorTwo) && second" {
+						layout [ size: 359, 17 ]
+					}
+				}
+				edge __sd_S30: __sd_Depth2 -> __sd_S3 {
+					label L12: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge doorOpen0_g1078: __sd_S3 -> doorOpen {
+					label L13: "1: (!doorOne || !doorTwo) && second" {
+						layout [ size: 258, 17 ]
+					}
+				}
+				edge __sd_S40: __sd_S3 -> __sd_S4 {
+					label L14: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __te_S30: __sd_S4 -> __te_S3 {
+					label L15: "1: cntDL >= 2 && second" {
+						layout [ size: 175, 17 ]
+					}
+				}
+				edge pending0_g6896: __sd_S4 -> pending {
+					label L16: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+			}
+			node seatbealt {
+				node __te_S4 {
+					layout [ size: 77, 34 ]
+				}
+				node __te_S5 {
+					layout [ size: 77, 34 ]
+				}
+				node __te_S6 {
+					layout [ size: 77, 34 ]
+				}
+				node __te_S7 {
+					layout [ size: 77, 34 ]
+				}
+				node __te_S8 {
+					layout [ size: 77, 34 ]
+				}
+				node __te_S9 {
+					layout [ size: 77, 34 ]
+				}
+				node __te_S10_g1918 {
+					layout [ size: 85, 34 ]
+				}
+				node __te_S11 {
+					layout [ size: 84, 34 ]
+				}
+				node ok {
+					layout [ size: 38, 34 ]
+				}
+				node __sd_Depth3 {
+					layout [ size: 113, 34 ]
+				}
+				node beepLamp {
+					layout [ size: 95, 34 ]
+				}
+				node __sd_Depth4 {
+					layout [ size: 113, 34 ]
+				}
+				node __sd_S7 {
+					layout [ size: 80, 34 ]
+				}
+				node __sd_S8 {
+					layout [ size: 80, 34 ]
+				}
+				node lamp {
+					layout [ size: 54, 34 ]
+				}
+				node __sd_Depth5 {
+					layout [ size: 113, 34 ]
+				}
+				edge __te_S50: __te_S4 -> __te_S5 {
+					label L17: "/ cntSB = 0" {
+						layout [ size: 77, 17 ]
+					}
+				}
+				edge __te_S60: __te_S5 -> __te_S6 {
+					label L18: "/ buzzer = true" {
+						layout [ size: 103, 17 ]
+					}
+				}
+				edge beepLamp0: __te_S6 -> beepLamp {
+					label L19: "/ warnLight = true" {
+						layout [ size: 124, 17 ]
+					}
+				}
+				edge __te_S80: __te_S7 -> __te_S8 {
+					label L20: "/ buzzer = false" {
+						layout [ size: 108, 17 ]
+					}
+				}
+				edge ok0: __te_S8 -> ok {
+					label L21: "/ warnLight = false" {
+						layout [ size: 129, 17 ]
+					}
+				}
+				edge beepLamp0_g7379: __te_S9 -> beepLamp {
+					label L22: "/ cntSB = cntSB + 1" {
+						layout [ size: 137, 17 ]
+					}
+				}
+				edge lamp0: __te_S10_g1918 -> lamp {
+					label L23: "/ buzzer = false" {
+						layout [ size: 108, 17 ]
+					}
+				}
+				edge ok0_g6739: __te_S11 -> ok {
+					label L24: "/ warnLight = false" {
+						layout [ size: 129, 17 ]
+					}
+				}
+				edge __sd_Depth30: ok -> __sd_Depth3
+				edge __te_S40: __sd_Depth3 -> __te_S4 {
+					label L25: "1: engine && !seatbelt && second" {
+						layout [ size: 239, 17 ]
+					}
+				}
+				edge ok0_g0877: __sd_Depth3 -> ok {
+					label L26: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __sd_Depth40: beepLamp -> __sd_Depth4
+				edge __te_S70: __sd_Depth4 -> __te_S7 {
+					label L27: "1: seatbelt && second" {
+						layout [ size: 156, 17 ]
+					}
+				}
+				edge __sd_S70: __sd_Depth4 -> __sd_S7 {
+					label L28: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __te_S90: __sd_S7 -> __te_S9 {
+					label L29: "1: cntSB < 30 && second && !seatbelt" {
+						layout [ size: 265, 17 ]
+					}
+				}
+				edge __sd_S80: __sd_S7 -> __sd_S8 {
+					label L30: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __te_S100: __sd_S8 -> __te_S10_g1918 {
+					label L31: "1: cntSB >= 30 && second && !seatbelt" {
+						layout [ size: 274, 17 ]
+					}
+				}
+				edge beepLamp0_g8946: __sd_S8 -> beepLamp {
+					label L32: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __sd_Depth50: lamp -> __sd_Depth5
+				edge __te_S110: __sd_Depth5 -> __te_S11 {
+					label L33: "1: seatbelt && second" {
+						layout [ size: 156, 17 ]
+					}
+				}
+				edge lamp0_g4352: __sd_Depth5 -> lamp {
+					label L34: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+			}
+		}
+		node __EA_Init {
+			layout [ size: 85, 34 ]
+		}
+		node __EA_Done {
+			layout [ size: 107, 40 ]
+		}
+		node __EA_C {
+			layout [ size: 74, 34 ]
+		}
+		edge __EA_Done0: __EA_Main -> __EA_Done
+		edge __EA_C0: __EA_Init -> __EA_C {
+			label L1: "/ cntDL = 0" {
+				layout [ size: 76, 17 ]
+			}
+		}
+		edge __EA_Main0: __EA_C -> __EA_Main {
+			label L2: "/ cntSB = 0" {
+				layout [ size: 77, 17 ]
+			}
+		}
+	}
+}

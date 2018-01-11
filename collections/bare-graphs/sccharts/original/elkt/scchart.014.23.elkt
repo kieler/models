@@ -1,0 +1,84 @@
+graph G1
+node Elevator {
+	algorithm: org.eclipse.elk.box
+	node elevator {
+		node elevatorMovement {
+			algorithm: org.eclipse.elk.box
+			node N1 {
+				node down {
+					layout [ size: 59, 34 ]
+				}
+				node up {
+					layout [ size: 39, 34 ]
+				}
+				node movingUp {
+					layout [ size: 93, 34 ]
+				}
+				node movingDown {
+					layout [ size: 113, 34 ]
+				}
+				edge movingUp0: down -> movingUp {
+					label L1: "BUTTON_UP / movingUp = true" {
+						layout [ size: 224, 17 ]
+					}
+				}
+				edge movingDown0: up -> movingDown {
+					label L2: "BUTTON_DOWN / movingDown = true" {
+						layout [ size: 270, 17 ]
+					}
+				}
+				edge up0: movingUp -> up {
+					label L3: "IS_UP / movingUp = false" {
+						layout [ size: 178, 17 ]
+					}
+				}
+				edge down0: movingDown -> down {
+					label L4: "IS_DOWN / movingDown = false" {
+						layout [ size: 224, 17 ]
+					}
+				}
+			}
+		}
+	}
+	node alarm {
+		node alarmCheck {
+			layout [ size: 104, 34 ]
+		}
+		node alarmActive {
+			algorithm: org.eclipse.elk.box
+			node N2 {
+				node tick {
+					layout [ size: 46, 34 ]
+				}
+				node ^end {
+					layout [ size: 54, 40 ]
+				}
+				edge end0: tick -> ^end {
+					label L8: "1: counter == 0" {
+						layout [ size: 106, 17 ]
+					}
+				}
+				edge tick0: tick -> tick {
+					label L9: "2: SECOND && counter > 0 / counter = counter - 1" {
+						layout [ size: 352, 17 ]
+					}
+				}
+			}
+		}
+		edge alarmActive0: alarmCheck -> alarmActive {
+			label L5: "1: BUTTON_ALARM / alarmRaised = true; ALARM_LAMP = true; MOVE_UP = false; MOVE_DOWN = false" {
+				layout [ size: 728, 17 ]
+			}
+		}
+		edge alarmCheck0: alarmCheck -> alarmCheck {
+			label L6: "2: / MOVE_UP = movingUp; MOVE_DOWN = movingDown" {
+				layout [ size: 403, 17 ]
+			}
+		}
+		edge alarmCheck0_g9885: alarmActive -> alarmCheck {
+			label L7: "/ alarmRaised = false; ALARM_LAMP = false" {
+				layout [ size: 304, 17 ]
+			}
+		}
+	}
+}

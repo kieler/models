@@ -1,0 +1,259 @@
+graph G1
+node PathFinder {
+	algorithm: org.eclipse.elk.box
+	node __EA_Entry {
+		node __EA_Main {
+			algorithm: org.eclipse.elk.box
+			node MoveSearchSensor {
+				node waitForPath {
+					layout [ size: 105, 34 ]
+				}
+				node __te_S {
+					layout [ size: 69, 34 ]
+				}
+				node __te_S1 {
+					layout [ size: 77, 34 ]
+				}
+				node __te_S2 {
+					layout [ size: 77, 34 ]
+				}
+				node __te_S3 {
+					layout [ size: 77, 34 ]
+				}
+				node __te_S4 {
+					layout [ size: 77, 34 ]
+				}
+				node __te_S5 {
+					layout [ size: 77, 34 ]
+				}
+				node __te_S6 {
+					layout [ size: 77, 34 ]
+				}
+				node __te_S7 {
+					layout [ size: 77, 34 ]
+				}
+				node __te_S8 {
+					layout [ size: 77, 34 ]
+				}
+				node __te_S9 {
+					layout [ size: 77, 34 ]
+				}
+				node __te_S10 {
+					layout [ size: 85, 34 ]
+				}
+				node __te_S11 {
+					layout [ size: 84, 34 ]
+				}
+				node __te_S12 {
+					layout [ size: 85, 34 ]
+				}
+				node movingLeft {
+					layout [ size: 100, 34 ]
+				}
+				node __sd_Depth {
+					layout [ size: 105, 34 ]
+				}
+				node __sd_S1 {
+					layout [ size: 80, 34 ]
+				}
+				node movingRight {
+					layout [ size: 110, 34 ]
+				}
+				node __sd_Depth1 {
+					layout [ size: 113, 34 ]
+				}
+				node __sd_S3 {
+					layout [ size: 80, 34 ]
+				}
+				edge __te_S0: waitForPath -> __te_S
+				edge movingLeft0: __te_S -> movingLeft {
+					label L4: "/ left = true" {
+						layout [ size: 77, 17 ]
+					}
+				}
+				edge __te_S20: __te_S1 -> __te_S2 {
+					label L5: "/ left = false" {
+						layout [ size: 82, 17 ]
+					}
+				}
+				edge __te_S30: __te_S2 -> __te_S3 {
+					label L6: "/ darkestValue = 100" {
+						layout [ size: 141, 17 ]
+					}
+				}
+				edge movingRight0: __te_S3 -> movingRight {
+					label L7: "/ changeDirection = true" {
+						layout [ size: 171, 17 ]
+					}
+				}
+				edge __te_S50: __te_S4 -> __te_S5 {
+					label L8: "/ darkestValue = sensorValue" {
+						layout [ size: 203, 17 ]
+					}
+				}
+				edge __te_S60: __te_S5 -> __te_S6 {
+					label L9: "/ targetAngle = sensorAngle" {
+						layout [ size: 196, 17 ]
+					}
+				}
+				edge movingLeft0_g1170: __te_S6 -> movingLeft {
+					label L10: "/ changeDirection = false" {
+						layout [ size: 176, 17 ]
+					}
+				}
+				edge __te_S80: __te_S7 -> __te_S8 {
+					label L11: "/ left = true" {
+						layout [ size: 77, 17 ]
+					}
+				}
+				edge __te_S90: __te_S8 -> __te_S9 {
+					label L12: "/ darkestValue = 100" {
+						layout [ size: 141, 17 ]
+					}
+				}
+				edge movingLeft0_g2518: __te_S9 -> movingLeft {
+					label L13: "/ changeDirection = true" {
+						layout [ size: 171, 17 ]
+					}
+				}
+				edge __te_S110: __te_S10 -> __te_S11 {
+					label L14: "/ darkestValue = sensorValue" {
+						layout [ size: 203, 17 ]
+					}
+				}
+				edge __te_S120: __te_S11 -> __te_S12 {
+					label L15: "/ targetAngle = sensorAngle" {
+						layout [ size: 196, 17 ]
+					}
+				}
+				edge movingRight0_g7329: __te_S12 -> movingRight {
+					label L16: "/ changeDirection = false" {
+						layout [ size: 176, 17 ]
+					}
+				}
+				edge __sd_Depth0: movingLeft -> __sd_Depth
+				edge __te_S10_g3482: __sd_Depth -> __te_S1 {
+					label L17: "1: sensorAngle >= 75" {
+						layout [ size: 148, 17 ]
+					}
+				}
+				edge __sd_S10: __sd_Depth -> __sd_S1 {
+					label L18: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __te_S40: __sd_S1 -> __te_S4 {
+					label L19: "1: sensorAngle < 75 && sensorValue < darkestValue" {
+						layout [ size: 363, 17 ]
+					}
+				}
+				edge movingLeft0_g1886: __sd_S1 -> movingLeft {
+					label L20: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __sd_Depth10: movingRight -> __sd_Depth1
+				edge __te_S70: __sd_Depth1 -> __te_S7 {
+					label L21: "1: sensorAngle <= -75" {
+						layout [ size: 153, 17 ]
+					}
+				}
+				edge __sd_S30: __sd_Depth1 -> __sd_S3 {
+					label L22: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __te_S100: __sd_S3 -> __te_S10 {
+					label L23: "1: sensorAngle > -75 && sensorValue < darkestValue" {
+						layout [ size: 368, 17 ]
+					}
+				}
+				edge movingRight0_g8885: __sd_S3 -> movingRight {
+					label L24: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+			}
+			node RecognizeColor {
+				node __te_S13 {
+					layout [ size: 85, 34 ]
+				}
+				node __te_S14 {
+					layout [ size: 85, 34 ]
+				}
+				node white {
+					layout [ size: 58, 34 ]
+				}
+				node __sd_Depth2 {
+					layout [ size: 113, 34 ]
+				}
+				node black {
+					layout [ size: 58, 34 ]
+				}
+				node __sd_Depth3 {
+					layout [ size: 113, 34 ]
+				}
+				edge black0: __te_S13 -> black {
+					label L25: "/ white = false" {
+						layout [ size: 97, 17 ]
+					}
+				}
+				edge white0: __te_S14 -> white {
+					label L26: "/ white = true" {
+						layout [ size: 92, 17 ]
+					}
+				}
+				edge __sd_Depth20: white -> __sd_Depth2
+				edge __te_S130: __sd_Depth2 -> __te_S13 {
+					label L27: "1: sensorValue < 20" {
+						layout [ size: 137, 17 ]
+					}
+				}
+				edge white0_g3681: __sd_Depth2 -> white {
+					label L28: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __sd_Depth30: black -> __sd_Depth3
+				edge __te_S140: __sd_Depth3 -> __te_S14 {
+					label L29: "1: sensorValue > 30" {
+						layout [ size: 137, 17 ]
+					}
+				}
+				edge black0_g4861: __sd_Depth3 -> black {
+					label L30: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+			}
+		}
+		node __EA_Init {
+			layout [ size: 85, 34 ]
+		}
+		node __EA_Done {
+			layout [ size: 107, 40 ]
+		}
+		node __EA_C {
+			layout [ size: 74, 34 ]
+		}
+		node __EA_C1 {
+			layout [ size: 83, 34 ]
+		}
+		edge __EA_Done0: __EA_Main -> __EA_Done
+		edge __EA_C0: __EA_Init -> __EA_C {
+			label L1: "/ darkestValue = 100" {
+				layout [ size: 141, 17 ]
+			}
+		}
+		edge __EA_C10: __EA_C -> __EA_C1 {
+			label L2: "/ targetAngle = 0" {
+				layout [ size: 116, 17 ]
+			}
+		}
+		edge __EA_Main0: __EA_C1 -> __EA_Main {
+			label L3: "/ changeDirection = false" {
+				layout [ size: 176, 17 ]
+			}
+		}
+	}
+}

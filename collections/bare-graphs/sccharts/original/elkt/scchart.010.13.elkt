@@ -1,0 +1,64 @@
+graph G1
+node StickBucketMover {
+	algorithm: org.eclipse.elk.box
+	node MoveControl {
+		node Retracted {
+			layout [ size: 91, 34 ]
+		}
+		node StickExtending {
+			layout [ size: 128, 34 ]
+		}
+		node BucketExtending {
+			layout [ size: 143, 34 ]
+		}
+		node Extended {
+			layout [ size: 89, 34 ]
+		}
+		node Retracting {
+			layout [ size: 95, 34 ]
+		}
+		edge StickExtending0: Retracted -> StickExtending {
+			label L1: "EXTEND / STICK_PUSH = true; DONE_LAMP = false; alarmOn = true" {
+				layout [ size: 481, 17 ]
+			}
+		}
+		edge BucketExtending0: StickExtending -> BucketExtending {
+			label L2: "STICK_OUT / STICK_PUSH = false; BUCKET_PUSH = true; alarmOn = true" {
+				layout [ size: 527, 17 ]
+			}
+		}
+		edge Extended0: BucketExtending -> Extended {
+			label L3: "BUCKET_OUT / BUCKET_PUSH = false; DONE_LAMP = true; alarmOn = false" {
+				layout [ size: 547, 17 ]
+			}
+		}
+		edge Retracting0: Extended -> Retracting {
+			label L4: "RETRACT / STICK_PULL = true; BUCKET_PULL = true; alarmOn = true; DONE_LAMP = false" {
+				layout [ size: 653, 17 ]
+			}
+		}
+		edge Retracted0: Retracting -> Retracted {
+			label L5: "STICK_IN / alarmOn = false; DONE_LAMP = true; STICK_PULL = false; BUCKET_PULL = false" {
+				layout [ size: 660, 17 ]
+			}
+		}
+	}
+	node AlarmControl {
+		node AlarmOff {
+			layout [ size: 81, 34 ]
+		}
+		node AlarmOn {
+			layout [ size: 81, 34 ]
+		}
+		edge AlarmOn0: AlarmOff -> AlarmOn {
+			label L6: "alarmOn && SECOND / ALARM_LAMP = true" {
+				layout [ size: 311, 17 ]
+			}
+		}
+		edge AlarmOff0: AlarmOn -> AlarmOff {
+			label L7: "alarmOn && SECOND / ALARM_LAMP = false" {
+				layout [ size: 316, 17 ]
+			}
+		}
+	}
+}

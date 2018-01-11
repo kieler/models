@@ -1,0 +1,119 @@
+graph G1
+node Barcode {
+	algorithm: org.eclipse.elk.box
+	node Main {
+		node init {
+			layout [ size: 42, 34 ]
+		}
+		node startDelimiter1 {
+			layout [ size: 125, 34 ]
+		}
+		node startDelimiter2 {
+			layout [ size: 125, 34 ]
+		}
+		node read {
+			algorithm: org.eclipse.elk.box
+			node N1 {
+				node init_g7548 {
+					layout [ size: 42, 34 ]
+				}
+				node startRead {
+					layout [ size: 150, 50 ]
+				}
+				node endRead {
+					layout [ size: 91, 40 ]
+				}
+				edge startRead0: init_g7548 -> startRead
+				edge startRead0_g8496: startRead -> startRead {
+					label L13: "1: cnt < 27 / cnt = cnt + 1" {
+						layout [ size: 170, 17 ]
+					}
+				}
+				edge endRead0: startRead -> endRead {
+					label L14: "2: cnt > 26" {
+						layout [ size: 72, 17 ]
+					}
+				}
+			}
+		}
+		node endDelimiter1 {
+			layout [ size: 120, 34 ]
+		}
+		node endDelimiter2 {
+			layout [ size: 120, 34 ]
+		}
+		node endDelimiter3 {
+			layout [ size: 120, 34 ]
+		}
+		node endDelimiter4 {
+			layout [ size: 120, 34 ]
+		}
+		node endDelimiter5 {
+			layout [ size: 126, 40 ]
+		}
+		node fail {
+			layout [ size: 309, 71 ]
+		}
+		edge startDelimiter10: init -> startDelimiter1 {
+			label L1: "light == false" {
+				layout [ size: 91, 17 ]
+			}
+		}
+		edge startDelimiter20: startDelimiter1 -> startDelimiter2 {
+			label L2: "light" {
+				layout [ size: 31, 17 ]
+			}
+		}
+		edge read0: startDelimiter2 -> read {
+			label L3: "1: light == false" {
+				layout [ size: 107, 17 ]
+			}
+		}
+		edge init0: startDelimiter2 -> init {
+			label L4: "2: light" {
+				layout [ size: 47, 17 ]
+			}
+		}
+		edge endDelimiter10: read -> endDelimiter1
+		edge endDelimiter20: endDelimiter1 -> endDelimiter2 {
+			label L5: "1: light" {
+				layout [ size: 47, 17 ]
+			}
+		}
+		edge fail0: endDelimiter1 -> fail {
+			label L6: "2: light == false" {
+				layout [ size: 107, 17 ]
+			}
+		}
+		edge endDelimiter30: endDelimiter2 -> endDelimiter3 {
+			label L7: "1: light == false" {
+				layout [ size: 107, 17 ]
+			}
+		}
+		edge fail0_g2377: endDelimiter2 -> fail {
+			label L8: "2: light" {
+				layout [ size: 47, 17 ]
+			}
+		}
+		edge endDelimiter40: endDelimiter3 -> endDelimiter4 {
+			label L9: "1: light" {
+				layout [ size: 47, 17 ]
+			}
+		}
+		edge fail0_g6222: endDelimiter3 -> fail {
+			label L10: "2: light == false" {
+				layout [ size: 107, 17 ]
+			}
+		}
+		edge endDelimiter50: endDelimiter4 -> endDelimiter5 {
+			label L11: "1: light == false" {
+				layout [ size: 107, 17 ]
+			}
+		}
+		edge fail0_g1781: endDelimiter4 -> fail {
+			label L12: "2: light" {
+				layout [ size: 47, 17 ]
+			}
+		}
+	}
+}

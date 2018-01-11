@@ -1,0 +1,90 @@
+graph G1
+node elevatorextended {
+	algorithm: org.eclipse.elk.box
+	node main {
+		node I {
+			layout [ size: 136, 50 ]
+		}
+		node elevator {
+			algorithm: org.eclipse.elk.box
+			node alarm {
+				node wait {
+					layout [ size: 48, 34 ]
+				}
+				node alarming {
+					layout [ size: 81, 34 ]
+				}
+				edge alarming0: wait -> alarming {
+					label L1: "ButtonAlarm / alarm = true; AlarmLamp(true); counter = 0" {
+						layout [ size: 395, 17 ]
+					}
+				}
+				edge wait0: alarming -> wait {
+					label L2: "1: counter == 5 / alarm = false; AlarmLamp(false)" {
+						layout [ size: 334, 17 ]
+					}
+				}
+				edge alarming0_g1931: alarming -> alarming {
+					label L3: "2: Second / counter = 1 + counter; AlarmLamp(!val(AlarmLamp))" {
+						layout [ size: 440, 17 ]
+					}
+				}
+				edge alarming1: alarming -> alarming {
+					label L4: "3: / AlarmLamp(!val(AlarmLamp))" {
+						layout [ size: 222, 17 ]
+					}
+				}
+			}
+			node movement {
+				node Movement {
+					algorithm: org.eclipse.elk.box
+					node N1 {
+						node Up {
+							layout [ size: 41, 34 ]
+						}
+						node Upwards {
+							layout [ size: 83, 34 ]
+						}
+						node Down {
+							layout [ size: 61, 34 ]
+						}
+						node Downwards {
+							layout [ size: 103, 34 ]
+						}
+						edge Downwards0: Up -> Downwards {
+							label L5: "ButtonDown / Move(-1)" {
+								layout [ size: 163, 17 ]
+							}
+						}
+						edge Up0: Upwards -> Up {
+							label L6: "1: IsUp / Move(0)" {
+								layout [ size: 118, 17 ]
+							}
+						}
+						edge Upwards0: Upwards -> Upwards {
+							label L7: "2: / Move(1)" {
+								layout [ size: 82, 17 ]
+							}
+						}
+						edge Upwards0_g9191: Down -> Upwards {
+							label L8: "ButtonUp / Move(1)" {
+								layout [ size: 138, 17 ]
+							}
+						}
+						edge Down0: Downwards -> Down {
+							label L9: "1: IsDown / Move(0)" {
+								layout [ size: 138, 17 ]
+							}
+						}
+						edge Downwards0_g6101: Downwards -> Downwards {
+							label L10: "2: / Move(-1)" {
+								layout [ size: 87, 17 ]
+							}
+						}
+					}
+				}
+			}
+		}
+		edge elevator0: I -> elevator
+	}
+}

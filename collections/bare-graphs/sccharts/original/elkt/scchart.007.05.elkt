@@ -1,0 +1,61 @@
+graph G1
+node BackhoeLegs {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node Start {
+			layout [ size: 54, 34 ]
+		}
+		node LowerLegs {
+			layout [ size: 100, 34 ]
+		}
+		node LegsOut {
+			layout [ size: 81, 34 ]
+		}
+		node RaiseLegs {
+			layout [ size: 96, 34 ]
+		}
+		node Stop {
+			layout [ size: 54, 34 ]
+		}
+		edge LowerLegs0: Start -> LowerLegs {
+			label L1: "EXTEND_BUTTON / LEGS_EXTEND = true" {
+				layout [ size: 304, 17 ]
+			}
+		}
+		edge Stop0: LowerLegs -> Stop {
+			label L2: "1: STOP_BUTTON / LEGS_STOP = true; LEGS_EXTEND = false" {
+				layout [ size: 450, 17 ]
+			}
+		}
+		edge LegsOut0: LowerLegs -> LegsOut {
+			label L3: "2: LEGS_OUT / LEGS_EXTEND = false; DONE_LAMP = true" {
+				layout [ size: 419, 17 ]
+			}
+		}
+		edge RaiseLegs0: LegsOut -> RaiseLegs {
+			label L4: "RETRACT_BUTTON / LEGS_RETRACT = true; DONE_LAMP = false" {
+				layout [ size: 476, 17 ]
+			}
+		}
+		edge Stop0_g2805: RaiseLegs -> Stop {
+			label L5: "1: STOP_BUTTON / LEGS_STOP = true; LEGS_RETRACT = false" {
+				layout [ size: 460, 17 ]
+			}
+		}
+		edge Start0: RaiseLegs -> Start {
+			label L6: "2: LEGS_IN / LEGS_RETRACT = false" {
+				layout [ size: 264, 17 ]
+			}
+		}
+		edge RaiseLegs0_g8186: Stop -> RaiseLegs {
+			label L7: "1: RETRACT_BUTTON / LEGS_RETRACT = true; LEGS_STOP = false" {
+				layout [ size: 490, 17 ]
+			}
+		}
+		edge LowerLegs0_g4330: Stop -> LowerLegs {
+			label L8: "2: EXTEND_BUTTON / LEGS_EXTEND = true; LEGS_STOP = false" {
+				layout [ size: 470, 17 ]
+			}
+		}
+	}
+}

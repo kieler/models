@@ -1,0 +1,64 @@
+graph G1
+node SCGExample {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node M {
+			algorithm: org.eclipse.elk.box
+			node N2 {
+				node S1 {
+					layout [ size: 39, 34 ]
+				}
+				node S2 {
+					layout [ size: 45, 40 ]
+				}
+				edge S20: S1 -> S2 {
+					label L1: "/ I = true" {
+						layout [ size: 58, 17 ]
+					}
+				}
+			}
+			node N3 {
+				node S4 {
+					layout [ size: 39, 34 ]
+				}
+				node S5 {
+					layout [ size: 39, 34 ]
+				}
+				node S6 {
+					layout [ size: 45, 40 ]
+				}
+				node S3 {
+					layout [ size: 39, 34 ]
+				}
+				node __sd_Depth {
+					layout [ size: 105, 34 ]
+				}
+				edge S50: S4 -> S5 {
+					label L2: "/ O = true" {
+						layout [ size: 66, 17 ]
+					}
+				}
+				edge S60: S5 -> S6 {
+					label L3: "/ O = false" {
+						layout [ size: 71, 17 ]
+					}
+				}
+				edge __sd_Depth0: S3 -> __sd_Depth
+				edge S40: __sd_Depth -> S4 {
+					label L4: "1: I == true" {
+						layout [ size: 75, 17 ]
+					}
+				}
+				edge S30: __sd_Depth -> S3 {
+					label L5: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+			}
+		}
+		node F {
+			layout [ size: 40, 40 ]
+		}
+		edge F0: M -> F
+	}
+}

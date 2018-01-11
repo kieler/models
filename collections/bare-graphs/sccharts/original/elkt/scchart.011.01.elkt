@@ -1,0 +1,96 @@
+graph G1
+node Controller {
+	algorithm: org.eclipse.elk.box
+	node Car {
+		node Controllers {
+			algorithm: org.eclipse.elk.box
+			node seatbelt {
+				node all_buckled {
+					layout [ size: 101, 34 ]
+				}
+				node not_all_buckled_beeper_on {
+					layout [ size: 217, 34 ]
+				}
+				node not_all_buckled_beeper_off {
+					layout [ size: 217, 34 ]
+				}
+				edge not_all_buckled_beeper_on0: all_buckled -> not_all_buckled_beeper_on {
+					label L1: "1: warnsignal && engineIgnition / beeper = true; red_light = true" {
+						layout [ size: 450, 17 ]
+					}
+				}
+				edge all_buckled0: all_buckled -> all_buckled {
+					label L2: "2: !warnsignal / red_light = false; beeper = false" {
+						layout [ size: 332, 17 ]
+					}
+				}
+				edge not_all_buckled_beeper_off0: not_all_buckled_beeper_on -> not_all_buckled_beeper_off {
+					label L3: "1: 3 seconds / red_light = true; beeper = false" {
+						layout [ size: 319, 17 ]
+					}
+				}
+				edge all_buckled0_g1684: not_all_buckled_beeper_on -> all_buckled {
+					label L4: "2: !warnsignal || !engineIgnition / red_light = false; beeper = false" {
+						layout [ size: 454, 17 ]
+					}
+				}
+				edge not_all_buckled_beeper_on0_g2880: not_all_buckled_beeper_on -> not_all_buckled_beeper_on {
+					label L5: "3: warnsignal / red_light = true; beeper = true" {
+						layout [ size: 318, 17 ]
+					}
+				}
+				edge not_all_buckled_beeper_off0_g0105: not_all_buckled_beeper_off -> not_all_buckled_beeper_off {
+					label L6: "1: warnsignal / red_light = true; beeper = false" {
+						layout [ size: 323, 17 ]
+					}
+				}
+				edge all_buckled0_g1597: not_all_buckled_beeper_off -> all_buckled {
+					label L7: "2: !warnsignal || !engineIgnition / red_light = false; beeper = false" {
+						layout [ size: 454, 17 ]
+					}
+				}
+			}
+			node domelight {
+				node doors_closed {
+					layout [ size: 117, 34 ]
+				}
+				node doors_open {
+					layout [ size: 106, 34 ]
+				}
+				node doors_closed_light_on {
+					layout [ size: 182, 34 ]
+				}
+				edge doors_closed0: doors_closed -> doors_closed {
+					label L8: "1: !doors / domelight = false" {
+						layout [ size: 194, 17 ]
+					}
+				}
+				edge doors_open0: doors_closed -> doors_open {
+					label L9: "2: doors / domelight = true" {
+						layout [ size: 185, 17 ]
+					}
+				}
+				edge doors_open0_g9484: doors_open -> doors_open {
+					label L10: "1: doors / domelight = true" {
+						layout [ size: 185, 17 ]
+					}
+				}
+				edge doors_closed_light_on0: doors_open -> doors_closed_light_on {
+					label L11: "2: !doors / domelight = true" {
+						layout [ size: 189, 17 ]
+					}
+				}
+				edge doors_open0_g1759: doors_closed_light_on -> doors_open {
+					label L12: "1: doors / domelight = true" {
+						layout [ size: 185, 17 ]
+					}
+				}
+				edge doors_closed0_g2980: doors_closed_light_on -> doors_closed {
+					label L13: "2: 3 seconds / domelight = false" {
+						layout [ size: 221, 17 ]
+					}
+				}
+			}
+		}
+	}
+}

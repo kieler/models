@@ -1,0 +1,93 @@
+graph G1
+node elevator {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node Start {
+			layout [ size: 34, 34 ]
+		}
+		node Moving {
+			algorithm: org.eclipse.elk.box
+			node N2 {
+				node M1 {
+					layout [ size: 34, 34 ]
+				}
+				node M2 {
+					layout [ size: 40, 40 ]
+				}
+				edge M20: M1 -> M2 {
+					label L5: "1: Move == 1 && IsUp" {
+						layout [ size: 153, 17 ]
+					}
+				}
+				edge M21: M1 -> M2 {
+					label L6: "2: Move == -1 && IsDown" {
+						layout [ size: 178, 17 ]
+					}
+				}
+			}
+		}
+		node Alarm {
+			algorithm: org.eclipse.elk.box
+			node N3 {
+				node A1 {
+					layout [ size: 34, 34 ]
+				}
+				node Blinking {
+					algorithm: org.eclipse.elk.box
+					node N4 {
+						node LampOff {
+							layout [ size: 80, 34 ]
+						}
+						node LampOn {
+							layout [ size: 80, 34 ]
+						}
+						edge LampOn0: LampOff -> LampOn {
+							label L9: "Second / AlarmLamp(true)" {
+								layout [ size: 181, 17 ]
+							}
+						}
+						edge LampOff0: LampOn -> LampOff {
+							label L10: "Second / AlarmLamp(false)" {
+								layout [ size: 186, 17 ]
+							}
+						}
+					}
+				}
+				node A3 {
+					layout [ size: 40, 40 ]
+				}
+				edge Blinking0: A1 -> Blinking {
+					label L7: "/ MoveVal = Move; Move(0)" {
+						layout [ size: 191, 17 ]
+					}
+				}
+				edge A30: Blinking -> A3 {
+					label L8: "5 Second / Move(MoveVal)" {
+						layout [ size: 188, 17 ]
+					}
+				}
+			}
+		}
+		edge Moving0: Start -> Moving {
+			label L1: "1: ButtonUp / Move(1)" {
+				layout [ size: 154, 17 ]
+			}
+		}
+		edge Moving1: Start -> Moving {
+			label L2: "2: ButtonDown / Move(-1)" {
+				layout [ size: 179, 17 ]
+			}
+		}
+		edge Alarm0: Moving -> Alarm {
+			label L3: "1: ButtonAlarm" {
+				layout [ size: 105, 17 ]
+			}
+		}
+		edge Start0: Moving -> Start {
+			label L4: "2: / Move(0)" {
+				layout [ size: 82, 17 ]
+			}
+		}
+		edge Moving0_g7748: Alarm -> Moving
+	}
+}

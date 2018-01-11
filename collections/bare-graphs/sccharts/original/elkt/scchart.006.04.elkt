@@ -1,0 +1,38 @@
+graph G1
+node ExtendBoom {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node Extend {
+			layout [ size: 71, 34 ]
+		}
+		node Extending {
+			layout [ size: 93, 34 ]
+		}
+		node Paused {
+			layout [ size: 74, 34 ]
+		}
+		node Extended {
+			layout [ size: 95, 40 ]
+		}
+		edge Extending0: Extend -> Extending {
+			label L1: "/ BOOM_PUSH = true" {
+				layout [ size: 152, 17 ]
+			}
+		}
+		edge Paused0: Extending -> Paused {
+			label L2: "1: PAUSE / BOOM_PUSH = false" {
+				layout [ size: 226, 17 ]
+			}
+		}
+		edge Extended0: Extending -> Extended {
+			label L3: "2: BOOM_OUT / BOOM_PUSH = false" {
+				layout [ size: 266, 17 ]
+			}
+		}
+		edge Extending0_g1571: Paused -> Extending {
+			label L4: "!PAUSE / BOOM_PUSH = true" {
+				layout [ size: 209, 17 ]
+			}
+		}
+	}
+}

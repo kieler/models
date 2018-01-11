@@ -1,0 +1,71 @@
+graph G1
+node backhoe {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node LEGSUP {
+			layout [ size: 205, 95 ]
+		}
+		node LEGSDOWN {
+			layout [ size: 205, 95 ]
+		}
+		node MOVEDOWN {
+			layout [ size: 205, 95 ]
+		}
+		node MOVEUP {
+			layout [ size: 200, 95 ]
+		}
+		node STOPPED {
+			layout [ size: 205, 95 ]
+		}
+		edge MOVEDOWN0: LEGSUP -> MOVEDOWN {
+			label L1: "EXTEND_BUTTON" {
+				layout [ size: 135, 17 ]
+			}
+		}
+		edge MOVEUP0: LEGSDOWN -> MOVEUP {
+			label L2: "RETRACT_BUTTON" {
+				layout [ size: 145, 17 ]
+			}
+		}
+		edge MOVEUP0_g4132: MOVEDOWN -> MOVEUP {
+			label L3: "1: RETRACT_BUTTON" {
+				layout [ size: 161, 17 ]
+			}
+		}
+		edge STOPPED0: MOVEDOWN -> STOPPED {
+			label L4: "2: STOP_BUTTON" {
+				layout [ size: 131, 17 ]
+			}
+		}
+		edge LEGSDOWN0: MOVEDOWN -> LEGSDOWN {
+			label L5: "3: LEGS_OUT" {
+				layout [ size: 98, 17 ]
+			}
+		}
+		edge STOPPED0_g9360: MOVEUP -> STOPPED {
+			label L6: "1: STOP_BUTTON" {
+				layout [ size: 131, 17 ]
+			}
+		}
+		edge LEGSUP0: MOVEUP -> LEGSUP {
+			label L7: "2: LEGS_IN" {
+				layout [ size: 80, 17 ]
+			}
+		}
+		edge MOVEDOWN0_g6427: MOVEUP -> MOVEDOWN {
+			label L8: "3: EXTEND_BUTTON" {
+				layout [ size: 151, 17 ]
+			}
+		}
+		edge MOVEUP0_g6039: STOPPED -> MOVEUP {
+			label L9: "1: RETRACT_BUTTON" {
+				layout [ size: 161, 17 ]
+			}
+		}
+		edge MOVEDOWN0_g6409: STOPPED -> MOVEDOWN {
+			label L10: "2: EXTEND_BUTTON" {
+				layout [ size: 151, 17 ]
+			}
+		}
+	}
+}

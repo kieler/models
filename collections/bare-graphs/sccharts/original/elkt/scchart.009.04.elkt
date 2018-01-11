@@ -1,0 +1,76 @@
+graph G1
+node a1 {
+	algorithm: org.eclipse.elk.box
+	node domeLight {
+		node lightOff {
+			layout [ size: 73, 34 ]
+		}
+		node doorOpen {
+			layout [ size: 93, 34 ]
+		}
+		node pending {
+			layout [ size: 79, 34 ]
+		}
+		edge doorOpen0: lightOff -> doorOpen {
+			label L1: "doorOpened && second / light = true" {
+				layout [ size: 261, 17 ]
+			}
+		}
+		edge pending0: doorOpen -> pending {
+			label L2: "allDoorsClosed && second / cntDL = 0" {
+				layout [ size: 271, 17 ]
+			}
+		}
+		edge pending0_g0783: pending -> pending {
+			label L3: "1: cntDL < 2 && !doorOpened && second / cntDL = cntDL + 1" {
+				layout [ size: 428, 17 ]
+			}
+		}
+		edge doorOpen0_g8423: pending -> doorOpen {
+			label L4: "2: doorOpened && second" {
+				layout [ size: 189, 17 ]
+			}
+		}
+		edge lightOff0: pending -> lightOff {
+			label L5: "3: cntDL >= 2 && second / light = false" {
+				layout [ size: 268, 17 ]
+			}
+		}
+	}
+	node seatbealt {
+		node ok {
+			layout [ size: 38, 34 ]
+		}
+		node beepLamp {
+			layout [ size: 95, 34 ]
+		}
+		node lamp {
+			layout [ size: 54, 34 ]
+		}
+		edge beepLamp0: ok -> beepLamp {
+			label L6: "engine && !seatbelt && second / cntSB = 0; buzzer = true; warnLight = true" {
+				layout [ size: 529, 17 ]
+			}
+		}
+		edge ok0: beepLamp -> ok {
+			label L7: "1: seatbelt && second / buzzer = false; warnLight = false" {
+				layout [ size: 396, 17 ]
+			}
+		}
+		edge beepLamp0_g1418: beepLamp -> beepLamp {
+			label L8: "2: cntSB < 30 && second && !seatbelt / cntSB = cntSB + 1" {
+				layout [ size: 406, 17 ]
+			}
+		}
+		edge lamp0: beepLamp -> lamp {
+			label L9: "3: cntSB >= 30 && second && !seatbelt / buzzer = false" {
+				layout [ size: 386, 17 ]
+			}
+		}
+		edge ok0_g6443: lamp -> ok {
+			label L10: "seatbelt && second / warnLight = false" {
+				layout [ size: 272, 17 ]
+			}
+		}
+	}
+}

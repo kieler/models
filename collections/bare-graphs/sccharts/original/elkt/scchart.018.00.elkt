@@ -1,0 +1,162 @@
+graph G1
+node DomelightEngineMindstorm {
+	algorithm: org.eclipse.elk.box
+	node Domelight {
+		node Init {
+			layout [ size: 42, 34 ]
+		}
+		node DoorClosedLightOut {
+			layout [ size: 167, 34 ]
+		}
+		node DoorClosedLightOn {
+			layout [ size: 163, 34 ]
+		}
+		node DoorOpen {
+			layout [ size: 95, 34 ]
+		}
+		edge DoorClosedLightOut0: Init -> DoorClosedLightOut {
+			label L1: "1: door1 && door2" {
+				layout [ size: 129, 17 ]
+			}
+		}
+		edge DoorOpen0: Init -> DoorOpen {
+			label L2: "2: !door1 || !door2 / domeLight = true; resetDoorClock = true" {
+				layout [ size: 421, 17 ]
+			}
+		}
+		edge DoorOpen0_g1259: DoorClosedLightOut -> DoorOpen {
+			label L3: "!door1 || !door2 / domeLight = true; resetDoorClock = true" {
+				layout [ size: 405, 17 ]
+			}
+		}
+		edge DoorClosedLightOut0_g0160: DoorClosedLightOn -> DoorClosedLightOut {
+			label L4: "1: doorClock && door1 && door2 / domeLight = false" {
+				layout [ size: 369, 17 ]
+			}
+		}
+		edge DoorOpen0_g2222: DoorClosedLightOn -> DoorOpen {
+			label L5: "2: !door1 || !door2" {
+				layout [ size: 123, 17 ]
+			}
+		}
+		edge DoorClosedLightOn0: DoorOpen -> DoorClosedLightOn {
+			label L6: "door1 && door2 / domeLight = true; resetDoorClock = true" {
+				layout [ size: 411, 17 ]
+			}
+		}
+	}
+	node Motor {
+		node EngineOff {
+			layout [ size: 92, 34 ]
+		}
+		node EngineOffPre {
+			layout [ size: 117, 34 ]
+		}
+		node EngineOnPre {
+			layout [ size: 116, 34 ]
+		}
+		node EngineOn {
+			layout [ size: 92, 34 ]
+		}
+		edge EngineOnPre0: EngineOff -> EngineOnPre {
+			label L7: "engineIgnition / floodlight = true; engineOn = true" {
+				layout [ size: 351, 17 ]
+			}
+		}
+		edge EngineOff0: EngineOffPre -> EngineOff {
+			label L8: "!engineIgnition" {
+				layout [ size: 107, 17 ]
+			}
+		}
+		edge EngineOn0: EngineOnPre -> EngineOn {
+			label L9: "!engineIgnition" {
+				layout [ size: 107, 17 ]
+			}
+		}
+		edge EngineOffPre0: EngineOn -> EngineOffPre {
+			label L10: "engineIgnition / floodlight = false; engineOn = false" {
+				layout [ size: 361, 17 ]
+			}
+		}
+	}
+	node Seatbelt {
+		node Init_g1658 {
+			layout [ size: 42, 34 ]
+		}
+		node NoBeepNoLight {
+			layout [ size: 134, 34 ]
+		}
+		node NoBeepNoLightPre {
+			layout [ size: 159, 34 ]
+		}
+		node BeepLightPre {
+			layout [ size: 119, 34 ]
+		}
+		node BeepLight {
+			layout [ size: 94, 34 ]
+		}
+		node Light {
+			layout [ size: 56, 34 ]
+		}
+		edge NoBeepNoLight0: Init_g1658 -> NoBeepNoLight {
+			label L11: "1: seatbelt && engineOn || !engineOn" {
+				layout [ size: 264, 17 ]
+			}
+		}
+		edge BeepLight0: Init_g1658 -> BeepLight {
+			label L12: "2: !seatbelt && engineOn / resetClock = true" {
+				layout [ size: 312, 17 ]
+			}
+		}
+		edge BeepLightPre0: NoBeepNoLight -> BeepLightPre {
+			label L13: "1: engineOn && !seatbelt / beep = true; warningLight = true; resetClock = true; seatbelt = false" {
+				layout [ size: 664, 17 ]
+			}
+		}
+		edge NoBeepNoLightPre0: NoBeepNoLight -> NoBeepNoLightPre {
+			label L14: "2: seatbeltSensor && !seatbelt / seatbelt = true" {
+				layout [ size: 330, 17 ]
+			}
+		}
+		edge NoBeepNoLightPre1: NoBeepNoLight -> NoBeepNoLightPre {
+			label L15: "3: seatbeltSensor && seatbelt / seatbelt = false" {
+				layout [ size: 331, 17 ]
+			}
+		}
+		edge NoBeepNoLight0_g7874: NoBeepNoLightPre -> NoBeepNoLight {
+			label L16: "!seatbeltSensor" {
+				layout [ size: 112, 17 ]
+			}
+		}
+		edge BeepLight0_g2181: BeepLightPre -> BeepLight {
+			label L17: "!seatbeltSensor" {
+				layout [ size: 112, 17 ]
+			}
+		}
+		edge Light0: BeepLight -> Light {
+			label L18: "1: clock && !seatbeltSensor && engineOn / beep = false" {
+				layout [ size: 394, 17 ]
+			}
+		}
+		edge NoBeepNoLightPre0_g3683: BeepLight -> NoBeepNoLightPre {
+			label L19: "2: !engineOn / beep = false; warningLight = false" {
+				layout [ size: 340, 17 ]
+			}
+		}
+		edge NoBeepNoLightPre1_g8492: BeepLight -> NoBeepNoLightPre {
+			label L20: "3: seatbeltSensor / beep = false; warningLight = false; seatbelt = true" {
+				layout [ size: 485, 17 ]
+			}
+		}
+		edge NoBeepNoLightPre0_g7413: Light -> NoBeepNoLightPre {
+			label L21: "1: !engineOn / beep = false; warningLight = false" {
+				layout [ size: 340, 17 ]
+			}
+		}
+		edge NoBeepNoLightPre1_g4548: Light -> NoBeepNoLightPre {
+			label L22: "2: seatbeltSensor / warningLight = false; seatbelt = true" {
+				layout [ size: 390, 17 ]
+			}
+		}
+	}
+}

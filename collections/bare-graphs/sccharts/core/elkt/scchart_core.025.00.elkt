@@ -1,0 +1,198 @@
+graph G1
+node LegsMode {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node Main {
+			algorithm: org.eclipse.elk.box
+			node N2 {
+				node Extended {
+					layout [ size: 95, 40 ]
+				}
+				node __EA_Init1 {
+					layout [ size: 94, 34 ]
+				}
+				node __te_S {
+					layout [ size: 69, 34 ]
+				}
+				node __te_S1 {
+					layout [ size: 77, 34 ]
+				}
+				node __te_S2 {
+					layout [ size: 77, 34 ]
+				}
+				node __te_S3 {
+					layout [ size: 77, 34 ]
+				}
+				node Stopped {
+					layout [ size: 81, 34 ]
+				}
+				node __sd_Depth {
+					layout [ size: 105, 34 ]
+				}
+				node __sd_S1 {
+					layout [ size: 80, 34 ]
+				}
+				node __sd_S2 {
+					layout [ size: 80, 34 ]
+				}
+				node Extending {
+					layout [ size: 93, 34 ]
+				}
+				node __sd_Depth1 {
+					layout [ size: 113, 34 ]
+				}
+				node __sd_S4 {
+					layout [ size: 80, 34 ]
+				}
+				node Retracting {
+					layout [ size: 95, 34 ]
+				}
+				node __sd_Depth2 {
+					layout [ size: 113, 34 ]
+				}
+				node __sd_S6 {
+					layout [ size: 80, 34 ]
+				}
+				edge Stopped0: __EA_Init1 -> Stopped {
+					label L6: "/ LEGS_STOP = false" {
+						layout [ size: 150, 17 ]
+					}
+				}
+				edge Retracting0: __te_S -> Retracting {
+					label L7: "/ LEGS_RETRACT = true" {
+						layout [ size: 175, 17 ]
+					}
+				}
+				edge Extending0: __te_S1 -> Extending {
+					label L8: "/ LEGS_EXTEND = true" {
+						layout [ size: 165, 17 ]
+					}
+				}
+				edge Extended0: __te_S2 -> Extended {
+					label L9: "/ LEGS_EXTEND = false" {
+						layout [ size: 170, 17 ]
+					}
+				}
+				edge Stopped0_g9080: __te_S3 -> Stopped {
+					label L10: "/ LEGS_RETRACT = false" {
+						layout [ size: 180, 17 ]
+					}
+				}
+				edge __sd_Depth0: Stopped -> __sd_Depth
+				edge Extended0_g4653: __sd_Depth -> Extended {
+					label L11: "1: LEGS_STOP" {
+						layout [ size: 108, 17 ]
+					}
+				}
+				edge __sd_S10: __sd_Depth -> __sd_S1 {
+					label L12: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __te_S0: __sd_S1 -> __te_S {
+					label L13: "1: RETRACT" {
+						layout [ size: 88, 17 ]
+					}
+				}
+				edge __sd_S20: __sd_S1 -> __sd_S2 {
+					label L14: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __te_S10: __sd_S2 -> __te_S1 {
+					label L15: "1: EXTEND" {
+						layout [ size: 78, 17 ]
+					}
+				}
+				edge Stopped0_g7966: __sd_S2 -> Stopped {
+					label L16: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __sd_Depth10: Extending -> __sd_Depth1
+				edge Extended0_g0024: __sd_Depth1 -> Extended {
+					label L17: "1: LEGS_STOP" {
+						layout [ size: 108, 17 ]
+					}
+				}
+				edge __sd_S40: __sd_Depth1 -> __sd_S4 {
+					label L18: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __te_S20: __sd_S4 -> __te_S2 {
+					label L19: "1: LEGS_OUT" {
+						layout [ size: 98, 17 ]
+					}
+				}
+				edge Extending0_g5816: __sd_S4 -> Extending {
+					label L20: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __sd_Depth20: Retracting -> __sd_Depth2
+				edge Extended0_g5003: __sd_Depth2 -> Extended {
+					label L21: "1: LEGS_STOP" {
+						layout [ size: 108, 17 ]
+					}
+				}
+				edge __sd_S60: __sd_Depth2 -> __sd_S6 {
+					label L22: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __te_S30: __sd_S6 -> __te_S3 {
+					label L23: "1: LEGS_IN" {
+						layout [ size: 80, 17 ]
+					}
+				}
+				edge Retracting0_g7443: __sd_S6 -> Retracting {
+					label L24: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+			}
+		}
+		node Final {
+			layout [ size: 61, 40 ]
+		}
+		node _AC {
+			layout [ size: 48, 34 ]
+		}
+		node __EA_Init {
+			layout [ size: 85, 34 ]
+		}
+		node __te_S4 {
+			layout [ size: 77, 34 ]
+		}
+		node __te_S5 {
+			layout [ size: 77, 34 ]
+		}
+		edge _AC0: Main -> _AC
+		edge __te_S40: _AC -> __te_S4 {
+			label L1: "1: LEGS_STOP" {
+				layout [ size: 108, 17 ]
+			}
+		}
+		edge Final0: _AC -> Final {
+			label L2: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge Main0: __EA_Init -> Main {
+			label L3: "/ LEGS_STOP = false" {
+				layout [ size: 150, 17 ]
+			}
+		}
+		edge __te_S50: __te_S4 -> __te_S5 {
+			label L4: "/ LEGS_EXTEND = false" {
+				layout [ size: 170, 17 ]
+			}
+		}
+		edge Main0_g0939: __te_S5 -> Main {
+			label L5: "/ LEGS_RETRACT = false" {
+				layout [ size: 180, 17 ]
+			}
+		}
+	}
+}

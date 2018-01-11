@@ -1,0 +1,94 @@
+graph G1
+node Problem {
+	algorithm: org.eclipse.elk.box
+	node Problem_g0903 {
+		node mainloop {
+			algorithm: org.eclipse.elk.box
+			node Init {
+				node __sd_S1 {
+					layout [ size: 80, 34 ]
+				}
+				node I2 {
+					layout [ size: 34, 34 ]
+				}
+				node I3 {
+					layout [ size: 40, 40 ]
+				}
+				node __sd_Pause {
+					layout [ size: 105, 34 ]
+				}
+				node __sd_Depth {
+					layout [ size: 105, 34 ]
+				}
+				edge I20: __sd_S1 -> I2 {
+					label L1: "/ _Problem_local_S = false" {
+						layout [ size: 185, 17 ]
+					}
+				}
+				edge I30: I2 -> I3 {
+					label L2: "1: _Problem_local__Term" {
+						layout [ size: 178, 17 ]
+					}
+				}
+				edge __sd_Pause0: I2 -> __sd_Pause {
+					label L3: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __sd_Depth0: __sd_Pause -> __sd_Depth
+				edge I30_g9868: __sd_Depth -> I3 {
+					label L4: "1: _Problem_local__Term" {
+						layout [ size: 178, 17 ]
+					}
+				}
+				edge __sd_S10: __sd_Depth -> __sd_S1 {
+					label L5: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+			}
+			node Main {
+				node M2 {
+					layout [ size: 42, 34 ]
+				}
+				node M4 {
+					layout [ size: 48, 40 ]
+				}
+				node __sd_Depth1 {
+					layout [ size: 113, 34 ]
+				}
+				node __te_S1 {
+					layout [ size: 77, 34 ]
+				}
+				node __sd_Depth2 {
+					layout [ size: 113, 34 ]
+				}
+				node __te_S3 {
+					layout [ size: 77, 34 ]
+				}
+				edge __sd_Depth20: M2 -> __sd_Depth2
+				edge __te_S10: __sd_Depth1 -> __te_S1 {
+					label L6: "/ _Problem_local__Term = false" {
+						layout [ size: 219, 17 ]
+					}
+				}
+				edge M20: __te_S1 -> M2 {
+					label L7: "/ O = _Problem_local_S" {
+						layout [ size: 164, 17 ]
+					}
+				}
+				edge __te_S30: __sd_Depth2 -> __te_S3 {
+					label L8: "/ _Problem_local_S = true" {
+						layout [ size: 180, 17 ]
+					}
+				}
+				edge M40: __te_S3 -> M4 {
+					label L9: "/ _Problem_local__Term = true" {
+						layout [ size: 214, 17 ]
+					}
+				}
+			}
+		}
+		edge mainloop0: mainloop -> mainloop
+	}
+}

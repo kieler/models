@@ -1,0 +1,100 @@
+graph G1
+node Elevator {
+	algorithm: org.eclipse.elk.box
+	node Movement {
+		node init {
+			layout [ size: 42, 34 ]
+		}
+		node isUp {
+			layout [ size: 53, 34 ]
+		}
+		node isDown {
+			layout [ size: 73, 34 ]
+		}
+		node movingUp {
+			layout [ size: 93, 34 ]
+		}
+		node movingDown {
+			layout [ size: 113, 34 ]
+		}
+		node interruptUp {
+			layout [ size: 103, 34 ]
+		}
+		node interruptDown {
+			layout [ size: 123, 34 ]
+		}
+		edge isUp0: init -> isUp {
+			label L1: "1: IS_UP == true" {
+				layout [ size: 114, 17 ]
+			}
+		}
+		edge isDown0: init -> isDown {
+			label L2: "2: IS_DOWN == true" {
+				layout [ size: 140, 17 ]
+			}
+		}
+		edge movingDown0: isUp -> movingDown {
+			label L3: "BUTTON_DOWN / MOVE_DOWN = true; alarm_enabled = true" {
+				layout [ size: 434, 17 ]
+			}
+		}
+		edge movingUp0: isDown -> movingUp {
+			label L4: "BUTTON_UP / MOVE_UP = true; alarm_enabled = true" {
+				layout [ size: 382, 17 ]
+			}
+		}
+		edge interruptUp0: movingUp -> interruptUp {
+			label L5: "1: BUTTON_ALARM && !IS_UP / MOVE_UP = false" {
+				layout [ size: 353, 17 ]
+			}
+		}
+		edge isUp0_g5365: movingUp -> isUp {
+			label L6: "2: IS_UP / MOVE_UP = false; alarm_enabled = false" {
+				layout [ size: 357, 17 ]
+			}
+		}
+		edge interruptDown0: movingDown -> interruptDown {
+			label L7: "1: BUTTON_ALARM && !IS_DOWN / MOVE_DOWN = true" {
+				layout [ size: 400, 17 ]
+			}
+		}
+		edge isDown0_g8209: movingDown -> isDown {
+			label L8: "2: IS_DOWN / MOVE_DOWN = false; alarm_enabled = false" {
+				layout [ size: 409, 17 ]
+			}
+		}
+		edge movingUp0_g7191: interruptUp -> movingUp {
+			label L9: "alarm_end / MOVE_UP = true" {
+				layout [ size: 204, 17 ]
+			}
+		}
+		edge movingDown0_g6988: interruptDown -> movingDown {
+			label L10: "alarm_end / MOVE_DOWN = true" {
+				layout [ size: 230, 17 ]
+			}
+		}
+	}
+	node Time {
+		node idle {
+			layout [ size: 46, 34 ]
+		}
+		node alarmPhase {
+			layout [ size: 102, 34 ]
+		}
+		edge alarmPhase0: idle -> alarmPhase {
+			label L11: "BUTTON_ALARM && alarm_enabled == true / alarm_end = false; cnt = 0; ALARM_LAMP = true" {
+				layout [ size: 656, 17 ]
+			}
+		}
+		edge alarmPhase0_g9456: alarmPhase -> alarmPhase {
+			label L12: "1: cnt < 5 && SECOND / cnt += 1" {
+				layout [ size: 227, 17 ]
+			}
+		}
+		edge idle0: alarmPhase -> idle {
+			label L13: "2: cnt >= 5 / ALARM_LAMP = false; alarm_end = true" {
+				layout [ size: 361, 17 ]
+			}
+		}
+	}
+}

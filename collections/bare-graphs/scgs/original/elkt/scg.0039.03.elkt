@@ -1,0 +1,299 @@
+graph G1
+node N2 {
+	layout [ size: 75, 25 ]
+	nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+	portConstraints: FIXED_SIDE
+	layerConstraint: FIRST
+	label L1: "entry" {
+		layout [ size: 29, 15 ]
+	}
+	port P1 {
+		side: SOUTH
+	}
+}
+node N3 {
+	layout [ size: 75, 25 ]
+	nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+	portConstraints: FIXED_SIDE
+	layerConstraint: LAST
+	label L2: "exit" {
+		layout [ size: 21, 15 ]
+	}
+}
+node N4 {
+	layout [ size: 75, 28 ]
+	nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+	portConstraints: FIXED_SIDE
+	label L3: "fork" {
+		layout [ size: 21, 15 ]
+	}
+	port P2 {
+		side: NORTH
+	}
+	port P3 {
+		side: SOUTH
+	}
+	port P4 {
+		side: SOUTH
+	}
+}
+node N5 {
+	layout [ size: 75, 27 ]
+	nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+	portConstraints: FIXED_SIDE
+	label L4: "join" {
+		layout [ size: 21, 15 ]
+	}
+	port P5 {
+		side: SOUTH
+	}
+	port P6 {
+		side: NORTH
+	}
+	port P7 {
+		side: NORTH
+	}
+}
+node N6 {
+	portConstraints: FREE
+	port P8
+	port P9
+	node N7 {
+		layout [ size: 75, 25 ]
+		nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+		portConstraints: FIXED_SIDE
+		layerConstraint: FIRST
+		label L6: "entry" {
+			layout [ size: 29, 15 ]
+		}
+		port P10 {
+			side: NORTH
+		}
+		port P11 {
+			side: SOUTH
+		}
+	}
+	node N8 {
+		layout [ size: 157, 25 ]
+		nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+		portConstraints: FIXED_SIDE
+		label L7: "_problem_local_S = false" {
+			layout [ size: 147, 15 ]
+		}
+		port P12 {
+			side: NORTH
+		}
+		port P13 {
+			side: SOUTH
+		}
+	}
+	node N9 {
+		layout [ size: 140.5, 25 ]
+		nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+		portConstraints: FIXED_SIDE
+		label L8: "_problem_local__Term" {
+			layout [ size: 129, 15 ]
+		}
+		port P14 {
+			side: NORTH
+		}
+		port P15 {
+			side: SOUTH
+		}
+		port P16 {
+			northOrSouthPort: true
+			side: EAST
+		}
+	}
+	node N10 {
+		layout [ size: 75, 25 ]
+		nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+		portConstraints: FIXED_SIDE
+		label L9: "surface" {
+			layout [ size: 43, 15 ]
+		}
+		port P17 {
+			side: NORTH
+		}
+		port P18 {
+			side: SOUTH
+		}
+	}
+	node N11 {
+		layout [ size: 75, 25 ]
+		nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+		portConstraints: FIXED_SIDE
+		layerConstraint: FIRST
+		label L10: "depth" {
+			layout [ size: 33, 15 ]
+		}
+		port P19 {
+			side: NORTH
+		}
+		port P20 {
+			side: SOUTH
+		}
+	}
+	node N12 {
+		layout [ size: 75, 25 ]
+		nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+		portConstraints: FIXED_SIDE
+		layerConstraint: LAST
+		label L11: "exit" {
+			layout [ size: 21, 15 ]
+		}
+		port P21 {
+			side: NORTH
+		}
+		port P22 {
+			side: SOUTH
+		}
+	}
+	edge E7: P8 -> N7.P10
+	edge E8: N7.P11 -> N8.P12
+	edge E9: N8.P13 -> N9.P14
+	edge E10: N9.P16 -> N12.P21 {
+		label L5: "true" {
+			layout [ size: 21, 14 ]
+		}
+	}
+	edge E11: N9.P15 -> N10.P17
+	edge E12: N10.P18 -> N11.P19
+	edge E13: N11.P20 -> N8.P12
+	edge E14: N12.P22 -> P9
+}
+node N13 {
+	portConstraints: FREE
+	port P23
+	port P24
+	node N14 {
+		layout [ size: 75, 25 ]
+		nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+		portConstraints: FIXED_SIDE
+		layerConstraint: FIRST
+		label L12: "entry" {
+			layout [ size: 29, 15 ]
+		}
+		port P25 {
+			side: NORTH
+		}
+		port P26 {
+			side: SOUTH
+		}
+	}
+	node N15 {
+		layout [ size: 183, 25 ]
+		nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+		portConstraints: FIXED_SIDE
+		label L13: "_problem_local__Term = false" {
+			layout [ size: 173, 15 ]
+		}
+		port P27 {
+			side: NORTH
+		}
+		port P28 {
+			side: SOUTH
+		}
+	}
+	node N16 {
+		layout [ size: 139, 25 ]
+		nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+		portConstraints: FIXED_SIDE
+		label L14: "O = _problem_local_S" {
+			layout [ size: 129, 15 ]
+		}
+		port P29 {
+			side: NORTH
+		}
+		port P30 {
+			side: SOUTH
+		}
+	}
+	node N17 {
+		layout [ size: 75, 25 ]
+		nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+		portConstraints: FIXED_SIDE
+		label L15: "surface" {
+			layout [ size: 43, 15 ]
+		}
+		port P31 {
+			side: NORTH
+		}
+		port P32 {
+			side: SOUTH
+		}
+	}
+	node N18 {
+		layout [ size: 75, 25 ]
+		nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+		portConstraints: FIXED_SIDE
+		layerConstraint: FIRST
+		label L16: "depth" {
+			layout [ size: 33, 15 ]
+		}
+		port P33 {
+			side: NORTH
+		}
+		port P34 {
+			side: SOUTH
+		}
+	}
+	node N19 {
+		layout [ size: 152, 25 ]
+		nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+		portConstraints: FIXED_SIDE
+		label L17: "_problem_local_S = true" {
+			layout [ size: 142, 15 ]
+		}
+		port P35 {
+			side: NORTH
+		}
+		port P36 {
+			side: SOUTH
+		}
+	}
+	node N20 {
+		layout [ size: 178, 25 ]
+		nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+		portConstraints: FIXED_SIDE
+		label L18: "_problem_local__Term = true" {
+			layout [ size: 168, 15 ]
+		}
+		port P37 {
+			side: NORTH
+		}
+		port P38 {
+			side: SOUTH
+		}
+	}
+	node N21 {
+		layout [ size: 75, 25 ]
+		nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+		portConstraints: FIXED_SIDE
+		layerConstraint: LAST
+		label L19: "exit" {
+			layout [ size: 21, 15 ]
+		}
+		port P39 {
+			side: NORTH
+		}
+		port P40 {
+			side: SOUTH
+		}
+	}
+	edge E15: P23 -> N14.P25
+	edge E16: N14.P26 -> N15.P27
+	edge E17: N15.P28 -> N16.P29
+	edge E18: N16.P30 -> N17.P31
+	edge E19: N17.P32 -> N18.P33
+	edge E20: N18.P34 -> N19.P35
+	edge E21: N19.P36 -> N20.P37
+	edge E22: N20.P38 -> N21.P39
+	edge E23: N21.P40 -> P24
+}
+edge E1: N2.P1 -> N4.P2
+edge E2: N4.P3 -> N6.P8
+edge E3: N4.P4 -> N13.P23
+edge E4: N5.P5 -> N4.P2
+edge E5: N6.P9 -> N5.P6
+edge E6: N13.P24 -> N5.P7

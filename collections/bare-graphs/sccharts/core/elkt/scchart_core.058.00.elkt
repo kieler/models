@@ -1,0 +1,439 @@
+graph G1
+node upkavqphfthjadzhicnlgymckhsgnbookrdckzjdnvq {
+	algorithm: org.eclipse.elk.box
+	node __EA_Entry {
+		node __EA_Main {
+			algorithm: org.eclipse.elk.box
+			node DomeLightTimer {
+				node __te_S {
+					layout [ size: 69, 34 ]
+				}
+				node __te_S1 {
+					layout [ size: 77, 34 ]
+				}
+				node __sd_S1 {
+					layout [ size: 80, 34 ]
+				}
+				node DomeWaitForClock {
+					layout [ size: 155, 34 ]
+				}
+				node __sd_Depth {
+					layout [ size: 105, 34 ]
+				}
+				edge __te_S10: __te_S -> __te_S1 {
+					label L6: "/ domelight_time += 1" {
+						layout [ size: 151, 17 ]
+					}
+				}
+				edge DomeWaitForClock0: __te_S1 -> DomeWaitForClock {
+					label L7: "/ d_t_set = true" {
+						layout [ size: 106, 17 ]
+					}
+				}
+				edge DomeWaitForClock0_g8628: __sd_S1 -> DomeWaitForClock {
+					label L8: "/ d_t_set = false" {
+						layout [ size: 111, 17 ]
+					}
+				}
+				edge __sd_Depth0: DomeWaitForClock -> __sd_Depth
+				edge __te_S0: __sd_Depth -> __te_S {
+					label L9: "1: second" {
+						layout [ size: 69, 17 ]
+					}
+				}
+				edge __sd_S10: __sd_Depth -> __sd_S1 {
+					label L10: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+			}
+			node BeeperTimer {
+				node __te_S3 {
+					layout [ size: 77, 34 ]
+				}
+				node __te_S4 {
+					layout [ size: 77, 34 ]
+				}
+				node __sd_S3 {
+					layout [ size: 80, 34 ]
+				}
+				node BeeperWaitForClock {
+					layout [ size: 167, 34 ]
+				}
+				node __sd_Depth1 {
+					layout [ size: 113, 34 ]
+				}
+				edge __te_S40: __te_S3 -> __te_S4 {
+					label L11: "/ beeper_time += 1" {
+						layout [ size: 132, 17 ]
+					}
+				}
+				edge BeeperWaitForClock0: __te_S4 -> BeeperWaitForClock {
+					label L12: "/ b_t_set = true" {
+						layout [ size: 106, 17 ]
+					}
+				}
+				edge BeeperWaitForClock0_g7708: __sd_S3 -> BeeperWaitForClock {
+					label L13: "/ b_t_set = false" {
+						layout [ size: 111, 17 ]
+					}
+				}
+				edge __sd_Depth10: BeeperWaitForClock -> __sd_Depth1
+				edge __te_S30: __sd_Depth1 -> __te_S3 {
+					label L14: "1: second" {
+						layout [ size: 69, 17 ]
+					}
+				}
+				edge __sd_S30: __sd_Depth1 -> __sd_S3 {
+					label L15: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+			}
+			node DoorsController {
+				node __te_S6 {
+					layout [ size: 77, 34 ]
+				}
+				node __te_S7 {
+					layout [ size: 77, 34 ]
+				}
+				node __te_S8 {
+					layout [ size: 77, 34 ]
+				}
+				node __te_S9 {
+					layout [ size: 77, 34 ]
+				}
+				node DoorsClosed {
+					layout [ size: 114, 34 ]
+				}
+				node __sd_Depth2 {
+					layout [ size: 113, 34 ]
+				}
+				node __sd_S5 {
+					layout [ size: 80, 34 ]
+				}
+				node DoorsOpened {
+					layout [ size: 121, 34 ]
+				}
+				node __sd_Depth3 {
+					layout [ size: 113, 34 ]
+				}
+				edge __te_S70: __te_S6 -> __te_S7 {
+					label L16: "/ domeLight = 1" {
+						layout [ size: 109, 17 ]
+					}
+				}
+				edge DoorsOpened0: __te_S7 -> DoorsOpened {
+					label L17: "/ domelight_time = 0" {
+						layout [ size: 142, 17 ]
+					}
+				}
+				edge DoorsClosed0: __te_S8 -> DoorsClosed {
+					label L18: "/ domeLight = 0" {
+						layout [ size: 109, 17 ]
+					}
+				}
+				edge DoorsClosed0_g2851: __te_S9 -> DoorsClosed {
+					label L19: "/ domelight_time = 0" {
+						layout [ size: 142, 17 ]
+					}
+				}
+				edge __sd_Depth20: DoorsClosed -> __sd_Depth2
+				edge __te_S60: __sd_Depth2 -> __te_S6 {
+					label L20: "1: doors && d_t_set" {
+						layout [ size: 139, 17 ]
+					}
+				}
+				edge __sd_S50: __sd_Depth2 -> __sd_S5 {
+					label L21: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __te_S80: __sd_S5 -> __te_S8 {
+					label L22: "1: d_t_set && domelight_time >= 3" {
+						layout [ size: 241, 17 ]
+					}
+				}
+				edge DoorsClosed0_g4924: __sd_S5 -> DoorsClosed {
+					label L23: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __sd_Depth30: DoorsOpened -> __sd_Depth3
+				edge __te_S90: __sd_Depth3 -> __te_S9 {
+					label L24: "1: doors == 0 && d_t_set" {
+						layout [ size: 173, 17 ]
+					}
+				}
+				edge DoorsOpened0_g4103: __sd_Depth3 -> DoorsOpened {
+					label L25: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+			}
+			node SeatbeltController {
+				node engineOn {
+					algorithm: org.eclipse.elk.box
+					node N1 {
+						node _AAborted {
+							layout [ size: 100, 40 ]
+						}
+						node __te_S10_g6376 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S11 {
+							layout [ size: 84, 34 ]
+						}
+						node __te_S12 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S13 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S14 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S15 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S16 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S17 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S18 {
+							layout [ size: 85, 34 ]
+						}
+						node everyonesBucklet {
+							layout [ size: 149, 34 ]
+						}
+						node __sd_Depth5 {
+							layout [ size: 113, 34 ]
+						}
+						node __sd_S9 {
+							layout [ size: 80, 34 ]
+						}
+						node someonesNotBucklet {
+							layout [ size: 172, 34 ]
+						}
+						node __sd_Depth6 {
+							layout [ size: 113, 34 ]
+						}
+						node __sd_S11 {
+							layout [ size: 87, 34 ]
+						}
+						node __sd_S12 {
+							layout [ size: 88, 34 ]
+						}
+						node someonesNotBucklet30Secs {
+							layout [ size: 224, 34 ]
+						}
+						node __sd_Depth7 {
+							layout [ size: 113, 34 ]
+						}
+						node __sd_S14 {
+							layout [ size: 88, 34 ]
+						}
+						edge __te_S110: __te_S10_g6376 -> __te_S11 {
+							label L30: "/ beeper = 1" {
+								layout [ size: 85, 17 ]
+							}
+						}
+						edge __te_S120: __te_S11 -> __te_S12 {
+							label L31: "/ redLight = 1" {
+								layout [ size: 94, 17 ]
+							}
+						}
+						edge someonesNotBucklet0: __te_S12 -> someonesNotBucklet {
+							label L32: "/ beeper_time = 0" {
+								layout [ size: 123, 17 ]
+							}
+						}
+						edge __te_S140: __te_S13 -> __te_S14 {
+							label L33: "/ beeper = 0" {
+								layout [ size: 85, 17 ]
+							}
+						}
+						edge __te_S150: __te_S14 -> __te_S15 {
+							label L34: "/ redLight = 0" {
+								layout [ size: 94, 17 ]
+							}
+						}
+						edge everyonesBucklet0: __te_S15 -> everyonesBucklet {
+							label L35: "/ beeper_time = 0" {
+								layout [ size: 123, 17 ]
+							}
+						}
+						edge __te_S170: __te_S16 -> __te_S17 {
+							label L36: "/ beeper_time = 0" {
+								layout [ size: 123, 17 ]
+							}
+						}
+						edge someonesNotBucklet30Secs0: __te_S17 -> someonesNotBucklet30Secs {
+							label L37: "/ beeper = 0" {
+								layout [ size: 85, 17 ]
+							}
+						}
+						edge everyonesBucklet0_g1956: __te_S18 -> everyonesBucklet {
+							label L38: "/ redLight = 0" {
+								layout [ size: 94, 17 ]
+							}
+						}
+						edge __sd_Depth50: everyonesBucklet -> __sd_Depth5
+						edge _AAborted0: __sd_Depth5 -> _AAborted {
+							label L39: "1: engine == 0" {
+								layout [ size: 100, 17 ]
+							}
+						}
+						edge __sd_S90: __sd_Depth5 -> __sd_S9 {
+							label L40: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __te_S100: __sd_S9 -> __te_S10_g6376 {
+							label L41: "1: seatbelts == 0 && b_t_set" {
+								layout [ size: 197, 17 ]
+							}
+						}
+						edge everyonesBucklet0_g6355: __sd_S9 -> everyonesBucklet {
+							label L42: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __sd_Depth60: someonesNotBucklet -> __sd_Depth6
+						edge _AAborted0_g4011: __sd_Depth6 -> _AAborted {
+							label L43: "1: engine == 0" {
+								layout [ size: 100, 17 ]
+							}
+						}
+						edge __sd_S110: __sd_Depth6 -> __sd_S11 {
+							label L44: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __te_S130: __sd_S11 -> __te_S13 {
+							label L45: "1: seatbelts && b_t_set" {
+								layout [ size: 163, 17 ]
+							}
+						}
+						edge __sd_S120: __sd_S11 -> __sd_S12 {
+							label L46: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __te_S160: __sd_S12 -> __te_S16 {
+							label L47: "1: b_t_set && seatbelts == 0 && beeper_time >= 30" {
+								layout [ size: 359, 17 ]
+							}
+						}
+						edge someonesNotBucklet0_g9130: __sd_S12 -> someonesNotBucklet {
+							label L48: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __sd_Depth70: someonesNotBucklet30Secs -> __sd_Depth7
+						edge _AAborted0_g9010: __sd_Depth7 -> _AAborted {
+							label L49: "1: engine == 0" {
+								layout [ size: 100, 17 ]
+							}
+						}
+						edge __sd_S140: __sd_Depth7 -> __sd_S14 {
+							label L50: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __te_S180: __sd_S14 -> __te_S18 {
+							label L51: "1: seatbelts" {
+								layout [ size: 82, 17 ]
+							}
+						}
+						edge someonesNotBucklet30Secs0_g5866: __sd_S14 -> someonesNotBucklet30Secs {
+							label L52: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+					}
+				}
+				node __te_S19 {
+					layout [ size: 85, 34 ]
+				}
+				node __te_S20 {
+					layout [ size: 85, 34 ]
+				}
+				node engineOff {
+					layout [ size: 91, 34 ]
+				}
+				node __sd_Depth4 {
+					layout [ size: 113, 34 ]
+				}
+				edge __te_S190: engineOn -> __te_S19
+				edge __te_S200: __te_S19 -> __te_S20 {
+					label L26: "/ beeper = 0" {
+						layout [ size: 85, 17 ]
+					}
+				}
+				edge engineOff0: __te_S20 -> engineOff {
+					label L27: "/ redLight = 0" {
+						layout [ size: 94, 17 ]
+					}
+				}
+				edge __sd_Depth40: engineOff -> __sd_Depth4
+				edge engineOn0: __sd_Depth4 -> engineOn {
+					label L28: "1: engine" {
+						layout [ size: 65, 17 ]
+					}
+				}
+				edge engineOff0_g3565: __sd_Depth4 -> engineOff {
+					label L29: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+			}
+		}
+		node __EA_Init {
+			layout [ size: 85, 34 ]
+		}
+		node __EA_Done {
+			layout [ size: 107, 40 ]
+		}
+		node __EA_C {
+			layout [ size: 74, 34 ]
+		}
+		node __EA_C1 {
+			layout [ size: 83, 34 ]
+		}
+		node __EA_C2 {
+			layout [ size: 83, 34 ]
+		}
+		node __EA_C3 {
+			layout [ size: 83, 34 ]
+		}
+		edge __EA_Done0: __EA_Main -> __EA_Done
+		edge __EA_C0: __EA_Init -> __EA_C {
+			label L1: "/ domelight_time = 0" {
+				layout [ size: 142, 17 ]
+			}
+		}
+		edge __EA_C10: __EA_C -> __EA_C1 {
+			label L2: "/ beeper_time = 0" {
+				layout [ size: 123, 17 ]
+			}
+		}
+		edge __EA_C20: __EA_C1 -> __EA_C2 {
+			label L3: "/ domeLight = 0" {
+				layout [ size: 109, 17 ]
+			}
+		}
+		edge __EA_C30: __EA_C2 -> __EA_C3 {
+			label L4: "/ redLight = 0" {
+				layout [ size: 94, 17 ]
+			}
+		}
+		edge __EA_Main0: __EA_C3 -> __EA_Main {
+			label L5: "/ beeper = 0" {
+				layout [ size: 85, 17 ]
+			}
+		}
+	}
+}

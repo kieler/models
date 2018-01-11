@@ -1,0 +1,1748 @@
+graph G1
+node BarcodeReader {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node __sd_Depth1 {
+			layout [ size: 113, 34 ]
+		}
+		node scan {
+			algorithm: org.eclipse.elk.box
+			node __EA_Entry {
+				node __EA_Main {
+					algorithm: org.eclipse.elk.box
+					node calibrateSensor {
+						node waitSecondBar {
+							layout [ size: 127, 34 ]
+						}
+						node waitThirdBar {
+							layout [ size: 111, 34 ]
+						}
+						node calibrationDone {
+							layout [ size: 138, 40 ]
+						}
+						node __te_S9 {
+							layout [ size: 77, 34 ]
+						}
+						node __te_S10 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S11 {
+							layout [ size: 84, 34 ]
+						}
+						node __te_S12 {
+							layout [ size: 85, 34 ]
+						}
+						node waitFirstBar {
+							layout [ size: 105, 34 ]
+						}
+						node __sd_Depth2 {
+							layout [ size: 113, 34 ]
+						}
+						node __sd_S9 {
+							layout [ size: 80, 34 ]
+						}
+						node __sd_Pause3 {
+							layout [ size: 114, 34 ]
+						}
+						node __sd_Depth3 {
+							layout [ size: 113, 34 ]
+						}
+						node __sd_Pause4 {
+							layout [ size: 114, 34 ]
+						}
+						node __sd_Depth4 {
+							layout [ size: 113, 34 ]
+						}
+						edge calibrationDone0: waitSecondBar -> calibrationDone {
+							label L70: "1: _Atrig" {
+								layout [ size: 58, 17 ]
+							}
+						}
+						edge __sd_Pause30: waitSecondBar -> __sd_Pause3 {
+							label L71: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge calibrationDone0_g5461: waitThirdBar -> calibrationDone {
+							label L72: "1: _Atrig" {
+								layout [ size: 58, 17 ]
+							}
+						}
+						edge __sd_Pause40: waitThirdBar -> __sd_Pause4 {
+							label L73: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge waitSecondBar0: __te_S9 -> waitSecondBar {
+							label L74: "/ calibration = currentPosition" {
+								layout [ size: 210, 17 ]
+							}
+						}
+						edge __te_S110: __te_S10 -> __te_S11 {
+							label L75: "/ _BarcodeReader_local__region0_calibration_helper = currentPosition" {
+								layout [ size: 503, 17 ]
+							}
+						}
+						edge waitThirdBar0: __te_S11 -> waitThirdBar {
+							label L76: "/ calibration = _BarcodeReader_local__region0_calibration_helper - calibration" {
+								layout [ size: 554, 17 ]
+							}
+						}
+						edge calibrationDone0_g0174: __te_S12 -> calibrationDone {
+							label L77: "/ calibration = (calibration + (currentPosition - _BarcodeReader_local__region0_calibration_helper)) / 2" {
+								layout [ size: 721, 17 ]
+							}
+						}
+						edge __sd_Depth20: waitFirstBar -> __sd_Depth2
+						edge __te_S90: __sd_Depth2 -> __te_S9 {
+							label L78: "1: color == 7" {
+								layout [ size: 87, 17 ]
+							}
+						}
+						edge __sd_S90: __sd_Depth2 -> __sd_S9 {
+							label L79: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge calibrationDone0_g0588: __sd_S9 -> calibrationDone {
+							label L80: "1: _Atrig" {
+								layout [ size: 58, 17 ]
+							}
+						}
+						edge waitFirstBar0: __sd_S9 -> waitFirstBar {
+							label L81: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __sd_Depth30: __sd_Pause3 -> __sd_Depth3
+						edge __te_S100: __sd_Depth3 -> __te_S10 {
+							label L82: "1: color == 6" {
+								layout [ size: 87, 17 ]
+							}
+						}
+						edge waitSecondBar0_g4879: __sd_Depth3 -> waitSecondBar {
+							label L83: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __sd_Depth40: __sd_Pause4 -> __sd_Depth4
+						edge __te_S120: __sd_Depth4 -> __te_S12 {
+							label L84: "1: color == 7" {
+								layout [ size: 87, 17 ]
+							}
+						}
+						edge waitThirdBar0_g4733: __sd_Depth4 -> waitThirdBar {
+							label L85: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+					}
+					node scanBarcode {
+						node blackFlank {
+							algorithm: org.eclipse.elk.box
+							node __EA_Entry_g1492 {
+								node __EA_Done {
+									layout [ size: 107, 40 ]
+								}
+								node __sd_Depth6 {
+									layout [ size: 113, 34 ]
+								}
+								node __te_S16 {
+									layout [ size: 85, 34 ]
+								}
+								edge __te_S160: __sd_Depth6 -> __te_S16 {
+									label L133: "/ barcode_raw[index] = 1" {
+										layout [ size: 174, 17 ]
+									}
+								}
+								edge __EA_Done0: __te_S16 -> __EA_Done {
+									label L134: "/ index++" {
+										layout [ size: 65, 17 ]
+									}
+								}
+							}
+						}
+						node __sd_Depth7 {
+							layout [ size: 113, 34 ]
+						}
+						node whiteFlank {
+							algorithm: org.eclipse.elk.box
+							node __EA_Entry_g4896 {
+								node __EA_Done_g2770 {
+									layout [ size: 107, 40 ]
+								}
+								node __sd_Depth8 {
+									layout [ size: 113, 34 ]
+								}
+								node __te_S30 {
+									layout [ size: 85, 34 ]
+								}
+								edge __te_S300: __sd_Depth8 -> __te_S30 {
+									label L135: "/ barcode_raw[index] = 0" {
+										layout [ size: 174, 17 ]
+									}
+								}
+								edge __EA_Done0_g0525: __te_S30 -> __EA_Done_g2770 {
+									label L136: "/ index++" {
+										layout [ size: 65, 17 ]
+									}
+								}
+							}
+						}
+						node __sd_Depth9 {
+							layout [ size: 113, 34 ]
+						}
+						node _AAborted {
+							layout [ size: 100, 40 ]
+						}
+						node __EA_Exit {
+							layout [ size: 90, 34 ]
+						}
+						node __EA_Exit1 {
+							layout [ size: 99, 34 ]
+						}
+						node __te_S13 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S14 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S17 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S18 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S19 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S20 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S21 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S22 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S23 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S24 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S25 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S26 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S27 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S28 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S31 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S32 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S33 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S34 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S35 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S36 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S37 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S38 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S39 {
+							layout [ size: 85, 34 ]
+						}
+						node waitStartDelim {
+							layout [ size: 124, 34 ]
+						}
+						node __sd_Depth5 {
+							layout [ size: 113, 34 ]
+						}
+						node __sd_S15 {
+							layout [ size: 88, 34 ]
+						}
+						node __sd_S17 {
+							layout [ size: 88, 34 ]
+						}
+						node __sd_S18 {
+							layout [ size: 88, 34 ]
+						}
+						node __sd_S19 {
+							layout [ size: 88, 34 ]
+						}
+						node __sd_S27 {
+							layout [ size: 88, 34 ]
+						}
+						node __sd_S28 {
+							layout [ size: 88, 34 ]
+						}
+						node __sd_Pause10 {
+							layout [ size: 122, 34 ]
+						}
+						node __sd_Depth10 {
+							layout [ size: 121, 34 ]
+						}
+						node __sd_Pause11 {
+							layout [ size: 121, 34 ]
+						}
+						node __sd_Depth11 {
+							layout [ size: 120, 34 ]
+						}
+						edge __EA_Exit0: blackFlank -> __EA_Exit
+						edge __te_S170: __sd_Depth7 -> __te_S17 {
+							label L86: "1: currentPosition - lastPosition >= 4 * (calibration - 2) - 1" {
+								layout [ size: 397, 17 ]
+							}
+						}
+						edge __sd_S170: __sd_Depth7 -> __sd_S17 {
+							label L87: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __EA_Exit10: whiteFlank -> __EA_Exit1
+						edge __te_S310: __sd_Depth9 -> __te_S31 {
+							label L88: "1: currentPosition - lastPosition >= 3 * (calibration - 1)" {
+								layout [ size: 375, 17 ]
+							}
+						}
+						edge __sd_S270: __sd_Depth9 -> __sd_S27 {
+							label L89: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge _AAborted0: __EA_Exit -> _AAborted {
+							label L90: "1: _Atrig" {
+								layout [ size: 58, 17 ]
+							}
+						}
+						edge __sd_Pause100: __EA_Exit -> __sd_Pause10 {
+							label L91: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge _AAborted0_g4296: __EA_Exit1 -> _AAborted {
+							label L92: "1: _Atrig" {
+								layout [ size: 58, 17 ]
+							}
+						}
+						edge __sd_Pause110: __EA_Exit1 -> __sd_Pause11 {
+							label L93: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __te_S140: __te_S13 -> __te_S14 {
+							label L94: "/ lastPosition = currentPosition" {
+								layout [ size: 219, 17 ]
+							}
+						}
+						edge blackFlank0: __te_S14 -> blackFlank {
+							label L95: "/ flanks++" {
+								layout [ size: 68, 17 ]
+							}
+						}
+						edge __te_S180: __te_S17 -> __te_S18 {
+							label L96: "/ barcode_raw[index] = 1" {
+								layout [ size: 174, 17 ]
+							}
+						}
+						edge __te_S190: __te_S18 -> __te_S19 {
+							label L97: "/ barcode_raw[(index + 1)] = 1" {
+								layout [ size: 209, 17 ]
+							}
+						}
+						edge __te_S200: __te_S19 -> __te_S20 {
+							label L98: "/ barcode_raw[(index + 2)] = 1" {
+								layout [ size: 209, 17 ]
+							}
+						}
+						edge __te_S210: __te_S20 -> __te_S21 {
+							label L99: "/ index += 3" {
+								layout [ size: 82, 17 ]
+							}
+						}
+						edge whiteFlank0: __te_S21 -> whiteFlank {
+							label L100: "/ lastPosition = currentPosition" {
+								layout [ size: 219, 17 ]
+							}
+						}
+						edge __te_S230: __te_S22 -> __te_S23 {
+							label L101: "/ barcode_raw[index] = 1" {
+								layout [ size: 174, 17 ]
+							}
+						}
+						edge __te_S240: __te_S23 -> __te_S24 {
+							label L102: "/ barcode_raw[(index + 1)] = 1" {
+								layout [ size: 209, 17 ]
+							}
+						}
+						edge __te_S250: __te_S24 -> __te_S25 {
+							label L103: "/ index += 2" {
+								layout [ size: 82, 17 ]
+							}
+						}
+						edge whiteFlank0_g8652: __te_S25 -> whiteFlank {
+							label L104: "/ lastPosition = currentPosition" {
+								layout [ size: 219, 17 ]
+							}
+						}
+						edge __te_S270: __te_S26 -> __te_S27 {
+							label L105: "/ barcode_raw[index] = 1" {
+								layout [ size: 174, 17 ]
+							}
+						}
+						edge __te_S280: __te_S27 -> __te_S28 {
+							label L106: "/ index++" {
+								layout [ size: 65, 17 ]
+							}
+						}
+						edge whiteFlank0_g9761: __te_S28 -> whiteFlank {
+							label L107: "/ lastPosition = currentPosition" {
+								layout [ size: 219, 17 ]
+							}
+						}
+						edge __te_S320: __te_S31 -> __te_S32 {
+							label L108: "/ barcode_raw[index] = 0" {
+								layout [ size: 174, 17 ]
+							}
+						}
+						edge __te_S330: __te_S32 -> __te_S33 {
+							label L109: "/ barcode_raw[(index + 1)] = 0" {
+								layout [ size: 209, 17 ]
+							}
+						}
+						edge __te_S340: __te_S33 -> __te_S34 {
+							label L110: "/ index += 2" {
+								layout [ size: 82, 17 ]
+							}
+						}
+						edge blackFlank0_g8993: __te_S34 -> blackFlank {
+							label L111: "/ lastPosition = currentPosition" {
+								layout [ size: 219, 17 ]
+							}
+						}
+						edge __te_S360: __te_S35 -> __te_S36 {
+							label L112: "/ barcode_raw[index] = 0" {
+								layout [ size: 174, 17 ]
+							}
+						}
+						edge __te_S370: __te_S36 -> __te_S37 {
+							label L113: "/ index++" {
+								layout [ size: 65, 17 ]
+							}
+						}
+						edge blackFlank0_g2901: __te_S37 -> blackFlank {
+							label L114: "/ lastPosition = currentPosition" {
+								layout [ size: 219, 17 ]
+							}
+						}
+						edge __sd_Depth70: __te_S38 -> __sd_Depth7 {
+							label L115: "/ flanks++" {
+								layout [ size: 68, 17 ]
+							}
+						}
+						edge __sd_Depth90: __te_S39 -> __sd_Depth9 {
+							label L116: "/ flanks++" {
+								layout [ size: 68, 17 ]
+							}
+						}
+						edge __sd_Depth50: waitStartDelim -> __sd_Depth5
+						edge __te_S130: __sd_Depth5 -> __te_S13 {
+							label L117: "1: color == 7" {
+								layout [ size: 87, 17 ]
+							}
+						}
+						edge __sd_S150: __sd_Depth5 -> __sd_S15 {
+							label L118: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge _AAborted0_g2096: __sd_S15 -> _AAborted {
+							label L119: "1: _Atrig" {
+								layout [ size: 58, 17 ]
+							}
+						}
+						edge waitStartDelim0: __sd_S15 -> waitStartDelim {
+							label L120: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __te_S220: __sd_S17 -> __te_S22 {
+							label L121: "1: currentPosition - lastPosition >= 3 * (calibration - 2) - 1" {
+								layout [ size: 397, 17 ]
+							}
+						}
+						edge __sd_S180: __sd_S17 -> __sd_S18 {
+							label L122: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __te_S260: __sd_S18 -> __te_S26 {
+							label L123: "1: currentPosition - lastPosition >= 2 * (calibration - 2) - 1" {
+								layout [ size: 397, 17 ]
+							}
+						}
+						edge __sd_S190: __sd_S18 -> __sd_S19 {
+							label L124: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge whiteFlank0_g0160: __sd_S19 -> whiteFlank {
+							label L125: "/ lastPosition = currentPosition" {
+								layout [ size: 219, 17 ]
+							}
+						}
+						edge __te_S350: __sd_S27 -> __te_S35 {
+							label L126: "1: currentPosition - lastPosition >= 2 * (calibration - 1)" {
+								layout [ size: 375, 17 ]
+							}
+						}
+						edge __sd_S280: __sd_S27 -> __sd_S28 {
+							label L127: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge blackFlank0_g3867: __sd_S28 -> blackFlank {
+							label L128: "/ lastPosition = currentPosition" {
+								layout [ size: 219, 17 ]
+							}
+						}
+						edge __sd_Depth100: __sd_Pause10 -> __sd_Depth10
+						edge __te_S380: __sd_Depth10 -> __te_S38 {
+							label L129: "1: color == 6" {
+								layout [ size: 87, 17 ]
+							}
+						}
+						edge __EA_Exit0_g6783: __sd_Depth10 -> __EA_Exit {
+							label L130: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __sd_Depth110: __sd_Pause11 -> __sd_Depth11
+						edge __te_S390: __sd_Depth11 -> __te_S39 {
+							label L131: "1: color == 7" {
+								layout [ size: 87, 17 ]
+							}
+						}
+						edge __EA_Exit10_g4533: __sd_Depth11 -> __EA_Exit1 {
+							label L132: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+					}
+					node _ACtrl {
+						node _ADone {
+							layout [ size: 81, 40 ]
+						}
+						node __te_S40 {
+							layout [ size: 85, 34 ]
+						}
+						node _ARun {
+							layout [ size: 67, 34 ]
+						}
+						node __sd_Depth12 {
+							layout [ size: 121, 34 ]
+						}
+						edge _ADone0: __te_S40 -> _ADone {
+							label L137: "/ _Atrig = true" {
+								layout [ size: 95, 17 ]
+							}
+						}
+						edge __sd_Depth120: _ARun -> __sd_Depth12
+						edge __te_S400: __sd_Depth12 -> __te_S40 {
+							label L138: "1: flanks == 24 || UP" {
+								layout [ size: 138, 17 ]
+							}
+						}
+						edge _ARun0: __sd_Depth12 -> _ARun {
+							label L139: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+					}
+				}
+				node __EA_Init {
+					layout [ size: 85, 34 ]
+				}
+				node __EA_Done_g8068 {
+					layout [ size: 107, 40 ]
+				}
+				edge __EA_Done0_g7155: __EA_Main -> __EA_Done_g8068
+				edge __EA_Main0: __EA_Init -> __EA_Main {
+					label L69: "/ _Atrig = false" {
+						layout [ size: 100, 17 ]
+					}
+				}
+			}
+		}
+		node decode {
+			algorithm: org.eclipse.elk.box
+			node __EA_Entry1 {
+				node __EA_Main_g5673 {
+					algorithm: org.eclipse.elk.box
+					node N2 {
+						node decodeBar {
+							layout [ size: 98, 34 ]
+						}
+						node selectNextBar {
+							layout [ size: 121, 34 ]
+						}
+						node done {
+							layout [ size: 62, 40 ]
+						}
+						node _c {
+							layout [ size: 37, 34 ]
+						}
+						node __sd_Depth13 {
+							layout [ size: 121, 34 ]
+						}
+						node __te_S44 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S45 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S46 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S47 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S48 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S49 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S50 {
+							layout [ size: 85, 34 ]
+						}
+						node __sd_S51 {
+							layout [ size: 88, 34 ]
+						}
+						node __sd_Depth15 {
+							layout [ size: 121, 34 ]
+						}
+						node __te_S53 {
+							layout [ size: 85, 34 ]
+						}
+						node __sd_Depth16 {
+							layout [ size: 121, 34 ]
+						}
+						node __te_S55 {
+							layout [ size: 85, 34 ]
+						}
+						node __sd_Depth17 {
+							layout [ size: 121, 34 ]
+						}
+						node __te_S57 {
+							layout [ size: 85, 34 ]
+						}
+						node __sd_Depth18 {
+							layout [ size: 121, 34 ]
+						}
+						node __te_S59 {
+							layout [ size: 85, 34 ]
+						}
+						node __sd_Depth19 {
+							layout [ size: 121, 34 ]
+						}
+						node __te_S61 {
+							layout [ size: 85, 34 ]
+						}
+						node __sd_Depth20_g7312 {
+							layout [ size: 121, 34 ]
+						}
+						node __te_S63 {
+							layout [ size: 85, 34 ]
+						}
+						node __sd_Depth21 {
+							layout [ size: 121, 34 ]
+						}
+						node __te_S65 {
+							layout [ size: 85, 34 ]
+						}
+						node __sd_Depth22 {
+							layout [ size: 121, 34 ]
+						}
+						node __te_S67 {
+							layout [ size: 85, 34 ]
+						}
+						node __sd_Depth23 {
+							layout [ size: 121, 34 ]
+						}
+						node __te_S69 {
+							layout [ size: 85, 34 ]
+						}
+						node __sd_Depth24 {
+							layout [ size: 121, 34 ]
+						}
+						node __te_S71 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S72 {
+							layout [ size: 85, 34 ]
+						}
+						node __sd_S85 {
+							layout [ size: 88, 34 ]
+						}
+						node __te_S74 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S75 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S76 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S77 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S78 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S79 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S80 {
+							layout [ size: 85, 34 ]
+						}
+						node __sd_Pause14 {
+							layout [ size: 122, 34 ]
+						}
+						node __sd_Depth14 {
+							layout [ size: 121, 34 ]
+						}
+						node __sd_S42 {
+							layout [ size: 88, 34 ]
+						}
+						node __sd_S43 {
+							layout [ size: 88, 34 ]
+						}
+						node __sd_S44 {
+							layout [ size: 88, 34 ]
+						}
+						node __sd_S45 {
+							layout [ size: 88, 34 ]
+						}
+						node __sd_S46 {
+							layout [ size: 88, 34 ]
+						}
+						node __sd_S47 {
+							layout [ size: 88, 34 ]
+						}
+						node __sd_S48 {
+							layout [ size: 88, 34 ]
+						}
+						node __sd_S49 {
+							layout [ size: 88, 34 ]
+						}
+						node __sd_S50 {
+							layout [ size: 88, 34 ]
+						}
+						node __sd_Pause25 {
+							layout [ size: 122, 34 ]
+						}
+						node __sd_Depth25 {
+							layout [ size: 121, 34 ]
+						}
+						node __sd_S84 {
+							layout [ size: 88, 34 ]
+						}
+						edge done0: decodeBar -> done {
+							label L144: "1: (_Atrig1 || _Atrig2) || _Atrig3" {
+								layout [ size: 206, 17 ]
+							}
+						}
+						edge __sd_Pause140: decodeBar -> __sd_Pause14 {
+							label L145: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge done0_g8618: selectNextBar -> done {
+							label L146: "1: (_Atrig1 || _Atrig2) || _Atrig3" {
+								layout [ size: 206, 17 ]
+							}
+						}
+						edge __sd_Pause250: selectNextBar -> __sd_Pause25 {
+							label L147: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge done0_g5707: _c -> done {
+							label L148: "/ _termD = true" {
+								layout [ size: 105, 17 ]
+							}
+						}
+						edge __te_S440: __sd_Depth13 -> __te_S44 {
+							label L149: "/ _BarcodeReader_local_bar0 = barcode_raw[i + 3]" {
+								layout [ size: 355, 17 ]
+							}
+						}
+						edge __te_S450: __te_S44 -> __te_S45 {
+							label L150: "/ _BarcodeReader_local_bar1 = barcode_raw[i + 4]" {
+								layout [ size: 355, 17 ]
+							}
+						}
+						edge __te_S460: __te_S45 -> __te_S46 {
+							label L151: "/ _BarcodeReader_local_bar2 = barcode_raw[i + 5]" {
+								layout [ size: 355, 17 ]
+							}
+						}
+						edge __te_S470: __te_S46 -> __te_S47 {
+							label L152: "/ _BarcodeReader_local_bar3 = barcode_raw[i + 6]" {
+								layout [ size: 355, 17 ]
+							}
+						}
+						edge __te_S480: __te_S47 -> __te_S48 {
+							label L153: "/ _BarcodeReader_local_bar4 = barcode_raw[i + 7]" {
+								layout [ size: 355, 17 ]
+							}
+						}
+						edge __te_S490: __te_S48 -> __te_S49 {
+							label L154: "/ _BarcodeReader_local_bar5 = barcode_raw[i + 8]" {
+								layout [ size: 355, 17 ]
+							}
+						}
+						edge __te_S500: __te_S49 -> __te_S50 {
+							label L155: "/ _BarcodeReader_local_bar6 = barcode_raw[i + 9]" {
+								layout [ size: 355, 17 ]
+							}
+						}
+						edge decodeBar0: __te_S50 -> decodeBar {
+							label L156: "/ i += 10" {
+								layout [ size: 55, 17 ]
+							}
+						}
+						edge _c0: __sd_S51 -> _c {
+							label L157: "/ error = true" {
+								layout [ size: 90, 17 ]
+							}
+						}
+						edge __te_S530: __sd_Depth15 -> __te_S53 {
+							label L158: "/ barcode_dec[x] = 0" {
+								layout [ size: 144, 17 ]
+							}
+						}
+						edge selectNextBar0: __te_S53 -> selectNextBar {
+							label L159: "/ x += 1" {
+								layout [ size: 51, 17 ]
+							}
+						}
+						edge __te_S550: __sd_Depth16 -> __te_S55 {
+							label L160: "/ barcode_dec[x] = 1" {
+								layout [ size: 144, 17 ]
+							}
+						}
+						edge selectNextBar0_g9363: __te_S55 -> selectNextBar {
+							label L161: "/ x += 1" {
+								layout [ size: 51, 17 ]
+							}
+						}
+						edge __te_S570: __sd_Depth17 -> __te_S57 {
+							label L162: "/ barcode_dec[x] = 2" {
+								layout [ size: 144, 17 ]
+							}
+						}
+						edge selectNextBar0_g5603: __te_S57 -> selectNextBar {
+							label L163: "/ x += 1" {
+								layout [ size: 51, 17 ]
+							}
+						}
+						edge __te_S590: __sd_Depth18 -> __te_S59 {
+							label L164: "/ barcode_dec[x] = 3" {
+								layout [ size: 144, 17 ]
+							}
+						}
+						edge selectNextBar0_g8308: __te_S59 -> selectNextBar {
+							label L165: "/ x += 1" {
+								layout [ size: 51, 17 ]
+							}
+						}
+						edge __te_S610: __sd_Depth19 -> __te_S61 {
+							label L166: "/ barcode_dec[x] = 4" {
+								layout [ size: 144, 17 ]
+							}
+						}
+						edge selectNextBar0_g0816: __te_S61 -> selectNextBar {
+							label L167: "/ x += 1" {
+								layout [ size: 51, 17 ]
+							}
+						}
+						edge __te_S630: __sd_Depth20_g7312 -> __te_S63 {
+							label L168: "/ barcode_dec[x] = 5" {
+								layout [ size: 144, 17 ]
+							}
+						}
+						edge selectNextBar0_g9357: __te_S63 -> selectNextBar {
+							label L169: "/ x += 1" {
+								layout [ size: 51, 17 ]
+							}
+						}
+						edge __te_S650: __sd_Depth21 -> __te_S65 {
+							label L170: "/ barcode_dec[x] = 6" {
+								layout [ size: 144, 17 ]
+							}
+						}
+						edge selectNextBar0_g7203: __te_S65 -> selectNextBar {
+							label L171: "/ x += 1" {
+								layout [ size: 51, 17 ]
+							}
+						}
+						edge __te_S670: __sd_Depth22 -> __te_S67 {
+							label L172: "/ barcode_dec[x] = 7" {
+								layout [ size: 144, 17 ]
+							}
+						}
+						edge selectNextBar0_g0097: __te_S67 -> selectNextBar {
+							label L173: "/ x += 1" {
+								layout [ size: 51, 17 ]
+							}
+						}
+						edge __te_S690: __sd_Depth23 -> __te_S69 {
+							label L174: "/ barcode_dec[x] = 8" {
+								layout [ size: 144, 17 ]
+							}
+						}
+						edge selectNextBar0_g9132: __te_S69 -> selectNextBar {
+							label L175: "/ x += 1" {
+								layout [ size: 51, 17 ]
+							}
+						}
+						edge __te_S710: __sd_Depth24 -> __te_S71 {
+							label L176: "/ barcode_dec[x] = 9" {
+								layout [ size: 144, 17 ]
+							}
+						}
+						edge selectNextBar0_g8556: __te_S71 -> selectNextBar {
+							label L177: "/ x += 1" {
+								layout [ size: 51, 17 ]
+							}
+						}
+						edge _c0_g6484: __te_S72 -> _c {
+							label L178: "/ error = true" {
+								layout [ size: 90, 17 ]
+							}
+						}
+						edge __te_S740: __sd_S85 -> __te_S74 {
+							label L179: "/ _BarcodeReader_local_bar0 = barcode_raw[i + 0]" {
+								layout [ size: 355, 17 ]
+							}
+						}
+						edge __te_S750: __te_S74 -> __te_S75 {
+							label L180: "/ _BarcodeReader_local_bar1 = barcode_raw[i + 1]" {
+								layout [ size: 355, 17 ]
+							}
+						}
+						edge __te_S760: __te_S75 -> __te_S76 {
+							label L181: "/ _BarcodeReader_local_bar2 = barcode_raw[i + 2]" {
+								layout [ size: 355, 17 ]
+							}
+						}
+						edge __te_S770: __te_S76 -> __te_S77 {
+							label L182: "/ _BarcodeReader_local_bar3 = barcode_raw[i + 3]" {
+								layout [ size: 355, 17 ]
+							}
+						}
+						edge __te_S780: __te_S77 -> __te_S78 {
+							label L183: "/ _BarcodeReader_local_bar4 = barcode_raw[i + 4]" {
+								layout [ size: 355, 17 ]
+							}
+						}
+						edge __te_S790: __te_S78 -> __te_S79 {
+							label L184: "/ _BarcodeReader_local_bar5 = barcode_raw[i + 5]" {
+								layout [ size: 355, 17 ]
+							}
+						}
+						edge __te_S800: __te_S79 -> __te_S80 {
+							label L185: "/ _BarcodeReader_local_bar6 = barcode_raw[i + 6]" {
+								layout [ size: 355, 17 ]
+							}
+						}
+						edge decodeBar0_g6920: __te_S80 -> decodeBar {
+							label L186: "/ i += 7" {
+								layout [ size: 47, 17 ]
+							}
+						}
+						edge __sd_Depth140: __sd_Pause14 -> __sd_Depth14
+						edge __sd_Depth150: __sd_Depth14 -> __sd_Depth15 {
+							label L187: "1: _BarcodeReader_local_bar0 == 0 && _BarcodeReader_local_bar1 == 0 && _BarcodeReader_local_bar2 == 0 && _BarcodeReader_local_bar3 == 1 && _BarcodeReader_local_bar4 == 1 && _BarcodeReader_local_bar5 == 0 && _BarcodeReader_local_bar6 == 1" {
+								layout [ size: 1835, 17 ]
+							}
+						}
+						edge __sd_S420: __sd_Depth14 -> __sd_S42 {
+							label L188: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __sd_Depth160: __sd_S42 -> __sd_Depth16 {
+							label L189: "1: _BarcodeReader_local_bar0 == 0 && _BarcodeReader_local_bar1 == 0 && _BarcodeReader_local_bar2 == 1 && _BarcodeReader_local_bar3 == 1 && _BarcodeReader_local_bar4 == 0 && _BarcodeReader_local_bar5 == 0 && _BarcodeReader_local_bar6 == 1" {
+								layout [ size: 1835, 17 ]
+							}
+						}
+						edge __sd_S430: __sd_S42 -> __sd_S43 {
+							label L190: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __sd_Depth170: __sd_S43 -> __sd_Depth17 {
+							label L191: "1: _BarcodeReader_local_bar0 == 0 && _BarcodeReader_local_bar1 == 0 && _BarcodeReader_local_bar2 == 1 && _BarcodeReader_local_bar3 == 0 && _BarcodeReader_local_bar4 == 0 && _BarcodeReader_local_bar5 == 1 && _BarcodeReader_local_bar6 == 1" {
+								layout [ size: 1835, 17 ]
+							}
+						}
+						edge __sd_S440: __sd_S43 -> __sd_S44 {
+							label L192: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __sd_Depth180: __sd_S44 -> __sd_Depth18 {
+							label L193: "1: _BarcodeReader_local_bar0 == 0 && _BarcodeReader_local_bar1 == 1 && _BarcodeReader_local_bar2 == 1 && _BarcodeReader_local_bar3 == 1 && _BarcodeReader_local_bar4 == 1 && _BarcodeReader_local_bar5 == 0 && _BarcodeReader_local_bar6 == 1" {
+								layout [ size: 1835, 17 ]
+							}
+						}
+						edge __sd_S450: __sd_S44 -> __sd_S45 {
+							label L194: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __sd_Depth190: __sd_S45 -> __sd_Depth19 {
+							label L195: "1: _BarcodeReader_local_bar0 == 0 && _BarcodeReader_local_bar1 == 1 && _BarcodeReader_local_bar2 == 0 && _BarcodeReader_local_bar3 == 0 && _BarcodeReader_local_bar4 == 0 && _BarcodeReader_local_bar5 == 1 && _BarcodeReader_local_bar6 == 1" {
+								layout [ size: 1835, 17 ]
+							}
+						}
+						edge __sd_S460: __sd_S45 -> __sd_S46 {
+							label L196: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __sd_Depth200: __sd_S46 -> __sd_Depth20_g7312 {
+							label L197: "1: _BarcodeReader_local_bar0 == 0 && _BarcodeReader_local_bar1 == 1 && _BarcodeReader_local_bar2 == 1 && _BarcodeReader_local_bar3 == 0 && _BarcodeReader_local_bar4 == 0 && _BarcodeReader_local_bar5 == 0 && _BarcodeReader_local_bar6 == 1" {
+								layout [ size: 1835, 17 ]
+							}
+						}
+						edge __sd_S470: __sd_S46 -> __sd_S47 {
+							label L198: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __sd_Depth210: __sd_S47 -> __sd_Depth21 {
+							label L199: "1: _BarcodeReader_local_bar0 == 0 && _BarcodeReader_local_bar1 == 1 && _BarcodeReader_local_bar2 == 0 && _BarcodeReader_local_bar3 == 1 && _BarcodeReader_local_bar4 == 1 && _BarcodeReader_local_bar5 == 1 && _BarcodeReader_local_bar6 == 1" {
+								layout [ size: 1835, 17 ]
+							}
+						}
+						edge __sd_S480: __sd_S47 -> __sd_S48 {
+							label L200: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __sd_Depth220: __sd_S48 -> __sd_Depth22 {
+							label L201: "1: _BarcodeReader_local_bar0 == 0 && _BarcodeReader_local_bar1 == 1 && _BarcodeReader_local_bar2 == 1 && _BarcodeReader_local_bar3 == 1 && _BarcodeReader_local_bar4 == 0 && _BarcodeReader_local_bar5 == 1 && _BarcodeReader_local_bar6 == 1" {
+								layout [ size: 1835, 17 ]
+							}
+						}
+						edge __sd_S490: __sd_S48 -> __sd_S49 {
+							label L202: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __sd_Depth230: __sd_S49 -> __sd_Depth23 {
+							label L203: "1: _BarcodeReader_local_bar0 == 0 && _BarcodeReader_local_bar1 == 1 && _BarcodeReader_local_bar2 == 1 && _BarcodeReader_local_bar3 == 0 && _BarcodeReader_local_bar4 == 1 && _BarcodeReader_local_bar5 == 1 && _BarcodeReader_local_bar6 == 1" {
+								layout [ size: 1835, 17 ]
+							}
+						}
+						edge __sd_S500: __sd_S49 -> __sd_S50 {
+							label L204: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __sd_Depth240: __sd_S50 -> __sd_Depth24 {
+							label L205: "1: _BarcodeReader_local_bar0 == 0 && _BarcodeReader_local_bar1 == 0 && _BarcodeReader_local_bar2 == 0 && _BarcodeReader_local_bar3 == 1 && _BarcodeReader_local_bar4 == 0 && _BarcodeReader_local_bar5 == 1 && _BarcodeReader_local_bar6 == 1" {
+								layout [ size: 1835, 17 ]
+							}
+						}
+						edge __sd_S510: __sd_S50 -> __sd_S51 {
+							label L206: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __sd_Depth250: __sd_Pause25 -> __sd_Depth25
+						edge __te_S720: __sd_Depth25 -> __te_S72 {
+							label L207: "1: i > 50" {
+								layout [ size: 54, 17 ]
+							}
+						}
+						edge __sd_S840: __sd_Depth25 -> __sd_S84 {
+							label L208: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge _c0_g8217: __sd_S84 -> _c {
+							label L209: "1: x == 4" {
+								layout [ size: 59, 17 ]
+							}
+						}
+						edge __sd_S850: __sd_S84 -> __sd_S85 {
+							label L210: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+					}
+					node _ACtrl1 {
+						node _ADone1 {
+							layout [ size: 90, 40 ]
+						}
+						node __te_S81 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S82 {
+							layout [ size: 85, 34 ]
+						}
+						node __te_S83 {
+							layout [ size: 85, 34 ]
+						}
+						node _ARun1 {
+							layout [ size: 75, 34 ]
+						}
+						node __sd_Depth26 {
+							layout [ size: 121, 34 ]
+						}
+						node __sd_S88 {
+							layout [ size: 88, 34 ]
+						}
+						node __sd_S89 {
+							layout [ size: 88, 34 ]
+						}
+						edge _ADone10: __te_S81 -> _ADone1 {
+							label L211: "/ _Atrig1 = true" {
+								layout [ size: 103, 17 ]
+							}
+						}
+						edge _ADone10_g9319: __te_S82 -> _ADone1 {
+							label L212: "/ _Atrig2 = true" {
+								layout [ size: 103, 17 ]
+							}
+						}
+						edge _ADone10_g7344: __te_S83 -> _ADone1 {
+							label L213: "/ _Atrig3 = true" {
+								layout [ size: 103, 17 ]
+							}
+						}
+						edge __sd_Depth260: _ARun1 -> __sd_Depth26
+						edge __te_S810: __sd_Depth26 -> __te_S81 {
+							label L214: "1: error" {
+								layout [ size: 52, 17 ]
+							}
+						}
+						edge __sd_S880: __sd_Depth26 -> __sd_S88 {
+							label L215: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __te_S820: __sd_S88 -> __te_S82 {
+							label L216: "1: 100 * barcode_dec[0] + 10 * barcode_dec[1] + barcode_dec[2] < 500 && _termD" {
+								layout [ size: 570, 17 ]
+							}
+						}
+						edge __sd_S890: __sd_S88 -> __sd_S89 {
+							label L217: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __te_S830: __sd_S89 -> __te_S83 {
+							label L218: "1: 100 * barcode_dec[0] + 10 * barcode_dec[1] + barcode_dec[2] >= 500 && _termD" {
+								layout [ size: 579, 17 ]
+							}
+						}
+						edge _ARun10: __sd_S89 -> _ARun1 {
+							label L219: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+					}
+				}
+				node __EA_Init_g4241 {
+					layout [ size: 85, 34 ]
+				}
+				node __EA_Done_g8016 {
+					layout [ size: 107, 40 ]
+				}
+				node __EA_C {
+					layout [ size: 74, 34 ]
+				}
+				node __EA_C1 {
+					layout [ size: 83, 34 ]
+				}
+				node __EA_C2 {
+					layout [ size: 83, 34 ]
+				}
+				edge __EA_Done0_g6416: __EA_Main_g5673 -> __EA_Done_g8016
+				edge __EA_C0: __EA_Init_g4241 -> __EA_C {
+					label L140: "/ _termD = false" {
+						layout [ size: 110, 17 ]
+					}
+				}
+				edge __EA_C10: __EA_C -> __EA_C1 {
+					label L141: "/ _Atrig1 = false" {
+						layout [ size: 108, 17 ]
+					}
+				}
+				edge __EA_C20: __EA_C1 -> __EA_C2 {
+					label L142: "/ _Atrig2 = false" {
+						layout [ size: 108, 17 ]
+					}
+				}
+				edge __EA_Main0_g4038: __EA_C2 -> __EA_Main_g5673 {
+					label L143: "/ _Atrig3 = false" {
+						layout [ size: 108, 17 ]
+					}
+				}
+			}
+		}
+		node done_g9712 {
+			layout [ size: 62, 40 ]
+		}
+		node __sd_Depth33 {
+			layout [ size: 121, 34 ]
+		}
+		node __EA_Init_g3551 {
+			layout [ size: 85, 34 ]
+		}
+		node __te_S {
+			layout [ size: 69, 34 ]
+		}
+		node __te_S1 {
+			layout [ size: 77, 34 ]
+		}
+		node __te_S2 {
+			layout [ size: 77, 34 ]
+		}
+		node __te_S3 {
+			layout [ size: 77, 34 ]
+		}
+		node __te_S4 {
+			layout [ size: 77, 34 ]
+		}
+		node __te_S5 {
+			layout [ size: 77, 34 ]
+		}
+		node __te_S6 {
+			layout [ size: 77, 34 ]
+		}
+		node __te_S7 {
+			layout [ size: 77, 34 ]
+		}
+		node __te_S8 {
+			layout [ size: 77, 34 ]
+		}
+		node __te_S41 {
+			layout [ size: 85, 34 ]
+		}
+		node __te_S42 {
+			layout [ size: 85, 34 ]
+		}
+		node __te_S84 {
+			layout [ size: 85, 34 ]
+		}
+		node __te_S85 {
+			layout [ size: 85, 34 ]
+		}
+		node __te_S86 {
+			layout [ size: 85, 34 ]
+		}
+		node __te_S87 {
+			layout [ size: 85, 34 ]
+		}
+		node __sd_S91 {
+			layout [ size: 88, 34 ]
+		}
+		node __te_S89 {
+			layout [ size: 85, 34 ]
+		}
+		node __te_S90_g6506 {
+			layout [ size: 85, 34 ]
+		}
+		node __te_S91 {
+			layout [ size: 85, 34 ]
+		}
+		node __te_S92 {
+			layout [ size: 85, 34 ]
+		}
+		node __te_S93 {
+			layout [ size: 85, 34 ]
+		}
+		node __te_S94 {
+			layout [ size: 85, 34 ]
+		}
+		node __te_S95 {
+			layout [ size: 85, 34 ]
+		}
+		node __te_S96 {
+			layout [ size: 85, 34 ]
+		}
+		node __te_S97 {
+			layout [ size: 85, 34 ]
+		}
+		node __te_S98 {
+			layout [ size: 85, 34 ]
+		}
+		node __te_S99 {
+			layout [ size: 85, 34 ]
+		}
+		node __te_S100_g9599 {
+			layout [ size: 93, 34 ]
+		}
+		node __te_S101 {
+			layout [ size: 93, 34 ]
+		}
+		node __te_S102 {
+			layout [ size: 93, 34 ]
+		}
+		node __sd_Depth32 {
+			layout [ size: 121, 34 ]
+		}
+		node __te_S104 {
+			layout [ size: 93, 34 ]
+		}
+		node __te_S105 {
+			layout [ size: 93, 34 ]
+		}
+		node __te_S106 {
+			layout [ size: 93, 34 ]
+		}
+		node __te_S107 {
+			layout [ size: 93, 34 ]
+		}
+		node __te_S108 {
+			layout [ size: 93, 34 ]
+		}
+		node waitStart {
+			layout [ size: 82, 34 ]
+		}
+		node __sd_Depth {
+			layout [ size: 105, 34 ]
+		}
+		node __sd_S1 {
+			layout [ size: 80, 34 ]
+		}
+		node __sd_S2 {
+			layout [ size: 80, 34 ]
+		}
+		node __sd_S3 {
+			layout [ size: 80, 34 ]
+		}
+		node __sd_S4 {
+			layout [ size: 80, 34 ]
+		}
+		node __sd_Pause1 {
+			layout [ size: 114, 34 ]
+		}
+		node checkParity {
+			layout [ size: 104, 34 ]
+		}
+		node __sd_Depth27 {
+			layout [ size: 121, 34 ]
+		}
+		node prepare_rotate {
+			layout [ size: 126, 34 ]
+		}
+		node __sd_Depth28 {
+			layout [ size: 121, 34 ]
+		}
+		node __sd_S93 {
+			layout [ size: 88, 34 ]
+		}
+		node start_rotate {
+			layout [ size: 102, 34 ]
+		}
+		node __sd_Depth29 {
+			layout [ size: 121, 34 ]
+		}
+		node __sd_S95 {
+			layout [ size: 88, 34 ]
+		}
+		node clockwise {
+			layout [ size: 89, 34 ]
+		}
+		node __sd_Depth30_g7343 {
+			layout [ size: 121, 34 ]
+		}
+		node counterClockwise {
+			layout [ size: 147, 34 ]
+		}
+		node __sd_Depth31 {
+			layout [ size: 121, 34 ]
+		}
+		node __sd_S100 {
+			layout [ size: 96, 34 ]
+		}
+		node __sd_S101 {
+			layout [ size: 96, 34 ]
+		}
+		edge __te_S30_g0105: __sd_Depth1 -> __te_S3 {
+			label L1: "1: speedmode == 0" {
+				layout [ size: 134, 17 ]
+			}
+		}
+		edge __sd_S30: __sd_Depth1 -> __sd_S3 {
+			label L2: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge __te_S410: scan -> __te_S41
+		edge __sd_Depth330: decode -> __sd_Depth33
+		edge done0_g9771: __sd_Depth33 -> done_g9712 {
+			label L3: "1: _Atrig1" {
+				layout [ size: 66, 17 ]
+			}
+		}
+		edge __sd_S1000: __sd_Depth33 -> __sd_S100 {
+			label L4: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge waitStart0: __EA_Init_g3551 -> waitStart {
+			label L5: "/ speedmode = 0" {
+				layout [ size: 117, 17 ]
+			}
+		}
+		edge __sd_Depth10_g2717: __te_S -> __sd_Depth1 {
+			label L6: "/ speedmode = 0" {
+				layout [ size: 117, 17 ]
+			}
+		}
+		edge __sd_Depth10_g1446: __te_S1 -> __sd_Depth1 {
+			label L7: "/ speedmode = 1" {
+				layout [ size: 117, 17 ]
+			}
+		}
+		edge __sd_Depth10_g7208: __te_S2 -> __sd_Depth1 {
+			label L8: "/ speedmode = 2" {
+				layout [ size: 117, 17 ]
+			}
+		}
+		edge __te_S40_g2223: __te_S3 -> __te_S4 {
+			label L9: "/ leftMotor_speed = 100" {
+				layout [ size: 167, 17 ]
+			}
+		}
+		edge scan0: __te_S4 -> scan {
+			label L10: "/ rightMotor_speed = 100" {
+				layout [ size: 177, 17 ]
+			}
+		}
+		edge __te_S60: __te_S5 -> __te_S6 {
+			label L11: "/ leftMotor_speed = 200" {
+				layout [ size: 167, 17 ]
+			}
+		}
+		edge scan0_g3196: __te_S6 -> scan {
+			label L12: "/ rightMotor_speed = 200" {
+				layout [ size: 177, 17 ]
+			}
+		}
+		edge __te_S80_g9002: __te_S7 -> __te_S8 {
+			label L13: "/ leftMotor_speed = 400" {
+				layout [ size: 167, 17 ]
+			}
+		}
+		edge scan0_g5485: __te_S8 -> scan {
+			label L14: "/ rightMotor_speed = 400" {
+				layout [ size: 177, 17 ]
+			}
+		}
+		edge __te_S420: __te_S41 -> __te_S42 {
+			label L15: "/ leftMotor_speed = 0" {
+				layout [ size: 151, 17 ]
+			}
+		}
+		edge decode0: __te_S42 -> decode {
+			label L16: "/ rightMotor_speed = 0" {
+				layout [ size: 161, 17 ]
+			}
+		}
+		edge __te_S850: __te_S84 -> __te_S85 {
+			label L17: "/ lastPosition = currentPosition" {
+				layout [ size: 219, 17 ]
+			}
+		}
+		edge __te_S860: __te_S85 -> __te_S86 {
+			label L18: "/ leftMotor_speed = 200" {
+				layout [ size: 167, 17 ]
+			}
+		}
+		edge __te_S870: __te_S86 -> __te_S87 {
+			label L19: "/ rightMotor_speed = 200" {
+				layout [ size: 177, 17 ]
+			}
+		}
+		edge prepare_rotate0: __te_S87 -> prepare_rotate {
+			label L20: "/ `System.out.println(barcode)`" {
+				layout [ size: 214, 17 ]
+			}
+		}
+		edge done0_g2150: __sd_S91 -> done_g9712 {
+			label L21: "/ `System.out.println(\"ParityCheck failed!\")`" {
+				layout [ size: 302, 17 ]
+			}
+		}
+		edge __te_S900: __te_S89 -> __te_S90_g6506 {
+			label L22: "/ leftMotor_speed = 0" {
+				layout [ size: 151, 17 ]
+			}
+		}
+		edge done0_g4490: __te_S90_g6506 -> done_g9712 {
+			label L23: "/ rightMotor_speed = 0" {
+				layout [ size: 161, 17 ]
+			}
+		}
+		edge __te_S920: __te_S91 -> __te_S92 {
+			label L24: "/ leftMotor_speed = 0" {
+				layout [ size: 151, 17 ]
+			}
+		}
+		edge start_rotate0: __te_S92 -> start_rotate {
+			label L25: "/ rightMotor_speed = 0" {
+				layout [ size: 161, 17 ]
+			}
+		}
+		edge __te_S940: __te_S93 -> __te_S94 {
+			label L26: "/ startPosition = currentPosition" {
+				layout [ size: 226, 17 ]
+			}
+		}
+		edge __te_S950: __te_S94 -> __te_S95 {
+			label L27: "/ rightMotor_speed = -100" {
+				layout [ size: 182, 17 ]
+			}
+		}
+		edge clockwise0: __te_S95 -> clockwise {
+			label L28: "/ leftMotor_speed = 100" {
+				layout [ size: 167, 17 ]
+			}
+		}
+		edge __te_S970: __te_S96 -> __te_S97 {
+			label L29: "/ startPosition = currentPosition" {
+				layout [ size: 226, 17 ]
+			}
+		}
+		edge __te_S980: __te_S97 -> __te_S98 {
+			label L30: "/ rightMotor_speed = 100" {
+				layout [ size: 177, 17 ]
+			}
+		}
+		edge counterClockwise0: __te_S98 -> counterClockwise {
+			label L31: "/ leftMotor_speed = -100" {
+				layout [ size: 172, 17 ]
+			}
+		}
+		edge __te_S1000: __te_S99 -> __te_S100_g9599 {
+			label L32: "/ rightMotor_speed = 0" {
+				layout [ size: 161, 17 ]
+			}
+		}
+		edge __sd_Depth320: __te_S100_g9599 -> __sd_Depth32 {
+			label L33: "/ leftMotor_speed = 0" {
+				layout [ size: 151, 17 ]
+			}
+		}
+		edge __te_S1020: __te_S101 -> __te_S102 {
+			label L34: "/ rightMotor_speed = 0" {
+				layout [ size: 161, 17 ]
+			}
+		}
+		edge __sd_Depth320_g2047: __te_S102 -> __sd_Depth32 {
+			label L35: "/ leftMotor_speed = 0" {
+				layout [ size: 151, 17 ]
+			}
+		}
+		edge __te_S1040: __sd_Depth32 -> __te_S104 {
+			label L36: "/ index = 0" {
+				layout [ size: 73, 17 ]
+			}
+		}
+		edge __te_S1050: __te_S104 -> __te_S105 {
+			label L37: "/ flanks = 0" {
+				layout [ size: 76, 17 ]
+			}
+		}
+		edge __te_S1060: __te_S105 -> __te_S106 {
+			label L38: "/ i = 0" {
+				layout [ size: 38, 17 ]
+			}
+		}
+		edge __te_S1070: __te_S106 -> __te_S107 {
+			label L39: "/ x = 0" {
+				layout [ size: 42, 17 ]
+			}
+		}
+		edge __sd_Depth10_g2648: __te_S107 -> __sd_Depth1 {
+			label L40: "/ second_scan = true" {
+				layout [ size: 147, 17 ]
+			}
+		}
+		edge checkParity0: __te_S108 -> checkParity {
+			label L41: "/ barcode = 100 * barcode_dec[0] + 10 * barcode_dec[1] + barcode_dec[2]" {
+				layout [ size: 515, 17 ]
+			}
+		}
+		edge __sd_Depth0: waitStart -> __sd_Depth
+		edge __te_S0: __sd_Depth -> __te_S {
+			label L42: "1: LEFT" {
+				layout [ size: 54, 17 ]
+			}
+		}
+		edge __sd_S10: __sd_Depth -> __sd_S1 {
+			label L43: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge __te_S10_g2315: __sd_S1 -> __te_S1 {
+			label L44: "1: ENTER" {
+				layout [ size: 68, 17 ]
+			}
+		}
+		edge __sd_S20: __sd_S1 -> __sd_S2 {
+			label L45: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge __te_S20_g5379: __sd_S2 -> __te_S2 {
+			label L46: "1: RIGHT" {
+				layout [ size: 64, 17 ]
+			}
+		}
+		edge waitStart0_g1083: __sd_S2 -> waitStart {
+			label L47: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge __te_S50_g2547: __sd_S3 -> __te_S5 {
+			label L48: "1: speedmode == 1" {
+				layout [ size: 134, 17 ]
+			}
+		}
+		edge __sd_S40: __sd_S3 -> __sd_S4 {
+			label L49: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge __te_S70: __sd_S4 -> __te_S7 {
+			label L50: "1: speedmode == 2" {
+				layout [ size: 134, 17 ]
+			}
+		}
+		edge __sd_Pause10_g1490: __sd_S4 -> __sd_Pause1 {
+			label L51: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge __sd_Depth10_g6628: __sd_Pause1 -> __sd_Depth1
+		edge __sd_Depth270: checkParity -> __sd_Depth27
+		edge __te_S840: __sd_Depth27 -> __te_S84 {
+			label L52: "1: 9 - (barcode_dec[0] + barcode_dec[1] + barcode_dec[2]) % 10 == barcode_dec[3]" {
+				layout [ size: 584, 17 ]
+			}
+		}
+		edge __sd_S910: __sd_Depth27 -> __sd_S91 {
+			label L53: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge __sd_Depth280: prepare_rotate -> __sd_Depth28
+		edge __te_S890: __sd_Depth28 -> __te_S89 {
+			label L54: "1: second_scan" {
+				layout [ size: 110, 17 ]
+			}
+		}
+		edge __sd_S930: __sd_Depth28 -> __sd_S93 {
+			label L55: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge __te_S910: __sd_S93 -> __te_S91 {
+			label L56: "1: currentPosition >= lastPosition + 300" {
+				layout [ size: 277, 17 ]
+			}
+		}
+		edge prepare_rotate0_g4185: __sd_S93 -> prepare_rotate {
+			label L57: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge __sd_Depth290: start_rotate -> __sd_Depth29
+		edge __te_S930: __sd_Depth29 -> __te_S93 {
+			label L58: "1: barcode > 0" {
+				layout [ size: 100, 17 ]
+			}
+		}
+		edge __sd_S950: __sd_Depth29 -> __sd_S95 {
+			label L59: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge __te_S960: __sd_S95 -> __te_S96 {
+			label L60: "1: barcode < 0" {
+				layout [ size: 100, 17 ]
+			}
+		}
+		edge __sd_Depth320_g5224: __sd_S95 -> __sd_Depth32 {
+			label L61: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge __sd_Depth300: clockwise -> __sd_Depth30_g7343
+		edge __te_S990: __sd_Depth30_g7343 -> __te_S99 {
+			label L62: "1: currentPosition >= startPosition + 2 * (barcode + 2)" {
+				layout [ size: 374, 17 ]
+			}
+		}
+		edge clockwise0_g4222: __sd_Depth30_g7343 -> clockwise {
+			label L63: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge __sd_Depth310: counterClockwise -> __sd_Depth31
+		edge __te_S1010: __sd_Depth31 -> __te_S101 {
+			label L64: "1: currentPosition <= startPosition + 2 * (barcode + 2)" {
+				layout [ size: 374, 17 ]
+			}
+		}
+		edge counterClockwise0_g6689: __sd_Depth31 -> counterClockwise {
+			label L65: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge __te_S1080: __sd_S100 -> __te_S108 {
+			label L66: "1: _Atrig2" {
+				layout [ size: 66, 17 ]
+			}
+		}
+		edge __sd_S1010: __sd_S100 -> __sd_S101 {
+			label L67: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge checkParity0_g3079: __sd_S101 -> checkParity {
+			label L68: "/ barcode = (100 * barcode_dec[0] + 10 * barcode_dec[1] + barcode_dec[2]) - 1000" {
+				layout [ size: 571, 17 ]
+			}
+		}
+	}
+}

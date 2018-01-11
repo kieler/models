@@ -1,0 +1,242 @@
+graph G1
+node BarcodeRobot2 {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node init {
+			layout [ size: 42, 34 ]
+		}
+		node calibrateHigh {
+			layout [ size: 115, 34 ]
+		}
+		node calibrateLow {
+			layout [ size: 111, 34 ]
+		}
+		node waitForDark {
+			layout [ size: 106, 34 ]
+		}
+		node delay {
+			layout [ size: 59, 34 ]
+		}
+		node expectWhite {
+			layout [ size: 108, 34 ]
+		}
+		node expectBlack {
+			layout [ size: 108, 34 ]
+		}
+		node read {
+			layout [ size: 53, 34 ]
+		}
+		node decode {
+			layout [ size: 73, 34 ]
+		}
+		node c {
+			layout [ size: 34, 34 ]
+		}
+		node eval {
+			layout [ size: 51, 34 ]
+		}
+		node transform {
+			layout [ size: 90, 34 ]
+		}
+		node success {
+			layout [ size: 79, 34 ]
+		}
+		node error {
+			layout [ size: 56, 34 ]
+		}
+		node align {
+			layout [ size: 55, 34 ]
+		}
+		node rotate {
+			layout [ size: 62, 34 ]
+		}
+		node fina {
+			layout [ size: 47, 34 ]
+		}
+		edge calibrateHigh0: init -> calibrateHigh {
+			label L1: "leftButton / floodLight = true" {
+				layout [ size: 201, 17 ]
+			}
+		}
+		edge calibrateLow0: calibrateHigh -> calibrateLow {
+			label L2: "!leftButton" {
+				layout [ size: 76, 17 ]
+			}
+		}
+		edge waitForDark0: calibrateLow -> waitForDark {
+			label L3: "leftButton / motorSpeedA = speed; motorSpeedB = speed" {
+				layout [ size: 407, 17 ]
+			}
+		}
+		edge delay0: waitForDark -> delay {
+			label L4: "lightSensor < border / resetStartDelay = true; readBuffer[0] = 1; readBufferIndex = 1; lamp = true" {
+				layout [ size: 679, 17 ]
+			}
+		}
+		edge expectWhite0: delay -> expectWhite {
+			label L5: "startDelay / resetClock = true" {
+				layout [ size: 206, 17 ]
+			}
+		}
+		edge expectBlack0: expectWhite -> expectBlack {
+			label L6: "1: clock && lightSensor >= border / readBuffer[1] = 0; readBufferIndex = 2" {
+				layout [ size: 521, 17 ]
+			}
+		}
+		edge waitForDark0_g1409: expectWhite -> waitForDark {
+			label L7: "2: clock && lightSensor < border / readBufferIndex = 0; lamp = false" {
+				layout [ size: 475, 17 ]
+			}
+		}
+		edge read0: expectBlack -> read {
+			label L8: "1: clock && lightSensor < border / readBuffer[2] = 1; readBufferIndex = 3" {
+				layout [ size: 512, 17 ]
+			}
+		}
+		edge waitForDark0_g6717: expectBlack -> waitForDark {
+			label L9: "2: clock && lightSensor >= border / readBufferIndex = 0; lamp = false" {
+				layout [ size: 484, 17 ]
+			}
+		}
+		edge read0_g1024: read -> read {
+			label L10: "1: readBufferIndex < 35 && clock && lightSensor < border / readBuffer[readBufferIndex] = 1; readBufferIndex = readBufferIndex + 1" {
+				layout [ size: 932, 17 ]
+			}
+		}
+		edge read1: read -> read {
+			label L11: "2: readBufferIndex < 35 && clock && lightSensor >= border / readBuffer[readBufferIndex] = 0; readBufferIndex = readBufferIndex + 1" {
+				layout [ size: 941, 17 ]
+			}
+		}
+		edge decode0: read -> decode {
+			label L12: "3: readBufferIndex >= 35 / readBufferIndex = 0; lamp = false; motorSpeedA = 0; motorSpeedB = 0; barcodeIndex = 0" {
+				layout [ size: 809, 17 ]
+			}
+		}
+		edge c0: decode -> c {
+			label L13: "1: readBuffer[3 + barcodeIndex * 7 + 0] == 0 && readBuffer[3 + barcodeIndex * 7 + 1] == 0 && readBuffer[3 + barcodeIndex * 7 + 2] == 0 && readBuffer[3 + barcodeIndex * 7 + 3] == 1 && readBuffer[3 + barcodeIndex * 7 + 4] == 0 && readBuffer[3 + barcodeIndex * 7 + 5] == 1 && readBuffer[3 + barcodeIndex * 7 + 6] == 1 / barcode[barcodeIndex] = 9; barcodeIndex = barcodeIndex + 1" {
+				layout [ size: 2673, 17 ]
+			}
+		}
+		edge c1: decode -> c {
+			label L14: "2: readBuffer[3 + barcodeIndex * 7 + 0] == 0 && readBuffer[3 + barcodeIndex * 7 + 1] == 0 && readBuffer[3 + barcodeIndex * 7 + 2] == 0 && readBuffer[3 + barcodeIndex * 7 + 3] == 1 && readBuffer[3 + barcodeIndex * 7 + 4] == 1 && readBuffer[3 + barcodeIndex * 7 + 5] == 0 && readBuffer[3 + barcodeIndex * 7 + 6] == 1 / barcode[barcodeIndex] = 0; barcodeIndex = barcodeIndex + 1" {
+				layout [ size: 2673, 17 ]
+			}
+		}
+		edge c2: decode -> c {
+			label L15: "3: readBuffer[3 + barcodeIndex * 7 + 0] == 0 && readBuffer[3 + barcodeIndex * 7 + 1] == 0 && readBuffer[3 + barcodeIndex * 7 + 2] == 1 && readBuffer[3 + barcodeIndex * 7 + 3] == 0 && readBuffer[3 + barcodeIndex * 7 + 4] == 0 && readBuffer[3 + barcodeIndex * 7 + 5] == 1 && readBuffer[3 + barcodeIndex * 7 + 6] == 1 / barcode[barcodeIndex] = 2; barcodeIndex = barcodeIndex + 1" {
+				layout [ size: 2673, 17 ]
+			}
+		}
+		edge c3: decode -> c {
+			label L16: "4: readBuffer[3 + barcodeIndex * 7 + 0] == 0 && readBuffer[3 + barcodeIndex * 7 + 1] == 0 && readBuffer[3 + barcodeIndex * 7 + 2] == 1 && readBuffer[3 + barcodeIndex * 7 + 3] == 1 && readBuffer[3 + barcodeIndex * 7 + 4] == 0 && readBuffer[3 + barcodeIndex * 7 + 5] == 0 && readBuffer[3 + barcodeIndex * 7 + 6] == 1 / barcode[barcodeIndex] = 1; barcodeIndex = barcodeIndex + 1" {
+				layout [ size: 2673, 17 ]
+			}
+		}
+		edge c4: decode -> c {
+			label L17: "5: readBuffer[3 + barcodeIndex * 7 + 0] == 0 && readBuffer[3 + barcodeIndex * 7 + 1] == 1 && readBuffer[3 + barcodeIndex * 7 + 2] == 0 && readBuffer[3 + barcodeIndex * 7 + 3] == 0 && readBuffer[3 + barcodeIndex * 7 + 4] == 0 && readBuffer[3 + barcodeIndex * 7 + 5] == 1 && readBuffer[3 + barcodeIndex * 7 + 6] == 1 / barcode[barcodeIndex] = 4; barcodeIndex = barcodeIndex + 1" {
+				layout [ size: 2673, 17 ]
+			}
+		}
+		edge c5: decode -> c {
+			label L18: "6: readBuffer[3 + barcodeIndex * 7 + 0] == 0 && readBuffer[3 + barcodeIndex * 7 + 1] == 1 && readBuffer[3 + barcodeIndex * 7 + 2] == 0 && readBuffer[3 + barcodeIndex * 7 + 3] == 1 && readBuffer[3 + barcodeIndex * 7 + 4] == 1 && readBuffer[3 + barcodeIndex * 7 + 5] == 1 && readBuffer[3 + barcodeIndex * 7 + 6] == 1 / barcode[barcodeIndex] = 6; barcodeIndex = barcodeIndex + 1" {
+				layout [ size: 2673, 17 ]
+			}
+		}
+		edge c6: decode -> c {
+			label L19: "7: readBuffer[3 + barcodeIndex * 7 + 0] == 0 && readBuffer[3 + barcodeIndex * 7 + 1] == 1 && readBuffer[3 + barcodeIndex * 7 + 2] == 1 && readBuffer[3 + barcodeIndex * 7 + 3] == 0 && readBuffer[3 + barcodeIndex * 7 + 4] == 0 && readBuffer[3 + barcodeIndex * 7 + 5] == 0 && readBuffer[3 + barcodeIndex * 7 + 6] == 1 / barcode[barcodeIndex] = 5; barcodeIndex = barcodeIndex + 1" {
+				layout [ size: 2673, 17 ]
+			}
+		}
+		edge c7: decode -> c {
+			label L20: "8: readBuffer[3 + barcodeIndex * 7 + 0] == 0 && readBuffer[3 + barcodeIndex * 7 + 1] == 1 && readBuffer[3 + barcodeIndex * 7 + 2] == 1 && readBuffer[3 + barcodeIndex * 7 + 3] == 0 && readBuffer[3 + barcodeIndex * 7 + 4] == 1 && readBuffer[3 + barcodeIndex * 7 + 5] == 1 && readBuffer[3 + barcodeIndex * 7 + 6] == 1 / barcode[barcodeIndex] = 8; barcodeIndex = barcodeIndex + 1" {
+				layout [ size: 2673, 17 ]
+			}
+		}
+		edge c8: decode -> c {
+			label L21: "9: readBuffer[3 + barcodeIndex * 7 + 0] == 0 && readBuffer[3 + barcodeIndex * 7 + 1] == 1 && readBuffer[3 + barcodeIndex * 7 + 2] == 1 && readBuffer[3 + barcodeIndex * 7 + 3] == 1 && readBuffer[3 + barcodeIndex * 7 + 4] == 0 && readBuffer[3 + barcodeIndex * 7 + 5] == 1 && readBuffer[3 + barcodeIndex * 7 + 6] == 1 / barcode[barcodeIndex] = 7; barcodeIndex = barcodeIndex + 1" {
+				layout [ size: 2673, 17 ]
+			}
+		}
+		edge c9: decode -> c {
+			label L22: "10: readBuffer[3 + barcodeIndex * 7 + 0] == 0 && readBuffer[3 + barcodeIndex * 7 + 1] == 1 && readBuffer[3 + barcodeIndex * 7 + 2] == 1 && readBuffer[3 + barcodeIndex * 7 + 3] == 1 && readBuffer[3 + barcodeIndex * 7 + 4] == 1 && readBuffer[3 + barcodeIndex * 7 + 5] == 0 && readBuffer[3 + barcodeIndex * 7 + 6] == 1 / barcode[barcodeIndex] = 3; barcodeIndex = barcodeIndex + 1" {
+				layout [ size: 2681, 17 ]
+			}
+		}
+		edge error0: decode -> error {
+			label L23: "11: true / `System.out.println(\"error:1001\")`" {
+				layout [ size: 298, 17 ]
+			}
+		}
+		edge decode0_g7350: c -> decode {
+			label L24: "1: barcodeIndex < 4" {
+				layout [ size: 139, 17 ]
+			}
+		}
+		edge eval0: c -> eval {
+			label L25: "2: barcodeIndex >= 4 / barcodeIndex = 0" {
+				layout [ size: 282, 17 ]
+			}
+		}
+		edge transform0: eval -> transform {
+			label L26: "1: 9 - (barcode[0] + barcode[1] + barcode[2]) % 10 == barcode[3] / barcodeValue = 100 * barcode[0] + 10 * barcode[1] + barcode[2]" {
+				layout [ size: 903, 17 ]
+			}
+		}
+		edge error0_g0690: eval -> error {
+			label L27: "2: true / `System.out.println(\"error:1002\")`" {
+				layout [ size: 291, 17 ]
+			}
+		}
+		edge success0: transform -> success {
+			label L28: "1: barcodeValue >= 500 / barcodeValue = barcodeValue - 1000; barcodeValueAbs = barcodeValue * (-1); `System.out.println(\"Value: \" + barcodeValue)`" {
+				layout [ size: 1037, 17 ]
+			}
+		}
+		edge success1: transform -> success {
+			label L29: "2: barcodeValue < 500 / barcodeValueAbs = barcodeValue; `System.out.println(\"Value: \" + barcodeValue)`" {
+				layout [ size: 729, 17 ]
+			}
+		}
+		edge align0: success -> align {
+			label L30: "true / motorSpeedA = speed; motorSpeedB = speed; resetAlignClock = true" {
+				layout [ size: 530, 17 ]
+			}
+		}
+		edge fina0: error -> fina {
+			label L31: "true / motorSpeedA = speed; motorSpeedB = speed; lamp = false" {
+				layout [ size: 456, 17 ]
+			}
+		}
+		edge fina0_g3914: align -> fina {
+			label L32: "1: alignClock && barcodeValue == 0" {
+				layout [ size: 251, 17 ]
+			}
+		}
+		edge rotate0: align -> rotate {
+			label L33: "2: alignClock && barcodeValue < 0 / motorSpeedA = 50; motorSpeedB = -50; lamp = true; resetRotationClock = true; rotationCounter = 0" {
+				layout [ size: 950, 17 ]
+			}
+		}
+		edge rotate1: align -> rotate {
+			label L34: "3: alignClock && barcodeValue > 0 / motorSpeedA = -50; motorSpeedB = 50; lamp = true; resetRotationClock = true; rotationCounter = 0" {
+				layout [ size: 950, 17 ]
+			}
+		}
+		edge rotate0_g2333: rotate -> rotate {
+			label L35: "1: rotationClock && rotationCounter < barcodeValueAbs / rotationCounter = rotationCounter + 1; resetRotationClock = true" {
+				layout [ size: 864, 17 ]
+			}
+		}
+		edge fina0_g1629: rotate -> fina {
+			label L36: "2: rotationCounter >= barcodeValueAbs / motorSpeedA = speed; motorSpeedB = speed; lamp = false; resetEndDelay = true" {
+				layout [ size: 862, 17 ]
+			}
+		}
+		edge waitForDark0_g0313: fina -> waitForDark {
+			label L37: "endDelay" {
+				layout [ size: 68, 17 ]
+			}
+		}
+	}
+}

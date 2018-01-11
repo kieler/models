@@ -1,0 +1,162 @@
+graph G1
+node Elevator {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node Init {
+			layout [ size: 42, 34 ]
+		}
+		node Await {
+			layout [ size: 57, 34 ]
+		}
+		node MoveUp {
+			layout [ size: 81, 34 ]
+		}
+		node MoveDown {
+			layout [ size: 101, 34 ]
+		}
+		edge Await0: Init -> Await {
+			label L1: "/ Move = 0; AlarmLamp = false" {
+				layout [ size: 208, 17 ]
+			}
+		}
+		edge MoveUp0: Await -> MoveUp {
+			label L2: "1: ButtonUp / Move = 1" {
+				layout [ size: 162, 17 ]
+			}
+		}
+		edge MoveDown0: Await -> MoveDown {
+			label L3: "2: ButtonDown / Move = -1" {
+				layout [ size: 187, 17 ]
+			}
+		}
+		edge Await0_g7955: MoveUp -> Await {
+			label L4: "IsUp / Move = 0" {
+				layout [ size: 110, 17 ]
+			}
+		}
+		edge Await0_g1821: MoveDown -> Await {
+			label L5: "IsDown / Move = 0" {
+				layout [ size: 130, 17 ]
+			}
+		}
+	}
+	node N2 {
+		node Await_g4531 {
+			layout [ size: 57, 34 ]
+		}
+		node Alarm {
+			algorithm: org.eclipse.elk.box
+			node N3 {
+				node S0 {
+					layout [ size: 39, 34 ]
+				}
+				node S1 {
+					layout [ size: 39, 34 ]
+				}
+				node S2 {
+					layout [ size: 39, 34 ]
+				}
+				node S3 {
+					layout [ size: 39, 34 ]
+				}
+				node S4 {
+					layout [ size: 39, 34 ]
+				}
+				node S5 {
+					layout [ size: 45, 40 ]
+				}
+				edge S10: S0 -> S1 {
+					label L7: "Second" {
+						layout [ size: 55, 17 ]
+					}
+				}
+				edge S20: S1 -> S2 {
+					label L8: "Second" {
+						layout [ size: 55, 17 ]
+					}
+				}
+				edge S30: S2 -> S3 {
+					label L9: "Second" {
+						layout [ size: 55, 17 ]
+					}
+				}
+				edge S40: S3 -> S4 {
+					label L10: "Second" {
+						layout [ size: 55, 17 ]
+					}
+				}
+				edge S50: S4 -> S5 {
+					label L11: "Second / finished = true" {
+						layout [ size: 169, 17 ]
+					}
+				}
+			}
+			node N4 {
+				node init {
+					layout [ size: 42, 34 ]
+				}
+				node LampOff {
+					layout [ size: 80, 34 ]
+				}
+				node LampOn {
+					layout [ size: 80, 34 ]
+				}
+				node finished {
+					layout [ size: 84, 40 ]
+				}
+				edge LampOff0: init -> LampOff {
+					label L12: "/ finished = false" {
+						layout [ size: 116, 17 ]
+					}
+				}
+				edge finished0: LampOff -> finished {
+					label L13: "1: finished" {
+						layout [ size: 74, 17 ]
+					}
+				}
+				edge LampOn0: LampOff -> LampOn {
+					label L14: "2: / AlarmLamp = true" {
+						layout [ size: 146, 17 ]
+					}
+				}
+				edge finished0_g8637: LampOn -> finished {
+					label L15: "1: finished / AlarmLamp = false" {
+						layout [ size: 212, 17 ]
+					}
+				}
+				edge LampOff0_g6649: LampOn -> LampOff {
+					label L16: "2: / AlarmLamp = false" {
+						layout [ size: 151, 17 ]
+					}
+				}
+			}
+			node N5 {
+				node S1_g1009 {
+					layout [ size: 39, 34 ]
+				}
+				node Suspended {
+					layout [ size: 102, 34 ]
+				}
+				node finished_g6072 {
+					layout [ size: 84, 40 ]
+				}
+				edge Suspended0: S1_g1009 -> Suspended {
+					label L17: "/ oldMove = Move; Move = 0" {
+						layout [ size: 201, 17 ]
+					}
+				}
+				edge finished0_g6433: Suspended -> finished_g6072 {
+					label L18: "finished / Move = oldMove" {
+						layout [ size: 188, 17 ]
+					}
+				}
+			}
+		}
+		edge Alarm0: Await_g4531 -> Alarm {
+			label L6: "ButtonAlarm" {
+				layout [ size: 89, 17 ]
+			}
+		}
+		edge Await0_g7250: Alarm -> Await_g4531
+	}
+}

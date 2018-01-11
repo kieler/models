@@ -1,0 +1,111 @@
+graph G1
+node arm {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node init {
+			layout [ size: 42, 34 ]
+		}
+		node stick_extend {
+			layout [ size: 111, 34 ]
+		}
+		node bucket_extend {
+			layout [ size: 126, 34 ]
+		}
+		node extended {
+			layout [ size: 88, 34 ]
+		}
+		node retract {
+			algorithm: org.eclipse.elk.box
+			node N2 {
+				node I {
+					layout [ size: 34, 34 ]
+				}
+				node retract_stick {
+					layout [ size: 109, 34 ]
+				}
+				node stick_retracted {
+					layout [ size: 133, 40 ]
+				}
+				edge retract_stick0: I -> retract_stick {
+					label L6: "/ STICK_PUSH = true" {
+						layout [ size: 150, 17 ]
+					}
+				}
+				edge stick_retracted0: retract_stick -> stick_retracted {
+					label L7: "STICK_IN / STICK_PUSH = false" {
+						layout [ size: 228, 17 ]
+					}
+				}
+			}
+			node N3 {
+				node I_g6632 {
+					layout [ size: 34, 34 ]
+				}
+				node retract_bucket {
+					layout [ size: 123, 34 ]
+				}
+				node bucket_retracted {
+					layout [ size: 148, 40 ]
+				}
+				edge retract_bucket0: I_g6632 -> retract_bucket {
+					label L8: "/ BUCKET_PUSH = true" {
+						layout [ size: 168, 17 ]
+					}
+				}
+				edge bucket_retracted0: retract_bucket -> bucket_retracted {
+					label L9: "BUCKET_IN / BUCKET_PUSH = false" {
+						layout [ size: 264, 17 ]
+					}
+				}
+			}
+		}
+		edge stick_extend0: init -> stick_extend {
+			label L1: "EXTEND_BUTTON / DONE_LAMP = false; MOVING = true; STICK_PULL = true" {
+				layout [ size: 553, 17 ]
+			}
+		}
+		edge bucket_extend0: stick_extend -> bucket_extend {
+			label L2: "STICK_OUT / STICK_PULL = false; BUCKET_PULL = true" {
+				layout [ size: 408, 17 ]
+			}
+		}
+		edge extended0: bucket_extend -> extended {
+			label L3: "BUCKET_OUT / MOVING = false; BUCKET_PULL = false; DONE_LAMP = true" {
+				layout [ size: 546, 17 ]
+			}
+		}
+		edge retract0: extended -> retract {
+			label L4: "RETRACT_BUTTON / MOVING = true; DONE_LAMP = false" {
+				layout [ size: 416, 17 ]
+			}
+		}
+		edge init0: retract -> init {
+			label L5: "/ MOVING = false; DONE_LAMP = true" {
+				layout [ size: 267, 17 ]
+			}
+		}
+	}
+	node N4 {
+		node I_g5998 {
+			layout [ size: 34, 34 ]
+		}
+		node A {
+			layout [ size: 34, 34 ]
+		}
+		edge A0: I_g5998 -> A {
+			label L10: "1: MOVING / ALARM_LAMP = false" {
+				layout [ size: 239, 17 ]
+			}
+		}
+		edge I0: I_g5998 -> I_g5998 {
+			label L11: "2: / ALARM_LAMP = false" {
+				layout [ size: 174, 17 ]
+			}
+		}
+		edge I0_g4537: A -> I_g5998 {
+			label L12: "3 SECOND / ALARM_LAMP = true" {
+				layout [ size: 234, 17 ]
+			}
+		}
+	}
+}

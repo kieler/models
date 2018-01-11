@@ -1,0 +1,123 @@
+graph G1
+node eins {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node Init {
+			layout [ size: 42, 34 ]
+		}
+		node Car {
+			algorithm: org.eclipse.elk.box
+			node Seatbelt {
+				node init {
+					layout [ size: 42, 34 ]
+				}
+				node TODO {
+					layout [ size: 65, 34 ]
+				}
+				node Buckled {
+					layout [ size: 79, 34 ]
+				}
+				node LightOnly {
+					layout [ size: 90, 34 ]
+				}
+				node Beeplight {
+					layout [ size: 89, 34 ]
+				}
+				edge TODO0: init -> TODO
+				edge Buckled0: TODO -> Buckled {
+					label L2: "1: seatbelt" {
+						layout [ size: 73, 17 ]
+					}
+				}
+				edge Beeplight0: TODO -> Beeplight {
+					label L3: "2: seatbelt == false / seatbelt_light = true; beep = true; counter = 0" {
+						layout [ size: 466, 17 ]
+					}
+				}
+				edge LightOnly0: Buckled -> LightOnly {
+					label L4: "seatbelt == false / seatbelt_light = true" {
+						layout [ size: 271, 17 ]
+					}
+				}
+				edge Buckled0_g7358: LightOnly -> Buckled {
+					label L5: "seatbelt == true / seatbelt_light = false" {
+						layout [ size: 271, 17 ]
+					}
+				}
+				edge Beeplight0_g1716: Beeplight -> Beeplight {
+					label L6: "1: second / counter = counter + 1" {
+						layout [ size: 233, 17 ]
+					}
+				}
+				edge LightOnly0_g5411: Beeplight -> LightOnly {
+					label L7: "2: seatbelt == false && counter >= 30 / seatbelt_light = true; beep = false" {
+						layout [ size: 509, 17 ]
+					}
+				}
+				edge Buckled0_g1823: Beeplight -> Buckled {
+					label L8: "3: seatbelt == true / seatbelt_light = false; beep = false" {
+						layout [ size: 382, 17 ]
+					}
+				}
+			}
+			node Domelight {
+				node init_g6532 {
+					layout [ size: 42, 34 ]
+				}
+				node TODO_g0946 {
+					layout [ size: 65, 34 ]
+				}
+				node Closed {
+					layout [ size: 71, 34 ]
+				}
+				node Opened {
+					layout [ size: 78, 34 ]
+				}
+				node Timer {
+					layout [ size: 61, 34 ]
+				}
+				edge TODO0_g4442: init_g6532 -> TODO_g0946
+				edge Closed0: TODO_g0946 -> Closed {
+					label L9: "1: (door1 && door2) == true" {
+						layout [ size: 193, 17 ]
+					}
+				}
+				edge Opened0: TODO_g0946 -> Opened {
+					label L10: "2: (door1 && door2) == false / dome_light = true" {
+						layout [ size: 334, 17 ]
+					}
+				}
+				edge Opened0_g7012: Closed -> Opened {
+					label L11: "(door1 && door2) == false / dome_light = true" {
+						layout [ size: 318, 17 ]
+					}
+				}
+				edge Timer0: Opened -> Timer {
+					label L12: "(door1 && door2) == true / counter = 0" {
+						layout [ size: 270, 17 ]
+					}
+				}
+				edge Timer0_g5813: Timer -> Timer {
+					label L13: "1: second / counter = counter + 1" {
+						layout [ size: 233, 17 ]
+					}
+				}
+				edge Closed0_g8361: Timer -> Closed {
+					label L14: "2: (door1 && door2) == true && counter >= 3 / dome_light = false" {
+						layout [ size: 453, 17 ]
+					}
+				}
+				edge Opened0_g9745: Timer -> Opened {
+					label L15: "3: (door1 && door2) == false / dome_light = true" {
+						layout [ size: 334, 17 ]
+					}
+				}
+			}
+		}
+		edge Car0: Init -> Car {
+			label L1: "/ seatbelt_light = false; beep = false; dome_light = false" {
+				layout [ size: 387, 17 ]
+			}
+		}
+	}
+}

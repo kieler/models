@@ -1,0 +1,136 @@
+graph G1
+node Scchart {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node init {
+			layout [ size: 42, 34 ]
+		}
+		node preparation {
+			algorithm: org.eclipse.elk.box
+			node driveToStart {
+				node go {
+					layout [ size: 199, 65 ]
+				}
+				node done {
+					layout [ size: 229, 86 ]
+				}
+				edge go0: go -> go {
+					label L3: "1: !finished" {
+						layout [ size: 78, 17 ]
+					}
+				}
+				edge done0: go -> done {
+					label L4: "2: finished" {
+						layout [ size: 74, 17 ]
+					}
+				}
+			}
+			node scanToStart {
+				node loop {
+					layout [ size: 320, 50 ]
+				}
+				node done_g2329 {
+					layout [ size: 62, 40 ]
+				}
+				edge loop0: loop -> loop {
+					label L5: "1: newLevel > maxLevel - 5 / maxLevel = newLevel" {
+						layout [ size: 358, 17 ]
+					}
+				}
+				edge done0_g9471: loop -> done_g2329 {
+					label L6: "2: newLevel <= maxLevel - 5 / finished = true" {
+						layout [ size: 315, 17 ]
+					}
+				}
+			}
+		}
+		node readOut {
+			algorithm: org.eclipse.elk.box
+			node N2 {
+				node drive {
+					algorithm: org.eclipse.elk.box
+					node checkDistance {
+						node checkDistance_g4541 {
+							layout [ size: 277, 50 ]
+						}
+						node done_g0066 {
+							layout [ size: 62, 40 ]
+						}
+						edge checkDistance0: checkDistance_g4541 -> checkDistance_g4541 {
+							label L11: "1: distance < 10" {
+								layout [ size: 110, 17 ]
+							}
+						}
+						edge done0_g0224: checkDistance_g4541 -> done_g0066 {
+							label L12: "2: distance >= 10 / arrived = true" {
+								layout [ size: 227, 17 ]
+							}
+						}
+					}
+					node powerMotor {
+						node powerMotor_g4138 {
+							layout [ size: 199, 65 ]
+						}
+						node done_g7698 {
+							layout [ size: 281, 86 ]
+						}
+						edge powerMotor0: powerMotor_g4138 -> powerMotor_g4138 {
+							label L13: "1: !arrived" {
+								layout [ size: 72, 17 ]
+							}
+						}
+						edge done0_g3277: powerMotor_g4138 -> done_g7698 {
+							label L14: "2: arrived" {
+								layout [ size: 68, 17 ]
+							}
+						}
+					}
+				}
+				node read {
+					layout [ size: 320, 50 ]
+				}
+				node next {
+					layout [ size: 292, 50 ]
+				}
+				node done_g7280 {
+					layout [ size: 62, 40 ]
+				}
+				edge read0: drive -> read
+				edge next0: read -> next {
+					label L7: "1: newLevel > 480 / barcode[count] = 0" {
+						layout [ size: 272, 17 ]
+					}
+				}
+				edge next1: read -> next {
+					label L8: "2: newLevel <= 480 / barcode[count] = 1" {
+						layout [ size: 281, 17 ]
+					}
+				}
+				edge drive0: next -> drive {
+					label L9: "1: count < 34 / count = count + 1" {
+						layout [ size: 224, 17 ]
+					}
+				}
+				edge done0_g1157: next -> done_g7280 {
+					label L10: "2: count >= 34" {
+						layout [ size: 99, 17 ]
+					}
+				}
+			}
+		}
+		node done_g4778 {
+			layout [ size: 62, 40 ]
+		}
+		edge preparation0: init -> preparation {
+			label L1: "/ theEnd = false" {
+				layout [ size: 110, 17 ]
+			}
+		}
+		edge readOut0: preparation -> readOut
+		edge done0_g3667: readOut -> done_g4778 {
+			label L2: "/ theEnd = true" {
+				layout [ size: 105, 17 ]
+			}
+		}
+	}
+}

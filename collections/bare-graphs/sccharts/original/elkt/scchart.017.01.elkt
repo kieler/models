@@ -1,0 +1,134 @@
+graph G1
+node bjztplba {
+	algorithm: org.eclipse.elk.box
+	node DomelightController {
+		node init {
+			layout [ size: 42, 34 ]
+		}
+		node DoorsClosedLightOff {
+			layout [ size: 171, 34 ]
+		}
+		node DoorsOpen {
+			layout [ size: 103, 34 ]
+		}
+		node DoorsClosedLightOn {
+			layout [ size: 171, 34 ]
+		}
+		edge DoorsClosedLightOff0: init -> DoorsClosedLightOff {
+			label L1: "/ domelight = false" {
+				layout [ size: 129, 17 ]
+			}
+		}
+		edge DoorsOpen0: DoorsClosedLightOff -> DoorsOpen {
+			label L2: "!door / domelight = true" {
+				layout [ size: 165, 17 ]
+			}
+		}
+		edge DoorsClosedLightOn0: DoorsOpen -> DoorsClosedLightOn {
+			label L3: "door / counter = 0" {
+				layout [ size: 126, 17 ]
+			}
+		}
+		edge DoorsClosedLightOff0_g7538: DoorsClosedLightOn -> DoorsClosedLightOff {
+			label L4: "1: counter >= 3 / domelight = false" {
+				layout [ size: 238, 17 ]
+			}
+		}
+		edge DoorsClosedLightOn0_g1188: DoorsClosedLightOn -> DoorsClosedLightOn {
+			label L5: "2: second / counter = counter + 1" {
+				layout [ size: 233, 17 ]
+			}
+		}
+		edge DoorsOpen0_g6438: DoorsClosedLightOn -> DoorsOpen {
+			label L6: "3: !door" {
+				layout [ size: 53, 17 ]
+			}
+		}
+	}
+	node SeatbeltController {
+		node init_g0851 {
+			layout [ size: 42, 34 ]
+		}
+		node Ok {
+			layout [ size: 41, 34 ]
+		}
+		node BothWarning {
+			layout [ size: 112, 34 ]
+		}
+		node onlyLight {
+			layout [ size: 85, 34 ]
+		}
+		edge Ok0: init_g0851 -> Ok {
+			label L7: "/ warninglight = false; beeper = false" {
+				layout [ size: 256, 17 ]
+			}
+		}
+		edge BothWarning0: Ok -> BothWarning {
+			label L8: "seatbelt & running / warninglight = true; beeper = true; counter = 0" {
+				layout [ size: 470, 17 ]
+			}
+		}
+		edge Ok0_g3044: BothWarning -> Ok {
+			label L9: "1: !seatbelt | !running / warninglight = false; beeper = false" {
+				layout [ size: 408, 17 ]
+			}
+		}
+		edge BothWarning0_g5862: BothWarning -> BothWarning {
+			label L10: "2: second / counter = counter + 1" {
+				layout [ size: 233, 17 ]
+			}
+		}
+		edge onlyLight0: BothWarning -> onlyLight {
+			label L11: "3: counter >= 3 / beeper = false" {
+				layout [ size: 219, 17 ]
+			}
+		}
+		edge Ok0_g5076: onlyLight -> Ok {
+			label L12: "!seatbelt | !running / warninglight = false" {
+				layout [ size: 282, 17 ]
+			}
+		}
+	}
+	node IgnitionControl {
+		node init_g4257 {
+			layout [ size: 42, 34 ]
+		}
+		node Off {
+			layout [ size: 42, 34 ]
+		}
+		node OffButtonPressed {
+			layout [ size: 150, 34 ]
+		}
+		node OnButtonPressed {
+			layout [ size: 149, 34 ]
+		}
+		node On {
+			layout [ size: 42, 34 ]
+		}
+		edge Off0: init_g4257 -> Off {
+			label L13: "/ running = false" {
+				layout [ size: 114, 17 ]
+			}
+		}
+		edge OnButtonPressed0: Off -> OnButtonPressed {
+			label L14: "ignition / running = true" {
+				layout [ size: 166, 17 ]
+			}
+		}
+		edge Off0_g4043: OffButtonPressed -> Off {
+			label L15: "!ignition" {
+				layout [ size: 58, 17 ]
+			}
+		}
+		edge On0: OnButtonPressed -> On {
+			label L16: "!ignition" {
+				layout [ size: 58, 17 ]
+			}
+		}
+		edge OffButtonPressed0: On -> OffButtonPressed {
+			label L17: "ignition / running = false" {
+				layout [ size: 171, 17 ]
+			}
+		}
+	}
+}

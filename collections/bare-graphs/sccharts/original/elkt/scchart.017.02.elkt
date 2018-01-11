@@ -1,0 +1,93 @@
+graph G1
+node Domelight {
+	algorithm: org.eclipse.elk.box
+	node DoorAggregator {
+		node AllClosed {
+			layout [ size: 88, 34 ]
+		}
+		node AtLeastOneOpen {
+			layout [ size: 134, 65 ]
+		}
+		edge AtLeastOneOpen0: AllClosed -> AtLeastOneOpen {
+			label L1: "openDoor1 || openDoor2" {
+				layout [ size: 175, 17 ]
+			}
+		}
+		edge AllClosed0: AtLeastOneOpen -> AllClosed {
+			label L2: "!(openDoor1 || openDoor2)" {
+				layout [ size: 188, 17 ]
+			}
+		}
+	}
+	node Domelight_g6397 {
+		node Off {
+			layout [ size: 42, 34 ]
+		}
+		node On {
+			algorithm: org.eclipse.elk.box
+			node N1 {
+				node Open {
+					layout [ size: 60, 34 ]
+				}
+				node Closed {
+					layout [ size: 71, 34 ]
+				}
+				node Done {
+					layout [ size: 64, 40 ]
+				}
+				edge Closed0: Open -> Closed {
+					label L4: "closeDoor" {
+						layout [ size: 73, 17 ]
+					}
+				}
+				edge Open0: Closed -> Open {
+					label L5: "1: openDoor" {
+						layout [ size: 87, 17 ]
+					}
+				}
+				edge Done0: Closed -> Done {
+					label L6: "2: 4 second / domeLight = false" {
+						layout [ size: 218, 17 ]
+					}
+				}
+			}
+		}
+		edge On0: Off -> On {
+			label L3: "openDoor" {
+				layout [ size: 71, 17 ]
+			}
+		}
+		edge Off0: On -> Off
+	}
+	node Seatbelt {
+		node NoWarn {
+			layout [ size: 76, 34 ]
+		}
+		node Warn {
+			algorithm: org.eclipse.elk.box
+			node N2 {
+				node Beeping {
+					layout [ size: 138, 65 ]
+				}
+				node NotBeeping {
+					layout [ size: 106, 34 ]
+				}
+				edge NotBeeping0: Beeping -> NotBeeping {
+					label L9: "30 second" {
+						layout [ size: 73, 17 ]
+					}
+				}
+			}
+		}
+		edge Warn0: NoWarn -> Warn {
+			label L7: "ignition && seatbeltSensor" {
+				layout [ size: 191, 17 ]
+			}
+		}
+		edge NoWarn0: Warn -> NoWarn {
+			label L8: "!ignition || !seatbeltSensor" {
+				layout [ size: 185, 17 ]
+			}
+		}
+	}
+}

@@ -1,0 +1,103 @@
+graph G1
+node elevator {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node ^start {
+			layout [ size: 52, 34 ]
+		}
+		node Main {
+			algorithm: org.eclipse.elk.box
+			node Alarm {
+				node wait {
+					layout [ size: 48, 34 ]
+				}
+				node Alarm_g1660 {
+					layout [ size: 61, 34 ]
+				}
+				node Sec1 {
+					layout [ size: 56, 34 ]
+				}
+				node Sec2 {
+					layout [ size: 56, 34 ]
+				}
+				node Sec3 {
+					layout [ size: 56, 34 ]
+				}
+				node Sec4 {
+					layout [ size: 56, 34 ]
+				}
+				edge Alarm0: wait -> Alarm_g1660 {
+					label L2: "ButtonAlarm / AlarmLamp = true; enabled = false; recentMove = Move; Move = 0" {
+						layout [ size: 562, 17 ]
+					}
+				}
+				edge Sec10: Alarm_g1660 -> Sec1 {
+					label L3: "Second / AlarmLamp = false" {
+						layout [ size: 193, 17 ]
+					}
+				}
+				edge Sec20: Sec1 -> Sec2 {
+					label L4: "Second / AlarmLamp = true" {
+						layout [ size: 188, 17 ]
+					}
+				}
+				edge Sec30: Sec2 -> Sec3 {
+					label L5: "Second / AlarmLamp = false" {
+						layout [ size: 193, 17 ]
+					}
+				}
+				edge Sec40: Sec3 -> Sec4 {
+					label L6: "Second / AlarmLamp = true" {
+						layout [ size: 188, 17 ]
+					}
+				}
+				edge wait0: Sec4 -> wait {
+					label L7: "Second / AlarmLamp = false; Move = recentMove; enabled = true" {
+						layout [ size: 455, 17 ]
+					}
+				}
+			}
+			node Controller {
+				node control {
+					algorithm: org.eclipse.elk.box
+					node N2 {
+						node idle {
+							layout [ size: 46, 34 ]
+						}
+						node up {
+							layout [ size: 39, 34 ]
+						}
+						node down {
+							layout [ size: 59, 34 ]
+						}
+						edge up0: idle -> up {
+							label L8: "1: enabled && ButtonUp && !IsUp / Move = 1" {
+								layout [ size: 315, 17 ]
+							}
+						}
+						edge down0: idle -> down {
+							label L9: "2: enabled && ButtonDown && !IsDown / Move = -1" {
+								layout [ size: 360, 17 ]
+							}
+						}
+						edge idle0: up -> idle {
+							label L10: "enabled && IsUp / Move = 0" {
+								layout [ size: 197, 17 ]
+							}
+						}
+						edge idle0_g1433: down -> idle {
+							label L11: "enabled && IsDown / Move = 0" {
+								layout [ size: 217, 17 ]
+							}
+						}
+					}
+				}
+			}
+		}
+		edge Main0: ^start -> Main {
+			label L1: "/ enabled = true" {
+				layout [ size: 111, 17 ]
+			}
+		}
+	}
+}

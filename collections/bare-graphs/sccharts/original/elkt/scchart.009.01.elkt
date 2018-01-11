@@ -1,0 +1,61 @@
+graph G1
+node _1 {
+	algorithm: org.eclipse.elk.box
+	node DomeLightControl {
+		node lightOff {
+			layout [ size: 73, 34 ]
+		}
+		node lightOn {
+			layout [ size: 73, 34 ]
+		}
+		node waitForClock {
+			layout [ size: 113, 34 ]
+		}
+		edge lightOn0: lightOff -> lightOn {
+			label L1: "!doorsClosed / domeLight = true" {
+				layout [ size: 228, 17 ]
+			}
+		}
+		edge waitForClock0: lightOn -> waitForClock {
+			label L2: "doorsClosed" {
+				layout [ size: 92, 17 ]
+			}
+		}
+		edge lightOff0: waitForClock -> lightOff {
+			label L3: "DLseconds / domeLight = false" {
+				layout [ size: 218, 17 ]
+			}
+		}
+	}
+	node SeatbeltControl {
+		node beepOffLightOff {
+			layout [ size: 136, 34 ]
+		}
+		node beepOnLightOn {
+			layout [ size: 135, 34 ]
+		}
+		node beepOffLightOn {
+			layout [ size: 136, 34 ]
+		}
+		edge beepOnLightOn0: beepOffLightOff -> beepOnLightOn {
+			label L4: "engineIgnition && !seatbeltsClosed / redlight = true; beeper = true" {
+				layout [ size: 469, 17 ]
+			}
+		}
+		edge beepOffLightOff0: beepOnLightOn -> beepOffLightOff {
+			label L5: "1: !engineIgnition || seatbeltsClosed / redlight = false; beeper = false" {
+				layout [ size: 481, 17 ]
+			}
+		}
+		edge beepOffLightOn0: beepOnLightOn -> beepOffLightOn {
+			label L6: "2: SBseconds / beeper = false" {
+				layout [ size: 211, 17 ]
+			}
+		}
+		edge beepOffLightOff0_g6666: beepOffLightOn -> beepOffLightOff {
+			label L7: "!engineIgnition || seatbeltsClosed / redlight = false" {
+				layout [ size: 355, 17 ]
+			}
+		}
+	}
+}

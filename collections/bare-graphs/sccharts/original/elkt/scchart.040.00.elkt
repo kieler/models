@@ -1,0 +1,443 @@
+graph G1
+node BarCode3 {
+	algorithm: org.eclipse.elk.box
+	node light {
+		node init {
+			layout [ size: 42, 34 ]
+		}
+		node white {
+			layout [ size: 58, 34 ]
+		}
+		node black {
+			layout [ size: 58, 34 ]
+		}
+		edge white0: init -> white {
+			label L1: "/ start = rotationR" {
+				layout [ size: 123, 17 ]
+			}
+		}
+		edge white0_g3766: white -> white {
+			label L2: "1: light > min_white / extreme = min_white" {
+				layout [ size: 293, 17 ]
+			}
+		}
+		edge white1: white -> white {
+			label L3: "2: light > pre(extreme) / extreme = light" {
+				layout [ size: 274, 17 ]
+			}
+		}
+		edge black0: white -> black {
+			label L4: "3: light < max_black / extreme = light; last_white; lamp = false; width = rotationR - start; start = rotationR" {
+				layout [ size: 723, 17 ]
+			}
+		}
+		edge black1: white -> black {
+			label L5: "4: pre(start) != rotationR && light < (0 - light_change) + pre(extreme) / extreme = light; last_white; lamp = false; width = rotationR - start; start = rotationR" {
+				layout [ size: 1064, 17 ]
+			}
+		}
+		edge black0_g0916: black -> black {
+			label L6: "1: light < max_black / extreme = max_black" {
+				layout [ size: 298, 17 ]
+			}
+		}
+		edge black1_g5077: black -> black {
+			label L7: "2: light < pre(extreme) / extreme = light" {
+				layout [ size: 274, 17 ]
+			}
+		}
+		edge white0_g1017: black -> white {
+			label L8: "3: light > min_white / extreme = light; last_black; lamp = true; width = rotationR - start; start = rotationR" {
+				layout [ size: 715, 17 ]
+			}
+		}
+		edge white1_g0692: black -> white {
+			label L9: "4: pre(start) != rotationR && light > light_change + pre(extreme) / extreme = light; last_black; lamp = true; width = rotationR - start; start = rotationR" {
+				layout [ size: 1027, 17 ]
+			}
+		}
+	}
+	node reset_width_mask {
+		node init_g0532 {
+			layout [ size: 42, 34 ]
+		}
+		edge init0: init_g0532 -> init_g0532 {
+			label L10: "last_white || last_black / color_changed; width_mask = 0" {
+				layout [ size: 390, 17 ]
+			}
+		}
+	}
+	node detect_one {
+		node one {
+			layout [ size: 47, 34 ]
+		}
+		edge one0: one -> one {
+			label L11: "color_changed && width >= min1w && width <= max1w / width_mask = width_mask | 1" {
+				layout [ size: 598, 17 ]
+			}
+		}
+	}
+	node detect_two {
+		node two {
+			layout [ size: 46, 34 ]
+		}
+		edge two0: two -> two {
+			label L12: "color_changed && width >= min2w && width <= max2w / width_mask = width_mask | 2" {
+				layout [ size: 598, 17 ]
+			}
+		}
+	}
+	node detect_three {
+		node three {
+			layout [ size: 58, 34 ]
+		}
+		edge three0: three -> three {
+			label L13: "color_changed && width >= min3w && width <= max3w / width_mask = width_mask | 4" {
+				layout [ size: 598, 17 ]
+			}
+		}
+	}
+	node detect_four {
+		node four {
+			layout [ size: 49, 34 ]
+		}
+		edge four0: four -> four {
+			label L14: "color_changed && width >= min4w && width <= max4w / width_mask = width_mask | 8" {
+				layout [ size: 598, 17 ]
+			}
+		}
+	}
+	node main {
+		node search_first {
+			layout [ size: 98, 50 ]
+		}
+		node await_second {
+			layout [ size: 117, 34 ]
+		}
+		node await_third {
+			layout [ size: 98, 34 ]
+		}
+		node digit_bar1 {
+			layout [ size: 91, 34 ]
+		}
+		node digit_bar2 {
+			layout [ size: 91, 34 ]
+		}
+		node digit_bar3 {
+			layout [ size: 91, 34 ]
+		}
+		node digit_bar4 {
+			layout [ size: 91, 34 ]
+		}
+		node resolve_digit {
+			layout [ size: 113, 34 ]
+		}
+		node prepare_values {
+			layout [ size: 132, 34 ]
+		}
+		node check_end {
+			layout [ size: 98, 34 ]
+		}
+		node await_end_1 {
+			layout [ size: 108, 34 ]
+		}
+		node await_end_2 {
+			layout [ size: 108, 34 ]
+		}
+		node await_end_3 {
+			layout [ size: 108, 34 ]
+		}
+		node await_end_4 {
+			layout [ size: 108, 34 ]
+		}
+		node normalize_barcode {
+			layout [ size: 155, 34 ]
+		}
+		node printBarcode {
+			layout [ size: 113, 34 ]
+		}
+		node forward {
+			layout [ size: 75, 34 ]
+		}
+		node rotateR {
+			layout [ size: 73, 34 ]
+		}
+		node rotateL {
+			layout [ size: 72, 34 ]
+		}
+		edge await_second0: search_first -> await_second {
+			label L15: "last_black && (width_mask & 1) != 0" {
+				layout [ size: 249, 17 ]
+			}
+		}
+		edge await_third0: await_second -> await_third {
+			label L16: "1: last_white && (width_mask & 1) != 0" {
+				layout [ size: 266, 17 ]
+			}
+		}
+		edge search_first0: await_second -> search_first {
+			label L17: "2: color_changed" {
+				layout [ size: 122, 17 ]
+			}
+		}
+		edge digit_bar10: await_third -> digit_bar1 {
+			label L18: "1: last_black && (width_mask & 1) != 0 / barMemory = 0; numbersLeft = 4; parity = 9; total = 0" {
+				layout [ size: 640, 17 ]
+			}
+		}
+		edge search_first0_g2902: await_third -> search_first {
+			label L19: "2: color_changed" {
+				layout [ size: 122, 17 ]
+			}
+		}
+		edge search_first0_g1957: digit_bar1 -> search_first {
+			label L20: "1: last_white && width_mask == 0" {
+				layout [ size: 234, 17 ]
+			}
+		}
+		edge digit_bar20: digit_bar1 -> digit_bar2 {
+			label L21: "2: last_white / barMemory = barMemory | width_mask * 4096" {
+				layout [ size: 415, 17 ]
+			}
+		}
+		edge search_first0_g1555: digit_bar2 -> search_first {
+			label L22: "1: last_black && width_mask == 0" {
+				layout [ size: 233, 17 ]
+			}
+		}
+		edge digit_bar30: digit_bar2 -> digit_bar3 {
+			label L23: "2: last_black / barMemory = barMemory | width_mask * 256" {
+				layout [ size: 406, 17 ]
+			}
+		}
+		edge search_first0_g1598: digit_bar3 -> search_first {
+			label L24: "1: last_white && width_mask == 0" {
+				layout [ size: 234, 17 ]
+			}
+		}
+		edge digit_bar40: digit_bar3 -> digit_bar4 {
+			label L25: "2: last_white / barMemory = barMemory | width_mask * 16" {
+				layout [ size: 399, 17 ]
+			}
+		}
+		edge search_first0_g0776: digit_bar4 -> search_first {
+			label L26: "1: last_black && width_mask == 0" {
+				layout [ size: 233, 17 ]
+			}
+		}
+		edge resolve_digit0: digit_bar4 -> resolve_digit {
+			label L27: "2: last_black / barMemory = barMemory | width_mask" {
+				layout [ size: 368, 17 ]
+			}
+		}
+		edge prepare_values0: resolve_digit -> prepare_values {
+			label L28: "1: (barMemory & bv0) == bv0 / current_digit = 0" {
+				layout [ size: 331, 17 ]
+			}
+		}
+		edge prepare_values1: resolve_digit -> prepare_values {
+			label L29: "2: (barMemory & bv1) == bv1 / current_digit = 1" {
+				layout [ size: 331, 17 ]
+			}
+		}
+		edge prepare_values2: resolve_digit -> prepare_values {
+			label L30: "3: (barMemory & bv2) == bv2 / current_digit = 2" {
+				layout [ size: 331, 17 ]
+			}
+		}
+		edge prepare_values3: resolve_digit -> prepare_values {
+			label L31: "4: (barMemory & bv3) == bv3 / current_digit = 3" {
+				layout [ size: 331, 17 ]
+			}
+		}
+		edge prepare_values4: resolve_digit -> prepare_values {
+			label L32: "5: (barMemory & bv4) == bv4 / current_digit = 4" {
+				layout [ size: 331, 17 ]
+			}
+		}
+		edge prepare_values5: resolve_digit -> prepare_values {
+			label L33: "6: (barMemory & bv5) == bv5 / current_digit = 5" {
+				layout [ size: 331, 17 ]
+			}
+		}
+		edge prepare_values6: resolve_digit -> prepare_values {
+			label L34: "7: (barMemory & bv6) == bv6 / current_digit = 6" {
+				layout [ size: 331, 17 ]
+			}
+		}
+		edge prepare_values7: resolve_digit -> prepare_values {
+			label L35: "8: (barMemory & bv7) == bv7 / current_digit = 7" {
+				layout [ size: 331, 17 ]
+			}
+		}
+		edge prepare_values8: resolve_digit -> prepare_values {
+			label L36: "9: (barMemory & bv8) == bv8 / current_digit = 8" {
+				layout [ size: 331, 17 ]
+			}
+		}
+		edge prepare_values9: resolve_digit -> prepare_values {
+			label L37: "10: (barMemory & bv9) == bv9 / current_digit = 9" {
+				layout [ size: 339, 17 ]
+			}
+		}
+		edge search_first0_g8449: resolve_digit -> search_first {
+			label L38: "11:" {
+				layout [ size: 20, 17 ]
+			}
+		}
+		edge check_end0: prepare_values -> check_end {
+			label L39: "/ barMemory = 0; numbersLeft = numbersLeft - 1; parity = ((parity - current_digit) + 10) % 10; total = total * 10 + current_digit" {
+				layout [ size: 860, 17 ]
+			}
+		}
+		edge digit_bar10_g8525: check_end -> digit_bar1 {
+			label L40: "1: numbersLeft > 0" {
+				layout [ size: 132, 17 ]
+			}
+		}
+		edge await_end_10: check_end -> await_end_1 {
+			label L41: "2: parity == 0 / total = total / 10" {
+				layout [ size: 209, 17 ]
+			}
+		}
+		edge search_first0_g5946: check_end -> search_first {
+			label L42: "3:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge await_end_20: await_end_1 -> await_end_2 {
+			label L43: "1: last_white && (width_mask & 1) != 0" {
+				layout [ size: 266, 17 ]
+			}
+		}
+		edge search_first0_g4938: await_end_1 -> search_first {
+			label L44: "2: color_changed" {
+				layout [ size: 122, 17 ]
+			}
+		}
+		edge await_end_30: await_end_2 -> await_end_3 {
+			label L45: "1: last_black && (width_mask & 1) != 0" {
+				layout [ size: 265, 17 ]
+			}
+		}
+		edge search_first0_g5184: await_end_2 -> search_first {
+			label L46: "2: color_changed" {
+				layout [ size: 122, 17 ]
+			}
+		}
+		edge await_end_40: await_end_3 -> await_end_4 {
+			label L47: "1: last_white && (width_mask & 1) != 0" {
+				layout [ size: 266, 17 ]
+			}
+		}
+		edge search_first0_g8507: await_end_3 -> search_first {
+			label L48: "2: color_changed" {
+				layout [ size: 122, 17 ]
+			}
+		}
+		edge normalize_barcode0: await_end_4 -> normalize_barcode {
+			label L49: "1: last_black && (width_mask & 1) != 0 / goalRotR = rotationR + 170; goalRotL = rotationL + 170" {
+				layout [ size: 661, 17 ]
+			}
+		}
+		edge search_first0_g7875: await_end_4 -> search_first {
+			label L50: "2: color_changed" {
+				layout [ size: 122, 17 ]
+			}
+		}
+		edge printBarcode0: normalize_barcode -> printBarcode {
+			label L51: "1: total >= 500 / total = total - 1000" {
+				layout [ size: 234, 17 ]
+			}
+		}
+		edge printBarcode1: normalize_barcode -> printBarcode {
+			label L52: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge forward0: printBarcode -> forward {
+			label L53: "/ pBarcode; beepL" {
+				layout [ size: 131, 17 ]
+			}
+		}
+		edge rotateR0: forward -> rotateR {
+			label L54: "1: rotationL >= goalRotL && rotationR >= goalRotR && total > 0 / goalRotR = rotationR - (total * 2 + total / 64); goalRotL = rotationL + (total * 2 + total / 64); speedL = rotation_speed; speedR = 0 - rotation_speed" {
+				layout [ size: 1460, 17 ]
+			}
+		}
+		edge rotateL0: forward -> rotateL {
+			label L55: "2: rotationL >= goalRotL && rotationR >= goalRotR && total < 0 / goalRotR = rotationR - (total * 2 + total / 64); goalRotL = rotationL + (total * 2 + total / 64); speedL = 0 - rotation_speed; speedR = rotation_speed" {
+				layout [ size: 1460, 17 ]
+			}
+		}
+		edge search_first0_g7563: forward -> search_first {
+			label L56: "3: rotationL >= goalRotL && rotationR >= goalRotR" {
+				layout [ size: 358, 17 ]
+			}
+		}
+		edge search_first0_g1301: rotateR -> search_first {
+			label L57: "1: rotationL >= goalRotL && rotationR <= goalRotR / speedR = init_speed; speedL = init_speed - drive_correction" {
+				layout [ size: 800, 17 ]
+			}
+		}
+		edge rotateR0_g5141: rotateR -> rotateR {
+			label L58: "2: rotationL >= goalRotL / speedL = 0" {
+				layout [ size: 261, 17 ]
+			}
+		}
+		edge rotateR1: rotateR -> rotateR {
+			label L59: "3: rotationR <= goalRotR / speedR = 0" {
+				layout [ size: 267, 17 ]
+			}
+		}
+		edge search_first0_g8236: rotateL -> search_first {
+			label L60: "1: rotationL <= goalRotL && rotationR >= goalRotR / speedR = init_speed; speedL = init_speed - drive_correction" {
+				layout [ size: 800, 17 ]
+			}
+		}
+		edge rotateR0_g5506: rotateL -> rotateR {
+			label L61: "2: rotationL <= goalRotL / speedL = 0" {
+				layout [ size: 261, 17 ]
+			}
+		}
+		edge rotateR1_g2382: rotateL -> rotateR {
+			label L62: "3: rotationR >= goalRotR / speedR = 0" {
+				layout [ size: 267, 17 ]
+			}
+		}
+	}
+	node securety_start_stop {
+		node running_w {
+			layout [ size: 95, 34 ]
+		}
+		node running {
+			layout [ size: 76, 34 ]
+		}
+		node stopped_w {
+			layout [ size: 98, 34 ]
+		}
+		node stopped {
+			layout [ size: 79, 34 ]
+		}
+		edge running0: running_w -> running {
+			label L63: "!touch / speedR = (speedR & 0) + init_speed; speedL = (speedL & 0) + (init_speed - drive_correction)" {
+				layout [ size: 711, 17 ]
+			}
+		}
+		edge stopped_w0: running -> stopped_w {
+			label L64: "touch / speedL = speedL & 0; speedR = speedR & 0" {
+				layout [ size: 365, 17 ]
+			}
+		}
+		edge stopped0: stopped_w -> stopped {
+			label L65: "!touch" {
+				layout [ size: 45, 17 ]
+			}
+		}
+		edge running_w0: stopped -> running_w {
+			label L66: "touch" {
+				layout [ size: 41, 17 ]
+			}
+		}
+	}
+}

@@ -1,0 +1,305 @@
+graph G1
+node Sampler {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node Done {
+			layout [ size: 64, 40 ]
+		}
+		node Error {
+			layout [ size: 119, 50 ]
+		}
+		node Init {
+			layout [ size: 42, 34 ]
+		}
+		node StartDelim1 {
+			layout [ size: 103, 34 ]
+		}
+		node StartDelim2 {
+			layout [ size: 103, 34 ]
+		}
+		node StartDelim3 {
+			layout [ size: 103, 34 ]
+		}
+		node DigitWhite {
+			layout [ size: 93, 34 ]
+		}
+		node DigitWhite3 {
+			layout [ size: 102, 34 ]
+		}
+		node DigitWhite2 {
+			layout [ size: 102, 34 ]
+		}
+		node DigitWhite1 {
+			layout [ size: 102, 34 ]
+		}
+		node DigitBlack {
+			layout [ size: 93, 34 ]
+		}
+		node DigitBlack4 {
+			layout [ size: 101, 34 ]
+		}
+		node DigitBlack3 {
+			layout [ size: 101, 34 ]
+		}
+		node DigitBlack2 {
+			layout [ size: 101, 34 ]
+		}
+		node DigitBlack1 {
+			layout [ size: 101, 34 ]
+		}
+		node EndDelim1 {
+			layout [ size: 97, 34 ]
+		}
+		node EndDelim2 {
+			layout [ size: 97, 34 ]
+		}
+		node EndDelim3 {
+			layout [ size: 97, 34 ]
+		}
+		edge Init0: Init -> Init {
+			label L1: "1: white" {
+				layout [ size: 54, 17 ]
+			}
+		}
+		edge StartDelim10: Init -> StartDelim1 {
+			label L2: "2: black" {
+				layout [ size: 54, 17 ]
+			}
+		}
+		edge Error0: StartDelim1 -> Error {
+			label L3: "1: black && currentLength > MAXIMUM_START_LENGTH" {
+				layout [ size: 403, 17 ]
+			}
+		}
+		edge Error1: StartDelim1 -> Error {
+			label L4: "2: white && currentLength < MINIMUM_START_LENGTH" {
+				layout [ size: 400, 17 ]
+			}
+		}
+		edge StartDelim10_g3602: StartDelim1 -> StartDelim1 {
+			label L5: "3: black / currentLength = currentLength + 1" {
+				layout [ size: 312, 17 ]
+			}
+		}
+		edge StartDelim20: StartDelim1 -> StartDelim2 {
+			label L6: "4: white / avgLength = currentLength; currentLength = 1" {
+				layout [ size: 397, 17 ]
+			}
+		}
+		edge Error0_g9694: StartDelim2 -> Error {
+			label L7: "1: white && currentLength > 3 * avgLength" {
+				layout [ size: 302, 17 ]
+			}
+		}
+		edge Error1_g9629: StartDelim2 -> Error {
+			label L8: "2: black && currentLength * 3 < avgLength" {
+				layout [ size: 301, 17 ]
+			}
+		}
+		edge StartDelim20_g5109: StartDelim2 -> StartDelim2 {
+			label L9: "3: white / currentLength = currentLength + 1" {
+				layout [ size: 313, 17 ]
+			}
+		}
+		edge StartDelim30: StartDelim2 -> StartDelim3 {
+			label L10: "4: black / avgLength = ` 0.5f ` * avgLength + ` 0.5f ` * currentLength; currentLength = 1" {
+				layout [ size: 603, 17 ]
+			}
+		}
+		edge Error0_g8986: StartDelim3 -> Error {
+			label L11: "1: black && currentLength > 2 * avgLength" {
+				layout [ size: 301, 17 ]
+			}
+		}
+		edge Error1_g8834: StartDelim3 -> Error {
+			label L12: "2: white && currentLength * 2 < avgLength" {
+				layout [ size: 302, 17 ]
+			}
+		}
+		edge StartDelim30_g0974: StartDelim3 -> StartDelim3 {
+			label L13: "3: black / currentLength = currentLength + 1" {
+				layout [ size: 312, 17 ]
+			}
+		}
+		edge DigitWhite0: StartDelim3 -> DigitWhite {
+			label L14: "4: white / avgLength = ` 0.6f ` * avgLength + ` 0.4f ` * currentLength; currentLength = 1" {
+				layout [ size: 604, 17 ]
+			}
+		}
+		edge Error0_g4869: DigitWhite -> Error {
+			label L15: "1: white && currentLength > 4 * avgLength" {
+				layout [ size: 302, 17 ]
+			}
+		}
+		edge Error1_g4788: DigitWhite -> Error {
+			label L16: "2: black && currentLength * 2 < avgLength" {
+				layout [ size: 301, 17 ]
+			}
+		}
+		edge DigitWhite0_g3332: DigitWhite -> DigitWhite {
+			label L17: "3: white / currentLength = currentLength + 1" {
+				layout [ size: 313, 17 ]
+			}
+		}
+		edge DigitWhite30: DigitWhite -> DigitWhite3 {
+			label L18: "4: black && currentLength >= ` 2.5f ` * avgLength / avgLength = ` 0.5f ` * avgLength + ` 0.16667f ` * currentLength" {
+				layout [ size: 791, 17 ]
+			}
+		}
+		edge DigitWhite20: DigitWhite -> DigitWhite2 {
+			label L19: "5: black && currentLength >= ` 1.5f ` * avgLength / avgLength = ` 0.6f ` * avgLength + ` 0.2f ` * currentLength" {
+				layout [ size: 759, 17 ]
+			}
+		}
+		edge DigitWhite10: DigitWhite -> DigitWhite1 {
+			label L20: "6: black / avgLength = ` 0.7f ` * avgLength + currentLength * ` 0.3f `" {
+				layout [ size: 467, 17 ]
+			}
+		}
+		edge DigitWhite20_g1520: DigitWhite3 -> DigitWhite2 {
+			label L21: "/ bars[currentBar] = WHITE; currentBar = currentBar + 1" {
+				layout [ size: 396, 17 ]
+			}
+		}
+		edge DigitWhite10_g9486: DigitWhite2 -> DigitWhite1 {
+			label L22: "/ bars[currentBar] = WHITE; currentBar = currentBar + 1" {
+				layout [ size: 396, 17 ]
+			}
+		}
+		edge Error0_g8902: DigitWhite1 -> Error {
+			label L23: "1: currentBar > 28" {
+				layout [ size: 127, 17 ]
+			}
+		}
+		edge EndDelim10: DigitWhite1 -> EndDelim1 {
+			label L24: "2: currentBar == 28 / bars[currentBar] = WHITE; currentBar = currentBar + 1; currentLength = 1" {
+				layout [ size: 670, 17 ]
+			}
+		}
+		edge DigitBlack0: DigitWhite1 -> DigitBlack {
+			label L25: "3: / bars[currentBar] = WHITE; currentBar = currentBar + 1; currentLength = 1" {
+				layout [ size: 547, 17 ]
+			}
+		}
+		edge Error0_g7267: DigitBlack -> Error {
+			label L26: "1: black && currentLength > 5 * avgLength" {
+				layout [ size: 301, 17 ]
+			}
+		}
+		edge Error1_g7045: DigitBlack -> Error {
+			label L27: "2: white && currentLength * 2 < avgLength" {
+				layout [ size: 302, 17 ]
+			}
+		}
+		edge DigitBlack0_g8465: DigitBlack -> DigitBlack {
+			label L28: "3: black / currentLength = currentLength + 1" {
+				layout [ size: 312, 17 ]
+			}
+		}
+		edge DigitBlack40: DigitBlack -> DigitBlack4 {
+			label L29: "4: white && currentLength >= 3.5 * avgLength / avgLength = ` 0.5f ` * avgLength + ` 0.125f ` * currentLength" {
+				layout [ size: 753, 17 ]
+			}
+		}
+		edge DigitBlack30: DigitBlack -> DigitBlack3 {
+			label L30: "5: white && currentLength >= 2.5 * avgLength / avgLength = ` 0.5f ` * avgLength + ` 0.16667f ` * currentLength" {
+				layout [ size: 769, 17 ]
+			}
+		}
+		edge DigitBlack20: DigitBlack -> DigitBlack2 {
+			label L31: "6: white && currentLength >= 1.5 * avgLength / avgLength = ` 0.6f ` * avgLength + ` 0.2f ` * currentLength" {
+				layout [ size: 737, 17 ]
+			}
+		}
+		edge DigitBlack10: DigitBlack -> DigitBlack1 {
+			label L32: "7: white / avgLength = ` 0.7f ` * avgLength + currentLength * ` 0.3f `" {
+				layout [ size: 468, 17 ]
+			}
+		}
+		edge DigitBlack30_g0802: DigitBlack4 -> DigitBlack3 {
+			label L33: "/ bars[currentBar] = BLACK; currentBar = currentBar + 1" {
+				layout [ size: 399, 17 ]
+			}
+		}
+		edge DigitBlack20_g6896: DigitBlack3 -> DigitBlack2 {
+			label L34: "/ bars[currentBar] = BLACK; currentBar = currentBar + 1" {
+				layout [ size: 399, 17 ]
+			}
+		}
+		edge DigitBlack10_g6360: DigitBlack2 -> DigitBlack1 {
+			label L35: "/ bars[currentBar] = BLACK; currentBar = currentBar + 1" {
+				layout [ size: 399, 17 ]
+			}
+		}
+		edge Error0_g4303: DigitBlack1 -> Error {
+			label L36: "1: currentBar >= 28" {
+				layout [ size: 136, 17 ]
+			}
+		}
+		edge DigitWhite0_g4493: DigitBlack1 -> DigitWhite {
+			label L37: "2: / bars[currentBar] = BLACK; currentBar = currentBar + 1; currentLength = 1" {
+				layout [ size: 550, 17 ]
+			}
+		}
+		edge Error0_g3001: EndDelim1 -> Error {
+			label L38: "1: black && currentLength > 1.5 * avgLength" {
+				layout [ size: 313, 17 ]
+			}
+		}
+		edge Error1_g5108: EndDelim1 -> Error {
+			label L39: "2: white && currentLength * 2 < avgLength" {
+				layout [ size: 302, 17 ]
+			}
+		}
+		edge EndDelim10_g8812: EndDelim1 -> EndDelim1 {
+			label L40: "3: black / currentLength = currentLength + 1" {
+				layout [ size: 312, 17 ]
+			}
+		}
+		edge EndDelim20: EndDelim1 -> EndDelim2 {
+			label L41: "4: white / avgLength = avgLength * ` 0.6f ` + currentLength * ` 0.4f `; currentLength = 1" {
+				layout [ size: 604, 17 ]
+			}
+		}
+		edge Error0_g0555: EndDelim2 -> Error {
+			label L42: "1: white && currentLength > 1.5 * avgLength" {
+				layout [ size: 314, 17 ]
+			}
+		}
+		edge Error1_g5895: EndDelim2 -> Error {
+			label L43: "2: black && currentLength * 2 < avgLength" {
+				layout [ size: 301, 17 ]
+			}
+		}
+		edge EndDelim20_g8723: EndDelim2 -> EndDelim2 {
+			label L44: "3: white / currentLength = currentLength + 1" {
+				layout [ size: 313, 17 ]
+			}
+		}
+		edge EndDelim30: EndDelim2 -> EndDelim3 {
+			label L45: "4: black / avgLength = avgLength * ` 0.6f ` + currentLength * ` 0.4f `; currentLength = 1" {
+				layout [ size: 603, 17 ]
+			}
+		}
+		edge Error0_g8815: EndDelim3 -> Error {
+			label L46: "1: black && currentLength > 1.5 * avgLength" {
+				layout [ size: 313, 17 ]
+			}
+		}
+		edge Error1_g7734: EndDelim3 -> Error {
+			label L47: "2: white && currentLength * 2 < avgLength" {
+				layout [ size: 302, 17 ]
+			}
+		}
+		edge EndDelim30_g9696: EndDelim3 -> EndDelim3 {
+			label L48: "3: black / currentLength = currentLength + 1" {
+				layout [ size: 312, 17 ]
+			}
+		}
+		edge Done0: EndDelim3 -> Done {
+			label L49: "4: white" {
+				layout [ size: 54, 17 ]
+			}
+		}
+	}
+}

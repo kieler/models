@@ -1,0 +1,80 @@
+graph G1
+node move {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node REACHED {
+			layout [ size: 99, 40 ]
+		}
+		node __te_S {
+			layout [ size: 69, 34 ]
+		}
+		node __te_S1 {
+			layout [ size: 77, 34 ]
+		}
+		node __te_S2 {
+			layout [ size: 77, 34 ]
+		}
+		node INIT {
+			layout [ size: 49, 34 ]
+		}
+		node __sd_Depth {
+			layout [ size: 105, 34 ]
+		}
+		node MOVE {
+			layout [ size: 65, 34 ]
+		}
+		node __sd_Depth1 {
+			layout [ size: 113, 34 ]
+		}
+		node __sd_S2 {
+			layout [ size: 80, 34 ]
+		}
+		edge MOVE0: __te_S -> MOVE {
+			label L1: "/ DIRECTION = true" {
+				layout [ size: 138, 17 ]
+			}
+		}
+		edge REACHED0: __te_S1 -> REACHED {
+			label L2: "/ DIRECTION = false" {
+				layout [ size: 143, 17 ]
+			}
+		}
+		edge INIT0: __te_S2 -> INIT {
+			label L3: "/ DIRECTION = false" {
+				layout [ size: 143, 17 ]
+			}
+		}
+		edge __sd_Depth0: INIT -> __sd_Depth
+		edge __te_S0: __sd_Depth -> __te_S {
+			label L4: "1: START_BUTTON" {
+				layout [ size: 138, 17 ]
+			}
+		}
+		edge INIT0_g9279: __sd_Depth -> INIT {
+			label L5: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge __sd_Depth10: MOVE -> __sd_Depth1
+		edge __te_S10: __sd_Depth1 -> __te_S1 {
+			label L6: "1: REACHED" {
+				layout [ size: 89, 17 ]
+			}
+		}
+		edge __sd_S20: __sd_Depth1 -> __sd_S2 {
+			label L7: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge __te_S20: __sd_S2 -> __te_S2 {
+			label L8: "1: INTERRUPT_BUTTON_A | INTERRUPT_BUTTON_B" {
+				layout [ size: 385, 17 ]
+			}
+		}
+		edge MOVE0_g8667: __sd_S2 -> MOVE {
+			label L9: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+	}
+}

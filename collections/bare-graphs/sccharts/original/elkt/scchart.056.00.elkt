@@ -1,0 +1,422 @@
+graph G1
+node xczuecfngzmves {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node init {
+			layout [ size: 109, 50 ]
+		}
+		node Reading {
+			algorithm: org.eclipse.elk.box
+			node scan {
+				node BeforeStart {
+					layout [ size: 103, 34 ]
+				}
+				node WaitLight {
+					layout [ size: 194, 50 ]
+				}
+				node WaitDark {
+					layout [ size: 269, 67 ]
+				}
+				edge WaitLight0: BeforeStart -> WaitLight {
+					label L2: "red < 0.35" {
+						layout [ size: 70, 17 ]
+					}
+				}
+				edge WaitDark0: WaitLight -> WaitDark {
+					label L3: "red >= 0.45 / rotationDiff = rotation - startRotation; toEmit = ((rotationDiff + 5) - (rotationDiff + 5) % 10) / 10; emitDark" {
+						layout [ size: 807, 17 ]
+					}
+				}
+				edge WaitLight0_g5094: WaitDark -> WaitLight {
+					label L4: "red < 0.35 / rotationDiff = rotation - startRotation; toEmit = ((rotationDiff + 5) - (rotationDiff + 5) % 10) / 10; emitLight" {
+						layout [ size: 800, 17 ]
+					}
+				}
+			}
+			node emit {
+				node Idle {
+					layout [ size: 46, 34 ]
+				}
+				node EmitDark {
+					layout [ size: 85, 34 ]
+				}
+				node EmitLight {
+					layout [ size: 87, 34 ]
+				}
+				edge EmitDark0: Idle -> EmitDark {
+					label L5: "1: emitDark" {
+						layout [ size: 80, 17 ]
+					}
+				}
+				edge EmitLight0: Idle -> EmitLight {
+					label L6: "2: emitLight" {
+						layout [ size: 82, 17 ]
+					}
+				}
+				edge Idle0: EmitDark -> Idle {
+					label L7: "1: toEmit <= 0" {
+						layout [ size: 96, 17 ]
+					}
+				}
+				edge EmitDark0_g3906: EmitDark -> EmitDark {
+					label L8: "2: toEmit > 0 / toEmit = toEmit - 1; dark" {
+						layout [ size: 266, 17 ]
+					}
+				}
+				edge Idle0_g4588: EmitLight -> Idle {
+					label L9: "1: toEmit <= 0" {
+						layout [ size: 96, 17 ]
+					}
+				}
+				edge EmitLight0_g0403: EmitLight -> EmitLight {
+					label L10: "2: toEmit > 0 / toEmit = toEmit - 1; light" {
+						layout [ size: 265, 17 ]
+					}
+				}
+			}
+			node decode {
+				node BeforeStart_g4998 {
+					algorithm: org.eclipse.elk.box
+					node N2 {
+						node Zero {
+							layout [ size: 53, 34 ]
+						}
+						node One {
+							layout [ size: 214, 50 ]
+						}
+						node Two {
+							layout [ size: 50, 34 ]
+						}
+						node Three {
+							layout [ size: 69, 40 ]
+						}
+						edge One0: Zero -> One {
+							label L12: "dark" {
+								layout [ size: 32, 17 ]
+							}
+						}
+						edge Two0: One -> Two {
+							label L13: "1: light" {
+								layout [ size: 47, 17 ]
+							}
+						}
+						edge One0_g8478: One -> One {
+							label L14: "2: dark" {
+								layout [ size: 48, 17 ]
+							}
+						}
+						edge Three0: Two -> Three {
+							label L15: "1: dark" {
+								layout [ size: 48, 17 ]
+							}
+						}
+						edge Zero0: Two -> Zero {
+							label L16: "2: light" {
+								layout [ size: 47, 17 ]
+							}
+						}
+					}
+				}
+				node Decoding {
+					algorithm: org.eclipse.elk.box
+					node N3 {
+						node Init {
+							layout [ size: 42, 34 ]
+						}
+						node All {
+							layout [ size: 38, 34 ]
+						}
+						node ZeroOneTwoNine {
+							algorithm: org.eclipse.elk.box
+							node N4 {
+								node All_g1989 {
+									layout [ size: 38, 34 ]
+								}
+								node ZeroNine {
+									layout [ size: 85, 34 ]
+								}
+								node ZeroNine2 {
+									layout [ size: 94, 34 ]
+								}
+								node Zero_g0650 {
+									layout [ size: 133, 71 ]
+								}
+								node Nine {
+									layout [ size: 133, 71 ]
+								}
+								node OneTwo {
+									layout [ size: 80, 34 ]
+								}
+								node One_g4187 {
+									layout [ size: 133, 71 ]
+								}
+								node Two_g2687 {
+									layout [ size: 133, 71 ]
+								}
+								node Error {
+									layout [ size: 131, 56 ]
+								}
+								edge ZeroNine0: All_g1989 -> ZeroNine {
+									label L33: "1: light" {
+										layout [ size: 47, 17 ]
+									}
+								}
+								edge OneTwo0: All_g1989 -> OneTwo {
+									label L34: "2: dark" {
+										layout [ size: 48, 17 ]
+									}
+								}
+								edge ZeroNine20: ZeroNine -> ZeroNine2 {
+									label L35: "1: dark" {
+										layout [ size: 48, 17 ]
+									}
+								}
+								edge Error0: ZeroNine -> Error {
+									label L36: "2: light" {
+										layout [ size: 47, 17 ]
+									}
+								}
+								edge Zero0_g2920: ZeroNine2 -> Zero_g0650 {
+									label L37: "1: dark" {
+										layout [ size: 48, 17 ]
+									}
+								}
+								edge Nine0: ZeroNine2 -> Nine {
+									label L38: "2: light" {
+										layout [ size: 47, 17 ]
+									}
+								}
+								edge One0_g5859: OneTwo -> One_g4187 {
+									label L39: "1: dark" {
+										layout [ size: 48, 17 ]
+									}
+								}
+								edge Two0_g6091: OneTwo -> Two_g2687 {
+									label L40: "2: light" {
+										layout [ size: 47, 17 ]
+									}
+								}
+							}
+						}
+						node ThreeFourFiveSixSevenEightEnd {
+							algorithm: org.eclipse.elk.box
+							node N5 {
+								node All_g5760 {
+									layout [ size: 38, 34 ]
+								}
+								node ThreeFiveSevenEight {
+									layout [ size: 177, 34 ]
+								}
+								node FiveEight {
+									layout [ size: 88, 34 ]
+								}
+								node Eight {
+									layout [ size: 133, 71 ]
+								}
+								node Five {
+									layout [ size: 133, 71 ]
+								}
+								node ThreeSeven {
+									layout [ size: 110, 34 ]
+								}
+								node Three_g7787 {
+									layout [ size: 133, 71 ]
+								}
+								node Seven {
+									layout [ size: 133, 71 ]
+								}
+								node FourSixEnd {
+									layout [ size: 104, 34 ]
+								}
+								node SixEnd {
+									layout [ size: 71, 34 ]
+								}
+								node Six {
+									layout [ size: 133, 71 ]
+								}
+								node End {
+									layout [ size: 248, 56 ]
+								}
+								node Four {
+									layout [ size: 133, 71 ]
+								}
+								edge ThreeFiveSevenEight0: All_g5760 -> ThreeFiveSevenEight {
+									label L41: "1: dark" {
+										layout [ size: 48, 17 ]
+									}
+								}
+								edge FourSixEnd0: All_g5760 -> FourSixEnd {
+									label L42: "2: light" {
+										layout [ size: 47, 17 ]
+									}
+								}
+								edge ThreeSeven0: ThreeFiveSevenEight -> ThreeSeven {
+									label L43: "1: dark" {
+										layout [ size: 48, 17 ]
+									}
+								}
+								edge FiveEight0: ThreeFiveSevenEight -> FiveEight {
+									label L44: "2: light" {
+										layout [ size: 47, 17 ]
+									}
+								}
+								edge Eight0: FiveEight -> Eight {
+									label L45: "1: dark" {
+										layout [ size: 48, 17 ]
+									}
+								}
+								edge Five0: FiveEight -> Five {
+									label L46: "2: light" {
+										layout [ size: 47, 17 ]
+									}
+								}
+								edge Seven0: ThreeSeven -> Seven {
+									label L47: "1: light" {
+										layout [ size: 47, 17 ]
+									}
+								}
+								edge Three0_g1287: ThreeSeven -> Three_g7787 {
+									label L48: "2: dark" {
+										layout [ size: 48, 17 ]
+									}
+								}
+								edge Four0: FourSixEnd -> Four {
+									label L49: "1: light" {
+										layout [ size: 47, 17 ]
+									}
+								}
+								edge SixEnd0: FourSixEnd -> SixEnd {
+									label L50: "2: dark" {
+										layout [ size: 48, 17 ]
+									}
+								}
+								edge End0: SixEnd -> End {
+									label L51: "1: light" {
+										layout [ size: 47, 17 ]
+									}
+								}
+								edge Six0: SixEnd -> Six {
+									label L52: "2: dark" {
+										layout [ size: 48, 17 ]
+									}
+								}
+							}
+						}
+						node Add {
+							layout [ size: 255, 50 ]
+						}
+						node Check {
+							layout [ size: 419, 110 ]
+						}
+						node Map {
+							layout [ size: 304, 50 ]
+						}
+						node Rest {
+							layout [ size: 53, 34 ]
+						}
+						node Error_g2484 {
+							layout [ size: 63, 40 ]
+						}
+						node End_g9211 {
+							layout [ size: 238, 56 ]
+						}
+						edge Error0_g9491: Init -> Error_g2484 {
+							label L17: "1: dark" {
+								layout [ size: 48, 17 ]
+							}
+						}
+						edge All0: Init -> All {
+							label L18: "2: light" {
+								layout [ size: 47, 17 ]
+							}
+						}
+						edge ZeroOneTwoNine0: All -> ZeroOneTwoNine {
+							label L19: "1: light" {
+								layout [ size: 47, 17 ]
+							}
+						}
+						edge ThreeFourFiveSixSevenEightEnd0: All -> ThreeFourFiveSixSevenEightEnd {
+							label L20: "2: dark" {
+								layout [ size: 48, 17 ]
+							}
+						}
+						edge Error0_g5362: ZeroOneTwoNine -> Error_g2484 {
+							label L21: "1: error" {
+								layout [ size: 52, 17 ]
+							}
+						}
+						edge Rest0: ZeroOneTwoNine -> Rest {
+							label L22: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge Error0_g4499: ThreeFourFiveSixSevenEightEnd -> Error_g2484 {
+							label L23: "1: error" {
+								layout [ size: 52, 17 ]
+							}
+						}
+						edge Map0: ThreeFourFiveSixSevenEightEnd -> Map {
+							label L24: "2: end" {
+								layout [ size: 44, 17 ]
+							}
+						}
+						edge Rest0_g2463: ThreeFourFiveSixSevenEightEnd -> Rest {
+							label L25: "3:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge Init0: Add -> Init {
+							label L26: "/ numberOfDigits = numberOfDigits + 1" {
+								layout [ size: 275, 17 ]
+							}
+						}
+						edge Error0_g9336: Check -> Error_g2484 {
+							label L27: "1: 9 - (d1 + d2 + d3) % 10 != number / error = true; `System.out.println(\"nicht OK\")`" {
+								layout [ size: 570, 17 ]
+							}
+						}
+						edge Init0_g7507: Check -> Init {
+							label L28: "2: 9 - (d1 + d2 + d3) % 10 == number / `System.out.println(\"OK\")`" {
+								layout [ size: 446, 17 ]
+							}
+						}
+						edge End0_g3282: Map -> End_g9211 {
+							label L29: "/ end = true" {
+								layout [ size: 81, 17 ]
+							}
+						}
+						edge Rest0_g1469: Rest -> Rest {
+							label L30: "1: (dark || light) && rest > 0 / rest = rest - 1" {
+								layout [ size: 294, 17 ]
+							}
+						}
+						edge Add0: Rest -> Add {
+							label L31: "2: rest == 0 && numberOfDigits != 3" {
+								layout [ size: 250, 17 ]
+							}
+						}
+						edge Check0: Rest -> Check {
+							label L32: "3: rest == 0 && numberOfDigits == 3" {
+								layout [ size: 255, 17 ]
+							}
+						}
+					}
+				}
+				node Error_g8421 {
+					layout [ size: 181, 56 ]
+				}
+				edge Decoding0: BeforeStart_g4998 -> Decoding
+				edge Error0_g0524: Decoding -> Error_g8421 {
+					label L11: "error" {
+						layout [ size: 36, 17 ]
+					}
+				}
+			}
+		}
+		edge Reading0: init -> Reading {
+			label L1: "isEnterDown / speed = 100" {
+				layout [ size: 189, 17 ]
+			}
+		}
+	}
+}

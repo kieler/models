@@ -1,0 +1,74 @@
+graph G1
+node Elevator_Core {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node DOWN {
+			layout [ size: 67, 34 ]
+		}
+		node MoveUp {
+			layout [ size: 81, 34 ]
+		}
+		node UP {
+			layout [ size: 42, 34 ]
+		}
+		node MoveDown {
+			layout [ size: 101, 34 ]
+		}
+		node Alarm {
+			layout [ size: 61, 34 ]
+		}
+		node AlarmEnd {
+			layout [ size: 88, 34 ]
+		}
+		edge MoveUp0: DOWN -> MoveUp {
+			label L1: "ButtonUp / Move = 1" {
+				layout [ size: 146, 17 ]
+			}
+		}
+		edge Alarm0: MoveUp -> Alarm {
+			label L2: "1: ButtonAlarm / AlarmLamp = true; move = Move; Move = 0" {
+				layout [ size: 415, 17 ]
+			}
+		}
+		edge UP0: MoveUp -> UP {
+			label L3: "2: IsUp / Move = 0" {
+				layout [ size: 126, 17 ]
+			}
+		}
+		edge MoveDown0: UP -> MoveDown {
+			label L4: "ButtonDown / Move = -1" {
+				layout [ size: 171, 17 ]
+			}
+		}
+		edge Alarm0_g4669: MoveDown -> Alarm {
+			label L5: "1: ButtonAlarm / AlarmLamp = true; move = Move; Move = 0" {
+				layout [ size: 415, 17 ]
+			}
+		}
+		edge DOWN0: MoveDown -> DOWN {
+			label L6: "2: IsDown / Move = 0" {
+				layout [ size: 146, 17 ]
+			}
+		}
+		edge AlarmEnd0: Alarm -> AlarmEnd {
+			label L7: "1: count == 5 / count = 0; AlarmLamp = false" {
+				layout [ size: 302, 17 ]
+			}
+		}
+		edge Alarm0_g7813: Alarm -> Alarm {
+			label L8: "2: Second / AlarmLamp = !AlarmLamp; count = count + 1" {
+				layout [ size: 387, 17 ]
+			}
+		}
+		edge MoveDown0_g7944: AlarmEnd -> MoveDown {
+			label L9: "1: move == -1 / AlarmLamp = false; Move = -1" {
+				layout [ size: 312, 17 ]
+			}
+		}
+		edge MoveUp0_g1538: AlarmEnd -> MoveUp {
+			label L10: "2: move == 1 / AlarmLamp = false; Move = 1" {
+				layout [ size: 302, 17 ]
+			}
+		}
+	}
+}

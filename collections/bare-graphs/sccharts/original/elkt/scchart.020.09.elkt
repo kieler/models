@@ -1,0 +1,108 @@
+graph G1
+node Elevator {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node down {
+			layout [ size: 59, 34 ]
+		}
+		node moving_up {
+			algorithm: org.eclipse.elk.box
+			node N2 {
+				node init {
+					layout [ size: 42, 34 ]
+				}
+				node done {
+					layout [ size: 62, 40 ]
+				}
+				edge done0: init -> done {
+					label L7: "IS_UP" {
+						layout [ size: 44, 17 ]
+					}
+				}
+			}
+		}
+		node moving_down {
+			algorithm: org.eclipse.elk.box
+			node N3 {
+				node init_g9054 {
+					layout [ size: 42, 34 ]
+				}
+				node done_g1937 {
+					layout [ size: 62, 40 ]
+				}
+				edge done0_g6007: init_g9054 -> done_g1937 {
+					label L8: "IS_DOWN" {
+						layout [ size: 69, 17 ]
+					}
+				}
+			}
+		}
+		node alarm_then_up {
+			algorithm: org.eclipse.elk.box
+			node N4 {
+				node init_g3739 {
+					layout [ size: 42, 34 ]
+				}
+				node ^end {
+					layout [ size: 54, 40 ]
+				}
+				edge end0: init_g3739 -> ^end {
+					label L9: "5 SECOND" {
+						layout [ size: 77, 17 ]
+					}
+				}
+			}
+		}
+		node alarm_then_down {
+			algorithm: org.eclipse.elk.box
+			node N5 {
+				node init_g7272 {
+					layout [ size: 42, 34 ]
+				}
+				node end_g3158 {
+					layout [ size: 54, 40 ]
+				}
+				edge end0_g2779: init_g7272 -> end_g3158 {
+					label L10: "5 SECOND" {
+						layout [ size: 77, 17 ]
+					}
+				}
+			}
+		}
+		node up {
+			layout [ size: 39, 34 ]
+		}
+		edge moving_up0: down -> moving_up {
+			label L1: "BUTTON_UP" {
+				layout [ size: 95, 17 ]
+			}
+		}
+		edge alarm_then_up0: moving_up -> alarm_then_up {
+			label L2: "1: BUTTON_ALARM" {
+				layout [ size: 140, 17 ]
+			}
+		}
+		edge up0: moving_up -> up {
+			label L3: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge alarm_then_down0: moving_down -> alarm_then_down {
+			label L4: "1: BUTTON_ALARM" {
+				layout [ size: 140, 17 ]
+			}
+		}
+		edge up0_g2486: moving_down -> up {
+			label L5: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge moving_up0_g4905: alarm_then_up -> moving_up
+		edge moving_down0: alarm_then_down -> moving_down
+		edge moving_down0_g1262: up -> moving_down {
+			label L6: "BUTTON_DOWN" {
+				layout [ size: 120, 17 ]
+			}
+		}
+	}
+}

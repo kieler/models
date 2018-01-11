@@ -1,0 +1,179 @@
+graph G1
+node Arm {
+	algorithm: org.eclipse.elk.box
+	node controller {
+		node init {
+			layout [ size: 42, 34 ]
+		}
+		node pending {
+			layout [ size: 391, 50 ]
+		}
+		node extend {
+			algorithm: org.eclipse.elk.box
+			node N1 {
+				node stick {
+					layout [ size: 112, 50 ]
+				}
+				node bucket {
+					layout [ size: 182, 50 ]
+				}
+				edge bucket0: stick -> bucket {
+					label L5: "STICK_OUT" {
+						layout [ size: 87, 17 ]
+					}
+				}
+			}
+		}
+		node retract {
+			algorithm: org.eclipse.elk.box
+			node N2 {
+				node bucket_g2579 {
+					layout [ size: 127, 50 ]
+				}
+				node stick_g4227 {
+					layout [ size: 186, 50 ]
+				}
+				edge stick0: bucket_g2579 -> stick_g4227 {
+					label L6: "BUCKET_IN" {
+						layout [ size: 87, 17 ]
+					}
+				}
+			}
+		}
+		edge pending0: init -> pending
+		edge extend0: pending -> extend {
+			label L1: "1: EXTEND_BUTTON && !BUCKET_OUT" {
+				layout [ size: 290, 17 ]
+			}
+		}
+		edge retract0: pending -> retract {
+			label L2: "2: RETRACT_BUTTON && !BUCKET_IN" {
+				layout [ size: 282, 17 ]
+			}
+		}
+		edge pending0_g8427: extend -> pending {
+			label L3: "BUCKET_OUT" {
+				layout [ size: 105, 17 ]
+			}
+		}
+		edge pending0_g7486: retract -> pending {
+			label L4: "STICK_IN" {
+				layout [ size: 69, 17 ]
+			}
+		}
+	}
+	node alarm {
+		node off {
+			layout [ size: 191, 50 ]
+		}
+		node on {
+			algorithm: org.eclipse.elk.box
+			node N3 {
+				node lamp_on {
+					layout [ size: 186, 50 ]
+				}
+				node to_lamp_off {
+					layout [ size: 102, 34 ]
+				}
+				node lamp_off {
+					layout [ size: 191, 50 ]
+				}
+				node to_lamp_on {
+					layout [ size: 102, 34 ]
+				}
+				edge to_lamp_off0: lamp_on -> to_lamp_off {
+					label L9: "SECOND" {
+						layout [ size: 65, 17 ]
+					}
+				}
+				edge lamp_off0: to_lamp_off -> lamp_off {
+					label L10: "SECOND" {
+						layout [ size: 65, 17 ]
+					}
+				}
+				edge to_lamp_on0: lamp_off -> to_lamp_on {
+					label L11: "SECOND" {
+						layout [ size: 65, 17 ]
+					}
+				}
+				edge lamp_on0: to_lamp_on -> lamp_on {
+					label L12: "SECOND" {
+						layout [ size: 65, 17 ]
+					}
+				}
+			}
+		}
+		edge on0: off -> on {
+			label L7: "alarm" {
+				layout [ size: 40, 17 ]
+			}
+		}
+		edge off0: on -> off {
+			label L8: "!alarm" {
+				layout [ size: 44, 17 ]
+			}
+		}
+	}
+	node stick_g5958 {
+		node pending_g4401 {
+			layout [ size: 311, 50 ]
+		}
+		node extend_g9928 {
+			layout [ size: 306, 50 ]
+		}
+		node retract_g7723 {
+			layout [ size: 306, 50 ]
+		}
+		edge extend0_g9218: pending_g4401 -> extend_g9928 {
+			label L13: "1: stick == 1" {
+				layout [ size: 84, 17 ]
+			}
+		}
+		edge retract0_g6549: pending_g4401 -> retract_g7723 {
+			label L14: "2: stick == -1" {
+				layout [ size: 89, 17 ]
+			}
+		}
+		edge pending0_g9623: extend_g9928 -> pending_g4401 {
+			label L15: "stick < 1 || STICK_OUT" {
+				layout [ size: 161, 17 ]
+			}
+		}
+		edge pending0_g3958: retract_g7723 -> pending_g4401 {
+			label L16: "stick > -1 || STICK_IN" {
+				layout [ size: 148, 17 ]
+			}
+		}
+	}
+	node bucket_g0489 {
+		node pending_g6693 {
+			layout [ size: 341, 50 ]
+		}
+		node extend_g1203 {
+			layout [ size: 336, 50 ]
+		}
+		node retract_g0588 {
+			layout [ size: 336, 50 ]
+		}
+		edge extend0_g8981: pending_g6693 -> extend_g1203 {
+			label L17: "1: bucket == 1" {
+				layout [ size: 99, 17 ]
+			}
+		}
+		edge retract0_g8211: pending_g6693 -> retract_g0588 {
+			label L18: "2: bucket == -1" {
+				layout [ size: 104, 17 ]
+			}
+		}
+		edge pending0_g3141: extend_g1203 -> pending_g6693 {
+			label L19: "bucket < 1 || BUCKET_OUT" {
+				layout [ size: 194, 17 ]
+			}
+		}
+		edge pending0_g1431: retract_g0588 -> pending_g6693 {
+			label L20: "bucket > -1 || BUCKET_IN" {
+				layout [ size: 181, 17 ]
+			}
+		}
+	}
+}

@@ -1,0 +1,909 @@
+graph G1
+node Arm {
+	algorithm: org.eclipse.elk.box
+	node __EA_Entry {
+		node __EA_Main {
+			algorithm: org.eclipse.elk.box
+			node controller {
+				node init {
+					layout [ size: 42, 34 ]
+				}
+				node pending {
+					algorithm: org.eclipse.elk.box
+					node __EA_Entry_g7857 {
+						node __EA_Done {
+							layout [ size: 107, 40 ]
+						}
+						node __sd_Depth {
+							layout [ size: 105, 34 ]
+						}
+						node __te_S1 {
+							layout [ size: 77, 34 ]
+						}
+						node __te_S2 {
+							layout [ size: 77, 34 ]
+						}
+						node __te_S3 {
+							layout [ size: 77, 34 ]
+						}
+						edge __te_S10: __sd_Depth -> __te_S1 {
+							label L7: "/ stick = 0" {
+								layout [ size: 67, 17 ]
+							}
+						}
+						edge __te_S20: __te_S1 -> __te_S2 {
+							label L8: "/ bucket = 0" {
+								layout [ size: 82, 17 ]
+							}
+						}
+						edge __te_S30: __te_S2 -> __te_S3 {
+							label L9: "/ DONE_LAMP = true" {
+								layout [ size: 147, 17 ]
+							}
+						}
+						edge __EA_Done0: __te_S3 -> __EA_Done {
+							label L10: "/ alarm = false" {
+								layout [ size: 97, 17 ]
+							}
+						}
+					}
+				}
+				node extend {
+					algorithm: org.eclipse.elk.box
+					node __EA_Entry1 {
+						node __EA_Main_g8775 {
+							algorithm: org.eclipse.elk.box
+							node N1 {
+								node stick {
+									algorithm: org.eclipse.elk.box
+									node __EA_Entry_g7714 {
+										node __EA_Init {
+											layout [ size: 85, 34 ]
+										}
+										node __EA_Done_g1436 {
+											layout [ size: 107, 40 ]
+										}
+										edge __EA_Done0_g4849: __EA_Init -> __EA_Done_g1436 {
+											label L20: "/ stick = 1" {
+												layout [ size: 67, 17 ]
+											}
+										}
+									}
+								}
+								node bucket {
+									algorithm: org.eclipse.elk.box
+									node __EA_Entry_g4643 {
+										node __EA_Done_g1815 {
+											layout [ size: 107, 40 ]
+										}
+										node __sd_Depth1 {
+											layout [ size: 113, 34 ]
+										}
+										node __te_S5 {
+											layout [ size: 77, 34 ]
+										}
+										edge __te_S50: __sd_Depth1 -> __te_S5 {
+											label L21: "/ stick = 0" {
+												layout [ size: 67, 17 ]
+											}
+										}
+										edge __EA_Done0_g3990: __te_S5 -> __EA_Done_g1815 {
+											label L22: "/ bucket = 1" {
+												layout [ size: 82, 17 ]
+											}
+										}
+									}
+								}
+								node _AAborted {
+									layout [ size: 100, 40 ]
+								}
+								node __sd_Depth3 {
+									layout [ size: 113, 34 ]
+								}
+								node __EA_Exit1 {
+									layout [ size: 99, 34 ]
+								}
+								node __sd_Depth2 {
+									layout [ size: 113, 34 ]
+								}
+								node __sd_S3 {
+									layout [ size: 80, 34 ]
+								}
+								node __sd_Pause3 {
+									layout [ size: 114, 34 ]
+								}
+								edge __EA_Exit10: stick -> __EA_Exit1
+								edge __sd_Depth30: bucket -> __sd_Depth3
+								edge _AAborted0: __sd_Depth3 -> _AAborted {
+									label L14: "1: _Atrig" {
+										layout [ size: 58, 17 ]
+									}
+								}
+								edge __sd_Pause30: __sd_Depth3 -> __sd_Pause3 {
+									label L15: "2:" {
+										layout [ size: 13, 17 ]
+									}
+								}
+								edge __sd_Depth20: __EA_Exit1 -> __sd_Depth2
+								edge bucket0: __sd_Depth2 -> bucket {
+									label L16: "1: STICK_OUT" {
+										layout [ size: 103, 17 ]
+									}
+								}
+								edge __sd_S30: __sd_Depth2 -> __sd_S3 {
+									label L17: "2:" {
+										layout [ size: 13, 17 ]
+									}
+								}
+								edge _AAborted0_g2505: __sd_S3 -> _AAborted {
+									label L18: "1: _Atrig" {
+										layout [ size: 58, 17 ]
+									}
+								}
+								edge __EA_Exit10_g2898: __sd_S3 -> __EA_Exit1 {
+									label L19: "2:" {
+										layout [ size: 13, 17 ]
+									}
+								}
+								edge __sd_Depth30_g7712: __sd_Pause3 -> __sd_Depth3
+							}
+							node _ACtrl {
+								node _ADone {
+									layout [ size: 81, 40 ]
+								}
+								node __te_S6 {
+									layout [ size: 77, 34 ]
+								}
+								node _ARun {
+									layout [ size: 67, 34 ]
+								}
+								node __sd_Depth4 {
+									layout [ size: 113, 34 ]
+								}
+								edge _ADone0: __te_S6 -> _ADone {
+									label L23: "/ _Atrig = true" {
+										layout [ size: 95, 17 ]
+									}
+								}
+								edge __sd_Depth40: _ARun -> __sd_Depth4
+								edge __te_S60: __sd_Depth4 -> __te_S6 {
+									label L24: "1: BUCKET_OUT" {
+										layout [ size: 121, 17 ]
+									}
+								}
+								edge _ARun0: __sd_Depth4 -> _ARun {
+									label L25: "2:" {
+										layout [ size: 13, 17 ]
+									}
+								}
+							}
+						}
+						node __EA_Done_g1415 {
+							layout [ size: 107, 40 ]
+						}
+						node __EA_C1 {
+							layout [ size: 83, 34 ]
+						}
+						node __sd_Depth5 {
+							layout [ size: 113, 34 ]
+						}
+						node __te_S8 {
+							layout [ size: 77, 34 ]
+						}
+						edge __EA_Done0_g8338: __EA_Main_g8775 -> __EA_Done_g1415
+						edge __EA_Main0: __EA_C1 -> __EA_Main_g8775 {
+							label L11: "/ _Atrig = false" {
+								layout [ size: 100, 17 ]
+							}
+						}
+						edge __te_S80: __sd_Depth5 -> __te_S8 {
+							label L12: "/ DONE_LAMP = false" {
+								layout [ size: 152, 17 ]
+							}
+						}
+						edge __EA_C10: __te_S8 -> __EA_C1 {
+							label L13: "/ alarm = true" {
+								layout [ size: 92, 17 ]
+							}
+						}
+					}
+				}
+				node retract {
+					algorithm: org.eclipse.elk.box
+					node __EA_Entry2 {
+						node __EA_Main_g2712 {
+							algorithm: org.eclipse.elk.box
+							node N2 {
+								node bucket_g3251 {
+									algorithm: org.eclipse.elk.box
+									node __EA_Entry_g0235 {
+										node __EA_Init_g2605 {
+											layout [ size: 85, 34 ]
+										}
+										node __EA_Done_g1280 {
+											layout [ size: 107, 40 ]
+										}
+										edge __EA_Done0_g8789: __EA_Init_g2605 -> __EA_Done_g1280 {
+											label L35: "/ bucket = -1" {
+												layout [ size: 87, 17 ]
+											}
+										}
+									}
+								}
+								node stick_g9397 {
+									algorithm: org.eclipse.elk.box
+									node __EA_Entry_g5917 {
+										node __EA_Done_g9685 {
+											layout [ size: 107, 40 ]
+										}
+										node __sd_Depth6 {
+											layout [ size: 113, 34 ]
+										}
+										node __te_S10_g5345 {
+											layout [ size: 85, 34 ]
+										}
+										edge __te_S100: __sd_Depth6 -> __te_S10_g5345 {
+											label L36: "/ bucket = 0" {
+												layout [ size: 82, 17 ]
+											}
+										}
+										edge __EA_Done0_g8715: __te_S10_g5345 -> __EA_Done_g9685 {
+											label L37: "/ stick = -1" {
+												layout [ size: 72, 17 ]
+											}
+										}
+									}
+								}
+								node _AAborted1 {
+									layout [ size: 108, 40 ]
+								}
+								node __sd_Depth8 {
+									layout [ size: 113, 34 ]
+								}
+								node __EA_Exit3 {
+									layout [ size: 99, 34 ]
+								}
+								node __sd_Depth7 {
+									layout [ size: 113, 34 ]
+								}
+								node __sd_S9 {
+									layout [ size: 80, 34 ]
+								}
+								node __sd_Pause8 {
+									layout [ size: 114, 34 ]
+								}
+								edge __EA_Exit30: bucket_g3251 -> __EA_Exit3
+								edge __sd_Depth80: stick_g9397 -> __sd_Depth8
+								edge _AAborted10: __sd_Depth8 -> _AAborted1 {
+									label L29: "1: _Atrig1" {
+										layout [ size: 66, 17 ]
+									}
+								}
+								edge __sd_Pause80: __sd_Depth8 -> __sd_Pause8 {
+									label L30: "2:" {
+										layout [ size: 13, 17 ]
+									}
+								}
+								edge __sd_Depth70: __EA_Exit3 -> __sd_Depth7
+								edge stick0: __sd_Depth7 -> stick_g9397 {
+									label L31: "1: BUCKET_IN" {
+										layout [ size: 103, 17 ]
+									}
+								}
+								edge __sd_S90: __sd_Depth7 -> __sd_S9 {
+									label L32: "2:" {
+										layout [ size: 13, 17 ]
+									}
+								}
+								edge _AAborted10_g8693: __sd_S9 -> _AAborted1 {
+									label L33: "1: _Atrig1" {
+										layout [ size: 66, 17 ]
+									}
+								}
+								edge __EA_Exit30_g7725: __sd_S9 -> __EA_Exit3 {
+									label L34: "2:" {
+										layout [ size: 13, 17 ]
+									}
+								}
+								edge __sd_Depth80_g0743: __sd_Pause8 -> __sd_Depth8
+							}
+							node _ACtrl1 {
+								node _ADone1 {
+									layout [ size: 90, 40 ]
+								}
+								node __te_S11 {
+									layout [ size: 84, 34 ]
+								}
+								node _ARun1 {
+									layout [ size: 75, 34 ]
+								}
+								node __sd_Depth9 {
+									layout [ size: 113, 34 ]
+								}
+								edge _ADone10: __te_S11 -> _ADone1 {
+									label L38: "/ _Atrig1 = true" {
+										layout [ size: 103, 17 ]
+									}
+								}
+								edge __sd_Depth90: _ARun1 -> __sd_Depth9
+								edge __te_S110: __sd_Depth9 -> __te_S11 {
+									label L39: "1: STICK_IN" {
+										layout [ size: 85, 17 ]
+									}
+								}
+								edge _ARun10: __sd_Depth9 -> _ARun1 {
+									label L40: "2:" {
+										layout [ size: 13, 17 ]
+									}
+								}
+							}
+						}
+						node __EA_Done_g0718 {
+							layout [ size: 107, 40 ]
+						}
+						node __EA_C2 {
+							layout [ size: 83, 34 ]
+						}
+						node __sd_Depth10 {
+							layout [ size: 121, 34 ]
+						}
+						node __te_S13 {
+							layout [ size: 85, 34 ]
+						}
+						edge __EA_Done0_g5516: __EA_Main_g2712 -> __EA_Done_g0718
+						edge __EA_Main0_g4067: __EA_C2 -> __EA_Main_g2712 {
+							label L26: "/ _Atrig1 = false" {
+								layout [ size: 108, 17 ]
+							}
+						}
+						edge __te_S130: __sd_Depth10 -> __te_S13 {
+							label L27: "/ DONE_LAMP = false" {
+								layout [ size: 152, 17 ]
+							}
+						}
+						edge __EA_C20: __te_S13 -> __EA_C2 {
+							label L28: "/ alarm = true" {
+								layout [ size: 92, 17 ]
+							}
+						}
+					}
+				}
+				node __EA_Exit {
+					layout [ size: 90, 34 ]
+				}
+				node __sd_Depth11 {
+					layout [ size: 120, 34 ]
+				}
+				node __sd_S14 {
+					layout [ size: 88, 34 ]
+				}
+				edge pending0: init -> pending
+				edge __EA_Exit0: pending -> __EA_Exit
+				edge pending0_g6754: extend -> pending
+				edge pending0_g4725: retract -> pending
+				edge __sd_Depth110: __EA_Exit -> __sd_Depth11
+				edge extend0: __sd_Depth11 -> extend {
+					label L3: "1: EXTEND_BUTTON && !BUCKET_OUT" {
+						layout [ size: 290, 17 ]
+					}
+				}
+				edge __sd_S140: __sd_Depth11 -> __sd_S14 {
+					label L4: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge retract0: __sd_S14 -> retract {
+					label L5: "1: RETRACT_BUTTON && !BUCKET_IN" {
+						layout [ size: 282, 17 ]
+					}
+				}
+				edge __EA_Exit0_g0237: __sd_S14 -> __EA_Exit {
+					label L6: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+			}
+			node alarm {
+				node off {
+					algorithm: org.eclipse.elk.box
+					node __EA_Entry_g6111 {
+						node __EA_Init_g8018 {
+							layout [ size: 85, 34 ]
+						}
+						node __EA_Done_g5269 {
+							layout [ size: 107, 40 ]
+						}
+						edge __EA_Done0_g2923: __EA_Init_g8018 -> __EA_Done_g5269 {
+							label L43: "/ ALARM_LAMP = false" {
+								layout [ size: 158, 17 ]
+							}
+						}
+					}
+				}
+				node on {
+					algorithm: org.eclipse.elk.box
+					node N3 {
+						node lamp_on {
+							algorithm: org.eclipse.elk.box
+							node __EA_Entry_g5268 {
+								node __EA_Init_g6152 {
+									layout [ size: 85, 34 ]
+								}
+								node __EA_Done_g8575 {
+									layout [ size: 107, 40 ]
+								}
+								edge __EA_Done0_g3506: __EA_Init_g6152 -> __EA_Done_g8575 {
+									label L60: "/ ALARM_LAMP = true" {
+										layout [ size: 153, 17 ]
+									}
+								}
+							}
+						}
+						node lamp_off {
+							algorithm: org.eclipse.elk.box
+							node __EA_Entry_g6327 {
+								node __EA_Init_g6688 {
+									layout [ size: 85, 34 ]
+								}
+								node __EA_Done_g3750 {
+									layout [ size: 107, 40 ]
+								}
+								edge __EA_Done0_g0073: __EA_Init_g6688 -> __EA_Done_g3750 {
+									label L61: "/ ALARM_LAMP = false" {
+										layout [ size: 158, 17 ]
+									}
+								}
+							}
+						}
+						node _AAborted2 {
+							layout [ size: 108, 40 ]
+						}
+						node to_lamp_off {
+							layout [ size: 102, 34 ]
+						}
+						node __sd_Depth12 {
+							layout [ size: 121, 34 ]
+						}
+						node __sd_S16 {
+							layout [ size: 88, 34 ]
+						}
+						node to_lamp_on {
+							layout [ size: 102, 34 ]
+						}
+						node __sd_Depth13 {
+							layout [ size: 121, 34 ]
+						}
+						node __sd_S18 {
+							layout [ size: 88, 34 ]
+						}
+						node __EA_Exit6 {
+							layout [ size: 99, 34 ]
+						}
+						node __sd_Depth14 {
+							layout [ size: 121, 34 ]
+						}
+						node __sd_S20 {
+							layout [ size: 88, 34 ]
+						}
+						node __EA_Exit7 {
+							layout [ size: 99, 34 ]
+						}
+						node __sd_Depth15 {
+							layout [ size: 121, 34 ]
+						}
+						node __sd_S22 {
+							layout [ size: 88, 34 ]
+						}
+						edge __EA_Exit60: lamp_on -> __EA_Exit6
+						edge __EA_Exit70: lamp_off -> __EA_Exit7
+						edge __sd_Depth120: to_lamp_off -> __sd_Depth12
+						edge _AAborted20: __sd_Depth12 -> _AAborted2 {
+							label L44: "1: !alarm" {
+								layout [ size: 60, 17 ]
+							}
+						}
+						edge __sd_S160: __sd_Depth12 -> __sd_S16 {
+							label L45: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge lamp_off0: __sd_S16 -> lamp_off {
+							label L46: "1: SECOND" {
+								layout [ size: 81, 17 ]
+							}
+						}
+						edge to_lamp_off0: __sd_S16 -> to_lamp_off {
+							label L47: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __sd_Depth130: to_lamp_on -> __sd_Depth13
+						edge _AAborted20_g6743: __sd_Depth13 -> _AAborted2 {
+							label L48: "1: !alarm" {
+								layout [ size: 60, 17 ]
+							}
+						}
+						edge __sd_S180: __sd_Depth13 -> __sd_S18 {
+							label L49: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge lamp_on0: __sd_S18 -> lamp_on {
+							label L50: "1: SECOND" {
+								layout [ size: 81, 17 ]
+							}
+						}
+						edge to_lamp_on0: __sd_S18 -> to_lamp_on {
+							label L51: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __sd_Depth140: __EA_Exit6 -> __sd_Depth14
+						edge _AAborted20_g8328: __sd_Depth14 -> _AAborted2 {
+							label L52: "1: !alarm" {
+								layout [ size: 60, 17 ]
+							}
+						}
+						edge __sd_S200: __sd_Depth14 -> __sd_S20 {
+							label L53: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge to_lamp_off0_g0347: __sd_S20 -> to_lamp_off {
+							label L54: "1: SECOND" {
+								layout [ size: 81, 17 ]
+							}
+						}
+						edge __EA_Exit60_g5923: __sd_S20 -> __EA_Exit6 {
+							label L55: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __sd_Depth150: __EA_Exit7 -> __sd_Depth15
+						edge _AAborted20_g9308: __sd_Depth15 -> _AAborted2 {
+							label L56: "1: !alarm" {
+								layout [ size: 60, 17 ]
+							}
+						}
+						edge __sd_S220: __sd_Depth15 -> __sd_S22 {
+							label L57: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge to_lamp_on0_g2159: __sd_S22 -> to_lamp_on {
+							label L58: "1: SECOND" {
+								layout [ size: 81, 17 ]
+							}
+						}
+						edge __EA_Exit70_g8375: __sd_S22 -> __EA_Exit7 {
+							label L59: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+					}
+				}
+				node __EA_Exit5 {
+					layout [ size: 99, 34 ]
+				}
+				node __sd_Depth16 {
+					layout [ size: 121, 34 ]
+				}
+				edge __EA_Exit50: off -> __EA_Exit5
+				edge off0: on -> off
+				edge __sd_Depth160: __EA_Exit5 -> __sd_Depth16
+				edge on0: __sd_Depth16 -> on {
+					label L41: "1: alarm" {
+						layout [ size: 56, 17 ]
+					}
+				}
+				edge __EA_Exit50_g0324: __sd_Depth16 -> __EA_Exit5 {
+					label L42: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+			}
+			node stick_g3040 {
+				node pending_g7145 {
+					algorithm: org.eclipse.elk.box
+					node __EA_Entry_g7348 {
+						node __EA_Done_g9937 {
+							layout [ size: 107, 40 ]
+						}
+						node __sd_Depth17 {
+							layout [ size: 121, 34 ]
+						}
+						node __te_S15 {
+							layout [ size: 85, 34 ]
+						}
+						edge __te_S150: __sd_Depth17 -> __te_S15 {
+							label L70: "/ STICK_PULL = false" {
+								layout [ size: 152, 17 ]
+							}
+						}
+						edge __EA_Done0_g8293: __te_S15 -> __EA_Done_g9937 {
+							label L71: "/ STICK_PUSH = false" {
+								layout [ size: 155, 17 ]
+							}
+						}
+					}
+				}
+				node extend_g5999 {
+					algorithm: org.eclipse.elk.box
+					node __EA_Entry_g7257 {
+						node __EA_Done_g7168 {
+							layout [ size: 107, 40 ]
+						}
+						node __sd_Depth18 {
+							layout [ size: 121, 34 ]
+						}
+						node __te_S17 {
+							layout [ size: 85, 34 ]
+						}
+						edge __te_S170: __sd_Depth18 -> __te_S17 {
+							label L72: "/ STICK_PULL = true" {
+								layout [ size: 147, 17 ]
+							}
+						}
+						edge __EA_Done0_g5090: __te_S17 -> __EA_Done_g7168 {
+							label L73: "/ STICK_PUSH = false" {
+								layout [ size: 155, 17 ]
+							}
+						}
+					}
+				}
+				node retract_g7187 {
+					algorithm: org.eclipse.elk.box
+					node __EA_Entry_g3568 {
+						node __EA_Done_g9535 {
+							layout [ size: 107, 40 ]
+						}
+						node __sd_Depth19 {
+							layout [ size: 121, 34 ]
+						}
+						node __te_S19 {
+							layout [ size: 85, 34 ]
+						}
+						edge __te_S190: __sd_Depth19 -> __te_S19 {
+							label L74: "/ STICK_PUSH = true" {
+								layout [ size: 150, 17 ]
+							}
+						}
+						edge __EA_Done0_g7581: __te_S19 -> __EA_Done_g9535 {
+							label L75: "/ STICK_PULL = false" {
+								layout [ size: 152, 17 ]
+							}
+						}
+					}
+				}
+				node __EA_Exit8 {
+					layout [ size: 99, 34 ]
+				}
+				node __sd_Depth20_g8689 {
+					layout [ size: 121, 34 ]
+				}
+				node __sd_S28 {
+					layout [ size: 88, 34 ]
+				}
+				node __EA_Exit9 {
+					layout [ size: 99, 34 ]
+				}
+				node __sd_Depth21 {
+					layout [ size: 121, 34 ]
+				}
+				node __EA_Exit10_g9349 {
+					layout [ size: 107, 34 ]
+				}
+				node __sd_Depth22 {
+					layout [ size: 121, 34 ]
+				}
+				edge __EA_Exit80: pending_g7145 -> __EA_Exit8
+				edge __EA_Exit90: extend_g5999 -> __EA_Exit9
+				edge __EA_Exit100: retract_g7187 -> __EA_Exit10_g9349
+				edge __sd_Depth200: __EA_Exit8 -> __sd_Depth20_g8689
+				edge extend0_g1392: __sd_Depth20_g8689 -> extend_g5999 {
+					label L62: "1: stick == 1" {
+						layout [ size: 84, 17 ]
+					}
+				}
+				edge __sd_S280: __sd_Depth20_g8689 -> __sd_S28 {
+					label L63: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge retract0_g5126: __sd_S28 -> retract_g7187 {
+					label L64: "1: stick == -1" {
+						layout [ size: 89, 17 ]
+					}
+				}
+				edge __EA_Exit80_g2097: __sd_S28 -> __EA_Exit8 {
+					label L65: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __sd_Depth210: __EA_Exit9 -> __sd_Depth21
+				edge pending0_g3997: __sd_Depth21 -> pending_g7145 {
+					label L66: "1: stick < 1 || STICK_OUT" {
+						layout [ size: 177, 17 ]
+					}
+				}
+				edge __EA_Exit90_g0514: __sd_Depth21 -> __EA_Exit9 {
+					label L67: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __sd_Depth220: __EA_Exit10_g9349 -> __sd_Depth22
+				edge pending0_g3582: __sd_Depth22 -> pending_g7145 {
+					label L68: "1: stick > -1 || STICK_IN" {
+						layout [ size: 164, 17 ]
+					}
+				}
+				edge __EA_Exit100_g2184: __sd_Depth22 -> __EA_Exit10_g9349 {
+					label L69: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+			}
+			node bucket_g7872 {
+				node pending_g9243 {
+					algorithm: org.eclipse.elk.box
+					node __EA_Entry_g4899 {
+						node __EA_Done_g5934 {
+							layout [ size: 107, 40 ]
+						}
+						node __sd_Depth23 {
+							layout [ size: 121, 34 ]
+						}
+						node __te_S21 {
+							layout [ size: 85, 34 ]
+						}
+						edge __te_S210: __sd_Depth23 -> __te_S21 {
+							label L84: "/ BUCKET_PULL = false" {
+								layout [ size: 170, 17 ]
+							}
+						}
+						edge __EA_Done0_g9669: __te_S21 -> __EA_Done_g5934 {
+							label L85: "/ BUCKET_PUSH = false" {
+								layout [ size: 173, 17 ]
+							}
+						}
+					}
+				}
+				node extend_g4129 {
+					algorithm: org.eclipse.elk.box
+					node __EA_Entry_g6041 {
+						node __EA_Done_g8923 {
+							layout [ size: 107, 40 ]
+						}
+						node __sd_Depth24 {
+							layout [ size: 121, 34 ]
+						}
+						node __te_S23 {
+							layout [ size: 85, 34 ]
+						}
+						edge __te_S230: __sd_Depth24 -> __te_S23 {
+							label L86: "/ BUCKET_PULL = true" {
+								layout [ size: 165, 17 ]
+							}
+						}
+						edge __EA_Done0_g4665: __te_S23 -> __EA_Done_g8923 {
+							label L87: "/ BUCKET_PUSH = false" {
+								layout [ size: 173, 17 ]
+							}
+						}
+					}
+				}
+				node retract_g4088 {
+					algorithm: org.eclipse.elk.box
+					node __EA_Entry_g5926 {
+						node __EA_Done_g7867 {
+							layout [ size: 107, 40 ]
+						}
+						node __sd_Depth25 {
+							layout [ size: 121, 34 ]
+						}
+						node __te_S25 {
+							layout [ size: 85, 34 ]
+						}
+						edge __te_S250: __sd_Depth25 -> __te_S25 {
+							label L88: "/ BUCKET_PUSH = true" {
+								layout [ size: 168, 17 ]
+							}
+						}
+						edge __EA_Done0_g7964: __te_S25 -> __EA_Done_g7867 {
+							label L89: "/ BUCKET_PULL = false" {
+								layout [ size: 170, 17 ]
+							}
+						}
+					}
+				}
+				node __EA_Exit11 {
+					layout [ size: 106, 34 ]
+				}
+				node __sd_Depth26 {
+					layout [ size: 121, 34 ]
+				}
+				node __sd_S35 {
+					layout [ size: 88, 34 ]
+				}
+				node __EA_Exit12 {
+					layout [ size: 107, 34 ]
+				}
+				node __sd_Depth27 {
+					layout [ size: 121, 34 ]
+				}
+				node __EA_Exit13 {
+					layout [ size: 107, 34 ]
+				}
+				node __sd_Depth28 {
+					layout [ size: 121, 34 ]
+				}
+				edge __EA_Exit110: pending_g9243 -> __EA_Exit11
+				edge __EA_Exit120: extend_g4129 -> __EA_Exit12
+				edge __EA_Exit130: retract_g4088 -> __EA_Exit13
+				edge __sd_Depth260: __EA_Exit11 -> __sd_Depth26
+				edge extend0_g2677: __sd_Depth26 -> extend_g4129 {
+					label L76: "1: bucket == 1" {
+						layout [ size: 99, 17 ]
+					}
+				}
+				edge __sd_S350: __sd_Depth26 -> __sd_S35 {
+					label L77: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge retract0_g6698: __sd_S35 -> retract_g4088 {
+					label L78: "1: bucket == -1" {
+						layout [ size: 104, 17 ]
+					}
+				}
+				edge __EA_Exit110_g2465: __sd_S35 -> __EA_Exit11 {
+					label L79: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __sd_Depth270: __EA_Exit12 -> __sd_Depth27
+				edge pending0_g5576: __sd_Depth27 -> pending_g9243 {
+					label L80: "1: bucket < 1 || BUCKET_OUT" {
+						layout [ size: 210, 17 ]
+					}
+				}
+				edge __EA_Exit120_g0001: __sd_Depth27 -> __EA_Exit12 {
+					label L81: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __sd_Depth280: __EA_Exit13 -> __sd_Depth28
+				edge pending0_g5816: __sd_Depth28 -> pending_g9243 {
+					label L82: "1: bucket > -1 || BUCKET_IN" {
+						layout [ size: 197, 17 ]
+					}
+				}
+				edge __EA_Exit130_g3783: __sd_Depth28 -> __EA_Exit13 {
+					label L83: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+			}
+		}
+		node __EA_Init_g3406 {
+			layout [ size: 85, 34 ]
+		}
+		node __EA_Done_g7642 {
+			layout [ size: 107, 40 ]
+		}
+		node __EA_C {
+			layout [ size: 74, 34 ]
+		}
+		edge __EA_Done0_g1510: __EA_Main -> __EA_Done_g7642
+		edge __EA_C0: __EA_Init_g3406 -> __EA_C {
+			label L1: "/ stick = 0" {
+				layout [ size: 67, 17 ]
+			}
+		}
+		edge __EA_Main0_g6739: __EA_C -> __EA_Main {
+			label L2: "/ bucket = 0" {
+				layout [ size: 82, 17 ]
+			}
+		}
+	}
+}

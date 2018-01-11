@@ -1,0 +1,95 @@
+graph G1
+node Elevator {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node GroundFloor {
+			layout [ size: 111, 34 ]
+		}
+		node Moving {
+			layout [ size: 74, 34 ]
+		}
+		node TopFloor {
+			layout [ size: 84, 34 ]
+		}
+		node Alarm {
+			algorithm: org.eclipse.elk.box
+			node N2 {
+				node CountSecond {
+					layout [ size: 118, 34 ]
+				}
+				node DoneCounting {
+					layout [ size: 130, 40 ]
+				}
+				edge CountSecond0: CountSecond -> CountSecond {
+					label L12: "1: BUTTON_ALARM" {
+						layout [ size: 140, 17 ]
+					}
+				}
+				edge DoneCounting0: CountSecond -> DoneCounting {
+					label L13: "2: 5 SECOND" {
+						layout [ size: 93, 17 ]
+					}
+				}
+			}
+		}
+		node DecideDirection {
+			layout [ size: 136, 34 ]
+		}
+		edge Alarm0: GroundFloor -> Alarm {
+			label L1: "1: BUTTON_ALARM" {
+				layout [ size: 140, 17 ]
+			}
+		}
+		edge Moving0: GroundFloor -> Moving {
+			label L2: "2: BUTTON_UP / movement = 1; MOVE_UP = true" {
+				layout [ size: 348, 17 ]
+			}
+		}
+		edge Alarm0_g4856: Moving -> Alarm {
+			label L3: "1: BUTTON_ALARM" {
+				layout [ size: 140, 17 ]
+			}
+		}
+		edge TopFloor0: Moving -> TopFloor {
+			label L4: "2: IS_UP / MOVE_UP = false; movement = 0" {
+				layout [ size: 303, 17 ]
+			}
+		}
+		edge GroundFloor0: Moving -> GroundFloor {
+			label L5: "3: IS_DOWN / MOVE_DOWN = false; movement = 0" {
+				layout [ size: 355, 17 ]
+			}
+		}
+		edge Alarm0_g8639: TopFloor -> Alarm {
+			label L6: "1: BUTTON_ALARM" {
+				layout [ size: 140, 17 ]
+			}
+		}
+		edge Moving0_g6734: TopFloor -> Moving {
+			label L7: "2: BUTTON_DOWN / movement = -1; MOVE_DOWN = true" {
+				layout [ size: 405, 17 ]
+			}
+		}
+		edge DecideDirection0: Alarm -> DecideDirection
+		edge Moving0_g6472: DecideDirection -> Moving {
+			label L8: "1: movement == 1 / MOVE_UP = true" {
+				layout [ size: 255, 17 ]
+			}
+		}
+		edge Moving1: DecideDirection -> Moving {
+			label L9: "2: movement == -1 / MOVE_DOWN = true" {
+				layout [ size: 286, 17 ]
+			}
+		}
+		edge TopFloor0_g6656: DecideDirection -> TopFloor {
+			label L10: "3: movement == 0 && IS_UP" {
+				layout [ size: 198, 17 ]
+			}
+		}
+		edge GroundFloor0_g0735: DecideDirection -> GroundFloor {
+			label L11: "4: movement == 0 && IS_DOWN" {
+				layout [ size: 223, 17 ]
+			}
+		}
+	}
+}

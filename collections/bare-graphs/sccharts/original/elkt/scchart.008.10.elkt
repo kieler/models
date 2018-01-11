@@ -1,0 +1,84 @@
+graph G1
+node Elevator {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node init {
+			layout [ size: 34, 34 ]
+		}
+		node U {
+			layout [ size: 34, 34 ]
+		}
+		node D {
+			layout [ size: 34, 34 ]
+		}
+		node M {
+			layout [ size: 34, 34 ]
+		}
+		node A_U {
+			layout [ size: 48, 34 ]
+		}
+		node A_D {
+			layout [ size: 48, 34 ]
+		}
+		edge U0: init -> U {
+			label L1: "1: IS_UP / MOVE_UP = false; MOVE_DOWN = false; ALARM_LAMP = false" {
+				layout [ size: 511, 17 ]
+			}
+		}
+		edge D0: init -> D {
+			label L2: "2: IS_DOWN / MOVE_UP = false; MOVE_DOWN = false; ALARM_LAMP = false" {
+				layout [ size: 537, 17 ]
+			}
+		}
+		edge U0_g3039: U -> U {
+			label L3: "1: BUTTON_DOWN / MOVE_DOWN = true" {
+				layout [ size: 293, 17 ]
+			}
+		}
+		edge M0: U -> M {
+			label L4: "2: MOVE_DOWN" {
+				layout [ size: 115, 17 ]
+			}
+		}
+		edge D0_g4449: D -> D {
+			label L5: "1: BUTTON_UP / MOVE_UP = true" {
+				layout [ size: 241, 17 ]
+			}
+		}
+		edge M0_g5589: D -> M {
+			label L6: "2: MOVE_UP" {
+				layout [ size: 90, 17 ]
+			}
+		}
+		edge A_U0: M -> A_U {
+			label L7: "1: BUTTON_ALARM && MOVE_UP / ALARM_LAMP = true; MOVE_UP = false" {
+				layout [ size: 532, 17 ]
+			}
+		}
+		edge A_D0: M -> A_D {
+			label L8: "2: BUTTON_ALARM && MOVE_DOWN / ALARM_LAMP = true; MOVE_DOWN = false" {
+				layout [ size: 584, 17 ]
+			}
+		}
+		edge D0_g7328: M -> D {
+			label L9: "3: IS_DOWN / MOVE_DOWN = false" {
+				layout [ size: 247, 17 ]
+			}
+		}
+		edge U0_g4505: M -> U {
+			label L10: "4: IS_UP / MOVE_UP = false" {
+				layout [ size: 195, 17 ]
+			}
+		}
+		edge M0_g6678: A_U -> M {
+			label L11: "5 SECOND / MOVE_UP = true; ALARM_LAMP = false" {
+				layout [ size: 366, 17 ]
+			}
+		}
+		edge M0_g7215: A_D -> M {
+			label L12: "5 SECOND / MOVE_DOWN = true; ALARM_LAMP = false" {
+				layout [ size: 392, 17 ]
+			}
+		}
+	}
+}

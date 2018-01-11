@@ -1,0 +1,97 @@
+graph G1
+node PathfinderProgram {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node init {
+			layout [ size: 143, 80 ]
+		}
+		node calibrate {
+			layout [ size: 344, 110 ]
+		}
+		node tmp {
+			layout [ size: 47, 34 ]
+		}
+		node search {
+			algorithm: org.eclipse.elk.box
+			node searchRegion {
+				node init_g5293 {
+					layout [ size: 236, 80 ]
+				}
+				node turn {
+					layout [ size: 246, 80 ]
+				}
+				node tmp_g6566 {
+					layout [ size: 47, 34 ]
+				}
+				node tryLastDirection {
+					layout [ size: 271, 110 ]
+				}
+				edge turn0: init_g5293 -> turn
+				edge tmp0: turn -> tmp_g6566 {
+					label L5: "1: time > turnTime && turnPhase == 0 / turnPhase = 1; direction = direction * (-1)" {
+						layout [ size: 562, 17 ]
+					}
+				}
+				edge tmp1: turn -> tmp_g6566 {
+					label L6: "2: time > 3 * turnTime && turnPhase == 1 / turnPhase = 2; direction = direction * (-1)" {
+						layout [ size: 584, 17 ]
+					}
+				}
+				edge tryLastDirection0: turn -> tryLastDirection {
+					label L7: "3: time > 4 * turnTime" {
+						layout [ size: 149, 17 ]
+					}
+				}
+				edge turn0_g2015: tmp_g6566 -> turn
+				edge init0: tryLastDirection -> init_g5293 {
+					label L8: "time > moveTime" {
+						layout [ size: 121, 17 ]
+					}
+				}
+			}
+		}
+		node drive {
+			layout [ size: 223, 80 ]
+		}
+		edge calibrate0: init -> calibrate
+		edge tmp0_g6025: calibrate -> tmp {
+			label L1: "1: time > 2 * turnTime && turnPhase == 0 / turnPhase = 1; direction = direction * (-1)" {
+				layout [ size: 584, 17 ]
+			}
+		}
+		edge search0: calibrate -> search {
+			label L2: "2: time > 4 * turnTime" {
+				layout [ size: 149, 17 ]
+			}
+		}
+		edge calibrate0_g3088: tmp -> calibrate
+		edge drive0: search -> drive {
+			label L3: "isBlack" {
+				layout [ size: 52, 17 ]
+			}
+		}
+		edge search0_g2896: drive -> search {
+			label L4: "!isBlack" {
+				layout [ size: 56, 17 ]
+			}
+		}
+	}
+	node BlackAndWhite {
+		node white {
+			layout [ size: 58, 34 ]
+		}
+		node black {
+			layout [ size: 58, 34 ]
+		}
+		edge black0: white -> black {
+			label L9: "lightValue <= blackValue * 1.1 / isBlack = true" {
+				layout [ size: 313, 17 ]
+			}
+		}
+		edge white0: black -> white {
+			label L10: "lightValue > blackValue * 1.1 / isBlack = false" {
+				layout [ size: 309, 17 ]
+			}
+		}
+	}
+}

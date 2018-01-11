@@ -1,0 +1,392 @@
+graph G1
+node Barcode3 {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node Off {
+			layout [ size: 42, 34 ]
+		}
+		node calibrate {
+			algorithm: org.eclipse.elk.box
+			node White {
+				node init {
+					layout [ size: 42, 34 ]
+				}
+				node calibrated {
+					layout [ size: 97, 40 ]
+				}
+				edge calibrated0: init -> calibrated {
+					label L9: "buttonRight / calibrateHigh = \"HIGH\"; level = lightSensor - 8" {
+						layout [ size: 423, 17 ]
+					}
+				}
+			}
+			node Black {
+				node init_g6114 {
+					layout [ size: 42, 34 ]
+				}
+				node calibrated_g5802 {
+					layout [ size: 97, 40 ]
+				}
+				edge calibrated0_g7302: init_g6114 -> calibrated_g5802 {
+					label L10: "buttonLeft / calibrateLow = \"LOW\"" {
+						layout [ size: 242, 17 ]
+					}
+				}
+			}
+		}
+		node SetUp {
+			algorithm: org.eclipse.elk.box
+			node setTimer {
+				node init_g4345 {
+					layout [ size: 42, 34 ]
+				}
+				node dark1 {
+					layout [ size: 60, 34 ]
+				}
+				node light {
+					layout [ size: 51, 34 ]
+				}
+				node dark2 {
+					layout [ size: 60, 34 ]
+				}
+				node done {
+					layout [ size: 62, 40 ]
+				}
+				edge dark10: init_g4345 -> dark1 {
+					label L11: "1: lightSensor < level" {
+						layout [ size: 151, 17 ]
+					}
+				}
+				edge init0: init_g4345 -> init_g4345 {
+					label L12: "2: lightSensor >= level" {
+						layout [ size: 160, 17 ]
+					}
+				}
+				edge light0: dark1 -> light {
+					label L13: "1: lightSensor >= level" {
+						layout [ size: 160, 17 ]
+					}
+				}
+				edge dark10_g1061: dark1 -> dark1 {
+					label L14: "2: lightSensor < level && timer" {
+						layout [ size: 216, 17 ]
+					}
+				}
+				edge dark20: light -> dark2 {
+					label L15: "1: lightSensor < level" {
+						layout [ size: 151, 17 ]
+					}
+				}
+				edge light0_g3153: light -> light {
+					label L16: "2: lightSensor >= level && timer / time = time + 1" {
+						layout [ size: 340, 17 ]
+					}
+				}
+				edge done0: dark2 -> done {
+					label L17: "1: lightSensor >= level" {
+						layout [ size: 160, 17 ]
+					}
+				}
+				edge dark20_g5021: dark2 -> dark2 {
+					label L18: "2: lightSensor < level" {
+						layout [ size: 151, 17 ]
+					}
+				}
+			}
+		}
+		node Run {
+			algorithm: org.eclipse.elk.box
+			node count {
+				node init_g2986 {
+					layout [ size: 42, 34 ]
+				}
+				node light_g4506 {
+					layout [ size: 51, 34 ]
+				}
+				node dark {
+					layout [ size: 52, 34 ]
+				}
+				node Decode {
+					algorithm: org.eclipse.elk.box
+					node decode {
+						node encoded {
+							layout [ size: 83, 34 ]
+						}
+						node zero {
+							layout [ size: 59, 40 ]
+						}
+						node one {
+							layout [ size: 53, 40 ]
+						}
+						node two {
+							layout [ size: 52, 40 ]
+						}
+						node three {
+							layout [ size: 64, 40 ]
+						}
+						node four {
+							layout [ size: 55, 40 ]
+						}
+						node five {
+							layout [ size: 53, 40 ]
+						}
+						node six {
+							layout [ size: 47, 40 ]
+						}
+						node seven {
+							layout [ size: 71, 40 ]
+						}
+						node eight {
+							layout [ size: 62, 40 ]
+						}
+						node nine {
+							layout [ size: 57, 40 ]
+						}
+						node error {
+							layout [ size: 62, 40 ]
+						}
+						edge zero0: encoded -> zero {
+							label L31: "1: number[index] == 13 / number[index] = 0; `System.out.println(number[index])`" {
+								layout [ size: 560, 17 ]
+							}
+						}
+						edge one0: encoded -> one {
+							label L32: "2: number[index] == 25 / number[index] = 1; `System.out.println(number[index])`" {
+								layout [ size: 560, 17 ]
+							}
+						}
+						edge two0: encoded -> two {
+							label L33: "3: number[index] == 19 / number[index] = 2; `System.out.println(number[index])`" {
+								layout [ size: 560, 17 ]
+							}
+						}
+						edge three0: encoded -> three {
+							label L34: "4: number[index] == 61 / number[index] = 3; `System.out.println(number[index])`" {
+								layout [ size: 560, 17 ]
+							}
+						}
+						edge four0: encoded -> four {
+							label L35: "5: number[index] == 35 / number[index] = 4; `System.out.println(number[index])`" {
+								layout [ size: 560, 17 ]
+							}
+						}
+						edge five0: encoded -> five {
+							label L36: "6: number[index] == 49 / number[index] = 5; `System.out.println(number[index])`" {
+								layout [ size: 560, 17 ]
+							}
+						}
+						edge six0: encoded -> six {
+							label L37: "7: number[index] == 47 / number[index] = 6; `System.out.println(number[index])`" {
+								layout [ size: 560, 17 ]
+							}
+						}
+						edge seven0: encoded -> seven {
+							label L38: "8: number[index] == 59 / number[index] = 7; `System.out.println(number[index])`" {
+								layout [ size: 560, 17 ]
+							}
+						}
+						edge eight0: encoded -> eight {
+							label L39: "9: number[index] == 55 / number[index] = 8; `System.out.println(number[index])`" {
+								layout [ size: 560, 17 ]
+							}
+						}
+						edge nine0: encoded -> nine {
+							label L40: "10: number[index] == 11 / number[index] = 9; `System.out.println(number[index])`" {
+								layout [ size: 567, 17 ]
+							}
+						}
+						edge error0: encoded -> error {
+							label L41: "11: / `System.out.println(\"Error decoding!\")`" {
+								layout [ size: 304, 17 ]
+							}
+						}
+					}
+				}
+				node done_g5314 {
+					layout [ size: 62, 40 ]
+				}
+				edge light0_g8468: init_g2986 -> light_g4506 {
+					label L19: "1: lightSensor >= level && timer / `number[index] = (number[index] << 1)`" {
+						layout [ size: 514, 17 ]
+					}
+				}
+				edge dark0: init_g2986 -> dark {
+					label L20: "2: lightSensor < level && timer / `number[index] = (number[index] << 1) | 1`" {
+						layout [ size: 525, 17 ]
+					}
+				}
+				edge dark0_g0639: light_g4506 -> dark {
+					label L21: "1: bit > 0 && lightSensor < level && timer / `number[index] = (number[index] << 1) | 1`; counter = time - 1; bit = bit - 1" {
+						layout [ size: 812, 17 ]
+					}
+				}
+				edge light0_g9872: light_g4506 -> light_g4506 {
+					label L22: "2: bit > 0 && counter >= 0 && lightSensor >= level && timer / counter = counter - 1" {
+						layout [ size: 578, 17 ]
+					}
+				}
+				edge light1: light_g4506 -> light_g4506 {
+					label L23: "3: bit > 0 && counter < 0 && lightSensor >= level / `number[index] = (number[index] << 1)`; counter = time; bit = bit - 1" {
+						layout [ size: 824, 17 ]
+					}
+				}
+				edge Decode0: light_g4506 -> Decode {
+					label L24: "4: bit <= 0" {
+						layout [ size: 69, 17 ]
+					}
+				}
+				edge light0_g9938: dark -> light_g4506 {
+					label L25: "1: bit > 0 && lightSensor >= level && timer / `number[index] = (number[index] << 1)`; counter = time; bit = bit - 1" {
+						layout [ size: 780, 17 ]
+					}
+				}
+				edge dark0_g7669: dark -> dark {
+					label L26: "2: bit > 0 && counter >= 0 && lightSensor < level && timer / counter = counter - 1" {
+						layout [ size: 569, 17 ]
+					}
+				}
+				edge dark1_g6801: dark -> dark {
+					label L27: "3: bit > 0 && counter < 0 && lightSensor < level / `number[index] = (number[index] << 1) | 1`; counter = time - 1; bit = bit - 1" {
+						layout [ size: 856, 17 ]
+					}
+				}
+				edge Decode0_g7519: dark -> Decode {
+					label L28: "4: bit <= 0 && lightSensor >= level" {
+						layout [ size: 242, 17 ]
+					}
+				}
+				edge init0_g9309: Decode -> init_g2986 {
+					label L29: "1: index < 3 / index = index + 1; bit = 6; counter = time" {
+						layout [ size: 373, 17 ]
+					}
+				}
+				edge done0_g7627: Decode -> done_g5314 {
+					label L30: "2: index >= 3" {
+						layout [ size: 90, 17 ]
+					}
+				}
+			}
+		}
+		node Valid {
+			algorithm: org.eclipse.elk.box
+			node createResult {
+				node check {
+					layout [ size: 63, 34 ]
+				}
+				node print {
+					layout [ size: 59, 40 ]
+				}
+				edge print0: check -> print {
+					label L42: "1: result < 500 / echo = \"Zahl: \" + result" {
+						layout [ size: 271, 17 ]
+					}
+				}
+				edge print1: check -> print {
+					label L43: "2: result >= 500 / result = result - 1000; echo = \"Zahl: \" + result" {
+						layout [ size: 432, 17 ]
+					}
+				}
+			}
+		}
+		node Invalid {
+			layout [ size: 186, 65 ]
+		}
+		node MoveToEnd {
+			layout [ size: 107, 34 ]
+		}
+		node Turn {
+			algorithm: org.eclipse.elk.box
+			node rotate {
+				node init_g4402 {
+					layout [ size: 42, 34 ]
+				}
+				node turnLeft {
+					layout [ size: 227, 50 ]
+				}
+				node turnRight {
+					layout [ size: 227, 50 ]
+				}
+				node endTurn {
+					layout [ size: 87, 40 ]
+				}
+				edge turnRight0: init_g4402 -> turnRight {
+					label L44: "1: result >= 0" {
+						layout [ size: 92, 17 ]
+					}
+				}
+				edge turnLeft0: init_g4402 -> turnLeft {
+					label L45: "2: result < 0" {
+						layout [ size: 83, 17 ]
+					}
+				}
+				edge endTurn0: init_g4402 -> endTurn {
+					label L46: "3: result == 0" {
+						layout [ size: 92, 17 ]
+					}
+				}
+				edge turnLeft0_g3773: turnLeft -> turnLeft {
+					label L47: "1: counter > 0 / counter -= 1" {
+						layout [ size: 194, 17 ]
+					}
+				}
+				edge endTurn0_g1190: turnLeft -> endTurn {
+					label L48: "2: counter <= 0 / motor1 = 0; motor2 = 0" {
+						layout [ size: 274, 17 ]
+					}
+				}
+				edge turnRight0_g2101: turnRight -> turnRight {
+					label L49: "1: counter > 0 / counter -= 1" {
+						layout [ size: 194, 17 ]
+					}
+				}
+				edge endTurn0_g4642: turnRight -> endTurn {
+					label L50: "2: counter <= 0 / motor1 = 0; motor2 = 0" {
+						layout [ size: 274, 17 ]
+					}
+				}
+			}
+		}
+		edge calibrate0: Off -> calibrate
+		edge SetUp0: calibrate -> SetUp {
+			label L1: "ignition == true" {
+				layout [ size: 108, 17 ]
+			}
+		}
+		edge Run0: SetUp -> Run {
+			label L2: "lightSensor >= level && timer / index = 0; counter = time" {
+				layout [ size: 395, 17 ]
+			}
+		}
+		edge Valid0: Run -> Valid {
+			label L3: "1: number[3] == 9 - (number[0] + number[1] + number[2]) % 10" {
+				layout [ size: 433, 17 ]
+			}
+		}
+		edge Invalid0: Run -> Invalid {
+			label L4: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge MoveToEnd0: Valid -> MoveToEnd {
+			label L5: "/ counter = time * 17" {
+				layout [ size: 141, 17 ]
+			}
+		}
+		edge MoveToEnd0_g2873: Invalid -> MoveToEnd {
+			label L6: "/ counter = time * 17" {
+				layout [ size: 141, 17 ]
+			}
+		}
+		edge MoveToEnd0_g1465: MoveToEnd -> MoveToEnd {
+			label L7: "1: counter > 0 && timer / counter -= 1" {
+				layout [ size: 260, 17 ]
+			}
+		}
+		edge Turn0: MoveToEnd -> Turn {
+			label L8: "2: counter <= 0 / motor1 = 0; motor2 = 0" {
+				layout [ size: 274, 17 ]
+			}
+		}
+		edge SetUp0_g9530: Turn -> SetUp
+	}
+}

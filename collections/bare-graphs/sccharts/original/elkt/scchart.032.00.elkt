@@ -1,0 +1,339 @@
+graph G1
+node vier {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node Init {
+			layout [ size: 42, 34 ]
+		}
+		node BEGIN {
+			algorithm: org.eclipse.elk.box
+			node StartSequence {
+				node init {
+					layout [ size: 42, 34 ]
+				}
+				node TODO {
+					layout [ size: 65, 34 ]
+				}
+				node d {
+					layout [ size: 34, 34 ]
+				}
+				node dl {
+					layout [ size: 34, 34 ]
+				}
+				node Start {
+					layout [ size: 60, 40 ]
+				}
+				edge TODO0: init -> TODO
+				edge d0: TODO -> d {
+					label L1: "1: lightSensor <= threshold" {
+						layout [ size: 193, 17 ]
+					}
+				}
+				edge TODO0_g6237: TODO -> TODO {
+					label L2: "2: lightSensor > threshold" {
+						layout [ size: 184, 17 ]
+					}
+				}
+				edge d0_g4598: d -> d {
+					label L3: "1: lightSensor <= threshold" {
+						layout [ size: 193, 17 ]
+					}
+				}
+				edge dl0: d -> dl {
+					label L4: "2: lightSensor > threshold" {
+						layout [ size: 184, 17 ]
+					}
+				}
+				edge Start0: dl -> Start {
+					label L5: "1: lightSensor <= threshold" {
+						layout [ size: 193, 17 ]
+					}
+				}
+				edge TODO0_g1278: dl -> TODO {
+					label L6: "2: lightSensor > threshold" {
+						layout [ size: 184, 17 ]
+					}
+				}
+			}
+		}
+		node Number {
+			algorithm: org.eclipse.elk.box
+			node sensor {
+				node init_g6402 {
+					layout [ size: 42, 34 ]
+				}
+				node TODO_g3648 {
+					layout [ size: 65, 34 ]
+				}
+				node BLUB {
+					layout [ size: 62, 34 ]
+				}
+				node Connect4 {
+					layout [ size: 89, 34 ]
+				}
+				node ENDE {
+					layout [ size: 69, 40 ]
+				}
+				edge TODO0_g1674: init_g6402 -> TODO_g3648 {
+					label L7: "/ drive = true" {
+						layout [ size: 91, 17 ]
+					}
+				}
+				edge TODO0_g6996: TODO_g3648 -> TODO_g3648 {
+					label L8: "1: counter == 1 && lightSensor <= threshold / t1 = true; counter = counter + 1" {
+						layout [ size: 543, 17 ]
+					}
+				}
+				edge TODO1: TODO_g3648 -> TODO_g3648 {
+					label L9: "2: counter == 1 && lightSensor > threshold / t1 = false; counter = counter + 1" {
+						layout [ size: 539, 17 ]
+					}
+				}
+				edge TODO2: TODO_g3648 -> TODO_g3648 {
+					label L10: "3: counter == 2 && lightSensor <= threshold / t2 = true; counter = counter + 1" {
+						layout [ size: 543, 17 ]
+					}
+				}
+				edge TODO3: TODO_g3648 -> TODO_g3648 {
+					label L11: "4: counter == 2 && lightSensor > threshold / t2 = false; counter = counter + 1" {
+						layout [ size: 539, 17 ]
+					}
+				}
+				edge TODO4: TODO_g3648 -> TODO_g3648 {
+					label L12: "5: counter == 3 && lightSensor <= threshold / t3 = true; counter = counter + 1" {
+						layout [ size: 543, 17 ]
+					}
+				}
+				edge TODO5: TODO_g3648 -> TODO_g3648 {
+					label L13: "6: counter == 3 && lightSensor > threshold / t3 = false; counter = counter + 1" {
+						layout [ size: 539, 17 ]
+					}
+				}
+				edge TODO6: TODO_g3648 -> TODO_g3648 {
+					label L14: "7: counter == 4 && lightSensor <= threshold / t4 = true; counter = counter + 1" {
+						layout [ size: 543, 17 ]
+					}
+				}
+				edge TODO7: TODO_g3648 -> TODO_g3648 {
+					label L15: "8: counter == 4 && lightSensor > threshold / t4 = false; counter = counter + 1" {
+						layout [ size: 539, 17 ]
+					}
+				}
+				edge TODO8: TODO_g3648 -> TODO_g3648 {
+					label L16: "9: counter == 5 && lightSensor <= threshold / t5 = true; counter = counter + 1" {
+						layout [ size: 543, 17 ]
+					}
+				}
+				edge TODO9: TODO_g3648 -> TODO_g3648 {
+					label L17: "10: counter == 5 && lightSensor > threshold / t5 = false; counter = counter + 1" {
+						layout [ size: 547, 17 ]
+					}
+				}
+				edge TODO10: TODO_g3648 -> TODO_g3648 {
+					label L18: "11: counter == 6 && lightSensor <= threshold / t6 = true; counter = counter + 1" {
+						layout [ size: 550, 17 ]
+					}
+				}
+				edge TODO11: TODO_g3648 -> TODO_g3648 {
+					label L19: "12: counter == 6 && lightSensor > threshold / t6 = false; counter = counter + 1" {
+						layout [ size: 547, 17 ]
+					}
+				}
+				edge TODO12: TODO_g3648 -> TODO_g3648 {
+					label L20: "13: counter == 7 && lightSensor <= threshold / t7 = true; counter = counter + 1" {
+						layout [ size: 551, 17 ]
+					}
+				}
+				edge TODO13: TODO_g3648 -> TODO_g3648 {
+					label L21: "14: counter == 7 && lightSensor > threshold / t7 = false; counter = counter + 1" {
+						layout [ size: 547, 17 ]
+					}
+				}
+				edge BLUB0: TODO_g3648 -> BLUB {
+					label L22: "15: counter > 7 / drive = false" {
+						layout [ size: 204, 17 ]
+					}
+				}
+				edge Connect40: BLUB -> Connect4 {
+					label L23: "1: !t1 && !t2 && !t3 && t4 && t5 && !t6 && t7 / zahl = 0" {
+						layout [ size: 370, 17 ]
+					}
+				}
+				edge Connect41: BLUB -> Connect4 {
+					label L24: "2: !t1 && !t2 && t3 && t4 && !t5 && !t6 && t7 / zahl = 1" {
+						layout [ size: 370, 17 ]
+					}
+				}
+				edge Connect42: BLUB -> Connect4 {
+					label L25: "3: !t1 && !t2 && t3 && !t4 && !t5 && t6 && t7 / zahl = 2" {
+						layout [ size: 370, 17 ]
+					}
+				}
+				edge Connect43: BLUB -> Connect4 {
+					label L26: "4: !t1 && t2 && t3 && t4 && t5 && !t6 && t7 / zahl = 3" {
+						layout [ size: 362, 17 ]
+					}
+				}
+				edge Connect44: BLUB -> Connect4 {
+					label L27: "5: !t1 && t2 && !t3 && !t4 && !t5 && t6 && t7 / zahl = 4" {
+						layout [ size: 370, 17 ]
+					}
+				}
+				edge Connect45: BLUB -> Connect4 {
+					label L28: "6: !t1 && t2 && t3 && !t4 && !t5 && !t6 && t7 / zahl = 5" {
+						layout [ size: 370, 17 ]
+					}
+				}
+				edge Connect46: BLUB -> Connect4 {
+					label L29: "7: !t1 && t2 && !t3 && t4 && t5 && t6 && t7 / zahl = 6" {
+						layout [ size: 362, 17 ]
+					}
+				}
+				edge Connect47: BLUB -> Connect4 {
+					label L30: "8: !t1 && t2 && t3 && t4 && !t5 && t6 && t7 / zahl = 7" {
+						layout [ size: 362, 17 ]
+					}
+				}
+				edge Connect48: BLUB -> Connect4 {
+					label L31: "9: !t1 && t2 && t3 && !t4 && t5 && t6 && t7 / zahl = 8" {
+						layout [ size: 362, 17 ]
+					}
+				}
+				edge Connect49: BLUB -> Connect4 {
+					label L32: "10: !t1 && !t2 && !t3 && t4 && !t5 && t6 && t7 / zahl = 9" {
+						layout [ size: 378, 17 ]
+					}
+				}
+				edge TODO0_g3908: Connect4 -> TODO_g3648 {
+					label L33: "1: countTo4 == 0 / zahl1 = zahl; counter = counter + 1" {
+						layout [ size: 372, 17 ]
+					}
+				}
+				edge TODO1_g5704: Connect4 -> TODO_g3648 {
+					label L34: "2: countTo4 == 1 / zahl2 = zahl; counter = counter + 1" {
+						layout [ size: 372, 17 ]
+					}
+				}
+				edge TODO2_g9931: Connect4 -> TODO_g3648 {
+					label L35: "3: countTo4 == 2 / zahl3 = zahl; counter = counter + 1" {
+						layout [ size: 372, 17 ]
+					}
+				}
+				edge ENDE0: Connect4 -> ENDE {
+					label L36: "4: countTo4 == 3 / zahl4 = zahl; counter = counter + 1" {
+						layout [ size: 372, 17 ]
+					}
+				}
+			}
+		}
+		node ENDE_g6044 {
+			algorithm: org.eclipse.elk.box
+			node EndSequence {
+				node init_g9567 {
+					layout [ size: 42, 34 ]
+				}
+				node TODO_g9011 {
+					layout [ size: 65, 34 ]
+				}
+				node l {
+					layout [ size: 34, 34 ]
+				}
+				node ld {
+					layout [ size: 34, 34 ]
+				}
+				node ldl {
+					layout [ size: 38, 34 ]
+				}
+				node ERROR {
+					layout [ size: 75, 34 ]
+				}
+				node ldld {
+					layout [ size: 53, 40 ]
+				}
+				edge TODO0_g4187: init_g9567 -> TODO_g9011
+				edge l0: TODO_g9011 -> l {
+					label L37: "1: lightSensor > threshold" {
+						layout [ size: 184, 17 ]
+					}
+				}
+				edge ERROR0: TODO_g9011 -> ERROR {
+					label L38: "2: lightSensor <= threshold" {
+						layout [ size: 193, 17 ]
+					}
+				}
+				edge ERROR0_g9697: l -> ERROR {
+					label L39: "1: lightSensor > threshold" {
+						layout [ size: 184, 17 ]
+					}
+				}
+				edge ld0: l -> ld {
+					label L40: "2: lightSensor <= threshold" {
+						layout [ size: 193, 17 ]
+					}
+				}
+				edge ldl0: ld -> ldl {
+					label L41: "1: lightSensor > threshold" {
+						layout [ size: 184, 17 ]
+					}
+				}
+				edge ERROR0_g3201: ld -> ERROR {
+					label L42: "2: lightSensor <= threshold" {
+						layout [ size: 193, 17 ]
+					}
+				}
+				edge ERROR0_g4335: ldl -> ERROR {
+					label L43: "1: lightSensor > threshold" {
+						layout [ size: 184, 17 ]
+					}
+				}
+				edge ldld0: ldl -> ldld {
+					label L44: "2: lightSensor <= threshold" {
+						layout [ size: 193, 17 ]
+					}
+				}
+				edge ERROR0_g1112: ERROR -> ERROR {
+					label L45: "/ beep = true" {
+						layout [ size: 90, 17 ]
+					}
+				}
+			}
+		}
+		node CheckNumber {
+			algorithm: org.eclipse.elk.box
+			node validate {
+				node init_g0110 {
+					layout [ size: 42, 34 ]
+				}
+				node TODO_g9011_g6374 {
+					layout [ size: 65, 34 ]
+				}
+				node ERROR_g7810 {
+					layout [ size: 75, 34 ]
+				}
+				node VALIDATE {
+					layout [ size: 96, 40 ]
+				}
+				edge TODO0_g6033: init_g0110 -> TODO_g9011_g6374
+				edge VALIDATE0: TODO_g9011_g6374 -> VALIDATE {
+					label L46: "1: zahl4 == 9 - (zahl1 + zahl2 + zahl3) % 10 / finished = true" {
+						layout [ size: 407, 17 ]
+					}
+				}
+				edge ERROR0_g3659: TODO_g9011_g6374 -> ERROR_g7810 {
+					label L47: "2: zahl4 != 9 - (zahl1 + zahl2 + zahl3) % 10" {
+						layout [ size: 288, 17 ]
+					}
+				}
+				edge ERROR0_g8523: ERROR_g7810 -> ERROR_g7810 {
+					label L48: "/ beep = true" {
+						layout [ size: 90, 17 ]
+					}
+				}
+			}
+		}
+		edge BEGIN0: Init -> BEGIN
+		edge Number0: BEGIN -> Number
+		edge ENDE0_g3258: Number -> ENDE_g6044
+		edge CheckNumber0: ENDE_g6044 -> CheckNumber
+	}
+}

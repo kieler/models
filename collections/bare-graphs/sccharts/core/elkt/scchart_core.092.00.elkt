@@ -1,0 +1,566 @@
+graph G1
+node Scchart {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node init {
+			layout [ size: 42, 34 ]
+		}
+		node preparation {
+			algorithm: org.eclipse.elk.box
+			node __EA_Entry {
+				node __EA_Main {
+					algorithm: org.eclipse.elk.box
+					node driveToStart {
+						node go {
+							algorithm: org.eclipse.elk.box
+							node __EA_Entry_g0425 {
+								node __EA_Init {
+									layout [ size: 85, 34 ]
+								}
+								node __EA_Done {
+									layout [ size: 107, 40 ]
+								}
+								node __EA_C3 {
+									layout [ size: 83, 34 ]
+								}
+								edge __EA_C30: __EA_Init -> __EA_C3 {
+									label L15: "/ `Motor.A.setSpeed(60);`" {
+										layout [ size: 174, 17 ]
+									}
+								}
+								edge __EA_Done0: __EA_C3 -> __EA_Done {
+									label L16: "/ `Motor.B.setSpeed(60);`" {
+										layout [ size: 176, 17 ]
+									}
+								}
+							}
+						}
+						node done {
+							layout [ size: 62, 40 ]
+						}
+						node __EA_Exit {
+							layout [ size: 90, 34 ]
+						}
+						node __EA_C4 {
+							layout [ size: 83, 34 ]
+						}
+						node __EA_C5 {
+							layout [ size: 83, 34 ]
+						}
+						node __EA_C6 {
+							layout [ size: 83, 34 ]
+						}
+						node __sd_Pause {
+							layout [ size: 105, 34 ]
+						}
+						node __sd_Depth {
+							layout [ size: 105, 34 ]
+						}
+						edge __EA_Exit0: go -> __EA_Exit
+						edge __EA_C40: __EA_Exit -> __EA_C4 {
+							label L8: "1: _Scchart_local_finished" {
+								layout [ size: 185, 17 ]
+							}
+						}
+						edge __sd_Pause0: __EA_Exit -> __sd_Pause {
+							label L9: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __EA_C50: __EA_C4 -> __EA_C5 {
+							label L10: "/ `Motor.A.setSpeed(0);`" {
+								layout [ size: 166, 17 ]
+							}
+						}
+						edge __EA_C60: __EA_C5 -> __EA_C6 {
+							label L11: "/ `Motor.B.setSpeed(0);`" {
+								layout [ size: 168, 17 ]
+							}
+						}
+						edge done0: __EA_C6 -> done {
+							label L12: "/ `Sound.playTone(1000, 50);`" {
+								layout [ size: 202, 17 ]
+							}
+						}
+						edge __sd_Depth0: __sd_Pause -> __sd_Depth
+						edge go0: __sd_Depth -> go {
+							label L13: "1: !_Scchart_local_finished" {
+								layout [ size: 189, 17 ]
+							}
+						}
+						edge __EA_Exit0_g6417: __sd_Depth -> __EA_Exit {
+							label L14: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+					}
+					node scanToStart {
+						node loop {
+							algorithm: org.eclipse.elk.box
+							node __EA_Entry_g5642 {
+								node __EA_Init_g5616 {
+									layout [ size: 85, 34 ]
+								}
+								node __EA_Done_g0079 {
+									layout [ size: 107, 40 ]
+								}
+								edge __EA_Done0_g5673: __EA_Init_g5616 -> __EA_Done_g0079 {
+									label L23: "/ `newLevel = light.getNormalizedLightValue();`" {
+										layout [ size: 330, 17 ]
+									}
+								}
+							}
+						}
+						node done_g4450 {
+							layout [ size: 62, 40 ]
+						}
+						node __EA_Exit1 {
+							layout [ size: 99, 34 ]
+						}
+						node __te_S1 {
+							layout [ size: 77, 34 ]
+						}
+						node __te_S2 {
+							layout [ size: 77, 34 ]
+						}
+						node __sd_Pause1 {
+							layout [ size: 114, 34 ]
+						}
+						node __sd_Depth1 {
+							layout [ size: 113, 34 ]
+						}
+						edge __EA_Exit10: loop -> __EA_Exit1
+						edge __te_S20: __EA_Exit1 -> __te_S2 {
+							label L17: "1: newLevel <= maxLevel - 5" {
+								layout [ size: 201, 17 ]
+							}
+						}
+						edge __sd_Pause10: __EA_Exit1 -> __sd_Pause1 {
+							label L18: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge loop0: __te_S1 -> loop {
+							label L19: "/ maxLevel = newLevel" {
+								layout [ size: 163, 17 ]
+							}
+						}
+						edge done0_g4673: __te_S2 -> done_g4450 {
+							label L20: "/ _Scchart_local_finished = true" {
+								layout [ size: 222, 17 ]
+							}
+						}
+						edge __sd_Depth10: __sd_Pause1 -> __sd_Depth1
+						edge __te_S10: __sd_Depth1 -> __te_S1 {
+							label L21: "1: newLevel > maxLevel - 5" {
+								layout [ size: 192, 17 ]
+							}
+						}
+						edge __EA_Exit10_g4577: __sd_Depth1 -> __EA_Exit1 {
+							label L22: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+					}
+				}
+				node __EA_Init_g0404 {
+					layout [ size: 85, 34 ]
+				}
+				node __EA_Done_g8936 {
+					layout [ size: 107, 40 ]
+				}
+				node __EA_C1 {
+					layout [ size: 83, 34 ]
+				}
+				node __EA_C2 {
+					layout [ size: 83, 34 ]
+				}
+				edge __EA_Done0_g1927: __EA_Main -> __EA_Done_g8936
+				edge __EA_C10: __EA_Init_g0404 -> __EA_C1 {
+					label L5: "/ _Scchart_local_finished = false" {
+						layout [ size: 227, 17 ]
+					}
+				}
+				edge __EA_C20: __EA_C1 -> __EA_C2 {
+					label L6: "/ `Motor.A.forward()`" {
+						layout [ size: 140, 17 ]
+					}
+				}
+				edge __EA_Main0: __EA_C2 -> __EA_Main {
+					label L7: "/ `Motor.B.forward()`" {
+						layout [ size: 142, 17 ]
+					}
+				}
+			}
+		}
+		node readOut {
+			algorithm: org.eclipse.elk.box
+			node N2 {
+				node drive {
+					algorithm: org.eclipse.elk.box
+					node __EA_Entry1 {
+						node __EA_Main_g5772 {
+							algorithm: org.eclipse.elk.box
+							node checkDistance {
+								node checkDistance_g8433 {
+									algorithm: org.eclipse.elk.box
+									node __EA_Entry_g5864 {
+										node __EA_Init_g0954 {
+											layout [ size: 85, 34 ]
+										}
+										node __EA_Done_g2652 {
+											layout [ size: 107, 40 ]
+										}
+										edge __EA_Done0_g2289: __EA_Init_g0954 -> __EA_Done_g2652 {
+											label L46: "/ `distance = Motor.A.getTachoCount()`" {
+												layout [ size: 272, 17 ]
+											}
+										}
+									}
+								}
+								node done_g9261 {
+									layout [ size: 62, 40 ]
+								}
+								node __EA_Exit2 {
+									layout [ size: 99, 34 ]
+								}
+								node __te_S3 {
+									layout [ size: 77, 34 ]
+								}
+								node __sd_Pause2 {
+									layout [ size: 114, 34 ]
+								}
+								node __sd_Depth2 {
+									layout [ size: 113, 34 ]
+								}
+								edge __EA_Exit20: checkDistance_g8433 -> __EA_Exit2
+								edge __te_S30: __EA_Exit2 -> __te_S3 {
+									label L41: "1: _Scchart_local_distance >= 10" {
+										layout [ size: 230, 17 ]
+									}
+								}
+								edge __sd_Pause20: __EA_Exit2 -> __sd_Pause2 {
+									label L42: "2:" {
+										layout [ size: 13, 17 ]
+									}
+								}
+								edge done0_g5359: __te_S3 -> done_g9261 {
+									label L43: "/ _Scchart_local_arrived = true" {
+										layout [ size: 216, 17 ]
+									}
+								}
+								edge __sd_Depth20: __sd_Pause2 -> __sd_Depth2
+								edge checkDistance0: __sd_Depth2 -> checkDistance_g8433 {
+									label L44: "1: _Scchart_local_distance < 10" {
+										layout [ size: 221, 17 ]
+									}
+								}
+								edge __EA_Exit20_g0162: __sd_Depth2 -> __EA_Exit2 {
+									label L45: "2:" {
+										layout [ size: 13, 17 ]
+									}
+								}
+							}
+							node powerMotor {
+								node powerMotor_g7955 {
+									algorithm: org.eclipse.elk.box
+									node __EA_Entry_g9068 {
+										node __EA_Init_g9821 {
+											layout [ size: 85, 34 ]
+										}
+										node __EA_Done_g8465 {
+											layout [ size: 107, 40 ]
+										}
+										node __EA_C11 {
+											layout [ size: 90, 34 ]
+										}
+										edge __EA_C110: __EA_Init_g9821 -> __EA_C11 {
+											label L54: "/ `Motor.A.setSpeed(50);`" {
+												layout [ size: 174, 17 ]
+											}
+										}
+										edge __EA_Done0_g5647: __EA_C11 -> __EA_Done_g8465 {
+											label L55: "/ `Motor.B.setSpeed(50);`" {
+												layout [ size: 176, 17 ]
+											}
+										}
+									}
+								}
+								node done_g9815 {
+									layout [ size: 62, 40 ]
+								}
+								node __EA_Exit3 {
+									layout [ size: 99, 34 ]
+								}
+								node __EA_C12 {
+									layout [ size: 91, 34 ]
+								}
+								node __EA_C13 {
+									layout [ size: 91, 34 ]
+								}
+								node __EA_C14 {
+									layout [ size: 91, 34 ]
+								}
+								node __sd_Pause3 {
+									layout [ size: 114, 34 ]
+								}
+								node __sd_Depth3 {
+									layout [ size: 113, 34 ]
+								}
+								edge __EA_Exit30: powerMotor_g7955 -> __EA_Exit3
+								edge __EA_C120: __EA_Exit3 -> __EA_C12 {
+									label L47: "1: _Scchart_local_arrived" {
+										layout [ size: 179, 17 ]
+									}
+								}
+								edge __sd_Pause30: __EA_Exit3 -> __sd_Pause3 {
+									label L48: "2:" {
+										layout [ size: 13, 17 ]
+									}
+								}
+								edge __EA_C130: __EA_C12 -> __EA_C13 {
+									label L49: "/ `Motor.A.setSpeed(0);`" {
+										layout [ size: 166, 17 ]
+									}
+								}
+								edge __EA_C140: __EA_C13 -> __EA_C14 {
+									label L50: "/ `Motor.B.setSpeed(0);`" {
+										layout [ size: 168, 17 ]
+									}
+								}
+								edge done0_g2073: __EA_C14 -> done_g9815 {
+									label L51: "/ `Sound.playTone(500+count*10, 50);`" {
+										layout [ size: 265, 17 ]
+									}
+								}
+								edge __sd_Depth30: __sd_Pause3 -> __sd_Depth3
+								edge powerMotor0: __sd_Depth3 -> powerMotor_g7955 {
+									label L52: "1: !_Scchart_local_arrived" {
+										layout [ size: 183, 17 ]
+									}
+								}
+								edge __EA_Exit30_g9733: __sd_Depth3 -> __EA_Exit3 {
+									label L53: "2:" {
+										layout [ size: 13, 17 ]
+									}
+								}
+							}
+						}
+						node __EA_Init_g8558 {
+							layout [ size: 85, 34 ]
+						}
+						node __EA_Done_g7679 {
+							layout [ size: 107, 40 ]
+						}
+						node __EA_C9 {
+							layout [ size: 83, 34 ]
+						}
+						node __EA_C10_g5645 {
+							layout [ size: 91, 34 ]
+						}
+						edge __EA_Done0_g6048: __EA_Main_g5772 -> __EA_Done_g7679
+						edge __EA_C90: __EA_Init_g8558 -> __EA_C9 {
+							label L38: "/ _Scchart_local_arrived = false" {
+								layout [ size: 221, 17 ]
+							}
+						}
+						edge __EA_C100: __EA_C9 -> __EA_C10_g5645 {
+							label L39: "/ _Scchart_local_distance = 0" {
+								layout [ size: 205, 17 ]
+							}
+						}
+						edge __EA_Main0_g6534: __EA_C10_g5645 -> __EA_Main_g5772 {
+							label L40: "/ `Motor.A.resetTachoCount()`" {
+								layout [ size: 209, 17 ]
+							}
+						}
+					}
+				}
+				node read {
+					algorithm: org.eclipse.elk.box
+					node __EA_Entry_g8009 {
+						node __EA_Init_g8503 {
+							layout [ size: 85, 34 ]
+						}
+						node __EA_Done_g5490 {
+							layout [ size: 107, 40 ]
+						}
+						edge __EA_Done0_g7588: __EA_Init_g8503 -> __EA_Done_g5490 {
+							label L56: "/ `newLevel = light.getNormalizedLightValue();`" {
+								layout [ size: 330, 17 ]
+							}
+						}
+					}
+				}
+				node next {
+					algorithm: org.eclipse.elk.box
+					node __EA_Entry_g1099 {
+						node __EA_Init_g6477 {
+							layout [ size: 85, 34 ]
+						}
+						node __EA_Done_g6021 {
+							layout [ size: 107, 40 ]
+						}
+						edge __EA_Done0_g3474: __EA_Init_g6477 -> __EA_Done_g6021 {
+							label L57: "/ `LCD.drawInt(barcode[count], count, 1);`" {
+								layout [ size: 291, 17 ]
+							}
+						}
+					}
+				}
+				node done_g9540 {
+					layout [ size: 62, 40 ]
+				}
+				node __EA_Init1 {
+					layout [ size: 94, 34 ]
+				}
+				node __EA_C7 {
+					layout [ size: 83, 34 ]
+				}
+				node __EA_C8 {
+					layout [ size: 83, 34 ]
+				}
+				node __sd_Depth4 {
+					layout [ size: 113, 34 ]
+				}
+				node __EA_Exit5 {
+					layout [ size: 99, 34 ]
+				}
+				node __te_S4 {
+					layout [ size: 77, 34 ]
+				}
+				node __te_S5 {
+					layout [ size: 77, 34 ]
+				}
+				node __te_S6 {
+					layout [ size: 77, 34 ]
+				}
+				node __sd_S8 {
+					layout [ size: 80, 34 ]
+				}
+				node __sd_Pause4 {
+					layout [ size: 114, 34 ]
+				}
+				node __sd_Pause5 {
+					layout [ size: 114, 34 ]
+				}
+				node __sd_Depth5 {
+					layout [ size: 113, 34 ]
+				}
+				edge read0: drive -> read
+				edge __sd_Depth40: read -> __sd_Depth4
+				edge __EA_Exit50: next -> __EA_Exit5
+				edge __EA_C70: __EA_Init1 -> __EA_C7 {
+					label L24: "/ _Scchart_local_count = 0" {
+						layout [ size: 185, 17 ]
+					}
+				}
+				edge __EA_C80: __EA_C7 -> __EA_C8 {
+					label L25: "/ `Motor.A.forward()`" {
+						layout [ size: 140, 17 ]
+					}
+				}
+				edge drive0: __EA_C8 -> drive {
+					label L26: "/ `Motor.B.forward()`" {
+						layout [ size: 142, 17 ]
+					}
+				}
+				edge __te_S40: __sd_Depth4 -> __te_S4 {
+					label L27: "1: newLevel > 480" {
+						layout [ size: 127, 17 ]
+					}
+				}
+				edge __sd_S80: __sd_Depth4 -> __sd_S8 {
+					label L28: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge done0_g9935: __EA_Exit5 -> done_g9540 {
+					label L29: "1: _Scchart_local_count >= 34" {
+						layout [ size: 210, 17 ]
+					}
+				}
+				edge __sd_Pause50: __EA_Exit5 -> __sd_Pause5 {
+					label L30: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge next0: __te_S4 -> next {
+					label L31: "/ barcode[_Scchart_local_count] = 0" {
+						layout [ size: 253, 17 ]
+					}
+				}
+				edge next0_g6371: __te_S5 -> next {
+					label L32: "/ barcode[_Scchart_local_count] = 1" {
+						layout [ size: 253, 17 ]
+					}
+				}
+				edge drive0_g6392: __te_S6 -> drive {
+					label L33: "/ _Scchart_local_count = _Scchart_local_count + 1" {
+						layout [ size: 353, 17 ]
+					}
+				}
+				edge __te_S50: __sd_S8 -> __te_S5 {
+					label L34: "1: newLevel <= 480" {
+						layout [ size: 136, 17 ]
+					}
+				}
+				edge __sd_Pause40: __sd_S8 -> __sd_Pause4 {
+					label L35: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __sd_Depth40_g5013: __sd_Pause4 -> __sd_Depth4
+				edge __sd_Depth50: __sd_Pause5 -> __sd_Depth5
+				edge __te_S60: __sd_Depth5 -> __te_S6 {
+					label L36: "1: _Scchart_local_count < 34" {
+						layout [ size: 201, 17 ]
+					}
+				}
+				edge __EA_Exit50_g4293: __sd_Depth5 -> __EA_Exit5 {
+					label L37: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+			}
+		}
+		node done_g0100 {
+			layout [ size: 62, 40 ]
+		}
+		node __EA_Init_g6110 {
+			layout [ size: 85, 34 ]
+		}
+		node __EA_C {
+			layout [ size: 74, 34 ]
+		}
+		node __te_S {
+			layout [ size: 69, 34 ]
+		}
+		node __te_S7 {
+			layout [ size: 77, 34 ]
+		}
+		edge __te_S0: init -> __te_S
+		edge readOut0: preparation -> readOut
+		edge __te_S70: readOut -> __te_S7
+		edge __EA_C0: __EA_Init_g6110 -> __EA_C {
+			label L1: "/ theEnd = false" {
+				layout [ size: 110, 17 ]
+			}
+		}
+		edge init0: __EA_C -> init {
+			label L2: "/ maxLevel = 0" {
+				layout [ size: 102, 17 ]
+			}
+		}
+		edge preparation0: __te_S -> preparation {
+			label L3: "/ theEnd = false" {
+				layout [ size: 110, 17 ]
+			}
+		}
+		edge done0_g2112: __te_S7 -> done_g0100 {
+			label L4: "/ theEnd = true" {
+				layout [ size: 105, 17 ]
+			}
+		}
+	}
+}

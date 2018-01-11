@@ -1,0 +1,451 @@
+graph G1
+node vwamyhph {
+	algorithm: org.eclipse.elk.box
+	node lightSensor {
+		node loop {
+			layout [ size: 52, 34 ]
+		}
+		edge loop0: loop -> loop {
+			label L1: "1: light > 500 / isWhite = true; yellowLight = true; redLight = false" {
+				layout [ size: 451, 17 ]
+			}
+		}
+		edge loop1: loop -> loop {
+			label L2: "2: light <= 500 / isWhite = false; redLight = true; yellowLight = false" {
+				layout [ size: 465, 17 ]
+			}
+		}
+	}
+	node readNumber {
+		node waitForStart {
+			layout [ size: 106, 34 ]
+		}
+		node started {
+			layout [ size: 71, 34 ]
+		}
+		node readFirst {
+			layout [ size: 84, 34 ]
+		}
+		node readSecond {
+			layout [ size: 107, 34 ]
+		}
+		node readThird {
+			layout [ size: 91, 34 ]
+		}
+		node doneStart {
+			layout [ size: 90, 34 ]
+		}
+		node empty {
+			layout [ size: 64, 34 ]
+		}
+		node l {
+			layout [ size: 34, 34 ]
+		}
+		node ll {
+			layout [ size: 34, 34 ]
+		}
+		node lll {
+			layout [ size: 34, 34 ]
+		}
+		node llld {
+			layout [ size: 42, 34 ]
+		}
+		node llldl {
+			layout [ size: 46, 34 ]
+		}
+		node llldld {
+			layout [ size: 55, 34 ]
+		}
+		node llldd {
+			layout [ size: 51, 34 ]
+		}
+		node lllddl {
+			layout [ size: 55, 34 ]
+		}
+		node lld {
+			layout [ size: 38, 34 ]
+		}
+		node lldl {
+			layout [ size: 42, 34 ]
+		}
+		node lldll {
+			layout [ size: 46, 34 ]
+		}
+		node lldlld {
+			layout [ size: 55, 34 ]
+		}
+		node lldd {
+			layout [ size: 47, 34 ]
+		}
+		node llddl {
+			layout [ size: 51, 34 ]
+		}
+		node llddll {
+			layout [ size: 55, 34 ]
+		}
+		node ld {
+			layout [ size: 34, 34 ]
+		}
+		node ldl {
+			layout [ size: 38, 34 ]
+		}
+		node ldll {
+			layout [ size: 42, 34 ]
+		}
+		node ldlll {
+			layout [ size: 46, 34 ]
+		}
+		node ldllld {
+			layout [ size: 55, 34 ]
+		}
+		node ldld {
+			layout [ size: 47, 34 ]
+		}
+		node ldldd {
+			layout [ size: 56, 34 ]
+		}
+		node ldlddd {
+			layout [ size: 65, 34 ]
+		}
+		node ldd {
+			layout [ size: 43, 34 ]
+		}
+		node lddl {
+			layout [ size: 47, 34 ]
+		}
+		node lddll {
+			layout [ size: 51, 34 ]
+		}
+		node lddlll {
+			layout [ size: 55, 34 ]
+		}
+		node lddld {
+			layout [ size: 56, 34 ]
+		}
+		node lddldd {
+			layout [ size: 65, 34 ]
+		}
+		node lddd {
+			layout [ size: 52, 34 ]
+		}
+		node ldddl {
+			layout [ size: 56, 34 ]
+		}
+		node ldddld {
+			layout [ size: 65, 34 ]
+		}
+		node ldddd {
+			layout [ size: 61, 34 ]
+		}
+		node lddddl {
+			layout [ size: 65, 34 ]
+		}
+		node done {
+			layout [ size: 56, 34 ]
+		}
+		node readEnd {
+			layout [ size: 81, 34 ]
+		}
+		node calculateX {
+			layout [ size: 94, 34 ]
+		}
+		node doneEnd {
+			layout [ size: 85, 34 ]
+		}
+		edge started0: waitForStart -> started {
+			label L3: "start" {
+				layout [ size: 32, 17 ]
+			}
+		}
+		edge started0_g7500: started -> started {
+			label L4: "1: isWhite == true / rotateToDegrees = 1" {
+				layout [ size: 282, 17 ]
+			}
+		}
+		edge readFirst0: started -> readFirst {
+			label L5: "2: isWhite == false && isMotorMoving == false / rotateToDegrees = 6" {
+				layout [ size: 484, 17 ]
+			}
+		}
+		edge readSecond0: readFirst -> readSecond {
+			label L6: "isMotorMoving == false && isWhite == false / rotateToDegrees = 11" {
+				layout [ size: 475, 17 ]
+			}
+		}
+		edge readThird0: readSecond -> readThird {
+			label L7: "isMotorMoving == false && isWhite == true / rotateToDegrees = 10" {
+				layout [ size: 471, 17 ]
+			}
+		}
+		edge doneStart0: readThird -> doneStart {
+			label L8: "isMotorMoving == false && isWhite == false / rotateToDegrees = 10" {
+				layout [ size: 476, 17 ]
+			}
+		}
+		edge empty0: doneStart -> empty {
+			label L9: "1: numberToRead < 4 / numberToRead = 1" {
+				layout [ size: 297, 17 ]
+			}
+		}
+		edge calculateX0: doneStart -> calculateX {
+			label L10: "2: numberToRead == 4 && (9 - ((y / 10) % 10 + (y / 100) % 10 + (y / 1000) % 10)) % 10 == y % 10 / y = y / 10" {
+				layout [ size: 713, 17 ]
+			}
+		}
+		edge calculateX1: doneStart -> calculateX {
+			label L11: "3: numberToRead == 4 && (9 - ((y / 10) % 10 + (y / 100) % 10 + (y / 1000) % 10)) % 10 != y % 10 / y = y / 10; beeper = true" {
+				layout [ size: 812, 17 ]
+			}
+		}
+		edge l0: empty -> l {
+			label L12: "isMotorMoving == false && isWhite == true / rotateToDegrees = 10" {
+				layout [ size: 471, 17 ]
+			}
+		}
+		edge ll0: l -> ll {
+			label L13: "1: isMotorMoving == false && isWhite == true / rotateToDegrees = 10" {
+				layout [ size: 487, 17 ]
+			}
+		}
+		edge ld0: l -> ld {
+			label L14: "2: isMotorMoving == false && isWhite == false / rotateToDegrees = 10" {
+				layout [ size: 492, 17 ]
+			}
+		}
+		edge lll0: ll -> lll {
+			label L15: "1: isMotorMoving == false && isWhite == true / rotateToDegrees = 10" {
+				layout [ size: 487, 17 ]
+			}
+		}
+		edge lld0: ll -> lld {
+			label L16: "2: isMotorMoving == false && isWhite == false / rotateToDegrees = 10" {
+				layout [ size: 492, 17 ]
+			}
+		}
+		edge llld0: lll -> llld {
+			label L17: "isMotorMoving == false && isWhite == false / rotateToDegrees = 10" {
+				layout [ size: 476, 17 ]
+			}
+		}
+		edge llldl0: llld -> llldl {
+			label L18: "1: isMotorMoving == false && isWhite == true / rotateToDegrees = 10" {
+				layout [ size: 487, 17 ]
+			}
+		}
+		edge llldd0: llld -> llldd {
+			label L19: "2: isMotorMoving == false && isWhite == false / rotateToDegrees = 10" {
+				layout [ size: 492, 17 ]
+			}
+		}
+		edge llldld0: llldl -> llldld {
+			label L20: "isMotorMoving == false && isWhite == false / rotateToDegrees = 10" {
+				layout [ size: 476, 17 ]
+			}
+		}
+		edge done0: llldld -> done {
+			label L21: "isMotorMoving == false && isWhite == false / rotateToDegrees = 10; y = y + 9" {
+				layout [ size: 540, 17 ]
+			}
+		}
+		edge lllddl0: llldd -> lllddl {
+			label L22: "isMotorMoving == false && isWhite == true / rotateToDegrees = 10" {
+				layout [ size: 471, 17 ]
+			}
+		}
+		edge done0_g0557: lllddl -> done {
+			label L23: "isMotorMoving == false && isWhite == false / rotateToDegrees = 10" {
+				layout [ size: 476, 17 ]
+			}
+		}
+		edge lldl0: lld -> lldl {
+			label L24: "1: isMotorMoving == false && isWhite == true / rotateToDegrees = 10" {
+				layout [ size: 487, 17 ]
+			}
+		}
+		edge lldd0: lld -> lldd {
+			label L25: "2: isMotorMoving == false && isWhite == false / rotateToDegrees = 10" {
+				layout [ size: 492, 17 ]
+			}
+		}
+		edge lldll0: lldl -> lldll {
+			label L26: "isMotorMoving == false && isWhite == true / rotateToDegrees = 10" {
+				layout [ size: 471, 17 ]
+			}
+		}
+		edge lldlld0: lldll -> lldlld {
+			label L27: "isMotorMoving == false && isWhite == false / rotateToDegrees = 10" {
+				layout [ size: 476, 17 ]
+			}
+		}
+		edge done0_g1234: lldlld -> done {
+			label L28: "isMotorMoving == false && isWhite == false / rotateToDegrees = 10; y = y + 2" {
+				layout [ size: 540, 17 ]
+			}
+		}
+		edge llddl0: lldd -> llddl {
+			label L29: "isMotorMoving == false && isWhite == true / rotateToDegrees = 10" {
+				layout [ size: 471, 17 ]
+			}
+		}
+		edge llddll0: llddl -> llddll {
+			label L30: "isMotorMoving == false && isWhite == true / rotateToDegrees = 10" {
+				layout [ size: 471, 17 ]
+			}
+		}
+		edge done0_g6959: llddll -> done {
+			label L31: "isMotorMoving == false && isWhite == false / rotateToDegrees = 10; y = y + 1" {
+				layout [ size: 540, 17 ]
+			}
+		}
+		edge ldl0: ld -> ldl {
+			label L32: "1: isMotorMoving == false && isWhite == true / rotateToDegrees = 10" {
+				layout [ size: 487, 17 ]
+			}
+		}
+		edge ldd0: ld -> ldd {
+			label L33: "2: isMotorMoving == false && isWhite == false / rotateToDegrees = 10" {
+				layout [ size: 492, 17 ]
+			}
+		}
+		edge ldll0: ldl -> ldll {
+			label L34: "1: isMotorMoving == false && isWhite == true / rotateToDegrees = 10" {
+				layout [ size: 487, 17 ]
+			}
+		}
+		edge ldld0: ldl -> ldld {
+			label L35: "2: isMotorMoving == false && isWhite == false / rotateToDegrees = 10" {
+				layout [ size: 492, 17 ]
+			}
+		}
+		edge ldlll0: ldll -> ldlll {
+			label L36: "isMotorMoving == false && isWhite == true / rotateToDegrees = 10" {
+				layout [ size: 471, 17 ]
+			}
+		}
+		edge ldllld0: ldlll -> ldllld {
+			label L37: "isMotorMoving == false && isWhite == false / rotateToDegrees = 10" {
+				layout [ size: 476, 17 ]
+			}
+		}
+		edge done0_g1859: ldllld -> done {
+			label L38: "isMotorMoving == false && isWhite == false / rotateToDegrees = 10; y = y + 4" {
+				layout [ size: 540, 17 ]
+			}
+		}
+		edge ldldd0: ldld -> ldldd {
+			label L39: "isMotorMoving == false && isWhite == false / rotateToDegrees = 10" {
+				layout [ size: 476, 17 ]
+			}
+		}
+		edge ldlddd0: ldldd -> ldlddd {
+			label L40: "isMotorMoving == false && isWhite == false / rotateToDegrees = 10" {
+				layout [ size: 476, 17 ]
+			}
+		}
+		edge done0_g3942: ldlddd -> done {
+			label L41: "isMotorMoving == false && isWhite == false / rotateToDegrees = 10; y = y + 6" {
+				layout [ size: 540, 17 ]
+			}
+		}
+		edge lddl0: ldd -> lddl {
+			label L42: "1: isMotorMoving == false && isWhite == true / rotateToDegrees = 10" {
+				layout [ size: 487, 17 ]
+			}
+		}
+		edge lddd0: ldd -> lddd {
+			label L43: "2: isMotorMoving == false && isWhite == false / rotateToDegrees = 10" {
+				layout [ size: 492, 17 ]
+			}
+		}
+		edge lddll0: lddl -> lddll {
+			label L44: "1: isMotorMoving == false && isWhite == true / rotateToDegrees = 10" {
+				layout [ size: 487, 17 ]
+			}
+		}
+		edge lddld0: lddl -> lddld {
+			label L45: "2: isMotorMoving == false && isWhite == false / rotateToDegrees = 10" {
+				layout [ size: 492, 17 ]
+			}
+		}
+		edge lddlll0: lddll -> lddlll {
+			label L46: "isMotorMoving == false && isWhite == true / rotateToDegrees = 10" {
+				layout [ size: 471, 17 ]
+			}
+		}
+		edge done0_g2339: lddlll -> done {
+			label L47: "isMotorMoving == false && isWhite == false / rotateToDegrees = 10; y = y + 5" {
+				layout [ size: 540, 17 ]
+			}
+		}
+		edge lddldd0: lddld -> lddldd {
+			label L48: "isMotorMoving == false && isWhite == false / rotateToDegrees = 10" {
+				layout [ size: 476, 17 ]
+			}
+		}
+		edge done0_g5938: lddldd -> done {
+			label L49: "isMotorMoving == false && isWhite == false / rotateToDegrees = 10; y = y + 8" {
+				layout [ size: 540, 17 ]
+			}
+		}
+		edge ldddl0: lddd -> ldddl {
+			label L50: "1: isMotorMoving == false && isWhite == true / rotateToDegrees = 10" {
+				layout [ size: 487, 17 ]
+			}
+		}
+		edge ldddd0: lddd -> ldddd {
+			label L51: "2: isMotorMoving == false && isWhite == false / rotateToDegrees = 10" {
+				layout [ size: 492, 17 ]
+			}
+		}
+		edge ldddld0: ldddl -> ldddld {
+			label L52: "isMotorMoving == false && isWhite == false / rotateToDegrees = 10" {
+				layout [ size: 476, 17 ]
+			}
+		}
+		edge done0_g3999: ldddld -> done {
+			label L53: "isMotorMoving == false && isWhite == false / rotateToDegrees = 10; y = y + 7" {
+				layout [ size: 540, 17 ]
+			}
+		}
+		edge lddddl0: ldddd -> lddddl {
+			label L54: "isMotorMoving == false && isWhite == true / rotateToDegrees = 10" {
+				layout [ size: 471, 17 ]
+			}
+		}
+		edge done0_g9088: lddddl -> done {
+			label L55: "isMotorMoving == false && isWhite == false / rotateToDegrees = 10; y = y + 3" {
+				layout [ size: 540, 17 ]
+			}
+		}
+		edge empty0_g6386: done -> empty {
+			label L56: "1: numberToRead < 4 / numberToRead = numberToRead + 1; y = y * 10" {
+				layout [ size: 492, 17 ]
+			}
+		}
+		edge readEnd0: done -> readEnd {
+			label L57: "2: numberToRead >= 4" {
+				layout [ size: 160, 17 ]
+			}
+		}
+		edge readFirst0_g6572: readEnd -> readFirst {
+			label L58: "isMotorMoving == false && isWhite == true / rotateToDegrees = 10" {
+				layout [ size: 471, 17 ]
+			}
+		}
+		edge doneEnd0: calculateX -> doneEnd {
+			label L59: "1: y < 500 / x = y" {
+				layout [ size: 110, 17 ]
+			}
+		}
+		edge doneEnd1: calculateX -> doneEnd {
+			label L60: "2: y >= 500 / x = y - 1000" {
+				layout [ size: 163, 17 ]
+			}
+		}
+		edge doneEnd0_g5647: doneEnd -> doneEnd {
+			label L61: "x != 10000 / x = 10000" {
+				layout [ size: 147, 17 ]
+			}
+		}
+	}
+}

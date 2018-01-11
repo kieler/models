@@ -1,0 +1,63 @@
+graph G1
+node partb {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node pause {
+			layout [ size: 63, 34 ]
+		}
+		node extend {
+			layout [ size: 70, 34 ]
+		}
+		node extended {
+			layout [ size: 88, 34 ]
+		}
+		node retract {
+			layout [ size: 67, 34 ]
+		}
+		edge extend0: pause -> extend {
+			label L1: "1: EXTEND_BUTTON / LEGS_EXTEND" {
+				layout [ size: 274, 17 ]
+			}
+		}
+		edge retract0: pause -> retract {
+			label L2: "2: RETRACT_BUTTON / LEGS_RETRACT" {
+				layout [ size: 294, 17 ]
+			}
+		}
+		edge pause0: extend -> pause {
+			label L3: "1: STOP_BUTTON / LEGS_STOP" {
+				layout [ size: 235, 17 ]
+			}
+		}
+		edge extended0: extend -> extended {
+			label L4: "2: LEGS_OUT / LEGS_STOP" {
+				layout [ size: 202, 17 ]
+			}
+		}
+		edge retract0_g4470: extend -> retract {
+			label L5: "3: RETRACT_BUTTON / LEGS_RETRACT" {
+				layout [ size: 294, 17 ]
+			}
+		}
+		edge retract0_g3167: extended -> retract {
+			label L6: "1: RETRACT_BUTTON / LEGS_RETRACT" {
+				layout [ size: 294, 17 ]
+			}
+		}
+		edge extended0_g6203: extended -> extended {
+			label L7: "2: / DONE_LAMP" {
+				layout [ size: 118, 17 ]
+			}
+		}
+		edge pause0_g7777: retract -> pause {
+			label L8: "1: STOP_BUTTON || LEGS_IN / LEGS_STOP" {
+				layout [ size: 315, 17 ]
+			}
+		}
+		edge extend0_g1647: retract -> extend {
+			label L9: "2: EXTEND_BUTTON / LEGS_EXTEND" {
+				layout [ size: 274, 17 ]
+			}
+		}
+	}
+}

@@ -1,0 +1,106 @@
+graph G1
+node lnrwquuuqimimwgunyobhpuojtlawyqcwsuyqwdjmhz {
+	algorithm: org.eclipse.elk.box
+	node DomeLightTimer {
+		node DomeWaitForClock {
+			layout [ size: 155, 34 ]
+		}
+		edge DomeWaitForClock0: DomeWaitForClock -> DomeWaitForClock {
+			label L1: "1: second / domelight_time += 1; d_t_set = true" {
+				layout [ size: 328, 17 ]
+			}
+		}
+		edge DomeWaitForClock1: DomeWaitForClock -> DomeWaitForClock {
+			label L2: "2: / d_t_set = false" {
+				layout [ size: 127, 17 ]
+			}
+		}
+	}
+	node BeeperTimer {
+		node BeeperWaitForClock {
+			layout [ size: 167, 34 ]
+		}
+		edge BeeperWaitForClock0: BeeperWaitForClock -> BeeperWaitForClock {
+			label L3: "1: second / beeper_time += 1; b_t_set = true" {
+				layout [ size: 309, 17 ]
+			}
+		}
+		edge BeeperWaitForClock1: BeeperWaitForClock -> BeeperWaitForClock {
+			label L4: "2: / b_t_set = false" {
+				layout [ size: 127, 17 ]
+			}
+		}
+	}
+	node DoorsController {
+		node DoorsClosed {
+			layout [ size: 114, 34 ]
+		}
+		node DoorsOpened {
+			layout [ size: 121, 34 ]
+		}
+		edge DoorsOpened0: DoorsClosed -> DoorsOpened {
+			label L5: "1: doors && d_t_set / domeLight = 1; domelight_time = 0" {
+				layout [ size: 393, 17 ]
+			}
+		}
+		edge DoorsClosed0: DoorsClosed -> DoorsClosed {
+			label L6: "2: d_t_set && domelight_time >= 3 / domeLight = 0" {
+				layout [ size: 353, 17 ]
+			}
+		}
+		edge DoorsClosed0_g6448: DoorsOpened -> DoorsClosed {
+			label L7: "doors == 0 && d_t_set / domelight_time = 0" {
+				layout [ size: 303, 17 ]
+			}
+		}
+	}
+	node SeatbeltController {
+		node engineOff {
+			layout [ size: 91, 34 ]
+		}
+		node engineOn {
+			algorithm: org.eclipse.elk.box
+			node N1 {
+				node everyonesBucklet {
+					layout [ size: 149, 34 ]
+				}
+				node someonesNotBucklet {
+					layout [ size: 172, 34 ]
+				}
+				node someonesNotBucklet30Secs {
+					layout [ size: 224, 34 ]
+				}
+				edge someonesNotBucklet0: everyonesBucklet -> someonesNotBucklet {
+					label L10: "seatbelts == 0 && b_t_set / beeper = 1; redLight = 1; beeper_time = 0" {
+						layout [ size: 485, 17 ]
+					}
+				}
+				edge everyonesBucklet0: someonesNotBucklet -> everyonesBucklet {
+					label L11: "1: seatbelts && b_t_set / beeper = 0; redLight = 0; beeper_time = 0" {
+						layout [ size: 467, 17 ]
+					}
+				}
+				edge someonesNotBucklet30Secs0: someonesNotBucklet -> someonesNotBucklet30Secs {
+					label L12: "2: b_t_set && seatbelts == 0 && beeper_time >= 30 / beeper_time = 0; beeper = 0" {
+						layout [ size: 569, 17 ]
+					}
+				}
+				edge everyonesBucklet0_g3178: someonesNotBucklet30Secs -> everyonesBucklet {
+					label L13: "seatbelts / redLight = 0" {
+						layout [ size: 163, 17 ]
+					}
+				}
+			}
+		}
+		edge engineOn0: engineOff -> engineOn {
+			label L8: "engine" {
+				layout [ size: 49, 17 ]
+			}
+		}
+		edge engineOff0: engineOn -> engineOff {
+			label L9: "engine == 0 / beeper = 0; redLight = 0" {
+				layout [ size: 265, 17 ]
+			}
+		}
+	}
+}

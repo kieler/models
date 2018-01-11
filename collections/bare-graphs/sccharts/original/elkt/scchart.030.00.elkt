@@ -1,0 +1,271 @@
+graph G1
+node BarcodeRobot {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node init {
+			layout [ size: 42, 34 ]
+		}
+		node setup {
+			algorithm: org.eclipse.elk.box
+			node N2 {
+				node waitForDark {
+					layout [ size: 106, 34 ]
+				}
+				node delay {
+					layout [ size: 65, 40 ]
+				}
+				edge delay0: waitForDark -> delay {
+					label L19: "lightSensor <= border && clock / resetStartDelay = true" {
+						layout [ size: 391, 17 ]
+					}
+				}
+			}
+		}
+		node read {
+			layout [ size: 53, 34 ]
+		}
+		node light {
+			layout [ size: 51, 34 ]
+		}
+		node dark {
+			layout [ size: 52, 34 ]
+		}
+		node startDelimiter {
+			algorithm: org.eclipse.elk.box
+			node N3 {
+				node d {
+					layout [ size: 34, 34 ]
+				}
+				node dl {
+					layout [ size: 34, 34 ]
+				}
+				node dld {
+					layout [ size: 49, 40 ]
+				}
+				edge dl0: d -> dl {
+					label L20: "readValue == 0" {
+						layout [ size: 105, 17 ]
+					}
+				}
+				edge dld0: dl -> dld {
+					label L21: "readValue == 1 / section = 1" {
+						layout [ size: 194, 17 ]
+					}
+				}
+			}
+		}
+		node digit {
+			algorithm: org.eclipse.elk.box
+			node N4 {
+				node buffer {
+					layout [ size: 63, 34 ]
+				}
+				node decode {
+					layout [ size: 73, 34 ]
+				}
+				node c {
+					layout [ size: 40, 40 ]
+				}
+				node error {
+					layout [ size: 62, 40 ]
+				}
+				edge buffer0: buffer -> buffer {
+					label L22: "1: digitCounter < 7 / digitBuffer[digitCounter] = readValue; digitCounter = digitCounter + 1; `System.out.print(\">\" + digitCounter + \"<\")`" {
+						layout [ size: 944, 17 ]
+					}
+				}
+				edge decode0: buffer -> decode {
+					label L23: "2: digitCounter >= 7 / `System.out.print(\"!>\" + digitCounter + \"<!\")`" {
+						layout [ size: 463, 17 ]
+					}
+				}
+				edge c0: decode -> c {
+					label L24: "1: digitBuffer[0] == 0 && digitBuffer[1] == 0 && digitBuffer[2] == 0 && digitBuffer[3] == 1 && digitBuffer[4] == 0 && digitBuffer[5] == 1 && digitBuffer[6] == 1 / barcode[(section - 1)] = 9; section = section + 1; digitCounter = 0" {
+						layout [ size: 1557, 17 ]
+					}
+				}
+				edge c1: decode -> c {
+					label L25: "2: digitBuffer[0] == 0 && digitBuffer[1] == 0 && digitBuffer[2] == 0 && digitBuffer[3] == 1 && digitBuffer[4] == 1 && digitBuffer[5] == 0 && digitBuffer[6] == 1 / barcode[(section - 1)] = 0; section = section + 1; digitCounter = 0" {
+						layout [ size: 1557, 17 ]
+					}
+				}
+				edge c2: decode -> c {
+					label L26: "3: digitBuffer[0] == 0 && digitBuffer[1] == 0 && digitBuffer[2] == 1 && digitBuffer[3] == 0 && digitBuffer[4] == 0 && digitBuffer[5] == 1 && digitBuffer[6] == 1 / barcode[(section - 1)] = 2; section = section + 1; digitCounter = 0" {
+						layout [ size: 1557, 17 ]
+					}
+				}
+				edge c3: decode -> c {
+					label L27: "4: digitBuffer[0] == 0 && digitBuffer[1] == 0 && digitBuffer[2] == 1 && digitBuffer[3] == 1 && digitBuffer[4] == 0 && digitBuffer[5] == 0 && digitBuffer[6] == 1 / barcode[(section - 1)] = 1; section = section + 1; digitCounter = 0" {
+						layout [ size: 1557, 17 ]
+					}
+				}
+				edge c4: decode -> c {
+					label L28: "5: digitBuffer[0] == 0 && digitBuffer[1] == 1 && digitBuffer[2] == 0 && digitBuffer[3] == 0 && digitBuffer[4] == 0 && digitBuffer[5] == 1 && digitBuffer[6] == 1 / barcode[(section - 1)] = 4; section = section + 1; digitCounter = 0" {
+						layout [ size: 1557, 17 ]
+					}
+				}
+				edge c5: decode -> c {
+					label L29: "6: digitBuffer[0] == 0 && digitBuffer[1] == 1 && digitBuffer[2] == 0 && digitBuffer[3] == 1 && digitBuffer[4] == 1 && digitBuffer[5] == 1 && digitBuffer[6] == 1 / barcode[(section - 1)] = 6; section = section + 1; digitCounter = 0" {
+						layout [ size: 1557, 17 ]
+					}
+				}
+				edge c6: decode -> c {
+					label L30: "7: digitBuffer[0] == 0 && digitBuffer[1] == 1 && digitBuffer[2] == 1 && digitBuffer[3] == 0 && digitBuffer[4] == 0 && digitBuffer[5] == 0 && digitBuffer[6] == 1 / barcode[(section - 1)] = 5; section = section + 1; digitCounter = 0" {
+						layout [ size: 1557, 17 ]
+					}
+				}
+				edge c7: decode -> c {
+					label L31: "8: digitBuffer[0] == 0 && digitBuffer[1] == 1 && digitBuffer[2] == 1 && digitBuffer[3] == 0 && digitBuffer[4] == 1 && digitBuffer[5] == 1 && digitBuffer[6] == 1 / barcode[(section - 1)] = 8; section = section + 1; digitCounter = 0" {
+						layout [ size: 1557, 17 ]
+					}
+				}
+				edge c8: decode -> c {
+					label L32: "9: digitBuffer[0] == 0 && digitBuffer[1] == 1 && digitBuffer[2] == 1 && digitBuffer[3] == 1 && digitBuffer[4] == 0 && digitBuffer[5] == 1 && digitBuffer[6] == 1 / barcode[(section - 1)] = 7; section = section + 1; digitCounter = 0" {
+						layout [ size: 1557, 17 ]
+					}
+				}
+				edge c9: decode -> c {
+					label L33: "10: digitBuffer[0] == 0 && digitBuffer[1] == 1 && digitBuffer[2] == 1 && digitBuffer[3] == 1 && digitBuffer[4] == 1 && digitBuffer[5] == 0 && digitBuffer[6] == 1 / barcode[(section - 1)] = 3; section = section + 1; digitCounter = 0" {
+						layout [ size: 1565, 17 ]
+					}
+				}
+				edge error0: decode -> error {
+					label L34: "11: true" {
+						layout [ size: 52, 17 ]
+					}
+				}
+			}
+		}
+		node endDelimiter {
+			algorithm: org.eclipse.elk.box
+			node N5 {
+				node l {
+					layout [ size: 34, 34 ]
+				}
+				node ld {
+					layout [ size: 34, 34 ]
+				}
+				node ldl {
+					layout [ size: 38, 34 ]
+				}
+				node ldld {
+					layout [ size: 53, 40 ]
+				}
+				edge ld0: l -> ld {
+					label L35: "readValue == 1" {
+						layout [ size: 105, 17 ]
+					}
+				}
+				edge ldl0: ld -> ldl {
+					label L36: "readValue == 0" {
+						layout [ size: 105, 17 ]
+					}
+				}
+				edge ldld0: ldl -> ldld {
+					label L37: "readValue == 1 / section = 6" {
+						layout [ size: 194, 17 ]
+					}
+				}
+			}
+		}
+		node validate {
+			layout [ size: 76, 34 ]
+		}
+		node fin {
+			layout [ size: 563, 50 ]
+		}
+		node error_g8144 {
+			layout [ size: 279, 50 ]
+		}
+		edge setup0: init -> setup {
+			label L1: "leftButton / motorSpeedA = speed; motorSpeedB = speed; floodLight = true; resetClock = true" {
+				layout [ size: 663, 17 ]
+			}
+		}
+		edge read0: setup -> read {
+			label L2: "startDelay / resetClock = true" {
+				layout [ size: 206, 17 ]
+			}
+		}
+		edge light0: read -> light {
+			label L3: "1: clock && lightSensor > border / resetClock = true; value = lightSensor; readValue = 0" {
+				layout [ size: 615, 17 ]
+			}
+		}
+		edge dark0: read -> dark {
+			label L4: "2: clock && lightSensor <= border / resetClock = true; value = lightSensor; readValue = 1" {
+				layout [ size: 624, 17 ]
+			}
+		}
+		edge startDelimiter0: light -> startDelimiter {
+			label L5: "1: section == 0" {
+				layout [ size: 103, 17 ]
+			}
+		}
+		edge digit0: light -> digit {
+			label L6: "2: section >= 1 && section <= 4" {
+				layout [ size: 219, 17 ]
+			}
+		}
+		edge endDelimiter0: light -> endDelimiter {
+			label L7: "3: section == 5" {
+				layout [ size: 103, 17 ]
+			}
+		}
+		edge startDelimiter0_g6827: dark -> startDelimiter {
+			label L8: "1: section == 0" {
+				layout [ size: 103, 17 ]
+			}
+		}
+		edge digit0_g8516: dark -> digit {
+			label L9: "2: section >= 1 && section <= 4" {
+				layout [ size: 219, 17 ]
+			}
+		}
+		edge endDelimiter0_g8557: dark -> endDelimiter {
+			label L10: "3: section == 5" {
+				layout [ size: 103, 17 ]
+			}
+		}
+		edge read0_g9224: startDelimiter -> read {
+			label L11: "true" {
+				layout [ size: 29, 17 ]
+			}
+		}
+		edge read0_g8688: digit -> read {
+			label L12: "true" {
+				layout [ size: 29, 17 ]
+			}
+		}
+		edge validate0: endDelimiter -> validate {
+			label L13: "1:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge read0_g3430: endDelimiter -> read {
+			label L14: "2: true" {
+				layout [ size: 45, 17 ]
+			}
+		}
+		edge fin0: validate -> fin {
+			label L15: "1: 9 -(barcode[0] + barcode[1] + barcode[2]) % 10 == barcode[4]" {
+				layout [ size: 444, 17 ]
+			}
+		}
+		edge error0_g4687: validate -> error_g8144 {
+			label L16: "2: 9 -(barcode[0] + barcode[1] + barcode[2]) % 10 != barcode[4]" {
+				layout [ size: 439, 17 ]
+			}
+		}
+		edge init0: fin -> init {
+			label L17: "enterButton / motorSpeedA = 0; motorSpeedB = 0; floodLight = false" {
+				layout [ size: 480, 17 ]
+			}
+		}
+		edge init0_g3120: error_g8144 -> init {
+			label L18: "enterButton / motorSpeedA = 0; motorSpeedB = 0; floodLight = false" {
+				layout [ size: 480, 17 ]
+			}
+		}
+	}
+}

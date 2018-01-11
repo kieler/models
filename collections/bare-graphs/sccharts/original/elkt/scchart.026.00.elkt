@@ -1,0 +1,219 @@
+graph G1
+node elevator {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node idle {
+			layout [ size: 46, 34 ]
+		}
+		node idleUp {
+			layout [ size: 67, 34 ]
+		}
+		node idleDown {
+			layout [ size: 87, 34 ]
+		}
+		node MovingDown {
+			algorithm: org.eclipse.elk.box
+			node N2 {
+				node H {
+					layout [ size: 34, 34 ]
+				}
+				node Done {
+					layout [ size: 64, 40 ]
+				}
+				edge Done0: H -> Done {
+					label L20: "1: abortDown || abortall" {
+						layout [ size: 163, 17 ]
+					}
+				}
+				edge H0: H -> H {
+					label L21: "2: / Move = -1" {
+						layout [ size: 95, 17 ]
+					}
+				}
+			}
+			node N3 {
+				node H1 {
+					layout [ size: 40, 34 ]
+				}
+				node H2 {
+					layout [ size: 46, 40 ]
+				}
+				edge H20: H1 -> H2 {
+					label L22: "1: abortall" {
+						layout [ size: 70, 17 ]
+					}
+				}
+				edge H21: H1 -> H2 {
+					label L23: "2: IsDown / abortDown = true" {
+						layout [ size: 203, 17 ]
+					}
+				}
+			}
+		}
+		node MovingUp {
+			algorithm: org.eclipse.elk.box
+			node N4 {
+				node J {
+					layout [ size: 34, 34 ]
+				}
+				node Done_g9497 {
+					layout [ size: 64, 40 ]
+				}
+				edge Done0_g2697: J -> Done_g9497 {
+					label L24: "1: abortUp || abortall" {
+						layout [ size: 143, 17 ]
+					}
+				}
+				edge J0: J -> J {
+					label L25: "2: / Move = 1" {
+						layout [ size: 90, 17 ]
+					}
+				}
+			}
+			node N5 {
+				node J1 {
+					layout [ size: 37, 34 ]
+				}
+				node J2 {
+					layout [ size: 43, 40 ]
+				}
+				edge J20: J1 -> J2 {
+					label L26: "1: abortall" {
+						layout [ size: 70, 17 ]
+					}
+				}
+				edge J21: J1 -> J2 {
+					label L27: "2: IsUp / abortUp = true" {
+						layout [ size: 163, 17 ]
+					}
+				}
+			}
+		}
+		node S {
+			layout [ size: 34, 34 ]
+		}
+		node waitSecond {
+			layout [ size: 103, 34 ]
+		}
+		node S_2 {
+			layout [ size: 34, 34 ]
+		}
+		node S_1 {
+			layout [ size: 47, 34 ]
+		}
+		edge idleUp0: idle -> idleUp {
+			label L1: "1: IsUp" {
+				layout [ size: 49, 17 ]
+			}
+		}
+		edge idleDown0: idle -> idleDown {
+			label L2: "2: IsDown" {
+				layout [ size: 69, 17 ]
+			}
+		}
+		edge S0: idleUp -> S {
+			label L3: "1: abortall / historycount = 4" {
+				layout [ size: 195, 17 ]
+			}
+		}
+		edge MovingDown0: idleUp -> MovingDown {
+			label L4: "2: ButtonDown" {
+				layout [ size: 105, 17 ]
+			}
+		}
+		edge idleUp0_g7727: idleUp -> idleUp {
+			label L5: "3: / Move = 0" {
+				layout [ size: 90, 17 ]
+			}
+		}
+		edge S0_g3345: idleDown -> S {
+			label L6: "1: abortall / historycount = 1" {
+				layout [ size: 195, 17 ]
+			}
+		}
+		edge MovingUp0: idleDown -> MovingUp {
+			label L7: "2: ButtonUp" {
+				layout [ size: 85, 17 ]
+			}
+		}
+		edge idleDown0_g5252: idleDown -> idleDown {
+			label L8: "3: / Move = 0" {
+				layout [ size: 90, 17 ]
+			}
+		}
+		edge S0_g5953: MovingDown -> S {
+			label L9: "1: abortall / historycount = 2" {
+				layout [ size: 195, 17 ]
+			}
+		}
+		edge idleDown0_g6818: MovingDown -> idleDown {
+			label L10: "2: / abortDown = false" {
+				layout [ size: 152, 17 ]
+			}
+		}
+		edge S0_g9315: MovingUp -> S {
+			label L11: "1: abortall / historycount = 3" {
+				layout [ size: 195, 17 ]
+			}
+		}
+		edge idleUp0_g4617: MovingUp -> idleUp {
+			label L12: "2: / abortUp = false" {
+				layout [ size: 132, 17 ]
+			}
+		}
+		edge waitSecond0: S -> waitSecond {
+			label L13: "/ AlarmLamp = AlarmLamp | true; count = 0" {
+				layout [ size: 292, 17 ]
+			}
+		}
+		edge S_20: waitSecond -> S_2 {
+			label L14: "1: count > 4 / AlarmLamp = false" {
+				layout [ size: 220, 17 ]
+			}
+		}
+		edge S_10: waitSecond -> S_1 {
+			label L15: "2: Second / count = count + 1; AlarmLamp = AlarmLamp | true" {
+				layout [ size: 422, 17 ]
+			}
+		}
+		edge idleUp0_g7045: S_2 -> idleUp {
+			label L16: "1: historycount == 4" {
+				layout [ size: 139, 17 ]
+			}
+		}
+		edge idleDown0_g0418: S_2 -> idleDown {
+			label L17: "2: historycount == 1" {
+				layout [ size: 139, 17 ]
+			}
+		}
+		edge MovingDown0_g2804: S_2 -> MovingDown {
+			label L18: "3: historycount == 2" {
+				layout [ size: 139, 17 ]
+			}
+		}
+		edge MovingUp0_g5285: S_2 -> MovingUp {
+			label L19: "4: historycount == 3" {
+				layout [ size: 139, 17 ]
+			}
+		}
+		edge waitSecond0_g5310: S_1 -> waitSecond
+	}
+	node N6 {
+		node waitAlarm {
+			layout [ size: 89, 34 ]
+		}
+		node Done_g0726 {
+			layout [ size: 58, 34 ]
+		}
+		edge Done0_g8402: waitAlarm -> Done_g0726 {
+			label L28: "ButtonAlarm / abortall = true" {
+				layout [ size: 198, 17 ]
+			}
+		}
+		edge waitAlarm0: Done_g0726 -> waitAlarm {
+			label L29: "/ abortall = false" {
+				layout [ size: 112, 17 ]
+			}
+		}
+	}
+}

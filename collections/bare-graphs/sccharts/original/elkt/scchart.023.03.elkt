@@ -1,0 +1,234 @@
+graph G1
+node BackhoeLoader {
+	algorithm: org.eclipse.elk.box
+	node Main {
+		node Legs {
+			algorithm: org.eclipse.elk.box
+			node LegControl {
+				node LegControl_g0011 {
+					layout [ size: 101, 34 ]
+				}
+				edge LegControl0: LegControl_g0011 -> LegControl_g0011 {
+					label L6: "1: STOP_BUTTON / LEGS_STOP" {
+						layout [ size: 235, 17 ]
+					}
+				}
+				edge LegControl1: LegControl_g0011 -> LegControl_g0011 {
+					label L7: "2: EXTEND_BUTTON / LEGS_EXTEND; shouldSwitchToArmMode = true" {
+						layout [ size: 508, 17 ]
+					}
+				}
+				edge LegControl2: LegControl_g0011 -> LegControl_g0011 {
+					label L8: "3: RETRACT_BUTTON / LEGS_RETRACT" {
+						layout [ size: 294, 17 ]
+					}
+				}
+			}
+		}
+		node Arm {
+			algorithm: org.eclipse.elk.box
+			node Arm_g7146 {
+				node Waiting {
+					layout [ size: 72, 34 ]
+				}
+				node Step1 {
+					layout [ size: 62, 34 ]
+				}
+				node Step2 {
+					layout [ size: 62, 34 ]
+				}
+				node Step3 {
+					layout [ size: 62, 34 ]
+				}
+				node Step4 {
+					layout [ size: 62, 34 ]
+				}
+				node Step5 {
+					layout [ size: 62, 34 ]
+				}
+				node Abort {
+					layout [ size: 58, 34 ]
+				}
+				node Abort_Off {
+					layout [ size: 88, 34 ]
+				}
+				node End {
+					layout [ size: 55, 40 ]
+				}
+				edge Step10: Waiting -> Step1 {
+					label L9: "1: EXTEND_BUTTON / stickOut = true; bucketOut = true" {
+						layout [ size: 396, 17 ]
+					}
+				}
+				edge Waiting0: Waiting -> Waiting {
+					label L10: "2: / DONE_LAMP" {
+						layout [ size: 118, 17 ]
+					}
+				}
+				edge Abort0: Step1 -> Abort {
+					label L11: "1: RETRACT_BUTTON / boomIn = true; stickIn = true; bucketIn = true; boomOut = false; stickOut = false; bucketOut = false" {
+						layout [ size: 861, 17 ]
+					}
+				}
+				edge Step20: Step1 -> Step2 {
+					label L12: "2: !stickOut && !bucketOut" {
+						layout [ size: 187, 17 ]
+					}
+				}
+				edge Abort0_g9054: Step2 -> Abort {
+					label L13: "1: RETRACT_BUTTON / boomIn = true; stickIn = true; bucketIn = true; boomOut = false; stickOut = false; bucketOut = false" {
+						layout [ size: 861, 17 ]
+					}
+				}
+				edge Step30: Step2 -> Step3 {
+					label L14: "2: !boomOut / stickIn = true; bucketIn = true" {
+						layout [ size: 304, 17 ]
+					}
+				}
+				edge Step40: Step3 -> Step4 {
+					label L15: "!stickIn && !bucketIn" {
+						layout [ size: 146, 17 ]
+					}
+				}
+				edge Step50: Step4 -> Step5 {
+					label L16: "1: RETRACT_BUTTON / boomIn = true" {
+						layout [ size: 271, 17 ]
+					}
+				}
+				edge Step40_g8792: Step4 -> Step4 {
+					label L17: "2: / DONE_LAMP" {
+						layout [ size: 118, 17 ]
+					}
+				}
+				edge End0: Step5 -> End {
+					label L18: "!boomIn" {
+						layout [ size: 57, 17 ]
+					}
+				}
+				edge End0_g9212: Abort -> End {
+					label L19: "1: !boomIn && !stickIn && !bucketIn" {
+						layout [ size: 248, 17 ]
+					}
+				}
+				edge Abort_Off0: Abort -> Abort_Off {
+					label L20: "2: SECOND" {
+						layout [ size: 81, 17 ]
+					}
+				}
+				edge End0_g9997: Abort_Off -> End {
+					label L21: "1: !boomIn && !stickIn && !bucketIn" {
+						layout [ size: 248, 17 ]
+					}
+				}
+				edge Abort0_g6116: Abort_Off -> Abort {
+					label L22: "2: SECOND" {
+						layout [ size: 81, 17 ]
+					}
+				}
+			}
+			node Boom {
+				node Boom_g2316 {
+					layout [ size: 71, 42 ]
+				}
+				edge Boom0: Boom_g2316 -> Boom_g2316 {
+					label L23: "1: BOOM_OUT && boomOut / boomOut = boomOut & false" {
+						layout [ size: 412, 17 ]
+					}
+				}
+				edge Boom1: Boom_g2316 -> Boom_g2316 {
+					label L24: "2: BOOM_IN && boomIn / boomIn = boomIn & false" {
+						layout [ size: 355, 17 ]
+					}
+				}
+				edge Boom2: Boom_g2316 -> Boom_g2316 {
+					label L25: "3: boomOut / BOOM_PUSH" {
+						layout [ size: 191, 17 ]
+					}
+				}
+				edge Boom3: Boom_g2316 -> Boom_g2316 {
+					label L26: "4: boomIn / BOOM_PULL" {
+						layout [ size: 176, 17 ]
+					}
+				}
+			}
+			node Stick {
+				node Stick_g1437 {
+					layout [ size: 64, 42 ]
+				}
+				edge Stick0: Stick_g1437 -> Stick_g1437 {
+					label L27: "1: STICK_OUT && stickOut / stickOut = stickOut & false" {
+						layout [ size: 392, 17 ]
+					}
+				}
+				edge Stick1: Stick_g1437 -> Stick_g1437 {
+					label L28: "2: STICK_IN && stickIn / stickIn = stickIn & false" {
+						layout [ size: 335, 17 ]
+					}
+				}
+				edge Stick2: Stick_g1437 -> Stick_g1437 {
+					label L29: "3: stickOut / STICK_PUSH" {
+						layout [ size: 183, 17 ]
+					}
+				}
+				edge Stick3: Stick_g1437 -> Stick_g1437 {
+					label L30: "4: stickIn / STICK_PULL" {
+						layout [ size: 168, 17 ]
+					}
+				}
+			}
+			node Bucket {
+				node Bucket_g9938 {
+					layout [ size: 78, 42 ]
+				}
+				edge Bucket0: Bucket_g9938 -> Bucket_g9938 {
+					label L31: "1: BUCKET_OUT && bucketOut / bucketOut = bucketOut & false" {
+						layout [ size: 455, 17 ]
+					}
+				}
+				edge Bucket1: Bucket_g9938 -> Bucket_g9938 {
+					label L32: "2: BUCKET_IN && bucketIn / bucketIn = bucketIn & false" {
+						layout [ size: 398, 17 ]
+					}
+				}
+				edge Bucket2: Bucket_g9938 -> Bucket_g9938 {
+					label L33: "3: bucketOut / BUCKET_PUSH" {
+						layout [ size: 216, 17 ]
+					}
+				}
+				edge Bucket3: Bucket_g9938 -> Bucket_g9938 {
+					label L34: "4: bucketIn / BUCKET_PULL" {
+						layout [ size: 201, 17 ]
+					}
+				}
+			}
+		}
+		node Halted {
+			layout [ size: 67, 34 ]
+		}
+		edge Arm0: Legs -> Arm {
+			label L1: "LEGS_OUT && (shouldSwitchToArmMode || LEGS_EXTEND) / shouldSwitchToArmMode = false" {
+				layout [ size: 672, 17 ]
+			}
+		}
+		edge Halted0: Arm -> Halted {
+			label L2: "1: STOP_BUTTON" {
+				layout [ size: 131, 17 ]
+			}
+		}
+		edge Legs0: Arm -> Legs {
+			label L3: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge Arm0_g5085: Halted -> Arm {
+			label L4: "1: STOP_BUTTON" {
+				layout [ size: 131, 17 ]
+			}
+		}
+		edge Halted0_g1461: Halted -> Halted {
+			label L5: "2: / ALARM_LAMP; DONE_LAMP" {
+				layout [ size: 225, 17 ]
+			}
+		}
+	}
+}

@@ -1,0 +1,162 @@
+graph G1
+node SequencialConstructiveness {
+	algorithm: org.eclipse.elk.box
+	node _CFSMain {
+		node _CFSI {
+			algorithm: org.eclipse.elk.box
+			node __EA_Entry {
+				node __EA_Main {
+					algorithm: org.eclipse.elk.box
+					node Read {
+						node A {
+							layout [ size: 34, 34 ]
+						}
+						node B {
+							layout [ size: 40, 40 ]
+						}
+						node __te_S {
+							layout [ size: 69, 34 ]
+						}
+						node __sd_Pause {
+							layout [ size: 105, 34 ]
+						}
+						node __sd_Depth {
+							layout [ size: 105, 34 ]
+						}
+						edge B0: A -> B {
+							label L3: "1: _CFSterm && _CFSterm1" {
+								layout [ size: 195, 17 ]
+							}
+						}
+						edge __sd_Pause0: A -> __sd_Pause {
+							label L4: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge B0_g9981: __te_S -> B {
+							label L5: "/ _CFSterm = true" {
+								layout [ size: 124, 17 ]
+							}
+						}
+						edge __sd_Depth0: __sd_Pause -> __sd_Depth
+						edge __te_S0: __sd_Depth -> __te_S {
+							label L6: "1: X" {
+								layout [ size: 27, 17 ]
+							}
+						}
+						edge A0: __sd_Depth -> A {
+							label L7: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+					}
+					node Emit {
+						node A1 {
+							layout [ size: 38, 34 ]
+						}
+						node B1 {
+							layout [ size: 46, 40 ]
+						}
+						node __te_S1 {
+							layout [ size: 77, 34 ]
+						}
+						node __te_S2 {
+							layout [ size: 77, 34 ]
+						}
+						node __sd_Pause1 {
+							layout [ size: 114, 34 ]
+						}
+						node __sd_Depth1 {
+							layout [ size: 113, 34 ]
+						}
+						edge B10: A1 -> B1 {
+							label L8: "1: _CFSterm && _CFSterm1" {
+								layout [ size: 195, 17 ]
+							}
+						}
+						edge __sd_Pause10: A1 -> __sd_Pause1 {
+							label L9: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __te_S20: __te_S1 -> __te_S2 {
+							label L10: "/ X |= true" {
+								layout [ size: 68, 17 ]
+							}
+						}
+						edge B10_g3942: __te_S2 -> B1 {
+							label L11: "/ _CFSterm1 = true" {
+								layout [ size: 132, 17 ]
+							}
+						}
+						edge __sd_Depth10: __sd_Pause1 -> __sd_Depth1
+						edge __te_S10: __sd_Depth1 -> __te_S1 {
+							label L12: "1: !X" {
+								layout [ size: 31, 17 ]
+							}
+						}
+						edge A10: __sd_Depth1 -> A1 {
+							label L13: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+					}
+					node _During {
+						node __sd_Depth3 {
+							layout [ size: 113, 34 ]
+						}
+						node _S {
+							layout [ size: 39, 34 ]
+						}
+						node _AAborted {
+							layout [ size: 100, 40 ]
+						}
+						node __sd_Pause3 {
+							layout [ size: 114, 34 ]
+						}
+						edge _S0: __sd_Depth3 -> _S {
+							label L14: "/ X = false" {
+								layout [ size: 69, 17 ]
+							}
+						}
+						edge _AAborted0: _S -> _AAborted {
+							label L15: "1: _CFSterm && _CFSterm1" {
+								layout [ size: 195, 17 ]
+							}
+						}
+						edge __sd_Pause30: _S -> __sd_Pause3 {
+							label L16: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __sd_Depth30: __sd_Pause3 -> __sd_Depth3
+					}
+				}
+				node __EA_Init {
+					layout [ size: 85, 34 ]
+				}
+				node __EA_Done {
+					layout [ size: 107, 40 ]
+				}
+				node __EA_C {
+					layout [ size: 74, 34 ]
+				}
+				edge __EA_Done0: __EA_Main -> __EA_Done
+				edge __EA_C0: __EA_Init -> __EA_C {
+					label L1: "/ _CFSterm = false" {
+						layout [ size: 129, 17 ]
+					}
+				}
+				edge __EA_Main0: __EA_C -> __EA_Main {
+					label L2: "/ _CFSterm1 = false" {
+						layout [ size: 137, 17 ]
+					}
+				}
+			}
+		}
+		node _CFSF {
+			layout [ size: 74, 40 ]
+		}
+		edge _CFSF0: _CFSI -> _CFSF
+	}
+}

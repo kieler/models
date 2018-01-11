@@ -1,0 +1,416 @@
+graph G1
+node ELEVATOR {
+	algorithm: org.eclipse.elk.box
+	node __EA_Entry {
+		node __EA_Main {
+			algorithm: org.eclipse.elk.box
+			node N1 {
+				node Run {
+					algorithm: org.eclipse.elk.box
+					node N2 {
+						node Wait {
+							algorithm: org.eclipse.elk.box
+							node __EA_Entry_g6005 {
+								node __EA_Init {
+									layout [ size: 85, 34 ]
+								}
+								node __EA_Done {
+									layout [ size: 107, 40 ]
+								}
+								edge __EA_Done0: __EA_Init -> __EA_Done {
+									label L28: "/ _HRun = 0" {
+										layout [ size: 82, 17 ]
+									}
+								}
+							}
+						}
+						node Moving {
+							algorithm: org.eclipse.elk.box
+							node __EA_Entry_g0423 {
+								node __EA_Init_g0237 {
+									layout [ size: 85, 34 ]
+								}
+								node __EA_Done_g5309 {
+									layout [ size: 107, 40 ]
+								}
+								edge __EA_Done0_g1945: __EA_Init_g0237 -> __EA_Done_g5309 {
+									label L29: "/ _HRun = 1" {
+										layout [ size: 82, 17 ]
+									}
+								}
+							}
+						}
+						node _HInit {
+							layout [ size: 61, 34 ]
+						}
+						node _AAborted {
+							layout [ size: 100, 40 ]
+						}
+						node __EA_Exit {
+							layout [ size: 90, 34 ]
+						}
+						node __te_S {
+							layout [ size: 69, 34 ]
+						}
+						node __te_S1 {
+							layout [ size: 77, 34 ]
+						}
+						node __te_S2 {
+							layout [ size: 77, 34 ]
+						}
+						node __sd_S {
+							layout [ size: 72, 34 ]
+						}
+						node __sd_Pause {
+							layout [ size: 105, 34 ]
+						}
+						node __sd_Depth {
+							layout [ size: 105, 34 ]
+						}
+						node __sd_S4 {
+							layout [ size: 80, 34 ]
+						}
+						node __sd_Pause1 {
+							layout [ size: 114, 34 ]
+						}
+						node __sd_Depth1 {
+							layout [ size: 113, 34 ]
+						}
+						node __EA_Exit1 {
+							layout [ size: 99, 34 ]
+						}
+						node __sd_Depth2 {
+							layout [ size: 113, 34 ]
+						}
+						node __sd_S9 {
+							layout [ size: 80, 34 ]
+						}
+						edge __EA_Exit0: Wait -> __EA_Exit
+						edge __EA_Exit10: Moving -> __EA_Exit1
+						edge Wait0: _HInit -> Wait {
+							label L9: "1: _HRun == 0" {
+								layout [ size: 99, 17 ]
+							}
+						}
+						edge __sd_S0: _HInit -> __sd_S {
+							label L10: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __te_S0: __EA_Exit -> __te_S {
+							label L11: "1: ButtonUp & !IsUp" {
+								layout [ size: 140, 17 ]
+							}
+						}
+						edge __sd_S40: __EA_Exit -> __sd_S4 {
+							label L12: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge Moving0: __te_S -> Moving {
+							label L13: "/ Move = 1" {
+								layout [ size: 74, 17 ]
+							}
+						}
+						edge Moving0_g4530: __te_S1 -> Moving {
+							label L14: "/ Move = -1" {
+								layout [ size: 79, 17 ]
+							}
+						}
+						edge Wait0_g5516: __te_S2 -> Wait {
+							label L15: "/ Move = 0" {
+								layout [ size: 74, 17 ]
+							}
+						}
+						edge Moving0_g4850: __sd_S -> Moving {
+							label L16: "1: _HRun == 1" {
+								layout [ size: 99, 17 ]
+							}
+						}
+						edge __sd_Pause0: __sd_S -> __sd_Pause {
+							label L17: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __sd_Depth0: __sd_Pause -> __sd_Depth
+						edge _AAborted0: __sd_Depth -> _AAborted {
+							label L18: "1: ButtonAlarm" {
+								layout [ size: 105, 17 ]
+							}
+						}
+						edge _HInit0: __sd_Depth -> _HInit {
+							label L19: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __te_S10: __sd_S4 -> __te_S1 {
+							label L20: "1: ButtonDown & !IsDown" {
+								layout [ size: 180, 17 ]
+							}
+						}
+						edge __sd_Pause10: __sd_S4 -> __sd_Pause1 {
+							label L21: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __sd_Depth10: __sd_Pause1 -> __sd_Depth1
+						edge _AAborted0_g4872: __sd_Depth1 -> _AAborted {
+							label L22: "1: ButtonAlarm" {
+								layout [ size: 105, 17 ]
+							}
+						}
+						edge __EA_Exit0_g0392: __sd_Depth1 -> __EA_Exit {
+							label L23: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __sd_Depth20: __EA_Exit1 -> __sd_Depth2
+						edge _AAborted0_g1929: __sd_Depth2 -> _AAborted {
+							label L24: "1: ButtonAlarm" {
+								layout [ size: 105, 17 ]
+							}
+						}
+						edge __sd_S90: __sd_Depth2 -> __sd_S9 {
+							label L25: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __te_S20: __sd_S9 -> __te_S2 {
+							label L26: "1: IsUp | IsDown" {
+								layout [ size: 113, 17 ]
+							}
+						}
+						edge __EA_Exit10_g7191: __sd_S9 -> __EA_Exit1 {
+							label L27: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+					}
+				}
+				node Alarm {
+					algorithm: org.eclipse.elk.box
+					node __EA_Entry1 {
+						node __EA_Main_g5283 {
+							algorithm: org.eclipse.elk.box
+							node N3 {
+								node _AAborted1 {
+									layout [ size: 108, 40 ]
+								}
+								node __te_S6 {
+									layout [ size: 77, 34 ]
+								}
+								node BlinkLamp {
+									layout [ size: 95, 34 ]
+								}
+								node __sd_Depth3 {
+									layout [ size: 113, 34 ]
+								}
+								node __sd_S11 {
+									layout [ size: 87, 34 ]
+								}
+								edge BlinkLamp0: __te_S6 -> BlinkLamp {
+									label L34: "/ AlarmLamp = !AlarmLamp" {
+										layout [ size: 183, 17 ]
+									}
+								}
+								edge __sd_Depth30: BlinkLamp -> __sd_Depth3
+								edge _AAborted10: __sd_Depth3 -> _AAborted1 {
+									label L35: "1: _pre__cdcounter == 4 && Second" {
+										layout [ size: 255, 17 ]
+									}
+								}
+								edge __sd_S110: __sd_Depth3 -> __sd_S11 {
+									label L36: "2:" {
+										layout [ size: 13, 17 ]
+									}
+								}
+								edge __te_S60: __sd_S11 -> __te_S6 {
+									label L37: "1: Second" {
+										layout [ size: 71, 17 ]
+									}
+								}
+								edge BlinkLamp0_g7383: __sd_S11 -> BlinkLamp {
+									label L38: "2:" {
+										layout [ size: 13, 17 ]
+									}
+								}
+							}
+							node _During {
+								node __sd_S15 {
+									layout [ size: 88, 34 ]
+								}
+								node _AAborted2 {
+									layout [ size: 108, 40 ]
+								}
+								node __te_S7 {
+									layout [ size: 77, 34 ]
+								}
+								node __sd_Pause4 {
+									layout [ size: 114, 34 ]
+								}
+								node __sd_Depth4 {
+									layout [ size: 113, 34 ]
+								}
+								node __sd_Depth5 {
+									layout [ size: 113, 34 ]
+								}
+								edge __te_S70: __sd_S15 -> __te_S7 {
+									label L39: "1: Second" {
+										layout [ size: 71, 17 ]
+									}
+								}
+								edge __sd_Pause40: __sd_S15 -> __sd_Pause4 {
+									label L40: "2:" {
+										layout [ size: 13, 17 ]
+									}
+								}
+								edge __sd_Depth40: __te_S7 -> __sd_Depth4 {
+									label L41: "/ _cdcounter = _cdcounter + 1" {
+										layout [ size: 211, 17 ]
+									}
+								}
+								edge __sd_Depth40_g7907: __sd_Pause4 -> __sd_Depth4
+								edge __sd_Depth50: __sd_Depth4 -> __sd_Depth5
+								edge _AAborted20: __sd_Depth5 -> _AAborted2 {
+									label L42: "1: _pre__cdcounter == 4 && Second" {
+										layout [ size: 255, 17 ]
+									}
+								}
+								edge __sd_S150: __sd_Depth5 -> __sd_S15 {
+									label L43: "2:" {
+										layout [ size: 13, 17 ]
+									}
+								}
+							}
+						}
+						node __EA_Init_g7257 {
+							layout [ size: 85, 34 ]
+						}
+						node __EA_Done_g6672 {
+							layout [ size: 107, 40 ]
+						}
+						node __EA_C2 {
+							layout [ size: 83, 34 ]
+						}
+						node __te_S8 {
+							layout [ size: 77, 34 ]
+						}
+						edge __EA_Done0_g3981: __EA_Main_g5283 -> __EA_Done_g6672
+						edge __EA_C20: __EA_Init_g7257 -> __EA_C2 {
+							label L30: "/ _cdcounter = 0" {
+								layout [ size: 114, 17 ]
+							}
+						}
+						edge __te_S80: __EA_C2 -> __te_S8 {
+							label L31: "1: Second" {
+								layout [ size: 71, 17 ]
+							}
+						}
+						edge __EA_Main0: __EA_C2 -> __EA_Main_g5283 {
+							label L32: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __EA_Main0_g9182: __te_S8 -> __EA_Main_g5283 {
+							label L33: "/ _cdcounter = -1" {
+								layout [ size: 119, 17 ]
+							}
+						}
+					}
+				}
+				node __te_S3 {
+					layout [ size: 77, 34 ]
+				}
+				node __te_S4 {
+					layout [ size: 77, 34 ]
+				}
+				node __te_S5 {
+					layout [ size: 77, 34 ]
+				}
+				node __te_S9 {
+					layout [ size: 77, 34 ]
+				}
+				node __te_S10_g9711 {
+					layout [ size: 85, 34 ]
+				}
+				edge __te_S30: Run -> __te_S3
+				edge __te_S90: Alarm -> __te_S9
+				edge __te_S40: __te_S3 -> __te_S4 {
+					label L4: "/ recentMove = Move" {
+						layout [ size: 151, 17 ]
+					}
+				}
+				edge __te_S50: __te_S4 -> __te_S5 {
+					label L5: "/ Move = 0" {
+						layout [ size: 74, 17 ]
+					}
+				}
+				edge Alarm0: __te_S5 -> Alarm {
+					label L6: "/ AlarmLamp = true" {
+						layout [ size: 130, 17 ]
+					}
+				}
+				edge __te_S100: __te_S9 -> __te_S10_g9711 {
+					label L7: "/ Move = recentMove" {
+						layout [ size: 151, 17 ]
+					}
+				}
+				edge Run0: __te_S10_g9711 -> Run {
+					label L8: "/ AlarmLamp = false" {
+						layout [ size: 135, 17 ]
+					}
+				}
+			}
+			node _update_pre__cdcounter {
+				node _Wait {
+					layout [ size: 57, 34 ]
+				}
+				node __sd_Depth6 {
+					layout [ size: 113, 34 ]
+				}
+				node __te_S12 {
+					layout [ size: 85, 34 ]
+				}
+				edge __sd_Depth60: _Wait -> __sd_Depth6
+				edge __te_S120: __sd_Depth6 -> __te_S12 {
+					label L44: "/ _pre__cdcounter = _reg__cdcounter" {
+						layout [ size: 265, 17 ]
+					}
+				}
+				edge _Wait0: __te_S12 -> _Wait {
+					label L45: "/ _reg__cdcounter = _cdcounter" {
+						layout [ size: 225, 17 ]
+					}
+				}
+			}
+		}
+		node __EA_Init_g0254 {
+			layout [ size: 85, 34 ]
+		}
+		node __EA_Done_g2150 {
+			layout [ size: 107, 40 ]
+		}
+		node __EA_C {
+			layout [ size: 74, 34 ]
+		}
+		node __EA_C1 {
+			layout [ size: 83, 34 ]
+		}
+		edge __EA_Done0_g3483: __EA_Main -> __EA_Done_g2150
+		edge __EA_C0: __EA_Init_g0254 -> __EA_C {
+			label L1: "/ recentMove = 0" {
+				layout [ size: 120, 17 ]
+			}
+		}
+		edge __EA_C10: __EA_C -> __EA_C1 {
+			label L2: "/ _HRun = 0" {
+				layout [ size: 82, 17 ]
+			}
+		}
+		edge __EA_Main0_g8141: __EA_C1 -> __EA_Main {
+			label L3: "/ _reg__cdcounter = 0" {
+				layout [ size: 154, 17 ]
+			}
+		}
+	}
+}

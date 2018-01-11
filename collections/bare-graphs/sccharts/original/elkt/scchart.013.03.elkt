@@ -1,0 +1,114 @@
+graph G1
+node testCase {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node init {
+			layout [ size: 42, 34 ]
+		}
+		node findStart {
+			layout [ size: 81, 34 ]
+		}
+		node findLStart {
+			layout [ size: 90, 34 ]
+		}
+		node findDStart {
+			layout [ size: 92, 34 ]
+		}
+		node find {
+			layout [ size: 48, 34 ]
+		}
+		node read {
+			layout [ size: 53, 34 ]
+		}
+		node stop {
+			layout [ size: 52, 34 ]
+		}
+		node findEnd {
+			layout [ size: 76, 34 ]
+		}
+		node readEnd {
+			layout [ size: 81, 34 ]
+		}
+		node stopEnd {
+			layout [ size: 80, 34 ]
+		}
+		node result {
+			layout [ size: 61, 34 ]
+		}
+		edge findStart0: init -> findStart {
+			label L1: "counter < 7 / speed = 100" {
+				layout [ size: 178, 17 ]
+			}
+		}
+		edge findLStart0: findStart -> findLStart {
+			label L2: "light < edge" {
+				layout [ size: 84, 17 ]
+			}
+		}
+		edge findDStart0: findLStart -> findDStart {
+			label L3: "light >= edge" {
+				layout [ size: 93, 17 ]
+			}
+		}
+		edge find0: findDStart -> find {
+			label L4: "light < edge / resetClock = true" {
+				layout [ size: 219, 17 ]
+			}
+		}
+		edge read0: find -> read {
+			label L5: "1: counter < 7 & clock" {
+				layout [ size: 153, 17 ]
+			}
+		}
+		edge stop0: find -> stop {
+			label L6: "2: counter >= 7" {
+				layout [ size: 106, 17 ]
+			}
+		}
+		edge find0_g9379: read -> find {
+			label L7: "1: counter < 7 & light >= edge / array[counter] = 0; counter = counter + 1" {
+				layout [ size: 506, 17 ]
+			}
+		}
+		edge find1: read -> find {
+			label L8: "2: counter < 7 & light < edge / array[counter] = 1; counter = counter + 1" {
+				layout [ size: 497, 17 ]
+			}
+		}
+		edge findEnd0: stop -> findEnd {
+			label L9: "1: countRounds >= 3 / counter = 0; `Main.calculateArray(array, countRounds)`" {
+				layout [ size: 539, 17 ]
+			}
+		}
+		edge find0_g1667: stop -> find {
+			label L10: "2: / counter = 0; `Main.calculateArray(array, countRounds)`; countRounds = countRounds + 1" {
+				layout [ size: 647, 17 ]
+			}
+		}
+		edge readEnd0: findEnd -> readEnd {
+			label L11: "1: counter < 4 & clock" {
+				layout [ size: 153, 17 ]
+			}
+		}
+		edge stopEnd0: findEnd -> stopEnd {
+			label L12: "2: counter >= 4 / speed = 0" {
+				layout [ size: 187, 17 ]
+			}
+		}
+		edge findEnd0_g6649: readEnd -> findEnd {
+			label L13: "1: counter < 4 & light >= edge / end[counter] = 0; counter = counter + 1" {
+				layout [ size: 498, 17 ]
+			}
+		}
+		edge findEnd1: readEnd -> findEnd {
+			label L14: "2: counter < 4 & light < edge / end[counter] = 1; counter = counter + 1" {
+				layout [ size: 489, 17 ]
+			}
+		}
+		edge result0: stopEnd -> result {
+			label L15: "/ `Main.calculateArray(end, counter)`" {
+				layout [ size: 255, 17 ]
+			}
+		}
+	}
+}

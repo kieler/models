@@ -1,0 +1,84 @@
+graph G1
+node Elevator {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node Await {
+			layout [ size: 57, 34 ]
+		}
+		node MoveUp {
+			layout [ size: 81, 34 ]
+		}
+		node MoveDown {
+			layout [ size: 101, 34 ]
+		}
+		edge MoveUp0: Await -> MoveUp {
+			label L1: "1: ButtonUp / Move(1)" {
+				layout [ size: 154, 17 ]
+			}
+		}
+		edge MoveDown0: Await -> MoveDown {
+			label L2: "2: ButtonDown / Move(-1)" {
+				layout [ size: 179, 17 ]
+			}
+		}
+		edge Await0: MoveUp -> Await {
+			label L3: "IsUp / Move(0)" {
+				layout [ size: 102, 17 ]
+			}
+		}
+		edge Await0_g4297: MoveDown -> Await {
+			label L4: "IsDown / Move(0)" {
+				layout [ size: 122, 17 ]
+			}
+		}
+	}
+	node N2 {
+		node Await_g1138 {
+			layout [ size: 57, 34 ]
+		}
+		node Alarm {
+			algorithm: org.eclipse.elk.box
+			node N3 {
+				node LampOff {
+					layout [ size: 80, 34 ]
+				}
+				node LampOn {
+					layout [ size: 80, 34 ]
+				}
+				edge LampOn0: LampOff -> LampOn {
+					label L7: "/ AlarmLamp(true)" {
+						layout [ size: 123, 17 ]
+					}
+				}
+				edge LampOff0: LampOn -> LampOff {
+					label L8: "/ AlarmLamp(false)" {
+						layout [ size: 128, 17 ]
+					}
+				}
+			}
+			node N4 {
+				node S1 {
+					layout [ size: 39, 34 ]
+				}
+				node Suspended {
+					layout [ size: 102, 34 ]
+				}
+				edge Suspended0: S1 -> Suspended {
+					label L9: "/ oldMove = Move; Move(0)" {
+						layout [ size: 193, 17 ]
+					}
+				}
+			}
+		}
+		edge Alarm0: Await_g1138 -> Alarm {
+			label L5: "ButtonAlarm" {
+				layout [ size: 89, 17 ]
+			}
+		}
+		edge Await0_g1371: Alarm -> Await_g1138 {
+			label L6: "5 Second / AlarmLamp(false); Move(oldMove)" {
+				layout [ size: 318, 17 ]
+			}
+		}
+	}
+}

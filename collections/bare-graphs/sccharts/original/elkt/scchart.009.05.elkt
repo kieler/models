@@ -1,0 +1,76 @@
+graph G1
+node Car {
+	algorithm: org.eclipse.elk.box
+	node light {
+		node lightOffDoorClosed {
+			layout [ size: 159, 34 ]
+		}
+		node lightOnDoorOpen {
+			layout [ size: 147, 34 ]
+		}
+		node lightOnDoorClosed {
+			layout [ size: 158, 34 ]
+		}
+		edge lightOnDoorOpen0: lightOffDoorClosed -> lightOnDoorOpen {
+			label L1: "door1 | door2 / light = true" {
+				layout [ size: 183, 17 ]
+			}
+		}
+		edge lightOnDoorClosed0: lightOnDoorOpen -> lightOnDoorClosed {
+			label L2: "door1 == false & door2 == false / cnt = 0" {
+				layout [ size: 281, 17 ]
+			}
+		}
+		edge lightOnDoorOpen0_g0667: lightOnDoorClosed -> lightOnDoorOpen {
+			label L3: "1: door1 | door2" {
+				layout [ size: 111, 17 ]
+			}
+		}
+		edge lightOffDoorClosed0: lightOnDoorClosed -> lightOffDoorClosed {
+			label L4: "2: cnt >= 3 / light = false" {
+				layout [ size: 166, 17 ]
+			}
+		}
+		edge lightOnDoorClosed0_g2661: lightOnDoorClosed -> lightOnDoorClosed {
+			label L5: "3: second / cnt = cnt + 1" {
+				layout [ size: 167, 17 ]
+			}
+		}
+	}
+	node seatbelt {
+		node BeltOn {
+			layout [ size: 71, 34 ]
+		}
+		node alarm1 {
+			layout [ size: 67, 34 ]
+		}
+		node alarm2 {
+			layout [ size: 67, 34 ]
+		}
+		edge alarm10: BeltOn -> alarm1 {
+			label L6: "seatbeltStatus & ignition / cnt2 = 0; redLight = true; beep = true" {
+				layout [ size: 445, 17 ]
+			}
+		}
+		edge BeltOn0: alarm1 -> BeltOn {
+			label L7: "1: seatbeltStatus == false | ignition == false / redLight = false; beep = false" {
+				layout [ size: 521, 17 ]
+			}
+		}
+		edge alarm20: alarm1 -> alarm2 {
+			label L8: "2: cnt2 >= 3 / beep = false" {
+				layout [ size: 179, 17 ]
+			}
+		}
+		edge alarm10_g5531: alarm1 -> alarm1 {
+			label L9: "3: second == true / cnt2 = cnt2 + 1" {
+				layout [ size: 238, 17 ]
+			}
+		}
+		edge BeltOn0_g0464: alarm2 -> BeltOn {
+			label L10: "seatbeltStatus == false" {
+				layout [ size: 162, 17 ]
+			}
+		}
+	}
+}

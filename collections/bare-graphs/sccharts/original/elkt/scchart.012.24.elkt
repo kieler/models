@@ -1,0 +1,79 @@
+graph G1
+node Elevator {
+	algorithm: org.eclipse.elk.box
+	node Drive {
+		node Up {
+			layout [ size: 41, 34 ]
+		}
+		node Down {
+			layout [ size: 61, 34 ]
+		}
+		node InMotion {
+			layout [ size: 83, 34 ]
+		}
+		edge InMotion0: Up -> InMotion {
+			label L1: "BlinkCount == 0 & ButtonDown / Move(1)" {
+				layout [ size: 290, 17 ]
+			}
+		}
+		edge InMotion0_g5067: Down -> InMotion {
+			label L2: "BlinkCount == 0 & ButtonUp / Move(-1)" {
+				layout [ size: 275, 17 ]
+			}
+		}
+		edge Up0: InMotion -> Up {
+			label L3: "1: IsUp / Move(0)" {
+				layout [ size: 118, 17 ]
+			}
+		}
+		edge Down0: InMotion -> Down {
+			label L4: "2: IsDown / Move(0)" {
+				layout [ size: 138, 17 ]
+			}
+		}
+	}
+	node Alarm {
+		node Off {
+			layout [ size: 42, 34 ]
+		}
+		node On {
+			algorithm: org.eclipse.elk.box
+			node N1 {
+				node On1 {
+					layout [ size: 50, 34 ]
+				}
+				node On2 {
+					layout [ size: 50, 34 ]
+				}
+				node Done {
+					layout [ size: 64, 40 ]
+				}
+				edge On20: On1 -> On2 {
+					label L7: "Second / AlarmLamp(true); BlinkCount = BlinkCount + 1" {
+						layout [ size: 390, 17 ]
+					}
+				}
+				edge Done0: On2 -> Done {
+					label L8: "1: BlinkCount >= 5" {
+						layout [ size: 130, 17 ]
+					}
+				}
+				edge On10: On2 -> On1 {
+					label L9: "2: Second / AlarmLamp(false); BlinkCount = BlinkCount + 1" {
+						layout [ size: 411, 17 ]
+					}
+				}
+			}
+		}
+		edge On0: Off -> On {
+			label L5: "ButtonAlarm / MoveBuffer = Move; Move(0)" {
+				layout [ size: 307, 17 ]
+			}
+		}
+		edge Off0: On -> Off {
+			label L6: "/ Move(MoveBuffer); BlinkCount = 0" {
+				layout [ size: 256, 17 ]
+			}
+		}
+	}
+}

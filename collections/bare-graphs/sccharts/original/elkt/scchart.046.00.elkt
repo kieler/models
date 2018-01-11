@@ -1,0 +1,417 @@
+graph G1
+node ExtendedBarcode {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node Init {
+			layout [ size: 42, 34 ]
+		}
+		node Positioning {
+			algorithm: org.eclipse.elk.box
+			node N2 {
+				node searchStart {
+					layout [ size: 102, 34 ]
+				}
+				node backToStart {
+					algorithm: org.eclipse.elk.box
+					node N3 {
+						node ^start {
+							layout [ size: 52, 34 ]
+						}
+						node atStart {
+							layout [ size: 73, 40 ]
+						}
+						edge atStart0: ^start -> atStart {
+							label L25: "!isMotorAMoving && !isMotorBMoving" {
+								layout [ size: 273, 17 ]
+							}
+						}
+					}
+				}
+				node whiteOne {
+					layout [ size: 88, 34 ]
+				}
+				node blackTwo {
+					layout [ size: 87, 34 ]
+				}
+				node finished {
+					layout [ size: 84, 40 ]
+				}
+				edge whiteOne0: searchStart -> whiteOne {
+					label L19: "1: searchBarcodeClock && light < lightThreshold / rotateA = rotation - initialRotation; rotateB = rotation - initialRotation; `System.out.print(\"d\")`" {
+						layout [ size: 1001, 17 ]
+					}
+				}
+				edge searchStart0: searchStart -> searchStart {
+					label L20: "2: searchBarcodeClock / rotateA = -2; rotateB = -2" {
+						layout [ size: 348, 17 ]
+					}
+				}
+				edge searchStart0_g5386: backToStart -> searchStart
+				edge blackTwo0: whiteOne -> blackTwo {
+					label L21: "1: go5mmClock && light > lightThreshold / `System.out.print(\"l\")`; rotateA = rotation; rotateB = rotation" {
+						layout [ size: 717, 17 ]
+					}
+				}
+				edge backToStart0: whiteOne -> backToStart {
+					label L22: "2: go5mmClock" {
+						layout [ size: 107, 17 ]
+					}
+				}
+				edge finished0: blackTwo -> finished {
+					label L23: "1: go5mmClock && light < lightThreshold / `System.out.println(\"d\")`" {
+						layout [ size: 471, 17 ]
+					}
+				}
+				edge backToStart0_g6361: blackTwo -> backToStart {
+					label L24: "2: go5mmClock" {
+						layout [ size: 107, 17 ]
+					}
+				}
+			}
+		}
+		node Read {
+			layout [ size: 58, 34 ]
+		}
+		node WaitForMotorAB {
+			layout [ size: 135, 34 ]
+		}
+		node BitsToNumbers {
+			algorithm: org.eclipse.elk.box
+			node N4 {
+				node init {
+					layout [ size: 42, 34 ]
+				}
+				node invalidCombination {
+					layout [ size: 163, 40 ]
+				}
+				node done {
+					layout [ size: 503, 56 ]
+				}
+				edge done0: init -> done {
+					label L26: "1: bits == 2221121 / outputNumber = outputNumber + readNumberCounter * 0" {
+						layout [ size: 542, 17 ]
+					}
+				}
+				edge done1: init -> done {
+					label L27: "2: bits == 2211221 / outputNumber = outputNumber + readNumberCounter * 1" {
+						layout [ size: 542, 17 ]
+					}
+				}
+				edge done2: init -> done {
+					label L28: "3: bits == 2212211 / outputNumber = outputNumber + readNumberCounter * 2" {
+						layout [ size: 542, 17 ]
+					}
+				}
+				edge done3: init -> done {
+					label L29: "4: bits == 2111121 / outputNumber = outputNumber + readNumberCounter * 3" {
+						layout [ size: 540, 17 ]
+					}
+				}
+				edge done4: init -> done {
+					label L30: "5: bits == 2122211 / outputNumber = outputNumber + readNumberCounter * 4" {
+						layout [ size: 542, 17 ]
+					}
+				}
+				edge done5: init -> done {
+					label L31: "6: bits == 2112221 / outputNumber = outputNumber + readNumberCounter * 5" {
+						layout [ size: 542, 17 ]
+					}
+				}
+				edge done6: init -> done {
+					label L32: "7: bits == 2121111 / outputNumber = outputNumber + readNumberCounter * 6" {
+						layout [ size: 540, 17 ]
+					}
+				}
+				edge done7: init -> done {
+					label L33: "8: bits == 2111211 / outputNumber = outputNumber + readNumberCounter * 7" {
+						layout [ size: 540, 17 ]
+					}
+				}
+				edge done8: init -> done {
+					label L34: "9: bits == 2112111 / outputNumber = outputNumber + readNumberCounter * 8" {
+						layout [ size: 540, 17 ]
+					}
+				}
+				edge done9: init -> done {
+					label L35: "10: bits == 2221211 / outputNumber = outputNumber + readNumberCounter * 9" {
+						layout [ size: 550, 17 ]
+					}
+				}
+				edge invalidCombination0: init -> invalidCombination {
+					label L36: "11: / notValid = true" {
+						layout [ size: 133, 17 ]
+					}
+				}
+			}
+		}
+		node CheckEndDelimiter {
+			algorithm: org.eclipse.elk.box
+			node N5 {
+				node searchStart_g9128 {
+					layout [ size: 102, 34 ]
+				}
+				node blackOne {
+					layout [ size: 87, 34 ]
+				}
+				node whiteTwo {
+					layout [ size: 88, 34 ]
+				}
+				node blackTwo_g2033 {
+					layout [ size: 87, 34 ]
+				}
+				node finished_g4645 {
+					layout [ size: 84, 40 ]
+				}
+				edge blackOne0: searchStart_g9128 -> blackOne {
+					label L37: "1: go5mmClock && light > lightThreshold / rotateA = rotation; rotateB = rotation; `System.out.print(\"l\")`" {
+						layout [ size: 716, 17 ]
+					}
+				}
+				edge finished0_g4322: searchStart_g9128 -> finished_g4645 {
+					label L38: "2: go5mmClock / notValid = true" {
+						layout [ size: 220, 17 ]
+					}
+				}
+				edge whiteTwo0: blackOne -> whiteTwo {
+					label L39: "1: go5mmClock && light < lightThreshold / `System.out.print(\"d\")`; rotateA = rotation; rotateB = rotation" {
+						layout [ size: 722, 17 ]
+					}
+				}
+				edge finished0_g6110: blackOne -> finished_g4645 {
+					label L40: "2: go5mmClock / notValid = true" {
+						layout [ size: 220, 17 ]
+					}
+				}
+				edge blackTwo0_g6760: whiteTwo -> blackTwo_g2033 {
+					label L41: "1: go5mmClock && light > lightThreshold / `System.out.println(\"l\")`; rotateA = rotation; rotateB = rotation" {
+						layout [ size: 730, 17 ]
+					}
+				}
+				edge finished0_g7650: whiteTwo -> finished_g4645 {
+					label L42: "2: go5mmClock / notValid = true" {
+						layout [ size: 220, 17 ]
+					}
+				}
+				edge finished0_g9705: blackTwo_g2033 -> finished_g4645 {
+					label L43: "1: go5mmClock && light < lightThreshold / `System.out.println(\"d\")`" {
+						layout [ size: 471, 17 ]
+					}
+				}
+				edge finished1: blackTwo_g2033 -> finished_g4645 {
+					label L44: "2: go5mmClock / notValid = true" {
+						layout [ size: 220, 17 ]
+					}
+				}
+			}
+		}
+		node TestCheckSum {
+			algorithm: org.eclipse.elk.box
+			node N6 {
+				node startCheck {
+					layout [ size: 98, 34 ]
+				}
+				node checkFirstDigit {
+					layout [ size: 127, 34 ]
+				}
+				node checkSecondDigit {
+					layout [ size: 149, 34 ]
+				}
+				node checkThirdDigit {
+					layout [ size: 133, 34 ]
+				}
+				node allChecked {
+					layout [ size: 620, 65 ]
+				}
+				node setDegree {
+					algorithm: org.eclipse.elk.box
+					node N7 {
+						node init_g8451 {
+							layout [ size: 182, 50 ]
+						}
+						node finished_g9062 {
+							layout [ size: 84, 40 ]
+						}
+						edge finished0_g6546: init_g8451 -> finished_g9062 {
+							label L52: "1: result > 180 / turnValue = 180 - result" {
+								layout [ size: 272, 17 ]
+							}
+						}
+						edge finished1_g8125: init_g8451 -> finished_g9062 {
+							label L53: "2: result < -180 / turnValue = 360 + result" {
+								layout [ size: 281, 17 ]
+							}
+						}
+						edge finished2: init_g8451 -> finished_g9062 {
+							label L54: "3: / turnValue = result" {
+								layout [ size: 149, 17 ]
+							}
+						}
+					}
+				}
+				edge checkFirstDigit0: startCheck -> checkFirstDigit {
+					label L45: "/ firstDigit = (outputNumber / 1) % 10" {
+						layout [ size: 256, 17 ]
+					}
+				}
+				edge checkSecondDigit0: checkFirstDigit -> checkSecondDigit {
+					label L46: "/ secondDigit = (outputNumber / 10) % 10" {
+						layout [ size: 288, 17 ]
+					}
+				}
+				edge checkThirdDigit0: checkSecondDigit -> checkThirdDigit {
+					label L47: "/ thirdDigit = (outputNumber / 100) % 10" {
+						layout [ size: 277, 17 ]
+					}
+				}
+				edge allChecked0: checkThirdDigit -> allChecked {
+					label L48: "1: outputNumber / 1000 != 9 - (thirdDigit + secondDigit + firstDigit) % 10 / notValid = true" {
+						layout [ size: 611, 17 ]
+					}
+				}
+				edge allChecked1: checkThirdDigit -> allChecked {
+					label L49: "2: outputNumber / 1000 == 9 - (thirdDigit + secondDigit + firstDigit) % 10" {
+						layout [ size: 503, 17 ]
+					}
+				}
+				edge setDegree0: allChecked -> setDegree {
+					label L50: "1: result >= 500 / result = result - 1000" {
+						layout [ size: 264, 17 ]
+					}
+				}
+				edge setDegree1: allChecked -> setDegree {
+					label L51: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+			}
+		}
+		node Finish {
+			layout [ size: 346, 50 ]
+		}
+		node Invalid {
+			layout [ size: 248, 56 ]
+		}
+		node TurningRobot {
+			algorithm: org.eclipse.elk.box
+			node N8 {
+				node driveToTurnpoint {
+					layout [ size: 234, 50 ]
+				}
+				node turn {
+					layout [ size: 314, 50 ]
+				}
+				node forward {
+					layout [ size: 234, 50 ]
+				}
+				node finishedTurning {
+					layout [ size: 139, 40 ]
+				}
+				edge turn0: driveToTurnpoint -> turn {
+					label L55: "!isMotorAMoving && !isMotorBMoving" {
+						layout [ size: 273, 17 ]
+					}
+				}
+				edge forward0: turn -> forward {
+					label L56: "!isMotorAMoving && !isMotorBMoving" {
+						layout [ size: 273, 17 ]
+					}
+				}
+				edge finishedTurning0: forward -> finishedTurning {
+					label L57: "!isMotorAMoving && !isMotorBMoving" {
+						layout [ size: 273, 17 ]
+					}
+				}
+			}
+		}
+		edge Positioning0: Init -> Positioning {
+			label L1: "startButton / floodLight = true" {
+				layout [ size: 210, 17 ]
+			}
+		}
+		edge Invalid0: Positioning -> Invalid {
+			label L2: "1: notValid == true" {
+				layout [ size: 127, 17 ]
+			}
+		}
+		edge Read0: Positioning -> Read {
+			label L3: "2: / rotateA = rotation; rotateB = rotation" {
+				layout [ size: 280, 17 ]
+			}
+		}
+		edge WaitForMotorAB0: Read -> WaitForMotorAB {
+			label L4: "1: countToSeven >= 7" {
+				layout [ size: 155, 17 ]
+			}
+		}
+		edge CheckEndDelimiter0: Read -> CheckEndDelimiter {
+			label L5: "2: readNumberCounter > 1000" {
+				layout [ size: 212, 17 ]
+			}
+		}
+		edge Read0_g6731: Read -> Read {
+			label L6: "3: go5mmClock && light < lightThreshold && countToSeven == 6 / rotateA = rotation + correctionRotation; rotateB = rotation + 5; `System.out.print(\"d\")`; bits = bits * 10 + 1; countToSeven = countToSeven + 1" {
+				layout [ size: 1455, 17 ]
+			}
+		}
+		edge Read1: Read -> Read {
+			label L7: "4: go5mmClock && light < lightThreshold / rotateA = rotation; rotateB = rotation; `System.out.print(\"d\")`; bits = bits * 10 + 1; countToSeven = countToSeven + 1" {
+				layout [ size: 1112, 17 ]
+			}
+		}
+		edge Read2: Read -> Read {
+			label L8: "5: go5mmClock && countToSeven == 6 / rotateA = rotation + 5; rotateB = rotation + correctionRotation; `System.out.print(\"l\")`; bits = bits * 10 + 2; countToSeven = countToSeven + 1" {
+				layout [ size: 1268, 17 ]
+			}
+		}
+		edge Read3: Read -> Read {
+			label L9: "6: go5mmClock / rotateA = rotation; rotateB = rotation; `System.out.print(\"l\")`; bits = bits * 10 + 2; countToSeven = countToSeven + 1" {
+				layout [ size: 925, 17 ]
+			}
+		}
+		edge BitsToNumbers0: WaitForMotorAB -> BitsToNumbers {
+			label L10: "!isMotorAMoving && !isMotorBMoving" {
+				layout [ size: 273, 17 ]
+			}
+		}
+		edge Invalid0_g8970: BitsToNumbers -> Invalid {
+			label L11: "1: notValid == true" {
+				layout [ size: 127, 17 ]
+			}
+		}
+		edge Read0_g9607: BitsToNumbers -> Read {
+			label L12: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge Invalid0_g8069: CheckEndDelimiter -> Invalid {
+			label L13: "1: notValid == true" {
+				layout [ size: 127, 17 ]
+			}
+		}
+		edge TestCheckSum0: CheckEndDelimiter -> TestCheckSum {
+			label L14: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge Invalid0_g7915: TestCheckSum -> Invalid {
+			label L15: "1: notValid == true" {
+				layout [ size: 127, 17 ]
+			}
+		}
+		edge Finish0: TestCheckSum -> Finish {
+			label L16: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge TurningRobot0: Finish -> TurningRobot {
+			label L17: "/ validLight = false" {
+				layout [ size: 129, 17 ]
+			}
+		}
+		edge Positioning0_g3201: TurningRobot -> Positioning {
+			label L18: "/ rotation = -51" {
+				layout [ size: 102, 17 ]
+			}
+		}
+	}
+}

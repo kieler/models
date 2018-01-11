@@ -1,0 +1,53 @@
+graph G1
+node elevator {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node Moving {
+			algorithm: org.eclipse.elk.box
+			node N2 {
+				node Idle {
+					layout [ size: 46, 34 ]
+				}
+				node MoveUp {
+					layout [ size: 81, 34 ]
+				}
+				node MoveDown {
+					layout [ size: 101, 34 ]
+				}
+				edge MoveUp0: Idle -> MoveUp {
+					label L3: "1: IsDown && ButtonUp / Move(1)" {
+						layout [ size: 236, 17 ]
+					}
+				}
+				edge MoveDown0: Idle -> MoveDown {
+					label L4: "2: IsUp && ButtonDown / Move(-1)" {
+						layout [ size: 241, 17 ]
+					}
+				}
+				edge Idle0: MoveUp -> Idle {
+					label L5: "IsUp / Move(0)" {
+						layout [ size: 102, 17 ]
+					}
+				}
+				edge Idle0_g9591: MoveDown -> Idle {
+					label L6: "IsDown / Move(0)" {
+						layout [ size: 122, 17 ]
+					}
+				}
+			}
+		}
+		node Alarm {
+			layout [ size: 61, 34 ]
+		}
+		edge Alarm0: Moving -> Alarm {
+			label L1: "ButtonAlarm / restoreMove = val(Move); Move(0); AlarmLamp" {
+				layout [ size: 430, 17 ]
+			}
+		}
+		edge Moving0: Alarm -> Moving {
+			label L2: "5 Second / Move(val(restoreMove)); AlarmLamp" {
+				layout [ size: 336, 17 ]
+			}
+		}
+	}
+}

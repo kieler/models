@@ -1,0 +1,43 @@
+graph G1
+node SeqConstructive {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node Setup {
+			layout [ size: 63, 34 ]
+		}
+		node Run {
+			algorithm: org.eclipse.elk.box
+			node Read {
+				node A {
+					layout [ size: 34, 34 ]
+				}
+				node B {
+					layout [ size: 40, 40 ]
+				}
+				edge B0: A -> B {
+					label L2: "X" {
+						layout [ size: 11, 17 ]
+					}
+				}
+			}
+			node Emit {
+				node A_g3283 {
+					layout [ size: 34, 34 ]
+				}
+				node B_g8433 {
+					layout [ size: 40, 40 ]
+				}
+				edge B0_g1578: A_g3283 -> B_g8433 {
+					label L3: "!X / X = X || true" {
+						layout [ size: 108, 17 ]
+					}
+				}
+			}
+		}
+		edge Run0: Setup -> Run {
+			label L1: "/ X = false" {
+				layout [ size: 69, 17 ]
+			}
+		}
+	}
+}

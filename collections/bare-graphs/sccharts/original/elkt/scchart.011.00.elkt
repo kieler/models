@@ -1,0 +1,81 @@
+graph G1
+node CarController {
+	algorithm: org.eclipse.elk.box
+	node Main {
+		node Init {
+			algorithm: org.eclipse.elk.box
+			node HandleDoors {
+				node ClosedDoors {
+					layout [ size: 114, 34 ]
+				}
+				node OpenDoor {
+					layout [ size: 94, 34 ]
+				}
+				node Waiting {
+					layout [ size: 72, 34 ]
+				}
+				edge OpenDoor0: ClosedDoors -> OpenDoor {
+					label L1: "doorOpen / domeLight = true" {
+						layout [ size: 205, 17 ]
+					}
+				}
+				edge Waiting0: OpenDoor -> Waiting {
+					label L2: "!doorOpen / counter1 = 4" {
+						layout [ size: 177, 17 ]
+					}
+				}
+				edge OpenDoor0_g3149: Waiting -> OpenDoor {
+					label L3: "1: doorOpen && counter1 > 0 / domeLight = true" {
+						layout [ size: 339, 17 ]
+					}
+				}
+				edge ClosedDoors0: Waiting -> ClosedDoors {
+					label L4: "2: counter1 == 0 && !doorOpen / domeLight = false" {
+						layout [ size: 357, 17 ]
+					}
+				}
+				edge Waiting0_g8414: Waiting -> Waiting {
+					label L5: "3: second && counter1 > 0 && !doorOpen / counter1 = counter1 - 1" {
+						layout [ size: 469, 17 ]
+					}
+				}
+			}
+			node HandleSeatBelts {
+				node SeatBeltOkay {
+					layout [ size: 118, 34 ]
+				}
+				node WarningWithSound {
+					layout [ size: 155, 34 ]
+				}
+				node WarningWithoutSound {
+					layout [ size: 178, 34 ]
+				}
+				edge WarningWithSound0: SeatBeltOkay -> WarningWithSound {
+					label L6: "engineOn && !seatBeltBuckled / warningLight = true; warningSound = true; counter2 = 4" {
+						layout [ size: 624, 17 ]
+					}
+				}
+				edge SeatBeltOkay0: WarningWithSound -> SeatBeltOkay {
+					label L7: "1: !engineOn || seatBeltBuckled / warningLight = false; warningSound = false" {
+						layout [ size: 539, 17 ]
+					}
+				}
+				edge WarningWithSound0_g6926: WarningWithSound -> WarningWithSound {
+					label L8: "2: second && engineOn && !seatBeltBuckled && counter2 > 0 / counter2 = counter2 - 1" {
+						layout [ size: 614, 17 ]
+					}
+				}
+				edge WarningWithoutSound0: WarningWithSound -> WarningWithoutSound {
+					label L9: "3: engineOn && !seatBeltBuckled && counter2 == 0 / warningSound = false" {
+						layout [ size: 529, 17 ]
+					}
+				}
+				edge SeatBeltOkay0_g3651: WarningWithoutSound -> SeatBeltOkay {
+					label L10: "!engineOn || seatBeltBuckled / warningLight = false" {
+						layout [ size: 362, 17 ]
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,88 @@
+graph G1
+node RetractBoom {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node Retract {
+			layout [ size: 72, 34 ]
+		}
+		node Retracted {
+			layout [ size: 97, 40 ]
+		}
+		node __te_S {
+			layout [ size: 69, 34 ]
+		}
+		node __te_S1 {
+			layout [ size: 77, 34 ]
+		}
+		node __te_S2 {
+			layout [ size: 77, 34 ]
+		}
+		node Retracting {
+			layout [ size: 95, 34 ]
+		}
+		node __sd_Depth {
+			layout [ size: 105, 34 ]
+		}
+		node __sd_S1 {
+			layout [ size: 80, 34 ]
+		}
+		node Paused {
+			layout [ size: 74, 34 ]
+		}
+		node __sd_Depth1 {
+			layout [ size: 113, 34 ]
+		}
+		edge Retracting0: Retract -> Retracting {
+			label L1: "/ BOOM_PULL = true" {
+				layout [ size: 149, 17 ]
+			}
+		}
+		edge Paused0: __te_S -> Paused {
+			label L2: "/ BOOM_PULL = false" {
+				layout [ size: 154, 17 ]
+			}
+		}
+		edge Retracted0: __te_S1 -> Retracted {
+			label L3: "/ BOOM_PULL = false" {
+				layout [ size: 154, 17 ]
+			}
+		}
+		edge Retracting0_g9626: __te_S2 -> Retracting {
+			label L4: "/ BOOM_PULL = true" {
+				layout [ size: 149, 17 ]
+			}
+		}
+		edge __sd_Depth0: Retracting -> __sd_Depth
+		edge __te_S0: __sd_Depth -> __te_S {
+			label L5: "1: PAUSE" {
+				layout [ size: 66, 17 ]
+			}
+		}
+		edge __sd_S10: __sd_Depth -> __sd_S1 {
+			label L6: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge __te_S10: __sd_S1 -> __te_S1 {
+			label L7: "1: BOOM_IN" {
+				layout [ size: 87, 17 ]
+			}
+		}
+		edge Retracting0_g9236: __sd_S1 -> Retracting {
+			label L8: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+		edge __sd_Depth10: Paused -> __sd_Depth1
+		edge __te_S20: __sd_Depth1 -> __te_S2 {
+			label L9: "1: !PAUSE" {
+				layout [ size: 70, 17 ]
+			}
+		}
+		edge Paused0_g3219: __sd_Depth1 -> Paused {
+			label L10: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+	}
+}

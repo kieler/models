@@ -1,0 +1,612 @@
+graph G1
+node Domelight {
+	algorithm: org.eclipse.elk.box
+	node __EA_Entry {
+		node __EA_Main {
+			algorithm: org.eclipse.elk.box
+			node DoorAggregator {
+				node AtLeastOneOpen {
+					algorithm: org.eclipse.elk.box
+					node _Exit {
+						node _Done {
+							layout [ size: 72, 40 ]
+						}
+						node _Memorize {
+							layout [ size: 98, 34 ]
+						}
+						node __EA_Init {
+							layout [ size: 85, 34 ]
+						}
+						node _Init {
+							layout [ size: 50, 34 ]
+						}
+						node __sd_Depth1 {
+							layout [ size: 113, 34 ]
+						}
+						edge _Done0: _Memorize -> _Done {
+							label L6: "/ closeDoor |= true" {
+								layout [ size: 131, 17 ]
+							}
+						}
+						edge _Init0: __EA_Init -> _Init {
+							label L7: "/ openDoor |= true" {
+								layout [ size: 129, 17 ]
+							}
+						}
+						edge __sd_Depth10: _Init -> __sd_Depth1
+						edge _Memorize0: __sd_Depth1 -> _Memorize {
+							label L8: "1: !(openDoor1 || openDoor2)" {
+								layout [ size: 204, 17 ]
+							}
+						}
+						edge _Init0_g0372: __sd_Depth1 -> _Init {
+							label L9: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+					}
+				}
+				node __sd_Depth2 {
+					layout [ size: 113, 34 ]
+				}
+				node __sd_Depth {
+					layout [ size: 105, 34 ]
+				}
+				edge __sd_Depth20: AtLeastOneOpen -> __sd_Depth2
+				edge __sd_Depth0: __sd_Depth2 -> __sd_Depth
+				edge AtLeastOneOpen0: __sd_Depth -> AtLeastOneOpen {
+					label L4: "1: openDoor1 || openDoor2" {
+						layout [ size: 191, 17 ]
+					}
+				}
+				edge __sd_Depth20_g3631: __sd_Depth -> __sd_Depth2 {
+					label L5: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+			}
+			node Domelight_g7321 {
+				node On {
+					algorithm: org.eclipse.elk.box
+					node N1 {
+						node Done {
+							layout [ size: 64, 40 ]
+						}
+						node __EA_Init1 {
+							layout [ size: 94, 34 ]
+						}
+						node __te_S {
+							layout [ size: 69, 34 ]
+						}
+						node Open {
+							layout [ size: 60, 34 ]
+						}
+						node __sd_Depth4 {
+							layout [ size: 113, 34 ]
+						}
+						node Closed {
+							layout [ size: 71, 34 ]
+						}
+						node __sd_Depth5 {
+							layout [ size: 113, 34 ]
+						}
+						node __sd_S6 {
+							layout [ size: 80, 34 ]
+						}
+						node _cdClosed2 {
+							layout [ size: 104, 34 ]
+						}
+						node __sd_Depth6 {
+							layout [ size: 113, 34 ]
+						}
+						node __sd_S8 {
+							layout [ size: 80, 34 ]
+						}
+						node _cdClosed3 {
+							layout [ size: 104, 34 ]
+						}
+						node __sd_Depth7 {
+							layout [ size: 113, 34 ]
+						}
+						node __sd_S10 {
+							layout [ size: 88, 34 ]
+						}
+						node _cdClosed4 {
+							layout [ size: 104, 34 ]
+						}
+						node __sd_Depth8 {
+							layout [ size: 113, 34 ]
+						}
+						node __sd_S12 {
+							layout [ size: 88, 34 ]
+						}
+						edge Open0: __EA_Init1 -> Open {
+							label L12: "/ domeLight = true" {
+								layout [ size: 129, 17 ]
+							}
+						}
+						edge Done0: __te_S -> Done {
+							label L13: "/ domeLight = false" {
+								layout [ size: 134, 17 ]
+							}
+						}
+						edge __sd_Depth40: Open -> __sd_Depth4
+						edge Closed0: __sd_Depth4 -> Closed {
+							label L14: "1: closeDoor" {
+								layout [ size: 89, 17 ]
+							}
+						}
+						edge Open0_g7578: __sd_Depth4 -> Open {
+							label L15: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __sd_Depth50: Closed -> __sd_Depth5
+						edge Open0_g1568: __sd_Depth5 -> Open {
+							label L16: "1: openDoor" {
+								layout [ size: 87, 17 ]
+							}
+						}
+						edge __sd_S60: __sd_Depth5 -> __sd_S6 {
+							label L17: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge _cdClosed20: __sd_S6 -> _cdClosed2 {
+							label L18: "1: second" {
+								layout [ size: 69, 17 ]
+							}
+						}
+						edge Closed0_g3728: __sd_S6 -> Closed {
+							label L19: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __sd_Depth60: _cdClosed2 -> __sd_Depth6
+						edge Open0_g4637: __sd_Depth6 -> Open {
+							label L20: "1: openDoor" {
+								layout [ size: 87, 17 ]
+							}
+						}
+						edge __sd_S80: __sd_Depth6 -> __sd_S8 {
+							label L21: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge _cdClosed30: __sd_S8 -> _cdClosed3 {
+							label L22: "1: second" {
+								layout [ size: 69, 17 ]
+							}
+						}
+						edge _cdClosed20_g6427: __sd_S8 -> _cdClosed2 {
+							label L23: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __sd_Depth70: _cdClosed3 -> __sd_Depth7
+						edge Open0_g0781: __sd_Depth7 -> Open {
+							label L24: "1: openDoor" {
+								layout [ size: 87, 17 ]
+							}
+						}
+						edge __sd_S100: __sd_Depth7 -> __sd_S10 {
+							label L25: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge _cdClosed40: __sd_S10 -> _cdClosed4 {
+							label L26: "1: second" {
+								layout [ size: 69, 17 ]
+							}
+						}
+						edge _cdClosed30_g6570: __sd_S10 -> _cdClosed3 {
+							label L27: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __sd_Depth80: _cdClosed4 -> __sd_Depth8
+						edge Open0_g8856: __sd_Depth8 -> Open {
+							label L28: "1: openDoor" {
+								layout [ size: 87, 17 ]
+							}
+						}
+						edge __sd_S120: __sd_Depth8 -> __sd_S12 {
+							label L29: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __te_S0: __sd_S12 -> __te_S {
+							label L30: "1: second" {
+								layout [ size: 69, 17 ]
+							}
+						}
+						edge _cdClosed40_g5163: __sd_S12 -> _cdClosed4 {
+							label L31: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+					}
+				}
+				node Off {
+					layout [ size: 42, 34 ]
+				}
+				node __sd_Depth3 {
+					layout [ size: 113, 34 ]
+				}
+				edge Off0: On -> Off
+				edge __sd_Depth30: Off -> __sd_Depth3
+				edge On0: __sd_Depth3 -> On {
+					label L10: "1: openDoor" {
+						layout [ size: 87, 17 ]
+					}
+				}
+				edge Off0_g5281: __sd_Depth3 -> Off {
+					label L11: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+			}
+			node Seatbelt {
+				node Warn {
+					algorithm: org.eclipse.elk.box
+					node _Entry {
+						node _Main {
+							algorithm: org.eclipse.elk.box
+							node N2 {
+								node Beeping {
+									algorithm: org.eclipse.elk.box
+									node _Entry1 {
+										node _Main_g3375 {
+											algorithm: org.eclipse.elk.box
+											node _During1 {
+												node __sd_S19 {
+													layout [ size: 88, 34 ]
+												}
+												node __sd_Depth10_g6864 {
+													layout [ size: 121, 34 ]
+												}
+												node _AAborted2 {
+													layout [ size: 108, 40 ]
+												}
+												node __te_S1 {
+													layout [ size: 77, 34 ]
+												}
+												node __sd_S14 {
+													layout [ size: 88, 34 ]
+												}
+												node __sd_Pause10 {
+													layout [ size: 122, 34 ]
+												}
+												node __sd_Pause11 {
+													layout [ size: 121, 34 ]
+												}
+												node __sd_Depth11 {
+													layout [ size: 120, 34 ]
+												}
+												edge __te_S10: __sd_S19 -> __te_S1 {
+													label L48: "1: second" {
+														layout [ size: 69, 17 ]
+													}
+												}
+												edge __sd_S140: __sd_S19 -> __sd_S14 {
+													label L49: "2:" {
+														layout [ size: 13, 17 ]
+													}
+												}
+												edge _AAborted20: __sd_Depth10_g6864 -> _AAborted2 {
+													label L50: "1: _Domelight_local__Atrig" {
+														layout [ size: 187, 17 ]
+													}
+												}
+												edge __sd_Pause110: __sd_Depth10_g6864 -> __sd_Pause11 {
+													label L51: "2:" {
+														layout [ size: 13, 17 ]
+													}
+												}
+												edge __sd_Depth100: __te_S1 -> __sd_Depth10_g6864 {
+													label L52: "/ _Domelight_local__cdcounter = _Domelight_local__cdcounter + 1" {
+														layout [ size: 469, 17 ]
+													}
+												}
+												edge _AAborted20_g6574: __sd_S14 -> _AAborted2 {
+													label L53: "1: _Domelight_local__Atrig" {
+														layout [ size: 187, 17 ]
+													}
+												}
+												edge __sd_Pause100: __sd_S14 -> __sd_Pause10 {
+													label L54: "2:" {
+														layout [ size: 13, 17 ]
+													}
+												}
+												edge __sd_Depth100_g2186: __sd_Pause10 -> __sd_Depth10_g6864
+												edge __sd_Depth110: __sd_Pause11 -> __sd_Depth11
+												edge _AAborted20_g6935: __sd_Depth11 -> _AAborted2 {
+													label L55: "1: !ignition || !seatbeltSensor" {
+														layout [ size: 201, 17 ]
+													}
+												}
+												edge __sd_S190: __sd_Depth11 -> __sd_S19 {
+													label L56: "2:" {
+														layout [ size: 13, 17 ]
+													}
+												}
+											}
+											node _ACtrl {
+												node _ADone {
+													layout [ size: 81, 40 ]
+												}
+												node __te_S2 {
+													layout [ size: 77, 34 ]
+												}
+												node _ARun {
+													layout [ size: 67, 34 ]
+												}
+												node __sd_Depth12 {
+													layout [ size: 121, 34 ]
+												}
+												node __sd_S22 {
+													layout [ size: 88, 34 ]
+												}
+												edge _ADone0: __te_S2 -> _ADone {
+													label L57: "/ _Domelight_local__Atrig = true" {
+														layout [ size: 224, 17 ]
+													}
+												}
+												edge __sd_Depth120: _ARun -> __sd_Depth12
+												edge _ADone0_g1979: __sd_Depth12 -> _ADone {
+													label L58: "1: !ignition || !seatbeltSensor" {
+														layout [ size: 201, 17 ]
+													}
+												}
+												edge __sd_S220: __sd_Depth12 -> __sd_S22 {
+													label L59: "2:" {
+														layout [ size: 13, 17 ]
+													}
+												}
+												edge __te_S20: __sd_S22 -> __te_S2 {
+													label L60: "1: _Domelight_local__pre__cdcounter == 29 && second" {
+														layout [ size: 390, 17 ]
+													}
+												}
+												edge _ARun0: __sd_S22 -> _ARun {
+													label L61: "2:" {
+														layout [ size: 13, 17 ]
+													}
+												}
+											}
+										}
+										node _Done_g2212 {
+											layout [ size: 72, 40 ]
+										}
+										node __EA_Init3 {
+											layout [ size: 94, 34 ]
+										}
+										node __EA_C3 {
+											layout [ size: 83, 34 ]
+										}
+										node __EA_C4 {
+											layout [ size: 83, 34 ]
+										}
+										node __EA_C5 {
+											layout [ size: 83, 34 ]
+										}
+										node __te_S3 {
+											layout [ size: 77, 34 ]
+										}
+										node __te_S4 {
+											layout [ size: 77, 34 ]
+										}
+										edge __te_S30: _Main_g3375 -> __te_S3
+										edge __EA_C30: __EA_Init3 -> __EA_C3 {
+											label L41: "/ beeper = true" {
+												layout [ size: 105, 17 ]
+											}
+										}
+										edge __EA_C40: __EA_C3 -> __EA_C4 {
+											label L42: "/ _Domelight_local__cdcounter = 0" {
+												layout [ size: 243, 17 ]
+											}
+										}
+										edge __te_S40: __EA_C4 -> __te_S4 {
+											label L43: "1: second" {
+												layout [ size: 69, 17 ]
+											}
+										}
+										edge __EA_C50: __EA_C4 -> __EA_C5 {
+											label L44: "2:" {
+												layout [ size: 13, 17 ]
+											}
+										}
+										edge _Main0: __EA_C5 -> _Main_g3375 {
+											label L45: "/ _Domelight_local__Atrig = false" {
+												layout [ size: 229, 17 ]
+											}
+										}
+										edge _Done0_g5376: __te_S3 -> _Done_g2212 {
+											label L46: "/ beeper = false" {
+												layout [ size: 110, 17 ]
+											}
+										}
+										edge __EA_C50_g6552: __te_S4 -> __EA_C5 {
+											label L47: "/ _Domelight_local__cdcounter = -1" {
+												layout [ size: 248, 17 ]
+											}
+										}
+									}
+								}
+								node _AAborted {
+									layout [ size: 100, 40 ]
+								}
+								node _AC1 {
+									layout [ size: 57, 34 ]
+								}
+								node NotBeeping {
+									layout [ size: 106, 34 ]
+								}
+								node __sd_Depth13 {
+									layout [ size: 121, 34 ]
+								}
+								edge _AC10: Beeping -> _AC1
+								edge _AAborted0: _AC1 -> _AAborted {
+									label L37: "1: !ignition || !seatbeltSensor" {
+										layout [ size: 201, 17 ]
+									}
+								}
+								edge NotBeeping0: _AC1 -> NotBeeping {
+									label L38: "2:" {
+										layout [ size: 13, 17 ]
+									}
+								}
+								edge __sd_Depth130: NotBeeping -> __sd_Depth13
+								edge _AAborted0_g7098: __sd_Depth13 -> _AAborted {
+									label L39: "1: !ignition || !seatbeltSensor" {
+										layout [ size: 201, 17 ]
+									}
+								}
+								edge NotBeeping0_g0586: __sd_Depth13 -> NotBeeping {
+									label L40: "2:" {
+										layout [ size: 13, 17 ]
+									}
+								}
+							}
+							node _update_pre__cdcounter {
+								node _AAborted1 {
+									layout [ size: 108, 40 ]
+								}
+								node __sd_S27 {
+									layout [ size: 88, 34 ]
+								}
+								node __te_S6 {
+									layout [ size: 77, 34 ]
+								}
+								node __sd_Depth14 {
+									layout [ size: 121, 34 ]
+								}
+								node __sd_Depth15 {
+									layout [ size: 121, 34 ]
+								}
+								edge __te_S60: __sd_S27 -> __te_S6 {
+									label L62: "/ _Domelight_local__pre__cdcounter = _Domelight_local__reg__cdcounter" {
+										layout [ size: 523, 17 ]
+									}
+								}
+								edge __sd_Depth140: __te_S6 -> __sd_Depth14 {
+									label L63: "/ _Domelight_local__reg__cdcounter = _Domelight_local__cdcounter" {
+										layout [ size: 483, 17 ]
+									}
+								}
+								edge __sd_Depth150: __sd_Depth14 -> __sd_Depth15
+								edge _AAborted10: __sd_Depth15 -> _AAborted1 {
+									label L64: "1: !ignition || !seatbeltSensor" {
+										layout [ size: 201, 17 ]
+									}
+								}
+								edge __sd_S270: __sd_Depth15 -> __sd_S27 {
+									label L65: "2:" {
+										layout [ size: 13, 17 ]
+									}
+								}
+							}
+						}
+						node _Done_g5862 {
+							layout [ size: 72, 40 ]
+						}
+						node __EA_Init2 {
+							layout [ size: 94, 34 ]
+						}
+						node __EA_C2 {
+							layout [ size: 83, 34 ]
+						}
+						node __te_S7 {
+							layout [ size: 77, 34 ]
+						}
+						edge __te_S70: _Main -> __te_S7
+						edge __EA_C20: __EA_Init2 -> __EA_C2 {
+							label L34: "/ _Domelight_local__reg__cdcounter = 0" {
+								layout [ size: 283, 17 ]
+							}
+						}
+						edge _Main0_g1524: __EA_C2 -> _Main {
+							label L35: "/ warnLight = true" {
+								layout [ size: 124, 17 ]
+							}
+						}
+						edge _Done0_g9174: __te_S7 -> _Done_g5862 {
+							label L36: "/ warnLight = false" {
+								layout [ size: 129, 17 ]
+							}
+						}
+					}
+				}
+				node NoWarn {
+					layout [ size: 76, 34 ]
+				}
+				node __sd_Depth9 {
+					layout [ size: 113, 34 ]
+				}
+				edge NoWarn0: Warn -> NoWarn
+				edge __sd_Depth90: NoWarn -> __sd_Depth9
+				edge Warn0: __sd_Depth9 -> Warn {
+					label L32: "1: ignition && seatbeltSensor" {
+						layout [ size: 207, 17 ]
+					}
+				}
+				edge NoWarn0_g6940: __sd_Depth9 -> NoWarn {
+					label L33: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+			}
+			node _During {
+				node _S {
+					layout [ size: 39, 34 ]
+				}
+				node __sd_Depth16 {
+					layout [ size: 121, 34 ]
+				}
+				node __te_S9 {
+					layout [ size: 77, 34 ]
+				}
+				edge __sd_Depth160: _S -> __sd_Depth16
+				edge __te_S90: __sd_Depth16 -> __te_S9 {
+					label L66: "/ openDoor = false" {
+						layout [ size: 130, 17 ]
+					}
+				}
+				edge _S0: __te_S9 -> _S {
+					label L67: "/ closeDoor = false" {
+						layout [ size: 132, 17 ]
+					}
+				}
+			}
+		}
+		node __EA_Init_g4815 {
+			layout [ size: 85, 34 ]
+		}
+		node __EA_Done {
+			layout [ size: 107, 40 ]
+		}
+		node __EA_C {
+			layout [ size: 74, 34 ]
+		}
+		node __EA_C1 {
+			layout [ size: 83, 34 ]
+		}
+		edge __EA_Done0: __EA_Main -> __EA_Done
+		edge __EA_C0: __EA_Init_g4815 -> __EA_C {
+			label L1: "/ domeLight = false" {
+				layout [ size: 134, 17 ]
+			}
+		}
+		edge __EA_C10: __EA_C -> __EA_C1 {
+			label L2: "/ beeper = false" {
+				layout [ size: 110, 17 ]
+			}
+		}
+		edge __EA_Main0: __EA_C1 -> __EA_Main {
+			label L3: "/ warnLight = false" {
+				layout [ size: 129, 17 ]
+			}
+		}
+	}
+}

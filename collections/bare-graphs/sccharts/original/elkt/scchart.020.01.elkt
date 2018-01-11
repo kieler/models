@@ -1,0 +1,147 @@
+graph G1
+node DomeLightControllerMindstorms {
+	algorithm: org.eclipse.elk.box
+	node ignitionToggle {
+		node off {
+			layout [ size: 39, 34 ]
+		}
+		node offPending {
+			layout [ size: 99, 34 ]
+		}
+		node on {
+			layout [ size: 39, 34 ]
+		}
+		node onPending {
+			layout [ size: 98, 34 ]
+		}
+		edge offPending0: off -> offPending {
+			label L1: "ignitionSensor" {
+				layout [ size: 104, 17 ]
+			}
+		}
+		edge on0: offPending -> on {
+			label L2: "!ignitionSensor / ignition = true" {
+				layout [ size: 219, 17 ]
+			}
+		}
+		edge onPending0: on -> onPending {
+			label L3: "ignitionSensor" {
+				layout [ size: 104, 17 ]
+			}
+		}
+		edge off0: onPending -> off {
+			label L4: "!ignitionSensor / ignition = false" {
+				layout [ size: 224, 17 ]
+			}
+		}
+	}
+	node seatbeltToggle {
+		node off_g6223 {
+			layout [ size: 39, 34 ]
+		}
+		node offPending_g7922 {
+			layout [ size: 99, 34 ]
+		}
+		node on_g9978 {
+			layout [ size: 39, 34 ]
+		}
+		node onPending_g1814 {
+			layout [ size: 98, 34 ]
+		}
+		edge offPending0_g4006: off_g6223 -> offPending_g7922 {
+			label L5: "seatbeltSensor" {
+				layout [ size: 108, 17 ]
+			}
+		}
+		edge on0_g1167: offPending_g7922 -> on_g9978 {
+			label L6: "!seatbeltSensor / seatbelt = true" {
+				layout [ size: 227, 17 ]
+			}
+		}
+		edge onPending0_g4919: on_g9978 -> onPending_g1814 {
+			label L7: "seatbeltSensor" {
+				layout [ size: 108, 17 ]
+			}
+		}
+		edge off0_g0881: onPending_g1814 -> off_g6223 {
+			label L8: "!seatbeltSensor / seatbelt = false" {
+				layout [ size: 232, 17 ]
+			}
+		}
+	}
+	node domelight {
+		node init {
+			layout [ size: 42, 34 ]
+		}
+		node on_g1459 {
+			layout [ size: 39, 34 ]
+		}
+		node count {
+			layout [ size: 60, 34 ]
+		}
+		node off_g0274 {
+			layout [ size: 39, 34 ]
+		}
+		edge on0_g2121: init -> on_g1459 {
+			label L9: "1: !doorSensor1 || !doorSensor2 / domelight = true" {
+				layout [ size: 352, 17 ]
+			}
+		}
+		edge off0_g2060: init -> off_g0274 {
+			label L10: "2: doorSensor1 && doorSensor2 / domelight = false" {
+				layout [ size: 363, 17 ]
+			}
+		}
+		edge count0: on_g1459 -> count {
+			label L11: "doorSensor1 && doorSensor2 / resetDomelightCounter = true" {
+				layout [ size: 439, 17 ]
+			}
+		}
+		edge off0_g0118: count -> off_g0274 {
+			label L12: "1: domelightCounter / domelight = false" {
+				layout [ size: 277, 17 ]
+			}
+		}
+		edge on0_g4713: count -> on_g1459 {
+			label L13: "2: !doorSensor1 || !doorSensor2 / domelight = true" {
+				layout [ size: 352, 17 ]
+			}
+		}
+		edge on0_g0572: off_g0274 -> on_g1459 {
+			label L14: "!doorSensor1 || !doorSensor2 / domelight = true" {
+				layout [ size: 336, 17 ]
+			}
+		}
+	}
+	node seatbelt {
+		node off_g3230 {
+			layout [ size: 39, 34 ]
+		}
+		node lightAndBeeper {
+			layout [ size: 131, 34 ]
+		}
+		node light {
+			layout [ size: 51, 34 ]
+		}
+		edge lightAndBeeper0: off_g3230 -> lightAndBeeper {
+			label L15: "ignition && !seatbelt / seatbeltLight = true; beeper = true; resetSeatbeltCounter = true" {
+				layout [ size: 608, 17 ]
+			}
+		}
+		edge off0_g5862: lightAndBeeper -> off_g3230 {
+			label L16: "1: !ignition || seatbelt / seatbeltLight = false; beeper = false" {
+				layout [ size: 412, 17 ]
+			}
+		}
+		edge light0: lightAndBeeper -> light {
+			label L17: "2: seatbeltCounter / beeper = false" {
+				layout [ size: 245, 17 ]
+			}
+		}
+		edge off0_g2982: light -> off_g3230 {
+			label L18: "!ignition || seatbelt / seatbeltLight = false" {
+				layout [ size: 286, 17 ]
+			}
+		}
+	}
+}

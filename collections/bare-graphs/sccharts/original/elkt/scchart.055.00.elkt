@@ -1,0 +1,510 @@
+graph G1
+node BarcodeReader {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node init {
+			layout [ size: 42, 34 ]
+		}
+		node Ready {
+			algorithm: org.eclipse.elk.box
+			node Driving {
+				node Waiting {
+					layout [ size: 72, 34 ]
+				}
+				node Driving_g6492 {
+					layout [ size: 73, 34 ]
+				}
+				edge Driving0: Waiting -> Driving_g6492 {
+					label L2: "drive / leftSpeed = speed; rightSpeed = speed" {
+						layout [ size: 328, 17 ]
+					}
+				}
+				edge Waiting0: Driving_g6492 -> Waiting {
+					label L3: "!drive / rightSpeed = 0; leftSpeed = 0; stopExecution = true" {
+						layout [ size: 415, 17 ]
+					}
+				}
+			}
+			node MinMax {
+				node MinMaxMeasure {
+					layout [ size: 137, 34 ]
+				}
+				edge MinMaxMeasure0: MinMaxMeasure -> MinMaxMeasure {
+					label L4: "1: light < minimum && light != 0 / minimum = light; average = (minimum + maximum) / 2" {
+						layout [ size: 596, 17 ]
+					}
+				}
+				edge MinMaxMeasure1: MinMaxMeasure -> MinMaxMeasure {
+					label L5: "2: light > maximum && light != 0 / maximum = light; average = (minimum + maximum) / 2" {
+						layout [ size: 602, 17 ]
+					}
+				}
+				edge MinMaxMeasure2: MinMaxMeasure -> MinMaxMeasure {
+					label L6: "3:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+			}
+			node Measure {
+				node WhiteBalance {
+					layout [ size: 117, 34 ]
+				}
+				node Pending {
+					layout [ size: 80, 34 ]
+				}
+				node Gap {
+					layout [ size: 50, 34 ]
+				}
+				node Black {
+					layout [ size: 60, 34 ]
+				}
+				node White {
+					layout [ size: 60, 34 ]
+				}
+				edge Pending0: WhiteBalance -> Pending {
+					label L7: "/ white = light" {
+						layout [ size: 94, 17 ]
+					}
+				}
+				edge Gap0: Pending -> Gap {
+					label L8: "light < white - tolerance" {
+						layout [ size: 166, 17 ]
+					}
+				}
+				edge Black0: Gap -> Black {
+					label L9: "light < white - minDifference / barToggle" {
+						layout [ size: 283, 17 ]
+					}
+				}
+				edge White0: Black -> White {
+					label L10: "light > average + tolerance / iswhite = true; isblack = false; barToggle" {
+						layout [ size: 486, 17 ]
+					}
+				}
+				edge Black0_g4068: White -> Black {
+					label L11: "light < average - tolerance / iswhite = false; isblack = true; barToggle" {
+						layout [ size: 482, 17 ]
+					}
+				}
+			}
+			node Interpolator {
+				node OnWhite {
+					layout [ size: 81, 34 ]
+				}
+				node OnFirstBlack {
+					layout [ size: 113, 34 ]
+				}
+				node OnFirstWhite {
+					layout [ size: 113, 34 ]
+				}
+				node OnSecondBlack {
+					layout [ size: 135, 34 ]
+				}
+				node Finish {
+					layout [ size: 70, 40 ]
+				}
+				edge OnFirstBlack0: OnWhite -> OnFirstBlack {
+					label L12: "barToggle && isblack / startCounter" {
+						layout [ size: 253, 17 ]
+					}
+				}
+				edge OnFirstWhite0: OnFirstBlack -> OnFirstWhite {
+					label L13: "barToggle && iswhite / endCounter" {
+						layout [ size: 249, 17 ]
+					}
+				}
+				edge OnSecondBlack0: OnFirstWhite -> OnSecondBlack {
+					label L14: "barToggle && isblack" {
+						layout [ size: 152, 17 ]
+					}
+				}
+				edge Finish0: OnSecondBlack -> Finish {
+					label L15: "barToggle && iswhite / onBarcode = true" {
+						layout [ size: 288, 17 ]
+					}
+				}
+			}
+			node Counter {
+				node NoCount {
+					layout [ size: 83, 34 ]
+				}
+				node Count {
+					layout [ size: 63, 34 ]
+				}
+				node Interpolation {
+					layout [ size: 154, 65 ]
+				}
+				node ResetCount {
+					layout [ size: 363, 65 ]
+				}
+				edge Count0: NoCount -> Count {
+					label L16: "startCounter" {
+						layout [ size: 90, 17 ]
+					}
+				}
+				edge Interpolation0: Count -> Interpolation {
+					label L17: "1: endCounter" {
+						layout [ size: 101, 17 ]
+					}
+				}
+				edge ResetCount0: Count -> ResetCount {
+					label L18: "2: barToggle && barWidth > 0" {
+						layout [ size: 207, 17 ]
+					}
+				}
+				edge Count0_g4667: Count -> Count {
+					label L19: "3: / time = time + 1" {
+						layout [ size: 127, 17 ]
+					}
+				}
+				edge Count0_g3870: Interpolation -> Count
+				edge Count0_g5967: ResetCount -> Count
+			}
+			node BarWidthSignaller {
+				node Zero {
+					layout [ size: 53, 34 ]
+				}
+				node BlackBars {
+					layout [ size: 93, 34 ]
+				}
+				node WhiteBars {
+					layout [ size: 94, 34 ]
+				}
+				edge BlackBars0: Zero -> BlackBars {
+					label L20: "1: barWidth > 0 && isblack == true" {
+						layout [ size: 238, 17 ]
+					}
+				}
+				edge WhiteBars0: Zero -> WhiteBars {
+					label L21: "2: barWidth > 0 && iswhite == true" {
+						layout [ size: 239, 17 ]
+					}
+				}
+				edge WhiteBars0_g0098: BlackBars -> WhiteBars {
+					label L22: "1: barToggle && barCount == 1 / singleBlack" {
+						layout [ size: 313, 17 ]
+					}
+				}
+				edge WhiteBars1: BlackBars -> WhiteBars {
+					label L23: "2: barToggle && barCount == 2 / doubleBlack" {
+						layout [ size: 319, 17 ]
+					}
+				}
+				edge WhiteBars2: BlackBars -> WhiteBars {
+					label L24: "3: barToggle && barCount == 3 / tripleBlack" {
+						layout [ size: 307, 17 ]
+					}
+				}
+				edge WhiteBars3: BlackBars -> WhiteBars {
+					label L25: "4: barToggle && barCount == 4 / quadBlack" {
+						layout [ size: 305, 17 ]
+					}
+				}
+				edge BlackBars0_g4414: WhiteBars -> BlackBars {
+					label L26: "1: barToggle && barCount == 1 / singleWhite" {
+						layout [ size: 313, 17 ]
+					}
+				}
+				edge BlackBars1: WhiteBars -> BlackBars {
+					label L27: "2: barToggle && barCount == 2 / doubleWhite" {
+						layout [ size: 319, 17 ]
+					}
+				}
+				edge BlackBars2: WhiteBars -> BlackBars {
+					label L28: "3: barToggle && barCount == 3 / tripleWhite" {
+						layout [ size: 307, 17 ]
+					}
+				}
+			}
+			node BarcodeRead {
+				node Nothing {
+					layout [ size: 77, 34 ]
+				}
+				node LLL {
+					layout [ size: 48, 34 ]
+				}
+				node LLLDD {
+					layout [ size: 69, 34 ]
+				}
+				node LLLDDL {
+					layout [ size: 79, 34 ]
+				}
+				node LLLDL {
+					layout [ size: 68, 34 ]
+				}
+				node LL {
+					layout [ size: 39, 34 ]
+				}
+				node LLDD {
+					layout [ size: 60, 34 ]
+				}
+				node LLDDLL {
+					layout [ size: 79, 34 ]
+				}
+				node LLD {
+					layout [ size: 49, 34 ]
+				}
+				node LLDLL {
+					layout [ size: 68, 34 ]
+				}
+				node L {
+					layout [ size: 34, 34 ]
+				}
+				node LDDDD {
+					layout [ size: 73, 34 ]
+				}
+				node LDDDDL {
+					layout [ size: 83, 34 ]
+				}
+				node LDDD {
+					layout [ size: 62, 34 ]
+				}
+				node LDDDL {
+					layout [ size: 72, 34 ]
+				}
+				node LDD {
+					layout [ size: 51, 34 ]
+				}
+				node LDDL {
+					layout [ size: 61, 34 ]
+				}
+				node LDDLLL {
+					layout [ size: 79, 34 ]
+				}
+				node LD {
+					layout [ size: 40, 34 ]
+				}
+				node LDL {
+					layout [ size: 50, 34 ]
+				}
+				node LDLLL {
+					layout [ size: 68, 34 ]
+				}
+				node Finished {
+					layout [ size: 377, 80 ]
+				}
+				node Correct {
+					layout [ size: 348, 50 ]
+				}
+				node Incorrect {
+					layout [ size: 490, 50 ]
+				}
+				edge LLL0: Nothing -> LLL {
+					label L29: "1: tripleWhite" {
+						layout [ size: 93, 17 ]
+					}
+				}
+				edge LL0: Nothing -> LL {
+					label L30: "2: doubleWhite" {
+						layout [ size: 105, 17 ]
+					}
+				}
+				edge L0: Nothing -> L {
+					label L31: "3: singleWhite" {
+						layout [ size: 99, 17 ]
+					}
+				}
+				edge LLLDD0: LLL -> LLLDD {
+					label L32: "1: doubleBlack" {
+						layout [ size: 105, 17 ]
+					}
+				}
+				edge LLLDL0: LLL -> LLLDL {
+					label L33: "2: singleBlack" {
+						layout [ size: 99, 17 ]
+					}
+				}
+				edge LLLDDL0: LLLDD -> LLLDDL {
+					label L34: "singleWhite" {
+						layout [ size: 83, 17 ]
+					}
+				}
+				edge Finished0: LLLDDL -> Finished {
+					label L35: "1: singleBlack && valueIndex >= 3 / values[valueIndex] = 0" {
+						layout [ size: 413, 17 ]
+					}
+				}
+				edge Nothing0: LLLDDL -> Nothing {
+					label L36: "2: singleBlack / values[valueIndex] = 0; valueIndex = valueIndex + 1" {
+						layout [ size: 477, 17 ]
+					}
+				}
+				edge Finished0_g8127: LLLDL -> Finished {
+					label L37: "1: doubleBlack && valueIndex >= 3 / values[valueIndex] = 9" {
+						layout [ size: 419, 17 ]
+					}
+				}
+				edge Nothing0_g2329: LLLDL -> Nothing {
+					label L38: "2: doubleBlack / values[valueIndex] = 9; valueIndex = valueIndex + 1" {
+						layout [ size: 483, 17 ]
+					}
+				}
+				edge LLDD0: LL -> LLDD {
+					label L39: "1: doubleBlack" {
+						layout [ size: 105, 17 ]
+					}
+				}
+				edge LLD0: LL -> LLD {
+					label L40: "2: singleBlack" {
+						layout [ size: 99, 17 ]
+					}
+				}
+				edge LLDDLL0: LLDD -> LLDDLL {
+					label L41: "doubleWhite" {
+						layout [ size: 89, 17 ]
+					}
+				}
+				edge Finished0_g7107: LLDDLL -> Finished {
+					label L42: "1: singleBlack && valueIndex >= 3 / values[valueIndex] = 1" {
+						layout [ size: 413, 17 ]
+					}
+				}
+				edge Nothing0_g1661: LLDDLL -> Nothing {
+					label L43: "2: singleBlack / values[valueIndex] = 1; valueIndex = valueIndex + 1" {
+						layout [ size: 477, 17 ]
+					}
+				}
+				edge LLDLL0: LLD -> LLDLL {
+					label L44: "doubleWhite" {
+						layout [ size: 89, 17 ]
+					}
+				}
+				edge Finished0_g9654: LLDLL -> Finished {
+					label L45: "1: doubleBlack && valueIndex >= 3 / values[valueIndex] = 2" {
+						layout [ size: 419, 17 ]
+					}
+				}
+				edge Nothing0_g1533: LLDLL -> Nothing {
+					label L46: "2: doubleBlack / values[valueIndex] = 2; valueIndex = valueIndex + 1" {
+						layout [ size: 483, 17 ]
+					}
+				}
+				edge LDDDD0: L -> LDDDD {
+					label L47: "1: quadBlack" {
+						layout [ size: 91, 17 ]
+					}
+				}
+				edge LDDD0: L -> LDDD {
+					label L48: "2: tripleBlack" {
+						layout [ size: 93, 17 ]
+					}
+				}
+				edge LDD0: L -> LDD {
+					label L49: "3: doubleBlack" {
+						layout [ size: 105, 17 ]
+					}
+				}
+				edge LD0: L -> LD {
+					label L50: "4: singleBlack" {
+						layout [ size: 99, 17 ]
+					}
+				}
+				edge LDDDDL0: LDDDD -> LDDDDL {
+					label L51: "singleWhite" {
+						layout [ size: 83, 17 ]
+					}
+				}
+				edge Finished0_g4663: LDDDDL -> Finished {
+					label L52: "1: singleBlack && valueIndex >= 3 / values[valueIndex] = 3" {
+						layout [ size: 413, 17 ]
+					}
+				}
+				edge Nothing0_g4753: LDDDDL -> Nothing {
+					label L53: "2: singleBlack / values[valueIndex] = 3; valueIndex = valueIndex + 1" {
+						layout [ size: 477, 17 ]
+					}
+				}
+				edge LDDDL0: LDDD -> LDDDL {
+					label L54: "singleWhite" {
+						layout [ size: 83, 17 ]
+					}
+				}
+				edge Finished0_g2976: LDDDL -> Finished {
+					label L55: "1: doubleBlack && valueIndex >= 3 / values[valueIndex] = 7" {
+						layout [ size: 419, 17 ]
+					}
+				}
+				edge Nothing0_g9059: LDDDL -> Nothing {
+					label L56: "2: doubleBlack / values[valueIndex] = 7; valueIndex = valueIndex + 1" {
+						layout [ size: 483, 17 ]
+					}
+				}
+				edge LDDL0: LDD -> LDDL {
+					label L57: "1: singleWhite" {
+						layout [ size: 99, 17 ]
+					}
+				}
+				edge LDDLLL0: LDD -> LDDLLL {
+					label L58: "2: tripleWhite" {
+						layout [ size: 93, 17 ]
+					}
+				}
+				edge Finished0_g6521: LDDL -> Finished {
+					label L59: "1: tripleBlack && valueIndex >= 3 / values[valueIndex] = 8" {
+						layout [ size: 407, 17 ]
+					}
+				}
+				edge Nothing0_g3809: LDDL -> Nothing {
+					label L60: "2: tripleBlack / values[valueIndex] = 8; valueIndex = valueIndex + 1" {
+						layout [ size: 471, 17 ]
+					}
+				}
+				edge Finished0_g3714: LDDLLL -> Finished {
+					label L61: "1: singleBlack && valueIndex >= 3 / values[valueIndex] = 5" {
+						layout [ size: 413, 17 ]
+					}
+				}
+				edge Nothing0_g8681: LDDLLL -> Nothing {
+					label L62: "2: singleBlack / values[valueIndex] = 5; valueIndex = valueIndex + 1" {
+						layout [ size: 477, 17 ]
+					}
+				}
+				edge LDL0: LD -> LDL {
+					label L63: "1: singleWhite" {
+						layout [ size: 99, 17 ]
+					}
+				}
+				edge LDLLL0: LD -> LDLLL {
+					label L64: "2: tripleWhite" {
+						layout [ size: 93, 17 ]
+					}
+				}
+				edge Finished0_g4613: LDL -> Finished {
+					label L65: "1: quadBlack && valueIndex >= 3 / values[valueIndex] = 6" {
+						layout [ size: 405, 17 ]
+					}
+				}
+				edge Nothing0_g8169: LDL -> Nothing {
+					label L66: "2: quadBlack / values[valueIndex] = 6; valueIndex = valueIndex + 1" {
+						layout [ size: 469, 17 ]
+					}
+				}
+				edge Finished0_g1258: LDLLL -> Finished {
+					label L67: "1: doubleBlack && valueIndex >= 3 / values[valueIndex] = 4" {
+						layout [ size: 419, 17 ]
+					}
+				}
+				edge Nothing0_g8756: LDLLL -> Nothing {
+					label L68: "2: doubleBlack / values[valueIndex] = 4; valueIndex = valueIndex + 1" {
+						layout [ size: 483, 17 ]
+					}
+				}
+				edge Correct0: Finished -> Correct {
+					label L69: "1: parity == values[3] / drive = false" {
+						layout [ size: 246, 17 ]
+					}
+				}
+				edge Incorrect0: Finished -> Incorrect {
+					label L70: "2: parity != values[3] / drive = false" {
+						layout [ size: 241, 17 ]
+					}
+				}
+			}
+		}
+		edge Ready0: init -> Ready {
+			label L1: "/ drive = false" {
+				layout [ size: 96, 17 ]
+			}
+		}
+	}
+}

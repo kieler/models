@@ -1,0 +1,73 @@
+graph G1
+node fromGraph {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node Init {
+			layout [ size: 42, 34 ]
+		}
+		node main {
+			algorithm: org.eclipse.elk.box
+			node N2 {
+				node init1 {
+					layout [ size: 51, 34 ]
+				}
+				node exit1 {
+					layout [ size: 61, 40 ]
+				}
+				edge exit10: init1 -> exit1 {
+					label L1: "/ I = true" {
+						layout [ size: 58, 17 ]
+					}
+				}
+			}
+			node N3 {
+				node init2 {
+					layout [ size: 51, 34 ]
+				}
+				node WaitI {
+					layout [ size: 54, 34 ]
+				}
+				node S1 {
+					layout [ size: 39, 34 ]
+				}
+				node S2 {
+					layout [ size: 39, 34 ]
+				}
+				node pause {
+					layout [ size: 63, 34 ]
+				}
+				node exit2 {
+					layout [ size: 61, 40 ]
+				}
+				edge WaitI0: init2 -> WaitI
+				edge S20: WaitI -> S2 {
+					label L2: "1: I / O = true" {
+						layout [ size: 90, 17 ]
+					}
+				}
+				edge S10: WaitI -> S1 {
+					label L3: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge WaitI0_g1421: S1 -> WaitI
+				edge pause0: S2 -> pause {
+					label L4: "1:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge exit20: S2 -> exit2 {
+					label L5: "2: / O = false" {
+						layout [ size: 87, 17 ]
+					}
+				}
+				edge S20_g9059: pause -> S2
+			}
+		}
+		node exit3 {
+			layout [ size: 61, 40 ]
+		}
+		edge main0: Init -> main
+		edge exit30: main -> exit3
+	}
+}

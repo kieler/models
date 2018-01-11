@@ -1,0 +1,151 @@
+graph G1
+node elevatorsimple {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node waiting {
+			layout [ size: 71, 34 ]
+		}
+		node movingUpNoAlarm {
+			layout [ size: 153, 34 ]
+		}
+		node movingUpAlarmLamp5 {
+			layout [ size: 178, 34 ]
+		}
+		node movingUpAlarm4 {
+			layout [ size: 140, 34 ]
+		}
+		node movingUpAlarmLamp3 {
+			layout [ size: 178, 34 ]
+		}
+		node movingUpAlarm2 {
+			layout [ size: 140, 34 ]
+		}
+		node movingUpAlarmLamp1 {
+			layout [ size: 178, 34 ]
+		}
+		node Up {
+			layout [ size: 41, 34 ]
+		}
+		node movingDownNoAlarm {
+			layout [ size: 173, 34 ]
+		}
+		node movingDownAlarmLamp5 {
+			layout [ size: 198, 34 ]
+		}
+		node movingDownAlarm4 {
+			layout [ size: 160, 34 ]
+		}
+		node movingDownAlarmLamp3 {
+			layout [ size: 198, 34 ]
+		}
+		node movingDownAlarm2 {
+			layout [ size: 160, 34 ]
+		}
+		node movingDownAlarmLamp1 {
+			layout [ size: 198, 34 ]
+		}
+		node Down {
+			layout [ size: 61, 34 ]
+		}
+		edge movingUpNoAlarm0: waiting -> movingUpNoAlarm {
+			label L1: "1: ButtonUp / Move = 1" {
+				layout [ size: 162, 17 ]
+			}
+		}
+		edge movingDownNoAlarm0: waiting -> movingDownNoAlarm {
+			label L2: "2: ButtonDown / Move = -1" {
+				layout [ size: 187, 17 ]
+			}
+		}
+		edge Up0: waiting -> Up {
+			label L3: "3: IsUp / Move = 0" {
+				layout [ size: 126, 17 ]
+			}
+		}
+		edge Down0: waiting -> Down {
+			label L4: "4: IsDown / Move = 0" {
+				layout [ size: 146, 17 ]
+			}
+		}
+		edge movingUpAlarmLamp50: movingUpNoAlarm -> movingUpAlarmLamp5 {
+			label L5: "1: ButtonAlarm / Move = 0; AlarmLamp = true" {
+				layout [ size: 310, 17 ]
+			}
+		}
+		edge Up0_g1834: movingUpNoAlarm -> Up {
+			label L6: "2: IsUp / Move = 0" {
+				layout [ size: 126, 17 ]
+			}
+		}
+		edge movingUpAlarm40: movingUpAlarmLamp5 -> movingUpAlarm4 {
+			label L7: "Second / AlarmLamp = false" {
+				layout [ size: 193, 17 ]
+			}
+		}
+		edge movingUpAlarmLamp30: movingUpAlarm4 -> movingUpAlarmLamp3 {
+			label L8: "Second / AlarmLamp = true" {
+				layout [ size: 188, 17 ]
+			}
+		}
+		edge movingUpAlarm20: movingUpAlarmLamp3 -> movingUpAlarm2 {
+			label L9: "Second / AlarmLamp = false" {
+				layout [ size: 193, 17 ]
+			}
+		}
+		edge movingUpAlarmLamp10: movingUpAlarm2 -> movingUpAlarmLamp1 {
+			label L10: "Second / AlarmLamp = true" {
+				layout [ size: 188, 17 ]
+			}
+		}
+		edge movingUpNoAlarm0_g4033: movingUpAlarmLamp1 -> movingUpNoAlarm {
+			label L11: "Second / AlarmLamp = false; Move = 1" {
+				layout [ size: 267, 17 ]
+			}
+		}
+		edge movingDownNoAlarm0_g5247: Up -> movingDownNoAlarm {
+			label L12: "ButtonDown / Move = -1" {
+				layout [ size: 171, 17 ]
+			}
+		}
+		edge movingDownAlarmLamp50: movingDownNoAlarm -> movingDownAlarmLamp5 {
+			label L13: "1: ButtonAlarm / Move = 0; AlarmLamp = true" {
+				layout [ size: 310, 17 ]
+			}
+		}
+		edge Down0_g3339: movingDownNoAlarm -> Down {
+			label L14: "2: IsDown / Move = 0" {
+				layout [ size: 146, 17 ]
+			}
+		}
+		edge movingDownAlarm40: movingDownAlarmLamp5 -> movingDownAlarm4 {
+			label L15: "Second / AlarmLamp = false" {
+				layout [ size: 193, 17 ]
+			}
+		}
+		edge movingDownAlarmLamp30: movingDownAlarm4 -> movingDownAlarmLamp3 {
+			label L16: "Second / AlarmLamp = true" {
+				layout [ size: 188, 17 ]
+			}
+		}
+		edge movingDownAlarm20: movingDownAlarmLamp3 -> movingDownAlarm2 {
+			label L17: "Second / AlarmLamp = false" {
+				layout [ size: 193, 17 ]
+			}
+		}
+		edge movingDownAlarmLamp10: movingDownAlarm2 -> movingDownAlarmLamp1 {
+			label L18: "Second / AlarmLamp = true" {
+				layout [ size: 188, 17 ]
+			}
+		}
+		edge movingDownNoAlarm0_g6631: movingDownAlarmLamp1 -> movingDownNoAlarm {
+			label L19: "Second / AlarmLamp = false; Move = -1" {
+				layout [ size: 272, 17 ]
+			}
+		}
+		edge movingUpNoAlarm0_g9769: Down -> movingUpNoAlarm {
+			label L20: "ButtonUp / Move = 1" {
+				layout [ size: 146, 17 ]
+			}
+		}
+	}
+}

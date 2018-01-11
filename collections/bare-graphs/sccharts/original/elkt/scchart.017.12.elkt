@@ -1,0 +1,160 @@
+graph G1
+node a {
+	algorithm: org.eclipse.elk.box
+	node movement {
+		node init {
+			layout [ size: 42, 34 ]
+		}
+		node extended {
+			layout [ size: 88, 34 ]
+		}
+		node retracted {
+			layout [ size: 86, 34 ]
+		}
+		node extending_stick {
+			layout [ size: 133, 34 ]
+		}
+		node extending_bucket {
+			layout [ size: 147, 34 ]
+		}
+		node lowering_boom {
+			layout [ size: 130, 34 ]
+		}
+		node retracting_arm {
+			layout [ size: 125, 34 ]
+		}
+		node retracted_arm {
+			layout [ size: 121, 34 ]
+		}
+		node retracting_boom {
+			layout [ size: 138, 34 ]
+		}
+		node cancelling_movement {
+			layout [ size: 174, 34 ]
+		}
+		edge retracted0: init -> retracted {
+			label L1: "1: STICK_IN && BUCKET_IN / DONE_LAMP = true" {
+				layout [ size: 353, 17 ]
+			}
+		}
+		edge extended0: init -> extended {
+			label L2: "2: STICK_OUT && BUCKET_IN" {
+				layout [ size: 220, 17 ]
+			}
+		}
+		edge retracting_arm0: init -> retracting_arm {
+			label L3: "3: / STICK_PUSH = true; BUCKET_PUSH = true" {
+				layout [ size: 334, 17 ]
+			}
+		}
+		edge lowering_boom0: extended -> lowering_boom {
+			label L4: "/ BOOM_PUSH = true" {
+				layout [ size: 152, 17 ]
+			}
+		}
+		edge extending_stick0: retracted -> extending_stick {
+			label L5: "EXTEND_BUTTON / STICK_PULL = true; DONE_LAMP = false" {
+				layout [ size: 438, 17 ]
+			}
+		}
+		edge cancelling_movement0: extending_stick -> cancelling_movement {
+			label L6: "1: RETRACT_BUTTON / STICK_PULL = false; STICK_PUSH = true; cancelling = true" {
+				layout [ size: 593, 17 ]
+			}
+		}
+		edge extending_bucket0: extending_stick -> extending_bucket {
+			label L7: "2: STICK_OUT / STICK_PULL = false; BUCKET_PULL = true" {
+				layout [ size: 424, 17 ]
+			}
+		}
+		edge cancelling_movement0_g4571: extending_bucket -> cancelling_movement {
+			label L8: "1: RETRACT_BUTTON / BUCKET_PULL = false; BUCKET_PUSH = true; STICK_PUSH = true; cancelling = true" {
+				layout [ size: 779, 17 ]
+			}
+		}
+		edge extended0_g5396: extending_bucket -> extended {
+			label L9: "2: BUCKET_OUT / BUCKET_PULL = false" {
+				layout [ size: 295, 17 ]
+			}
+		}
+		edge cancelling_movement0_g3455: lowering_boom -> cancelling_movement {
+			label L10: "1: RETRACT_BUTTON / BOOM_PUSH = false; BOOM_PULL = true; STICK_PUSH = true; BUCKET_PUSH = true; cancelling = true" {
+				layout [ size: 915, 17 ]
+			}
+		}
+		edge retracting_arm0_g9541: lowering_boom -> retracting_arm {
+			label L11: "2: BOOM_OUT / BOOM_PUSH = false; STICK_PUSH = true; BUCKET_PUSH = true" {
+				layout [ size: 584, 17 ]
+			}
+		}
+		edge retracted_arm0: retracting_arm -> retracted_arm {
+			label L12: "STICK_IN && BUCKET_IN / STICK_PUSH = false; BUCKET_PUSH = false; DONE_LAMP = true" {
+				layout [ size: 665, 17 ]
+			}
+		}
+		edge retracting_boom0: retracted_arm -> retracting_boom {
+			label L13: "RETRACT_BUTTON / BOOM_PULL = true; DONE_LAMP = false" {
+				layout [ size: 450, 17 ]
+			}
+		}
+		edge retracted0_g0870: retracting_boom -> retracted {
+			label L14: "BOOM_IN / BOOM_PULL = false; DONE_LAMP = true" {
+				layout [ size: 376, 17 ]
+			}
+		}
+		edge retracted0_g4599: cancelling_movement -> retracted {
+			label L15: "BOOM_IN && BUCKET_IN && STICK_IN / BOOM_PULL = false; BUCKET_PUSH = false; STICK_PUSH = false; cancelling = false; DONE_LAMP = true" {
+				layout [ size: 1051, 17 ]
+			}
+		}
+	}
+	node cancel {
+		node idle {
+			layout [ size: 46, 34 ]
+		}
+		node flashing_on {
+			layout [ size: 103, 34 ]
+		}
+		node flashing_on2 {
+			layout [ size: 111, 34 ]
+		}
+		node flashing_off {
+			layout [ size: 103, 34 ]
+		}
+		edge flashing_on0: idle -> flashing_on {
+			label L16: "cancelling / CANCEL_LAMP = true" {
+				layout [ size: 240, 17 ]
+			}
+		}
+		edge idle0: flashing_on -> idle {
+			label L17: "1: !cancelling / CANCEL_LAMP = false" {
+				layout [ size: 265, 17 ]
+			}
+		}
+		edge flashing_on20: flashing_on -> flashing_on2 {
+			label L18: "2: SECOND" {
+				layout [ size: 81, 17 ]
+			}
+		}
+		edge idle0_g4224: flashing_on2 -> idle {
+			label L19: "1: !cancelling / CANCEL_LAMP = false" {
+				layout [ size: 265, 17 ]
+			}
+		}
+		edge flashing_off0: flashing_on2 -> flashing_off {
+			label L20: "2: SECOND / CANCEL_LAMP = false" {
+				layout [ size: 254, 17 ]
+			}
+		}
+		edge idle0_g3996: flashing_off -> idle {
+			label L21: "1: !cancelling / CANCEL_LAMP = false" {
+				layout [ size: 265, 17 ]
+			}
+		}
+		edge flashing_on0_g5686: flashing_off -> flashing_on {
+			label L22: "2: 2 SECOND / CANCEL_LAMP = true" {
+				layout [ size: 261, 17 ]
+			}
+		}
+	}
+}

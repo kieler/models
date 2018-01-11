@@ -1,0 +1,354 @@
+graph G1
+node nrombail {
+	algorithm: org.eclipse.elk.box
+	node speedRegulation {
+		node loop {
+			layout [ size: 52, 34 ]
+		}
+		node loopPressed {
+			layout [ size: 111, 34 ]
+		}
+		edge loopPressed0: loop -> loopPressed {
+			label L1: "1: leftButton == true / addSpeedLeft += -5; addSpeedRight += -5" {
+				layout [ size: 451, 17 ]
+			}
+		}
+		edge loopPressed1: loop -> loopPressed {
+			label L2: "2: rightButton == true / addSpeedLeft += 5; addSpeedRight += 5" {
+				layout [ size: 451, 17 ]
+			}
+		}
+		edge loop0: loopPressed -> loop {
+			label L3: "leftButton == false && rightButton == false" {
+				layout [ size: 302, 17 ]
+			}
+		}
+	}
+	node lightSensor {
+		node loop_g7340 {
+			layout [ size: 52, 34 ]
+		}
+		edge loop0_g3696: loop_g7340 -> loop_g7340 {
+			label L4: "1: light > 500 / isWhite = true; yellowLight = true" {
+				layout [ size: 332, 17 ]
+			}
+		}
+		edge loop1: loop_g7340 -> loop_g7340 {
+			label L5: "2: light <= 500 / isWhite = false; yellowLight = false" {
+				layout [ size: 351, 17 ]
+			}
+		}
+	}
+	node readNumber {
+		node waitForStart {
+			layout [ size: 106, 34 ]
+		}
+		node prestart {
+			layout [ size: 76, 34 ]
+		}
+		node started {
+			layout [ size: 71, 34 ]
+		}
+		node readFirst {
+			layout [ size: 84, 34 ]
+		}
+		node readSecond {
+			layout [ size: 107, 34 ]
+		}
+		node readThird {
+			layout [ size: 91, 34 ]
+		}
+		node doneStart {
+			layout [ size: 90, 34 ]
+		}
+		node empty {
+			layout [ size: 64, 34 ]
+		}
+		node l {
+			layout [ size: 34, 34 ]
+		}
+		node ll {
+			layout [ size: 34, 34 ]
+		}
+		node lll {
+			layout [ size: 34, 34 ]
+		}
+		node llld {
+			layout [ size: 42, 34 ]
+		}
+		node lld {
+			layout [ size: 38, 34 ]
+		}
+		node ld {
+			layout [ size: 34, 34 ]
+		}
+		node ldl {
+			layout [ size: 38, 34 ]
+		}
+		node ldd {
+			layout [ size: 43, 34 ]
+		}
+		node lddl {
+			layout [ size: 47, 34 ]
+		}
+		node lddd {
+			layout [ size: 52, 34 ]
+		}
+		node done {
+			layout [ size: 56, 34 ]
+		}
+		node adjustNXT {
+			layout [ size: 94, 34 ]
+		}
+		node readEnd {
+			layout [ size: 81, 34 ]
+		}
+		node prepareRotation {
+			layout [ size: 137, 34 ]
+		}
+		node calculateX {
+			layout [ size: 94, 34 ]
+		}
+		node rotate {
+			layout [ size: 62, 34 ]
+		}
+		node postrotate {
+			layout [ size: 93, 34 ]
+		}
+		edge started0: waitForStart -> started {
+			label L6: "start / addSpeedRight += 70; addSpeedLeft += 70" {
+				layout [ size: 347, 17 ]
+			}
+		}
+		edge started0_g3920: prestart -> started {
+			label L7: "isMotorMovingLeft == false && isMotorMovingRight == false / numberToRead = 0; adjust = 0; y = 0; x = 10000; beeper = false" {
+				layout [ size: 875, 17 ]
+			}
+		}
+		edge started0_g0749: started -> started {
+			label L8: "1: isWhite == true / rotateToDegreesRight = 1; rotateToDegreesLeft = 1" {
+				layout [ size: 502, 17 ]
+			}
+		}
+		edge readFirst0: started -> readFirst {
+			label L9: "2: isWhite == false && isMotorMovingLeft == false && isMotorMovingRight == false / addSpeedRight -= 70; addSpeedLeft -= 70; rotateToDegreesRight = 3; rotateToDegreesLeft = 3" {
+				layout [ size: 1269, 17 ]
+			}
+		}
+		edge prestart0: readFirst -> prestart {
+			label L10: "1: isMotorMovingLeft == false && isMotorMovingRight == false && isWhite == true / addSpeedRight += 70; addSpeedLeft += 70" {
+				layout [ size: 898, 17 ]
+			}
+		}
+		edge readSecond0: readFirst -> readSecond {
+			label L11: "2: isMotorMovingLeft == false && isMotorMovingRight == false && isWhite == false / rotateToDegreesRight = 10; rotateToDegreesLeft = 10" {
+				layout [ size: 983, 17 ]
+			}
+		}
+		edge readThird0: readSecond -> readThird {
+			label L12: "1: isMotorMovingLeft == false && isMotorMovingRight == false && isWhite == true / rotateToDegreesRight = 10; rotateToDegreesLeft = 10" {
+				layout [ size: 978, 17 ]
+			}
+		}
+		edge prestart0_g0829: readSecond -> prestart {
+			label L13: "2: isMotorMovingLeft == false && isMotorMovingRight == false && isWhite == false / addSpeedRight += 70; addSpeedLeft += 70" {
+				layout [ size: 903, 17 ]
+			}
+		}
+		edge prestart0_g6813: readThird -> prestart {
+			label L14: "1: isMotorMovingLeft == false && isMotorMovingRight == false && isWhite == true / addSpeedRight += 70; addSpeedLeft += 70" {
+				layout [ size: 898, 17 ]
+			}
+		}
+		edge doneStart0: readThird -> doneStart {
+			label L15: "2: isMotorMovingLeft == false && isMotorMovingRight == false && isWhite == false" {
+				layout [ size: 588, 17 ]
+			}
+		}
+		edge adjustNXT0: doneStart -> adjustNXT {
+			label L16: "1: numberToRead < 4 / numberToRead = 1; adjust = 1; counter = 0" {
+				layout [ size: 461, 17 ]
+			}
+		}
+		edge prepareRotation0: doneStart -> prepareRotation {
+			label L17: "2: numberToRead == 4 && 9 - ((y / 10) % 10 + (y / 100) % 10 + (y / 1000) % 10) % 10 == y % 10 / y = y / 10; x = 10000" {
+				layout [ size: 776, 17 ]
+			}
+		}
+		edge prepareRotation1: doneStart -> prepareRotation {
+			label L18: "3: numberToRead == 4 && 9 - ((y / 10) % 10 + (y / 100) % 10 + (y / 1000) % 10) % 10 != y % 10 / y = y / 10; beeper = true; x = 10000" {
+				layout [ size: 876, 17 ]
+			}
+		}
+		edge l0: empty -> l {
+			label L19: "1: isMotorMovingLeft == false && isMotorMovingRight == false && isWhite == true / rotateToDegreesRight = 10; rotateToDegreesLeft = 10" {
+				layout [ size: 978, 17 ]
+			}
+		}
+		edge prestart0_g8699: empty -> prestart {
+			label L20: "2: isMotorMovingLeft == false && isMotorMovingRight == false && isWhite == false / addSpeedRight += 70; addSpeedLeft += 70" {
+				layout [ size: 903, 17 ]
+			}
+		}
+		edge ll0: l -> ll {
+			label L21: "1: isMotorMovingLeft == false && isMotorMovingRight == false && isWhite == true / rotateToDegreesRight = 10; rotateToDegreesLeft = 10" {
+				layout [ size: 978, 17 ]
+			}
+		}
+		edge ld0: l -> ld {
+			label L22: "2: isMotorMovingLeft == false && isMotorMovingRight == false && isWhite == false / rotateToDegreesRight = 10; rotateToDegreesLeft = 10" {
+				layout [ size: 983, 17 ]
+			}
+		}
+		edge lll0: ll -> lll {
+			label L23: "1: isMotorMovingLeft == false && isMotorMovingRight == false && isWhite == true / rotateToDegreesRight = 10; rotateToDegreesLeft = 10" {
+				layout [ size: 978, 17 ]
+			}
+		}
+		edge lld0: ll -> lld {
+			label L24: "2: isMotorMovingLeft == false && isMotorMovingRight == false && isWhite == false / rotateToDegreesRight = 10; rotateToDegreesLeft = 10" {
+				layout [ size: 983, 17 ]
+			}
+		}
+		edge prestart0_g4680: lll -> prestart {
+			label L25: "1: isMotorMovingLeft == false && isMotorMovingRight == false && isWhite == true / addSpeedRight += 70; addSpeedLeft += 70" {
+				layout [ size: 898, 17 ]
+			}
+		}
+		edge llld0: lll -> llld {
+			label L26: "2: isMotorMovingLeft == false && isMotorMovingRight == false && isWhite == false / rotateToDegreesRight = 10; rotateToDegreesLeft = 10" {
+				layout [ size: 983, 17 ]
+			}
+		}
+		edge done0: llld -> done {
+			label L27: "1: isMotorMovingLeft == false && isMotorMovingRight == false && isWhite == true / rotateToDegreesRight = 22; rotateToDegreesLeft = 22; y = y + 9" {
+				layout [ size: 1042, 17 ]
+			}
+		}
+		edge done1: llld -> done {
+			label L28: "2: isMotorMovingLeft == false && isMotorMovingRight == false && isWhite == false / rotateToDegreesRight = 22; rotateToDegreesLeft = 22" {
+				layout [ size: 983, 17 ]
+			}
+		}
+		edge done0_g7765: lld -> done {
+			label L29: "1: isMotorMovingLeft == false && isMotorMovingRight == false && isWhite == true / rotateToDegreesRight = 32; rotateToDegreesLeft = 32; y = y + 2" {
+				layout [ size: 1042, 17 ]
+			}
+		}
+		edge done1_g7306: lld -> done {
+			label L30: "2: isMotorMovingLeft == false && isMotorMovingRight == false && isWhite == false / rotateToDegreesRight = 32; rotateToDegreesLeft = 32; y = y + 1" {
+				layout [ size: 1047, 17 ]
+			}
+		}
+		edge ldl0: ld -> ldl {
+			label L31: "1: isMotorMovingLeft == false && isMotorMovingRight == false && isWhite == true / rotateToDegreesRight = 10; rotateToDegreesLeft = 10" {
+				layout [ size: 978, 17 ]
+			}
+		}
+		edge ldd0: ld -> ldd {
+			label L32: "2: isMotorMovingLeft == false && isMotorMovingRight == false && isWhite == false / rotateToDegreesRight = 10; rotateToDegreesLeft = 10" {
+				layout [ size: 983, 17 ]
+			}
+		}
+		edge done0_g2208: ldl -> done {
+			label L33: "1: isMotorMovingLeft == false && isMotorMovingRight == false && isWhite == true / rotateToDegreesRight = 32; rotateToDegreesLeft = 32; y = y + 4" {
+				layout [ size: 1042, 17 ]
+			}
+		}
+		edge done1_g5919: ldl -> done {
+			label L34: "2: isMotorMovingLeft == false && isMotorMovingRight == false && isWhite == false / rotateToDegreesRight = 32; rotateToDegreesLeft = 32; y = y + 6" {
+				layout [ size: 1047, 17 ]
+			}
+		}
+		edge lddl0: ldd -> lddl {
+			label L35: "1: isMotorMovingLeft == false && isMotorMovingRight == false && isWhite == true / rotateToDegreesRight = 10; rotateToDegreesLeft = 10" {
+				layout [ size: 978, 17 ]
+			}
+		}
+		edge lddd0: ldd -> lddd {
+			label L36: "2: isMotorMovingLeft == false && isMotorMovingRight == false && isWhite == false / rotateToDegreesRight = 10; rotateToDegreesLeft = 10" {
+				layout [ size: 983, 17 ]
+			}
+		}
+		edge done0_g7041: lddl -> done {
+			label L37: "1: isMotorMovingLeft == false && isMotorMovingRight == false && isWhite == true / rotateToDegreesRight = 22; rotateToDegreesLeft = 22; y = y + 5" {
+				layout [ size: 1042, 17 ]
+			}
+		}
+		edge done1_g2526: lddl -> done {
+			label L38: "2: isMotorMovingLeft == false && isMotorMovingRight == false && isWhite == false / rotateToDegreesRight = 22; rotateToDegreesLeft = 22; y = y + 8" {
+				layout [ size: 1047, 17 ]
+			}
+		}
+		edge done0_g8508: lddd -> done {
+			label L39: "1: isMotorMovingLeft == false && isMotorMovingRight == false && isWhite == true / rotateToDegreesRight = 22; rotateToDegreesLeft = 22; y = y + 7" {
+				layout [ size: 1042, 17 ]
+			}
+		}
+		edge done1_g1318: lddd -> done {
+			label L40: "2: isMotorMovingLeft == false && isMotorMovingRight == false && isWhite == false / rotateToDegreesRight = 22; rotateToDegreesLeft = 22; y = y + 3" {
+				layout [ size: 1047, 17 ]
+			}
+		}
+		edge adjustNXT0_g5234: done -> adjustNXT {
+			label L41: "1: numberToRead < 4 / numberToRead = numberToRead + 1; y = y * 10; adjust = 1; counter = 0" {
+				layout [ size: 656, 17 ]
+			}
+		}
+		edge adjustNXT1: done -> adjustNXT {
+			label L42: "2: numberToRead >= 4 / adjust = 2; counter = 0" {
+				layout [ size: 328, 17 ]
+			}
+		}
+		edge prestart0_g1857: adjustNXT -> prestart {
+			label L43: "1: counter == 15 / addSpeedRight += 70; addSpeedLeft += 70" {
+				layout [ size: 428, 17 ]
+			}
+		}
+		edge adjustNXT0_g5529: adjustNXT -> adjustNXT {
+			label L44: "2: isMotorMovingLeft == false && isMotorMovingRight == false && isWhite == false && counter < 15 / rotateToDegreesRight = 1; rotateToDegreesLeft = 1; counter++" {
+				layout [ size: 1165, 17 ]
+			}
+		}
+		edge empty0: adjustNXT -> empty {
+			label L45: "3: isMotorMovingLeft == false && isMotorMovingRight == false && isWhite == true && adjust == 1 / rotateToDegreesRight = 4; rotateToDegreesLeft = 4" {
+				layout [ size: 1069, 17 ]
+			}
+		}
+		edge readEnd0: adjustNXT -> readEnd {
+			label L46: "4: isMotorMovingLeft == false && isMotorMovingRight == false && isWhite == true && adjust == 2 / rotateToDegreesRight = 4; rotateToDegreesLeft = 4" {
+				layout [ size: 1069, 17 ]
+			}
+		}
+		edge readFirst0_g0882: readEnd -> readFirst {
+			label L47: "isMotorMovingLeft == false && isMotorMovingRight == false && isWhite == true / rotateToDegreesRight = 10; rotateToDegreesLeft = 10; x = y" {
+				layout [ size: 1003, 17 ]
+			}
+		}
+		edge calculateX0: prepareRotation -> calculateX {
+			label L48: "isMotorMovingLeft == false && isMotorMovingRight == false / addSpeedLeft += 170; addSpeedRight += 170; rotateToDegreesRight = 180; rotateToDegreesLeft = 180" {
+				layout [ size: 1167, 17 ]
+			}
+		}
+		edge rotate0: calculateX -> rotate {
+			label L49: "1: y < 500 && isMotorMovingLeft == false && isMotorMovingRight == false / x = y" {
+				layout [ size: 570, 17 ]
+			}
+		}
+		edge rotate1: calculateX -> rotate {
+			label L50: "2: y >= 500 && isMotorMovingLeft == false && isMotorMovingRight == false / x = y - 1000" {
+				layout [ size: 623, 17 ]
+			}
+		}
+		edge postrotate0: rotate -> postrotate {
+			label L51: "isMotorMovingLeft == false && isMotorMovingRight == false / rotateToDegreesLeft = 2 * x; rotateToDegreesRight = (-2) * x; x = 10000" {
+				layout [ size: 941, 17 ]
+			}
+		}
+		edge prestart0_g1650: postrotate -> prestart {
+			label L52: "isMotorMovingLeft == false && isMotorMovingRight == false / addSpeedLeft -= 100; addSpeedRight -= 100" {
+				layout [ size: 753, 17 ]
+			}
+		}
+	}
+}

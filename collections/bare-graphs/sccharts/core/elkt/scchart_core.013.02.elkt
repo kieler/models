@@ -1,0 +1,61 @@
+graph G1
+node fromGraph {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node Init {
+			layout [ size: 42, 34 ]
+		}
+		node main {
+			algorithm: org.eclipse.elk.box
+			node N2 {
+				node init1 {
+					layout [ size: 51, 34 ]
+				}
+				node exit1 {
+					layout [ size: 61, 40 ]
+				}
+				edge exit10: init1 -> exit1 {
+					label L1: "/ I = true" {
+						layout [ size: 58, 17 ]
+					}
+				}
+			}
+			node N3 {
+				node __sd_Depth {
+					layout [ size: 105, 34 ]
+				}
+				node S1 {
+					layout [ size: 39, 34 ]
+				}
+				node __sd_Depth1 {
+					layout [ size: 113, 34 ]
+				}
+				node __te_S {
+					layout [ size: 69, 34 ]
+				}
+				edge __te_S0: __sd_Depth -> __te_S {
+					label L2: "1: I" {
+						layout [ size: 21, 17 ]
+					}
+				}
+				edge S10: __sd_Depth -> S1 {
+					label L3: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge __sd_Depth0: S1 -> __sd_Depth
+				edge __sd_Depth10: __sd_Depth1 -> __sd_Depth1
+				edge __sd_Depth10_g3709: __te_S -> __sd_Depth1 {
+					label L4: "/ O = true" {
+						layout [ size: 66, 17 ]
+					}
+				}
+			}
+		}
+		node exit3 {
+			layout [ size: 61, 40 ]
+		}
+		edge main0: Init -> main
+		edge exit30: main -> exit3
+	}
+}

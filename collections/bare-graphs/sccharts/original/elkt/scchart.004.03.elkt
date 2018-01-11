@@ -1,0 +1,37 @@
+graph G1
+node LegsController {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node Stop {
+			layout [ size: 54, 34 ]
+		}
+		node Moving {
+			layout [ size: 74, 34 ]
+		}
+		edge Moving0: Stop -> Moving {
+			label L1: "1: EXTEND_BUTTON / LEGS_EXTEND = true" {
+				layout [ size: 320, 17 ]
+			}
+		}
+		edge Moving1: Stop -> Moving {
+			label L2: "2: RETRACT_BUTTON / LEGS_RETRACT = true" {
+				layout [ size: 340, 17 ]
+			}
+		}
+		edge Stop0: Moving -> Stop {
+			label L3: "1: LEGS_IN / LEGS_STOP = true; LEGS_RETRACT = false; DONE_LAMP = false" {
+				layout [ size: 561, 17 ]
+			}
+		}
+		edge Stop1: Moving -> Stop {
+			label L4: "2: LEGS_OUT / LEGS_STOP = true; LEGS_EXTEND = false; DONE_LAMP = true" {
+				layout [ size: 564, 17 ]
+			}
+		}
+		edge Stop2: Moving -> Stop {
+			label L5: "3: STOP_BUTTON / LEGS_STOP = true; LEGS_RETRACT = false; LEGS_EXTEND = false; DONE_LAMP = false" {
+				layout [ size: 782, 17 ]
+			}
+		}
+	}
+}

@@ -1,0 +1,357 @@
+graph G1
+node xalrc {
+	algorithm: org.eclipse.elk.box
+	node A {
+		node init {
+			algorithm: org.eclipse.elk.box
+			node __EA_Entry {
+				node __EA_Main {
+					algorithm: org.eclipse.elk.box
+					node _During {
+						node _I {
+							layout [ size: 34, 34 ]
+						}
+						node _AAborted {
+							layout [ size: 100, 40 ]
+						}
+						node __te_S {
+							layout [ size: 69, 34 ]
+						}
+						node __sd_Pause {
+							layout [ size: 105, 34 ]
+						}
+						node __sd_Depth {
+							layout [ size: 105, 34 ]
+						}
+						edge _AAborted0: _I -> _AAborted {
+							label L5: "1: _Atrig" {
+								layout [ size: 58, 17 ]
+							}
+						}
+						edge __sd_Pause0: _I -> __sd_Pause {
+							label L6: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge _I0: __te_S -> _I {
+							label L7: "/ l += 1" {
+								layout [ size: 47, 17 ]
+							}
+						}
+						edge __sd_Depth0: __sd_Pause -> __sd_Depth
+						edge __te_S0: __sd_Depth -> __te_S {
+							label L8: "1: b1" {
+								layout [ size: 34, 17 ]
+							}
+						}
+						edge _I0_g4651: __sd_Depth -> _I {
+							label L9: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+					}
+					node _ACtrl {
+						node _ADone {
+							layout [ size: 81, 40 ]
+						}
+						node __te_S1 {
+							layout [ size: 77, 34 ]
+						}
+						node _ARun {
+							layout [ size: 67, 34 ]
+						}
+						node __sd_Depth1 {
+							layout [ size: 113, 34 ]
+						}
+						edge _ADone0: __te_S1 -> _ADone {
+							label L10: "/ _Atrig = true" {
+								layout [ size: 95, 17 ]
+							}
+						}
+						edge __sd_Depth10: _ARun -> __sd_Depth1
+						edge __te_S10: __sd_Depth1 -> __te_S1 {
+							label L11: "1: b2" {
+								layout [ size: 34, 17 ]
+							}
+						}
+						edge _ARun0: __sd_Depth1 -> _ARun {
+							label L12: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+					}
+				}
+				node __EA_Init {
+					layout [ size: 85, 34 ]
+				}
+				node __EA_Done {
+					layout [ size: 107, 40 ]
+				}
+				node __EA_C {
+					layout [ size: 74, 34 ]
+				}
+				edge __EA_Done0: __EA_Main -> __EA_Done
+				edge __EA_C0: __EA_Init -> __EA_C {
+					label L3: "/ x1 = 1" {
+						layout [ size: 50, 17 ]
+					}
+				}
+				edge __EA_Main0: __EA_C -> __EA_Main {
+					label L4: "/ _Atrig = false" {
+						layout [ size: 100, 17 ]
+					}
+				}
+			}
+		}
+		node setsO1 {
+			algorithm: org.eclipse.elk.box
+			node __EA_Entry_g6087 {
+				node __EA_Init_g1062 {
+					layout [ size: 85, 34 ]
+				}
+				node __EA_Done_g4153 {
+					layout [ size: 107, 40 ]
+				}
+				edge __EA_Done0_g5171: __EA_Init_g1062 -> __EA_Done_g4153 {
+					label L13: "/ o1 = 2" {
+						layout [ size: 51, 17 ]
+					}
+				}
+			}
+		}
+		node setsO1Again {
+			algorithm: org.eclipse.elk.box
+			node _During1 {
+				node _I_g7216 {
+					layout [ size: 34, 34 ]
+				}
+				node __EA_Init_g9326 {
+					layout [ size: 85, 34 ]
+				}
+				node __te_S3 {
+					layout [ size: 77, 34 ]
+				}
+				edge __te_S30: _I_g7216 -> __te_S3
+				edge _I0_g5060: __EA_Init_g9326 -> _I_g7216 {
+					label L14: "/ o1 = 7" {
+						layout [ size: 51, 17 ]
+					}
+				}
+				edge _I0_g3575: __te_S3 -> _I_g7216 {
+					label L15: "/ o1++" {
+						layout [ size: 43, 17 ]
+					}
+				}
+			}
+		}
+		node __EA_Exit {
+			layout [ size: 90, 34 ]
+		}
+		node __te_S2 {
+			layout [ size: 77, 34 ]
+		}
+		node __te_S4 {
+			layout [ size: 77, 34 ]
+		}
+		edge __te_S20: init -> __te_S2
+		edge __EA_Exit0: setsO1 -> __EA_Exit
+		edge __te_S40: __EA_Exit -> __te_S4
+		edge setsO10: __te_S2 -> setsO1 {
+			label L1: "/ o2 = false" {
+				layout [ size: 76, 17 ]
+			}
+		}
+		edge setsO1Again0: __te_S4 -> setsO1Again {
+			label L2: "/ o2 = o2 | true" {
+				layout [ size: 100, 17 ]
+			}
+		}
+	}
+	node B {
+		node init_g6487 {
+			algorithm: org.eclipse.elk.box
+			node __EA_Entry_g7278 {
+				node __EA_Init_g4525 {
+					layout [ size: 85, 34 ]
+				}
+				node __EA_Done_g2215 {
+					layout [ size: 107, 40 ]
+				}
+				node __EA_C1 {
+					layout [ size: 83, 34 ]
+				}
+				edge __EA_C10: __EA_Init_g4525 -> __EA_C1 {
+					label L19: "/ x1 = 1" {
+						layout [ size: 50, 17 ]
+					}
+				}
+				edge __EA_Done0_g2905: __EA_C1 -> __EA_Done_g2215 {
+					label L20: "/ l = 0" {
+						layout [ size: 38, 17 ]
+					}
+				}
+			}
+		}
+		node DoesThings {
+			algorithm: org.eclipse.elk.box
+			node __EA_Entry1 {
+				node __EA_Main_g9320 {
+					algorithm: org.eclipse.elk.box
+					node _During2 {
+						node _I1 {
+							layout [ size: 41, 34 ]
+						}
+						node _AAborted1 {
+							layout [ size: 108, 40 ]
+						}
+						node __te_S5 {
+							layout [ size: 77, 34 ]
+						}
+						node __sd_Pause2 {
+							layout [ size: 114, 34 ]
+						}
+						node __sd_Depth2 {
+							layout [ size: 113, 34 ]
+						}
+						edge _AAborted10: _I1 -> _AAborted1 {
+							label L23: "1: _Atrig1" {
+								layout [ size: 66, 17 ]
+							}
+						}
+						edge __sd_Pause20: _I1 -> __sd_Pause2 {
+							label L24: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge _I10: __te_S5 -> _I1 {
+							label L25: "/ o1++" {
+								layout [ size: 43, 17 ]
+							}
+						}
+						edge __sd_Depth20: __sd_Pause2 -> __sd_Depth2
+						edge __te_S50: __sd_Depth2 -> __te_S5 {
+							label L26: "1: b2" {
+								layout [ size: 34, 17 ]
+							}
+						}
+						edge _I10_g5819: __sd_Depth2 -> _I1 {
+							label L27: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+					}
+					node _During3 {
+						node _I2 {
+							layout [ size: 41, 34 ]
+						}
+						node _AAborted2 {
+							layout [ size: 108, 40 ]
+						}
+						node __sd_Depth3 {
+							layout [ size: 113, 34 ]
+						}
+						node __sd_Pause3 {
+							layout [ size: 114, 34 ]
+						}
+						edge _AAborted20: _I2 -> _AAborted2 {
+							label L28: "1: _Atrig1" {
+								layout [ size: 66, 17 ]
+							}
+						}
+						edge __sd_Pause30: _I2 -> __sd_Pause3 {
+							label L29: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge _I20: __sd_Depth3 -> _I2 {
+							label L30: "/ o3++" {
+								layout [ size: 43, 17 ]
+							}
+						}
+						edge __sd_Depth30: __sd_Pause3 -> __sd_Depth3
+					}
+					node _ACtrl1 {
+						node _ADone1 {
+							layout [ size: 90, 40 ]
+						}
+						node __te_S7 {
+							layout [ size: 77, 34 ]
+						}
+						node _ARun1 {
+							layout [ size: 75, 34 ]
+						}
+						node __sd_Depth4 {
+							layout [ size: 113, 34 ]
+						}
+						edge _ADone10: __te_S7 -> _ADone1 {
+							label L31: "/ _Atrig1 = true" {
+								layout [ size: 103, 17 ]
+							}
+						}
+						edge __sd_Depth40: _ARun1 -> __sd_Depth4
+						edge __te_S70: __sd_Depth4 -> __te_S7 {
+							label L32: "1: b1" {
+								layout [ size: 34, 17 ]
+							}
+						}
+						edge _ARun10: __sd_Depth4 -> _ARun1 {
+							label L33: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+					}
+				}
+				node __EA_Init_g9257 {
+					layout [ size: 85, 34 ]
+				}
+				node __EA_Done_g4961 {
+					layout [ size: 107, 40 ]
+				}
+				node __EA_C2 {
+					layout [ size: 83, 34 ]
+				}
+				edge __EA_Done0_g8921: __EA_Main_g9320 -> __EA_Done_g4961
+				edge __EA_C20: __EA_Init_g9257 -> __EA_C2 {
+					label L21: "/ o3 = 0" {
+						layout [ size: 51, 17 ]
+					}
+				}
+				edge __EA_Main0_g8710: __EA_C2 -> __EA_Main_g9320 {
+					label L22: "/ _Atrig1 = false" {
+						layout [ size: 108, 17 ]
+					}
+				}
+			}
+		}
+		node third {
+			layout [ size: 60, 40 ]
+		}
+		node __te_S8 {
+			layout [ size: 77, 34 ]
+		}
+		node __EA_Exit1 {
+			layout [ size: 99, 34 ]
+		}
+		node __sd_Depth5 {
+			layout [ size: 113, 34 ]
+		}
+		edge __EA_Exit10: init_g6487 -> __EA_Exit1
+		edge __te_S80: DoesThings -> __te_S8
+		edge third0: __te_S8 -> third {
+			label L16: "/ o3 = 17" {
+				layout [ size: 59, 17 ]
+			}
+		}
+		edge __sd_Depth50: __EA_Exit1 -> __sd_Depth5
+		edge DoesThings0: __sd_Depth5 -> DoesThings {
+			label L17: "1: o2" {
+				layout [ size: 34, 17 ]
+			}
+		}
+		edge __EA_Exit10_g2313: __sd_Depth5 -> __EA_Exit1 {
+			label L18: "2:" {
+				layout [ size: 13, 17 ]
+			}
+		}
+	}
+}

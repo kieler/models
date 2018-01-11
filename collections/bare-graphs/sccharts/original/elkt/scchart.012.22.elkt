@@ -1,0 +1,68 @@
+graph G1
+node elevator {
+	algorithm: org.eclipse.elk.box
+	node Alarm {
+		node wait {
+			layout [ size: 48, 34 ]
+		}
+		node Alarm_g4001 {
+			algorithm: org.eclipse.elk.box
+			node N1 {
+				node Flash {
+					layout [ size: 59, 34 ]
+				}
+				edge Flash0: Flash -> Flash {
+					label L3: "Second / AlarmLamp = !AlarmLamp" {
+						layout [ size: 241, 17 ]
+					}
+				}
+			}
+		}
+		edge Alarm0: wait -> Alarm_g4001 {
+			label L1: "ButtonAlarm / AlarmLamp = true; susp = true; recentMove = Move; Move = 0" {
+				layout [ size: 534, 17 ]
+			}
+		}
+		edge wait0: Alarm_g4001 -> wait {
+			label L2: "5 Second / AlarmLamp = false; susp = false; Move = recentMove" {
+				layout [ size: 449, 17 ]
+			}
+		}
+	}
+	node Controller {
+		node control {
+			algorithm: org.eclipse.elk.box
+			node N2 {
+				node idle {
+					layout [ size: 46, 34 ]
+				}
+				node up {
+					layout [ size: 39, 34 ]
+				}
+				node down {
+					layout [ size: 59, 34 ]
+				}
+				edge up0: idle -> up {
+					label L4: "1: ButtonUp && !IsUp / Move = 1" {
+						layout [ size: 228, 17 ]
+					}
+				}
+				edge down0: idle -> down {
+					label L5: "2: ButtonDown && !IsDown / Move = -1" {
+						layout [ size: 273, 17 ]
+					}
+				}
+				edge idle0: up -> idle {
+					label L6: "IsUp / Move = 0" {
+						layout [ size: 110, 17 ]
+					}
+				}
+				edge idle0_g4543: down -> idle {
+					label L7: "IsDown / Move = 0" {
+						layout [ size: 130, 17 ]
+					}
+				}
+			}
+		}
+	}
+}

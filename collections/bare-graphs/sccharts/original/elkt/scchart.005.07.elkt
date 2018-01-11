@@ -1,0 +1,35 @@
+graph G1
+node Segment {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node pending {
+			layout [ size: 345, 50 ]
+		}
+		node extend {
+			layout [ size: 345, 50 ]
+		}
+		node retract {
+			layout [ size: 345, 50 ]
+		}
+		edge extend0: pending -> extend {
+			label L1: "1: movement == 1" {
+				layout [ size: 125, 17 ]
+			}
+		}
+		edge retract0: pending -> retract {
+			label L2: "2: movement == -1" {
+				layout [ size: 130, 17 ]
+			}
+		}
+		edge pending0: extend -> pending {
+			label L3: "movement < 1 || OUT" {
+				layout [ size: 148, 17 ]
+			}
+		}
+		edge pending0_g9219: retract -> pending {
+			label L4: "movement > -1 || IN" {
+				layout [ size: 135, 17 ]
+			}
+		}
+	}
+}

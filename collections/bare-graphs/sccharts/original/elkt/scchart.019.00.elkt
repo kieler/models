@@ -1,0 +1,142 @@
+graph G1
+node jqjrkqibmn {
+	algorithm: org.eclipse.elk.box
+	node domelight {
+		node dark {
+			layout [ size: 52, 34 ]
+		}
+		node door_open {
+			layout [ size: 98, 34 ]
+		}
+		node door_delay {
+			layout [ size: 100, 34 ]
+		}
+		edge door_open0: dark -> door_open {
+			label L1: "door / domelight = true" {
+				layout [ size: 161, 17 ]
+			}
+		}
+		edge door_delay0: door_open -> door_delay {
+			label L2: "door == false / domelight = true" {
+				layout [ size: 221, 17 ]
+			}
+		}
+		edge door_delay0_g0752: door_delay -> door_delay {
+			label L3: "1: second / delay_seat++" {
+				layout [ size: 173, 17 ]
+			}
+		}
+		edge dark0: door_delay -> dark {
+			label L4: "2: delay_seat == 4 / domelight = false" {
+				layout [ size: 258, 17 ]
+			}
+		}
+		edge door_open0_g6569: door_delay -> door_open {
+			label L5: "3: door == true / domelight = true" {
+				layout [ size: 232, 17 ]
+			}
+		}
+	}
+	node delay_control_domelight {
+		node delay_dome_contr {
+			layout [ size: 149, 34 ]
+		}
+		edge delay_dome_contr0: delay_dome_contr -> delay_dome_contr {
+			label L6: "delay_dome == 4 / delay_dome = 0" {
+				layout [ size: 240, 17 ]
+			}
+		}
+	}
+	node seatbelt {
+		node engine_off {
+			layout [ size: 96, 34 ]
+		}
+		node running {
+			algorithm: org.eclipse.elk.box
+			node sound {
+				node sound_off {
+					layout [ size: 91, 34 ]
+				}
+				node sound_on {
+					layout [ size: 91, 34 ]
+				}
+				node sound_off_timer {
+					layout [ size: 135, 34 ]
+				}
+				edge sound_on0: sound_off -> sound_on {
+					label L9: "seat == true / seatbelt_sound = true" {
+						layout [ size: 252, 17 ]
+					}
+				}
+				edge sound_off_timer0: sound_on -> sound_off_timer {
+					label L10: "1: delay_seat == 31 / seatbelt_sound = false" {
+						layout [ size: 305, 17 ]
+					}
+				}
+				edge sound_off0: sound_on -> sound_off {
+					label L11: "2: seat == false / seatbelt_sound = false" {
+						layout [ size: 278, 17 ]
+					}
+				}
+				edge sound_off1: sound_on -> sound_off {
+					label L12: "3: engine_start == false / seatbelt_sound = false" {
+						layout [ size: 337, 17 ]
+					}
+				}
+				edge sound_off0_g8865: sound_off_timer -> sound_off {
+					label L13: "1: seat == false / seatbelt_sound = false" {
+						layout [ size: 278, 17 ]
+					}
+				}
+				edge sound_off1_g3867: sound_off_timer -> sound_off {
+					label L14: "2: engine_start == false / seatbelt_sound = false" {
+						layout [ size: 337, 17 ]
+					}
+				}
+			}
+			node light {
+				node light_off {
+					layout [ size: 78, 34 ]
+				}
+				node light_on {
+					layout [ size: 78, 34 ]
+				}
+				edge light_on0: light_off -> light_on {
+					label L15: "seat == true / seatbelt_light = true" {
+						layout [ size: 239, 17 ]
+					}
+				}
+				edge light_off0: light_on -> light_off {
+					label L16: "1: seat == false / seatbelt_light = false" {
+						layout [ size: 265, 17 ]
+					}
+				}
+				edge light_off1: light_on -> light_off {
+					label L17: "2: engine_start == false / seatbelt_light = false" {
+						layout [ size: 324, 17 ]
+					}
+				}
+			}
+		}
+		edge running0: engine_off -> running {
+			label L7: "engine_start == true" {
+				layout [ size: 144, 17 ]
+			}
+		}
+		edge engine_off0: running -> engine_off {
+			label L8: "engine_start == false" {
+				layout [ size: 149, 17 ]
+			}
+		}
+	}
+	node delay_control_seatbelt {
+		node delay_seat_contr {
+			layout [ size: 140, 34 ]
+		}
+		edge delay_seat_contr0: delay_seat_contr -> delay_seat_contr {
+			label L18: "delay_seat == 31 / delay_seat = 0" {
+				layout [ size: 230, 17 ]
+			}
+		}
+	}
+}

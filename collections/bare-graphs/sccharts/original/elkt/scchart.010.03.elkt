@@ -1,0 +1,99 @@
+graph G1
+node DomelightController {
+	algorithm: org.eclipse.elk.box
+	node Domelight {
+		node DoorClosedLightOut {
+			layout [ size: 167, 34 ]
+		}
+		node DoorClosedLightOn {
+			layout [ size: 163, 34 ]
+		}
+		node DoorOpen {
+			layout [ size: 95, 34 ]
+		}
+		edge DoorOpen0: DoorClosedLightOut -> DoorOpen {
+			label L1: "doorSensor / domeLight = true; second = false" {
+				layout [ size: 328, 17 ]
+			}
+		}
+		edge DoorClosedLightOut0: DoorClosedLightOn -> DoorClosedLightOut {
+			label L2: "1: second / domeLight = false" {
+				layout [ size: 206, 17 ]
+			}
+		}
+		edge DoorOpen0_g6507: DoorClosedLightOn -> DoorOpen {
+			label L3: "2: !second && doorSensor" {
+				layout [ size: 186, 17 ]
+			}
+		}
+		edge DoorClosedLightOn0: DoorOpen -> DoorClosedLightOn {
+			label L4: "!doorSensor / second = false" {
+				layout [ size: 203, 17 ]
+			}
+		}
+	}
+	node Seatbealt {
+		node EngineOff {
+			layout [ size: 92, 34 ]
+		}
+		node EngineOnBeepAndLight {
+			layout [ size: 192, 34 ]
+		}
+		node EngineOnLight {
+			layout [ size: 127, 34 ]
+		}
+		node EngineOn {
+			layout [ size: 92, 34 ]
+		}
+		edge EngineOn0: EngineOff -> EngineOn {
+			label L5: "1: engineIgnition && seatbeltSensor" {
+				layout [ size: 256, 17 ]
+			}
+		}
+		edge EngineOnBeepAndLight0: EngineOff -> EngineOnBeepAndLight {
+			label L6: "2: engineIgnition && !seatbeltSensor / beep = true; warningLight = true; second2 = false" {
+				layout [ size: 619, 17 ]
+			}
+		}
+		edge EngineOn0_g9885: EngineOnBeepAndLight -> EngineOn {
+			label L7: "1: seatbeltSensor && engineIgnition / beep = false; warningLight = false" {
+				layout [ size: 506, 17 ]
+			}
+		}
+		edge EngineOnBeepAndLight0_g9243: EngineOnBeepAndLight -> EngineOnBeepAndLight {
+			label L8: "2: !second2 && !seatbeltSensor && engineIgnition / beep = true; warningLight = true" {
+				layout [ size: 594, 17 ]
+			}
+		}
+		edge EngineOnLight0: EngineOnBeepAndLight -> EngineOnLight {
+			label L9: "3: second2 && !seatbeltSensor && engineIgnition / beep = false; warningLight = true" {
+				layout [ size: 595, 17 ]
+			}
+		}
+		edge EngineOff0: EngineOnBeepAndLight -> EngineOff {
+			label L10: "4: !engineIgnition / beep = false; warningLight = false" {
+				layout [ size: 372, 17 ]
+			}
+		}
+		edge EngineOn0_g4139: EngineOnLight -> EngineOn {
+			label L11: "1: seatbeltSensor && engineIgnition / warningLight = false" {
+				layout [ size: 411, 17 ]
+			}
+		}
+		edge EngineOff0_g8933: EngineOnLight -> EngineOff {
+			label L12: "2: !engineIgnition / warningLight = false" {
+				layout [ size: 277, 17 ]
+			}
+		}
+		edge EngineOnBeepAndLight0_g9846: EngineOn -> EngineOnBeepAndLight {
+			label L13: "1: !seatbeltSensor && engineIgnition / beep = true; warningLight = true" {
+				layout [ size: 500, 17 ]
+			}
+		}
+		edge EngineOff0_g7718: EngineOn -> EngineOff {
+			label L14: "2: !engineIgnition" {
+				layout [ size: 123, 17 ]
+			}
+		}
+	}
+}

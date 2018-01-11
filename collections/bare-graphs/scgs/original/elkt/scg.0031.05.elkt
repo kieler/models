@@ -1,0 +1,241 @@
+graph G1
+node N2 {
+	layout [ size: 75, 25 ]
+	nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+	portConstraints: FIXED_SIDE
+	layerConstraint: FIRST
+	label L1: "entry" {
+		layout [ size: 29, 15 ]
+	}
+	port P1 {
+		side: SOUTH
+	}
+}
+node N3 {
+	layout [ size: 75, 25 ]
+	nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+	portConstraints: FIXED_SIDE
+	layerConstraint: LAST
+	label L2: "exit" {
+		layout [ size: 21, 15 ]
+	}
+	port P2 {
+		side: NORTH
+	}
+}
+node N4 {
+	layout [ size: 75, 28 ]
+	nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+	portConstraints: FIXED_SIDE
+	label L3: "fork" {
+		layout [ size: 21, 15 ]
+	}
+	port P3 {
+		side: NORTH
+	}
+	port P4 {
+		side: SOUTH
+	}
+	port P5 {
+		side: SOUTH
+	}
+}
+node N5 {
+	layout [ size: 75, 27 ]
+	nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+	portConstraints: FIXED_SIDE
+	label L4: "join" {
+		layout [ size: 21, 15 ]
+	}
+	port P6 {
+		side: SOUTH
+	}
+	port P7 {
+		side: NORTH
+	}
+	port P8 {
+		side: NORTH
+	}
+}
+node N6 {
+	portConstraints: FREE
+	port P9
+	port P10
+	node N7 {
+		layout [ size: 75, 25 ]
+		nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+		portConstraints: FIXED_SIDE
+		layerConstraint: FIRST
+		label L6: "entry" {
+			layout [ size: 29, 15 ]
+		}
+		port P11 {
+			side: NORTH
+		}
+		port P12 {
+			side: SOUTH
+		}
+	}
+	node N8 {
+		layout [ size: 75, 25 ]
+		nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+		portConstraints: FIXED_SIDE
+		label L7: "surface" {
+			layout [ size: 43, 15 ]
+		}
+		port P13 {
+			side: NORTH
+		}
+		port P14 {
+			side: SOUTH
+		}
+	}
+	node N9 {
+		layout [ size: 75, 25 ]
+		nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+		portConstraints: FIXED_SIDE
+		layerConstraint: FIRST
+		label L8: "depth" {
+			layout [ size: 33, 15 ]
+		}
+		port P15 {
+			side: NORTH
+		}
+		port P16 {
+			side: SOUTH
+		}
+	}
+	node N10 {
+		layout [ size: 75, 25 ]
+		nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+		portConstraints: FIXED_SIDE
+		label L9: "I" {
+			layout [ size: 4, 15 ]
+		}
+		port P17 {
+			side: NORTH
+		}
+		port P18 {
+			side: SOUTH
+		}
+		port P19 {
+			northOrSouthPort: true
+			side: EAST
+		}
+	}
+	node N11 {
+		layout [ size: 75, 25 ]
+		nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+		portConstraints: FIXED_SIDE
+		label L10: "O = false" {
+			layout [ size: 54, 15 ]
+		}
+		port P20 {
+			side: NORTH
+		}
+		port P21 {
+			side: SOUTH
+		}
+	}
+	node N12 {
+		layout [ size: 75, 25 ]
+		nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+		portConstraints: FIXED_SIDE
+		label L11: "O = true" {
+			layout [ size: 49, 15 ]
+		}
+		port P22 {
+			side: NORTH
+		}
+		port P23 {
+			side: SOUTH
+		}
+	}
+	node N13 {
+		layout [ size: 75, 25 ]
+		nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+		portConstraints: FIXED_SIDE
+		layerConstraint: LAST
+		label L12: "exit" {
+			layout [ size: 21, 15 ]
+		}
+		port P24 {
+			side: NORTH
+		}
+		port P25 {
+			side: SOUTH
+		}
+	}
+	edge E7: P9 -> N7.P11
+	edge E8: N7.P12 -> N8.P13
+	edge E9: N8.P14 -> N9.P15
+	edge E10: N9.P16 -> N10.P17
+	edge E11: N10.P19 -> N11.P20 {
+		label L5: "true" {
+			layout [ size: 21, 14 ]
+		}
+	}
+	edge E12: N10.P18 -> N8.P13
+	edge E13: N11.P21 -> N12.P22
+	edge E14: N12.P23 -> N13.P24
+	edge E15: N13.P25 -> P10
+}
+node N14 {
+	portConstraints: FREE
+	port P26
+	port P27
+	node N15 {
+		layout [ size: 75, 25 ]
+		nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+		portConstraints: FIXED_SIDE
+		layerConstraint: FIRST
+		label L13: "entry" {
+			layout [ size: 29, 15 ]
+		}
+		port P28 {
+			side: NORTH
+		}
+		port P29 {
+			side: SOUTH
+		}
+	}
+	node N16 {
+		layout [ size: 75, 25 ]
+		nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+		portConstraints: FIXED_SIDE
+		label L14: "I = true" {
+			layout [ size: 42, 15 ]
+		}
+		port P30 {
+			side: NORTH
+		}
+		port P31 {
+			side: SOUTH
+		}
+	}
+	node N17 {
+		layout [ size: 75, 25 ]
+		nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+		portConstraints: FIXED_SIDE
+		layerConstraint: LAST
+		label L15: "exit" {
+			layout [ size: 21, 15 ]
+		}
+		port P32 {
+			side: NORTH
+		}
+		port P33 {
+			side: SOUTH
+		}
+	}
+	edge E16: P26 -> N15.P28
+	edge E17: N15.P29 -> N16.P30
+	edge E18: N16.P31 -> N17.P32
+	edge E19: N17.P33 -> P27
+}
+edge E1: N2.P1 -> N4.P3
+edge E2: N4.P4 -> N6.P9
+edge E3: N4.P5 -> N14.P26
+edge E4: N5.P6 -> N3.P2
+edge E5: N6.P10 -> N5.P7
+edge E6: N14.P27 -> N5.P8

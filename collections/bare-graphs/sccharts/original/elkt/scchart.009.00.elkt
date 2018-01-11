@@ -1,0 +1,76 @@
+graph G1
+node iudtgsess {
+	algorithm: org.eclipse.elk.box
+	node DomelightController {
+		node DomelightOff {
+			layout [ size: 114, 34 ]
+		}
+		node DomelightOn {
+			layout [ size: 114, 34 ]
+		}
+		node DomelightPending {
+			layout [ size: 152, 34 ]
+		}
+		edge DomelightOn0: DomelightOff -> DomelightOn {
+			label L1: "anydooropen / domelight = true" {
+				layout [ size: 221, 17 ]
+			}
+		}
+		edge DomelightPending0: DomelightOn -> DomelightPending {
+			label L2: "!anydooropen / count = 0" {
+				layout [ size: 175, 17 ]
+			}
+		}
+		edge DomelightPending0_g6921: DomelightPending -> DomelightPending {
+			label L3: "1: seconds / count = count + 1" {
+				layout [ size: 211, 17 ]
+			}
+		}
+		edge DomelightOff0: DomelightPending -> DomelightOff {
+			label L4: "2: count > 3 / domelight = false" {
+				layout [ size: 214, 17 ]
+			}
+		}
+		edge DomelightOn0_g7953: DomelightPending -> DomelightOn {
+			label L5: "3: anydooropen / count = 0" {
+				layout [ size: 187, 17 ]
+			}
+		}
+	}
+	node SeatbeltController {
+		node BothOff {
+			layout [ size: 76, 34 ]
+		}
+		node BothOn {
+			layout [ size: 76, 34 ]
+		}
+		node LightOn {
+			layout [ size: 78, 34 ]
+		}
+		edge BothOn0: BothOff -> BothOn {
+			label L6: "seatbelt / light = true; beeper = true; count2 = 0" {
+				layout [ size: 333, 17 ]
+			}
+		}
+		edge BothOn0_g5158: BothOn -> BothOn {
+			label L7: "1: seconds / count2 = count2 + 1" {
+				layout [ size: 227, 17 ]
+			}
+		}
+		edge LightOn0: BothOn -> LightOn {
+			label L8: "2: count2 > 3 / light = true; beeper = false" {
+				layout [ size: 288, 17 ]
+			}
+		}
+		edge BothOff0: BothOn -> BothOff {
+			label L9: "3: !seatbelt / light = false; beeper = false" {
+				layout [ size: 281, 17 ]
+			}
+		}
+		edge BothOff0_g5417: LightOn -> BothOff {
+			label L10: "!seatbelt / light = false; beeper = false" {
+				layout [ size: 265, 17 ]
+			}
+		}
+	}
+}

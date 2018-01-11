@@ -1,0 +1,296 @@
+graph G1
+node BarCodeReader {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node init {
+			layout [ size: 42, 34 ]
+		}
+		node searchBlack {
+			layout [ size: 108, 34 ]
+		}
+		node searchWhite {
+			layout [ size: 108, 34 ]
+		}
+		node validateStart {
+			algorithm: org.eclipse.elk.box
+			node N2 {
+				node init_g8351 {
+					layout [ size: 42, 34 ]
+				}
+				node light {
+					layout [ size: 51, 34 ]
+				}
+				node dark {
+					layout [ size: 58, 40 ]
+				}
+				edge light0: init_g8351 -> light {
+					label L11: "lightSens > white / rotateA = rotationForR; rotateB = rotationForR; programstate = 21" {
+						layout [ size: 595, 17 ]
+					}
+				}
+				edge dark0: light -> dark {
+					label L12: "lightSens < black / rotateA = rotationForR; rotateB = rotationForR; programstate = 22" {
+						layout [ size: 594, 17 ]
+					}
+				}
+			}
+		}
+		node readDigit {
+			algorithm: org.eclipse.elk.box
+			node N3 {
+				node init_g3014 {
+					layout [ size: 42, 34 ]
+				}
+				node aNumber {
+					layout [ size: 84, 34 ]
+				}
+				node not3to8 {
+					layout [ size: 74, 34 ]
+				}
+				node between3to8 {
+					layout [ size: 112, 34 ]
+				}
+				node either0or9 {
+					layout [ size: 94, 34 ]
+				}
+				node either1or2 {
+					layout [ size: 94, 34 ]
+				}
+				node either4or6 {
+					layout [ size: 94, 34 ]
+				}
+				node otherThenBefore {
+					layout [ size: 144, 34 ]
+				}
+				node either5or8 {
+					layout [ size: 94, 34 ]
+				}
+				node either3or7 {
+					layout [ size: 94, 34 ]
+				}
+				node d0 {
+					layout [ size: 44, 40 ]
+				}
+				node d1 {
+					layout [ size: 44, 40 ]
+				}
+				node d2 {
+					layout [ size: 44, 40 ]
+				}
+				node d3 {
+					layout [ size: 44, 40 ]
+				}
+				node d4 {
+					layout [ size: 44, 40 ]
+				}
+				node d5 {
+					layout [ size: 44, 40 ]
+				}
+				node d6 {
+					layout [ size: 44, 40 ]
+				}
+				node d7 {
+					layout [ size: 44, 40 ]
+				}
+				node d8 {
+					layout [ size: 44, 40 ]
+				}
+				node d9 {
+					layout [ size: 44, 40 ]
+				}
+				edge aNumber0: init_g3014 -> aNumber {
+					label L13: "clock && lightSens > white / rotateA = rotationForR; rotateB = rotationForR; programstate = 3" {
+						layout [ size: 654, 17 ]
+					}
+				}
+				edge not3to80: aNumber -> not3to8 {
+					label L14: "1: clock && lightSens > white / rotateA = rotationForR; rotateB = rotationForR" {
+						layout [ size: 542, 17 ]
+					}
+				}
+				edge between3to80: aNumber -> between3to8 {
+					label L15: "2: clock && lightSens < black / rotateA = rotationForR; rotateB = rotationForR" {
+						layout [ size: 541, 17 ]
+					}
+				}
+				edge either0or90: not3to8 -> either0or9 {
+					label L16: "1: clock && lightSens > white / rotateA = 2 * rotationForR; rotateB = 2 * rotationForR" {
+						layout [ size: 586, 17 ]
+					}
+				}
+				edge either1or20: not3to8 -> either1or2 {
+					label L17: "2: clock && lightSens < black / rotateA = rotationForR; rotateB = rotationForR" {
+						layout [ size: 541, 17 ]
+					}
+				}
+				edge either4or60: between3to8 -> either4or6 {
+					label L18: "1: clock && lightSens > white / rotateA = rotationForR; rotateB = rotationForR" {
+						layout [ size: 542, 17 ]
+					}
+				}
+				edge otherThenBefore0: between3to8 -> otherThenBefore {
+					label L19: "2: clock && lightSens < black / rotateA = rotationForR; rotateB = rotationForR" {
+						layout [ size: 541, 17 ]
+					}
+				}
+				edge d90: either0or9 -> d9 {
+					label L20: "1: clock && lightSens > white / rotateA = 2 * rotationForR; rotateB = 2 * rotationForR; digit4 = 9; programstate = 39" {
+						layout [ size: 794, 17 ]
+					}
+				}
+				edge d00: either0or9 -> d0 {
+					label L21: "2: clock && lightSens < black / rotateA = 2 * rotationForR; rotateB = 2 * rotationForR; digit4 = 0; programstate = 30" {
+						layout [ size: 793, 17 ]
+					}
+				}
+				edge d20: either1or2 -> d2 {
+					label L22: "1: clock && lightSens > white / rotateA = 3 * rotationForR; rotateB = 3 * rotationForR; digit4 = 2; programstate = 32" {
+						layout [ size: 794, 17 ]
+					}
+				}
+				edge d10: either1or2 -> d1 {
+					label L23: "2: clock && lightSens < black / rotateA = 3 * rotationForR; rotateB = 3 * rotationForR; digit4 = 1; programstate = 31" {
+						layout [ size: 793, 17 ]
+					}
+				}
+				edge d40: either4or6 -> d4 {
+					label L24: "1: clock && lightSens > white / rotateA = 3 * rotationForR; rotateB = 3 * rotationForR; digit4 = 4; programstate = 34" {
+						layout [ size: 794, 17 ]
+					}
+				}
+				edge d60: either4or6 -> d6 {
+					label L25: "2: clock && lightSens < black / rotateA = 3 * rotationForR; rotateB = 3 * rotationForR; digit4 = 6; programstate = 36" {
+						layout [ size: 793, 17 ]
+					}
+				}
+				edge either5or80: otherThenBefore -> either5or8 {
+					label L26: "1: clock && lightSens > white / rotateA = rotationForR; rotateB = rotationForR" {
+						layout [ size: 542, 17 ]
+					}
+				}
+				edge either3or70: otherThenBefore -> either3or7 {
+					label L27: "2: clock && lightSens < black / rotateA = rotationForR; rotateB = rotationForR" {
+						layout [ size: 541, 17 ]
+					}
+				}
+				edge d50: either5or8 -> d5 {
+					label L28: "1: clock && lightSens > white / rotateA = 2 * rotationForR; rotateB = 2 * rotationForR; digit4 = 5; programstate = 35" {
+						layout [ size: 794, 17 ]
+					}
+				}
+				edge d80: either5or8 -> d8 {
+					label L29: "2: clock && lightSens < black / rotateA = 2 * rotationForR; rotateB = 2 * rotationForR; digit4 = 8; programstate = 38" {
+						layout [ size: 793, 17 ]
+					}
+				}
+				edge d70: either3or7 -> d7 {
+					label L30: "1: clock && lightSens > white / rotateA = 2 * rotationForR; rotateB = 2 * rotationForR; digit4 = 7; programstate = 37" {
+						layout [ size: 794, 17 ]
+					}
+				}
+				edge d30: either3or7 -> d3 {
+					label L31: "2: clock && lightSens < black / rotateA = 2 * rotationForR; rotateB = 2 * rotationForR; digit4 = 3; programstate = 33" {
+						layout [ size: 793, 17 ]
+					}
+				}
+			}
+		}
+		node nextDigit {
+			layout [ size: 84, 34 ]
+		}
+		node digitsCorrect {
+			layout [ size: 113, 34 ]
+		}
+		node validateEDelim {
+			algorithm: org.eclipse.elk.box
+			node N4 {
+				node init_g3779 {
+					layout [ size: 42, 34 ]
+				}
+				node e1 {
+					layout [ size: 38, 34 ]
+				}
+				node e2 {
+					layout [ size: 38, 34 ]
+				}
+				node e3 {
+					layout [ size: 38, 34 ]
+				}
+				node e4 {
+					layout [ size: 44, 40 ]
+				}
+				edge e10: init_g3779 -> e1 {
+					label L32: "lightSens > white / rotateA = rotationForR; rotateB = rotationForR" {
+						layout [ size: 459, 17 ]
+					}
+				}
+				edge e20: e1 -> e2 {
+					label L33: "lightSens < black / rotateA = rotationForR; rotateB = rotationForR" {
+						layout [ size: 458, 17 ]
+					}
+				}
+				edge e30: e2 -> e3 {
+					label L34: "lightSens > white / rotateA = rotationForR; rotateB = rotationForR" {
+						layout [ size: 459, 17 ]
+					}
+				}
+				edge e40: e3 -> e4 {
+					label L35: "lightSens < black / rotateA = rotationForR; rotateB = rotationForR; programstate = 6" {
+						layout [ size: 586, 17 ]
+					}
+				}
+			}
+		}
+		edge searchBlack0: init -> searchBlack {
+			label L1: "start / white = lightSens; tmpLight = white; rotateA = 2; rotateB = 2; programstate = 1" {
+				layout [ size: 588, 17 ]
+			}
+		}
+		edge searchBlack0_g1518: searchBlack -> searchBlack {
+			label L2: "1: lightSens + 10 > white / rotateA = 2; rotateB = 2" {
+				layout [ size: 345, 17 ]
+			}
+		}
+		edge searchBlack1: searchBlack -> searchBlack {
+			label L3: "2: lightSens - 10 < tmpLight / rotateA = 1; rotateB = 1; tmpLight = lightSens" {
+				layout [ size: 519, 17 ]
+			}
+		}
+		edge searchWhite0: searchBlack -> searchWhite {
+			label L4: "3: lightSens > tmpLight / rotateA = 4; rotateB = 4; black = tmpLight; programstate = 2" {
+				layout [ size: 587, 17 ]
+			}
+		}
+		edge validateStart0: searchWhite -> validateStart {
+			label L5: "/ white = lightSens - 2" {
+				layout [ size: 152, 17 ]
+			}
+		}
+		edge readDigit0: validateStart -> readDigit
+		edge nextDigit0: readDigit -> nextDigit {
+			label L6: "1: digit1 == 10" {
+				layout [ size: 98, 17 ]
+			}
+		}
+		edge digitsCorrect0: readDigit -> digitsCorrect {
+			label L7: "2: digit1 != 10 / programstate = 4" {
+				layout [ size: 224, 17 ]
+			}
+		}
+		edge readDigit0_g7287: nextDigit -> readDigit {
+			label L8: "/ digit1 = digit2; digit2 = digit3; digit3 = digit4; rotateA = rotationForR; rotateB = rotationForR" {
+				layout [ size: 642, 17 ]
+			}
+		}
+		edge validateEDelim0: digitsCorrect -> validateEDelim {
+			label L9: "1: digit4 == 9 - (digit1 + digit2 + digit3) % 10 / rotateA = rotationForR; rotateB = rotationForR; programstate = 5" {
+				layout [ size: 765, 17 ]
+			}
+		}
+		edge init0: digitsCorrect -> init {
+			label L10: "2: digit4 != 9 - (digit1 + digit2 + digit3) % 10 / rotateA = -350; rotateB = -350" {
+				layout [ size: 511, 17 ]
+			}
+		}
+	}
+}

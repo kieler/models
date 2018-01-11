@@ -1,0 +1,165 @@
+graph G1
+node Interpreter {
+	algorithm: org.eclipse.elk.box
+	node _CFSMain {
+		node _CFSI {
+			algorithm: org.eclipse.elk.box
+			node __EA_Entry {
+				node __EA_Main {
+					algorithm: org.eclipse.elk.box
+					node N1 {
+						node Done {
+							layout [ size: 64, 40 ]
+						}
+						node Error {
+							algorithm: org.eclipse.elk.box
+							node __EA_Entry_g0851 {
+								node __EA_Init {
+									layout [ size: 85, 34 ]
+								}
+								node __EA_Done {
+									layout [ size: 107, 40 ]
+								}
+								edge __EA_Done0: __EA_Init -> __EA_Done {
+									label L13: "/ decoded_invalid |= true" {
+										layout [ size: 175, 17 ]
+									}
+								}
+							}
+						}
+						node __sd_Depth {
+							layout [ size: 105, 34 ]
+						}
+						node __sd_Depth1 {
+							layout [ size: 113, 34 ]
+						}
+						node ValueCalculated {
+							layout [ size: 134, 34 ]
+						}
+						node __sd_Depth2 {
+							layout [ size: 113, 34 ]
+						}
+						node __te_S {
+							layout [ size: 69, 34 ]
+						}
+						node __te_S1 {
+							layout [ size: 77, 34 ]
+						}
+						node __te_S2 {
+							layout [ size: 77, 34 ]
+						}
+						node __sd_S3 {
+							layout [ size: 80, 34 ]
+						}
+						node __sd_Pause2 {
+							layout [ size: 114, 34 ]
+						}
+						edge __sd_Depth20: Error -> __sd_Depth2
+						edge __sd_Depth10: __sd_Depth -> __sd_Depth1 {
+							label L2: "/ parity = 9 - (digits[0] + digits[1] + digits[2]) % 10" {
+								layout [ size: 338, 17 ]
+							}
+						}
+						edge Error0: __sd_Depth1 -> Error {
+							label L3: "1: parity != digits[3]" {
+								layout [ size: 133, 17 ]
+							}
+						}
+						edge __sd_S30: __sd_Depth1 -> __sd_S3 {
+							label L4: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __te_S0: ValueCalculated -> __te_S {
+							label L5: "1: value < 500" {
+								layout [ size: 97, 17 ]
+							}
+						}
+						edge __te_S10: ValueCalculated -> __te_S1 {
+							label L6: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge Done0: __sd_Depth2 -> Done {
+							label L7: "1: _CFSterm" {
+								layout [ size: 88, 17 ]
+							}
+						}
+						edge __sd_Pause20: __sd_Depth2 -> __sd_Pause2 {
+							label L8: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge Done0_g6470: __te_S -> Done {
+							label L9: "/ _CFSterm = true" {
+								layout [ size: 124, 17 ]
+							}
+						}
+						edge __te_S20: __te_S1 -> __te_S2 {
+							label L10: "/ value = value - 1000" {
+								layout [ size: 149, 17 ]
+							}
+						}
+						edge Done0_g3847: __te_S2 -> Done {
+							label L11: "/ _CFSterm = true" {
+								layout [ size: 124, 17 ]
+							}
+						}
+						edge ValueCalculated0: __sd_S3 -> ValueCalculated {
+							label L12: "/ value = digits[0] * 100 + digits[1] * 10 + digits[2] * 1" {
+								layout [ size: 360, 17 ]
+							}
+						}
+						edge __sd_Depth20_g0155: __sd_Pause2 -> __sd_Depth2
+					}
+					node _During {
+						node __sd_Depth4 {
+							layout [ size: 113, 34 ]
+						}
+						node _S {
+							layout [ size: 39, 34 ]
+						}
+						node _AAborted {
+							layout [ size: 100, 40 ]
+						}
+						node __sd_Pause4 {
+							layout [ size: 114, 34 ]
+						}
+						edge _S0: __sd_Depth4 -> _S {
+							label L14: "/ decoded_invalid = false" {
+								layout [ size: 176, 17 ]
+							}
+						}
+						edge _AAborted0: _S -> _AAborted {
+							label L15: "1: _CFSterm" {
+								layout [ size: 88, 17 ]
+							}
+						}
+						edge __sd_Pause40: _S -> __sd_Pause4 {
+							label L16: "2:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge __sd_Depth40: __sd_Pause4 -> __sd_Depth4
+					}
+				}
+				node __EA_Init_g5627 {
+					layout [ size: 85, 34 ]
+				}
+				node __EA_Done_g9267 {
+					layout [ size: 107, 40 ]
+				}
+				edge __EA_Done0_g8607: __EA_Main -> __EA_Done_g9267
+				edge __EA_Main0: __EA_Init_g5627 -> __EA_Main {
+					label L1: "/ _CFSterm = false" {
+						layout [ size: 129, 17 ]
+					}
+				}
+			}
+		}
+		node _CFSF {
+			layout [ size: 74, 40 ]
+		}
+		edge _CFSF0: _CFSI -> _CFSF
+	}
+}

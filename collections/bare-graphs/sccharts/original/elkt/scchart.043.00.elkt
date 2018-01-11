@@ -1,0 +1,278 @@
+graph G1
+node BarCodeReader40 {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node init {
+			layout [ size: 42, 34 ]
+		}
+		node BarCodeReader {
+			algorithm: org.eclipse.elk.box
+			node Counter {
+				node inc {
+					layout [ size: 186, 50 ]
+				}
+				edge inc0: inc -> inc {
+					label L3: "1: cntrReset / counter = -1" {
+						layout [ size: 184, 17 ]
+					}
+				}
+				edge inc1: inc -> inc {
+					label L4: "2: clock" {
+						layout [ size: 54, 17 ]
+					}
+				}
+			}
+			node Reader {
+				node init_g0576 {
+					layout [ size: 190, 65 ]
+				}
+				node setThresholdWhite {
+					layout [ size: 407, 65 ]
+				}
+				node readWhite {
+					layout [ size: 328, 80 ]
+				}
+				node setThresholdBlack {
+					layout [ size: 407, 65 ]
+				}
+				node readBlack {
+					layout [ size: 326, 80 ]
+				}
+				edge setThresholdWhite0: init_g0576 -> setThresholdWhite
+				edge readWhite0: setThresholdWhite -> readWhite
+				edge setThresholdBlack0: readWhite -> setThresholdBlack {
+					label L5: "1: brightness <= thresholdBlack / white = tmpWhite; under" {
+						layout [ size: 408, 17 ]
+					}
+				}
+				edge setThresholdWhite0_g9551: readWhite -> setThresholdWhite {
+					label L6: "2: brightness > thresholdBlack" {
+						layout [ size: 217, 17 ]
+					}
+				}
+				edge readBlack0: setThresholdBlack -> readBlack
+				edge setThresholdWhite0_g1758: readBlack -> setThresholdWhite {
+					label L7: "1: brightness >= thresholdWhite / black = tmpBlack; over" {
+						layout [ size: 398, 17 ]
+					}
+				}
+				edge setThresholdBlack0_g1145: readBlack -> setThresholdBlack {
+					label L8: "2: brightness < thresholdWhite" {
+						layout [ size: 217, 17 ]
+					}
+				}
+			}
+			node Movement {
+				node stop {
+					layout [ size: 128, 65 ]
+				}
+				node go {
+					layout [ size: 166, 65 ]
+				}
+				node turnVehicle {
+					algorithm: org.eclipse.elk.box
+					node N2 {
+						node stillTurning {
+							layout [ size: 534, 65 ]
+						}
+						node done {
+							layout [ size: 62, 40 ]
+						}
+						edge done0: stillTurning -> done {
+							label L12: "1: number == 0" {
+								layout [ size: 105, 17 ]
+							}
+						}
+						edge done1: stillTurning -> done {
+							label L13: "2: rotationB <= actualRotationB + rotate && number < 0" {
+								layout [ size: 390, 17 ]
+							}
+						}
+						edge done2: stillTurning -> done {
+							label L14: "3: rotationB >= actualRotationB + rotate && number > 0" {
+								layout [ size: 390, 17 ]
+							}
+						}
+					}
+				}
+				edge go0: stop -> go {
+					label L9: "1: move && !turn" {
+						layout [ size: 119, 17 ]
+					}
+				}
+				edge turnVehicle0: stop -> turnVehicle {
+					label L10: "2: turn" {
+						layout [ size: 46, 17 ]
+					}
+				}
+				edge stop0: go -> stop {
+					label L11: "!move" {
+						layout [ size: 43, 17 ]
+					}
+				}
+				edge go0_g6675: turnVehicle -> go
+			}
+			node Interpreter {
+				node init_g4988 {
+					layout [ size: 167, 125 ]
+				}
+				node startDelim {
+					algorithm: org.eclipse.elk.box
+					node N3 {
+						node firstBar {
+							layout [ size: 73, 34 ]
+						}
+						node secondBar {
+							layout [ size: 97, 34 ]
+						}
+						node thirdBar {
+							layout [ size: 78, 34 ]
+						}
+						node done_g3257 {
+							layout [ size: 292, 56 ]
+						}
+						edge secondBar0: firstBar -> secondBar {
+							label L18: "over / cntrReset" {
+								layout [ size: 115, 17 ]
+							}
+						}
+						edge thirdBar0: secondBar -> thirdBar {
+							label L19: "under" {
+								layout [ size: 42, 17 ]
+							}
+						}
+						edge done0_g3677: thirdBar -> done_g3257 {
+							label L20: "over" {
+								layout [ size: 33, 17 ]
+							}
+						}
+					}
+				}
+				node readDigit {
+					algorithm: org.eclipse.elk.box
+					node N4 {
+						node whiteBar {
+							layout [ size: 493, 50 ]
+						}
+						node blackBar {
+							layout [ size: 498, 50 ]
+						}
+						node done_g9906 {
+							layout [ size: 62, 40 ]
+						}
+						edge blackBar0: whiteBar -> blackBar {
+							label L21: "1: under && write != 6 / tmpCounter = counter + thickness" {
+								layout [ size: 406, 17 ]
+							}
+						}
+						edge done0_g2101: whiteBar -> done_g9906 {
+							label L22: "2: under && write == 6" {
+								layout [ size: 158, 17 ]
+							}
+						}
+						edge whiteBar0: whiteBar -> whiteBar {
+							label L23: "3: counter >= tmpCounter + thickness / 2 && write != 6 / tmpCounter = tmpCounter + thickness" {
+								layout [ size: 663, 17 ]
+							}
+						}
+						edge whiteBar0_g9472: blackBar -> whiteBar {
+							label L24: "1: over && write != 6 / tmpCounter = counter + thickness" {
+								layout [ size: 397, 17 ]
+							}
+						}
+						edge done0_g0494: blackBar -> done_g9906 {
+							label L25: "2: over && write == 6" {
+								layout [ size: 149, 17 ]
+							}
+						}
+						edge blackBar0_g2745: blackBar -> blackBar {
+							label L26: "3: counter >= tmpCounter + thickness / 2 && write != 6 / tmpCounter = tmpCounter + thickness" {
+								layout [ size: 663, 17 ]
+							}
+						}
+					}
+				}
+				node interpreteDigit {
+					layout [ size: 555, 185 ]
+				}
+				node endDelim {
+					algorithm: org.eclipse.elk.box
+					node calculateNumber {
+						node calculate {
+							layout [ size: 303, 58 ]
+						}
+					}
+					node getEndDelimiter {
+						node firstBar_g7543 {
+							layout [ size: 73, 34 ]
+						}
+						node secondBar_g9995 {
+							layout [ size: 97, 34 ]
+						}
+						node thirdBar_g0031 {
+							layout [ size: 78, 34 ]
+						}
+						node fourthBar {
+							layout [ size: 88, 34 ]
+						}
+						node done_g9801 {
+							layout [ size: 62, 40 ]
+						}
+						edge secondBar0_g1671: firstBar_g7543 -> secondBar_g9995 {
+							label L27: "under" {
+								layout [ size: 42, 17 ]
+							}
+						}
+						edge thirdBar0_g9313: secondBar_g9995 -> thirdBar_g0031 {
+							label L28: "over" {
+								layout [ size: 33, 17 ]
+							}
+						}
+						edge fourthBar0: thirdBar_g0031 -> fourthBar {
+							label L29: "under" {
+								layout [ size: 42, 17 ]
+							}
+						}
+						edge done0_g5787: fourthBar -> done_g9801 {
+							label L30: "over" {
+								layout [ size: 33, 17 ]
+							}
+						}
+					}
+				}
+				node react {
+					layout [ size: 442, 65 ]
+				}
+				edge startDelim0: init_g4988 -> startDelim {
+					label L15: "under" {
+						layout [ size: 42, 17 ]
+					}
+				}
+				edge readDigit0: startDelim -> readDigit
+				edge interpreteDigit0: readDigit -> interpreteDigit
+				edge readDigit0_g8764: interpreteDigit -> readDigit {
+					label L16: "1: digit1 == 10 / digit1 = digit2; digit2 = digit3; digit3 = digit4" {
+						layout [ size: 411, 17 ]
+					}
+				}
+				edge endDelim0: interpreteDigit -> endDelim {
+					label L17: "2: digit1 != 10 / number = digit1 * 100 + digit2 * 10 + digit3" {
+						layout [ size: 395, 17 ]
+					}
+				}
+				edge react0: endDelim -> react
+				edge init0: react -> init_g4988
+			}
+		}
+		edge BarCodeReader0: init -> BarCodeReader {
+			label L1: "start / programstate = 0" {
+				layout [ size: 164, 17 ]
+			}
+		}
+		edge init0_g1484: BarCodeReader -> init {
+			label L2: "touch / speedA = 0; speedB = 0" {
+				layout [ size: 218, 17 ]
+			}
+		}
+	}
+}

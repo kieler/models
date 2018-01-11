@@ -1,0 +1,112 @@
+graph G1
+node ComplexFinalState {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node M {
+			algorithm: org.eclipse.elk.box
+			node _Entry {
+				node _Main {
+					algorithm: org.eclipse.elk.box
+					node N2 {
+						node S1 {
+							layout [ size: 39, 34 ]
+						}
+						node S2 {
+							layout [ size: 45, 40 ]
+						}
+						edge S20: S1 -> S2 {
+							label L4: "I1 / term_R1 = true" {
+								layout [ size: 129, 17 ]
+							}
+						}
+					}
+					node N3 {
+						node S3 {
+							layout [ size: 39, 34 ]
+						}
+						node S4 {
+							layout [ size: 45, 40 ]
+						}
+						edge S40: S3 -> S4 {
+							label L5: "I2 / term_R2 = true" {
+								layout [ size: 129, 17 ]
+							}
+						}
+					}
+					node N4 {
+						node S5 {
+							layout [ size: 39, 34 ]
+						}
+						node S6 {
+							layout [ size: 39, 34 ]
+						}
+						node S7 {
+							layout [ size: 39, 34 ]
+						}
+						node T {
+							layout [ size: 40, 40 ]
+						}
+						edge S60: S5 -> S6 {
+							label L6: "I3" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge S50: S6 -> S5 {
+							label L7: "1: I3" {
+								layout [ size: 29, 17 ]
+							}
+						}
+						edge S70: S6 -> S7 {
+							label L8: "2: I4" {
+								layout [ size: 29, 17 ]
+							}
+						}
+						edge T0: S6 -> T {
+							label L9: "3: term_R1 & term_R2" {
+								layout [ size: 154, 17 ]
+							}
+						}
+						edge S50_g9092: S7 -> S5 {
+							label L10: "1:" {
+								layout [ size: 13, 17 ]
+							}
+						}
+						edge T0_g6442: S7 -> T {
+							label L11: "2: term_R1 & term_R2" {
+								layout [ size: 154, 17 ]
+							}
+						}
+					}
+				}
+				node _Init {
+					layout [ size: 50, 34 ]
+				}
+				node _Done {
+					layout [ size: 72, 40 ]
+				}
+				node _C {
+					layout [ size: 39, 34 ]
+				}
+				edge _Done0: _Main -> _Done
+				edge _C0: _Init -> _C {
+					label L2: "/ term_R1 = false" {
+						layout [ size: 118, 17 ]
+					}
+				}
+				edge _Main0: _C -> _Main {
+					label L3: "/ term_R2 = false" {
+						layout [ size: 118, 17 ]
+					}
+				}
+			}
+		}
+		node F {
+			layout [ size: 40, 40 ]
+		}
+		edge F0: M -> F {
+			label L1: "/ O = true" {
+				layout [ size: 66, 17 ]
+			}
+		}
+	}
+}

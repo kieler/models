@@ -1,0 +1,152 @@
+graph G1
+node s07_legodomelight {
+	algorithm: org.eclipse.elk.box
+	node DoorAggregator {
+		node AllClosed {
+			layout [ size: 88, 34 ]
+		}
+		node AtLeastOneOpen {
+			layout [ size: 134, 65 ]
+		}
+		edge AtLeastOneOpen0: AllClosed -> AtLeastOneOpen {
+			label L1: "!(closedDoor1 && closedDoor2)" {
+				layout [ size: 224, 17 ]
+			}
+		}
+		edge AllClosed0: AtLeastOneOpen -> AllClosed {
+			label L2: "closedDoor1 && closedDoor2" {
+				layout [ size: 211, 17 ]
+			}
+		}
+	}
+	node IgnitionToggler {
+		node OffNp {
+			layout [ size: 63, 34 ]
+		}
+		node OnP {
+			layout [ size: 111, 50 ]
+		}
+		node OnNp {
+			layout [ size: 111, 50 ]
+		}
+		node OffP {
+			layout [ size: 53, 34 ]
+		}
+		edge OnP0: OffNp -> OnP {
+			label L3: "ignitionButton" {
+				layout [ size: 102, 17 ]
+			}
+		}
+		edge OnNp0: OnP -> OnNp {
+			label L4: "!ignitionButton" {
+				layout [ size: 106, 17 ]
+			}
+		}
+		edge OffP0: OnNp -> OffP {
+			label L5: "ignitionButton" {
+				layout [ size: 102, 17 ]
+			}
+		}
+		edge OffNp0: OffP -> OffNp {
+			label L6: "!ignitionButton" {
+				layout [ size: 106, 17 ]
+			}
+		}
+	}
+	node SeatbeltToggler {
+		node OffNp_g3568 {
+			layout [ size: 63, 34 ]
+		}
+		node OnP_g1430 {
+			layout [ size: 157, 50 ]
+		}
+		node OnNp_g4783 {
+			layout [ size: 157, 50 ]
+		}
+		node OffP_g4986 {
+			layout [ size: 53, 34 ]
+		}
+		edge OnP0_g2012: OffNp_g3568 -> OnP_g1430 {
+			label L7: "seatbeltButton" {
+				layout [ size: 106, 17 ]
+			}
+		}
+		edge OnNp0_g1548: OnP_g1430 -> OnNp_g4783 {
+			label L8: "!seatbeltButton" {
+				layout [ size: 110, 17 ]
+			}
+		}
+		edge OffP0_g2201: OnNp_g4783 -> OffP_g4986 {
+			label L9: "seatbeltButton" {
+				layout [ size: 106, 17 ]
+			}
+		}
+		edge OffNp0_g3599: OffP_g4986 -> OffNp_g3568 {
+			label L10: "!seatbeltButton" {
+				layout [ size: 110, 17 ]
+			}
+		}
+	}
+	node Domelight {
+		node Off {
+			layout [ size: 42, 34 ]
+		}
+		node Open {
+			layout [ size: 60, 34 ]
+		}
+		node Closed {
+			layout [ size: 71, 34 ]
+		}
+		edge Open0: Off -> Open {
+			label L11: "openDoor / domeLight = true" {
+				layout [ size: 204, 17 ]
+			}
+		}
+		edge Closed0: Open -> Closed {
+			label L12: "closeDoor" {
+				layout [ size: 73, 17 ]
+			}
+		}
+		edge Open0_g0106: Closed -> Open {
+			label L13: "1: openDoor" {
+				layout [ size: 87, 17 ]
+			}
+		}
+		edge Off0: Closed -> Off {
+			label L14: "2: 3 second / domeLight = false" {
+				layout [ size: 218, 17 ]
+			}
+		}
+	}
+	node Seatbelt {
+		node NoWarn {
+			layout [ size: 76, 34 ]
+		}
+		node Beeping {
+			layout [ size: 81, 34 ]
+		}
+		node NotBeeping {
+			layout [ size: 106, 34 ]
+		}
+		edge Beeping0: NoWarn -> Beeping {
+			label L15: "ignition && seatbeltSensor / warnLight = true; beeper = true" {
+				layout [ size: 424, 17 ]
+			}
+		}
+		edge NoWarn0: Beeping -> NoWarn {
+			label L16: "1: !ignition || !seatbeltSensor / warnLight = false; beeper = false" {
+				layout [ size: 444, 17 ]
+			}
+		}
+		edge NotBeeping0: Beeping -> NotBeeping {
+			label L17: "2: 30 second / beeper = false" {
+				layout [ size: 202, 17 ]
+			}
+		}
+		edge NoWarn0_g9042: NotBeeping -> NoWarn {
+			label L18: "!ignition || !seatbeltSensor / warnLight = false" {
+				layout [ size: 318, 17 ]
+			}
+		}
+	}
+}

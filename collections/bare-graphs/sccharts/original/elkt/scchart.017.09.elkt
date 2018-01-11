@@ -1,0 +1,148 @@
+graph G1
+node backhoe {
+	algorithm: org.eclipse.elk.box
+	node MovingParts {
+		node WaitingForExtend {
+			layout [ size: 146, 34 ]
+		}
+		node ExtendingStick {
+			layout [ size: 128, 34 ]
+		}
+		node ExtendingBucket {
+			layout [ size: 142, 34 ]
+		}
+		node Extended {
+			layout [ size: 89, 34 ]
+		}
+		node Retracting {
+			algorithm: org.eclipse.elk.box
+			node Bucketret {
+				node Retbuck {
+					layout [ size: 80, 34 ]
+				}
+				node buckturned {
+					layout [ size: 108, 40 ]
+				}
+				edge buckturned0: Retbuck -> buckturned {
+					label L10: "1: BUCKET_IN == true / BUCKET_PULL = false" {
+						layout [ size: 332, 17 ]
+					}
+				}
+				edge Retbuck0: Retbuck -> Retbuck {
+					label L11: "2: / BUCKET_PULL = true" {
+						layout [ size: 181, 17 ]
+					}
+				}
+			}
+			node Stickret {
+				node Retstick {
+					layout [ size: 79, 34 ]
+				}
+				node stickturned {
+					layout [ size: 107, 40 ]
+				}
+				edge stickturned0: Retstick -> stickturned {
+					label L12: "1: STICK_IN == true / STICK_PULL = false" {
+						layout [ size: 296, 17 ]
+					}
+				}
+				edge Retstick0: Retstick -> Retstick {
+					label L13: "2: / STICK_PULL = true" {
+						layout [ size: 163, 17 ]
+					}
+				}
+			}
+		}
+		edge ExtendingStick0: WaitingForExtend -> ExtendingStick {
+			label L1: "1: EXTEND_BUTTON / alarming = true; DONE_LAMP = false" {
+				layout [ size: 421, 17 ]
+			}
+		}
+		edge WaitingForExtend0: WaitingForExtend -> WaitingForExtend {
+			label L2: "2: / DONE_LAMP = true" {
+				layout [ size: 163, 17 ]
+			}
+		}
+		edge ExtendingBucket0: ExtendingStick -> ExtendingBucket {
+			label L3: "1: STICK_OUT == true / STICK_PUSH = false" {
+				layout [ size: 317, 17 ]
+			}
+		}
+		edge ExtendingStick0_g0892: ExtendingStick -> ExtendingStick {
+			label L4: "2: / STICK_PUSH = true" {
+				layout [ size: 166, 17 ]
+			}
+		}
+		edge Extended0: ExtendingBucket -> Extended {
+			label L5: "1: BUCKET_OUT / alarming = false; BUCKET_PUSH = false" {
+				layout [ size: 417, 17 ]
+			}
+		}
+		edge ExtendingBucket0_g5690: ExtendingBucket -> ExtendingBucket {
+			label L6: "2: / BUCKET_PUSH = true" {
+				layout [ size: 184, 17 ]
+			}
+		}
+		edge Retracting0: Extended -> Retracting {
+			label L7: "1: RETRACT_BUTTON / alarming = true; DONE_LAMP = false" {
+				layout [ size: 431, 17 ]
+			}
+		}
+		edge Extended0_g8968: Extended -> Extended {
+			label L8: "2: / DONE_LAMP = true" {
+				layout [ size: 163, 17 ]
+			}
+		}
+		edge WaitingForExtend0_g9001: Retracting -> WaitingForExtend {
+			label L9: "/ alarming = false; DONE_LAMP = true" {
+				layout [ size: 266, 17 ]
+			}
+		}
+	}
+	node Lamplight {
+		node WaitingAlarm {
+			layout [ size: 112, 34 ]
+		}
+		node AlarmOn {
+			layout [ size: 81, 34 ]
+		}
+		node AlarmOff {
+			layout [ size: 81, 34 ]
+		}
+		edge AlarmOn0: WaitingAlarm -> AlarmOn {
+			label L14: "alarming == true" {
+				layout [ size: 115, 17 ]
+			}
+		}
+		edge WaitingAlarm0: AlarmOn -> WaitingAlarm {
+			label L15: "1: alarming == false / ALARM_LAMP = false" {
+				layout [ size: 298, 17 ]
+			}
+		}
+		edge AlarmOff0: AlarmOn -> AlarmOff {
+			label L16: "2: count == 5 / count = 0; ALARM_LAMP = false" {
+				layout [ size: 325, 17 ]
+			}
+		}
+		edge AlarmOn0_g4748: AlarmOn -> AlarmOn {
+			label L17: "3: / count = count + 1; ALARM_LAMP = true" {
+				layout [ size: 299, 17 ]
+			}
+		}
+		edge WaitingAlarm0_g7232: AlarmOff -> WaitingAlarm {
+			label L18: "1: alarming == false / ALARM_LAMP = false" {
+				layout [ size: 298, 17 ]
+			}
+		}
+		edge AlarmOn0_g8507: AlarmOff -> AlarmOn {
+			label L19: "2: count == 5 / count = 0; ALARM_LAMP = true" {
+				layout [ size: 320, 17 ]
+			}
+		}
+		edge AlarmOff0_g4813: AlarmOff -> AlarmOff {
+			label L20: "3: / count = count + 1; ALARM_LAMP = false" {
+				layout [ size: 304, 17 ]
+			}
+		}
+	}
+}

@@ -1,0 +1,81 @@
+graph G1
+node elevator {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node Moving {
+			algorithm: org.eclipse.elk.box
+			node N2 {
+				node Idle {
+					layout [ size: 46, 34 ]
+				}
+				node MoveUp {
+					layout [ size: 81, 34 ]
+				}
+				node MoveDown {
+					layout [ size: 101, 34 ]
+				}
+				node Alarm {
+					layout [ size: 61, 34 ]
+				}
+				node AlarmDone {
+					layout [ size: 97, 34 ]
+				}
+				edge MoveUp0: Idle -> MoveUp {
+					label L1: "1: IsDown && ButtonUp / Move(1)" {
+						layout [ size: 236, 17 ]
+					}
+				}
+				edge MoveDown0: Idle -> MoveDown {
+					label L2: "2: IsUp && ButtonDown / Move(-1)" {
+						layout [ size: 241, 17 ]
+					}
+				}
+				edge Alarm0: Idle -> Alarm {
+					label L3: "3: ButtonAlarm / restoreMove(0); AlarmLamp" {
+						layout [ size: 310, 17 ]
+					}
+				}
+				edge Idle0: MoveUp -> Idle {
+					label L4: "1: IsUp / Move(0)" {
+						layout [ size: 118, 17 ]
+					}
+				}
+				edge Alarm0_g8092: MoveUp -> Alarm {
+					label L5: "2: ButtonAlarm / restoreMove(1); AlarmLamp" {
+						layout [ size: 310, 17 ]
+					}
+				}
+				edge Idle0_g5220: MoveDown -> Idle {
+					label L6: "1: IsDown / Move(0)" {
+						layout [ size: 138, 17 ]
+					}
+				}
+				edge Alarm0_g1320: MoveDown -> Alarm {
+					label L7: "2: ButtonAlarm / restoreMove(-1); AlarmLamp" {
+						layout [ size: 315, 17 ]
+					}
+				}
+				edge AlarmDone0: Alarm -> AlarmDone {
+					label L8: "5 Second / AlarmLamp" {
+						layout [ size: 155, 17 ]
+					}
+				}
+				edge Idle0_g9512: AlarmDone -> Idle {
+					label L9: "1: restoreMove == 0" {
+						layout [ size: 143, 17 ]
+					}
+				}
+				edge MoveUp0_g8027: AlarmDone -> MoveUp {
+					label L10: "2: restoreMove == 1 / Move(1)" {
+						layout [ size: 212, 17 ]
+					}
+				}
+				edge MoveDown0_g7387: AlarmDone -> MoveDown {
+					label L11: "3: restoreMove == -1 / Move(-1)" {
+						layout [ size: 222, 17 ]
+					}
+				}
+			}
+		}
+	}
+}

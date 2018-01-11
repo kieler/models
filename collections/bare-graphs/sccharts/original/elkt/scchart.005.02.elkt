@@ -1,0 +1,55 @@
+graph G1
+node Inputter {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node Init {
+			layout [ size: 50, 42 ]
+		}
+		node White {
+			layout [ size: 66, 40 ]
+		}
+		node Black {
+			layout [ size: 66, 40 ]
+		}
+		edge White0: Init -> White {
+			label L1: "1: light > thrWhite / white" {
+				layout [ size: 174, 17 ]
+			}
+		}
+		edge Black0: Init -> Black {
+			label L2: "2: light < thrBlack / black" {
+				layout [ size: 173, 17 ]
+			}
+		}
+		edge White0_g4226: White -> White {
+			label L3: "1: light > thrBlack / white; counter = 0" {
+				layout [ size: 262, 17 ]
+			}
+		}
+		edge Black0_g9394: White -> Black {
+			label L4: "2: counter > TAU / black; counter = 0" {
+				layout [ size: 255, 17 ]
+			}
+		}
+		edge White1: White -> White {
+			label L5: "3: / counter = counter + 1; white" {
+				layout [ size: 222, 17 ]
+			}
+		}
+		edge Black0_g2580: Black -> Black {
+			label L6: "1: light < thrWhite / black; counter = 0" {
+				layout [ size: 262, 17 ]
+			}
+		}
+		edge White0_g7384: Black -> White {
+			label L7: "2: counter > TAU / white; counter = 0" {
+				layout [ size: 256, 17 ]
+			}
+		}
+		edge Black1: Black -> Black {
+			label L8: "3: / counter = counter + 1; black" {
+				layout [ size: 222, 17 ]
+			}
+		}
+	}
+}

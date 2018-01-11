@@ -1,0 +1,81 @@
+graph G1
+node problem {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node mainloop {
+			algorithm: org.eclipse.elk.box
+			node Init {
+				node A {
+					layout [ size: 34, 34 ]
+				}
+				node B {
+					layout [ size: 34, 34 ]
+				}
+				node A1 {
+					layout [ size: 38, 34 ]
+				}
+				node C {
+					layout [ size: 40, 40 ]
+				}
+				edge B0: A -> B {
+					label L1: "/ _problem_local_S = false" {
+						layout [ size: 184, 17 ]
+					}
+				}
+				edge C0: B -> C {
+					label L2: "1: _problem_local__Term" {
+						layout [ size: 177, 17 ]
+					}
+				}
+				edge A10: B -> A1 {
+					label L3: "2:" {
+						layout [ size: 13, 17 ]
+					}
+				}
+				edge A0: A1 -> A
+			}
+			node Main {
+				node A_g1585 {
+					layout [ size: 34, 34 ]
+				}
+				node B1 {
+					layout [ size: 40, 34 ]
+				}
+				node B_g7224 {
+					layout [ size: 34, 34 ]
+				}
+				node C_g7764 {
+					layout [ size: 34, 34 ]
+				}
+				node D1 {
+					layout [ size: 40, 34 ]
+				}
+				node D {
+					layout [ size: 40, 40 ]
+				}
+				edge B10: A_g1585 -> B1 {
+					label L4: "/ _problem_local__Term = false" {
+						layout [ size: 218, 17 ]
+					}
+				}
+				edge B0_g7412: B1 -> B_g7224 {
+					label L5: "/ O = _problem_local_S" {
+						layout [ size: 163, 17 ]
+					}
+				}
+				edge C0_g0380: B_g7224 -> C_g7764
+				edge D10: C_g7764 -> D1 {
+					label L6: "/ _problem_local_S = true" {
+						layout [ size: 179, 17 ]
+					}
+				}
+				edge D0: D1 -> D {
+					label L7: "/ _problem_local__Term = true" {
+						layout [ size: 213, 17 ]
+					}
+				}
+			}
+		}
+		edge mainloop0: mainloop -> mainloop
+	}
+}

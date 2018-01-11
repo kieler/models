@@ -1,0 +1,38 @@
+graph G1
+node RetractBucket {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node Retract {
+			layout [ size: 72, 34 ]
+		}
+		node Retracting {
+			layout [ size: 95, 34 ]
+		}
+		node Paused {
+			layout [ size: 74, 34 ]
+		}
+		node Retracted {
+			layout [ size: 97, 40 ]
+		}
+		edge Retracting0: Retract -> Retracting {
+			label L1: "/ BUCKET_PULL = true" {
+				layout [ size: 165, 17 ]
+			}
+		}
+		edge Paused0: Retracting -> Paused {
+			label L2: "1: PAUSE / BUCKET_PULL = false" {
+				layout [ size: 239, 17 ]
+			}
+		}
+		edge Retracted0: Retracting -> Retracted {
+			label L3: "2: BUCKET_IN / BUCKET_PULL = false" {
+				layout [ size: 277, 17 ]
+			}
+		}
+		edge Retracting0_g0195: Paused -> Retracting {
+			label L4: "!PAUSE / BUCKET_PULL = true" {
+				layout [ size: 222, 17 ]
+			}
+		}
+	}
+}

@@ -1,0 +1,89 @@
+graph G1
+node Elevator {
+	algorithm: org.eclipse.elk.box
+	node N1 {
+		node NotMoving {
+			layout [ size: 99, 34 ]
+		}
+		node MovingUp {
+			layout [ size: 94, 34 ]
+		}
+		node MovingDown {
+			layout [ size: 114, 34 ]
+		}
+		node counting1 {
+			layout [ size: 91, 34 ]
+		}
+		node counting2 {
+			layout [ size: 91, 34 ]
+		}
+		node counting3 {
+			layout [ size: 91, 34 ]
+		}
+		edge MovingUp0: NotMoving -> MovingUp {
+			label L1: "1: ButtonUp / Move = 1" {
+				layout [ size: 162, 17 ]
+			}
+		}
+		edge MovingDown0: NotMoving -> MovingDown {
+			label L2: "2: ButtonDown / Move = -1" {
+				layout [ size: 187, 17 ]
+			}
+		}
+		edge counting10: NotMoving -> counting1 {
+			label L3: "3: ButtonAlarm / Move = 0" {
+				layout [ size: 181, 17 ]
+			}
+		}
+		edge NotMoving0: MovingUp -> NotMoving {
+			label L4: "1: IsUp / Move = 0" {
+				layout [ size: 126, 17 ]
+			}
+		}
+		edge counting20: MovingUp -> counting2 {
+			label L5: "2: ButtonAlarm / Move = 0" {
+				layout [ size: 181, 17 ]
+			}
+		}
+		edge NotMoving0_g7269: MovingDown -> NotMoving {
+			label L6: "1: IsDown / Move = 0" {
+				layout [ size: 146, 17 ]
+			}
+		}
+		edge counting30: MovingDown -> counting3 {
+			label L7: "2: ButtonAlarm / Move = 0" {
+				layout [ size: 181, 17 ]
+			}
+		}
+		edge NotMoving0_g8569: counting1 -> NotMoving {
+			label L8: "1: seconds == 5 / Move = 1; seconds = 0" {
+				layout [ size: 281, 17 ]
+			}
+		}
+		edge counting10_g2684: counting1 -> counting1 {
+			label L9: "2: Second / seconds = seconds + 1; AlarmLamp = !AlarmLamp" {
+				layout [ size: 427, 17 ]
+			}
+		}
+		edge MovingUp0_g2032: counting2 -> MovingUp {
+			label L10: "1: seconds == 5 / Move = 1; seconds = 0" {
+				layout [ size: 281, 17 ]
+			}
+		}
+		edge counting20_g8591: counting2 -> counting2 {
+			label L11: "2: Second / seconds = seconds + 1; AlarmLamp = !AlarmLamp" {
+				layout [ size: 427, 17 ]
+			}
+		}
+		edge MovingDown0_g4154: counting3 -> MovingDown {
+			label L12: "1: seconds == 5 / Move = 1; seconds = 0" {
+				layout [ size: 281, 17 ]
+			}
+		}
+		edge counting30_g1446: counting3 -> counting3 {
+			label L13: "2: Second / seconds = seconds + 1; AlarmLamp = !AlarmLamp" {
+				layout [ size: 427, 17 ]
+			}
+		}
+	}
+}
