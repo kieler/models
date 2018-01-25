@@ -33,3 +33,94 @@ Type      | Description
 `.json`   | JSON files. See [the specification](https://www.eclipse.org/elk/documentation/tooldevelopers/graphdatastructure/jsonformat.html).
 `.md`     | Readme files can be placed in folders to describe their purpose.
 
+
+## Collections 
+
+Next, the available collections are described. 
+The collections may be subject to change both in terms of structural changes of the graphs itself and in terms of the graph instances that are included within a collection. Thus, when referencing a certain collection in a post or an article, it is a good idea to include the _git commit id_ of the used state. 
+
+The following table provides an overview, and the sections below describe the properties of the graphs in further detail. 
+
+Collection          |  Description
+--------------------|-------------
+rome, north         | Taken from the [graphdrawing.org](http://graphdrawing.org/data.html) website, these two collections are well-known within the graph drawing community. As opposed to the other collections, the graphs' nodes do not have dimensions. 
+ptolemy             | Taken from UC Berkeley's [Ptolemy II](http://ptolemy.eecs.berkeley.edu/ptolemyII/) project, the graphs represent dataflow diagrams with ports. 
+sccharts            | [SCCharts](http://www.sccharts.com/) are a type of control flow diagram, representing state machines with hierarchy. The provided graphs have been created by university students during practical courses. 
+scgs                | SCGraphs occur during the compilation of SCCharts. The provided graphs originate from the previously mentioned SCCharts. 
+
+### Ptolemy
+Variants:
+  - `original`
+  - `flattened`: the hierarchy has been removed by moving all simple nodes to the top-most level
+
+There are two `*._map.txt` files in the corresponding directory that can be used to identify the original model. 
+
+Interesting features:
+  - Ports
+  - Different node dimensions
+  - Hyperedges
+  - Node labels
+  - Hierarchy
+  - Disconnected graphs
+
+Desired layout style:
+  - Left-to-right layout direction
+  - Orthogonally routed edges
+
+Preserved layout options:
+  - `portConstraints`
+	  - `portSide`
+	  - `portIndex`
+  - `nodeLabels.placement`
+
+What to do:
+  - Simple nodes have a dimension, the dimension of hierarchical nodes must be determined
+  - Nodes have labels, which have a dimension, that are to be positioned properly
+  - Nodes have ports that are to be positioned according to their port constraints
+    - Simple nodes have fixed order port constraints
+    - Hierarchical nodes have free port constraints
+
+
+### SCCharts
+Variants:
+  - `original`
+  - `core`: the original SCCharts are transformed to only comprise of _core features_, which usually results in a larger number of nodes and edges
+
+Interesting features:
+  - Different node dimensions
+  - Hierarchy
+  - Mixture of a regular layout algorithm and a _packing_ algorithm.
+    The latter has explicitly been configured to `org.eclipse.elk.box`
+  - Edge labels
+
+Desired layout style:
+  - Spline edge routes
+  - Even node distribution
+
+Preserved layout options:
+  - Layout algorithm as mentioned above
+
+### SCGraphs (SCGs)
+SCGs emerge during the compilation of SCCharts.
+
+Variants: 
+  - `original`
+  - `bb`: at some point, several nodes are combined to _basic blocks_, which are modeled using hierarchy
+  - `seq`: _sequentialized_ SCGs are acyclic and may become very long
+
+Interesting features:
+  - Different node dimensions
+  - Hyperedges
+  - Node labels
+  - Hierarchy
+
+Desired layout style:
+  - Top-down layout direction
+  - Orthogonally routed edges
+
+Preserved 
+  - `portConstraints`
+	  - `portSide`
+	  - `portIndex`
+  - `nodeLabels.placement`
+  - `layerConstraint`
