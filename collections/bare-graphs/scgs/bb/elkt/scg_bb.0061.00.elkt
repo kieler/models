@@ -1,541 +1,886 @@
 graph G1
 node N2 {
 	portConstraints: FREE
-	label L1: "g0" {
+	port P1
+	port P2
+	node N3 {
+		portConstraints: FREE
+		port P3
+		port P4
+		node N4 {
+			portConstraints: FREE
+			label L1: "g2" {
+				layout [ size: 14, 14 ]
+			}
+			port P5
+			port P6
+			node N5 {
+				layout [ size: 75, 25 ]
+				nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+				portConstraints: FIXED_SIDE
+				layerConstraint: FIRST
+				label L2: "entry" {
+					layout [ size: 29, 15 ]
+				}
+				port P7 {
+					side: NORTH
+				}
+				port P8 {
+					side: SOUTH
+				}
+			}
+			edge E17: P6 -> N5.P7
+			edge E18: N5.P8 -> P5
+		}
+		node N6 {
+			portConstraints: FREE
+			label L3: "g3" {
+				layout [ size: 14, 14 ]
+			}
+			port P9
+			port P10
+			port P11
+			node N7 {
+				layout [ size: 75, 25 ]
+				nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+				portConstraints: FIXED_SIDE
+				label L4: "surface" {
+					layout [ size: 43, 15 ]
+				}
+				port P12 {
+					side: NORTH
+				}
+				port P13 {
+					side: SOUTH
+				}
+			}
+			edge E19: P10 -> N7.P12
+			edge E20: P11 -> N7.P12
+			edge E21: N7.P13 -> P9
+		}
+		node N8 {
+			portConstraints: FREE
+			label L5: "g4" {
+				layout [ size: 14, 14 ]
+			}
+			port P14
+			port P15
+			port P16
+			node N9 {
+				layout [ size: 75, 25 ]
+				nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+				portConstraints: FIXED_SIDE
+				layerConstraint: FIRST
+				label L7: "depth" {
+					layout [ size: 33, 15 ]
+				}
+				port P17 {
+					side: NORTH
+				}
+				port P18 {
+					side: SOUTH
+				}
+			}
+			node N10 {
+				layout [ size: 75, 25 ]
+				nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+				portConstraints: FIXED_SIDE
+				label L8: "I1" {
+					layout [ size: 11, 15 ]
+				}
+				port P19 {
+					side: NORTH
+				}
+				port P20 {
+					side: SOUTH
+				}
+				port P21 {
+					northOrSouthPort: true
+					side: EAST
+				}
+			}
+			edge E22: P14 -> N9.P17
+			edge E23: N9.P18 -> N10.P19
+			edge E24: N10.P21 -> P15 {
+				label L6: "true" {
+					layout [ size: 21, 14 ]
+				}
+			}
+			edge E25: N10.P20 -> P16
+		}
+		node N11 {
+			portConstraints: FREE
+			label L9: "g5" {
+				layout [ size: 14, 14 ]
+			}
+			port P22
+			port P23
+			node N12 {
+				layout [ size: 75, 25 ]
+				nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+				portConstraints: FIXED_SIDE
+				layerConstraint: LAST
+				label L10: "exit" {
+					layout [ size: 21, 15 ]
+				}
+				port P24 {
+					side: NORTH
+				}
+				port P25 {
+					side: SOUTH
+				}
+			}
+			edge E26: P23 -> N12.P24
+			edge E27: N12.P25 -> P22
+		}
+		edge E11: P3 -> N4.P6
+		edge E12: N4.P5 -> N6.P10
+		edge E13: N6.P9 -> N8.P14
+		edge E14: N8.P16 -> N6.P11
+		edge E15: N8.P15 -> N11.P23
+		edge E16: N11.P22 -> P4
+	}
+	node N13 {
+		portConstraints: FREE
+		port P26
+		port P27
+		node N14 {
+			portConstraints: FREE
+			label L11: "g6" {
+				layout [ size: 14, 14 ]
+			}
+			port P28
+			port P29
+			node N15 {
+				layout [ size: 75, 25 ]
+				nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+				portConstraints: FIXED_SIDE
+				layerConstraint: FIRST
+				label L12: "entry" {
+					layout [ size: 29, 15 ]
+				}
+				port P30 {
+					side: NORTH
+				}
+				port P31 {
+					side: SOUTH
+				}
+			}
+			edge E34: P29 -> N15.P30
+			edge E35: N15.P31 -> P28
+		}
+		node N16 {
+			portConstraints: FREE
+			label L13: "g7" {
+				layout [ size: 14, 14 ]
+			}
+			port P32
+			port P33
+			port P34
+			node N17 {
+				layout [ size: 75, 25 ]
+				nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+				portConstraints: FIXED_SIDE
+				label L14: "surface" {
+					layout [ size: 43, 15 ]
+				}
+				port P35 {
+					side: NORTH
+				}
+				port P36 {
+					side: SOUTH
+				}
+			}
+			edge E36: P33 -> N17.P35
+			edge E37: P34 -> N17.P35
+			edge E38: N17.P36 -> P32
+		}
+		node N18 {
+			portConstraints: FREE
+			label L15: "g8" {
+				layout [ size: 14, 14 ]
+			}
+			port P37
+			port P38
+			port P39
+			node N19 {
+				layout [ size: 75, 25 ]
+				nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+				portConstraints: FIXED_SIDE
+				layerConstraint: FIRST
+				label L17: "depth" {
+					layout [ size: 33, 15 ]
+				}
+				port P40 {
+					side: NORTH
+				}
+				port P41 {
+					side: SOUTH
+				}
+			}
+			node N20 {
+				layout [ size: 75, 25 ]
+				nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+				portConstraints: FIXED_SIDE
+				label L18: "I2" {
+					layout [ size: 11, 15 ]
+				}
+				port P42 {
+					side: NORTH
+				}
+				port P43 {
+					side: SOUTH
+				}
+				port P44 {
+					northOrSouthPort: true
+					side: EAST
+				}
+			}
+			edge E39: P37 -> N19.P40
+			edge E40: N19.P41 -> N20.P42
+			edge E41: N20.P44 -> P38 {
+				label L16: "true" {
+					layout [ size: 21, 14 ]
+				}
+			}
+			edge E42: N20.P43 -> P39
+		}
+		node N21 {
+			portConstraints: FREE
+			label L19: "g9" {
+				layout [ size: 14, 14 ]
+			}
+			port P45
+			port P46
+			node N22 {
+				layout [ size: 75, 25 ]
+				nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+				portConstraints: FIXED_SIDE
+				layerConstraint: LAST
+				label L20: "exit" {
+					layout [ size: 21, 15 ]
+				}
+				port P47 {
+					side: NORTH
+				}
+				port P48 {
+					side: SOUTH
+				}
+			}
+			edge E43: P46 -> N22.P47
+			edge E44: N22.P48 -> P45
+		}
+		edge E28: P26 -> N14.P29
+		edge E29: N14.P28 -> N16.P33
+		edge E30: N16.P32 -> N18.P37
+		edge E31: N18.P39 -> N16.P34
+		edge E32: N18.P38 -> N21.P46
+		edge E33: N21.P45 -> P27
+	}
+	node N23 {
+		portConstraints: FREE
+		label L21: "g1" {
+			layout [ size: 14, 14 ]
+		}
+		port P49
+		port P50
+		port P51
+		node N24 {
+			layout [ size: 75, 25 ]
+			nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+			portConstraints: FIXED_SIDE
+			layerConstraint: FIRST
+			label L22: "entry" {
+				layout [ size: 29, 15 ]
+			}
+			port P52 {
+				side: NORTH
+			}
+			port P53 {
+				side: SOUTH
+			}
+		}
+		node N25 {
+			layout [ size: 284, 25 ]
+			nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+			portConstraints: FIXED_SIDE
+			label L23: "_ComplexFinalState_local_term_R1_R2 = false" {
+				layout [ size: 274, 15 ]
+			}
+			port P54 {
+				side: NORTH
+			}
+			port P55 {
+				side: SOUTH
+			}
+		}
+		node N26 {
+			layout [ size: 75, 28 ]
+			nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+			portConstraints: FIXED_SIDE
+			label L24: "fork" {
+				layout [ size: 21, 15 ]
+			}
+			port P56 {
+				side: NORTH
+			}
+			port P57 {
+				side: SOUTH
+			}
+			port P58 {
+				side: SOUTH
+			}
+		}
+		edge E45: P49 -> N24.P52
+		edge E46: N24.P53 -> N25.P54
+		edge E47: N25.P55 -> N26.P56
+		edge E48: N26.P57 -> P50
+		edge E49: N26.P58 -> P51
+	}
+	node N27 {
+		portConstraints: FREE
+		label L25: "g10" {
+			layout [ size: 21, 14 ]
+		}
+		port P59
+		port P60
+		port P61
+		node N28 {
+			layout [ size: 75, 27 ]
+			nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+			portConstraints: FIXED_SIDE
+			label L26: "join" {
+				layout [ size: 21, 15 ]
+			}
+			port P62 {
+				side: SOUTH
+			}
+			port P63 {
+				side: NORTH
+			}
+			port P64 {
+				side: NORTH
+			}
+		}
+		node N29 {
+			layout [ size: 279, 25 ]
+			nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+			portConstraints: FIXED_SIDE
+			label L27: "_ComplexFinalState_local_term_R1_R2 = true" {
+				layout [ size: 269, 15 ]
+			}
+			port P65 {
+				side: NORTH
+			}
+			port P66 {
+				side: SOUTH
+			}
+		}
+		node N30 {
+			layout [ size: 75, 25 ]
+			nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+			portConstraints: FIXED_SIDE
+			layerConstraint: LAST
+			label L28: "exit" {
+				layout [ size: 21, 15 ]
+			}
+			port P67 {
+				side: NORTH
+			}
+			port P68 {
+				side: SOUTH
+			}
+		}
+		edge E50: P59 -> N28.P63
+		edge E51: P60 -> N28.P64
+		edge E52: N28.P62 -> N29.P65
+		edge E53: N29.P66 -> N30.P67
+		edge E54: N30.P68 -> P61
+	}
+	edge E5: P1 -> N23.P49
+	edge E6: N3.P4 -> N27.P59
+	edge E7: N13.P27 -> N27.P60
+	edge E8: N23.P50 -> N3.P3
+	edge E9: N23.P51 -> N13.P26
+	edge E10: N27.P61 -> P2
+}
+node N31 {
+	portConstraints: FREE
+	port P69
+	port P70
+	node N32 {
+		portConstraints: FREE
+		label L29: "g11" {
+			layout [ size: 20, 14 ]
+		}
+		port P71
+		port P72
+		node N33 {
+			layout [ size: 75, 25 ]
+			nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+			portConstraints: FIXED_SIDE
+			layerConstraint: FIRST
+			label L30: "entry" {
+				layout [ size: 29, 15 ]
+			}
+			port P73 {
+				side: NORTH
+			}
+			port P74 {
+				side: SOUTH
+			}
+		}
+		edge E72: P72 -> N33.P73
+		edge E73: N33.P74 -> P71
+	}
+	node N34 {
+		portConstraints: FREE
+		label L31: "g12" {
+			layout [ size: 21, 14 ]
+		}
+		port P75
+		port P76
+		port P77
+		port P78
+		port P79
+		node N35 {
+			layout [ size: 75, 25 ]
+			nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+			portConstraints: FIXED_SIDE
+			label L32: "surface" {
+				layout [ size: 43, 15 ]
+			}
+			port P80 {
+				side: NORTH
+			}
+			port P81 {
+				side: SOUTH
+			}
+		}
+		edge E74: P76 -> N35.P80
+		edge E75: P77 -> N35.P80
+		edge E76: P78 -> N35.P80
+		edge E77: P79 -> N35.P80
+		edge E78: N35.P81 -> P75
+	}
+	node N36 {
+		portConstraints: FREE
+		label L33: "g13" {
+			layout [ size: 21, 14 ]
+		}
+		port P82
+		port P83
+		port P84
+		node N37 {
+			layout [ size: 75, 25 ]
+			nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+			portConstraints: FIXED_SIDE
+			layerConstraint: FIRST
+			label L35: "depth" {
+				layout [ size: 33, 15 ]
+			}
+			port P85 {
+				side: NORTH
+			}
+			port P86 {
+				side: SOUTH
+			}
+		}
+		node N38 {
+			layout [ size: 75, 25 ]
+			nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+			portConstraints: FIXED_SIDE
+			label L36: "I3" {
+				layout [ size: 11, 15 ]
+			}
+			port P87 {
+				side: NORTH
+			}
+			port P88 {
+				side: SOUTH
+			}
+			port P89 {
+				northOrSouthPort: true
+				side: EAST
+			}
+		}
+		edge E79: P82 -> N37.P85
+		edge E80: N37.P86 -> N38.P87
+		edge E81: N38.P89 -> P83 {
+			label L34: "true" {
+				layout [ size: 21, 14 ]
+			}
+		}
+		edge E82: N38.P88 -> P84
+	}
+	node N39 {
+		portConstraints: FREE
+		label L37: "g14" {
+			layout [ size: 21, 14 ]
+		}
+		port P90
+		port P91
+		port P92
+		port P93
+		node N40 {
+			layout [ size: 242.5, 25 ]
+			nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+			portConstraints: FIXED_SIDE
+			label L39: "_ComplexFinalState_local_term_R1_R2" {
+				layout [ size: 231, 15 ]
+			}
+			port P94 {
+				side: NORTH
+			}
+			port P95 {
+				side: SOUTH
+			}
+			port P96 {
+				northOrSouthPort: true
+				side: EAST
+			}
+		}
+		edge E83: P92 -> N40.P94
+		edge E84: P93 -> N40.P94
+		edge E85: N40.P96 -> P90 {
+			label L38: "true" {
+				layout [ size: 21, 14 ]
+			}
+		}
+		edge E86: N40.P95 -> P91
+	}
+	node N41 {
+		portConstraints: FREE
+		label L40: "g15" {
+			layout [ size: 21, 14 ]
+		}
+		port P97
+		port P98
+		port P99
+		node N42 {
+			layout [ size: 75, 25 ]
+			nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+			portConstraints: FIXED_SIDE
+			layerConstraint: LAST
+			label L41: "exit" {
+				layout [ size: 21, 15 ]
+			}
+			port P100 {
+				side: NORTH
+			}
+			port P101 {
+				side: SOUTH
+			}
+		}
+		edge E87: P98 -> N42.P100
+		edge E88: P99 -> N42.P100
+		edge E89: N42.P101 -> P97
+	}
+	node N43 {
+		portConstraints: FREE
+		label L42: "g16" {
+			layout [ size: 21, 14 ]
+		}
+		port P102
+		port P103
+		node N44 {
+			layout [ size: 75, 25 ]
+			nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+			portConstraints: FIXED_SIDE
+			label L43: "surface" {
+				layout [ size: 43, 15 ]
+			}
+			port P104 {
+				side: NORTH
+			}
+			port P105 {
+				side: SOUTH
+			}
+		}
+		edge E90: P103 -> N44.P104
+		edge E91: N44.P105 -> P102
+	}
+	node N45 {
+		portConstraints: FREE
+		label L44: "g17" {
+			layout [ size: 21, 14 ]
+		}
+		port P106
+		port P107
+		port P108
+		node N46 {
+			layout [ size: 75, 25 ]
+			nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+			portConstraints: FIXED_SIDE
+			layerConstraint: FIRST
+			label L46: "depth" {
+				layout [ size: 33, 15 ]
+			}
+			port P109 {
+				side: NORTH
+			}
+			port P110 {
+				side: SOUTH
+			}
+		}
+		node N47 {
+			layout [ size: 75, 25 ]
+			nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+			portConstraints: FIXED_SIDE
+			label L47: "I3" {
+				layout [ size: 11, 15 ]
+			}
+			port P111 {
+				side: NORTH
+			}
+			port P112 {
+				side: SOUTH
+			}
+			port P113 {
+				northOrSouthPort: true
+				side: EAST
+			}
+		}
+		edge E92: P106 -> N46.P109
+		edge E93: N46.P110 -> N47.P111
+		edge E94: N47.P112 -> P107
+		edge E95: N47.P113 -> P108 {
+			label L45: "true" {
+				layout [ size: 21, 14 ]
+			}
+		}
+	}
+	node N48 {
+		portConstraints: FREE
+		label L48: "g18" {
+			layout [ size: 21, 14 ]
+		}
+		port P114
+		port P115
+		port P116
+		node N49 {
+			layout [ size: 75, 25 ]
+			nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+			portConstraints: FIXED_SIDE
+			label L50: "I4" {
+				layout [ size: 11, 15 ]
+			}
+			port P117 {
+				side: NORTH
+			}
+			port P118 {
+				side: SOUTH
+			}
+			port P119 {
+				northOrSouthPort: true
+				side: EAST
+			}
+		}
+		edge E96: P116 -> N49.P117
+		edge E97: N49.P119 -> P114 {
+			label L49: "true" {
+				layout [ size: 21, 14 ]
+			}
+		}
+		edge E98: N49.P118 -> P115
+	}
+	node N50 {
+		portConstraints: FREE
+		label L51: "g19" {
+			layout [ size: 21, 14 ]
+		}
+		port P120
+		port P121
+		port P122
+		node N51 {
+			layout [ size: 242.5, 25 ]
+			nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+			portConstraints: FIXED_SIDE
+			label L53: "_ComplexFinalState_local_term_R1_R2" {
+				layout [ size: 231, 15 ]
+			}
+			port P123 {
+				side: NORTH
+			}
+			port P124 {
+				side: SOUTH
+			}
+			port P125 {
+				northOrSouthPort: true
+				side: EAST
+			}
+		}
+		edge E99: P122 -> N51.P123
+		edge E100: N51.P124 -> P120
+		edge E101: N51.P125 -> P121 {
+			label L52: "true" {
+				layout [ size: 21, 14 ]
+			}
+		}
+	}
+	node N52 {
+		portConstraints: FREE
+		label L54: "g20" {
+			layout [ size: 21, 14 ]
+		}
+		port P126
+		port P127
+		node N53 {
+			layout [ size: 75, 25 ]
+			nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+			portConstraints: FIXED_SIDE
+			label L55: "surface" {
+				layout [ size: 43, 15 ]
+			}
+			port P128 {
+				side: NORTH
+			}
+			port P129 {
+				side: SOUTH
+			}
+		}
+		edge E102: P127 -> N53.P128
+		edge E103: N53.P129 -> P126
+	}
+	node N54 {
+		portConstraints: FREE
+		label L56: "g21" {
+			layout [ size: 21, 14 ]
+		}
+		port P130
+		port P131
+		node N55 {
+			layout [ size: 75, 25 ]
+			nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+			portConstraints: FIXED_SIDE
+			layerConstraint: FIRST
+			label L57: "depth" {
+				layout [ size: 33, 15 ]
+			}
+			port P132 {
+				side: NORTH
+			}
+			port P133 {
+				side: SOUTH
+			}
+		}
+		edge E104: P131 -> N55.P132
+		edge E105: N55.P133 -> P130
+	}
+	edge E55: P69 -> N32.P72
+	edge E56: N32.P71 -> N34.P76
+	edge E57: N34.P75 -> N36.P82
+	edge E58: N36.P84 -> N34.P77
+	edge E59: N36.P83 -> N39.P92
+	edge E60: N39.P90 -> N41.P98
+	edge E61: N39.P91 -> N43.P103
+	edge E62: N41.P97 -> P70
+	edge E63: N43.P102 -> N45.P106
+	edge E64: N45.P108 -> N34.P78
+	edge E65: N45.P107 -> N48.P116
+	edge E66: N48.P115 -> N39.P93
+	edge E67: N48.P114 -> N50.P122
+	edge E68: N50.P121 -> N41.P99
+	edge E69: N50.P120 -> N52.P127
+	edge E70: N52.P126 -> N54.P131
+	edge E71: N54.P130 -> N34.P79
+}
+node N56 {
+	portConstraints: FREE
+	label L58: "g0" {
 		layout [ size: 14, 14 ]
 	}
-	port P1
-	node N3 {
+	port P134
+	port P135
+	node N57 {
 		layout [ size: 75, 25 ]
 		nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
 		portConstraints: FIXED_SIDE
 		layerConstraint: FIRST
-		label L2: "entry" {
+		label L59: "entry" {
 			layout [ size: 29, 15 ]
 		}
-		port P2 {
+		port P136 {
 			side: SOUTH
 		}
 	}
-	edge E19: N3.P2 -> P1
+	node N58 {
+		layout [ size: 75, 28 ]
+		nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+		portConstraints: FIXED_SIDE
+		label L60: "fork" {
+			layout [ size: 21, 15 ]
+		}
+		port P137 {
+			side: NORTH
+		}
+		port P138 {
+			side: SOUTH
+		}
+		port P139 {
+			side: SOUTH
+		}
+	}
+	edge E106: N57.P136 -> N58.P137
+	edge E107: N58.P138 -> P134
+	edge E108: N58.P139 -> P135
 }
-node N4 {
+node N59 {
 	portConstraints: FREE
-	label L3: "g1" {
-		layout [ size: 14, 14 ]
-	}
-	port P3
-	port P4
-	port P5
-	port P6
-	port P7
-	port P8
-	node N5 {
-		layout [ size: 75, 25 ]
-		nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
-		portConstraints: FIXED_SIDE
-		label L4: "surface" {
-			layout [ size: 43, 15 ]
-		}
-		port P9 {
-			side: NORTH
-		}
-		port P10 {
-			side: SOUTH
-		}
-	}
-	edge E20: P4 -> N5.P9
-	edge E21: P5 -> N5.P9
-	edge E22: P6 -> N5.P9
-	edge E23: P7 -> N5.P9
-	edge E24: P8 -> N5.P9
-	edge E25: N5.P10 -> P3
-}
-node N6 {
-	portConstraints: FREE
-	label L5: "g2" {
-		layout [ size: 14, 14 ]
-	}
-	port P11
-	port P12
-	port P13
-	node N7 {
-		layout [ size: 75, 25 ]
-		nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
-		portConstraints: FIXED_SIDE
-		layerConstraint: FIRST
-		label L7: "depth" {
-			layout [ size: 33, 15 ]
-		}
-		port P14 {
-			side: NORTH
-		}
-		port P15 {
-			side: SOUTH
-		}
-	}
-	node N8 {
-		layout [ size: 120.5, 25 ]
-		nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
-		portConstraints: FIXED_SIDE
-		label L8: "EXTEND_BUTTON" {
-			layout [ size: 109, 15 ]
-		}
-		port P16 {
-			side: NORTH
-		}
-		port P17 {
-			side: SOUTH
-		}
-		port P18 {
-			northOrSouthPort: true
-			side: EAST
-		}
-	}
-	edge E26: P11 -> N7.P14
-	edge E27: N7.P15 -> N8.P16
-	edge E28: N8.P18 -> P12 {
-		label L6: "true" {
-			layout [ size: 21, 14 ]
-		}
-	}
-	edge E29: N8.P17 -> P13
-}
-node N9 {
-	portConstraints: FREE
-	label L9: "g3" {
-		layout [ size: 14, 14 ]
-	}
-	port P19
-	port P20
-	node N10 {
-		layout [ size: 141, 25 ]
-		nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
-		portConstraints: FIXED_SIDE
-		label L10: "LEGS_EXTEND = true" {
-			layout [ size: 131, 15 ]
-		}
-		port P21 {
-			side: NORTH
-		}
-		port P22 {
-			side: SOUTH
-		}
-	}
-	edge E30: P20 -> N10.P21
-	edge E31: N10.P22 -> P19
-}
-node N11 {
-	portConstraints: FREE
-	label L11: "g4" {
-		layout [ size: 14, 14 ]
-	}
-	port P23
-	port P24
-	port P25
-	port P26
-	node N12 {
-		layout [ size: 75, 25 ]
-		nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
-		portConstraints: FIXED_SIDE
-		label L12: "surface" {
-			layout [ size: 43, 15 ]
-		}
-		port P27 {
-			side: NORTH
-		}
-		port P28 {
-			side: SOUTH
-		}
-	}
-	edge E32: P24 -> N12.P27
-	edge E33: P25 -> N12.P27
-	edge E34: P26 -> N12.P27
-	edge E35: N12.P28 -> P23
-}
-node N13 {
-	portConstraints: FREE
-	label L13: "g5" {
-		layout [ size: 14, 14 ]
-	}
-	port P29
-	port P30
-	port P31
-	node N14 {
-		layout [ size: 75, 25 ]
-		nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
-		portConstraints: FIXED_SIDE
-		layerConstraint: FIRST
-		label L15: "depth" {
-			layout [ size: 33, 15 ]
-		}
-		port P32 {
-			side: NORTH
-		}
-		port P33 {
-			side: SOUTH
-		}
-	}
-	node N15 {
-		layout [ size: 75, 25 ]
-		nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
-		portConstraints: FIXED_SIDE
-		label L16: "LEGS_IN" {
-			layout [ size: 55, 15 ]
-		}
-		port P34 {
-			side: NORTH
-		}
-		port P35 {
-			side: SOUTH
-		}
-		port P36 {
-			northOrSouthPort: true
-			side: EAST
-		}
-	}
-	edge E36: P29 -> N14.P32
-	edge E37: N14.P33 -> N15.P34
-	edge E38: N15.P36 -> P30 {
-		label L14: "true" {
-			layout [ size: 21, 14 ]
-		}
-	}
-	edge E39: N15.P35 -> P31
-}
-node N16 {
-	portConstraints: FREE
-	label L17: "g6" {
-		layout [ size: 14, 14 ]
-	}
-	port P37
-	port P38
-	node N17 {
-		layout [ size: 126, 25 ]
-		nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
-		portConstraints: FIXED_SIDE
-		label L18: "LEGS_STOP = true" {
-			layout [ size: 116, 15 ]
-		}
-		port P39 {
-			side: NORTH
-		}
-		port P40 {
-			side: SOUTH
-		}
-	}
-	node N18 {
-		layout [ size: 155, 25 ]
-		nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
-		portConstraints: FIXED_SIDE
-		label L19: "LEGS_RETRACT = false" {
-			layout [ size: 145, 15 ]
-		}
-		port P41 {
-			side: NORTH
-		}
-		port P42 {
-			side: SOUTH
-		}
-	}
-	node N19 {
-		layout [ size: 134, 25 ]
-		nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
-		portConstraints: FIXED_SIDE
-		label L20: "DONE_LAMP = false" {
-			layout [ size: 124, 15 ]
-		}
-		port P43 {
-			side: NORTH
-		}
-		port P44 {
-			side: SOUTH
-		}
-	}
-	edge E40: P37 -> N17.P39
-	edge E41: N17.P40 -> N18.P41
-	edge E42: N18.P42 -> N19.P43
-	edge E43: N19.P44 -> P38
-}
-node N20 {
-	portConstraints: FREE
-	label L21: "g7" {
-		layout [ size: 14, 14 ]
-	}
-	port P45
-	port P46
-	port P47
-	node N21 {
-		layout [ size: 80.5, 25 ]
-		nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
-		portConstraints: FIXED_SIDE
-		label L23: "LEGS_OUT" {
-			layout [ size: 69, 15 ]
-		}
-		port P48 {
-			side: NORTH
-		}
-		port P49 {
-			side: SOUTH
-		}
-		port P50 {
-			northOrSouthPort: true
-			side: EAST
-		}
-	}
-	edge E44: P47 -> N21.P48
-	edge E45: N21.P50 -> P45 {
-		label L22: "true" {
-			layout [ size: 21, 14 ]
-		}
-	}
-	edge E46: N21.P49 -> P46
-}
-node N22 {
-	portConstraints: FREE
-	label L24: "g8" {
-		layout [ size: 14, 14 ]
-	}
-	port P51
-	port P52
-	node N23 {
-		layout [ size: 126, 25 ]
-		nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
-		portConstraints: FIXED_SIDE
-		label L25: "LEGS_STOP = true" {
-			layout [ size: 116, 15 ]
-		}
-		port P53 {
-			side: NORTH
-		}
-		port P54 {
-			side: SOUTH
-		}
-	}
-	node N24 {
-		layout [ size: 146, 25 ]
-		nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
-		portConstraints: FIXED_SIDE
-		label L26: "LEGS_EXTEND = false" {
-			layout [ size: 136, 15 ]
-		}
-		port P55 {
-			side: NORTH
-		}
-		port P56 {
-			side: SOUTH
-		}
-	}
-	node N25 {
-		layout [ size: 129, 25 ]
-		nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
-		portConstraints: FIXED_SIDE
-		label L27: "DONE_LAMP = true" {
-			layout [ size: 119, 15 ]
-		}
-		port P57 {
-			side: NORTH
-		}
-		port P58 {
-			side: SOUTH
-		}
-	}
-	edge E47: P51 -> N23.P53
-	edge E48: N23.P54 -> N24.P55
-	edge E49: N24.P56 -> N25.P57
-	edge E50: N25.P58 -> P52
-}
-node N26 {
-	portConstraints: FREE
-	label L28: "g9" {
-		layout [ size: 14, 14 ]
-	}
-	port P59
-	port P60
-	port P61
-	node N27 {
-		layout [ size: 105.5, 25 ]
-		nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
-		portConstraints: FIXED_SIDE
-		label L30: "STOP_BUTTON" {
-			layout [ size: 94, 15 ]
-		}
-		port P62 {
-			side: NORTH
-		}
-		port P63 {
-			side: SOUTH
-		}
-		port P64 {
-			northOrSouthPort: true
-			side: EAST
-		}
-	}
-	edge E51: P61 -> N27.P62
-	edge E52: N27.P64 -> P59 {
-		label L29: "true" {
-			layout [ size: 21, 14 ]
-		}
-	}
-	edge E53: N27.P63 -> P60
-}
-node N28 {
-	portConstraints: FREE
-	label L31: "g10" {
+	label L61: "g22" {
 		layout [ size: 21, 14 ]
 	}
-	port P65
-	port P66
-	node N29 {
-		layout [ size: 126, 25 ]
+	port P140
+	port P141
+	node N60 {
+		layout [ size: 75, 27 ]
 		nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
 		portConstraints: FIXED_SIDE
-		label L32: "LEGS_STOP = true" {
-			layout [ size: 116, 15 ]
+		label L62: "join" {
+			layout [ size: 21, 15 ]
 		}
-		port P67 {
+		port P142 {
+			side: SOUTH
+		}
+		port P143 {
 			side: NORTH
 		}
-		port P68 {
+		port P144 {
+			side: NORTH
+		}
+	}
+	node N61 {
+		layout [ size: 75, 25 ]
+		nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
+		portConstraints: FIXED_SIDE
+		label L63: "O = true" {
+			layout [ size: 49, 15 ]
+		}
+		port P145 {
+			side: NORTH
+		}
+		port P146 {
 			side: SOUTH
 		}
 	}
-	node N30 {
-		layout [ size: 155, 25 ]
-		nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
-		portConstraints: FIXED_SIDE
-		label L33: "LEGS_RETRACT = false" {
-			layout [ size: 145, 15 ]
-		}
-		port P69 {
-			side: NORTH
-		}
-		port P70 {
-			side: SOUTH
-		}
-	}
-	node N31 {
-		layout [ size: 146, 25 ]
-		nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
-		portConstraints: FIXED_SIDE
-		label L34: "LEGS_EXTEND = false" {
-			layout [ size: 136, 15 ]
-		}
-		port P71 {
-			side: NORTH
-		}
-		port P72 {
-			side: SOUTH
-		}
-	}
-	node N32 {
-		layout [ size: 134, 25 ]
-		nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
-		portConstraints: FIXED_SIDE
-		label L35: "DONE_LAMP = false" {
-			layout [ size: 124, 15 ]
-		}
-		port P73 {
-			side: NORTH
-		}
-		port P74 {
-			side: SOUTH
-		}
-	}
-	edge E54: P65 -> N29.P67
-	edge E55: N29.P68 -> N30.P69
-	edge E56: N30.P70 -> N31.P71
-	edge E57: N31.P72 -> N32.P73
-	edge E58: N32.P74 -> P66
-}
-node N33 {
-	portConstraints: FREE
-	label L36: "g11" {
-		layout [ size: 20, 14 ]
-	}
-	port P75
-	port P76
-	port P77
-	node N34 {
-		layout [ size: 129.5, 25 ]
-		nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
-		portConstraints: FIXED_SIDE
-		label L38: "RETRACT_BUTTON" {
-			layout [ size: 118, 15 ]
-		}
-		port P78 {
-			side: NORTH
-		}
-		port P79 {
-			side: SOUTH
-		}
-		port P80 {
-			northOrSouthPort: true
-			side: EAST
-		}
-	}
-	edge E59: P77 -> N34.P78
-	edge E60: N34.P80 -> P75 {
-		label L37: "true" {
-			layout [ size: 21, 14 ]
-		}
-	}
-	edge E61: N34.P79 -> P76
-}
-node N35 {
-	portConstraints: FREE
-	label L39: "g12" {
-		layout [ size: 21, 14 ]
-	}
-	port P81
-	port P82
-	node N36 {
-		layout [ size: 150, 25 ]
-		nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
-		portConstraints: FIXED_SIDE
-		label L40: "LEGS_RETRACT = true" {
-			layout [ size: 140, 15 ]
-		}
-		port P83 {
-			side: NORTH
-		}
-		port P84 {
-			side: SOUTH
-		}
-	}
-	edge E62: P82 -> N36.P83
-	edge E63: N36.P84 -> P81
-}
-node N37 {
-	portConstraints: FREE
-	label L41: "g13" {
-		layout [ size: 21, 14 ]
-	}
-	node N38 {
+	node N62 {
 		layout [ size: 75, 25 ]
 		nodeLabels.placement: "[H_CENTER, V_CENTER, INSIDE]"
 		portConstraints: FIXED_SIDE
 		layerConstraint: LAST
-		label L42: "exit" {
+		label L64: "exit" {
 			layout [ size: 21, 15 ]
 		}
+		port P147 {
+			side: NORTH
+		}
 	}
+	edge E109: P140 -> N60.P143
+	edge E110: P141 -> N60.P144
+	edge E111: N60.P142 -> N61.P145
+	edge E112: N61.P146 -> N62.P147
 }
-edge E1: N2.P1 -> N4.P4
-edge E2: N4.P3 -> N6.P11
-edge E3: N6.P12 -> N9.P20
-edge E4: N6.P13 -> N33.P77
-edge E5: N9.P19 -> N11.P24
-edge E6: N11.P23 -> N13.P29
-edge E7: N13.P30 -> N16.P37
-edge E8: N13.P31 -> N20.P47
-edge E9: N16.P38 -> N4.P5
-edge E10: N20.P45 -> N22.P51
-edge E11: N20.P46 -> N26.P61
-edge E12: N22.P52 -> N4.P6
-edge E13: N26.P60 -> N11.P26
-edge E14: N26.P59 -> N28.P65
-edge E15: N28.P66 -> N4.P7
-edge E16: N33.P76 -> N4.P8
-edge E17: N33.P75 -> N35.P82
-edge E18: N35.P81 -> N11.P25
+edge E1: N2.P2 -> N59.P140
+edge E2: N31.P70 -> N59.P141
+edge E3: N56.P134 -> N2.P1
+edge E4: N56.P135 -> N31.P69
