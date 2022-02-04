@@ -1,0 +1,54 @@
+considerModelOrder: PREFER_EDGES
+elk.direction: RIGHT
+
+// See timed_automaton.sctx
+// No crossings.
+
+node n1 {
+  layering.layerConstraint: FIRST
+}
+edge n1 -> n2 {
+  label "1:"
+}
+
+edge n1 -> n2 {
+  label "2:"
+}
+
+edge n1 -> n2 {
+  label "3:"
+}
+
+edge n1 -> n2 {
+  label "4:"
+}
+
+node n2
+
+edge n2 -> n3 {
+  label "1:"
+}
+edge n2 -> n3 {
+  label "2:"
+}
+
+node n3
+
+edge n3 -> n4 {
+  label "1:"
+}
+
+node n4 {
+  layering.layerConstraint: LAST
+}
+
+edge n4 -> n3 {
+  label "1:"
+}
+
+edge n4 -> n1 {
+  label "2:"
+}
+edge n4 -> n1 {
+  label "3:"
+}

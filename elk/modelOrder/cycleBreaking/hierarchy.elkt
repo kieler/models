@@ -1,0 +1,37 @@
+node N1 {
+  considerModelOrder.strategy: PREFER_EDGES // previously only considerModelOrder: PREFER_EDGES
+  cycleBreaking.strategy: MODEL_ORDER
+    
+    port P1_1
+    port P1_2
+    port P1_3
+    
+    node N2 {
+        port P2_1
+        port P2_2
+        
+        port P2_3
+        port P2_4
+    }
+    node N3 {
+        layering.layerConstraint: LAST
+        port P3_1
+        port P3_2
+    }
+    node N4 {
+        layering.layerConstraint: FIRST
+        port P4_1
+    }
+    node N5 {
+        port P5_1
+        port P5_2
+    }
+    
+    edge N2.P2_2 -> P1_1
+    edge P1_2 -> N2.P2_3
+    edge P1_3 -> N2.P2_4
+    edge N3.P3_2 -> N2.P2_1
+    edge N4.P4_1 -> P1_1
+    edge N4.P4_1 -> N5.P5_1
+    edge N5.P5_2 -> N3.P3_1
+}

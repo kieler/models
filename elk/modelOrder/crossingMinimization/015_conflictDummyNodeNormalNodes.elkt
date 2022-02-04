@@ -1,0 +1,47 @@
+considerModelOrder: PREFER_EDGES
+
+// Potential problem: n3 is placed below the long edge dummy label node,
+// since n3 has no connections to the previous layer.
+// Because of this the long edge to n6 produces a crossing.
+
+node n1 {
+  layout [size: 20, 20]
+}
+edge n1 -> n2 {
+  label "1: p1"
+}
+edge n1 -> n6 {
+  label "2: p2"
+}
+
+node n2 {
+  layout [size: 20, 20]
+}
+edge n2 -> n5 {
+  label "3: p1"
+}
+
+node n3 {
+  layout [size: 20, 20]
+}
+edge n3 -> n5 {
+  label "4: p1"
+}
+
+node n4 {
+  layout [size: 20, 20]
+}
+edge n4 -> n5 {
+  label "5: p1"
+}
+
+node n5 {
+  layout [size: 20, 20]
+}
+edge n5 -> n6 {
+  label "6: p1"
+}
+
+node n6 {
+  layout [size: 20, 20]
+}

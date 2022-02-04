@@ -1,0 +1,46 @@
+@layout[interactiveLayout] false
+scchart Example01 {
+
+  @layout[considerModelOrder.strategy] NONE
+  @layout[considerModelOrder.strategy] NODES_AND_EDGES
+  region {
+    initial state init ""
+    go to s1
+    go to s2
+    go to s3
+    go to s4
+    go to s5
+    go to s6
+    go to s7
+
+    @layout[positionChoiceConstraint] 0
+    @layout[layerChoiceConstraint] 2
+    state s1
+
+    @layout[positionChoiceConstraint] 1
+    @layout[layerChoiceConstraint] 2
+    state s2
+    go to s3
+
+    @layout[positionChoiceConstraint] 0
+    @layout[layerChoiceConstraint] 3
+    state s3
+    go to s4
+
+    @layout[positionChoiceConstraint] 0
+    @layout[layerChoiceConstraint] 4
+    state s4
+    go to s7
+
+    @layout[positionChoiceConstraint] 4
+    @layout[layerChoiceConstraint] 2
+    state s5
+    go to s6
+
+    @layout[positionChoiceConstraint] 2
+    @layout[layerChoiceConstraint] 3
+    state s6
+    
+    state s7
+  }
+}

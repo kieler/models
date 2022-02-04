@@ -1,0 +1,49 @@
+considerModelOrder: PREFER_EDGES
+// One crossing cannot be prevented. Edges should be ordered.
+// The algorithm finds 7 crossings in the ordered graph, since 7-9 are ordered below 1-2
+
+// With PREFER_EDGES: 3 crossings and in my opinion are worse layout.
+
+node n1 {
+  layering.layerConstraint: FIRST
+}
+edge n1 -> n2 {
+  label "1: p1"
+}
+edge n1 -> n3 {
+  label "2: p2"
+}
+
+node n2
+
+edge n2 -> n4 {
+  label "3: p1"
+}
+
+edge n2 -> n5 {
+  label "4: p2"
+}
+
+node n3
+
+edge n3 -> n4 {
+  label "5: p1"
+}
+
+edge n3 -> n5 {
+  label "6: p2"
+}
+
+node n4
+
+edge n4 -> n1 {
+  label "7: p1"
+}
+edge n4 -> n1 {
+  label "8: p2"
+}
+edge n4 -> n1 {
+  label "9: p3"
+}
+
+node n5

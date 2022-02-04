@@ -1,0 +1,222 @@
+scchart MOTOR {
+	output int currentUsec
+	output float wakeUsec
+	output int wakeUsecSpeeds
+	output int wakeUsecPos
+	output float wakeUsecLeft
+	output float wakeUsecRight
+	input bool left, right
+	input bool accel, decel
+	input bool stop
+	output bool motorLeft, motorRight
+	output float x, y
+	output float v
+	output float vDiff
+	output float vLeft, vRight
+	output float pLeftUsec, pRightUsec
+	output float sLeft, sRight
+	output float angle
+	output float vAngle
+	int pSpeedsUsec = 500000
+	int pPosUsec = 100000
+	output float dT = 1
+	float w = 10
+	float dV = 2
+	float vMax = 20
+	output float vDiffMax = vMax / 2
+	float cmPerHalfPeriod = 1
+
+//	region Speeds {
+//		initial state Speeds "" {
+//			bool clk
+//
+//			region ProcessInputs {
+//				initial state Init
+//				immediate do x = 0; y = 0 go to Running
+//
+//				state Running {
+//					entry do vLeft = 0; vRight = 0; vDiff = 0; v = 0
+//
+//					region CalcVdiff {
+//						initial state Pause
+//						if clk & left & !right go to TurnLeft
+//						if clk & right & !left go to TurnRight
+//
+//						state TurnLeft
+//						immediate do vDiff += 2 * dV go to CheckMax
+//
+//						state TurnRight
+//						immediate do vDiff -= 2 * dV go to CheckMin
+//
+//						state CheckMax
+//						immediate if vDiff <= vDiffMax go to Pause
+//						immediate do vDiff = vDiffMax go to Pause
+//
+//						state CheckMin
+//						immediate if vDiff >= -vDiffMax go to Pause
+//						immediate do vDiff = -vDiffMax go to Pause
+//					}
+//
+//					region CalcV {
+//						initial state Pause
+//						if clk & accel & !decel go to Accel
+//						if clk & decel & !accel go to Decel
+//
+//						state Accel
+//						immediate do v += dV go to CheckMax
+//
+//						state Decel
+//						immediate do v -= dV go to CheckMin
+//
+//						state CheckMax
+//						immediate if v <= vMax go to Pause
+//						immediate do v = vMax go to Pause
+//
+//						state CheckMin
+//						immediate if v >= -vMax go to Pause
+//						immediate do v = -vMax go to Pause
+//					}
+//
+//					region CalcVleft {
+//						initial state Pause
+//						if clk go to Update
+//
+//						state Update
+//						immediate do vLeft = v - vDiff / 2 go to CheckMax
+//
+//						state CheckMax
+//						immediate if vLeft <= vMax go to CheckMin
+//						immediate do vLeft = vMax go to CheckMin
+//
+//						state CheckMin
+//						immediate if vLeft >= -vMax go to SetPeriod
+//						immediate do vLeft = -vMax go to SetPeriod
+//
+//						state SetPeriod
+//						immediate if vLeft == 0 do pLeftUsec = 0 go to Pause
+//						immediate do pLeftUsec = 1000000 * (cmPerHalfPeriod / vLeft) go to Pause
+//					}
+//
+//					region CalcVright {
+//						initial state Pause
+//						if clk go to Update
+//
+//						state Update
+//						immediate do vRight = v + vDiff / 2 go to CheckMax
+//
+//						state CheckMax
+//						immediate if vRight <= vMax go to CheckMin
+//						immediate do vRight = vMax go to CheckMin
+//
+//						state CheckMin
+//						immediate if vRight >= -vMax go to Pause
+//						immediate do vRight = -vMax go to Pause
+//					}
+//				}
+//				if stop go to Running
+//			}
+//
+//			region GenClk {
+//				initial state Init "" {
+//					int myWakeUsec = currentUsec + pSpeedsUsec
+//					entry do clk = true
+//
+//					initial state AssertWakeTime
+//					immediate do wakeUsecSpeeds = myWakeUsec go to Pause
+//
+//					state Pause
+//					if currentUsec < myWakeUsec do clk = false go to AssertWakeTime
+//					go to Done
+//
+//					final state Done
+//				}
+//				join to Init
+//			}
+//		}
+//	}
+//
+//	region Pos {
+//		initial state Pos "" {
+//			bool clk
+//
+//			region UpdatePos {
+//				initial state Init {
+//					float dSLeft = dT * vLeft
+//					float dSRight = dT * vRight
+//					entry do sLeft += dSLeft; sRight += dSRight; angle += (dSRight - dSLeft) / w
+//				}
+//				if clk go to Init
+//			}
+//
+//			region GenClk {
+//				initial state Init "" {
+//					int myWakeUsec = currentUsec + pPosUsec
+//					entry do clk = true
+//
+//					initial state AssertWakeTime
+//					immediate do wakeUsecPos = myWakeUsec go to Pause
+//
+//					state Pause
+//					if currentUsec < myWakeUsec do clk = false go to AssertWakeTime
+//					go to Done
+//
+//					final state Done
+//				}
+//				join to Init
+//			}
+//		}
+//	}
+//
+//	region CtrlMotor {
+//		initial state CtrlMotor "" {
+//			bool clk
+//
+//			region MotorLeft {
+//				initial state Stopped
+//				immediate if pLeftUsec > 0 go to Running
+//
+//				state Running {
+//					float myWakeUsec = currentUsec + pLeftUsec
+//					entry do motorLeft = !motorLeft
+//
+//					initial state AssertWakeTime
+//					immediate do wakeUsecLeft = myWakeUsec go to Pause
+//
+//					state Pause
+//					if currentUsec < myWakeUsec go to AssertWakeTime
+//					go to Done
+//
+//					final state Done
+//				}
+//				join to Done
+//
+//				connector state Done
+//				if pLeftUsec == 0 go to Stopped
+//				go to Running
+//			}
+//		}
+//	}
+@layout[elk.direction] DOWN
+	region SimulateTime {
+		initial state Init
+		immediate do currentUsec = 0 go to CalcWakeUsec
+
+		state CalcWakeUsec
+		immediate do wakeUsec = wakeUsecSpeeds go to CheckLeft
+
+		state CheckLeft
+		immediate if wakeUsecLeft < wakeUsec do wakeUsec = wakeUsecLeft go to CheckRight
+		go to CheckRight
+
+		state CheckRight
+		immediate if wakeUsecRight < wakeUsec do wakeUsec = wakeUsecRight go to CheckPos
+		go to CheckPos
+
+		state CheckPos
+		immediate if wakeUsecPos < wakeUsec do wakeUsec = wakeUsecPos go to Pause
+		go to Pause
+
+		state Pause
+		do currentUsec = pre(wakeUsec) go to CalcWakeUsec
+	}
+}

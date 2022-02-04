@@ -1,0 +1,32 @@
+scchart Motor {
+  
+//  @layout[considerModelOrder.strategy] NODES_AND_EDGES
+//  @layout[considerModelOrder.strategy] PREFER_EDGES
+//  @layout[considerModelOrder.strategy] NONE
+  region Init {
+    initial state Pause
+    go to Accel
+    go to Decel
+  
+    state Accel
+    immediate go to CheckMax
+    immediate go to CheckMin
+    
+    state Decel
+    immediate go to CheckMin
+    immediate go to CheckMax
+  
+    state CheckMax
+    immediate go to SetPeriod
+    immediate go to SetPeriod
+  
+    state CheckMin
+    immediate go to SetPeriod
+    immediate go to SetPeriod
+  
+    state SetPeriod
+    immediate go to Pause
+    immediate go to Pause
+  }
+  
+}

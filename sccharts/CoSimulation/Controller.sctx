@@ -1,0 +1,13 @@
+// Together with the Environment a simple example that works for CoSimululation.
+// Simulate the Environment and then simulate the Controller and add the Environment.exe for co-simulation.
+
+scchart Controller {
+
+  input int outputOfEnv[10]
+  output int inputForEnv[10]
+
+  region for i : 0 to 9 {
+    initial state A
+    do inputForEnv[i] = outputOfEnv[i] + 1 go to A
+  }
+}

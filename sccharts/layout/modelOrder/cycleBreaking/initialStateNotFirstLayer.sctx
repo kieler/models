@@ -1,0 +1,22 @@
+/**
+ * One might expect that B is placed in the layer before A since it is textually before A.
+ * This is not done, since A has the first property set.
+ * We should respect the model order such that B is actually in the first layer.
+ */
+scchart RunningExample {
+
+  // @layout[cycleBreaking.strategy] MODEL_ORDER
+  region {
+    
+    state B
+    go to A
+    
+    initial state A
+    go to B
+    go to C
+    
+    
+    state C
+    go to A
+  }
+}

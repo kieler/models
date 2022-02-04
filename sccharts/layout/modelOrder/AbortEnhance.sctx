@@ -1,0 +1,31 @@
+// Simplified version of cmot-diss
+scchart AbortEnhanced {
+
+  region {
+    initial state M {
+      initial state S1
+      go to S2 label "S1toS2"
+      state S2
+      go to S3 label "S2toS3"
+      final state S3
+    }
+    abort to S1 label "1:"
+    immediate abort to S2 label "2:"
+    go to W1 label "3:"
+    immediate go to W2 label "4:"
+    if true join to N1 label "5:"
+    join to N2 label "6:"
+    
+    state S1
+    
+    state S2
+    
+    state W1
+    
+    state W2
+    
+    state N1
+    
+    state N2
+  }
+}

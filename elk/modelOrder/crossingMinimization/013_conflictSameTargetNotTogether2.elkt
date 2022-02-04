@@ -1,0 +1,45 @@
+preserveOrder: NODES_AND_EDGES
+
+// Ordering produces one crossing, changing n1 -> n2 and n1 -> n3 produces no crossings.
+// The problem is that 2 has to be above 1 or below 3 to produce no crossings.
+// If 3 is put under 1 because they can only be together 2 would be under n2 which is to prefer.
+
+node n1 {
+  layering.layerConstraint: FIRST
+}
+
+edge n1 -> n2 {
+  label "1: p1"
+}
+edge n1 -> n2 {
+  label "2: p2"
+}
+
+edge n1 -> n4 {
+  label "3: p3"
+}
+
+edge n1 -> n3 {
+  label "4: p4"
+}
+
+node n2
+
+edge n2 -> n1 {
+  label "5: p1"
+}
+
+edge n2 -> n3 {
+  label "6: p2"
+}
+
+
+node n3 {
+  layering.layerConstraint: LAST
+}
+
+node n4
+
+edge n4 -> n2 {
+  label "7: p1"
+}

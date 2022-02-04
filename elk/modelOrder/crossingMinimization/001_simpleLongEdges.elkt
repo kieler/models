@@ -1,0 +1,44 @@
+preserveOrder: PREFER_EDGES
+algorithm: layered
+// The long edge is above n2, since n1 -> n3 is declared before n1 > n2
+node n1 {
+  layout [size: 20, 20]
+}
+edge n1 -> n3 {
+  label "1: p1"
+}
+edge n1 -> n2 {
+  label "2: p2"
+}
+node n2 {
+  layout [size: 20, 20]
+}
+edge n2 -> n3 {
+  label "3: p1"
+}
+node n3 {
+  layout [size: 20, 20]
+}
+
+
+// The long edge is below n5, since n4 -> n5 is declared before n4 > n6
+node n4 {
+  layout [size: 20, 20]
+}
+edge n4 -> n5 {
+  label "4: p1"
+}
+edge n4 -> n6 {
+  label "5: p2"
+}
+node n5 {
+  layout [size: 20, 20]
+}
+edge n5 -> n6 {
+  label "6: p1"
+}
+node n6 {
+  layout [size: 20, 20]
+}
+
+

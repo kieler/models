@@ -1,0 +1,25 @@
+considerModelOrder: PREFER_EDGES
+// This is a case in which preserve order does not work, since the model order produces more crossings.
+// Idea: Sort the outgoing edges/ports by the nodes they connect to.
+// Problem: Not all nodes have orders. One has to navigate the whole drawing.
+
+node n1 {
+  layout [size: 20, 20]
+}
+edge n1 -> n2 {
+  label "1: p1"
+}
+edge n1 -> n3 {
+  label "2: p2"
+}
+edge n1 -> n2 {
+  label "3: p3"
+}
+
+node n2 {
+  layout [size: 20, 20]
+}
+
+node n3 {
+  layout [size: 20, 20]
+}

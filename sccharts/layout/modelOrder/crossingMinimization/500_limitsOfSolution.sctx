@@ -1,0 +1,25 @@
+scchart CounterWithState {
+  
+//  @layout[considerModelOrder.strategy] NODES_AND_EDGES
+//  @layout[considerModelOrder.crossingCounterPortInfluence] 100 
+//  @layout[considerModelOrder.crossingCounterNodeInfluence] 100
+//  @layout[thoroughness] 10
+  region {
+    input signal int A, B
+  
+    initial state NoChange
+      immediate if A go to Incremented
+      immediate if B go to Decremented
+      immediate go to BothChanges
+  
+    connector state BothChanges
+      immediate go to Incremented
+      immediate go to Decremented
+  
+    state Incremented
+      go to NoChange
+  
+    state Decremented
+      go to NoChange
+  }
+}

@@ -1,0 +1,36 @@
+considerModelOrder: PREFER_EDGES
+
+// Ordering produces one crossing, changing n1 -> n2 and n1 -> n3 produces no crossings.
+// The problem is that 2 has to be above 1 or below 3 to produce no crossings.
+// If 3 is put under 1 because they can only be together 2 would be under n2 which is to prefer.
+
+node n1 {
+  layout [size: 20, 20]
+  layering.layerConstraint: FIRST
+}
+
+edge n1 -> n2 {
+  label "1: p1"
+}
+
+edge n1 -> n3 {
+  label "2: p2"
+}
+
+node n2 {
+  layout [size: 20, 20]
+}
+
+edge n2 -> n1 {
+  label "3: p1"
+}
+
+edge n2 -> n3 {
+  label "4: p2"
+}
+
+
+node n3 {
+  layout [size: 20, 20]
+  layering.layerConstraint: LAST
+}
